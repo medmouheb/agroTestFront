@@ -1,0 +1,101 @@
+<div class="row" [formGroup]="addform">
+
+    <div class="form-group col-md-4">
+        <label class="required" for="code">{{'codeproduct' | translate}}</label>
+        <input (blur)="isBlur()" class="form-control" name="code" [(ngModel)]="produit.code" formControlName="code" 
+        placeholder="{{'write your code product'|translate}} "
+        required aria-invalid="true" type="number" aria-describedby="code-error" (ngModelChange)="geValues($event)">
+
+    <div style=" color : red;" *ngIf="minIstrueCode">{{'code must be not null'|translate}}</div>
+ </div>
+
+    <div class="form-group col-md-4">
+        <label class="required" for="name">{{'nameproduct' | translate}}</label>
+        <input (blur)="isBlur1()" class="form-control" name="name" formControlName="name" [(ngModel)]="produit.name" 
+         placeholder="{{'write your name product'|translate}} "
+        required aria-invalid="true" aria-describedby="name-error" (ngModelChange)="geValues($event)">
+    <div style=" color : red;" *ngIf="minIstrueName">{{'the name must be between 3 and 8 characters'|translate}} </div>
+</div>
+
+    <div class="form-group col-md-4">
+        <label class="required" for="type">{{'typeproduct' | translate}}</label>
+        <input class="form-control"  name="type"  formControlName="type"  placeholder="{{'write your type product'|translate}} " 
+        [(ngModel)]="produit.type">
+    </div>
+
+    <div class="form-group col-md-4">
+        <label for="vendor">{{'vendor' | translate}}</label>
+        <select class="form-control" name="vendor" formControlName="vendor" ngModel [(ngModel)]="produit.fournisseur!.id" (ngModelChange)="onVendorChange()">
+      <option *ngFor="let vendor of vendors" [value]="vendor.id">
+        {{vendor.name}}
+      </option>
+    </select>
+    </div>
+
+    <div class="form-group col-md-4">
+        <label for="currency">{{'currency' | translate}}</label>
+        <input class="form-control" name="currency"  placeholder="{{'write your currency code'|translate}} "formControlName="currency"
+       ngModel [(ngModel)]="produit.currency">
+    </div>
+
+    <div class="form-group col-md-4">
+        <label for="category">{{'category' | translate}}</label>
+
+        <select class="form-control" name="category" formControlName="category" ngModel [(ngModel)]="produit.category">
+      <option value="Category 1">Category 1</option>
+      <option value="Category 2">Category 2</option>
+      <option value="Category 3">Category 3</option>
+    </select>
+    </div>
+
+    <div class="form-group col-md-4 align-self-end">
+        <label for="active">
+      <input type="checkbox" id="active" name="active" formControlName="status" ngModel [(ngModel)]="produit.status">
+      {{'active' | translate}}
+    </label>
+    </div>
+
+    <div class="form-group col-md-4 align-self-end">
+        <label for="Medicamenteux">
+      <input type="checkbox" id="Medicamenteux" name="Medicamenteux" formControlName="Medicamenteux" ngModel
+        [(ngModel)]="produit.Medicamenteux">
+      {{'medicated' | translate}}
+    </label>
+    </div>
+
+    <div class="form-group col-md-4">
+        <label for="Inventaire">{{'inventory' | translate}}</label>
+        <input class="form-control" name="Inventaire"  placeholder="{{'write your Inventaire'|translate}} "
+        formControlName="inventory" ngModel [(ngModel)]="produit.Inventaire">
+    </div>
+
+    <div class="form-group col-md-4">
+        <label for="couleur">{{'color' | translate}}</label>
+        <input type="color" class="form-control" name="couleur"   formControlName="couleur" ngModel [(ngModel)]="produit.couleur">
+    </div>
+
+    <div class="form-group col-md-4">
+        <label for="Fabricant">{{'manufacturer' | translate}}</label>
+        <input class="form-control" name="Fabricant"   formControlName="Fabricant"  placeholder="{{'write your Fabricant'|translate}} "
+        ngModel [(ngModel)]="produit.Fabricant">
+    </div>
+
+    <div class="form-group col-md-4">
+        <label for="maxdepasse">{{'maxOver' | translate}}</label>
+        <input class="form-control" name="maxdepasse"  formControlName="maxdepasse"  placeholder="{{'write your max over'|translate}} "
+        ngModel [(ngModel)]="produit.maxdepasse">
+    </div>
+
+    <div class="form-group col-md-4">
+        <label for="prixUnitaireHt">{{'prixUnitaireHt' | translate}}</label>
+        <input type="number" class="form-control" name="prixUnitaireHt"   formControlName="prixUnitaireHt" placeholder="{{'write your Unit price Ht'|translate}} "
+         ngModel [(ngModel)]="produit.prixUnitaireHt">
+    </div>
+
+    <div class="form-group col-md-4">
+        <label for="tauxTva">{{'tauxTva' | translate}}</label>
+        <input type="number" class="form-control" name="tauxTva"   formControlName="tauxTva" ngModel placeholder="{{'write your rate'|translate}} "
+         [(ngModel)]="produit.tauxTva">
+    </div>
+
+</div>

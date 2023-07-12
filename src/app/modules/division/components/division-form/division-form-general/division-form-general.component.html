@@ -1,0 +1,81 @@
+<div class="row" [formGroup]="addform">
+
+    <div class="form-group col-md-6">
+        <label class="required" for="code">{{'divisionCode' | translate}}</label>
+        <input (blur)="isBlurDCisvalid()" class="form-control" name="code" [(ngModel)]="division.code"
+            formControlName="code" required placeholder="{{'Write your division code'|translate}} " aria-invalid="true" type="number"
+            aria-describedby="code-error" (ngModelChange)="geValues($event)">
+        <div style="color: red;" *ngIf="DCisvalid">{{'Code must be not null'|translate}}</div>
+
+    </div>
+ 
+    <div class="form-group col-md-6">
+        <label class="required" for="name">{{'divisionName' | translate}}</label>
+        <input (blur)="isBlurDNisvalid();isBlur2();isBlur3() " class="form-control" name="name" formControlName="name" 
+        placeholder="{{'Write your Division name'|translate}}" [formControl]="fieldControl"
+            [(ngModel)]="division.name" required aria-invalid="true" aria-describedby="name-error"
+            (ngModelChange)="geValues($event)">
+        <div style="color: red;" *ngIf="DNisvalid">{{'Name must be not null'|translate}}</div>
+        
+<div style=" color : red;" *ngIf=" minIstrueName2">{{"Format is invalid"|translate}}</div>
+
+    </div>
+
+    <div class="form-group col-md-6">
+        <label class="required" for="speciesType">{{ "Species Type" | translate }}   </label>
+        <select  class="form-control"
+        (click)="geValues($event)"
+         name="speciesType"
+         formControlName="speciesType"
+          required
+          [(ngModel)]="division.speciesType"
+          >
+          <option value="" disabled selected>{{'Select your option'|translate}}</option>
+          <option  value="Chicken">
+            {{'Chicken'|translate}}
+          </option>
+          <option  value="Layer">
+            {{'Layer'|translate}}
+
+          </option>
+          <option  value="Turkey">
+            {{'Turkey'|translate}}
+
+          </option>
+          <option  value="Duck">
+            {{'Duck'|translate}}
+
+          </option>
+          
+        </select>
+     
+    </div>
+
+
+    <div class="form-group col-md-6">
+        <label for="measurement">{{'Measurement' | translate}}    </label>
+        <input (blur)="geValues($event)" class="form-control" name="measurement" formControlName="measurement" placeholder=" {{'Write your measurement'|translate}}"
+            [(ngModel)]="division.measurement" required aria-invalid="true" aria-describedby="measurement-error"
+            >
+           
+        
+
+    </div>
+    <div class="form-group col-md-6">
+      <label class="required" for="currencyCode" >{{ "currencyCode" | translate }}</label>
+      <select (blur)="isBlur4();selectValue($event);affiche()"  (click)="selectValue($event);geValues($event)"  type="number" class="form-control" name="currencycode" formControlName="currencycode" [(ngModel)]="division.currencycode">
+        <option *ngFor="let dv of cuurencys" [value]="dv.code" > {{dv.code}}</option>
+      </select>
+      <div style="color: red;" *ngIf="currecnyinv">{{'you must chose'|translate}}</div>
+
+    </div>
+    <div class="form-group col-md-6">
+      <label class="required" for="currencyname">{{'currencyName' | translate}}</label>
+      <input  class="form-control" name="currencyname" [(ngModel)]="division.currencyname" [value]="division.currencyname"
+        required aria-invalid="true" 
+          aria-describedby="code-error" >
+    
+  </div>
+  
+   
+</div>
