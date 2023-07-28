@@ -29,13 +29,16 @@ export class WillayaListComponent implements OnInit {
   pageSize = 10;
   willaya: Willaya = {};
   willayas: Array<Willaya> = [];
+  willayass: Array<Willaya> = [];
   loading = false;
   willayaPage: Page<Willaya> = initPage;
+  willayaPages: Page<Willaya> = initPage;
   onPaginationChange: EventEmitter<string> = new EventEmitter<string>();
   currentStep = 0;
   steps: any = ["steps.general"];
 
-  
+  isChecked: boolean = false;
+  affiche:boolean = false;
   constructor(
     private willayaservice:WillayaService,
     private translateService: TranslateService,
@@ -43,8 +46,18 @@ export class WillayaListComponent implements OnInit {
     private toastService: HotToastService
 
   ) { }
+   onCheckboxChange() {
+     console.log("La valeur de la case à cocher est : ", this.isChecked);
+     if (this.isChecked==false){
 
+       this.affiche=false
+     }
+     else{
+       this.affiche=true
+     }
+   }
   ngOnInit(): void {
+    this.findArchivedPage();
     this.findPage();
     this.onPaginationChange.subscribe(() => this.findPage());
   }
@@ -54,6 +67,7 @@ export class WillayaListComponent implements OnInit {
       .findPage(this.pageNumber, this.pageSize, this.filter)
       .subscribe({
         next: (result) => {
+          console.log(result.content)
           this.willayas = result.content;
           this.willayaPage = result;
         },
@@ -154,38 +168,7 @@ export class WillayaListComponent implements OnInit {
     });
   }
 
-  onClickDelete(id: string) {
-    this.deleteModal.show(() => {
-      this.toastService.loading(
-        this.translateService.instant("message.loading..."),
-        {
-          id: "0",
-        }
-      );
-      this.willayaservice.delete(id).subscribe({
-        next: () => {
-          this.findPage();
-          this.deleteModal.hide();
-          this.toastService.close("0");
-          this.toastService.success(
-            this.translateService.instant("success.deleted", {
-              elem: this.translateService.instant("willaya"),
-            })
-          );
-        },
-        error: (error) => {
-          this.deleteModal.hide();
-          this.toastService.close("0");
-          this.toastService.error(
-            this.translateService.instant(error.error, {
-              elem: this.translateService.instant("willaya"),
-            })
-          );
-        },
-      });
-    });
-  }
-
+  
   onClickArchive(id: string) {
     this.archiveModal.show(() => {
       this.willayaservice.archive(id).subscribe({
@@ -237,6 +220,64 @@ export class WillayaListComponent implements OnInit {
       this.willayas.sort((a, b) => b.name.localeCompare(a.name));
       this.sortByNameValid = true
     }
+  }
+
+
+
+
+
+  findArchivedPage() {
+    this.loading = true;
+    this.willayaservice
+      .findArchivedPage(this.pageNumber, this.pageSize, this.filter)
+      .subscribe({
+        next: (result) => {
+          this.willayass = result.content;
+          this.willayaPages = result;
+          this.findArchivedPage();
+        },
+        error: (error) => {
+          this.loading = false;
+          console.error(error);
+        },
+        complete: () => (this.loading = false),
+      });
+  }
+
+
+
+  
+  onClickdisArchive(id: string) {
+    this.willayaservice.disArchive(id).subscribe({
+      next: () => {
+        this.findArchivedPage();
+        this.findPage()
+        this.toastService.success(
+          this.translateService.instant("success.restore", {
+            elem: this.translateService.instant("willaya"),
+          })
+        );
+        console.log(id);
+      },
+    });
+  }
+
+  
+  onClickDelete(id: string) {
+    console.log(id)
+    this.willayaservice.delete(id).subscribe({
+      next: () => {
+        this.findArchivedPage();
+        this.findPage();
+
+        console.log("Success");
+        this.toastService.success(
+          this.translateService.instant("success.deleted", {
+            elem: this.translateService.instant("willaya"),
+          })
+        );
+      },
+    });
   }
 
 }

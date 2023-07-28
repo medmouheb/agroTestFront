@@ -4,6 +4,7 @@ import { SharedService } from "app/modules/company/services/shared.service";
 import { Fournisseur } from "../../../models/fournisseur.model";
 import { Currency } from "app/modules/currency/models/currency";
 import { CurrencyService } from "app/modules/currency/services/currency.service";
+import { FournisseursService } from "app/modules/fournisseurs/services/fournisseurs.service";
 
 @Component({
   selector: "app-fournisseurs-form-general",
@@ -14,18 +15,18 @@ export class FournisseursFormGeneralComponent implements OnInit {
   @Input() fournisseur!: Fournisseur;
   fieldControl: FormControl;
   addform: FormGroup;
- cuurencys:Array<Currency>=[]
+  cuurencys: Array<Currency> = []
   constructor(private sharedService: SharedService,
-    private currencyservice:CurrencyService) {}
+    private currencyservice: CurrencyService, private founriserv: FournisseursService) { }
 
   ngOnInit(): void {
     this.initForm();
-    if (this.fournisseur.code!=null){
+    if (this.fournisseur.code != null) {
       console.log("all")
       this.sharedService.setIsActive(true);
 
     }
-    this.fournisseur.currencyname=""
+    this.fournisseur.currencyname = ""
     this.initForm();
     this.getAllCurrency()
 
@@ -36,19 +37,78 @@ export class FournisseursFormGeneralComponent implements OnInit {
       error: (error) => console.error(error),
     });
   }
+  dispotrueCode: boolean = false
+  dispotruename: boolean = false
+  blur1() {
+    if (this.fournisseur.code == null) {
+      this.dispotrueCode = false
 
-  selectValue(e:any){
+    }
+  }
+  exist() {
+    console.log(this.fournisseur.code)
+    this.founriserv.findbycode(this.fournisseur.code).subscribe(data => {
+      console.log(data)
+      if (data != null) {
+        this.dispotrueCode = true
 
-    let wil=this.cuurencys.filter(el=>{
+
+      } else {
+        this.dispotrueCode = false
+
+      }
+
+    }, error => {
+      console.log(error.status)
+      if (error.status == 404) {
+        this.dispotrueCode = false
+
+      }
+    })
+
+  }
+
+  generateRandomCode() {
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let code = '';
+    for (let i = 0; i < 4; i++) {
+      const randomIndex = Math.floor(Math.random() * characters.length);
+      code += characters.charAt(randomIndex);
+    }
+    return code;
+  }
+
+  newSeggestions = ""
+  existname() {
+    this.founriserv.findbyName(this.fournisseur.name).subscribe(data => {
+      console.log(data)
+      if (data != null) {
+        this.dispotruename = true
+        this.newSeggestions = "chose " + this.fournisseur.name + this.generateRandomCode() + " or " + this.fournisseur.name + this.generateRandomCode() + " or " + this.fournisseur.name + this.generateRandomCode() + " or " + this.fournisseur.name + this.generateRandomCode()
+
+
+      } else {
+        this.dispotruename = false
+
+      }
+
+    }, error => console.log(error))
+
+  }
+
+
+  selectValue(e: any) {
+
+    let wil = this.cuurencys.filter(el => {
       console.log(el)
-      return el.code==e.target.value
-  
+      return el.code == e.target.value
+
     })[0].name
- //this.addform.value['currencyname']=wil
-    this.fournisseur.currencyname=wil
+    //this.addform.value['currencyname']=wil
+    this.fournisseur.currencyname = wil
     console.log(this.fournisseur.currencycode)
     console.log(this.fournisseur.currencyname)
-    
+
 
   }
 
@@ -56,30 +116,30 @@ export class FournisseursFormGeneralComponent implements OnInit {
   initForm() {
     this.fieldControl = new FormControl('', [
       Validators.required,
-     
+
       Validators.pattern(/^[a-zA-Z]+$/)
     ]);
 
     this.addform = new FormGroup({
       code: new FormControl("", [
         Validators.required,
-      
+
       ]),
       name: new FormControl("", [
         Validators.required,
-       
+
       ]),
       type: new FormControl("", [
         Validators.required,
-       
+
       ]),
       paymentTerm: new FormControl("", [
         Validators.required,
-        
+
       ]),
       currencyCode: new FormControl("", [
         Validators.required,
-    
+
       ]),
     });
     console.log("====================================");
@@ -91,15 +151,15 @@ export class FournisseursFormGeneralComponent implements OnInit {
     console.log(event);
     console.log(" add form :", this.addform.value);
     console.log("====================================");
-    if (this.fournisseur.code!=null && this.fournisseur.code!="" &&this.fournisseur.name!=null
-     && this.fournisseur.name!="" &&this.fournisseur.paymentTerm!=null &&this.fournisseur.paymentTerm!=""
-      &&this.fournisseur.currencycode!=null &&this.fournisseur.currencycode!=""){
+    if (this.fournisseur.code != null && this.fournisseur.code != "" && this.fournisseur.name != null && this.dispotrueCode == false && this.dispotruename == false &&
+      this.fournisseur.name != "" && this.fournisseur.paymentTerm != null && this.fournisseur.paymentTerm != ""
+      && this.fournisseur.currencycode != null && this.fournisseur.currencycode != "") {
 
-        this.sharedService.setIsActive(true);
-      }else {
-        
-    this.sharedService.setIsActive(false);
-      }
+      this.sharedService.setIsActive(true);
+    } else {
+
+      this.sharedService.setIsActive(false);
+    }
 
 
   }
@@ -125,7 +185,7 @@ export class FournisseursFormGeneralComponent implements OnInit {
   STisvali: boolean = false;
   Misvalid: boolean = false;
   isBlurDCisvalid() {
-    if (this.fournisseur.code==undefined){
+    if (this.fournisseur.code == undefined) {
       this.DCisvalid = true
     }
     else if (this.fournisseur.code.toString().length < 1) { this.DCisvalid = true }
@@ -135,12 +195,12 @@ export class FournisseursFormGeneralComponent implements OnInit {
   }
 
   isBlurDNisvalid() {
-    if (this.fieldControl.status =="INVALID"){
-      this.DNisvalid = true 
-    }else
-    if (this.fournisseur.name==undefined){
+    if (this.fieldControl.status == "INVALID") {
       this.DNisvalid = true
-    }
+    } else
+      if (this.fournisseur.name == undefined) {
+        this.DNisvalid = true
+      }
     if (this.fournisseur.name.toString().length < 1) { this.DNisvalid = true }
     else {
       this.DNisvalid = false

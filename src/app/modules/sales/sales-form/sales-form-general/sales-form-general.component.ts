@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { SharedService } from 'app/modules/company/services/shared.service';
 import { Sales } from '../../models/sales';
+import { SalesService } from '../../service/sales.service';
 
 @Component({
   selector: 'app-sales-form-general',
@@ -12,11 +13,20 @@ export class SalesFormGeneralComponent implements OnInit {
   @Input() sales!: Sales;
   addform: FormGroup;
   fieldControl: FormControl;
-  constructor(private sharedService: SharedService) {}
+  constructor(private sharedService: SharedService, private salesService:SalesService) {}
 
-
+  names: Array<String> = [];
+  codes: Array<String> = [];
   ngOnInit(): void {
     this.initForm();
+    this.salesService.findAll().subscribe(data=>{
+      this.names = data.map(el => {
+        return el.name
+      })
+      this.codes = data.map(el => {
+        return el.code
+      })
+    })
 
   }
   initForm() {
@@ -129,6 +139,39 @@ export class SalesFormGeneralComponent implements OnInit {
   isControlInValid(controlSpeciesType: string): boolean {
     const control = this.addform.controls[controlSpeciesType];
     return control.invalid && (control.dirty || control.touched);
+  }
+
+
+  generateRandomCode() {
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let code = '';
+    for (let i = 0; i < 4; i++) {
+      const randomIndex = Math.floor(Math.random() * characters.length);
+      code += characters.charAt(randomIndex);
+    }
+    return code;
+  }
+
+  newSeggestions = ""
+  dispotruename = false
+
+  existname() {
+    console.log(this.names.indexOf(this.sales.name) != -1,"aa::",this.sales.name)
+    if (this.names.indexOf(this.sales.name) != -1) {
+      this.dispotruename = true
+      this.newSeggestions = "chose " + this.sales.name + this.generateRandomCode() + " or " + this.sales.name + this.generateRandomCode() + " or " + this.sales.name + this.generateRandomCode() + " or " + this.sales.name + this.generateRandomCode()
+    } else {
+      this.dispotruename = false
+    }
+  }
+  existcodeIsvalid = false
+  existcode() {
+
+    if (this.codes.indexOf((this.sales.code+"")) != -1) {
+      this.existcodeIsvalid = true
+    } else {
+      this.existcodeIsvalid = false
+    }
   }
 
 }

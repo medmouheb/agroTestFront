@@ -46,7 +46,7 @@
         position: relative;
         height: calc(100vh - 75px);
         overflow: auto;
-        width: 260px;
+        width: 273px;
         z-index: 4;
 
         padding-bottom: 30px;
@@ -182,6 +182,7 @@
         }
 
         p{
+            color:#000000;
             margin: 0;
             line-height: 30px;
             font-size: 14px;
@@ -189,6 +190,7 @@
             display: block;
             height: auto;
             white-space: nowrap;
+            font-weight: 600;
         }
 
         i{

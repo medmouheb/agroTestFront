@@ -1,9 +1,14 @@
 <div class="main-content">
-    <div class="d-flex flex-wrap justify-content-between align-items-center gap-2">
+  <label class="pure-material-switch">
+    <input type="checkbox" [(ngModel)]="isChecked" (change)="onCheckboxChange()" >
+    <span> {{'Go To Trash' | translate}}</span>
+  </label>
+    <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 ">
         <div class="d-flex gap-2">
-            <button class="btn btn-add btn-outline-success btn-sm btn-action" (click)="onClickAdd()"
+            <button class="btn btn-add btn-outline-success btn-sm btn-action rounded-pill style-button" (click)="onClickAdd()"
                 [title]="'btns.add' | translate">
-                <i class="fa fa-plus"></i>
+                <i class="fa fa-plus style-icons"></i>
+                <span class="style-title"> {{'menu.add-division'|translate}}</span>  
             </button>
         </div>
 
@@ -30,11 +35,11 @@
             <thead class="datatable-header">
                 <tr>
                     <th>
-                      <strong>
+                      <strong  class="style-text">
                         {{'divisionCode' | translate}}
                         <a href="javascript:void(0);">
                           <svg (click)="sortByCode()" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                            fill="currentColor" class="bi bi-chevron-double-down" viewBox="0 0 16 16">
+                            fill="currentColor" class="bi bi-chevron-double-down custom-color custom-color" viewBox="0 0 16 16">
                             <path fill-rule="evenodd"
                               d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z" />
           
@@ -43,11 +48,11 @@
                       </strong>
                     </th>
                     <th>
-                      <strong>
+                      <strong  class="style-text">
                         {{'divisionName' | translate}}
                         <a href="javascript:void(0);">
                           <svg (click)="sortByName()" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                            fill="currentColor" class="bi bi-chevron-double-down" viewBox="0 0 16 16">
+                            fill="currentColor" class="bi bi-chevron-double-down custom-color" viewBox="0 0 16 16">
                             <path fill-rule="evenodd"
                               d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z" />
           
@@ -56,11 +61,11 @@
                       </strong>
                     </th>
                     <th>
-                      <strong>
+                      <strong  class="style-text">
                         {{'Species Type' | translate}}
                         <a href="javascript:void(0);">
                           <svg (click)="sortBySpiec()" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                            fill="currentColor" class="bi bi-chevron-double-down" viewBox="0 0 16 16">
+                            fill="currentColor" class="bi bi-chevron-double-down custom-color" viewBox="0 0 16 16">
                             <path fill-rule="evenodd"
                               d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z" />
           
@@ -69,11 +74,11 @@
                       </strong>
                     </th>
                     <th>
-                      <strong>
+                      <strong  class="style-text">
                         {{'company' | translate}}
                         <a href="javascript:void(0);">
                           <svg (click)="sortBycomp()" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                            fill="currentColor" class="bi bi-chevron-double-down" viewBox="0 0 16 16">
+                            fill="currentColor" class="bi bi-chevron-double-down custom-color" viewBox="0 0 16 16">
                             <path fill-rule="evenodd"
                               d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z" />
           
@@ -82,11 +87,11 @@
                       </strong>
                     </th>
                     <th>
-                      <strong>
+                      <strong  class="style-text">
                         {{'currency' | translate}}
                         <a href="javascript:void(0);">
                           <svg (click)="sortBycurre()" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                            fill="currentColor" class="bi bi-chevron-double-down" viewBox="0 0 16 16">
+                            fill="currentColor" class="bi bi-chevron-double-down custom-color" viewBox="0 0 16 16">
                             <path fill-rule="evenodd"
                               d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z" />
           
@@ -95,11 +100,11 @@
                       </strong>
                     </th>
                     <th>
-                      <strong>
+                      <strong  class="style-text">
                         {{'Address' | translate}}
                         <a href="javascript:void(0);">
                           <svg (click)="sortByAddress()" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                            fill="currentColor" class="bi bi-chevron-double-down" viewBox="0 0 16 16">
+                            fill="currentColor" class="bi bi-chevron-double-down custom-color" viewBox="0 0 16 16">
                             <path fill-rule="evenodd"
                               d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z" />
           
@@ -108,11 +113,11 @@
                       </strong>
                     </th>
                     <th>
-                      <strong>
+                      <strong  class="style-text">
                         {{'nameCity' | translate}}
                         <a href="javascript:void(0);">
                           <svg (click)="sortByCityName()" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                            fill="currentColor" class="bi bi-chevron-double-down" viewBox="0 0 16 16">
+                            fill="currentColor" class="bi bi-chevron-double-down custom-color" viewBox="0 0 16 16">
                             <path fill-rule="evenodd"
                               d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z" />
           
@@ -121,14 +126,14 @@
                       </strong>
                     </th>
                     <th>
-                      <strong>
+                      <strong  class="style-text">
                         {{'actions' | translate}}
                       </strong>
                     </th>
           
                   </tr>
             </thead>
-            <tbody class="text-sm">
+            <tbody class="text-sm"  *ngIf="affiche==false">
                 <tr class="row-data" *ngFor="let div of divisions">
                     <td>
                         {{div.code}}
@@ -155,7 +160,7 @@
                     <td class="d-flex gap-4">
                         <button class="text-primary datatable-action-btn" (click)="onClickEdit(div.id!)"
                             [title]="'btns.edit' | translate">
-                            <i class="fa fa-pencil"></i>
+                            <i class="fa fa-pencil color-edit"></i>
                         </button>
                         <button class="text-danger datatable-action-btn" (click)="onClickArchive(div.id!)"
                             [title]="'btns.delete' | translate">
@@ -164,6 +169,46 @@
                     </td>
                 </tr>
             </tbody>
+            <tbody class="text-sm"  *ngIf="affiche==true">
+              <tr class="row-data" *ngFor="let div of divisionss">
+                  <td>
+                      {{div.code}}
+                  </td>
+                  <td>
+                    {{div.name}}
+                </td>
+                <td>
+                  {{div.speciesType}}
+              </td>
+              <td>
+                {{div.companyname}}
+            </td>
+            <td>
+              {{div.currencyname}}
+          </td>
+                  <td>
+                      {{div.address}}
+                  </td>
+                  <td>
+                      {{div.nameCity}}
+                  </td>
+
+                  <td class="d-flex gap-4">
+                    
+                    <button class="text-primary datatable-action-btn" (click)="onClickdisArchive(div.id!)"
+                    [title]="'Restore line' | translate">
+                    <i class="fa fa-reply-all"></i>
+                </button>
+                <button class="text-danger datatable-action-btn" (click)="onClickDelete(div.id!)"
+                    [title]="'Delete permanently' | translate">
+                    <i class="fa fa-trash"></i>
+                </button>
+              
+            
+           
+        </td>
+              </tr>
+          </tbody>
         </table>
     </div>
     <app-pagination [pageNumber]="pageNumber" [pageSize]="pageSize" [page]="divisionPage"

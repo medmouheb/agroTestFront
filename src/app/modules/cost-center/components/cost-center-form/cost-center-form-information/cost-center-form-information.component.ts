@@ -14,7 +14,7 @@ export class CostCenterFormInformationComponent implements OnInit {
   @Input() cost!: CostCenter;
   divisions: Array<Division> = [];
   addform: FormGroup;
-
+  affichetype:boolean=false
   constructor(private sharedService: SharedService , private divisionService: DivisionService) {}
 
   ngOnInit(): void {
@@ -67,6 +67,7 @@ export class CostCenterFormInformationComponent implements OnInit {
     console.log(" add form :", this.addform);
     console.log("====================================");
   }
+  div:any
   selectVAlue(e:any){
     console.log("3==",e.target.value)
     let t=this.divisions.filter(el=>{return el.code==e.target.value})[0]
@@ -77,7 +78,7 @@ export class CostCenterFormInformationComponent implements OnInit {
     this.addform.value['division_Name']=t
     console.log("3==",this.addform.value)
     console.log("5==",this.cost)
-    
+    this.div=t
     console.log("4==",t)
   }
   getetat(){
@@ -87,7 +88,23 @@ export class CostCenterFormInformationComponent implements OnInit {
 
     }
   }
+
+
   geValues(event) {
+    console.log(this.cost.facilityType)
+    if(this.cost.facilityType=='Farm'){
+      console.log("okk")
+      console.log(this.div)
+      console.log(this.div.divisiontype)
+      this.affichetype=true
+      this.cost.farmType=this.div.divisiontype
+      this.cost.speciesType=this.div.speciesType
+    }else{
+      this.affichetype=false
+      this.cost.farmType=""
+
+    }
+   
     console.log("====================================");
     console.log("event :", event);
     console.log("====================================");
@@ -102,9 +119,13 @@ console.log(  this.cost.facilityType)
 console.log( this.cost.farmType)
 console.log( this.cost.speciesType)
 console.log(this.addform)
+console.log (this.cost.division_Code!="" && this.cost.division_Code!=undefined && 
+this.cost.facilityType!=null && this.cost.facilityType!='' && 
+this.cost.farmType!=null &&     this.cost.speciesType!=''&& 
+this.cost.speciesType!=null)
     if (this.cost.division_Code!="" && this.cost.division_Code!=undefined && 
     this.cost.facilityType!=null && this.cost.facilityType!='' && 
-    this.cost.farmType!=null &&    this.cost.farmType!='' &&  this.cost.speciesType!=''&& 
+     this.cost.speciesType!=''&& 
     this.cost.speciesType!=null){
       this.sharedService.setIsActive(true);
     }else {
@@ -174,4 +195,5 @@ console.log(this.addform)
       this.minIdivision = false;
     }
   }
+ 
 }

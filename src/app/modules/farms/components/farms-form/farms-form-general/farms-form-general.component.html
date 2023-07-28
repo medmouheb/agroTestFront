@@ -1,51 +1,79 @@
 <div class="row" [formGroup]="addform">
   <div class="form-group col-md-6">
-    <label class="required" for="code">{{ "code" | translate }}</label>
-    <input (blur)="codeBlur()" class="form-control" name="code" [(ngModel)]="farm.code" formControlName="code" required
+    <label class="required" for="code">{{ "codefarms" | translate }}</label>
+    <input (blur)="codeBlur()" class="form-control" name="code" [(ngModel)]="farm.code" formControlName="code"
+    placeholder=" {{'write your farms code'|translate}}" required
       aria-invalid="true" type="number" aria-describedby="code-error" (change)="geValues($event)">
-    <div *ngIf="codeISvalid" style="color: red;">code is required</div>
+    <div *ngIf="codeISvalid" style="color: red;">{{'Code must be not null'|translate}}</div>
   </div>
-
+ 
   <div class="form-group col-md-6">
-    <label class="required" for="name">{{ "name" | translate }}</label>
-    <input (blur)="nameBlur()" class="form-control" name="name" formControlName="name" [(ngModel)]="farm.nom" required
-      aria-invalid="true" aria-describedby="name-error" (change)="geValues($event)">
-    <div *ngIf="nameISvalid" style="color: red;">name is required</div>
+    <label class="required" for="name">{{ "namefarms" | translate }}</label>
+    <input (blur)="nameBlur();isBlur4();isBlur2()" [formControl]="fieldControl" class="form-control" name="name" formControlName="name" [(ngModel)]="farm.nom" required
+      aria-invalid="true" aria-describedby="name-error"  placeholder=" {{'write your farms name'|translate}}" (change)="geValues($event)">
+    <div *ngIf="nameISvalid" style="color: red;">{{'Name must be not null'|translate}}</div>
+    <div style=" color : red;" *ngIf="minIstrueName">{{"Format is invalid"|translate}}</div>
 
   </div>
-
-  <div class="form-group col-md-6">
-    <label class="required" for="type">{{ "type" | translate }}</label>
-    <input class="form-control" name="type" formControlName="type" [(ngModel)]="farm.type" required aria-invalid="true"
-      aria-describedby="type-error" (change)="geValues($event)">
-  </div>
-
-  <div class="form-group col-md-6">
-    <label class="required" for="owner_Name">{{ "owner" | translate }}</label>
-    <input (blur)="owner_NameBlur()" class="form-control" name="owner_Name" [(ngModel)]="farm.owner_Name"
-      formControlName="owner_Name" required aria-invalid="true" aria-describedby="owner_Name-error"
-      (change)="geValues($event)">
-    <div *ngIf="owner_NameISvalid" style="color: red;">owner Name is required</div>
-
-  </div>
-
   <div class="form-group col-md-6 align-self-end">
     <label for="active">
       <input type="checkbox" id="active" name="active" #active="ngModel" ngModel [(ngModel)]="farm.status" />
       {{ "active" | translate }}
     </label>
   </div>
-
-  <div class="form-group col-md-6">
-    <label for="growout">{{ "growout" | translate }}</label>
-
-    <select class="form-control" name="growout" #growout="ngModel" ngModel [(ngModel)]="farm.grouwout">
-      <option value="growout 1">Growout 1</option>
-      <option value="growout 2">Growout 2</option>
-      <option value="growout 3">Growout 3</option>
+    <div class="form-group col-md-6">
+    <label for="growout">{{ "growoutnumber" | translate }}</label>
+    <select (click)="selectValue($event)"   class="form-control" name="growoutcode" #growoutcode="ngModel" ngModel [(ngModel)]="farm.growoutcode">
+      <option *ngFor="let dv of growouts" [value]="dv.code" > {{dv.name}}</option>
     </select>
+   
   </div>
 
+  <div class="form-group col-md-6">
+    <label class="required" for="type">{{"Farmtype"| translate }}</label>
+      <select    class="form-control" name="type" formControlName="type" [(ngModel)]="farm.type" required aria-invalid="true"
+      aria-describedby="type-error" (change)="geValues($event)">
+      <option value="INTERN">INTERN</option>
+        <option value="EXTERN">EXTERN</option>
+      </select>
+  </div>
+  <div class="form-group col-md-6">
+    <label for="costCenter">{{ "costCenter" | translate }}</label>
+   
+  <select    class="form-control" name="costCenter" #costCenter="ngModel" ngModel [(ngModel)]="farm.cost_Center">
+    <option *ngFor="let dv of costcenters" [value]="dv.code" > {{dv.name}}</option>
+  </select>
+</div>
+<div class="form-group col-md-6">
+  <label for="warehouse">{{ "primaryWarehouse" | translate }}</label>
+  <select class="form-control" name="warehouse" #warehouse="ngModel" ngModel [(ngModel)]="farm.warehouse!.id"
+    (change)="onWarehouseChange()">
+    <option *ngFor="let warehouse of warehouses" [value]="warehouse.id">
+      {{ warehouse.name }}
+    </option>
+  </select>
+</div>
+
+  <div class="form-group col-md-6">
+    <label for="vendor">{{ "vendornumber" | translate }}</label>
+    <select class="form-control" name="vendor" #vendor="ngModel" ngModel [(ngModel)]="farm.vendor!.id"
+      (change)="onVendorChange()">
+      <option *ngFor="let vendor of vendors" [value]="vendor.id">
+        {{ vendor.name }}
+      </option>
+    </select>
+  </div>
+  <div class="form-group col-md-6">
+    <label for="constructionStatus">{{
+      "constructionStatus" | translate
+      }}</label>
+    <input class="form-control" name="constructionStatus" #constructionStatus="ngModel" ngModel
+      [(ngModel)]="farm.status_Construction" />
+  </div>
+  <div class="form-group col-md-6">
+    <label for="customerCode">{{ "customerNumber" | translate }}</label>
+    <input class="form-control" Code="customerCode" #customerCode="ngModel" ngModel [(ngModel)]="farm.customerCode" />
+  </div>
   <div class="form-group col-md-6">
     <label class="required" for="farmerManagerCode">{{
       "farmerManagerCode" | translate
@@ -89,50 +117,37 @@
   </div>
 
   <div class="form-group col-md-6">
-    <label for="customerCode">{{ "customerCode" | translate }}</label>
-    <input class="form-control" Code="customerCode" #customerCode="ngModel" ngModel [(ngModel)]="farm.customerCode" />
+    <label for="areaType">{{ "areaType" | translate }}</label>
+    <input class="form-control" name="areaType" #areaType="ngModel" ngModel [(ngModel)]="farm.area_type" />
+  </div>
+  <div class="form-group col-md-6">
+    <label class="required" for="owner_Name">{{ "owner" | translate }}</label>
+    <input (blur)="owner_NameBlur()" class="form-control" name="owner_Name" [(ngModel)]="farm.owner_Name"
+      formControlName="owner_Name" required aria-invalid="true" aria-describedby="owner_Name-error"
+      (change)="geValues($event)">
+    <div *ngIf="owner_NameISvalid" style="color: red;">owner Name is required</div>
+
   </div>
 
+  
+
+
+
+<!-- 
   <div class="form-group col-md-6">
     <label for="customerName">{{ "customerName" | translate }}</label>
     <input class="form-control" name="customerName" #customerName="ngModel" ngModel [(ngModel)]="farm.customerName" />
   </div>
 
-  <div class="form-group col-md-6">
-    <label for="costCenter">{{ "costCenter" | translate }}</label>
-    <input class="form-control" name="costCenter" #costCenter="ngModel" ngModel [(ngModel)]="farm.cost_Center" />
-  </div>
+ 
 
-  <div class="form-group col-md-6">
-    <label for="constructionStatus">{{
-      "constructionStatus" | translate
-      }}</label>
-    <input class="form-control" name="constructionStatus" #constructionStatus="ngModel" ngModel
-      [(ngModel)]="farm.status_Construction" />
-  </div>
+  
 
   <div class="form-group col-md-6">
     <label for="areaType">{{ "areaType" | translate }}</label>
     <input class="form-control" name="areaType" #areaType="ngModel" ngModel [(ngModel)]="farm.area_type" />
-  </div>
+  </div> -->
 
-  <div class="form-group col-md-6">
-    <label for="warehouse">{{ "primaryWarehouse" | translate }}</label>
-    <select class="form-control" name="warehouse" #warehouse="ngModel" ngModel [(ngModel)]="farm.warehouse!.id"
-      (change)="onWarehouseChange()">
-      <option *ngFor="let warehouse of warehouses" [value]="warehouse.id">
-        {{ warehouse.name }}
-      </option>
-    </select>
-  </div>
-
-  <div class="form-group col-md-6">
-    <label for="vendor">{{ "vendor" | translate }}</label>
-    <select class="form-control" name="vendor" #vendor="ngModel" ngModel [(ngModel)]="farm.vendor!.id"
-      (change)="onVendorChange()">
-      <option *ngFor="let vendor of vendors" [value]="vendor.id">
-        {{ vendor.name }}
-      </option>
-    </select>
-  </div>
+ 
+ 
 </div>

@@ -2,10 +2,11 @@
 
     <div class="form-group col-md-6">
         <label class="required" for="code">{{ "codewillaya" | translate }}</label>
-        <input class="form-control" name="code" (blur)="isBlurDCisvalid();geValues($event)" [(ngModel)]="willaya.code" formControlName="code" required 
+        <input class="form-control" name="code" (blur)="isBlurDCisvalid();geValues($event); exist();blur1()
+        " [(ngModel)]="willaya.code" formControlName="code" required 
         placeholder=" {{'Write your willaya code'|translate}}"
             aria-invalid="true" type="number" aria-describedby="code-error" (ngModelChange)="geValues($event)">
-
+            <div style=" color : red;" *ngIf="dispotrueCode">{{'Code must be unique'|translate}}</div>
             <div style="color: red;" *ngIf="DCisvalid" >{{'Code must be not null'|translate}}</div>
 
     </div>
@@ -13,10 +14,12 @@
 
     <div class="form-group col-md-6 ">
         <label class="required" for="name">{{ "namewillaya" | translate }}</label>
-        <input [formControl]="fieldControl" class="form-control" (blur)="isBlur2();isBlur3();isBlurDNisvalid();geValues($event)" name="name" formControlName="name" [(ngModel)]="willaya.name" required
+        <input [formControl]="fieldControl" class="form-control" (blur)="existname();isBlur2();isBlur3();isBlurDNisvalid();geValues($event);" name="name" formControlName="name" [(ngModel)]="willaya.name" required
          placeholder="{{'Write your willaya name'|translate}}" aria-invalid="true" aria-describedby="name-error" (ngModelChange)="geValues($event)">
             <div style="color: red;" *ngIf="DNisvalid" >{{'Name must be not null'|translate}}</div>
       <div style=" color : red;" *ngIf="minIstrueName2">{{"Format is invalid"|translate}}</div>
+      <div style=" color : red;" *ngIf="dispotruename">{{'name must be unique'|translate}}</div>
+      <div style=" color : black;" *ngIf="dispotruename">{{newSeggestions}}</div>
 
     </div>
 

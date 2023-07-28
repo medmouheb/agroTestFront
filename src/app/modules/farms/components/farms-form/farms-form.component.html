@@ -9,5 +9,35 @@
   <div *ngIf="currentStep == 1">
     <app-farms-form-localisation [farm]="farm"></app-farms-form-localisation>
   </div>
+  <div *ngIf="currentStep == 2">
+    <app-farms-form-product [farm]="farm"></app-farms-form-product>
+  </div>
+  <div *ngIf="currentStep == 3">
+    <app-farms-form-planing [farm]="farm"></app-farms-form-planing>
+  </div>
+  <div *ngIf="currentStep == 4">
+    <app-farms-form-feedmils [farm]="farm"></app-farms-form-feedmils>
+  </div>
+  <div *ngIf="currentStep == 5">
+    <app-farms-form-live-haul [farm]="farm"></app-farms-form-live-haul>
+  </div>
+  <div *ngIf="currentStep == 6">
+    <app-farms-form-projection [farm]="farm"></app-farms-form-projection>
+  </div>
+  <div *ngIf="currentStep == 7">
+    <app-farms-form-paye [farm]="farm"></app-farms-form-paye>
+  </div>
+  <div *ngIf="currentStep == 8">
+    <app-farms-form-distance [farm]="farm"></app-farms-form-distance>
+  </div>
+  <div *ngIf="currentStep ==9">
+    <app-farms-form-contract [farm]="farm"></app-farms-form-contract>
+  </div>
 
+  <div *ngIf="currentStep ==10">
+    <app-farms-form-visitors [farm]="farm"></app-farms-form-visitors>
+  </div>
+
+
+  
 </form>

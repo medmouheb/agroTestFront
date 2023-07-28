@@ -1,0 +1,22 @@
+<div class="row">
+  
+ 
+     
+    <div class="form-group col-md-6">
+      <label class="clickable" for="PrimaryMarket">{{'PrimaryMarket' | translate}}</label>
+      <input type="number" class="form-control" name="primaryMarket" #primaryMarket="ngModel" ngModel
+        [(ngModel)]="farm.primaryMarket">
+    </div>
+    <div class="form-group col-md-6">
+        <label class="clickable" for="liveProductday">{{'Liveproductdays' | translate}}</label>
+        <input type="date" class="form-control" name="liveProductday" #liveProductday="ngModel" ngModel
+          [(ngModel)]="farm.liveProductday">
+      </div>
+      <div class="form-group col-md-6">
+        <label class="clickable" for="feedMillcode">{{'MaxTruckCapacity' | translate}}</label>
+        <input type="number" class="form-control" name="maxturckcapacity" #maxturckcapacity="ngModel" ngModel
+          [(ngModel)]="farm.maxturckcapacity">
+      </div>
+  
+  </div>
+  

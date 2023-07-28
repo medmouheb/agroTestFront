@@ -19,4 +19,5 @@ export type Division ={
     companyname?:any
     currencycode?:any
     currencyname?:any
+    divisiontype?:any
 }

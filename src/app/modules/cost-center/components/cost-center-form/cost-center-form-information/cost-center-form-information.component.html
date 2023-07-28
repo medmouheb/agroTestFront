@@ -87,23 +87,27 @@
     </div>
     <div class="form-group col-md-6">
       <label class="required" for="facilityType">{{ "facilityType" | translate }}</label>
-      <input  (blur)="isBlur2();geValues($event)"  class="form-control" name="facilityType" #facilityType="ngModel" (ngModelChange)="geValues($event)" ngModel [(ngModel)]="cost.facilityType" 
-        placeholder="  {{'Write your facilityType'|translate}}" />
+      
        <!-- <div style="border: 1px solid red; color : red;" *ngIf="minIfacilityType">{{'farmType must be between 1 and 10 charactere'|translate}}</div> -->
-  
+       <select  (blur)="isBlur2();geValues($event) "  class="form-control" name="facilityType" #facilityType="ngModel" (ngModelChange)="geValues($event)" ngModel [(ngModel)]="cost.facilityType">
+        <option value="Hatchery" >Hatchery</option>
+        <option value="Feed mill" >Feed mill</option>
+        <option value="Warehouse" >Warehouse</option>
+        <option value="Plant" >Plant</option>
+        <option value="Logistics" >Logistics</option>
+        <option value="Farm" > Farm</option>
+
+      </select>
     </div>
-    <div class="form-group col-md-6">
-      <label class="required" for="divisionspeciestype">{{ "divisionspeciestype" | translate }}</label>
-      <input (blur)="isBlur3();geValues($event)" class="form-control" name="speciesType" #speciesType="ngModel" ngModel (ngModelChange)="geValues($event)" [(ngModel)]="cost.speciesType" 
-       placeholder=" {{'Write your division species Type'|translate}}" />
+    <div class="form-group col-md-6" *ngIf="affichetype==true">
+      <label class="required" for="divisionspeciestype">{{ "divisiontype" | translate }}</label>: {{cost.speciesType}}
+      
        <!-- <div style="border: 1px solid red; color : red;" *ngIf="minIspeciesType">{{'species type must be between 1 and 10 charactere'|translate}}</div> -->
   
     </div>
-    <div class="form-group col-md-6">
-      <label class="required" for="farmType">{{ "farmType" | translate }} </label>
-      <input (blur)="isBlur();geValues($event)" class="form-control" name="farmType" #address="ngModel" ngModel (ngModelChange)="geValues($event)" [(ngModel)]="cost.farmType"
-       placeholder=" {{'Write your farmType'|translate}}"  />
-       <!-- <div style="border: 1px solid red; color : red;" *ngIf="minIfarmtype">{{'farmType must be have 5 charactere'|translate}}</div> -->
-  
+    <div class="form-group col-md-6" *ngIf="affichetype==true">
+      <label  for="farmType">{{ "farmType" | translate }} </label> :{{cost.farmType}}
+    
+    
     </div>
 </div>

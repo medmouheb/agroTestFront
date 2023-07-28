@@ -22,7 +22,7 @@
 }
 
  :where(.submenu-title, .submenu-item):hover {
-    background: #e0e794;
+    /* background: #e0e794; */
     color: black;
 }
 

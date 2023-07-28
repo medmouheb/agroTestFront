@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { SharedService } from 'app/modules/company/services/shared.service';
 import { SalesSKU } from 'app/modules/sales-sku/models/salesSku';
+import { SalesSkuService } from 'app/modules/sales-sku/services/sales-sku.service';
 import { SalesService } from 'app/modules/sales/service/sales.service';
 
 @Component({
@@ -12,41 +13,51 @@ import { SalesService } from 'app/modules/sales/service/sales.service';
 export class SalesSkuFormGeneralComponent implements OnInit {
   @Input() salessku!: SalesSKU;
   addform: FormGroup;
-  saless:any
+  saless: any
   fieldControl: FormControl;
-  constructor(private sharedService: SharedService, private salesservice:SalesService) {}
-
+  constructor(private sharedService: SharedService, private salesservice: SalesService, private salesSkuService:SalesSkuService) { }
+  names: Array<String> = [];
+  codes: Array<String> = [];
 
   ngOnInit(): void {
     if (this.salessku == undefined) this.salessku = { sailorNameSku: "", sailorCode: "" };
     this.initForm();
     this.getallsales()
+    this.salesSkuService.findAll().subscribe(data => {
+      console.log("aa::",data)
+      this.names = data.map(el => {
+        return el.sailorNameSku
+      })
+      this.codes = data.map(el => {
+        return el.sailorCodeSku
+      })
+    })
   }
-  dvendor:boolean=false
-  isBlur5(){
-    if((this.salessku.sailorCode=="")||(this.salessku.sailorCode==undefined)){
-      this.dvendor=true
-    }else {
-      this.dvendor=false
-  
+  dvendor: boolean = false
+  isBlur5() {
+    if ((this.salessku.sailorCode == "") || (this.salessku.sailorCode == undefined)) {
+      this.dvendor = true
+    } else {
+      this.dvendor = false
+
     }
   }
-  getallsales(){
+  getallsales() {
     this.salesservice.findAll().subscribe({
       next: (result) => { this.saless = result; console.log("8==", this.saless) },
       error: (error) => console.error(error),
     });
-}
+  }
   initForm() {
     this.fieldControl = new FormControl('', [
       Validators.required,
-     
+
       Validators.pattern(/^[ a-zA-Z ]*$/),
     ]);
     this.addform = new FormGroup({
       sailorCodeSku: new FormControl(null, [
         Validators.required,
-       
+
       ]),
       sailorNameSku: new FormControl(null, [
         Validators.required,
@@ -54,7 +65,7 @@ export class SalesSkuFormGeneralComponent implements OnInit {
       ]),
       sailorCode: new FormControl(null, [
         Validators.required,
-       
+
       ]),
     });
     console.log("====================================");
@@ -73,15 +84,15 @@ export class SalesSkuFormGeneralComponent implements OnInit {
     console.log(this.salessku.sailorCode);
     console.log(this.salessku.sailorNameSku);
     console.log(
-   
+
     );
-   
+
     if (
       this.salessku.sailorCode != null &&
       this.salessku.sailorCode != "" &&
       this.salessku.sailorNameSku != null &&
       this.salessku.sailorNameSku != "" &&
-      this.salessku.sailorCode.toString().length >= 1 &&this.fieldControl.status !="INVALID"&&
+      this.salessku.sailorCode.toString().length >= 1 && this.fieldControl.status != "INVALID" &&
       this.salessku.sailorNameSku.toString().length >= 1
     ) {
       this.sharedService.setIsActive(true);
@@ -91,29 +102,29 @@ export class SalesSkuFormGeneralComponent implements OnInit {
   }
   minIstrueCode: boolean = false;
   isBlur() {
-    if (this.salessku.sailorCode ==undefined){
+    if (this.salessku.sailorCode == undefined) {
       this.minIstrueCode = true;
 
-    }else 
-    if (this.salessku.sailorCode.toString().length == 0 && this.salessku.sailorCode == "") {
-      this.minIstrueCode = true;
-    } else {
-      this.minIstrueCode = false;
-    }
+    } else
+      if (this.salessku.sailorCode.toString().length == 0 && this.salessku.sailorCode == "") {
+        this.minIstrueCode = true;
+      } else {
+        this.minIstrueCode = false;
+      }
   }
   isBlur3() {
-    if ((this.fieldControl.value == '')||(this.fieldControl.value == undefined)) {
+    if ((this.fieldControl.value == '') || (this.fieldControl.value == undefined)) {
       this.minIstrueName2 = false
 
     }
   }
   minIstrueName2: boolean = false
   isBlur2() {
-    if (this.fieldControl.status=="INVALID"){
+    if (this.fieldControl.status == "INVALID") {
       this.minIstrueName2 = true
 
     }
-    else if(this.fieldControl.status=="VALID") {
+    else if (this.fieldControl.status == "VALID") {
       this.minIstrueName2 = false
 
     }
@@ -123,12 +134,12 @@ export class SalesSkuFormGeneralComponent implements OnInit {
   }
   isControlValid(controlName: string): boolean {
     const control = this.addform.controls[controlName];
-    return control.invalid && (control.dirty || control.touched|| control.invalid);
+    return control.invalid && (control.dirty || control.touched || control.invalid);
   }
 
   isControlInValid(controlName: string): boolean {
     const control = this.addform.controls[controlName];
-    return control.invalid && (control.dirty || control.touched|| control.invalid);
+    return control.invalid && (control.dirty || control.touched || control.invalid);
   }
   DCisvalid: boolean = false;
   DNisvalid: boolean = false;
@@ -136,16 +147,47 @@ export class SalesSkuFormGeneralComponent implements OnInit {
   Misvalid: boolean = false;
   isBlurDCisvalid() {
 
-    if (this.salessku.sailorCodeSku==undefined) { this.DCisvalid = true }
+    if (this.salessku.sailorCodeSku == undefined) { this.DCisvalid = true }
     else {
       this.DCisvalid = false
     }
   }
   isBlurDNisvalid() {
- 
-    if (this.salessku.sailorNameSku==undefined) { this.DNisvalid = true }
+
+    if (this.salessku.sailorNameSku == undefined) { this.DNisvalid = true }
     else {
       this.DNisvalid = false
+    }
+  }
+
+  generateRandomCode() {
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let code = '';
+    for (let i = 0; i < 4; i++) {
+      const randomIndex = Math.floor(Math.random() * characters.length);
+      code += characters.charAt(randomIndex);
+    }
+    return code;
+  }
+
+  newSeggestions = ""
+  dispotruename = false
+
+  existname() {
+    console.log(this.names,"aa::",this.salessku.sailorNameSku)
+    if (this.names.indexOf(this.salessku.sailorNameSku) != -1) {
+      this.dispotruename = true
+      this.newSeggestions = "chose " + this.salessku.sailorNameSku + this.generateRandomCode() + " or " + this.salessku.sailorNameSku + this.generateRandomCode() + " or " + this.salessku.sailorNameSku + this.generateRandomCode() + " or " + this.salessku.sailorNameSku + this.generateRandomCode()
+    } else {
+      this.dispotruename = false
+    }
+  }
+  existcodeIsvalid = false
+  existcode() {
+    if (this.codes.indexOf((this.salessku.sailorCodeSku+"")) != -1) {
+      this.existcodeIsvalid = true
+    } else {
+      this.existcodeIsvalid = false
     }
   }
 

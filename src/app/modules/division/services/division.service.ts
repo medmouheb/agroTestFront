@@ -1,9 +1,9 @@
 import { HttpClient, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { environment } from "environments/environment";
-import { Division } from "../models/division";
-import { Observable } from "rxjs";
 import { Page } from "app/shared/models";
+import { environment } from "environments/environment";
+import { Observable } from "rxjs";
+import { Division } from "../models/division";
 
 @Injectable({
   providedIn: "root",
@@ -81,5 +81,15 @@ export class DivisionService {
     params = params.append("pageSize", pageSize);
     params = params.append("filter", filter);
     return this.http.get<Page<Division>>(url, { params });
+  }
+  findbycode(code:any): Observable<Division>{
+    let url = `${this.baseUrl()}/division/by-code/${code}`;
+    return this.http.get<Division>(url);
+
+  }
+  findbyName(name:any): Observable<Division>{
+    let url = `${this.baseUrl()}/division/getbyname/${name}`;
+    return this.http.get<Division>(url);
+
   }
 }

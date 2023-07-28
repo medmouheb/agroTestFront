@@ -1,0 +1,36 @@
+<div class="row">
+    <div class="form-group col-md-6">
+      <label for="VisitDate">{{'VisitDate' | translate}}</label>
+      <input type="date" class="form-control" name="VisitDate" #VisitDate="ngModel" ngModel [(ngModel)]="farm.VisitDate">
+    </div>
+  
+
+  
+    
+    <div class="form-group col-md-6">
+      <label for="FirstNameVisit">{{'Firstname' | translate}}</label>
+      <input class="form-control" name="FirstNameVisit" #FirstNameVisit="ngModel" ngModel [(ngModel)]="farm.FirstNameVisit">
+    </div>
+  
+    <div class="form-group col-md-6">
+      <label for="LastNameVisit">{{'Lastname' | translate}}</label>
+      <input class="form-control" name="LastNameVisit" #LastNameVisit="ngModel" ngModel [(ngModel)]="farm.LastNameVisit">
+    </div>
+  
+    <div class="form-group col-md-6">
+      <label for="TimeinVisit">{{'timein' | translate}}</label>
+      <input class="form-control" type="time" name="TimeinVisit" #TimeinVisit="ngModel" ngModel [(ngModel)]="farm.TimeinVisit">
+    </div>
+  
+    <div class="form-group col-md-6">
+      <label for="TimeoutVisit">{{'timeout' | translate}}</label>
+      <input class="form-control" type="time" name="TimeoutVisit" #TimeoutVisit="ngModel" ngModel [(ngModel)]="farm.TimeoutVisit">
+    </div>
+    <div class="form-group col-md-6">
+        <label for="Purposeofthevisit">{{'pruposeofthevisit'| translate}}</label>
+        <input class="form-control" name="Purposeofthevisit" #Purposeofthevisit="ngModel" ngModel [(ngModel)]="farm.Purposeofthevisit">
+      </div>
+  
+  
+  </div>
+  

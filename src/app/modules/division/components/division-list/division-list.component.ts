@@ -22,31 +22,43 @@ export class DivisionListComponent implements OnInit {
   archiveModal!: ConfirmDialogComponent;
   @ViewChild("stepper")
   stepper!: StepperComponent;
-
+  isChecked: boolean = false;
+  affiche:boolean = false;
   filter = "";
   pageNumber = 0;
   pageSize = 10;
   division: Division = {};
   divisions: Array<Division> = [];
+  divisionss: Array<Division> = [];
   loading = false;
   divisionPage: Page<Division> = initPage;
 
   onPaginationChange: EventEmitter<string> = new EventEmitter<string>();
 
   currentStep = 0;
-  steps: any = ["steps.general", "steps.localisation", "company"];
+  steps: any = ["steps.general", "company", "steps.localisation"];
 
   constructor(
     private divisionService: DivisionService,
     private translateService: TranslateService,
     private toastService: HotToastService
   ) {}
+  onCheckboxChange() {
+    console.log("La valeur de la case à cocher est : ", this.isChecked);
+    if (this.isChecked==false){
 
+      this.affiche=false
+    }
+    else{
+      this.affiche=true
+    }
+  }
   ngOnInit(): void {
     this.divisionService.findAll().subscribe((divisions) => {
       this.divisions = divisions;
     });
     this.findPage();
+    this.findArchivedPage();
     this.onPaginationChange.subscribe(() => this.findPage());
   }
 
@@ -168,43 +180,13 @@ export class DivisionListComponent implements OnInit {
     });
   }
 
-  onClickDelete(id: string) {
-    this.deleteModal.show(() => {
-      this.toastService.loading(
-        this.translateService.instant("message.loading..."),
-        {
-          id: "0",
-        }
-      );
-      this.divisionService.delete(id).subscribe({
-        next: () => {
-          this.findPage();
-          this.deleteModal.hide();
-          this.toastService.close("0");
-          this.toastService.success(
-            this.translateService.instant("success.deleted", {
-              elem: this.translateService.instant("division"),
-            })
-          );
-        },
-        error: (error) => {
-          this.deleteModal.hide();
-          this.toastService.close("0");
-          this.toastService.error(
-            this.translateService.instant(error.error, {
-              elem: this.translateService.instant("division"),
-            })
-          );
-        },
-      });
-    });
-  }
 
   onClickArchive(id: string) {
     this.archiveModal.show(() => {
       this.divisionService.archive(id).subscribe({
         next: () => {
           this.findPage();
+          this.findArchivedPage();
           this.archiveModal.hide();
           this.toastService.close("0");
           this.toastService.success(
@@ -302,5 +284,56 @@ export class DivisionListComponent implements OnInit {
       this.divisions.sort((a, b) => (b.address || "").localeCompare((a.address || "")));
       this.sortByAddressValid = true
     }
+  }
+
+
+
+
+  findArchivedPage() {
+    this.loading = true;
+    this.divisionService
+      .findArchivedPage(this.pageNumber, this.pageSize, this.filter)
+      .subscribe({
+        next: (result) => {
+          this.divisionss = result.content;
+          this.divisionPage = result;
+        },
+        error: (error) => {
+          this.loading = false;
+          console.error(error);
+        },
+        complete: () => (this.loading = false),
+      });
+  }
+
+  onClickdisArchive(id: string) {
+    this.divisionService.disArchive(id).subscribe({
+      next: () => {
+        this.findArchivedPage();
+        this.findPage()
+
+        this.toastService.success(
+          this.translateService.instant("success.restore", {
+            elem: this.translateService.instant("division"),
+          })
+        );
+        console.log(id);
+      },
+    });
+  }
+
+  onClickDelete(id: string) {
+    this.divisionService.delete(id).subscribe({
+      next: () => {
+        this.findArchivedPage();
+        this.findPage()
+        console.log("Success");
+        this.toastService.success(
+          this.translateService.instant("success.deleted", {
+            elem: this.translateService.instant("division"),
+          })
+        );
+      },
+    });
   }
 }

@@ -4,6 +4,7 @@ import { SharedService } from "app/modules/company/services/shared.service";
 import { Division } from "app/modules/division/models/division";
 import { DivisionService } from "app/modules/division/services/division.service";
 import { Growout } from "app/modules/growout/models/growout";
+import { GrowoutService } from "app/modules/growout/services/growout.service";
 
 @Component({
   selector: "app-growout-form-general",
@@ -27,7 +28,7 @@ export class GrowoutFormGeneralComponent implements OnInit {
 
   addform: FormGroup;
 
-  constructor(private sharedService: SharedService, private divisionService: DivisionService
+  constructor(private sharedService: SharedService, private divisionService: DivisionService , private growoutserv:GrowoutService
   ) { }
 
   ngOnInit(): void {
@@ -39,6 +40,63 @@ export class GrowoutFormGeneralComponent implements OnInit {
       next: (result) => { this.divisions = result; console.log("2==", result) },
       error: (error) => console.error(error),
     });
+  }
+
+  dispotrueCode: boolean = false
+  dispotruename: boolean = false
+  blur1(){
+    if (this.growout.code==null){
+  this.dispotrueCode = false
+
+    }
+  }
+  exist(){
+    console.log(this.growout.code)
+    this.growoutserv.findbycode(this.growout.code).subscribe(data=>{
+      console.log(data)
+if (data!=null){
+  this.dispotrueCode = true
+
+
+}else{
+  this.dispotrueCode = false
+
+}
+
+    },error=>{console.log(error.status)
+    if (error.status==404){
+  this.dispotrueCode = false
+
+    }})
+
+  }
+  generateRandomCode() {
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let code = '';
+    for (let i = 0; i < 4; i++) {
+      const randomIndex = Math.floor(Math.random() * characters.length);
+      code += characters.charAt(randomIndex);
+    }
+    return code;
+  }
+
+  newSeggestions = ""
+  
+  existname(){
+this.growoutserv.findbyName(this.growout.name).subscribe(data=>{
+      console.log(data)
+if (data!=null){
+   this.dispotruename = true
+   this.newSeggestions= "chose "+this.growout.name+this.generateRandomCode()+" or "+this.growout.name+this.generateRandomCode()+" or "+this.growout.name+this.generateRandomCode()+" or "+this.growout.name+this.generateRandomCode()
+
+
+ }else{
+  this.dispotruename = false
+
+ }
+
+    },error=>console.log(error))
+
   }
 
 
@@ -98,6 +156,7 @@ export class GrowoutFormGeneralComponent implements OnInit {
     console.log(this.growout.divisionCode);
     
     console.log(
+      this.dispotrueCode==false&&this.dispotruename==false&&
       this.growout.code != null &&
       this.growout.code != "" &&
       this.growout.name != null &&
@@ -112,6 +171,7 @@ export class GrowoutFormGeneralComponent implements OnInit {
       this.growout.divisionName.toString().length >= 1
     );
     if (
+      this.dispotrueCode==false&&this.dispotruename==false&&
       this.fieldControl.status !="INVALID"  &&
       this.growout.code != null &&
       this.growout.code != "" &&

@@ -27,11 +27,14 @@ export class CurrencyListComponent implements OnInit {
   pageSize = 10;
   currency: Currency = {};
   currencys: Array<Currency> = [];
+  currencyss: Array<Currency> = [];
   loading = false;
   currencyPage: Page<Currency> = initPage;
+  currencyPages: Page<Currency> = initPage;
 
   onPaginationChange: EventEmitter<string> = new EventEmitter<string>();
-
+  isChecked: boolean = false;
+  affiche:boolean = false;
   currentStep = 0;
   steps: any = ["steps.general"];
 
@@ -43,9 +46,20 @@ export class CurrencyListComponent implements OnInit {
 
   ngOnInit(): void {
     this.findPage();
+    this.findArchivedPage();
+
     this.onPaginationChange.subscribe(() => this.findPage());
   }
+  onCheckboxChange() {
+    console.log("La valeur de la case à cocher est : ", this.isChecked);
+    if (this.isChecked==false){
 
+      this.affiche=false
+    }
+    else{
+      this.affiche=true
+    }
+  }
   findPage() {
     this.loading = true;
     this.currencyService
@@ -147,43 +161,14 @@ export class CurrencyListComponent implements OnInit {
     });
   }
 
-  onClickDelete(id: string) {
-    this.deleteModal.show(() => {
-      this.toastService.loading(
-        this.translateService.instant("message.loading..."),
-        {
-          id: "0",
-        }
-      );
-      this.currencyService.delete(id).subscribe({
-        next: () => {
-          this.findPage();
-          this.deleteModal.hide();
-          this.toastService.close("0");
-          this.toastService.success(
-            this.translateService.instant("success.deleted", {
-              elem: this.translateService.instant("currency"),
-            })
-          );
-        },
-        error: (error) => {
-          this.deleteModal.hide();
-          this.toastService.close("0");
-          this.toastService.error(
-            this.translateService.instant(error.error, {
-              elem: this.translateService.instant("currency"),
-            })
-          );
-        },
-      });
-    });
-  }
-
+ 
   onClickArchive(id: string) {
     this.archiveModal.show(() => {
       this.currencyService.archive(id).subscribe({
         next: () => {
              this.findPage();
+        this.findArchivedPage();
+
           this.archiveModal.hide();
             this.toastService.close("0");
             this.toastService.success(
@@ -251,5 +236,58 @@ export class CurrencyListComponent implements OnInit {
       this.sortByNameValid = true
     }
   }
+
+
+  findArchivedPage() {
+    this.loading = true;
+    this.currencyService
+      .findArchivedPage(this.pageNumber, this.pageSize, this.filter)
+      .subscribe({
+        next: (result) => {
+          this.currencyss = result.content;
+          this.currencyPages = result;
+        },
+        error: (error) => {
+          this.loading = false;
+          console.error(error);
+        },
+        complete: () => (this.loading = false),
+      });
+  }
+
+
+
+  onClickdisArchive(id: string) {
+    this.currencyService.disArchive(id).subscribe({
+      next: () => {
+        this.findArchivedPage();
+
+        this.toastService.success(
+          this.translateService.instant("success.restore", {
+            elem: this.translateService.instant("currency"),
+          })
+        );
+        console.log(id);
+      },
+    });
+  }
+
+
+
+  onClickDelete(id: string) {
+    this.currencyService.delete(id).subscribe({
+      next: () => {
+        this.findArchivedPage();
+        console.log("Success");
+        this.toastService.success(
+          this.translateService.instant("success.deleted", {
+            elem: this.translateService.instant("currency"),
+          })
+        );
+      },
+    });
+  }
+
+
 
 }

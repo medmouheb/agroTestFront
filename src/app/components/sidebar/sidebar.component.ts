@@ -156,50 +156,50 @@ export const ROUTES: Categries[] = [
               },
             ],
           },
-          {
-            label: "menu.Feed-Mill",
-            title: "FeedMill",
-            icon: "rate_review",
-            id: "FeedMill-dropdown",
-            class: "",
-            SubC: [
-              {
-                title: "menu.Feed-Mill",
-                icon: "corporate_fare",
-                class: "",
-                path: "/start",
+           {
+             label: "menu.Feed-Mill",
+             title: "FeedMill",
+             icon: "rate_review",
+             id: "FeedMill-dropdown",
+             class: "",
+             SubC: [
+          //     {
+          //       title: "menu.Feed-Mill",
+          //       icon: "corporate_fare",
+          //       class: "",
+          //       path: "/start",
 
-              },
-              {
-                title: "menu.Feed-Type",
-                icon: "corporate_fare",
-                class: "",
-                path: "/start",
+          //     },
+          //     {
+          //       title: "menu.Feed-Type",
+          //       icon: "corporate_fare",
+          //       class: "",
+          //       path: "/start",
 
-              },
-              {
-                title: "menu.Feed-Formula",
-                icon: "corporate_fare",
-                class: "",
-                path: "/start",
+          //     },
+          //     {
+          //       title: "menu.Feed-Formula",
+          //       icon: "corporate_fare",
+          //       class: "",
+          //       path: "/start",
 
-              },
-              {
-                title: "Feed-Formula-Version  ",
-                icon: "corporate_fare",
-                class: "",
-                path: "/start",
+          //     },
+          //     {
+          //       title: "Feed-Formula-Version  ",
+          //       icon: "corporate_fare",
+          //       class: "",
+          //       path: "/start",
 
-              },
-              {
-                title: "menu.Formula-Price",
-                icon: "corporate_fare",
-                class: "",
-                path: "/start",
+          //     },
+          //     {
+          //       title: "menu.Formula-Price",
+          //       icon: "corporate_fare",
+          //       class: "",
+          //       path: "/start",
 
-              },
-            ],
-          },
+          //     },
+             ],
+           },
           {
             label: "Warehouses",
             path: "/warehouses",
@@ -272,7 +272,7 @@ export const ROUTES: Categries[] = [
             class: "",
             SubC: [
               {
-                label: "menu.Egg producte",
+                label: "menu.Egg-producte",
               path: "/start",
                 title: "menu.Egg-producte",
                 icon: "corporate_fare",
@@ -331,18 +331,7 @@ export const ROUTES: Categries[] = [
                 class: "",
                 path: "/start",
               },
-              {
-                label: "Field-product",
-                path: "/Field-product",
-                title: "Field-product",
-                icon: "corporate_fare",
-                class: "",
-                // label: "menu.Field-product",
-                // title: "menu.Field-product",
-                // path: "/produits",
-                // icon: "corporate_fare",
-                // class: "",
-              },
+             
             ],
           },
         ],
@@ -439,8 +428,8 @@ export const ROUTES: Categries[] = [
                 class: "",
               },
               {
-                label: "menu.Vehicule-type",
-                title: "Vehicule type",
+                title: "menu.Vehicule-type",
+               
                 icon: "corporate_fare",
                 class: "",
                 path: "/start",
@@ -478,96 +467,89 @@ export const ROUTES: Categries[] = [
         class: "",
         subCategories: [
           {
-            label: "menu.Symptoms",
-            title: "Symptoms",
-            icon: "corporate_fare",
-            id: "Symptoms-dropdown",
+            label: "menu.Veterinarians",
+            title: "Veterinarians",
+            icon: "inventory_2",
+            id: "Veterinarians-dropdown",
+            class: "",
+            SubC: [ ]
+            
+          },
+
+
+          // {
+          //   label: "menu.Field-and-Feed-products",
+          //   title: "Field-and-Feed-products",
+          //   icon: "feed",
+          //   id: "Field-dropdown",
+          //   class: "",
+                      
+          // },
+          {
+            label: "menu.Field-and-Feed-products",
+            title: "Medicated",
+            id: "Treatments-dropdown",
+            icon: "feed",
             class: "",
             SubC: [
               {
-                title: "menu.Symptom",
+                title: "menu.Field ",
                 icon: "corporate_fare",
-                class: "",
+                id: "Field-dropdown",
                 path: "/start",
+                class: "",
               },
-            ],
-          },
-        ],
-      },
-      {
-        label: "Veterinarians",
-        category: "Veterinarians",
-        id: "Veterinarians-dropdown",
-        icon: "pallet",
-        class: "",
-        subCategories: [
-          {
-            label: "Veterinarians",
-            title: "Veterinarians",
-            path: "/start",
-            icon: "corporate_fare",
-            id: "Veterinarians-dropdown",
-            class: "",
-            SubC: [],
-          },
-          {
-            label: "Licence",
-            title: "Licence",
-            path: "/start",
-            icon: "corporate_fare",
-            id: "Licence-dropdown",
-            class: "",
-            SubC: [],
-          },
-        ],
-      },
-
-      {
-        label: "menu.Field-and-Feed-products",
-        category: "Field",
-        id: "Field-dropdown",
-        icon: "feed",
-        class: "",
-        subCategories: [
-          {
-            label: "Feed",
-            title: "menu.Feed",
-            icon: "corporate_fare",
-            id: "Feed-dropdown",
-            path: "/start",
-            class: "",
-            SubC: [],
-          },
-          {
-            label: "Field ",
-            title: "menu.Field ",
-            icon: "corporate_fare",
-            id: "Field-dropdown",
+              {
+                title: "menu.Feed",
+                icon: "corporate_fare",
+                id: "Feed-dropdown",
+                path: "/start",
+                class: "",
+              },
               
-            path: "/start",
-            class: "",
-            SubC: [],
+            ],
+            
           },
-        ],
-      },
-      {
-        label: "menu.Treatments",
-        category: "Treatments",
-        id: "Treatments-dropdown",
-        icon: "stream",
-        class: "",
-        subCategories: [
           {
-            label: "Treatment",
-            title: "menu.Treat",
+            label: "menu.Symptoms",
+            title: "Symptoms",
+            id: "Symptoms-dropdown",
+            icon: "stream",
+            class: "",
+            SubC: [
+             
+              
+            ],
+            
+          },
+          
+          {
+            label: "menu.Treatments",
+            title: "Treatments",
+            id: "Treatments-dropdown",
+            icon: "stream",
+            class: "",
+            SubC: [
+              {
+                title: "menu.Treat",
             icon: "corporate_fare",
             id: "Treatment-dropdown",
             path: "/start",
             class: "",
-            SubC: [],
+              },
+            
+              
+            ],
+            
           },
+          
+
         ],
       },
+     
+
+   
+   
     ],
   },
   {
@@ -576,19 +558,19 @@ export const ROUTES: Categries[] = [
     icon: "corporate_fare",
     id: "18",
     SubCat: [
-      {
-        label: "Poltry",
-        category: "Poltry",
-        icon: "person",
-        id:"8",
-        class: "",
-      },
-      {
-        label: "Bouvine",
-        category: "Bouvine",
-        icon: "person",
-        class: "",
-      },
+       {
+         label: "menu.Poultry",
+         category: "Poltry",
+         icon: "person",
+         id:"8",
+         class: "",
+       },
+       {
+         label: "menu.Bovine",
+         category: "Bouvine",
+         icon: "person",
+         class: "",
+       },
       {
         label: "Agriculture",
         category: "Agriculture",
@@ -602,13 +584,25 @@ export const ROUTES: Categries[] = [
             icon: "agriculture",
             class: "",
           },
-          {
-            label: "menu.Field-Products",
-
-            title: "menu.Simulateur",
-            icon: "content_paste",
-            class: "",
-          },
+           {
+             label:"Field-Product",
+            path:"/Field-product",
+             title: "menu.Simulateur",
+             icon: "content_paste",
+             class: "",
+           },
+          //  {
+          //   label: "Field-product",
+          //   path: "/Field-product",
+          //   title: "Field-product",
+          //   icon: "corporate_fare",
+          //   class: "",
+          //   // label: "menu.Field-product",
+          //   // title: "menu.Field-product",
+          //   // path: "/produits",
+          //   // icon: "corporate_fare",
+          //   // class: "",
+          // },
           {
             label: "Warehouses",
             path: "/warehouses",
@@ -650,13 +644,13 @@ export const ROUTES: Categries[] = [
             icon: "inventory_2",
             class: "",
           },
-          {
-            label: "Irrigation",
-            path: "/sanitation",
-            title: "Irrigation",
-            icon: "inventory_2",
-            class: "",
-          },
+           {
+             label: "menu.irrigation",
+             path: "/sanitation",
+             title: "Irrigation",
+             icon: "inventory_2",
+             class: "",
+           },
         ],
       },
     ],
@@ -709,6 +703,10 @@ export class SidebarComponent implements OnInit {
     return true;
   }
 
+  indexBig:any
+  setBigIndex(i:any){
+    this.indexBig=i
+  }
 
   selectedType1:string=""
   selectedIndex1:number=-1

@@ -79,4 +79,15 @@ export class WillayaService {
     params = params.append("filter", filter);
     return this.http.get<Page<Willaya>>(url, { params });
   }
+
+  findbycode(code:any): Observable<Willaya>{
+    let url = `${this.baseUrl()}/willaya/by-code/${code}`;
+    return this.http.get<Willaya>(url);
+
+  }
+  findbyName(name:any): Observable<Willaya>{
+    let url = `${this.baseUrl()}/willaya/getbyname/${name}`;
+    return this.http.get<Willaya>(url);
+
+  }
 }

@@ -51,6 +51,7 @@ export class NavbarComponent implements OnInit {
         this.mobile_menu_visible = 0;
       }
     });
+    this.getRoute()
   }
 
   sidebarOpen() {
@@ -132,11 +133,12 @@ export class NavbarComponent implements OnInit {
   getTitle() {
     var titlee = this.location.prepareExternalUrl(this.location.path());
     var title = this.location.prepareExternalUrl;
+    console.log("aa::",this.listTitles)
 // console.log(title)
 //     console.log(titlee);
     if (titlee.charAt(0) === "#") {
       titlee = titlee.slice(2);
-      // console.log(titlee);
+     // console.log(titlee);
     }
 
     for (var item = 0; item < this.listTitles.length; item++) {
@@ -145,5 +147,40 @@ export class NavbarComponent implements OnInit {
       }
     }
     return titlee;
+  }
+
+  routes:String[]=[]
+
+  getRoute(){
+    var titlee = this.location.prepareExternalUrl(this.location.path()).slice(2);
+    switch(titlee){
+      case "company": 
+      this.routes= ["GeneralSetups","Admin","company"]
+      break;
+      case "division": 
+      this.routes= ["GeneralSetups","Admin","division"]
+      break;
+      case "growout": 
+      this.routes= ["GeneralSetups","Admin","growout"]
+      break;
+      case "costCenter": 
+      this.routes= ["GeneralSetups","Admin","costCenter"]
+      break;
+      case "country": 
+      this.routes= ["GeneralSetups","Admin","country"]
+      break;
+      case "willaya": 
+      this.routes= ["GeneralSetups","Admin","willaya"]
+      break;
+      case "currency": 
+      this.routes= ["GeneralSetups","Admin","currency"]
+      break;
+      case "tax": 
+      this.routes= ["GeneralSetups","Admin","tax"]
+      break;
+
+
+
+    }
   }
 }

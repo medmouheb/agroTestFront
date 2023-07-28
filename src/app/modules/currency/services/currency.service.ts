@@ -1,9 +1,9 @@
 import { HttpClient, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { environment } from "environments/environment";
-import { Currency } from "../models/currency";
-import { Observable } from "rxjs";
 import { Page } from "app/shared/models";
+import { environment } from "environments/environment";
+import { Observable } from "rxjs";
+import { Currency } from "../models/currency";
 
 @Injectable({
   providedIn: "root",
@@ -81,5 +81,15 @@ export class CurrencyService {
     params = params.append("pageSize", pageSize);
     params = params.append("filter", filter);
     return this.http.get<Page<Currency>>(url, { params });
+  }
+  findbycode(code:any): Observable<Currency>{
+    let url = `${this.baseUrl()}/currency/by-code/${code}`;
+    return this.http.get<Currency>(url);
+
+  }
+  findbyName(name:any): Observable<Currency>{
+    let url = `${this.baseUrl()}/currency/getbyname/${name}`;
+    return this.http.get<Currency>(url);
+
   }
 }

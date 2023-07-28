@@ -1,11 +1,15 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, Input, OnInit } from "@angular/core";
+import { FormControl, FormGroup, Validators } from "@angular/forms";
+import { SharedService } from "app/modules/company/services/shared.service";
+import { CostCenter } from "app/modules/cost-center/model/cost-center";
+import { CostCenterService } from "app/modules/cost-center/services/cost-center.service";
 import { Fournisseur } from "app/modules/fournisseurs/models/fournisseur.model";
 import { FournisseursService } from "app/modules/fournisseurs/services/fournisseurs.service";
+import { Growout } from "app/modules/growout/models/growout";
+import { GrowoutService } from "app/modules/growout/services/growout.service";
 import { Warehouse } from "app/modules/warehouse/models/warehouse.model";
 import { WarehouseService } from "app/modules/warehouse/services/warehouse.service";
 import { Farm } from "../../../models/farm";
-import { FormGroup, FormControl, Validators } from "@angular/forms";
-import { SharedService } from "app/modules/company/services/shared.service";
 
 @Component({
   selector: "app-farms-form-general",
@@ -14,17 +18,54 @@ import { SharedService } from "app/modules/company/services/shared.service";
 })
 export class FarmsFormGeneralComponent implements OnInit {
   @Input() farm!: Farm;
+  growouts: Array<Growout> = [];
+  costcenters: Array<CostCenter> = [];
   warehouses: Warehouse[] = [];
   vendors: Fournisseur[] = [];
   addform: FormGroup;
-
+  fieldControl: FormControl;
   constructor(
     private warehouseService: WarehouseService,
     private fournisseurService: FournisseursService,
-    private sharedService: SharedService
+    private sharedService: SharedService,
+    private growoutservice:GrowoutService,
+    private costcenterservice:CostCenterService
   ) {}
+getAllgrowout(){
+  this.growoutservice.findAll().subscribe({
+    next: (result) => (this.growouts = result),
+    error: (error) => console.error(error),
+  });
+}
+getallcostCenter(){
+  this.costcenterservice.findAll().subscribe({
+    next:(res)=>(this.costcenters=res),
+    error: (error) => console.error(error),
 
+  })
+}
+selectValue(e:any){
+
+  let wil=this.growouts.filter(el=>{
+   // console.log(el)
+    return el.name==e.target.value
+
+  })[0]
+  console.log(wil)
+
+  this.farm.growout=wil
+
+
+  
+
+}
   ngOnInit(): void {
+    if (this.farm==undefined)
+      this.farm={nom:"",code:""}
+    
+
+    this.getallcostCenter()
+    this.getAllgrowout()
     this.initForm();
     if (!this.farm.warehouse) {
       this.farm.warehouse = {};
@@ -37,6 +78,11 @@ export class FarmsFormGeneralComponent implements OnInit {
   }
 
   initForm() {
+    this.fieldControl = new FormControl('', [
+      Validators.required,
+     
+      Validators.pattern(/^[a-zA-Z ]*$/),
+    ]);
     this.addform = new FormGroup({
       code: new FormControl("", [
         Validators.required,
@@ -88,35 +134,57 @@ export class FarmsFormGeneralComponent implements OnInit {
 
   geValues(event) {
     console.log("aaaa", this.addform);
-
+    console.log(
+      this.farm.code != null &&
+      this.farm.code != "" &&
+      this.farm.nom != null &&
+      this.farm.nom != "" &&
+      this.farm.owner_Name != null &&
+      this.farm.owner_Name != "" &&
+      this.farm.manager_Code != null &&
+      this.farm.manager_Code != "" &&
+      this.farm.manager_name != null &&
+      this.farm.manager_name != "" &&
+      this.farm.technician_Code != null &&
+      this.farm.technician_Code != "" &&
+      this.farm.technician_Name != null &&
+      this.farm.technician_Name != "" &&
+      this.farm.code.toString().length >= 5 &&
+      this.farm.nom.toString().length >= 3 &&
+      this.farm.owner_Name.toString().length >= 3 &&
+      this.farm.manager_Code.toString().length >= 5 &&
+      this.farm.manager_name.toString().length >= 3 &&
+      this.farm.technician_Code.toString().length >= 5 &&
+      this.farm.technician_Name.toString().length >= 3
+    )
     if (
-      this.addform.value.code != null &&
-      this.addform.value.code != "" &&
-      this.addform.value.name != null &&
-      this.addform.value.name != "" &&
-      this.addform.value.owner_Name != null &&
-      this.addform.value.owner_Name != "" &&
-      this.addform.value.manager_Code != null &&
-      this.addform.value.manager_Code != "" &&
-      this.addform.value.manager_name != null &&
-      this.addform.value.manager_name != "" &&
-      this.addform.value.technician_Code != null &&
-      this.addform.value.technician_Code != "" &&
-      this.addform.value.technician_Name != null &&
-      this.addform.value.technician_Name != "" &&
-      this.addform.value.code.toString().length >= 5 &&
-      this.addform.value.name.toString().length >= 3 &&
-      this.addform.value.owner_Name.toString().length >= 3 &&
-      this.addform.value.manager_Code.toString().length >= 5 &&
-      this.addform.value.manager_name.toString().length >= 3 &&
-      this.addform.value.technician_Code.toString().length >= 5 &&
-      this.addform.value.technician_Name.toString().length >= 3
+      this.farm.code != null &&
+      this.farm.code != "" &&
+      this.farm.nom != null &&
+      this.farm.nom != "" &&
+      this.farm.owner_Name != null &&
+      this.farm.owner_Name != "" &&
+      this.farm.manager_Code != null &&
+      this.farm.manager_Code != "" &&
+      this.farm.manager_name != null &&
+      this.farm.manager_name != "" &&
+      this.farm.technician_Code != null &&
+      this.farm.technician_Code != "" &&
+      this.farm.technician_Name != null &&
+      this.farm.technician_Name != "" &&
+      this.farm.code.toString().length >= 5 &&
+      this.farm.nom.toString().length >= 3 &&
+      this.farm.owner_Name.toString().length >= 3 &&
+      this.farm.manager_Code.toString().length >= 5 &&
+      this.farm.manager_name.toString().length >= 3 &&
+      this.farm.technician_Code.toString().length >= 5 &&
+      this.farm.technician_Name.toString().length >= 3
     ) {
       this.sharedService.setIsActive(true);
-      console.log("bbbb", this.sharedService.setIsActive(true));
+    //  console.log("bbbb", this.sharedService.setIsActive(true));
     } else {
       this.sharedService.setIsActive(false);
-      console.log("cccc", this.sharedService.setIsActive(false));
+    //  console.log("cccc", this.sharedService.setIsActive(false));
     }
   }
 
@@ -167,7 +235,24 @@ export class FarmsFormGeneralComponent implements OnInit {
   valid3: boolean = false;
   valid4: boolean = false;
   valid5: boolean = false;
+  minIstrueName: boolean = false
+  isBlur2() {
+    if (this.fieldControl.status=="INVALID"){
+      this.minIstrueName = true
 
+    }
+    else if(this.fieldControl.status=="VALID") {
+      this.minIstrueName = false
+
+    }
+  }
+  isBlur4() {
+    console.log(this.fieldControl.value)
+    if ((this.fieldControl.value == '')||(this.fieldControl.value == undefined)) {
+      this.minIstrueName = false
+
+    }
+  }
   isBlurDCisvalid() {
     if (this.farm.code.toString().length < 5) {
       this.DCisvalid = true;
@@ -178,7 +263,7 @@ export class FarmsFormGeneralComponent implements OnInit {
 
   nameISvalid: boolean = false;
   nameBlur() {
-    if (this.addform.value.name.toString().length < 3) {
+    if (this.addform.value.name.toString().length < 1) {
       this.nameISvalid = true;
     } else {
       this.nameISvalid = false;
@@ -187,7 +272,7 @@ export class FarmsFormGeneralComponent implements OnInit {
 
   codeISvalid: boolean = false;
   codeBlur() {
-    if (this.addform.value.code.toString().length < 3) {
+    if (this.addform.value.code.toString().length <1) {
       this.codeISvalid = true;
     } else {
       this.codeISvalid = false;
@@ -196,7 +281,7 @@ export class FarmsFormGeneralComponent implements OnInit {
 
   owner_NameISvalid: boolean = false;
   owner_NameBlur() {
-    if (this.addform.value.owner_Name.toString().length < 3) {
+    if (this.addform.value.owner_Name.toString().length < 1) {
       this.owner_NameISvalid = true;
     } else {
       this.owner_NameISvalid = false;
@@ -205,7 +290,7 @@ export class FarmsFormGeneralComponent implements OnInit {
 
   manager_CodeISvalid: boolean = false;
   manager_CodeBlur() {
-    if (this.addform.value.manager_Code.toString().length < 3) {
+    if (this.addform.value.manager_Code.toString().length < 1) {
       this.manager_CodeISvalid = true;
     } else {
       this.manager_CodeISvalid = false;
@@ -214,7 +299,7 @@ export class FarmsFormGeneralComponent implements OnInit {
 
   manager_nameISvalid: boolean = false;
   manager_nameBlur() {
-    if (this.addform.value.manager_name.toString().length < 3) {
+    if (this.addform.value.manager_name.toString().length < 1) {
       this.manager_nameISvalid = true;
     } else {
       this.manager_nameISvalid = false;

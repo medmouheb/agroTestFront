@@ -2,18 +2,23 @@
 
     <div class="form-group col-md-6">
         <label class="required" for="code">{{ "codecompany" | translate }}</label>
-        <input (blur)="isBlur()" class="form-control" name="code" [(ngModel)]="camp.code" formControlName="code" placeholder="{{'Write your company code'|translate}} "
+        <input (blur)="isBlur();exist();blur1()" class="form-control" name="code" [(ngModel)]="camp.code" formControlName="code" placeholder="{{'Write your company code'|translate}} "
             required aria-invalid="true" type="number" aria-describedby="code-error" (ngModelChange)="geValues($event)">
 
-        <div style=" color : red;" *ngIf="minIstrueCode">{{'Code must be not null'|translate}}</div>
+            <div style=" color : red;" *ngIf="dispotrueCode">{{'Code must be unique'|translate}}</div>
+            <div style=" color : red;" *ngIf="minIstrueCode">{{'Code must be not null'|translate}}</div>
     </div>
 
     <div class="form-group col-md-6 ">
         <label class="required" for="name">{{ "namecompany" | translate }}</label>
-        <input (blur)="isBlur1();isBlur2();isBlur3()" [formControl]="fieldControl" class="form-control" name="name" formControlName="name" [(ngModel)]="camp.name"  placeholder="{{'Write your company name'|translate}} "
+        <input (blur)="isBlur1();isBlur2();isBlur3();existname()" [formControl]="fieldControl" class="form-control" name="name" formControlName="name" [(ngModel)]="camp.name"  placeholder="{{'Write your company name'|translate}} "
             required aria-invalid="true" aria-describedby="name-error" (ngModelChange)="geValues($event)">
         <div style=" color : red;" *ngIf="minIstrueName">{{'Name must be not null'|translate}} </div> 
         <div style=" color : red;" *ngIf="minIstrueName2==true">{{"Format is invalid"|translate}}</div>
+        <div style=" color : red;" *ngIf="dispotruename">{{'name must be unique'|translate}}</div>
+        <div style=" color : black;" *ngIf="dispotruename">{{newSeggestions}}</div>
+
+
 
     </div>
 

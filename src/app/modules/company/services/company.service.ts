@@ -3,8 +3,8 @@ import { Injectable } from "@angular/core";
 import { environment } from "environments/environment";
 import { Observable } from "rxjs";
 
-import { Company } from "../models/comany";
 import { Page } from "app/shared/models";
+import { Company } from "../models/comany";
 
 @Injectable({
   providedIn: "root",
@@ -82,5 +82,15 @@ export class CompanyService {
     params = params.append("pageSize", pageSize);
     params = params.append("filter", filter);
     return this.http.get<Page<Company>>(url, { params });
+  }
+  findbycode(code:any): Observable<Company>{
+    let url = `${this.baseUrl()}/campany/by-code/${code}`;
+    return this.http.get<Company>(url);
+
+  }
+  findbyName(name:any): Observable<Company>{
+    let url = `${this.baseUrl()}/campany/getbyname/${name}`;
+    return this.http.get<Company>(url);
+
   }
 }

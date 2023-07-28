@@ -30,7 +30,8 @@ export class VendorSKUListComponent implements OnInit {
   vendorskus: Array<VendorSKU> = [];
   loading = false;
   vendorskuPage: Page<VendorSKU> = initPage;
-
+  isChecked: boolean = false;
+  affiche:boolean = false;
   onPaginationChange: EventEmitter<string> = new EventEmitter<string>();
 
   currentStep = 0;
@@ -41,7 +42,16 @@ export class VendorSKUListComponent implements OnInit {
     private translateService: TranslateService,
     private toastService: HotToastService
   ) {}
+  onCheckboxChange() {
+    console.log("La valeur de la case à cocher est : ", this.isChecked);
+    if (this.isChecked==false){
 
+      this.affiche=false
+    }
+    else{
+      this.affiche=true
+    }
+  }
   ngOnInit(): void {
     this.findPage();
     this.onPaginationChange.subscribe(() => this.findPage());

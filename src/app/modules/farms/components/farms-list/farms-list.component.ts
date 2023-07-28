@@ -1,7 +1,7 @@
-import { Component, OnInit, ViewChild, EventEmitter } from "@angular/core";
-import { TranslateService } from "@ngx-translate/core";
-import { HotToastService } from "@ngneat/hot-toast";
+import { Component, EventEmitter, OnInit, ViewChild } from "@angular/core";
 import { FormGroup } from "@angular/forms";
+import { HotToastService } from "@ngneat/hot-toast";
+import { TranslateService } from "@ngx-translate/core";
 
 import { ConfirmDialogComponent } from "app/shared/components/confirm-dialog/confirm-dialog.component";
 import { StepperComponent } from "app/shared/components/stepper/stepper.component";
@@ -36,7 +36,14 @@ export class FarmsListComponent implements OnInit {
     "steps.localisation",
     "steps.productAndLandUsed",
     "steps.planning",
-    "steps.warehouse",
+    "steps.feedMill",
+    "steps.LiveHaul",
+    "steps.Projection",
+    "Paye",
+    "steps.Distance",
+    "steps.contract",
+    "steps.visitors",
+    
   ];
 
   loading = false;

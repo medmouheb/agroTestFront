@@ -11,7 +11,7 @@ import { CostCenterService } from "app/modules/cost-center/services/cost-center.
 import { Warehouse } from "../../../models/warehouse.model";
 import { FournisseursService } from "app/modules/fournisseurs/services/fournisseurs.service";
 import { Fournisseur } from "app/modules/fournisseurs/models/fournisseur.model";
-
+import { WarehouseService } from "app/modules/warehouse/services/warehouse.service";
 @Component({
   selector: "app-warehouse-form-general",
   templateUrl: "./warehouse-form-general.component.html",
@@ -23,6 +23,9 @@ export class WarehouseFormGeneralComponent implements OnInit {
   costcenters: Array<CostCenter> = [];
   fournisseurs: Array<Fournisseur> = [];
   fieldControl: FormControl;
+  names: Array<String> = [];
+  codes: Array<String> = [];
+
   costCenterTypes = ["ADMIN", "INTERNAL", "EXTERNAL"];
 
   types = ["OWNED", "THIRD PARTY"];
@@ -34,14 +37,55 @@ export class WarehouseFormGeneralComponent implements OnInit {
 
   // initialisation du formulaire
   constructor(private fb: FormBuilder, private sharedService: SharedService,
-    private costcenterservice:CostCenterService, 
-    private fournisseurservice:FournisseursService) {}
+    private costcenterservice: CostCenterService,
+    private fournisseurservice: FournisseursService, private warehouseService: WarehouseService) { }
   ngOnInit(): void {
     this.initForm();
     this.getAllcostcenter();
     this.getallfourniss();
+    this.warehouseService.findAll().subscribe(data => {
+      this.names = data.map(el => {
+        return el.name
+      })
+      this.codes = data.map(el => {
+        return el.code
+      })
+    })
   }
-  getallfourniss(){
+
+  generateRandomCode() {
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let code = '';
+    for (let i = 0; i < 4; i++) {
+      const randomIndex = Math.floor(Math.random() * characters.length);
+      code += characters.charAt(randomIndex);
+    }
+    return code;
+  }
+
+  newSeggestions = ""
+  dispotruename = false
+
+  existname() {
+
+    if (this.names.indexOf(this.warehouse.name) != -1) {
+      this.dispotruename = true
+      this.newSeggestions = "chose " + this.warehouse.name + this.generateRandomCode() + " or " + this.warehouse.name + this.generateRandomCode() + " or " + this.warehouse.name + this.generateRandomCode() + " or " + this.warehouse.name + this.generateRandomCode()
+    } else {
+      this.dispotruename = false
+    }
+  }
+  existcodeIsvalid = false
+  existcode() {
+
+    if (this.codes.indexOf((this.warehouse.code+"")) != -1) {
+      this.existcodeIsvalid = true
+    } else {
+      this.existcodeIsvalid = false
+    }
+  }
+
+  getallfourniss() {
     this.fournisseurservice.findAll().subscribe({
       next: (result) => { this.fournisseurs = result; console.log("8==", this.costcenters) },
       error: (error) => console.error(error),
@@ -53,32 +97,32 @@ export class WarehouseFormGeneralComponent implements OnInit {
       error: (error) => console.error(error),
     });
   }
-  
-  selectVAlue(e:any){
-    console.log("5==",this.warehouse)
 
-    console.log("3==",e.target.value)
-    let t=this.costcenters.filter(el=>{return el.code==e.target.value})[0].name
-    this.myForm.value.costCenterName=t
-    this.warehouse.costCenterName=t
-    this.myForm.value['costCenterName']=t
-    console.log("3==",this.myForm.value)
-    console.log("5==",this.warehouse)
+  selectVAlue(e: any) {
+    console.log("5==", this.warehouse)
 
-    console.log("4==",t)
+    console.log("3==", e.target.value)
+    let t = this.costcenters.filter(el => { return el.code == e.target.value })[0].name
+    this.myForm.value.costCenterName = t
+    this.warehouse.costCenterName = t
+    this.myForm.value['costCenterName'] = t
+    console.log("3==", this.myForm.value)
+    console.log("5==", this.warehouse)
+
+    console.log("4==", t)
 
   }
-  selectVAlue2(e:any){
-    console.log("3==",e.target.value)
-    let t=this.fournisseurs.filter(el=>{return el.code==e.target.value})[0]
+  selectVAlue2(e: any) {
+    console.log("3==", e.target.value)
+    let t = this.fournisseurs.filter(el => { return el.code == e.target.value })[0]
     // this.myForm.value.costCenterName=t
-     this.warehouse.vendorname=t.name
-     this.addForm.value['vendorname']=t.name
+    this.warehouse.vendorname = t.name
+    this.addForm.value['vendorname'] = t.name
     // console.log("3==",this.myForm.value)
-    console.log("5==",this.warehouse)
-this.warehouse.vendor=t.name
-this.warehouse.vendorname=t.name
-    console.log("4==",t)
+    console.log("5==", this.warehouse)
+    this.warehouse.vendor = t.name
+    this.warehouse.vendorname = t.name
+    console.log("4==", t)
 
   }
 
@@ -86,14 +130,14 @@ this.warehouse.vendorname=t.name
   initForm() {
     this.fieldControl = new FormControl('', [
       Validators.required,
- 
+
       Validators.pattern(/^[ a-zA-Z]*$/)
     ]);
 
     this.myForm = new FormGroup({
       code: new FormControl("", [
         Validators.required,
-      
+
       ]),
       email: new FormControl("", [
         Validators.required,
@@ -102,9 +146,9 @@ this.warehouse.vendorname=t.name
       ]),
       name: new FormControl("", [
         Validators.required,
-       
+
       ]),
-     
+
     });
     this.addForm = this.fb.group({
       code: ["", Validators.required],//5
@@ -129,7 +173,7 @@ this.warehouse.vendorname=t.name
   }
 
   geValues(event) {
-    console.log("5==",this.warehouse)
+    console.log("5==", this.warehouse)
 
     // console.log("====================================");
     // console.log("event :", event);
@@ -165,49 +209,49 @@ this.warehouse.vendorname=t.name
       this.warehouse.vendor != null &&
       this.warehouse.vendor != "" &&
       this.warehouse.code.toString().length >= 1 &&
-      this.warehouse.name.toString().length >= 1&&
-      this.warehouse.costCenterCode.toString().length >= 1&&
-      this.warehouse.costCenterName.toString().length >= 1&&this.fieldControl.status !="INVALID"
+      this.warehouse.name.toString().length >= 1 &&
+      this.warehouse.costCenterCode.toString().length >= 1 &&
+      this.warehouse.costCenterName.toString().length >= 1 && this.fieldControl.status != "INVALID"
     ) {
       this.sharedService.setIsActive(true);
     } else {
       this.sharedService.setIsActive(false);
     }
-    
+
   }
-  divisinv:boolean=false
-  isBlur4(){
-    if((this.myForm.value.costCenterCode=="")||(this.warehouse.costCenterCode==undefined)){
-      this.divisinv=true
-    }else {
-      this.divisinv=false
-  
+  divisinv: boolean = false
+  isBlur4() {
+    if ((this.myForm.value.costCenterCode == "") || (this.warehouse.costCenterCode == undefined)) {
+      this.divisinv = true
+    } else {
+      this.divisinv = false
+
     }
   }
-  dvendor:boolean=false
-  isBlur5(){
-    if((this.myForm.value.vendor=="")||(this.warehouse.vendor==undefined)){
-      this.dvendor=true
-    }else {
-      this.dvendor=false
-  
+  dvendor: boolean = false
+  isBlur5() {
+    if ((this.myForm.value.vendor == "") || (this.warehouse.vendor == undefined)) {
+      this.dvendor = true
+    } else {
+      this.dvendor = false
+
     }
   }
-  PrimaryisValid:boolean=true
-  isPrimaryValid(){
-    if(this.addForm.value.isPrimary=="false" || this.addForm.value.isPrimary=="true"){
-      this.PrimaryisValid=false
+  PrimaryisValid: boolean = true
+  isPrimaryValid() {
+    if (this.addForm.value.isPrimary == "false" || this.addForm.value.isPrimary == "true") {
+      this.PrimaryisValid = false
     }
   }
 
 
-  facilityTypeisValid:boolean=true
+  facilityTypeisValid: boolean = true
 
-  isfacilityTypeValid(event){
+  isfacilityTypeValid(event) {
 
-    console.log("snl",  this.addForm.value.facilityType )
-    if(this.addForm.value.facilityType=="OWNED" || this.addForm.value.facilityType=="THIRD PARTY"){
-      this.facilityTypeisValid=false
+    console.log("snl", this.addForm.value.facilityType)
+    if (this.addForm.value.facilityType == "OWNED" || this.addForm.value.facilityType == "THIRD PARTY") {
+      this.facilityTypeisValid = false
     }
     this.geValues(event)
   }
@@ -237,19 +281,19 @@ this.warehouse.vendorname=t.name
   DNisvalid: boolean = false;
   minIstrueName2: boolean = false
   isBlur2() {
-    if (this.fieldControl.status=="INVALID"){
+    if (this.fieldControl.status == "INVALID") {
       this.minIstrueName2 = true
 
     }
-    else if(this.fieldControl.status=="VALID") {
+    else if (this.fieldControl.status == "VALID") {
       this.minIstrueName2 = false
 
     }
   }
   isBlur6() {
     console.log(this.fieldControl.value)
-    if ((this.fieldControl.value == '')||(this.fieldControl.value == undefined)) {
-      this.minIstrueName2= false
+    if ((this.fieldControl.value == '') || (this.fieldControl.value == undefined)) {
+      this.minIstrueName2 = false
 
     }
   }
@@ -265,28 +309,28 @@ this.warehouse.vendorname=t.name
   //   }
   // }
 
-  isBlurDCisvalid(){
-    if (this.warehouse.code==undefined){
+  isBlurDCisvalid() {
+    if (this.warehouse.code == undefined) {
       this.DCisvalid = true
-    console.log(this.DCisvalid)
+      console.log(this.DCisvalid)
 
-    }else if (this.warehouse.code.toString().length < 1){
+    } else if (this.warehouse.code.toString().length < 1) {
       this.DCisvalid = true
-    }else{
+    } else {
       this.DCisvalid = false
     }
   }
 
-isBlurDNisvalid(){
-  if(this.warehouse.name==undefined){
-    this.DNisvalid = true
-  }else 
-  if( this.warehouse.name.toString().length < 1){
-    this.DNisvalid = true
-  }else {
-    this.DNisvalid = false
+  isBlurDNisvalid() {
+    if (this.warehouse.name == undefined) {
+      this.DNisvalid = true
+    } else
+      if (this.warehouse.name.toString().length < 1) {
+        this.DNisvalid = true
+      } else {
+        this.DNisvalid = false
+      }
   }
-}
   // isBlurDNisvalid() {
   //   console.log(this.DNisvalid)
 
@@ -322,12 +366,12 @@ isBlurDNisvalid(){
 
   maiLisvalid: boolean = false;
   isMaiLisvalid() {
-    console.log("1111",this.warehouse.email.toString().length < 3 )
-    console.log("222",this.warehouse.email.toString().includes("@"))
-    console.log("222",this.warehouse.email.toString().includes("."))
+    console.log("1111", this.warehouse.email.toString().length < 3)
+    console.log("222", this.warehouse.email.toString().includes("@"))
+    console.log("222", this.warehouse.email.toString().includes("."))
     this.maiLisvalid1 = true
 
-    if (this.warehouse.email.toString().length < 3 || !this.warehouse.email.toString().includes("@")  || !this.warehouse.email.toString().includes(".")) { this.maiLisvalid = true }
+    if (this.warehouse.email.toString().length < 3 || !this.warehouse.email.toString().includes("@") || !this.warehouse.email.toString().includes(".")) { this.maiLisvalid = true }
     else {
       this.maiLisvalid = false
     }
@@ -336,23 +380,23 @@ isBlurDNisvalid(){
   CCNisvalid1: boolean = false
   DNisvalid1: boolean = false
   DCisvalid1: boolean = false
-  isprimaryvalidation(){
-    return( this.CCCisvalid1 &&  this.CCNisvalid1 && this.DNisvalid1 &&  this.DCisvalid1 &&this.addForm.value.isPrimary==""
-      )
-  } 
-  
+  isprimaryvalidation() {
+    return (this.CCCisvalid1 && this.CCNisvalid1 && this.DNisvalid1 && this.DCisvalid1 && this.addForm.value.isPrimary == ""
+    )
+  }
+
   CCCisvalid2: boolean = false
   CCNisvalid2: boolean = false
   DNisvalid2: boolean = false
   DCisvalid2: boolean = false
   maiLisvalid1: boolean = false
-  isprimarytype(){
-    console.log("esese",typeof this.addForm.value.facilityType);
-    
-    return( this.CCCisvalid2 &&  this.CCNisvalid2 && this.DNisvalid2 &&  this.DCisvalid2 &&(this.addForm.value.facilityType==undefined)
-      )
+  isprimarytype() {
+    console.log("esese", typeof this.addForm.value.facilityType);
+
+    return (this.CCCisvalid2 && this.CCNisvalid2 && this.DNisvalid2 && this.DCisvalid2 && (this.addForm.value.facilityType == undefined)
+    )
   }
 
 
-  
+
 }

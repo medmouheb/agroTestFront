@@ -3,8 +3,8 @@ import { Injectable } from "@angular/core";
 import { environment } from "environments/environment";
 import { Observable } from "rxjs";
 
-import { CostCenter } from "../model/cost-center";
 import { Page } from "app/shared/models";
+import { CostCenter } from "../model/cost-center";
 
 @Injectable({
   providedIn: "root",
@@ -82,5 +82,15 @@ export class CostCenterService {
     params = params.append("pageSize", pageSize);
     params = params.append("filter", filter);
     return this.http.get<Page<CostCenter>>(url, { params });
+  }
+  findbycode(code:any): Observable<CostCenter>{
+    let url = `${this.baseUrl()}/costcenter/by-code/${code}`;
+    return this.http.get<CostCenter>(url);
+
+  }
+  findbyName(name:any): Observable<CostCenter>{
+    let url = `${this.baseUrl()}/costcenter/getbyname/${name}`;
+    return this.http.get<CostCenter>(url);
+
   }
 }

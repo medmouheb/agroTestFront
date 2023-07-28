@@ -3,34 +3,42 @@
 
     <div class="form-group col-md-6">
         <label class=" required " for=" vendor ">{{'sailorCode' | translate}}</label>
-        <select  (blur)="isBlur5(); geValues($event)"select class=" form-control " name="vendor" ngModel [(ngModel)]="salessku.sailorCode" formControlName="sailorCode" required
-          required>
-          <option *ngFor="let dv of saless" [value]="dv.code" > {{dv.code}}</option>
+        <select (blur)="isBlur5(); geValues($event)" select class=" form-control " name="vendor" ngModel
+            [(ngModel)]="salessku.sailorCode" formControlName="sailorCode" required required>
+            <option *ngFor="let dv of saless" [value]="dv.code"> {{dv.code}}</option>
 
-       
-    </select>
-    <div style="color: red;" *ngIf="dvendor">{{'you must chose'|translate}}</div>
 
-      </div>
+        </select>
+        <div style="color: red;" *ngIf="dvendor">{{'you must chose'|translate}}</div>
+
+    </div>
 
 
     <div class="form-group col-md-6 ">
         <label class="required" for="name">{{ "sailorNameSku" | translate }}</label>
-        <input class="form-control" (blur)="isBlurDNisvalid();isBlur2(); isBlur3()" name="name" formControlName="sailorNameSku"
-         [(ngModel)]="salessku.sailorNameSku" required [formControl]="fieldControl"
-         placeholder="{{'write your sailor Name Sku'|translate}}" aria-invalid="true" aria-describedby="name-error" (ngModelChange)="geValues($event)">
-            <div style="color: red;" *ngIf="DNisvalid" >{{'name must be not null'|translate}}</div>
-            <div style=" color : red;" *ngIf="minIstrueName2">{{"Format is invalid"|translate}}</div>
+        <input class="form-control" (blur)="existname();isBlurDNisvalid();isBlur2(); isBlur3()" name="name"
+            formControlName="sailorNameSku" [(ngModel)]="salessku.sailorNameSku" required [formControl]="fieldControl"
+            placeholder="{{'write your sailor Name Sku'|translate}}" aria-invalid="true" aria-describedby="name-error"
+            (ngModelChange)="geValues($event)">
+        <div style="color: red;" *ngIf="DNisvalid">{{'name must be not null'|translate}}</div>
+        <div style=" color : red;" *ngIf="minIstrueName2">{{"Format is invalid"|translate}}</div>
+        <div style="color: red;" *ngIf="dispotruename" >{{'name must be unique'|translate}}</div>
+
+        <div style="color: black;" *ngIf="dispotruename" >{{newSeggestions}}</div>
 
     </div>
- 
+
     <div class="form-group col-md-6 ">
-        <label class="required"   for="name">{{ "sailorCodeSku" | translate }}</label>
-        <input class="form-control" type="number" (blur)="isBlurDCisvalid()" name="name" formControlName="sailorCodeSku" [(ngModel)]="salessku.sailorCodeSku" required
-         placeholder="{{'write your sailor Code Sku'|translate}}" aria-invalid="true" aria-describedby="name-error" (ngModelChange)="geValues($event)">
-            <div style="color: red;" *ngIf="DCisvalid" >{{'code must be not null'|translate}}</div>
+        <label class="required" for="name">{{ "sailorCodeSku" | translate }}</label>
+        <input class="form-control" type="number" (blur)="existcode();isBlurDCisvalid()" name="name"
+            formControlName="sailorCodeSku" [(ngModel)]="salessku.sailorCodeSku" required
+            placeholder="{{'write your sailor Code Sku'|translate}}" aria-invalid="true" aria-describedby="name-error"
+            (ngModelChange)="geValues($event)">
+        <div style="color: red;" *ngIf="DCisvalid">{{'code must be not null'|translate}}</div>
+        <div style="color: red;" *ngIf="existcodeIsvalid">{{'Code must be unique'|translate}}</div>
+
     </div>
- 
+
 
 </div>
 <!-- <div class="row" [formGroup]="addform">

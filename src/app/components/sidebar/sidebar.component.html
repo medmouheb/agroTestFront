@@ -72,8 +72,8 @@
             style="list-style-type: none !important;padding-left: 5px !important; padding-top: 30px;">
             <ng-container *ngFor="let menuItem of menuItems; let index1=index">
                 <li class="submenu" (click)="clickSubMenu(menuItem?.id, $event.target)"
-                    style="cursor: pointer; padding: 10px !important;">
-                    <div  [ngStyle]="{'background-color': (selectedType1=='title1' && selectedIndex1==index1) ? 'rgb(132 167 70)' : '#ffffff'}"  class="submenu-title">
+                    style="cursor: pointer; padding: 3px !important;">
+                    <div    class="submenu-title">
                         <a id="admin" class="media align-items-center user-pointer collapsed"
                             data-toggle="sidebar-colapse" data-target="#{{menuItem.id}}"
                             style="font-size: 25px; font-weight: bold;padding: 10px !important;">
@@ -91,9 +91,9 @@
 
                             <li  *ngFor="let item of menuItem.SubCat; ; let index2=index" class="nav-item" id="cl"
                                 (click)="clickMenu(item?.id, $event.target)">
-                                    <a (click)="handleClickTitle2(index2);" [ngStyle]="{'background-color': (selectedType2=='title2' && selectedIndex2==index2 ) ? 'rgb(145 201 46 )' : '#ffffff'}" class="nav-link">
-                                        <i class="material-icons">{{item.icon}}</i>
-                                        <p name="SubCat">{{item.label | translate}}</p>
+                                    <a (click)="handleClickTitle2(index2);setBigIndex(index1)" [ngStyle]="{'background-color': (selectedType2=='title2' && selectedIndex2==index2 && indexBig==index1 ) ? 'rgb(46 103 48)' : '#ffffff'}"  class="nav-link">
+                                        <i class="material-icons" [ngStyle]="{'color': (selectedType2=='title2' && selectedIndex2==index2 && indexBig==index1 ) ? '#ffffff' : '#a9afbb'}">{{item.icon}}</i>
+                                        <p name="SubCat" [ngStyle]="{'color': (selectedType2=='title2' && selectedIndex2==index2 && indexBig==index1 ) ? '#ffffff' : '#000000'}">{{item.label | translate}}</p>
                                     </a>
                                 
 
@@ -105,20 +105,21 @@
                                         <li *ngFor="let subitem of item.subCategories ; let index3=index"
                                             class="{{subitem.class}} nav-item"
                                             (click)="clicksub(subitem?.title, $event.target)">
-                                            <a [ngStyle]="{'background-color': (selectedType3=='title3' && selectedIndex3==index3 && selectedType2=='title2' && selectedIndex2==index2 ) ? 'rgb(183 237 100)' : '#ffffff'}" (click)="handleClickTitle3(index3)" class="nav-link" [routerLink]="[subitem.path]">
-                                                <i class="material-icons">{{subitem.icon}}</i>
-                                                <p subcat>{{subitem.label | translate}}</p>
+                                            <a [ngStyle]="{'background-color': (selectedType3=='title3' && selectedIndex3==index3 && selectedType2=='title2' && selectedIndex2==index2 && indexBig==index1  ) ? 'rgb(42 203 48)' : '#ffffff'}" (click)="handleClickTitle3(index3);setBigIndex(index1)" class="nav-link" [routerLink]="[subitem.path]">
+                                                <i class="material-icons" [ngStyle]="{'color': (selectedType3=='title3' && selectedIndex3==index3  && selectedType2=='title2' && selectedIndex2==index2 && indexBig==index1 ) ? '#ffffff' : '#a9afbb'}" >{{subitem.icon}}</i>
+                                                <p style="white-space:initial !important;" subcat  [ngStyle]="{'color': (selectedType3=='title3' && selectedIndex3==index3  && selectedType2=='title2' && selectedIndex2==index2 && indexBig==index1 ) ? '#ffffff' : '#000000'}">{{subitem.label | translate}}</p>
                                             </a>
+                                            
 
                                             <div id="{{subitem.id}}" class="collapse">
                                                 <ul class="nav ml-3">
 
                                                     <li *ngFor="let subit of subitem.SubC; let index4=index"
                                                         class="{{subit.class}} nav-item">
-                                                        <a [ngStyle]="{'background-color': (selectedType4=='title4' && selectedIndex4==index4 && selectedType3=='title3' && selectedIndex3==index3 && selectedType2=='title2' && selectedIndex2==index2 ) ? 'rgb(194 255 101)' : '#ffffff'}"
-                                                         (click)="handleClickTitle4(index4)" class="nav-link" [routerLink]="[subit.path]">
+                                                        <a [ngStyle]="{'background-color': (selectedType4=='title4' && selectedIndex4==index4 && selectedType3=='title3' && selectedIndex3==index3 && selectedType2=='title2' && selectedIndex2==index2 && indexBig==index1  ) ? 'rgb(194 255 101)' : '#ffffff'}"
+                                                         (click)="handleClickTitle4(index4);setBigIndex(index1)" class="nav-link" [routerLink]="[subit.path]">
                                                             <i class="material-icons">{{subit.icon}}</i>
-                                                            <p>{{subit.title | translate}}</p>
+                                                            <p >{{subit.title | translate}}</p>
                                                         </a>
 
                                                     </li>

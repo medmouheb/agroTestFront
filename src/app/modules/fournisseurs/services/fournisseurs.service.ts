@@ -21,7 +21,16 @@ export class FournisseursService {
     }
     return this.create(fournisseur);
   }
+  findbycode(code:any): Observable<Fournisseur>{
+    let url = `${this.baseUrl()}/fournisseur/by-code/${code}`;
+    return this.http.get<Fournisseur>(url);
 
+  }
+  findbyName(name:any): Observable<Fournisseur>{
+    let url = `${this.baseUrl()}/fournisseur/getbyname/${name}`;
+    return this.http.get<Fournisseur>(url);
+
+  }
   create(fournisseur: Fournisseur): Observable<Fournisseur> {
     let url = this.baseUrl()+'/fournisseur';
     return this.http.post<Fournisseur>(url, fournisseur);

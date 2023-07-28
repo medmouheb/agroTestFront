@@ -8,7 +8,6 @@ import { CurrencyListComponent } from "./components/currency-list/currency-list.
 import { SharedModule } from "app/shared/shared.module";
 import { SharedService } from "../company/services/shared.service";
 import { CurrTrashComponent } from "./trash/curtrash.component";
-
 @NgModule({
   declarations: [
     CurrencyFormComponent,

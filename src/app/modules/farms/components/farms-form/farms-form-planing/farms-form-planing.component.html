@@ -1,0 +1,23 @@
+<div class="row">
+    <div class="form-group col-md-6">
+      <label for="warehouseprimary">{{'warehouseprimary' | translate}} </label>
+      <select   class="form-control"name="warehouseprimary" #warehouseprimary="ngModel" ngModel [(ngModel)]="farm.warehouseprimary">
+        <option *ngFor="let dv of warehouses" [value]="dv.code" > {{dv.code}}</option>
+      </select>
+    </div>
+  
+ 
+     
+    <div class="form-group col-md-6">
+      <label class="clickable" for="warehousesecondry">{{'warehousesecondry' | translate}}</label>
+      <input type="number" class="form-control" name="warehousesecondry" #warehousesecondry="ngModel" ngModel
+        [(ngModel)]="farm.warehousesecondry">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="logistic">{{'codeLogistic'| translate}}</label>
+      <input type="number" class="form-control" name="logistic" #logistic="ngModel" ngModel
+        [(ngModel)]="farm.logistic">
+    </div>
+  
+  </div>
+  

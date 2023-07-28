@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { SharedService } from "app/modules/company/services/shared.service";
 import { Currency } from "../../../models/currency";
+import { CurrencyService } from "app/modules/currency/services/currency.service";
 
 @Component({
   selector: "app-currency-form-general",
@@ -13,13 +14,70 @@ export class CurrencyFormGeneralComponent implements OnInit {
   addform: FormGroup;
   fieldControl: FormControl;
   fieldControl2: FormControl;
-  constructor(private sharedService: SharedService) {}
+  constructor(private sharedService: SharedService, private cuurencyserv:CurrencyService) {}
 
   ngOnInit(): void {
     if (this.currency == undefined) this.currency = { name: "", code: "" };
     this.initForm();
   }
+  dispotrueCode: boolean = false
+  dispotruename: boolean = false
+  
+  blur1(){
+    if (this.currency.code==null){
+  this.dispotrueCode = false
 
+    }
+  }
+  exist(){
+    console.log(this.currency.code)
+    this.cuurencyserv.findbycode(this.currency.code).subscribe(data=>{
+      console.log(data)
+if (data!=null){
+  this.dispotrueCode = true
+
+
+}else{
+  this.dispotrueCode = false
+
+}
+
+    },error=>{console.log(error.status)
+    if (error.status==404){
+  this.dispotrueCode = false
+
+    }})
+
+  }
+ 
+  generateRandomCode() {
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let code = '';
+    for (let i = 0; i < 4; i++) {
+      const randomIndex = Math.floor(Math.random() * characters.length);
+      code += characters.charAt(randomIndex);
+    }
+    return code;
+  }
+
+  newSeggestions = ""
+
+  existname(){
+this.cuurencyserv.findbyName(this.currency.name).subscribe(data=>{
+      console.log(data)
+if (data!=null){
+   this.dispotruename = true
+
+   this.newSeggestions = "chose " + this.currency.name + this.generateRandomCode() + " or " + this.currency.name + this.generateRandomCode() + " or " + this.currency.name + this.generateRandomCode() + " or " + this.currency.name + this.generateRandomCode()
+
+ }else{
+  this.dispotruename = false
+
+ }
+
+    },error=>console.log(error))
+
+  }
   initForm() {
     this.fieldControl = new FormControl('', [
       Validators.required,
@@ -74,6 +132,7 @@ export class CurrencyFormGeneralComponent implements OnInit {
       this.currency.code.toString().length >= 5
     );
     console.log(
+      this.dispotrueCode==false&&this.dispotruename==false&&
       this.currency.code != null &&
         this.currency.code != "" &&
         this.currency.name != null &&
@@ -82,6 +141,7 @@ export class CurrencyFormGeneralComponent implements OnInit {
         this.currency.name.toString().length >= 1
     );
     if (
+      this.dispotrueCode==false&&this.dispotruename==false&&
       this.currency.digitalcode!= null &&
       this.currency.digitalcode != "" &&
       this.currency.countrycode != null &&

@@ -32,7 +32,8 @@ export class WarehouseListComponent implements OnInit {
   importModal!: DialogComponent;
   currentStep = 0;
   steps = ["General",  "Projection"];
-
+  isChecked: boolean = false;
+  affiche:boolean = false;
   myForm: FormGroup;
   loading = false;
   warehouses: Array<Warehouse> = [];
@@ -43,6 +44,7 @@ export class WarehouseListComponent implements OnInit {
   filter = "";
   onPaginationChange: EventEmitter<string> = new EventEmitter<string>();
   file: File | null = null;
+  Pagewarehouse: Page<Warehouse> = initPage;
   constructor(
     private warehouseService: WarehouseService,
     private translateService: TranslateService,
@@ -50,9 +52,19 @@ export class WarehouseListComponent implements OnInit {
     private filesService: FilesService,
     private fb: FormBuilder
   ) {}
-  
+  onCheckboxChange() {
+    console.log("La valeur de la case à cocher est : ", this.isChecked);
+    if (this.isChecked==false){
+
+      this.affiche=false
+    }
+    else{
+      this.affiche=true
+    }
+  }
 
   ngOnInit(): void {
+    this.findArchivedPage();
     this.findPage();
     this.onPaginationChange.subscribe(() => this.findPage());
   }
@@ -207,43 +219,12 @@ export class WarehouseListComponent implements OnInit {
     });
   }
 
-  onClickDelete(id: string) {
-    console.log(id)
-    this.deleteModal.show(() => {
-      this.toastService.loading(
-        this.translateService.instant("message.loading..."),
-        {
-          id: "0",
-        }
-      );
-      this.warehouseService.delete(id).subscribe({
-        next: () => {
-          this.findPage();
-          this.deleteModal.hide();
-          this.toastService.close("0");
-          this.toastService.success(
-            this.translateService.instant("success.deleted", {
-              elem: this.translateService.instant("warehouse"),
-            })
-          );
-        },
-        error: (error) => {
-          this.deleteModal.hide();
-          this.toastService.close("0");
-          this.toastService.error(
-            this.translateService.instant(error.error, {
-              elem: this.translateService.instant("warehouse"),
-            })
-          );
-        },
-      });
-    });
-  }
-
+  
   onClickArchive(id: string) {
     this.archiveModal.show(() => {
       this.warehouseService.archive(id).subscribe({
         next: () => {
+          this.findArchivedPage();
           this.findPage();
           this.archiveModal.hide();
           this.toastService.close("0");
@@ -352,5 +333,52 @@ export class WarehouseListComponent implements OnInit {
       return;
     }
     this.file = fileList[0];
+  }
+
+
+  findArchivedPage() {
+    this.loading = true;
+    this.warehouseService
+      .findArchivedPage(this.pageNumber, this.pageSize, this.filter)
+      .subscribe({
+        next: (result) => {
+          this.warehouses = result.content;
+          this.Pagewarehouse = result;
+        },
+        error: (error) => {
+          this.loading = false;
+          console.error(error);
+        },
+        complete: () => (this.loading = false),
+      });
+  }
+
+  onClickDelete(id: string) {
+    this.warehouseService.delete(id).subscribe({
+      next: () => {
+        this.findArchivedPage();
+        this.findPage()
+        console.log("Success");
+        this.toastService.success(
+          this.translateService.instant("success.deleted", {
+            elem: this.translateService.instant("warehouse"),
+          })
+        );
+      },
+    });
+  }
+  onClickdisArchive(id: string) {
+    this.warehouseService.disArchive(id).subscribe({
+      next: () => {
+        this.findArchivedPage();
+        this.findPage()
+        this.toastService.success(
+          this.translateService.instant("success.restore", {
+            elem: this.translateService.instant("warehouse"),
+          })
+        );
+        console.log(id);
+      },
+    });
   }
 }

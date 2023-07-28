@@ -37,7 +37,8 @@ export class FournisseursListComponent implements OnInit {
     "steps.shippingLocation",
     "steps.vendorSKU",
   ];
-
+  isChecked: boolean = false;
+  affiche:boolean = false;
   loading = false;
   fournisseurs: Array<Fournisseur> = [];
   fournisseur: Fournisseur = {};
@@ -56,6 +57,27 @@ export class FournisseursListComponent implements OnInit {
     private toastService: HotToastService
   ) {}
 
+  sortByCodeValid: boolean = true;
+  sortByCode() {
+    console.log("aa::",this.sortByCodeValid)
+    if (this.sortByCodeValid) {
+      this.fournisseurs.sort((a, b) => a.code.localeCompare(b.code));
+      this.sortByCodeValid = false
+    } else {
+      this.fournisseurs.sort((a, b) => b.code.localeCompare(a.code));
+      this.sortByCodeValid = true
+    }
+  }
+  onCheckboxChange() {
+    console.log("La valeur de la case à cocher est : ", this.isChecked);
+    if (this.isChecked==false){
+
+      this.affiche=false
+    }
+    else{
+      this.affiche=true
+    }
+  }
   ngOnInit(): void {
     this.findPage();
     this.onPaginationChange.subscribe(() => this.findPage());

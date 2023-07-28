@@ -37,11 +37,13 @@ export class CostCenterListComponent implements OnInit {
   pageSize = 10;
   costCenter: CostCenter = {};
   costCenters: Array<CostCenter> = [];
+  costCenterss: Array<CostCenter> = [];
   loading = false;
   costCenterPage: Page<CostCenter> = initPage;
 
   onPaginationChange: EventEmitter<string> = new EventEmitter<string>();
-
+  isChecked: boolean = false;
+  affiche:boolean = false;
   errormessage: string;
   CostcenterFormGroup!: FormGroup;
   currentStep = 0;
@@ -54,9 +56,20 @@ export class CostCenterListComponent implements OnInit {
 
     private fb: FormBuilder
   ) {}
+  onCheckboxChange() {
+    console.log("La valeur de la case à cocher est : ", this.isChecked);
+    if (this.isChecked==false){
+
+      this.affiche=false
+    }
+    else{
+      this.affiche=true
+    }
+  }
 
   ngOnInit(): void {
     this.findPage();
+    this.findArchivedPage()
     this.onPaginationChange.subscribe(() => this.findPage());
     // this.CostcenterFormGroup = this.fb.group({
     // code: ["", Validators.required],
@@ -188,39 +201,39 @@ export class CostCenterListComponent implements OnInit {
 
   
 
-  onClickDelete(id: string) {
-    this.deleteModal.show(() => {
-      this.toastService.loading(
-        this.translateService.instant("message.loading..."),
-        {
-          id: "0",
-        }
-      );
-      this.costcenterServive.delete(id).subscribe({
-        next: () => {
-          this.findPage();
-          this.deleteModal.hide();
-          this.toastService.close("0");
-          this.toastService.success(
-            this.translateService.instant("success.deleted", {
+  // onClickDelete(id: string) {
+  //   this.deleteModal.show(() => {
+  //     this.toastService.loading(
+  //       this.translateService.instant("message.loading..."),
+  //       {
+  //         id: "0",
+  //       }
+  //     );
+  //     this.costcenterServive.delete(id).subscribe({
+  //       next: () => {
+  //         this.findPage();
+  //         this.deleteModal.hide();
+  //         this.toastService.close("0");
+  //         this.toastService.success(
+  //           this.translateService.instant("success.deleted", {
 
-              elem: this.translateService.instant("costCenter"),
-            })
-          );
-        },
-        error: (error) => {
-          this.findPage();
-          this.deleteModal.hide();
-          this.toastService.close("0");
-          this.toastService.error(
-            this.translateService.instant(error.error, {
-              elem: this.translateService.instant("costCenter"),
-            })
-          );
-        },
-      });
-    });
-  }
+  //             elem: this.translateService.instant("costCenter"),
+  //           })
+  //         );
+  //       },
+  //       error: (error) => {
+  //         this.findPage();
+  //         this.deleteModal.hide();
+  //         this.toastService.close("0");
+  //         this.toastService.error(
+  //           this.translateService.instant(error.error, {
+  //             elem: this.translateService.instant("costCenter"),
+  //           })
+  //         );
+  //       },
+  //     });
+  //   });
+  // }
 
   onWizardSave(id: string | null) {
     if (this.stepper.lastStep()) {
@@ -235,6 +248,7 @@ export class CostCenterListComponent implements OnInit {
       this.costcenterServive.archive(id).subscribe({
         next: () => {
             this.findPage();
+            this.findArchivedPage()
           this.archiveModal.hide();
           this.toastService.success(
             this.translateService.instant("success.deleted", {
@@ -281,5 +295,71 @@ export class CostCenterListComponent implements OnInit {
       this.sortByNameValid = true
     }
   }
+
+
+
+
+
+//trash 
+findArchivedPage() {
+  this.loading = true;
+  this.costcenterServive
+    .findArchivedPage(this.pageNumber, this.pageSize, this.filter)
+    .subscribe({
+      next: (result) => {
+        this.costCenterss = result.content;
+        this.costCenterPage = result;
+        this.findPage()
+      },
+      error: (error) => {
+        this.loading = false;
+        console.error(error);
+      },
+      complete: () => (this.loading = false),
+    });
+}
+
+
+
+
+
+
+onClickdisArchive(id: string) {
+  this.costcenterServive.disArchive(id).subscribe({
+    next: () => {
+      this.findArchivedPage();
+      this.findPage()
+
+      this.toastService.success(
+        this.translateService.instant("success.restore", {
+          elem: this.translateService.instant("costCenter"),
+        })
+      );
+      console.log(id);
+    },
+  });
+}
+onClickDelete(id: string) {
+  this.costcenterServive.delete(id).subscribe({
+    next: () => {
+      this.findArchivedPage();
+      console.log("Success");
+      this.toastService.success(
+        this.translateService.instant("success.deleted", {
+          elem: this.translateService.instant("costCenter"),
+        })
+      );
+    },
+  });
+}
+
+
+
+
+
+
+
+
+
  
 }

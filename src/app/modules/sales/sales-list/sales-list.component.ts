@@ -30,7 +30,8 @@ export class SalesListComponent implements OnInit {
   saless: Array<Sales> = [];
   loading = false;
   salesPage: Page<Sales> = initPage;
-
+  isChecked: boolean = false;
+  affiche:boolean = false;
   onPaginationChange: EventEmitter<string> = new EventEmitter<string>();
 
   currentStep = 0;
@@ -41,7 +42,16 @@ export class SalesListComponent implements OnInit {
     private translateService: TranslateService,
     private toastService: HotToastService
   ) {}
+  onCheckboxChange() {
+    console.log("La valeur de la case à cocher est : ", this.isChecked);
+    if (this.isChecked==false){
 
+      this.affiche=false
+    }
+    else{
+      this.affiche=true
+    }
+  }
   ngOnInit(): void {
     this.salesservice.findAll().subscribe((saless) => {
       this.saless = saless;

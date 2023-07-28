@@ -1,0 +1,97 @@
+<div class="row">
+    <div class="form-group col-md-6">
+      <label for="startDateInformation">{{'StartDate' | translate}}</label>
+      <input type="date" class="form-control" name="startDateInformation" #startDateInformation="ngModel" ngModel [(ngModel)]="farm.startDateInformation">
+    </div>
+  
+    <div class="form-group col-md-6">
+      <label for="endDateInformation">{{'EndDate' | translate}} </label>
+      <input type="date" class="form-control" name="endDateInformation" #endDateInformation="ngModel" ngModel [(ngModel)]="farm.endDateInformation">
+    </div>
+  
+    <div class="form-group col-md-6">
+      <label for="ressourceInformation">{{'RessourceInfor' | translate}}</label>
+      <input class="form-control" name="ressourceInformation" #ressourceInformation="ngModel" ngModel [(ngModel)]="farm.ressourceInformation">
+    </div>
+    <div class="form-group col-md-6 align-self-end">
+        <label for="statutInformation">
+          <input type="checkbox" id="active" name="active" #statutInformation="ngModel" ngModel [(ngModel)]="farm.statutInformation" />
+          {{ "active" | translate }}
+        </label>
+      </div>
+    <div class="form-group col-md-6">
+      <label for="FirstNameInformation">{{'Firstname' | translate}}</label>
+      <input class="form-control" name="FirstNameInformation" #FirstNameInformation="ngModel" ngModel [(ngModel)]="farm.FirstNameInformation">
+    </div>
+  
+    <div class="form-group col-md-6">
+      <label for="LastNameInformation">{{'Lastname' | translate}}</label>
+      <input class="form-control" name="LastNameInformation" #LastNameInformation="ngModel" ngModel [(ngModel)]="farm.LastNameInformation">
+    </div>
+  
+    <div class="form-group col-md-6">
+      <label for="adressInformation">{{'Address' | translate}}</label>
+      <input class="form-control" name="adressInformation" #adressInformation="ngModel" ngModel [(ngModel)]="farm.adressInformation">
+    </div>
+  
+    <div class="form-group col-md-6">
+      <label for="phoneInformation">{{'phoneMobile' | translate}}</label>
+      <input class="form-control" name="phoneInformation" #phoneInformation="ngModel" ngModel [(ngModel)]="farm.phoneInformation">
+    </div>
+  
+    <div class="form-group col-md-6">
+        <label for="startDateInformation">{{'PayementType' | translate}}</label>
+        <select    class="form-control" name="PaymentType" #PaymentType="ngModel" ngModel [(ngModel)]="farm.PaymentType">
+          <option  value="Checking" > {{'Checking'|translate}}</option>
+          <option  value="saving" >{{'saving'|translate}}  </option>
+          <option  value="paycheck" >{{'paycheck'|translate}}  </option>
+        </select>
+      </div>
+    
+      <div class="form-group col-md-6">
+        <label for="AccountNumber">{{'AccountNumber' | translate}} </label>
+        <input class="form-control" name="AccountNumber" #AccountNumber="ngModel" ngModel [(ngModel)]="farm.AccountNumber">
+      </div>
+    
+      <div class="form-group col-md-6">
+        <label for="BankName">{{'BankNme' | translate}}</label>
+        <input class="form-control" name="BankName" #BankName="ngModel" ngModel [(ngModel)]="farm.BankName">
+      </div>
+     
+      <div class="form-group col-md-6">
+        <label for="BankCode">{{'BankCode' | translate}}</label>
+        <input class="form-control" name="BankCode" #BankCode="ngModel" ngModel [(ngModel)]="farm.BankCode">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="Bankaddress">{{'Bankaddress' | translate}}</label>
+        <input class="form-control" name="Bankaddress" #Bankaddress="ngModel" ngModel [(ngModel)]="farm.Bankaddress">
+      </div>
+    
+      <div class="form-group col-md-6">
+        <label for="DirectDepositflag">{{'DirectDepositflag' | translate}}</label>
+        <input class="form-control" name="DirectDepositflag" #DirectDepositflag="ngModel" ngModel [(ngModel)]="farm.DirectDepositflag">
+      </div>
+    
+     
+      <div class="form-group col-md-6">
+        <label for="typepayment">{{'typepayment' | translate}}</label>
+        <input class="form-control" name="typepayment" #typepayment="ngModel" ngModel [(ngModel)]="farm.typepayment">
+      </div>
+    
+      <div class="form-group col-md-6">
+        <label for="OperationDate">{{'OperationDate' | translate}}</label>
+        <input class="form-control" type="date" name="OperationDate" #OperationDate="ngModel" ngModel [(ngModel)]="farm.OperationDate">
+      </div>
+    
+      <div class="form-group col-md-6">
+        <label for="typepayment">{{'typepayment' | translate}}</label>
+        <input class="form-control" name="typepayment" #typepayment="ngModel" ngModel [(ngModel)]="farm.typepayment">
+      </div>
+    
+      <div class="form-group col-md-6">
+        <label for="amounttransferred">{{'amounttransferred' | translate}}</label>
+        <input class="form-control" name="amounttransferred" #amounttransferred="ngModel" ngModel [(ngModel)]="farm.amounttransferred">
+      </div>
+    
+  </div>
+  

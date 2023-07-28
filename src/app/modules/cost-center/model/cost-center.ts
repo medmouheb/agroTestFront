@@ -7,5 +7,5 @@ export class CostCenter {
   division_Code?: string;
   facilityType?: string;
   speciesType?:string
-
+typecost?:any
 }

@@ -25,14 +25,17 @@ export class GrowoutListComponent implements OnInit {
   importModal!: DialogComponent;
   @ViewChild("stepper")
   stepper!: StepperComponent;
-
+  isChecked: boolean = false;
+  affiche:boolean = false;
   filter = "";
   pageNumber = 0;
   pageSize = 10;
   growout: Growout = {};
   growouts: Array<Growout> = [];
+  growoutss: Array<Growout> = [];
   loading = false;
   growoutPage: Page<Growout> = initPage;
+  growoutPages: Page<Growout> = initPage;
 
   onPaginationChange: EventEmitter<string> = new EventEmitter<string>();
 
@@ -44,9 +47,19 @@ export class GrowoutListComponent implements OnInit {
     private translateService: TranslateService,
     private toastService: HotToastService
   ) {}
+  onCheckboxChange() {
+    console.log("La valeur de la case à cocher est : ", this.isChecked);
+    if (this.isChecked==false){
 
+      this.affiche=false
+    }
+    else{
+      this.affiche=true
+    }
+  }
   ngOnInit(): void {
     this.findPage();
+    this.findArchivedPage();
     this.onPaginationChange.subscribe(() => this.findPage());
   }
 
@@ -56,6 +69,7 @@ export class GrowoutListComponent implements OnInit {
       .findPage(this.pageNumber, this.pageSize, this.filter)
       .subscribe({
         next: (result) => {
+          console.log(result.content)
           this.growouts = result.content;
           this.growoutPage = result;
         },
@@ -159,43 +173,14 @@ export class GrowoutListComponent implements OnInit {
     });
   }
 
-  onClickDelete(id: string) {
-    this.deleteModal.show(() => {
-      this.toastService.loading(
-        this.translateService.instant("message.loading..."),
-        {
-          id: "0",
-        }
-      );
-      this.growoutService.delete(id).subscribe({
-        next: () => {
-          this.findPage();
-          this.deleteModal.hide();
-          this.toastService.close("0");
-          this.toastService.success(
-            this.translateService.instant("success.deleted", {
-              elem: this.translateService.instant("growout"),
-            })
-          );
-        },
-        error: (error) => {
-          this.deleteModal.hide();
-          this.toastService.close("0");
-          this.toastService.error(
-            this.translateService.instant(error.error, {
-              elem: this.translateService.instant("growout"),
-            })
-          );
-        },
-      });
-    });
-  }
+ 
 
   onClickArchive(id: string) {
     this.archiveModal.show(() => {
       this.growoutService.archive(id).subscribe({
         next: () => {
           this.findPage();
+          this.findArchivedPage();
           this.archiveModal.hide();
           this.toastService.close("0");
           this.toastService.success(
@@ -287,6 +272,51 @@ export class GrowoutListComponent implements OnInit {
       this.sortByAddressValid = true
     }
   }
+  findArchivedPage() {
+    this.loading = true;
+    this.growoutService
+      .findArchivedPage(this.pageNumber, this.pageSize, this.filter)
+      .subscribe({
+        next: (result) => {
+          console.log(result.content)
 
-
+          this.growoutss = result.content;
+          console.log(this.growouts)
+          this.growoutPages = result;
+        },
+        error: (error) => {
+          this.loading = false;
+          console.error(error);
+        },
+        complete: () => (this.loading = false),
+      });
+  }
+  onClickdisArchive(id: string) {
+    this.growoutService.disArchive(id).subscribe({
+      next: () => {
+        this.findArchivedPage();
+this.findPage()
+        this.toastService.success(
+          this.translateService.instant("success.restore", {
+            elem: this.translateService.instant("growout"),
+          })
+        );
+        console.log(id);
+      },
+    });
+  }
+  onClickDelete(id: string) {
+    this.growoutService.delete(id).subscribe({
+      next: () => {
+        this.findArchivedPage();
+        this.findPage();
+        console.log("Success");
+        this.toastService.success(
+          this.translateService.instant("success.deleted", {
+            elem: this.translateService.instant("growout"),
+          })
+        );
+      },
+    });
+  }
 }

@@ -6,6 +6,7 @@ import {
 } from "@angular/forms";
 import { SharedService } from "app/modules/company/services/shared.service";
 import { CostCenter } from "app/modules/cost-center/model/cost-center";
+import { CostCenterService } from "app/modules/cost-center/services/cost-center.service";
 
 @Component({
   selector: "app-cost-center-form-general",
@@ -21,34 +22,99 @@ export class CostCenterFormGeneralComponent implements OnInit {
   addform: FormGroup;
   fieldControl: FormControl;
 
-  constructor(private sharedService: SharedService) {}
+  constructor(private sharedService: SharedService, private costserv: CostCenterService) { }
 
   ngOnInit(): void {
     this.initForm();
-    if (this.cost.code!=null){
+    if (this.cost.code != null) {
       console.log("all")
       this.sharedService.setIsActive(true);
 
     }
   }
+  dispotrueCode: boolean = false
+  dispotruename: boolean = false
 
-  initForm(){
+  blur1() {
+    if (this.cost.code == null) {
+      this.dispotrueCode = false
+
+    }
+  }
+  exist() {
+    this.costserv.findbycode(this.cost.code).subscribe(data => {
+      console.log(data)
+      if (data != null) {
+        this.dispotrueCode = true
+
+
+      } else {
+        this.dispotrueCode = false
+
+      }
+
+    }, error => {
+      console.log(error.status)
+      if (error.status == 404) {
+        this.dispotrueCode = false
+
+      }
+    })
+
+  }
+
+  generateRandomCode() {
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let code = '';
+    for (let i = 0; i < 4; i++) {
+      const randomIndex = Math.floor(Math.random() * characters.length);
+      code += characters.charAt(randomIndex);
+    }
+    return code;
+  }
+
+  newSeggestions = ""
+
+  existname() {
+    this.costserv.findbyName(this.cost.name).subscribe(data => {
+      console.log(data)
+      if (data != null) {
+        this.dispotruename = true
+        this.newSeggestions = "chose " + this.cost.name + this.generateRandomCode() + " or " + this.cost.name + this.generateRandomCode() + " or " + this.cost.name + this.generateRandomCode() + " or " + this.cost.name + this.generateRandomCode()
+
+
+      } else {
+        this.dispotruename = false
+
+      }
+
+    }, error => console.log(error))
+
+  }
+
+
+  initForm() {
     this.fieldControl = new FormControl('', [
       Validators.required,
-     
+
       Validators.pattern(/^[a-zA-Z ]*$/),
 
     ]);
     this.addform = new FormGroup({
       code: new FormControl("", [
         Validators.required,
-       
+
       ]),
       name: new FormControl("", [
         Validators.required,
         Validators.pattern(/^[a-zA-Z ]*$/),
-      
+
       ]),
+      typecost: new FormControl("", [
+        Validators.required,
+
+      ]),
+
     });
     console.log("====================================");
     console.log(" add form :", this.addform.value);
@@ -63,11 +129,11 @@ export class CostCenterFormGeneralComponent implements OnInit {
   }
   minIstrueName2: boolean = false
   isBlur2() {
-    if (this.fieldControl.status=="INVALID"){
+    if (this.fieldControl.status == "INVALID") {
       this.minIstrueName2 = true
 
     }
-    else if(this.fieldControl.status=="VALID") {
+    else if (this.fieldControl.status == "VALID") {
       this.minIstrueName2 = false
 
     }
@@ -82,6 +148,7 @@ export class CostCenterFormGeneralComponent implements OnInit {
     console.log("eventcode :", event.target.value);
     console.log("====================================");
     if (
+      this.dispotrueCode == false && this.dispotruename == false &&
       this.cost.code != null &&
       this.cost.code != "" &&
       this.cost.name != null &&
@@ -109,9 +176,9 @@ export class CostCenterFormGeneralComponent implements OnInit {
       this.cost.code != "" &&
       this.cost.name != null &&
       this.cost.name != "" &&
-      
+
       this.cost.code.toString().length >= 1 &&
-      this.cost.name.toString().length >= 1 && this.fieldControl.status !="INVALID"
+      this.cost.name.toString().length >= 1 && this.fieldControl.status != "INVALID"
     ) {
       this.sharedService.setIsActive(true);
     } else {
@@ -122,7 +189,7 @@ export class CostCenterFormGeneralComponent implements OnInit {
     return this.addform.controls;
   }
   isBlur3() {
-    if ((this.fieldControl.value == '')||(this.fieldControl.value == undefined)) {
+    if ((this.fieldControl.value == '') || (this.fieldControl.value == undefined)) {
       this.minIstrueName2 = false
 
     }
@@ -141,7 +208,7 @@ export class CostCenterFormGeneralComponent implements OnInit {
 
   minIstrueCode: boolean = false;
   isBlur() {
-    if (this.cost.code ==undefined){
+    if (this.cost.code == undefined) {
       this.minIstrueCode = true;
 
     }
@@ -154,11 +221,11 @@ export class CostCenterFormGeneralComponent implements OnInit {
 
   minIstrueName: boolean = false;
   isBlur1() {
-    if (this.cost.name===undefined){
-      this.minIstrueName = true 
+    if (this.cost.name === undefined) {
+      this.minIstrueName = true
 
     }
-   else if (this.cost.name.toString().length == 0 && this.cost.name == "") {
+    else if (this.cost.name.toString().length == 0 && this.cost.name == "") {
       this.minIstrueName = true;
     } else {
       this.minIstrueName = false;
