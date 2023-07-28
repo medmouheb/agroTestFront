@@ -349,13 +349,13 @@ export const ROUTES: Categries[] = [
             icon: "person",
             
           },
-          {
-            label: "steps.vendorSKU",
-            path: "/vendorsku",
-            title: "vendorSKU",
-            icon: "corporate_fare",
+          // {
+          //   label: "steps.vendorSKU",
+          //   path: "/vendorsku",
+          //   title: "vendorSKU",
+          //   icon: "corporate_fare",
             
-          },
+          // },
           {
             label: "menu.sales",
             path: "/sales",
@@ -363,13 +363,13 @@ export const ROUTES: Categries[] = [
             icon: "corporate_fare",
             class: "",
           },
-          {
-            label: "sales Sku",
-            path: "/salesku",
-            title: "sales Sku",
-            icon: "corporate_fare",
-            class: "",
-          },
+          // {
+          //   label: "sales Sku",
+          //   path: "/salesku",
+          //   title: "sales Sku",
+          //   icon: "corporate_fare",
+          //   class: "",
+          // },
           {
             label: "menu.Addons",
             title: "Addons",
