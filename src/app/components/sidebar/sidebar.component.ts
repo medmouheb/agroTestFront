@@ -63,7 +63,7 @@ export const ROUTES: Categries[] = [
           {
             label: "company",
             path: "/company",
-            id:"7",
+            id: "7",
             title: "menu.companies",
             icon: "corporate_fare",
             class: "",
@@ -117,7 +117,7 @@ export const ROUTES: Categries[] = [
             icon: "paid",
             class: "",
           },
-          
+
         ],
       },
       {
@@ -156,50 +156,50 @@ export const ROUTES: Categries[] = [
               },
             ],
           },
-           {
-             label: "menu.Feed-Mill",
-             title: "FeedMill",
-             icon: "rate_review",
-             id: "FeedMill-dropdown",
-             class: "",
-             SubC: [
-          //     {
-          //       title: "menu.Feed-Mill",
-          //       icon: "corporate_fare",
-          //       class: "",
-          //       path: "/start",
+          {
+            label: "menu.Feed-Mill",
+            title: "FeedMill",
+            icon: "rate_review",
+            id: "FeedMill-dropdown",
+            class: "",
+            SubC: [
+              //     {
+              //       title: "menu.Feed-Mill",
+              //       icon: "corporate_fare",
+              //       class: "",
+              //       path: "/start",
 
-          //     },
-          //     {
-          //       title: "menu.Feed-Type",
-          //       icon: "corporate_fare",
-          //       class: "",
-          //       path: "/start",
+              //     },
+              //     {
+              //       title: "menu.Feed-Type",
+              //       icon: "corporate_fare",
+              //       class: "",
+              //       path: "/start",
 
-          //     },
-          //     {
-          //       title: "menu.Feed-Formula",
-          //       icon: "corporate_fare",
-          //       class: "",
-          //       path: "/start",
+              //     },
+              //     {
+              //       title: "menu.Feed-Formula",
+              //       icon: "corporate_fare",
+              //       class: "",
+              //       path: "/start",
 
-          //     },
-          //     {
-          //       title: "Feed-Formula-Version  ",
-          //       icon: "corporate_fare",
-          //       class: "",
-          //       path: "/start",
+              //     },
+              //     {
+              //       title: "Feed-Formula-Version  ",
+              //       icon: "corporate_fare",
+              //       class: "",
+              //       path: "/start",
 
-          //     },
-          //     {
-          //       title: "menu.Formula-Price",
-          //       icon: "corporate_fare",
-          //       class: "",
-          //       path: "/start",
+              //     },
+              //     {
+              //       title: "menu.Formula-Price",
+              //       icon: "corporate_fare",
+              //       class: "",
+              //       path: "/start",
 
-          //     },
-             ],
-           },
+              //     },
+            ],
+          },
           {
             label: "Warehouses",
             path: "/warehouses",
@@ -273,14 +273,14 @@ export const ROUTES: Categries[] = [
             SubC: [
               {
                 label: "menu.Egg-producte",
-              path: "/start",
+                path: "/start",
                 title: "menu.Egg-producte",
                 icon: "corporate_fare",
                 class: "",
               },
               {
                 label: "menu.Egg-classe",
-                
+
                 path: "/start",
                 title: "menu.Egg-classe",
                 icon: "corporate_fare",
@@ -331,7 +331,7 @@ export const ROUTES: Categries[] = [
                 class: "",
                 path: "/start",
               },
-             
+
             ],
           },
         ],
@@ -347,14 +347,14 @@ export const ROUTES: Categries[] = [
             path: "/fournisseurs",
             title: "menu.vendors",
             icon: "person",
-            
+
           },
           // {
           //   label: "steps.vendorSKU",
           //   path: "/vendorsku",
           //   title: "vendorSKU",
           //   icon: "corporate_fare",
-            
+
           // },
           {
             label: "menu.sales",
@@ -421,7 +421,7 @@ export const ROUTES: Categries[] = [
             class: "",
             SubC: [
               {
-                
+
                 path: "/start",
                 title: "menu.Vehicule-facility",
                 icon: "corporate_fare",
@@ -429,7 +429,7 @@ export const ROUTES: Categries[] = [
               },
               {
                 title: "menu.Vehicule-type",
-               
+
                 icon: "corporate_fare",
                 class: "",
                 path: "/start",
@@ -472,8 +472,8 @@ export const ROUTES: Categries[] = [
             icon: "inventory_2",
             id: "Veterinarians-dropdown",
             class: "",
-            SubC: [ ]
-            
+            SubC: []
+
           },
 
 
@@ -483,7 +483,7 @@ export const ROUTES: Categries[] = [
           //   icon: "feed",
           //   id: "Field-dropdown",
           //   class: "",
-                      
+
           // },
           {
             label: "menu.Field-and-Feed-products",
@@ -506,9 +506,9 @@ export const ROUTES: Categries[] = [
                 path: "/start",
                 class: "",
               },
-              
+
             ],
-            
+
           },
           {
             label: "menu.Symptoms",
@@ -517,12 +517,12 @@ export const ROUTES: Categries[] = [
             icon: "stream",
             class: "",
             SubC: [
-             
-              
+
+
             ],
-            
+
           },
-          
+
           {
             label: "menu.Treatments",
             title: "Treatments",
@@ -532,24 +532,24 @@ export const ROUTES: Categries[] = [
             SubC: [
               {
                 title: "menu.Treat",
-            icon: "corporate_fare",
-            id: "Treatment-dropdown",
-            path: "/start",
-            class: "",
+                icon: "corporate_fare",
+                id: "Treatment-dropdown",
+                path: "/start",
+                class: "",
               },
-            
-              
+
+
             ],
-            
+
           },
-          
+
 
         ],
       },
-     
 
-   
-   
+
+
+
     ],
   },
   {
@@ -558,19 +558,19 @@ export const ROUTES: Categries[] = [
     icon: "corporate_fare",
     id: "18",
     SubCat: [
-       {
-         label: "menu.Poultry",
-         category: "Poltry",
-         icon: "person",
-         id:"8",
-         class: "",
-       },
-       {
-         label: "menu.Bovine",
-         category: "Bouvine",
-         icon: "person",
-         class: "",
-       },
+      {
+        label: "menu.Poultry",
+        category: "Poltry",
+        icon: "person",
+        id: "8",
+        class: "",
+      },
+      {
+        label: "menu.Bovine",
+        category: "Bouvine",
+        icon: "person",
+        class: "",
+      },
       {
         label: "Agriculture",
         category: "Agriculture",
@@ -584,13 +584,13 @@ export const ROUTES: Categries[] = [
             icon: "agriculture",
             class: "",
           },
-           {
-             label:"Field-Product",
-            path:"/Field-product",
-             title: "menu.Simulateur",
-             icon: "content_paste",
-             class: "",
-           },
+          {
+            label: "Field-Product",
+            path: "/Field-product",
+            title: "menu.Simulateur",
+            icon: "content_paste",
+            class: "",
+          },
           //  {
           //   label: "Field-product",
           //   path: "/Field-product",
@@ -644,13 +644,13 @@ export const ROUTES: Categries[] = [
             icon: "inventory_2",
             class: "",
           },
-           {
-             label: "menu.irrigation",
-             path: "/sanitation",
-             title: "Irrigation",
-             icon: "inventory_2",
-             class: "",
-           },
+          {
+            label: "menu.irrigation",
+            path: "/sanitation",
+            title: "Irrigation",
+            icon: "inventory_2",
+            class: "",
+          },
         ],
       },
     ],
@@ -685,7 +685,7 @@ export const ROUTES: Categries[] = [
 export class SidebarComponent implements OnInit {
   menuItems: any[];
 
-  constructor(private router: Router) {}
+  constructor(private router: Router) { }
 
   ngOnInit() {
     this.menuItems = ROUTES.filter((menuItem) => menuItem);
@@ -703,30 +703,30 @@ export class SidebarComponent implements OnInit {
     return true;
   }
 
-  indexBig:any
-  setBigIndex(i:any){
-    this.indexBig=i
+  indexBig: any
+  setBigIndex(i: any) {
+    this.indexBig = i
   }
 
-  selectedType1:string=""
-  selectedIndex1:number=-1
-  selectedType2:string=""
-  selectedIndex2:number=-1
-  selectedType3:string=""
-  selectedIndex3:number=-1
-  selectedType4:string=""
-  selectedIndex4:number=-1
+  selectedType1: string = ""
+  selectedIndex1: number = -1
+  selectedType2: string = ""
+  selectedIndex2: number = -1
+  selectedType3: string = ""
+  selectedIndex3: number = -1
+  selectedType4: string = ""
+  selectedIndex4: number = -1
 
-  handleClickTitle1(index:number){
+  handleClickTitle1(index: number) {
 
-    this.selectedType1="title1"
-    this.selectedIndex1=index
-    this.selectedType2=""
-    this.selectedIndex2=-1
-    this.selectedType3=""
-    this.selectedIndex3=-1
-    this.selectedType4=""
-    this.selectedIndex4=-1
+    this.selectedType1 = "title1"
+    this.selectedIndex1 = index
+    this.selectedType2 = ""
+    this.selectedIndex2 = -1
+    this.selectedType3 = ""
+    this.selectedIndex3 = -1
+    this.selectedType4 = ""
+    this.selectedIndex4 = -1
   }
 
   // isThisvalidTitle1(index:number){
@@ -738,34 +738,41 @@ export class SidebarComponent implements OnInit {
   //   }
   // }
 
-  handleClickTitle2(index:number){
-  
-    this.selectedType1=""
-    this.selectedIndex1=-1
-    this.selectedType2="title2"
-    this.selectedIndex2=index
-    this.selectedType3=""
-    this.selectedIndex3=-1
-    this.selectedType4=""
-    this.selectedIndex4=-1
+  handleClickTitle2(index: number) {
+
+    this.selectedType1 = ""
+    this.selectedIndex1 = -1
+    this.selectedType2 = "title2"
+    this.selectedIndex2 = index
+    this.selectedType3 = ""
+    this.selectedIndex3 = -1
+    this.selectedType4 = ""
+    this.selectedIndex4 = -1
   }
 
-  handleClickTitle3(index:number){
-    this.selectedType1=""
-    this.selectedIndex1=-1
-    this.selectedType3="title3"
-    this.selectedIndex3=index
-    this.selectedType4=""
-    this.selectedIndex4=-1
+  handleClickTitle3(index: number) {
+    this.selectedType1 = ""
+    this.selectedIndex1 = -1
+    this.selectedType3 = "title3"
+    this.selectedIndex3 = index
+    this.selectedType4 = ""
+    this.selectedIndex4 = -1
   }
-  handleClickTitle4(index:number){
-    this.selectedType1=""
-    this.selectedIndex1=-1
-    this.selectedType4="title4"
-    this.selectedIndex4=index
+  handleClickTitle4(index: number) {
+    this.selectedType1 = ""
+    this.selectedIndex1 = -1
+    this.selectedType4 = "title4"
+    this.selectedIndex4 = index
   }
 
   public clickSubMenu(menu: string, target: any) {
+    if (menu != "15") {
+      document.getElementById("15").classList.remove("show");
+    }
+    if (menu != "18") {
+      document.getElementById("18").classList.remove("show");
+    }
+    console.log("aaa:::", menu)
     if (menu === "Dashboard") {
       this.router.navigate(["/dashboard"]);
     }
@@ -778,15 +785,14 @@ export class SidebarComponent implements OnInit {
   }
 
   public clickMenu(menu: string, target: any) {
-    console.log(menu)
+
     let result = target.hasAttribute("name");
-    // console.log(result);
-    // console.log("====================================");
-    // console.log(menu);
-    // console.log("====================================");
-    // console.log("====================================");
-    // console.log(target);
-    // console.log("====================================");
+    // if(menu!="15"){
+    //   $(`#15`).classList.remove("show");
+    // }
+    // if(menu!="18"){
+    //   $(`#18`).classList.remove("show");
+    // }
     if (result) {
       $(`#${menu}`).toggleClass("show");
       $(`#${menu}`).toggleClass("collapsed");
