@@ -23,6 +23,8 @@ export class CostCenterFormGeneralComponent implements OnInit {
   fieldControl: FormControl;
 
   constructor(private sharedService: SharedService, private costserv: CostCenterService) { }
+  names: Array<String> = [];
+  codes: Array<String> = [];
 
   ngOnInit(): void {
     this.initForm();
@@ -31,6 +33,14 @@ export class CostCenterFormGeneralComponent implements OnInit {
       this.sharedService.setIsActive(true);
 
     }
+    this.costserv.findAll().subscribe(data => {
+      this.names = data.map(el => {
+        return el.name
+      })
+      this.codes = data.map(el => {
+        return el.code
+      })
+    })
   }
   dispotrueCode: boolean = false
   dispotruename: boolean = false
@@ -42,24 +52,11 @@ export class CostCenterFormGeneralComponent implements OnInit {
     }
   }
   exist() {
-    this.costserv.findbycode(this.cost.code).subscribe(data => {
-      console.log(data)
-      if (data != null) {
-        this.dispotrueCode = true
-
-
-      } else {
-        this.dispotrueCode = false
-
-      }
-
-    }, error => {
-      console.log(error.status)
-      if (error.status == 404) {
-        this.dispotrueCode = false
-
-      }
-    })
+    if (this.codes.indexOf((this.cost.code+"")) != -1) {
+      this.dispotrueCode = true
+    } else {
+      this.dispotrueCode = false
+    }
 
   }
 
@@ -76,19 +73,12 @@ export class CostCenterFormGeneralComponent implements OnInit {
   newSeggestions = ""
 
   existname() {
-    this.costserv.findbyName(this.cost.name).subscribe(data => {
-      console.log(data)
-      if (data != null) {
-        this.dispotruename = true
-        this.newSeggestions = "chose " + this.cost.name + this.generateRandomCode() + " or " + this.cost.name + this.generateRandomCode() + " or " + this.cost.name + this.generateRandomCode() + " or " + this.cost.name + this.generateRandomCode()
-
-
-      } else {
-        this.dispotruename = false
-
-      }
-
-    }, error => console.log(error))
+    if (this.names.indexOf(this.cost.name) != -1) {
+      this.dispotruename = true
+      this.newSeggestions = "chose " + this.cost.name + this.generateRandomCode() + " or " + this.cost.name + this.generateRandomCode() + " or " + this.cost.name + this.generateRandomCode() + " or " + this.cost.name + this.generateRandomCode()
+    } else {
+      this.dispotruename = false
+    }
 
   }
 

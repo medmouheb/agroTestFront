@@ -36,6 +36,8 @@ export class CampanyListComponent implements OnInit {
   onPaginationChange: EventEmitter<string> = new EventEmitter<string>();
   form: FormGroup;
 
+  fullDetail=false
+
   currentStep = 0;
   steps: any = ["steps.general", "steps.localisation"];
 
@@ -55,6 +57,18 @@ export class CampanyListComponent implements OnInit {
       this.affiche=true
     }
   }
+  onCheckboxFullChange() {
+    console.log("La valeur de la case à cocher est : ", this.isCheckedFull);
+    if (this.isCheckedFull==false){
+
+      this.fullDetail=false
+    }
+    else{
+      this.fullDetail=true
+    }
+  }
+
+  isCheckedFull:false
   ngOnInit(): void {
     this.findPage();
     this.findArchivedPage()
