@@ -23,7 +23,32 @@
 <div style=" color : red;" *ngIf=" minIstrueName2">{{"Format is invalid"|translate}}</div>
 
     </div>
+    <div class="form-group col-md-6">
+      <label for="wilayaCode">{{'divisiontype' | translate}}</label>
+      <select  class="form-control"
+      (click)="setList();geValues($event)"
+       name="divisiontype"
+       formControlName="divisiontype"
+        required
+        [(ngModel)]="division.divisiontype"
+        >
+        <option value="" disabled selected>{{'Select your option'|translate}}</option>
+        <option  value="Agriculture">
+          {{'Agriculture'|translate}}
+        </option>
+        <option  value="Aviculture">
+          {{'Aviculture'|translate}}
 
+        </option>
+        <option  value="Bovin">
+          {{'Bovin'|translate}}
+
+        </option>
+      
+        
+      </select>
+     
+    </div>
     <div class="form-group col-md-6">
         <label class="required" for="speciesType">{{ "Species Type" | translate }}   </label>
         <select  class="form-control"
@@ -31,10 +56,11 @@
          name="speciesType"
          formControlName="speciesType"
           required
-          [(ngModel)]="division.speciesType"
+          [(ngModel)]="division.speciesType" 
           >
           <option value="" disabled selected>{{'Select your option'|translate}}</option>
-          <option  value="Chicken">
+          <option *ngFor="let c of listA" [value]="c" > {{c}} </option>
+          <!-- <option  value="Chicken">
             {{'Chicken'|translate}}
           </option>
           <option  value="Layer">
@@ -48,7 +74,7 @@
           <option  value="Duck">
             {{'Duck'|translate}}
 
-          </option>
+          </option> -->
           
         </select>
      

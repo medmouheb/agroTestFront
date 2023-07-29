@@ -79,9 +79,12 @@
 
   <div class="form-group col-md-6">
     <label class="required" for="division_Name">{{"divisionName" | translate }}</label>
-    <input    class="form-control" name="division_Name"
+    <select (blur)="isBlur5();geValues($event)" (click)="selectVAlue2($event)" (ngModelChange)="geValues($event)" type="text" class="form-control"name="division_Name"   [(ngModel)]="cost.division_Name" placeholder=" write your City code">
+      <option *ngFor="let dv of divisions" [value]="dv.name" > {{dv.name}}</option>
+    </select>
+    <!-- <input    class="form-control" name="division_Name"
     [(ngModel)]="cost.division_Name" placeholder=" {{'Write your Division name'|translate}}"
-      aria-describedby="code-error" required aria-invalid="true"  />
+      aria-describedby="code-error" required aria-invalid="true"  /> -->
       <!-- <div style="color: red;" *ngIf="Misvalid" >{{'the name must be between 3 and 8 characters'|translate}} </div> -->
 
     </div>
@@ -106,7 +109,7 @@
   
     </div>
     <div class="form-group col-md-6" *ngIf="affichetype==true">
-      <label  for="farmType">{{ "farmType" | translate }} </label> :{{cost.farmType}}
+      <label  for="farmType">{{ "Farmtype" | translate }} </label> :{{cost.farmType}}
     
     
     </div>

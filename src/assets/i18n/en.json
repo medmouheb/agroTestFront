@@ -218,7 +218,7 @@
   "faxNumber": "Fax number",
   "wilayaName": "Wilaya name",
   "wilayaCode": "Wilaya code",
-  "type de ferme":"farmType",
+  "type de ferme":"FarmType",
   "emailcontact": "Email Contact",
   "codefournisseur":" Fournisseur Code",
   "namefournisseur":" Fournisseur Name",

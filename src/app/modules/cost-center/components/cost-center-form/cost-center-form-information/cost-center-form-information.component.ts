@@ -81,6 +81,19 @@ export class CostCenterFormInformationComponent implements OnInit {
     this.div=t
     console.log("4==",t)
   }
+  selectVAlue2(e:any){
+    console.log("3==",e.target.value)
+    let t=this.divisions.filter(el=>{return el.name==e.target.value})[0]
+    this.addform.value.division_Code=t.code
+    this.cost.division_Name=t.name
+    this.cost.division_Code=t.code
+    this.cost.speciesType=t.speciesType
+    this.addform.value['division_Name']=t
+    console.log("3==",this.addform.value)
+    console.log("5==",this.cost)
+    this.div=t
+    console.log("4==",t)
+  }
   getetat(){
     if(this.addform.status=="INVALID")
     {

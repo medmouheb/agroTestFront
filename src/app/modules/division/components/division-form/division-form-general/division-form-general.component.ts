@@ -158,6 +158,15 @@ export class DivisionFormGeneralComponent implements OnInit {
 
   }
 
+  listA:String[]=[]
+  setList(){
+    console.log("ll::",this.division.divisiontype)
+    switch(this.division.divisiontype){
+      case "Agriculture":this.listA=["Agriculture maraîchère","Arboriculture","Agriculture biologique","Permaculture"] ;break ; 
+      case "Aviculture":this.listA=["Chicken","Layer","Turkey","Duck"] ;break ; 
+      case "Bovin":this.listA=["fattening cow farms","Dairy farms"] ;break ; 
+    }
+  }
 
   geValues(event) {
     console.log(this.addform.value.speciesType);
