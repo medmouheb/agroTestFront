@@ -23,8 +23,13 @@ export class DivisionFormCompanyComponent implements OnInit {
     private FormBuilder:FormBuilder,
     private divisionService:DivisionService
   ) {}
-
+    isRemenber=false
   ngOnInit(): void {
+    if(localStorage.getItem("company")){
+      this.isRemenber=true
+      this.division.companyname=JSON.parse(  localStorage.getItem("company")).companyname
+      this.division.companycode=JSON.parse(  localStorage.getItem("company")).codecompany
+    }
     this.addform=this.FormBuilder.group({
       idcamp:['',Validators.required]
       
@@ -33,6 +38,15 @@ export class DivisionFormCompanyComponent implements OnInit {
     //   this.division.campany = {};
     // }
     this.getAllCompany();
+  }
+
+  setCompany(){
+    this.isRemenber=!this.isRemenber
+    if(this.isRemenber==false){
+      localStorage.setItem("company","")
+    }else{
+      localStorage.setItem("company", JSON.stringify({companyname:this.division.companyname,codecompany:this.companyname}) )
+    }
   }
 
   getAlldivision(){

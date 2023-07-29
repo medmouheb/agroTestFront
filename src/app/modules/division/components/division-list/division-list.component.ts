@@ -91,6 +91,7 @@ export class DivisionListComponent implements OnInit {
     this.pageNumber = 0;
     this.onPaginationChange.emit("");
   }
+  
 
   onPageNumberChange(pageNumber: number) {
     this.pageNumber = pageNumber;
