@@ -14,11 +14,11 @@
 
   <div class="form-group col-md-6">
     <label class="required" for="name">{{ "warehousesname" | translate }}</label>
-    <input (blur)="existname();isBlurDNisvalid() ;isBlur2();isBlur6()" class="form-control" name="name" [(ngModel)]="warehouse.name" formControlName="name" required 
+    <input (blur)="existname();isBlurDNisvalid()" class="form-control" name="name" [(ngModel)]="warehouse.name" formControlName="name" required 
     placeholder=" {{'Write your warehouse name'|translate}}" [formControl]="fieldControl"
       aria-invalid="true" aria-describedby="name-error"  (ngModelChange)="geValues($event)">
       <div style="color: red;" *ngIf="DNisvalid" >{{'Name must be not null'|translate}}</div>
-      <div style=" color : red;" *ngIf="minIstrueName2">{{"Format is invalid"|translate}}</div>
+
       <div style="color: red;" *ngIf="dispotruename" >{{'name must be unique'|translate}}</div>
 
       <div style="color: black;" *ngIf="dispotruename" >{{newSeggestions}}</div>

@@ -8,10 +8,10 @@ import {
 import { SharedService } from "app/modules/company/services/shared.service";
 import { CostCenter } from "app/modules/cost-center/model/cost-center";
 import { CostCenterService } from "app/modules/cost-center/services/cost-center.service";
-import { Warehouse } from "../../../models/warehouse.model";
-import { FournisseursService } from "app/modules/fournisseurs/services/fournisseurs.service";
 import { Fournisseur } from "app/modules/fournisseurs/models/fournisseur.model";
+import { FournisseursService } from "app/modules/fournisseurs/services/fournisseurs.service";
 import { WarehouseService } from "app/modules/warehouse/services/warehouse.service";
+import { Warehouse } from "../../../models/warehouse.model";
 @Component({
   selector: "app-warehouse-form-general",
   templateUrl: "./warehouse-form-general.component.html",
@@ -53,15 +53,15 @@ export class WarehouseFormGeneralComponent implements OnInit {
     })
   }
 
-  generateRandomCode() {
-    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    let code = '';
-    for (let i = 0; i < 4; i++) {
-      const randomIndex = Math.floor(Math.random() * characters.length);
-      code += characters.charAt(randomIndex);
-    }
-    return code;
-  }
+  // generateRandomCode() {
+  //   const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  //   let code = '';
+  //   for (let i = 0; i < 4; i++) {
+  //     const randomIndex = Math.floor(Math.random() * characters.length);
+  //     code += characters.charAt(randomIndex);
+  //   }
+  //   return code;
+  // }
 
   newSeggestions = ""
   dispotruename = false
@@ -70,7 +70,7 @@ export class WarehouseFormGeneralComponent implements OnInit {
 
     if (this.names.indexOf(this.warehouse.name) != -1) {
       this.dispotruename = true
-      this.newSeggestions = "chose " + this.warehouse.name + this.generateRandomCode() + " or " + this.warehouse.name + this.generateRandomCode() + " or " + this.warehouse.name + this.generateRandomCode() + " or " + this.warehouse.name + this.generateRandomCode()
+    //  this.newSeggestions = "chose " + this.warehouse.name + this.generateRandomCode() + " or " + this.warehouse.name + this.generateRandomCode() + " or " + this.warehouse.name + this.generateRandomCode() + " or " + this.warehouse.name + this.generateRandomCode()
     } else {
       this.dispotruename = false
     }
@@ -128,11 +128,7 @@ export class WarehouseFormGeneralComponent implements OnInit {
 
 
   initForm() {
-    this.fieldControl = new FormControl('', [
-      Validators.required,
-
-      Validators.pattern(/^[ a-zA-Z]*$/)
-    ]);
+   
 
     this.myForm = new FormGroup({
       code: new FormControl("", [
@@ -211,7 +207,7 @@ export class WarehouseFormGeneralComponent implements OnInit {
       this.warehouse.code.toString().length >= 1 &&
       this.warehouse.name.toString().length >= 1 &&
       this.warehouse.costCenterCode.toString().length >= 1 &&
-      this.warehouse.costCenterName.toString().length >= 1 && this.fieldControl.status != "INVALID"
+      this.warehouse.costCenterName.toString().length >= 1 
     ) {
       this.sharedService.setIsActive(true);
     } else {
@@ -280,23 +276,23 @@ export class WarehouseFormGeneralComponent implements OnInit {
   DCisvalid: boolean = false;
   DNisvalid: boolean = false;
   minIstrueName2: boolean = false
-  isBlur2() {
-    if (this.fieldControl.status == "INVALID") {
-      this.minIstrueName2 = true
+  // isBlur2() {
+  //   if (this.fieldControl.status == "INVALID") {
+  //     this.minIstrueName2 = true
 
-    }
-    else if (this.fieldControl.status == "VALID") {
-      this.minIstrueName2 = false
+  //   }
+  //   else if (this.fieldControl.status == "VALID") {
+  //     this.minIstrueName2 = false
 
-    }
-  }
-  isBlur6() {
-    console.log(this.fieldControl.value)
-    if ((this.fieldControl.value == '') || (this.fieldControl.value == undefined)) {
-      this.minIstrueName2 = false
+  //   }
+  // }
+  // isBlur6() {
+  //   console.log(this.fieldControl.value)
+  //   if ((this.fieldControl.value == '') || (this.fieldControl.value == undefined)) {
+  //     this.minIstrueName2 = false
 
-    }
-  }
+  //   }
+  // }
   // isBlurDCisvalid() {
   //   console.log(this.DCisvalid)
   //   console.log(this.myForm.value.code)

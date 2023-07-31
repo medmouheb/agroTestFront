@@ -53,7 +53,9 @@ export class CostCenterFormGeneralComponent implements OnInit {
   }
   exist() {
     if (this.codes.indexOf((this.cost.code+"")) != -1) {
+      
       this.dispotrueCode = true
+      console.log(this.dispotrueCode)
     } else {
       this.dispotrueCode = false
     }
@@ -75,7 +77,7 @@ export class CostCenterFormGeneralComponent implements OnInit {
   existname() {
     if (this.names.indexOf(this.cost.name) != -1) {
       this.dispotruename = true
-      this.newSeggestions = "chose " + this.cost.name + this.generateRandomCode() + " or " + this.cost.name + this.generateRandomCode() + " or " + this.cost.name + this.generateRandomCode() + " or " + this.cost.name + this.generateRandomCode()
+      //this.newSeggestions = "chose " + this.cost.name + this.generateRandomCode() + " or " + this.cost.name + this.generateRandomCode() + " or " + this.cost.name + this.generateRandomCode() + " or " + this.cost.name + this.generateRandomCode()
     } else {
       this.dispotruename = false
     }
@@ -84,12 +86,7 @@ export class CostCenterFormGeneralComponent implements OnInit {
 
 
   initForm() {
-    this.fieldControl = new FormControl('', [
-      Validators.required,
-
-      Validators.pattern(/^[a-zA-Z ]*$/),
-
-    ]);
+    
     this.addform = new FormGroup({
       code: new FormControl("", [
         Validators.required,
@@ -97,7 +94,7 @@ export class CostCenterFormGeneralComponent implements OnInit {
       ]),
       name: new FormControl("", [
         Validators.required,
-        Validators.pattern(/^[a-zA-Z ]*$/),
+        //Validators.pattern(/^[a-zA-Z ]*$/),
 
       ]),
       typecost: new FormControl("", [
@@ -118,16 +115,16 @@ export class CostCenterFormGeneralComponent implements OnInit {
     return this.nom.length > 5;
   }
   minIstrueName2: boolean = false
-  isBlur2() {
-    if (this.fieldControl.status == "INVALID") {
-      this.minIstrueName2 = true
+  // isBlur2() {
+  //   if (this.fieldControl.status == "INVALID") {
+  //     this.minIstrueName2 = true
 
-    }
-    else if (this.fieldControl.status == "VALID") {
-      this.minIstrueName2 = false
+  //   }
+  //   else if (this.fieldControl.status == "VALID") {
+  //     this.minIstrueName2 = false
 
-    }
-  }
+  //   }
+  // }
   isCodeValid() {
     return this.nom.length > 5;
   }
@@ -137,14 +134,22 @@ export class CostCenterFormGeneralComponent implements OnInit {
     console.log("eventcode :", event.target.value);
     console.log("eventcode :", event.target.value);
     console.log("====================================");
+    console.log( "testt",this.cost.code != null &&
+      this.cost.code != "" &&
+      this.cost.name != null &&
+      this.cost.name != "" &&
+      this.cost.code.toString().length >= 1 &&
+      this.dispotrueCode == false && this.dispotruename == false && this.minIstrueCode==false &&
+      this.cost.name.toString().length >= 1)
     if (
-      this.dispotrueCode == false && this.dispotruename == false &&
       this.cost.code != null &&
       this.cost.code != "" &&
       this.cost.name != null &&
       this.cost.name != "" &&
       this.cost.code.toString().length >= 1 &&
+      this.dispotrueCode == false && this.dispotruename == false && this.minIstrueCode==false &&
       this.cost.name.toString().length >= 1
+
     ) {
       this.sharedService.setIsActive(true);
     } else {
@@ -162,13 +167,12 @@ export class CostCenterFormGeneralComponent implements OnInit {
     console.log("====================================");
 
     if (
-      this.cost.code != null &&
       this.cost.code != "" &&
       this.cost.name != null &&
       this.cost.name != "" &&
-
       this.cost.code.toString().length >= 1 &&
-      this.cost.name.toString().length >= 1 && this.fieldControl.status != "INVALID"
+      this.dispotrueCode == false && this.dispotruename == false && this.minIstrueCode==false &&
+      this.cost.name.toString().length >= 1
     ) {
       this.sharedService.setIsActive(true);
     } else {
@@ -178,12 +182,12 @@ export class CostCenterFormGeneralComponent implements OnInit {
   get f() {
     return this.addform.controls;
   }
-  isBlur3() {
-    if ((this.fieldControl.value == '') || (this.fieldControl.value == undefined)) {
-      this.minIstrueName2 = false
+  // isBlur3() {
+  //   if ((this.fieldControl.value == '') || (this.fieldControl.value == undefined)) {
+  //     this.minIstrueName2 = false
 
-    }
-  }
+  //   }
+  // }
   isControlValid(controlName: string): boolean {
     const control = this.addform.controls[controlName];
     return control.invalid && (control.dirty || control.touched);

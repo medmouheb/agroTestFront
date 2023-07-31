@@ -17,11 +17,11 @@
 
   <div class="form-group col-md-6">
     <label class="required" for="name">{{ "growoutname" | translate }}</label>
-    <input (blur)="isBlurDNisvalid();isBlur2();isBlur3();existname()" class="form-control" name="name" formControlName="name"  [formControl]="fieldControl"
+    <input (blur)="isBlurDNisvalid();existname()" class="form-control" name="name" formControlName="name"  [formControl]="fieldControl"
     [(ngModel)]="growout.name" required placeholder="{{'Write your Growout name'|translate}}"
       aria-invalid="true" aria-describedby="name-error" (ngModelChange)="geValues($event)">
       <div style="color: red;" *ngIf="DNisvalid" >{{'Name must be not null'|translate}} </div>
-      <div style=" color : red;" *ngIf="minIstrueName2">{{"Format is invalid"|translate}}</div>
+     
       <div style=" color : red;" *ngIf="dispotruename">{{'name must be unique'|translate}}</div>
       <!-- <div style=" color : black;" *ngIf="dispotruename">{{newSeggestions}}</div> -->
 

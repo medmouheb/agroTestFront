@@ -1,15 +1,13 @@
 import { Component, Input, OnInit, ViewChild } from "@angular/core";
 import {
   FormBuilder,
-  FormControl,
   FormGroup,
-  Validators,
+  Validators
 } from "@angular/forms";
 
 import { CompanyService } from "app/modules/company/services/company.service";
 import { SharedService } from "app/modules/company/services/shared.service";
 import { Company } from "../../../models/comany";
-import { data } from "jquery";
 @Component({
   selector: "app-company-from-general",
   templateUrl: "./company-from-general.component.html",
@@ -20,7 +18,7 @@ export class CompanyFromGeneralComponent implements OnInit {
 
   @ViewChild("addform")
   addform: FormGroup;
-  fieldControl: FormControl;
+ 
   constructor(private sharedService: SharedService, private fb: FormBuilder, private compaser: CompanyService) { }
   names: Array<String> = [];
   ngOnInit(): void {
@@ -39,11 +37,7 @@ export class CompanyFromGeneralComponent implements OnInit {
   }
 
   initForm() {
-    this.fieldControl = new FormControl('', [
-      Validators.required,
-
-      Validators.pattern(/^[a-zA-Z ]*$/),
-    ]);
+    
 
 
 
@@ -125,7 +119,7 @@ export class CompanyFromGeneralComponent implements OnInit {
     console.log("aa::",this.names)
     if (this.names.indexOf(this.camp.name) != -1) {
       this.dispotruename = true
-      this.newSeggestions= "chose "+this.camp.name+this.generateRandomCode()+" or "+this.camp.name+this.generateRandomCode()+" or "+this.camp.name+this.generateRandomCode()+" or "+this.camp.name+this.generateRandomCode()
+     // this.newSeggestions= "chose "+this.camp.name+this.generateRandomCode()+" or "+this.camp.name+this.generateRandomCode()+" or "+this.camp.name+this.generateRandomCode()+" or "+this.camp.name+this.generateRandomCode()
 
     } else {
       this.dispotruename = false
@@ -138,26 +132,26 @@ export class CompanyFromGeneralComponent implements OnInit {
 
   minIstrueName: boolean = false
   minIstrueName2: boolean = false
-  isBlur2() {
-    console.log(this.minIstrueName2)
-    console.log('===3:', this.fieldControl.value
-    )
+  // isBlur2() {
+  //   console.log(this.minIstrueName2)
+  //   console.log('===3:', this.fieldControl.value
+  //   )
 
-    if (this.fieldControl.status == "INVALID") {
-      this.minIstrueName2 = true
+  //   if (this.fieldControl.status == "INVALID") {
+  //     this.minIstrueName2 = true
 
-    }
-    else if (this.fieldControl.status == "VALID") {
-      this.minIstrueName2 = false
+  //   }
+  //   else if (this.fieldControl.status == "VALID") {
+  //     this.minIstrueName2 = false
 
-    }
-  }
-  isBlur3() {
-    if ((this.fieldControl.value == '') || (this.fieldControl.value == undefined)) {
-      this.minIstrueName2 = false
+  //   }
+  // }
+  // isBlur3() {
+  //   if ((this.fieldControl.value == '') || (this.fieldControl.value == undefined)) {
+  //     this.minIstrueName2 = false
 
-    }
-  }
+  //   }
+  // }
   isBlur1() {
     console.log(this.minIstrueName2)
     if (this.camp.name == undefined) {
@@ -175,7 +169,7 @@ export class CompanyFromGeneralComponent implements OnInit {
     }
   }
   geValues(event) {
-    console.log(this.fieldControl)
+    
 
     if (
       this.dispotrueCode == false && this.dispotruename == false &&

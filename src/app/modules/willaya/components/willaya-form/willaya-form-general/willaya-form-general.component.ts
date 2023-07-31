@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { underlineIcon } from '@progress/kendo-svg-icons';
 import { SharedService } from 'app/modules/company/services/shared.service';
 import { Willaya } from 'app/modules/willaya/models/willaya';
 import { WillayaService } from 'app/modules/willaya/services/willaya.service';
@@ -13,7 +12,7 @@ import { WillayaService } from 'app/modules/willaya/services/willaya.service';
 export class WillayaFormGeneralComponent implements OnInit {
   @Input() willaya!: Willaya;
   addform: FormGroup;
-  fieldControl: FormControl;
+
   constructor(private sharedService: SharedService, private willayaser: WillayaService) { }
 
   ngOnInit(): void {
@@ -22,19 +21,14 @@ export class WillayaFormGeneralComponent implements OnInit {
     this.getetat()
   }
   initForm() {
-    this.fieldControl = new FormControl('', [
-      Validators.required,
-
-      Validators.pattern(/^[a-zA-Z ]*$/),
-    ]);
+   
     this.addform = new FormGroup({
       code: new FormControl(null, [
         Validators.required,
 
       ]),
       name: new FormControl(null, [
-        Validators.required,
-        Validators.pattern(/^[a-zA-Z ]*$/),
+        Validators.required
 
       ]),
     });
@@ -80,15 +74,15 @@ export class WillayaFormGeneralComponent implements OnInit {
 
   }
 
-  generateRandomCode() {
-    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    let code = '';
-    for (let i = 0; i < 4; i++) {
-      const randomIndex = Math.floor(Math.random() * characters.length);
-      code += characters.charAt(randomIndex);
-    }
-    return code;
-  }
+  // generateRandomCode() {
+  //   const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  //   let code = '';
+  //   for (let i = 0; i < 4; i++) {
+  //     const randomIndex = Math.floor(Math.random() * characters.length);
+  //     code += characters.charAt(randomIndex);
+  //   }
+  //   return code;
+  // }
 
   newSeggestions = ""
 
@@ -98,7 +92,7 @@ export class WillayaFormGeneralComponent implements OnInit {
       console.log("e::", data)
       if (data != null) {
         this.dispotruename = true
-        this.newSeggestions = "chose " + this.willaya.name + this.generateRandomCode() + " or " + this.willaya.name + this.generateRandomCode() + " or " + this.willaya.name + this.generateRandomCode() + " or " + this.willaya.name + this.generateRandomCode()
+        //this.newSeggestions = "chose " + this.willaya.name + this.generateRandomCode() + " or " + this.willaya.name + this.generateRandomCode() + " or " + this.willaya.name + this.generateRandomCode() + " or " + this.willaya.name + this.generateRandomCode()
 
 
       } else {
@@ -136,7 +130,7 @@ export class WillayaFormGeneralComponent implements OnInit {
     );
     if (
       this.dispotrueCode == false && this.dispotruename == false &&
-      this.fieldControl.status != "INVALID" &&
+      
       this.willaya.code != null &&
       this.willaya.code != "" &&
       this.willaya.name != null &&
@@ -187,20 +181,20 @@ export class WillayaFormGeneralComponent implements OnInit {
     }
   }
   minIstrueName2: boolean = false
-  isBlur2() {
-    if (this.fieldControl.status == "INVALID") {
-      this.minIstrueName2 = true
+  // isBlur2() {
+  //   if (this.fieldControl.status == "INVALID") {
+  //     this.minIstrueName2 = true
 
-    }
-    else if (this.fieldControl.status == "VALID") {
-      this.minIstrueName2 = false
+  //   }
+  //   else if (this.fieldControl.status == "VALID") {
+  //     this.minIstrueName2 = false
 
-    }
-  }
-  isBlur3() {
-    if ((this.fieldControl.value == '') || (this.fieldControl.value == undefined)) {
-      this.minIstrueName2 = false
+  //   }
+  // }
+  // isBlur3() {
+  //   if ((this.fieldControl.value == '') || (this.fieldControl.value == undefined)) {
+  //     this.minIstrueName2 = false
 
-    }
-  }
+  //   }
+  // }
 }

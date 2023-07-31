@@ -1,10 +1,10 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { SharedService } from "app/modules/company/services/shared.service";
-import { Fournisseur } from "../../../models/fournisseur.model";
 import { Currency } from "app/modules/currency/models/currency";
 import { CurrencyService } from "app/modules/currency/services/currency.service";
 import { FournisseursService } from "app/modules/fournisseurs/services/fournisseurs.service";
+import { Fournisseur } from "../../../models/fournisseur.model";
 
 @Component({
   selector: "app-fournisseurs-form-general",
@@ -68,15 +68,7 @@ export class FournisseursFormGeneralComponent implements OnInit {
 
   }
 
-  generateRandomCode() {
-    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    let code = '';
-    for (let i = 0; i < 4; i++) {
-      const randomIndex = Math.floor(Math.random() * characters.length);
-      code += characters.charAt(randomIndex);
-    }
-    return code;
-  }
+
 
   newSeggestions = ""
   existname() {
@@ -84,7 +76,7 @@ export class FournisseursFormGeneralComponent implements OnInit {
       console.log(data)
       if (data != null) {
         this.dispotruename = true
-        this.newSeggestions = "chose " + this.fournisseur.name + this.generateRandomCode() + " or " + this.fournisseur.name + this.generateRandomCode() + " or " + this.fournisseur.name + this.generateRandomCode() + " or " + this.fournisseur.name + this.generateRandomCode()
+      //  this.newSeggestions = "chose " + this.fournisseur.name + this.generateRandomCode() + " or " + this.fournisseur.name + this.generateRandomCode() + " or " + this.fournisseur.name + this.generateRandomCode() + " or " + this.fournisseur.name + this.generateRandomCode()
 
 
       } else {
@@ -114,11 +106,7 @@ export class FournisseursFormGeneralComponent implements OnInit {
 
 
   initForm() {
-    this.fieldControl = new FormControl('', [
-      Validators.required,
-
-      Validators.pattern(/^[a-zA-Z]+$/)
-    ]);
+ 
 
     this.addform = new FormGroup({
       code: new FormControl("", [
@@ -195,12 +183,7 @@ export class FournisseursFormGeneralComponent implements OnInit {
   }
 
   isBlurDNisvalid() {
-    if (this.fieldControl.status == "INVALID") {
-      this.DNisvalid = true
-    } else
-      if (this.fournisseur.name == undefined) {
-        this.DNisvalid = true
-      }
+    
     if (this.fournisseur.name.toString().length < 1) { this.DNisvalid = true }
     else {
       this.DNisvalid = false

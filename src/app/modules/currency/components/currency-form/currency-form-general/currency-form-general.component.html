@@ -14,12 +14,12 @@
  
     <div class="form-group col-md-6 ">
         <label class="required" for="name">{{ "currencyName" | translate }}</label>
-        <input class="form-control" [formControl]="fieldControl2" (blur)="isBlurDNisvalid();isBlur2(); isBlur5() ;existname() " name="name" formControlName="name" [(ngModel)]="currency.name" required
+        <input class="form-control" [formControl]="fieldControl2" (blur)="isBlurDNisvalid(); existname() " name="name" formControlName="name" [(ngModel)]="currency.name" required
          placeholder="{{'Write your currency name'|translate}}" aria-invalid="true" aria-describedby="name-error" (ngModelChange)="geValues($event)">
-        <div style=" color : red;" *ngIf="minIstrueName2">{{"Format is invalid"|translate}}</div>
+     
         <div style=" color : red;" *ngIf="dispotruename">{{'name must be unique'|translate}}</div>
          <div style="color: red;" *ngIf="DNisvalid" >{{'Name must be not null'|translate}}</div>
-         <div style="color: black;" *ngIf="dispotruename" >{{newSeggestions}}</div>
+     
 
     </div>
     <div class="form-group col-md-6">
@@ -35,7 +35,7 @@
 
     <div class="form-group col-md-6 ">
         <label class="required" for="name">{{ "countryName" | translate }}</label>
-        <input class="form-control" [formControl]="fieldControl" (blur)="isBlurDNouisvalid();isBlur3();isBlur4()  " name="name" formControlName="Countryname" [(ngModel)]="currency.countryname" required
+        <input class="form-control" [formControl]="fieldControl" (blur)="isBlurDNouisvalid() " name="name" formControlName="Countryname" [(ngModel)]="currency.countryname" required
          placeholder="{{'write your country name'|translate}}" aria-invalid="true" aria-describedby="name-error" (ngModelChange)="geValues($event)">
         <div style=" color : red;" *ngIf="minIstrueName3">{{"Format is invalid"|translate}}</div>
          

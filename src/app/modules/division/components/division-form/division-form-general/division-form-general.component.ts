@@ -47,6 +47,7 @@ export class DivisionFormGeneralComponent implements OnInit {
   exist() {
     console.log(this.division.code)
     this.divisionserv.findbycode(this.division.code).subscribe(data => {
+      
       console.log(data)
       if (data != null) {
         this.dispotrueCode = true
@@ -66,15 +67,7 @@ export class DivisionFormGeneralComponent implements OnInit {
     })
 
   }
-  generateRandomCode() {
-    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    let code = '';
-    for (let i = 0; i < 4; i++) {
-      const randomIndex = Math.floor(Math.random() * characters.length);
-      code += characters.charAt(randomIndex);
-    }
-    return code;
-  }
+ 
 
   newSeggestions = ""
 
@@ -82,7 +75,7 @@ export class DivisionFormGeneralComponent implements OnInit {
     this.divisionserv.findbyName(this.division.name).subscribe(data => {
       if (data != null) {
         this.dispotruename = true
-        this.newSeggestions= "chose "+this.division.name+this.generateRandomCode()+" or "+this.division.name+this.generateRandomCode()+" or "+this.division.name+this.generateRandomCode()+" or "+this.division.name+this.generateRandomCode()
+      //  this.newSeggestions= "chose "+this.division.name+this.generateRandomCode()+" or "+this.division.name+this.generateRandomCode()+" or "+this.division.name+this.generateRandomCode()+" or "+this.division.name+this.generateRandomCode()
       } else {
         this.dispotruename = false
       }
@@ -92,19 +85,14 @@ export class DivisionFormGeneralComponent implements OnInit {
   }
 
   initForm() {
-    this.fieldControl = new FormControl('', [
-      Validators.required,
-
-      Validators.pattern(/^[a-zA-Z ]*$/),
-    ]);
+ 
     this.addform = new FormGroup({
       code: new FormControl("", [
         Validators.required,
 
       ]),
       name: new FormControl("", [
-        Validators.required,
-        Validators.pattern(/^[a-zA-Z ]*$/),
+        Validators.required
       ]),
       speciesType: new FormControl("", [
         Validators.required,
@@ -197,20 +185,31 @@ export class DivisionFormGeneralComponent implements OnInit {
     console.log(this.division.speciesType)
     console.log(this.division.currencycode)
     console.log(this.division.name)
-    console.log(this.division.code != null &&
-      this.division.code != "" &&
-      this.division.name != null &&
-      this.division.name != ""
-      && this.division.currencycode != "" && this.division.speciesType != "" && this.division.currencycode != undefined
-    )
-    if (
-      this.dispotrueCode == false && this.dispotruename == false &&
+    
+    console.log("ok",
+    
 
       this.division.code != null &&
       this.division.code != "" &&
       this.division.name != null &&
       this.division.name != ""
-      && this.division.currencycode != "" && this.division.speciesType != "" && this.division.currencycode != undefined
+      && this.division.currencycode != "" && this.division.speciesType != "" && 
+      this.division.currencycode != undefined &&   this.division.currencycode != null && 
+      this.dispotrueCode == false && this.dispotruename == false
+    )
+    console.log('3===', this.dispotrueCode )
+
+    if (
+
+      this.dispotrueCode == false && this.dispotruename == false &&
+
+      this.division.code != null &&
+      this.division.code != "" &&
+      this.division.name != null &&
+      this.division.name != ""&&
+   this.division.currencycode != null &&  this.division.currencycode != null  
+    && this.division.currencycode != ""  
+   && this.division.speciesType != "" && this.division.currencycode != undefined
 
     ) {
       this.sharedService.setIsActive(true);
@@ -219,22 +218,8 @@ export class DivisionFormGeneralComponent implements OnInit {
     }
   }
   minIstrueName2: boolean = false
-  isBlur2() {
-    if (this.fieldControl.status == "INVALID") {
-      this.minIstrueName2 = true
 
-    }
-    else if (this.fieldControl.status == "VALID") {
-      this.minIstrueName2 = false
-
-    }
-  }
-  isBlur3() {
-    if ((this.fieldControl.value == '') || (this.fieldControl.value == undefined)) {
-      this.minIstrueName2 = false
-
-    }
-  }
+  
   DCisvalid: boolean = false;
   DNisvalid: boolean = false;
   STisvali: boolean = false;

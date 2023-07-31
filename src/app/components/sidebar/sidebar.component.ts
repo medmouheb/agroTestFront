@@ -558,19 +558,7 @@ export const ROUTES: Categries[] = [
     icon: "corporate_fare",
     id: "18",
     SubCat: [
-      {
-        label: "menu.Poultry",
-        category: "Poltry",
-        icon: "person",
-        id: "8",
-        class: "",
-      },
-      {
-        label: "menu.Bovine",
-        category: "Bouvine",
-        icon: "person",
-        class: "",
-      },
+    
       {
         label: "Agriculture",
         category: "Agriculture",
@@ -653,6 +641,20 @@ export const ROUTES: Categries[] = [
           },
         ],
       },
+      {
+        label: "menu.Bovine",
+        category: "Bouvine",
+        icon: "person",
+        class: "",
+      },
+      {
+        label: "menu.Poultry",
+        category: "Poltry",
+        icon: "person",
+        id: "8",
+        class: "",
+      },
+      
     ],
   },
   {

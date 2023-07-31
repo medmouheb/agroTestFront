@@ -1,8 +1,8 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { SharedService } from "app/modules/company/services/shared.service";
-import { Currency } from "../../../models/currency";
 import { CurrencyService } from "app/modules/currency/services/currency.service";
+import { Currency } from "../../../models/currency";
 
 @Component({
   selector: "app-currency-form-general",
@@ -50,15 +50,15 @@ if (data!=null){
 
   }
  
-  generateRandomCode() {
-    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    let code = '';
-    for (let i = 0; i < 4; i++) {
-      const randomIndex = Math.floor(Math.random() * characters.length);
-      code += characters.charAt(randomIndex);
-    }
-    return code;
-  }
+  // generateRandomCode() {
+  //   const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  //   let code = '';
+  //   for (let i = 0; i < 4; i++) {
+  //     const randomIndex = Math.floor(Math.random() * characters.length);
+  //     code += characters.charAt(randomIndex);
+  //   }
+  //   return code;
+  // }
 
   newSeggestions = ""
 
@@ -68,7 +68,7 @@ this.cuurencyserv.findbyName(this.currency.name).subscribe(data=>{
 if (data!=null){
    this.dispotruename = true
 
-   this.newSeggestions = "chose " + this.currency.name + this.generateRandomCode() + " or " + this.currency.name + this.generateRandomCode() + " or " + this.currency.name + this.generateRandomCode() + " or " + this.currency.name + this.generateRandomCode()
+ //  this.newSeggestions = "chose " + this.currency.name + this.generateRandomCode() + " or " + this.currency.name + this.generateRandomCode() + " or " + this.currency.name + this.generateRandomCode() + " or " + this.currency.name + this.generateRandomCode()
 
  }else{
   this.dispotruename = false
@@ -79,15 +79,9 @@ if (data!=null){
 
   }
   initForm() {
-    this.fieldControl = new FormControl('', [
-      Validators.required,
-     
-      Validators.pattern(/^[a-zA-Z ]*$/),
-    ]);
+   
     this.fieldControl2 = new FormControl('', [
-      Validators.required,
-     
-      Validators.pattern(/^[a-zA-Z ]*$/),
+      Validators.required
     ]);
     this.addform = new FormGroup({
       code: new FormControl(null, [
@@ -153,8 +147,7 @@ if (data!=null){
       this.currency.name != null &&
       this.currency.name != "" &&
       this.currency.code.toString().length >= 1 && 
-      this.currency.name.toString().length >= 1 && this.fieldControl.status !="INVALID"
-    ) {
+      this.currency.name.toString().length >= 1 ){
       this.sharedService.setIsActive(true);
     } else {
       this.sharedService.setIsActive(false);
@@ -182,27 +175,9 @@ if (data!=null){
   STisvali: boolean = false;
   Misvalid: boolean = false;
   minIstrueName2: boolean = false
-  isBlur2() {
-    if (this.fieldControl2.status=="INVALID"){
-      this.minIstrueName2 = true
 
-    }
-    else if(this.fieldControl2.status=="VALID") {
-      this.minIstrueName2 = false
-
-    }
-  }
   minIstrueName3: boolean = false
-  isBlur3() {
-    if (this.fieldControl.status=="INVALID"){
-      this.minIstrueName3 = true
-
-    }
-    else if(this.fieldControl.status=="VALID") {
-      this.minIstrueName3 = false
-
-    }
-  }
+ 
   isBlurDCouisvalid() {
     if (this.currency.digitalcode== undefined){
       this.DCgiisvalid = true 
@@ -253,17 +228,6 @@ if (data!=null){
 
 
 
-  isBlur4() {
-    console.log(this.fieldControl.value)
-    if ((this.fieldControl.value == '')||(this.fieldControl.value == undefined)) {
-      this.minIstrueName3 = false
-
-    }
-  }
-  isBlur5() {
-    if ((this.fieldControl2.value == '')||(this.fieldControl2.value == undefined)) {
-      this.minIstrueName2 = false
-
-    }
-  }
+  
+ 
 }
