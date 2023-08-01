@@ -17,8 +17,17 @@ export class DivisionFormGeneralComponent implements OnInit {
   fieldControl: FormControl;
   cuurencys: Array<Currency> = []
   constructor(private sharedService: SharedService, private currencyservice: CurrencyService, private divisionserv: DivisionService) { }
-
+  names: Array<String> = [];
+  codes: Array<String> = [];
   ngOnInit(): void {
+    this.divisionserv.findAll().subscribe(data=>{
+      this.names = data.map(el => {
+        return el.name
+      })
+      this.codes = data.map(el => {
+        return el.code
+      })
+    })
     console.log(this.division)
     if (this.division != null) {
       console.log("olll")
@@ -45,26 +54,13 @@ export class DivisionFormGeneralComponent implements OnInit {
     }
   }
   exist() {
-    console.log(this.division.code)
-    this.divisionserv.findbycode(this.division.code).subscribe(data => {
+    if (this.codes.indexOf((this.division.code+"")) != -1) {
       
-      console.log(data)
-      if (data != null) {
-        this.dispotrueCode = true
-
-
-      } else {
-        this.dispotrueCode = false
-
-      }
-
-    }, error => {
-      console.log(error.status)
-      if (error.status == 404) {
-        this.dispotrueCode = false
-
-      }
-    })
+      this.dispotrueCode = true
+      console.log(this.dispotrueCode)
+    } else {
+      this.dispotrueCode = false
+    }
 
   }
  
@@ -72,15 +68,12 @@ export class DivisionFormGeneralComponent implements OnInit {
   newSeggestions = ""
 
   existname() {
-    this.divisionserv.findbyName(this.division.name).subscribe(data => {
-      if (data != null) {
-        this.dispotruename = true
-      //  this.newSeggestions= "chose "+this.division.name+this.generateRandomCode()+" or "+this.division.name+this.generateRandomCode()+" or "+this.division.name+this.generateRandomCode()+" or "+this.division.name+this.generateRandomCode()
-      } else {
-        this.dispotruename = false
-      }
-
-    }, error => console.log(error))
+    if (this.names.indexOf(this.division.name) != -1) {
+      this.dispotruename = true
+      //this.newSeggestions = "chose " + this.cost.name + this.generateRandomCode() + " or " + this.cost.name + this.generateRandomCode() + " or " + this.cost.name + this.generateRandomCode() + " or " + this.cost.name + this.generateRandomCode()
+    } else {
+      this.dispotruename = false
+    }
 
   }
 
@@ -209,7 +202,7 @@ export class DivisionFormGeneralComponent implements OnInit {
       this.division.name != ""&&
    this.division.currencycode != null &&  this.division.currencycode != null  
     && this.division.currencycode != ""  
-   && this.division.speciesType != "" && this.division.currencycode != undefined
+   && this.division.speciesType != "" && this.division.currencycode != undefined 
 
     ) {
       this.sharedService.setIsActive(true);
