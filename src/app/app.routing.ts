@@ -117,6 +117,13 @@ const routes: Routes = [
             (m) => m.ProduitsModule
           ),
       },
+      {
+        path: "Delivery",
+        loadChildren: () =>
+          import("./modules/delivery-instruction/delivery-instruction.module").then(
+            (m) => m.DeliveryInstructionModule
+          ),
+      },
 
       {
         path: "fournisseurs",

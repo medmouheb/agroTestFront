@@ -1,5 +1,9 @@
 {
   "menu": {
+    "DeliveryInstruction":"Delivery Instruction",
+    "Freightsetup":"Freight Setup",
+    "Materialhandling":"Material Handling",
+
     "Addons": "Addons", 
     "sales": "Sales", 
     "PaymentTerms": "Payment Terms",
@@ -10,6 +14,9 @@
     "produits": "products",
     "edit-costcenter":"Edit a Cost Center",
     "add-costcenter":"Add New Cost Center",
+    "add-delivery":"Add New Delivery Instruction",
+    "edit-delivery":"Edit a Delivery Instruction",
+
     "products-list": "Products list",
     "add-product": "Add New Product",
     "add-growout": "Add New Growout",
@@ -432,7 +439,13 @@
 
 
 "write your farms name":"write your farms name",
-"write your farms code":"write your farms code"
+"write your farms code":"write your farms code",
+"instructiuonCode":"instruction Code",
+"instructiuonName":"instruction Name",
+"notes":"Notes",
+"write your notes":"Write your notes"
+
+
 
 
 

@@ -1,5 +1,9 @@
 {
   "menu": {
+    "DeliveryInstruction":"Instruction de livraison",
+
+    "Freightsetup":"Installation du fret",
+    "Materialhandling":"Manutention des matériaux",
     "sales": "Ventes",
     "Addons": "Compléments",
     "Discount-Addond": "Option de réduction",
@@ -426,7 +430,12 @@
 
 
 "write your farms name":"Ecrivez le nom de votre ferme",
-"write your farms code":"Ecrivez le code de votre ferme"
+"write your farms code":"Ecrivez le code de votre ferme",
+"instructiuonCode":"Code d'instruction",
+"instructiuonName":"Nom d'instruction",
+"notes":"Notes",
+"write your notes":"Rédigez vos notes"
+
 
 
 

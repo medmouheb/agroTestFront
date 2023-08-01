@@ -1,0 +1,95 @@
+  <div class="row" [formGroup]="addform">
+
+    <div class="form-group col-md-6">
+        <label class="required" for="code">{{ "typeproduct" | translate }}</label>
+
+        <select class="form-control" (click)="getValue($event);select();setList()" name="productType" [(ngModel)]="delivery.productType"
+         formControlName="productType" required [disabled]="delivery.productType === 'Other'">
+                
+                <option value="" disabled selected>     
+                  </option>
+            <option value="Animal">
+                {{'Animal'|translate}}
+            </option>
+            <option value="Ingredients">
+                {{'Ingredients'|translate}}
+        
+            </option>
+            <option value="Eggs">
+                {{'Eggs'|translate}}
+        
+            </option>
+            <option value="Vaccines">
+                {{'Vaccines'|translate}}
+        
+            </option>
+            <option value="Other">
+                {{'Other'|translate}}
+        
+            </option>
+        
+        </select>
+           
+        <div *ngIf="afficheother==true">
+            <input class="form-control" name="customProductType" [(ngModel)]="delivery.productType" formControlName="productType" required
+              placeholder="{{'write your type product'|translate}}" aria-invalid="true" type="text" aria-describedby="code-error" (ngModelChange)="getValue($event)">
+          </div>
+    </div>
+    
+  
+ 
+    <div class="form-group col-md-6 "  *ngIf="afficheother==false">
+        <label class="required" for="instructiuonCode">{{ "instructiuonCode" | translate }}</label>
+       
+         <select  class="form-control"
+         (click)="getValue($event) ; setname()"
+         (blur)="setname()"
+          name="instructiuonCode"
+          formControlName="instructiuonCode" (ngModelChange)="getValue($event)"
+           required
+           [(ngModel)]="delivery.instructiuonCode" 
+           >
+           <option value="" disabled selected>{{'Select your option'|translate}}</option>
+           <option *ngFor="let c of listA" [value]="c" > {{c}} </option>
+     
+     </select>
+
+    </div>
+    <div class="form-group col-md-6 "  *ngIf="afficheother==true">
+        <label class="required" for="instructiuonCode">{{ "instructiuonCode" | translate }}</label>
+       
+        <input class="form-control" name="instructiuonCode" [(ngModel)]="delivery.instructiuonCode" formControlName="instructiuonCode" required
+        placeholder="{{'write your instruction Code'|translate}}" aria-invalid="true" type="text" aria-describedby="code-error" (ngModelChange)="getValue($event)">
+    </div>
+    <div class="form-group col-md-6" *ngIf="afficheother==false"  >
+        <label class="required" for="instructiuonName">{{ "instructiuonName" | translate }}</label>
+        <input class="form-control" name="code"  [(ngModel)]="delivery.instructiuonName" formControlName="instructiuonName" required 
+        placeholder=" {{'write your country code'|translate}}"
+            aria-invalid="true" type="number" aria-describedby="code-error" (ngModelChange)="getValue($event)">
+
+         <!-- <div style="color: red;" *ngIf="DCouisvalid" >{{'Code must be not null'|translate}}</div> -->
+
+    </div>
+    <div class="form-group col-md-6" *ngIf="afficheother==true"  >
+        <label class="required" for="instructiuonName">{{ "instructiuonName" | translate }}</label>
+       
+        <input class="form-control" name="instructiuonName" [(ngModel)]="delivery.instructiuonName" formControlName="instructiuonName" required
+        placeholder="{{'write your instruction Code'|translate}}" aria-invalid="true" type="text" aria-describedby="code-error" (ngModelChange)="getValue($event)">
+
+        
+
+    </div>
+
+    <div class="form-group col-md-6 ">
+        <label class="required" for="name">{{ "notes" | translate }}</label>
+        <input class="form-control"  name="name" formControlName="notes" [(ngModel)]="delivery.notes" required
+         placeholder="{{'write your notes'|translate}}" aria-invalid="true" aria-describedby="name-error" (ngModelChange)="getValue($event)">
+       
+    </div>  
+    <div class="form-group col-md-6 align-self-end">
+        <label for="active">
+          <input type="checkbox" id="active" name="active" #active="ngModel" ngModel [(ngModel)]="delivery.active" />
+          {{ "active" | translate }}
+        </label>
+      </div>
+</div>  

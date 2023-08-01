@@ -337,6 +337,35 @@ export const ROUTES: Categries[] = [
         ],
       },
       {
+        label: "menu.Materialhandling",
+        category: "Materialhandling",
+        icon: "splitscreen",
+        id: "Materialhandling-dropdown",
+        subCategories: [
+          {
+            label: "menu.Freightsetup",
+            title: "Freightsetup",
+            icon: "corporate_fare",
+            id: "Freightsetup-dropdown",
+            //path:"/Delivery",
+            class: "",
+            SubC: [
+              {
+                label: "menu.DeliveryInstruction",
+                title: "menu.DeliveryInstruction",
+                icon: "corporate_fare",
+                class: "",
+                path: "/Delivery",
+
+              },
+            
+            ],
+          },
+          
+        
+        ],
+      },
+      {
         label: "menu.Order-Mangment",
         category: "ordermangment",
         id: "ordermangment-dropdown",
