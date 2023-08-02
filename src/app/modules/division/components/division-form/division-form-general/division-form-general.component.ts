@@ -11,6 +11,8 @@ import { Division } from "../../../models/division";
   templateUrl: "./division-form-general.component.html",
   styleUrls: ["./division-form-general.component.scss"],
 })
+
+
 export class DivisionFormGeneralComponent implements OnInit {
   @Input() division!: Division;
   addform: FormGroup;
@@ -20,7 +22,7 @@ export class DivisionFormGeneralComponent implements OnInit {
   names: Array<String> = [];
   codes: Array<String> = [];
   ngOnInit(): void {
-    this.divisionserv.findAll().subscribe(data=>{
+    this.divisionserv.findAll().subscribe(data => {
       this.names = data.map(el => {
         return el.name
       })
@@ -54,8 +56,8 @@ export class DivisionFormGeneralComponent implements OnInit {
     }
   }
   exist() {
-    if (this.codes.indexOf((this.division.code+"")) != -1) {
-      
+    if (this.codes.indexOf((this.division.code + "")) != -1) {
+
       this.dispotrueCode = true
       console.log(this.dispotrueCode)
     } else {
@@ -63,7 +65,7 @@ export class DivisionFormGeneralComponent implements OnInit {
     }
 
   }
- 
+
 
   newSeggestions = ""
 
@@ -78,7 +80,7 @@ export class DivisionFormGeneralComponent implements OnInit {
   }
 
   initForm() {
- 
+
     this.addform = new FormGroup({
       code: new FormControl("", [
         Validators.required,
@@ -139,27 +141,27 @@ export class DivisionFormGeneralComponent implements OnInit {
 
   }
 
-  listA:String[]=[]
-  setList(){
-    console.log("ll::",this.division.divisiontype)
-    switch(this.division.divisiontype){
-      case "Agriculture":this.listA=["Agriculture maraîchère","Arboriculture","Agriculture biologique","Permaculture"] ;break ; 
-      case "Aviculture":this.listA=["Chicken","Layer","Turkey","Duck"] ;break ; 
-      case "Bovin":this.listA=["fattening cow farms","Dairy farms"] ;break ; 
+  listA: String[] = []
+  setList() {
+    console.log("ll::", this.division.divisiontype)
+    switch (this.division.divisiontype) {
+      case "Agriculture": this.listA = ["Agriculture maraîchère", "Arboriculture", "Agriculture biologique", "Permaculture"]; break;
+      case "Aviculture": this.listA = ["Chicken", "Layer", "Turkey", "Duck"]; break;
+      case "Bovin": this.listA = ["fattening cow farms", "Dairy farms"]; break;
     }
   }
 
   geValues(event) {
-    console.log(this.addform.value.speciesType);
-    console.log(this.division.speciesType);
-    console.log("event :", event);
+    // console.log(this.addform.value.speciesType);
+    // console.log(this.division.speciesType);
+    // console.log("event :", event);
     // console.log("====================================");
 
     // console.log("====================================");
-    console.log("le formulaire :", this.addform.value);
+    // console.log("le formulaire :", this.addform.value);
     // console.log("====================================");
 
-    console.log(this.division)
+    // console.log(this.division)
     // console.log(this.division.name);
     // console.log(
     //   "this.division.code.length",
@@ -173,24 +175,26 @@ export class DivisionFormGeneralComponent implements OnInit {
     //     this.division.code.toString().length >= 5 &&
     //     this.division.name.toString().length >= 3
     // );
-    console.log(this.division.code)
-    console.log(this.division.name)
-    console.log(this.division.speciesType)
-    console.log(this.division.currencycode)
-    console.log(this.division.name)
-    
-    console.log("ok",
-    
+    // console.log(this.division.code)
+    // console.log(this.division.name)
+    // console.log(this.division.speciesType)
+    // console.log(this.division.currencycode)
+    // console.log(this.division.name)
 
-      this.division.code != null &&
-      this.division.code != "" &&
-      this.division.name != null &&
-      this.division.name != ""
-      && this.division.currencycode != "" && this.division.speciesType != "" && 
-      this.division.currencycode != undefined &&   this.division.currencycode != null && 
-      this.dispotrueCode == false && this.dispotruename == false
-    )
-    console.log('3===', this.dispotrueCode )
+    // console.log("ok",
+
+
+    //   this.division.code != null &&
+    //   this.division.code != "" &&
+    //   this.division.name != null &&
+    //   this.division.name != ""
+    //   && this.division.currencycode != "" && this.division.speciesType != "" && 
+    //   this.division.currencycode != undefined &&   this.division.currencycode != null && 
+    //   this.dispotrueCode == false && this.dispotruename == false
+    // )
+    // console.log('3===', this.dispotrueCode )
+
+
 
     if (
 
@@ -199,12 +203,25 @@ export class DivisionFormGeneralComponent implements OnInit {
       this.division.code != null &&
       this.division.code != "" &&
       this.division.name != null &&
-      this.division.name != ""&&
-   this.division.currencycode != null &&  this.division.currencycode != null  
-    && this.division.currencycode != ""  
-   && this.division.speciesType != "" && this.division.currencycode != undefined 
+      this.division.name != "" &&
+      this.division.currencycode != null
+      && this.division.currencycode != ""
+      && this.division.speciesType != "" && this.division.currencycode != undefined
 
     ) {
+
+      console.log("aa1::", this.dispotrueCode == false)
+      console.log("aa2::", this.dispotruename == false)
+      console.log("aa3::", this.division.code != null)
+      console.log("aa4::", this.division.code != "" )
+      console.log("aa5::", this.division.name != null)
+      console.log("aa6::", this.division.name != "")
+      console.log("aa7::", this.division.currencycode != null)
+      console.log("aa8::", this.division.currencycode != "")
+      console.log("aa10::", this.division.speciesType != "" )
+      console.log("aa9::", this.division.currencycode != undefined)
+
+
       this.sharedService.setIsActive(true);
     } else {
       this.sharedService.setIsActive(false);
@@ -212,7 +229,7 @@ export class DivisionFormGeneralComponent implements OnInit {
   }
   minIstrueName2: boolean = false
 
-  
+
   DCisvalid: boolean = false;
   DNisvalid: boolean = false;
   STisvali: boolean = false;
