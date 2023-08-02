@@ -35,7 +35,9 @@ infiForm(){
 
 }
 setname(){
-  console.log(this.delivery.instructiuonCode)
+  console.log("e:",this.delivery.instructiuonCode)
+  console.log("e:",this.delivery.instructiuonName)
+
   switch (this.delivery.instructiuonCode) {
     case "CH":
       this.delivery.instructiuonName = "Check Chick Health"; 
