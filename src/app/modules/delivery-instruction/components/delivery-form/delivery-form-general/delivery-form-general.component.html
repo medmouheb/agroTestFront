@@ -42,7 +42,7 @@
         <label class="required" for="instructiuonCode">{{ "instructiuonCode" | translate }}</label>
        
          <select  class="form-control"
-         (click)="getValue($event) ; setname()"
+         (click)="getValue($event)"
          (blur)="setname()"
           name="instructiuonCode"
           formControlName="instructiuonCode" (ngModelChange)="getValue($event)"
@@ -50,7 +50,7 @@
            [(ngModel)]="delivery.instructiuonCode" 
            >
            <option value="" disabled selected>{{'Select your option'|translate}}</option>
-           <option *ngFor="let c of listA" [value]="c" > {{c}} </option>
+           <option (click)=" setname()" *ngFor="let c of listA" [value]="c" > {{c}} </option>
      
      </select>
 
