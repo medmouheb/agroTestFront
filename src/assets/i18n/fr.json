@@ -1,7 +1,10 @@
 {
   "menu": {
+    "transport":"Transport",
+    "shipmethode":"Méthodes d'expédition",
     "DeliveryInstruction":"Instruction de livraison",
-
+"add-shipmethod":"Ajouter une Méthode d'expédition",
+"edit-shipmethod":"Modifier une Méthode d'expédition",
     "Freightsetup":"Installation du fret",
     "Materialhandling":"Manutention des matériaux",
     "sales": "Ventes",
@@ -434,7 +437,11 @@
 "instructiuonCode":"Code d'instruction",
 "instructiuonName":"Nom d'instruction",
 "notes":"Notes",
-"write your notes":"Rédigez vos notes"
+"write your notes":"Rédigez vos notes",
+"codeship":"Code de méthodes d'expédition",
+"nameship":"Nom de méthodes d'expédition",
+"Write your ship method code":"Ecrivez le code de méthodes d'expédition",
+"Write your ship method name":"Ecrivez le nom de méthodes d'expédition"
 
 
 

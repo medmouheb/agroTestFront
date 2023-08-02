@@ -124,6 +124,13 @@ const routes: Routes = [
             (m) => m.DeliveryInstructionModule
           ),
       },
+      {
+        path: "shipmethode",
+        loadChildren: () =>
+          import("./modules/ship-methods/ship-methods.module").then(
+            (m) => m.ShipMethodsModule
+          ),
+      },
 
       {
         path: "fournisseurs",

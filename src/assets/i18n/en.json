@@ -1,5 +1,8 @@
 {
   "menu": {
+    "transport":"Transport",
+    "shipmethode":"Ship methodes",
+
     "DeliveryInstruction":"Delivery Instruction",
     "Freightsetup":"Freight Setup",
     "Materialhandling":"Material Handling",
@@ -16,7 +19,8 @@
     "add-costcenter":"Add New Cost Center",
     "add-delivery":"Add New Delivery Instruction",
     "edit-delivery":"Edit a Delivery Instruction",
-
+    "add-shipmethod":"Add New Ship methodes",
+    "edit-shipmethod":"Modifier une Méthode d'expédition",
     "products-list": "Products list",
     "add-product": "Add New Product",
     "add-growout": "Add New Growout",
@@ -443,7 +447,13 @@
 "instructiuonCode":"instruction Code",
 "instructiuonName":"instruction Name",
 "notes":"Notes",
-"write your notes":"Write your notes"
+"write your notes":"Write your notes",
+"codeship":"Shipping method code",
+"nameship":"Shipping method name",
+"Write your ship method code":"Write your ship method code",
+"Write your ship method name":"Write your ship method name"
+
+
 
 
 
