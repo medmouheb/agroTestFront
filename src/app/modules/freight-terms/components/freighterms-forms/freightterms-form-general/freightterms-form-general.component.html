@@ -1,0 +1,78 @@
+
+<div class="row" [formGroup]="addform">
+
+    <div class="form-group col-md-6">
+        <label class="required" for="freightermcode">{{ "freightermcode" | translate }}</label>
+
+          
+            <select class="form-control" name="freightermcode" (blur)="isBlurDCisvalid();geValues($event); setList() ;exist();blur1()
+                        "[(ngModel)]="freightterm.freightermcode" formControlName="freightermcode" required aria-invalid="true" type="number"
+                aria-describedby="code-error" (ngModelChange)="geValues($event)">
+            
+                <option value="" disabled selected>     
+                </option>
+          <option value="CIF"  (click)="setList()">
+              {{'CIF'|translate}}
+          </option>
+          <option value="CFR"  (click)="setList()">
+              {{'CFR'|translate}}
+      
+          </option>
+          <option value="FOB"  (click)="setList()">
+              {{'FOB'|translate}}
+      
+          </option>
+          <option value="FoB" (click)="setList()">
+              {{'FoB'|translate}}
+      
+          </option>
+          <option value="DAT"  (click)="setList()">
+            {{'DAT'|translate}}
+    
+        </option>
+        <option value="CIP"  (click)="setList()">
+            {{'CIP'|translate}}
+    
+        </option>
+          <option value="Other">
+              {{'Other'|translate}}
+              
+      
+          </option>
+            
+            
+            </select>
+            <div style=" color : red;" *ngIf="dispotrueCode">{{'Code must be unique'|translate}}</div>
+            <div style="color: red;" *ngIf="DCisvalid" >{{'Code must be not null'|translate}}</div>
+
+
+
+
+    </div>
+
+
+    <div class="form-group col-md-6 ">
+        <label class="required" for="freightermname">{{ "freightermname" | translate }}</label>
+        <input  class="form-control" (blur)="existname();isBlurDNisvalid();geValues($event);" name="freightermname" formControlName="freightermname" [(ngModel)]="freightterm.freightermname" required
+         placeholder="{{'Write your freight terms name'|translate}}" aria-invalid="true" aria-describedby="name-error" (ngModelChange)="geValues($event)">
+            <div style="color: red;" *ngIf="DNisvalid" >{{'Name must be not null'|translate}}</div>
+
+      <div style=" color : red;" *ngIf="dispotruename">{{'name must be unique'|translate}}</div>
+     
+
+    </div>
+    
+    <div class="form-group col-md-6 ">
+        <label class="required" for="name">{{ "notes" | translate }}</label>
+        <input class="form-control"  name="name" formControlName="notes" [(ngModel)]="freightterm.notes" required
+         placeholder="{{'write your notes'|translate}}" aria-invalid="true" aria-describedby="name-error" (ngModelChange)="geValues($event)">
+       
+    </div>  
+    <div class="form-group col-md-6 align-self-end">
+        <label for="active">
+          <input type="checkbox" id="active" name="active" #active="ngModel" ngModel [(ngModel)]="freightterm.active" (ngModelChange)="geValues($event)" />
+          {{ "active" | translate }}
+        </label>
+      </div>
+
+</div>

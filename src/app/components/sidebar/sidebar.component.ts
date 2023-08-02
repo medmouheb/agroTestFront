@@ -358,6 +358,14 @@ export const ROUTES: Categries[] = [
                 path: "/Delivery",
 
               },
+              {
+                label: "menu.FreightTerms",
+                title: "menu.FreightTerms",
+                icon: "corporate_fare",
+                class: "",
+                path: "/freightterms",
+
+              },
             
             ],
           },

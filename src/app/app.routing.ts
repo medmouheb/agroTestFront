@@ -131,6 +131,13 @@ const routes: Routes = [
             (m) => m.ShipMethodsModule
           ),
       },
+      {
+        path: "freightterms",
+        loadChildren: () =>
+          import("./modules/freight-terms/freight-terms.module").then(
+            (m) => m.FreightTermsModule
+          ),
+      },
 
       {
         path: "fournisseurs",

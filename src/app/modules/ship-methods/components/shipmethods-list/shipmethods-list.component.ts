@@ -154,7 +154,7 @@ export class ShipmethodsListComponent implements OnInit {
         );
       },
       error: (error) => {
-        this.toastService.close("0");
+        this.toastService.close("0"); 
         this.toastService.error(
           this.translateService.instant(error.error, {
             elem: this.translateService.instant("shipmethode"),

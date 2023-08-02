@@ -1,5 +1,6 @@
 {
   "menu": {
+    "FreightTerms":"Conditions de fret",
     "transport":"Transport",
     "shipmethode":"Méthodes d'expédition",
     "DeliveryInstruction":"Instruction de livraison",
@@ -15,6 +16,8 @@
     "products":"Produits",
     "Commissions": "Commissions",
     "products-list": "Liste des produits",
+    "add-freightterm":"Ajouter une Conditions de fret",
+    "edit-freightterm":"Ajouter une Conditions de fret",
     "add-product": "Ajouter un produit",
     "import-products": "Importer des produits",
     "edit-product": "Modifier un produit",
@@ -441,10 +444,11 @@
 "codeship":"Code de méthodes d'expédition",
 "nameship":"Nom de méthodes d'expédition",
 "Write your ship method code":"Ecrivez le code de méthodes d'expédition",
-"Write your ship method name":"Ecrivez le nom de méthodes d'expédition"
+"Write your ship method name":"Ecrivez le nom de méthodes d'expédition",
 
+"Write your freight terms name":"Rédigez le nom de vos conditions de fret",
 
-
-
+"freightermname":"Nom du terme de fret",
+"freightermcode":"Code du terme de fret"
 
 }

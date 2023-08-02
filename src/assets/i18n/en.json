@@ -1,12 +1,15 @@
 {
   "menu": {
+    "FreightTerms":"Freight terms",
+  
     "transport":"Transport",
     "shipmethode":"Ship methodes",
 
     "DeliveryInstruction":"Delivery Instruction",
     "Freightsetup":"Freight Setup",
     "Materialhandling":"Material Handling",
-
+    "add-freightterm":"Add New Freight Terms",
+    "edit-freightterm":"Edit a Freight Terms",
     "Addons": "Addons", 
     "sales": "Sales", 
     "PaymentTerms": "Payment Terms",
@@ -244,8 +247,7 @@
   "costCenterName": "Cost center name",
   "costCenterType": "Cost center type",
   "division": "Division",
-  "divisionName": "Division name",
-  "divisionCode": "Division code",
+  "divisionNade": "Division code",
   "primary": "Primary",
   "latitude": "Latitude",
   "longitude": "Longitude",
@@ -263,7 +265,9 @@
   "farmCode": "Farm code",
   "houseCode": "House code",
   "startingDate": "Starting date",
-  "owner": "Owner Name",
+  "owner": "me",
+     "Division name":"divisionCoOwner Name",
+  
   "biggermessage": "",
   "growoutcode": "Growout code",
   "growoutname": "Growout name",
@@ -440,7 +444,8 @@
 
 
 
-
+"freightermname":"Freight terms name",
+"freightermcode":"Freight terms code",
 
 "write your farms name":"write your farms name",
 "write your farms code":"write your farms code",
