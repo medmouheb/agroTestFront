@@ -57,7 +57,7 @@ export class FreightermsListComponent implements OnInit {
     }
   }
  ngOnInit(): void {
- //  this.findArchivedPage();
+   this.findArchivedPage();
    this.findPage();
    this.onPaginationChange.subscribe(() => this.findPage());
  }
@@ -115,30 +115,33 @@ export class FreightermsListComponent implements OnInit {
      }
    );
    console.log(this.freightterm)
-   if((this.freightterm.freightermcode==undefined) ||(this.freightterm.freightermcode=='')  ){
+   if((this.freightterm.freighttermcode==undefined) ||(this.freightterm.freighttermcode=='')  ){
      this.toastService.close("0");
      this.toastService.warning("Verify your freightterm code"
       
      );
      return;
-   }else  if((this.freightterm.freightermname==undefined) ||(this.freightterm.freightermname=='')  ){
+   }else  if((this.freightterm.freighttermname ==undefined) ||(this.freightterm.freighttermname =='')  ){
      this.toastService.close("0");
      this.toastService.warning("Verify your freightterm name"
       
      );
      return;
    }
-   this.freighttermsservice.findbycode(this.freightterm.freightermcode).subscribe(data => {
+   this.freighttermsservice.findbycode(this.freightterm.freighttermcode).subscribe(data => {
      console.log(data)
      if (data != null) {
        this.toastService.warning("Ship methode code must be unique");
+       this.toastService.close("0"); 
+       this.toastService.error(
+         this.translateService.instant("freightterm"),
+     
+       )
        return;
-
-
-
-   
-
    }
+   
+   return[];
+   
    })
 
    this.freighttermsservice.save(id, this.freightterm!).subscribe({
@@ -187,6 +190,7 @@ export class FreightermsListComponent implements OnInit {
      this.freighttermsservice.archive(id).subscribe({
        next: () => {
             this.findPage();
+            this.findArchivedPage();
          this.archiveModal.hide();
            this.toastService.close("0");
            this.toastService.success(
@@ -214,10 +218,10 @@ export class FreightermsListComponent implements OnInit {
  sortByCodeValid: boolean = true;
  sortByCode() {
    if (this.sortByCodeValid) {
-     this.freightterms.sort((a, b) => a.freightermcode.localeCompare(b.freightermcode));
+     this.freightterms.sort((a, b) => a.freighttermcode.localeCompare(b.freighttermcode));
      this.sortByCodeValid = false
    } else {
-     this.freightterms.sort((a, b) => b.freightermcode.localeCompare(a.freightermcode));
+     this.freightterms.sort((a, b) => b.freighttermcode.localeCompare(a.freighttermcode));
      this.sortByCodeValid = true
    }
  }
@@ -227,10 +231,10 @@ export class FreightermsListComponent implements OnInit {
  sortByNameValid: boolean = true;
  sortByName() {
    if (this.sortByNameValid) {
-     this.freightterms.sort((a, b) => a.freightermname.localeCompare(b.freightermname));
+     this.freightterms.sort((a, b) => a.freighttermname .localeCompare(b.freighttermname ));
      this.sortByNameValid = false
    } else {
-     this.freightterms.sort((a, b) => b.freightermname.localeCompare(a.freightermname));
+     this.freightterms.sort((a, b) => b.freighttermname .localeCompare(a.freighttermname ));
      this.sortByNameValid = true
    }
  }
@@ -247,7 +251,7 @@ export class FreightermsListComponent implements OnInit {
        next: (result) => {
          this.freighttermss = result.content;
          this.freighttermPages = result;
-         this.findArchivedPage();
+       
        },
        error: (error) => {
          this.loading = false;

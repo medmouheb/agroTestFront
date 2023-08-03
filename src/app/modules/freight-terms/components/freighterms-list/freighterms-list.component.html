@@ -21,7 +21,7 @@
         </div>
     </div>
 
-    <div class="datatable">
+    <div class="datatable"  *ngIf="affiche==false">
 
         <ng-container *ngIf="loading">
             <app-spinner></app-spinner>
@@ -110,9 +110,80 @@
             </tbody>
         </table>
     </div>
-    <app-pagination [pageNumber]="pageNumber" [pageSize]="pageSize" [page]="freighttermPage"
+    <div class="datatable" *ngIf="affiche==true">
+
+        <ng-container *ngIf="loading">
+            <app-spinner></app-spinner>
+        </ng-container>
+
+        <ng-container *ngIf="!loading && freighttermPages.empty">
+            <app-no-data></app-no-data>
+        </ng-container>
+
+        <table class="table" *ngIf="!loading && !freighttermPages.empty">
+            <thead class="datatable-header">
+                <tr>
+                    <th>
+                        <strong  class="style-text">
+                            {{'freighttermcode' | translate}}
+                            <a href="javascript:void(0);">
+                                <svg (click)="sortByCode()" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                    fill="currentColor" class="bi bi-chevron-double-down color-edit" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd"
+                                        d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z" />
+
+                                </svg>
+                            </a>
+                        </strong>
+                    </th>
+                    <th>
+                        <strong  class="style-text">
+                            {{'freighttermname' | translate}}
+                            <a href="javascript:void(0);">
+                                <svg (click)="sortByName()" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                    fill="currentColor" class="bi bi-chevron-double-down color-edit" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd"
+                                        d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z" />
+
+                                </svg>
+                            </a>
+                        </strong>
+                    </th>
+
+                </tr>
+            </thead>
+           
+            <tbody class="text-sm" *ngIf="affiche==true">
+                <tr class="row-data" *ngFor="let willaya of freighttermss">
+                    <td>
+                        {{willaya.freighttermcode}}
+                    </td>
+                    <td>
+                        {{willaya.freighttermname}}
+                    </td>
+
+                    <td class="d-flex gap-4">
+                        
+                        <button class="text-primary datatable-action-btn"(click)="onClickdisArchive(willaya.id!)"
+                        [title]="'Restore line' | translate">
+                        <i class="fa fa-reply-all"></i>
+                    </button>
+                    <button class="text-danger datatable-action-btn"(click)="onClickDelete(willaya.id!)"
+                        [title]="'Delete permanently' | translate">
+                        <i class="fa fa-trash"></i>
+                    </button>
+                      
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <app-pagination [pageNumber]="pageNumber" [pageSize]="pageSize" [page]="freighttermPage"  *ngIf="affiche==false"
         (onPageNumberChange)="onPageNumberChange($event)" (onPageSizeChange)="onPageSizeChange($event)">
     </app-pagination>
+    <app-pagination [pageNumber]="pageNumber" [pageSize]="pageSize" [page]="freighttermPages"
+    (onPageNumberChange)="onPageNumberChange($event)" (onPageSizeChange)="onPageSizeChange($event)"  *ngIf="affiche==true">
+</app-pagination>
 
     <app-dialog #formModal>
         <app-freighterms-forms [freightterm]="freightterm">

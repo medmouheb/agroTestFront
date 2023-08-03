@@ -21,17 +21,17 @@
         </div>
     </div>
 
-    <div class="datatable">
+    <div class="datatable"  *ngIf="affiche==false">
 
         <ng-container *ngIf="loading">
             <app-spinner></app-spinner>
         </ng-container>
 
-        <ng-container *ngIf="!loading && shipmethodePage.empty">
+        <ng-container *ngIf="!loading && shipmethodPage.empty">
             <app-no-data></app-no-data>
         </ng-container>
 
-        <table class="table" *ngIf="!loading && !shipmethodePage.empty">
+        <table class="table" *ngIf="!loading && !shipmethodPage.empty">
             <thead class="datatable-header">
                 <tr>
                     <th>
@@ -64,7 +64,7 @@
                 </tr>
             </thead>
             <tbody class="text-sm" *ngIf="affiche==false">
-                <tr class="row-data" *ngFor="let willaya of shipmethodes">
+                <tr class="row-data" *ngFor="let willaya of shipmethods">
                     <td>
                         {{willaya.code}}
                     </td>
@@ -85,8 +85,54 @@
                     </td>
                 </tr>
             </tbody>
+          
+        </table>
+    </div>
+    <div class="datatable" *ngIf="affiche==true">
+
+        <ng-container *ngIf="loading">
+            <app-spinner></app-spinner>
+        </ng-container>
+
+        <ng-container *ngIf="!loading && shipmethodPages.empty">
+            <app-no-data></app-no-data>
+        </ng-container>
+
+        <table class="table" *ngIf="!loading && !shipmethodPages.empty">
+            <thead class="datatable-header">
+                <tr>
+                    <th>
+                        <strong  class="style-text">
+                            {{'shipmethodcode' | translate}}
+                            <a href="javascript:void(0);">
+                                <svg (click)="sortByCode()" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                    fill="currentColor" class="bi bi-chevron-double-down color-edit" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd"
+                                        d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z" />
+
+                                </svg>
+                            </a>
+                        </strong>
+                    </th>
+                    <th>
+                        <strong  class="style-text">
+                            {{'shipmethodname' | translate}}
+                            <a href="javascript:void(0);">
+                                <svg (click)="sortByName()" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                    fill="currentColor" class="bi bi-chevron-double-down color-edit" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd"
+                                        d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z" />
+
+                                </svg>
+                            </a>
+                        </strong>
+                    </th>
+
+                </tr>
+            </thead>
+           
             <tbody class="text-sm" *ngIf="affiche==true">
-                <tr class="row-data" *ngFor="let willaya of shipmethodess">
+                <tr class="row-data" *ngFor="let willaya of shipmethodss">
                     <td>
                         {{willaya.code}}
                     </td>
@@ -110,13 +156,15 @@
             </tbody>
         </table>
     </div>
-    <app-pagination [pageNumber]="pageNumber" [pageSize]="pageSize" [page]="shipmethodePage"
+    <app-pagination [pageNumber]="pageNumber" [pageSize]="pageSize" [page]="shipmethodPage"  *ngIf="affiche==false"
         (onPageNumberChange)="onPageNumberChange($event)" (onPageSizeChange)="onPageSizeChange($event)">
     </app-pagination>
+    <app-pagination [pageNumber]="pageNumber" [pageSize]="pageSize" [page]="shipmethodPages"
+    (onPageNumberChange)="onPageNumberChange($event)" (onPageSizeChange)="onPageSizeChange($event)"  *ngIf="affiche==true">
+</app-pagination>
 
     <app-dialog #formModal>
-        <app-shipmethods-form [shipmethod]="shipmethod">
-        </app-shipmethods-form>
+       <app-shipmethods-form [shipmethod]="shipmethod"></app-shipmethods-form>
     </app-dialog>
 
     <app-confirm-dialog #archiveModal></app-confirm-dialog>

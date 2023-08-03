@@ -69,7 +69,7 @@
     <label class="required" for="division_Code">{{ "divisionCode" | translate }}</label>
     <!-- <input (blur)="isBlurSTisvali()" type="number" class="form-control" name="codeCity" formControlName="codeCity" [(ngModel)]="growout.codeCity" placeholder=" write your City code"
       aria-describedby="code-error" required aria-invalid="true" (ngModelChange)="geValues($event)"> -->
-      <select (blur)="isBlur5();geValues($event)" (click)="selectVAlue($event)" (ngModelChange)="geValues($event)" type="number" class="form-control" name="division_Code"  [(ngModel)]="cost.division_Code" placeholder=" write your City code">
+      <select (blur)="isBlur5();geValues($event); setvalue()" (click)="selectVAlue($event)" (ngModelChange)="geValues($event)" type="number" class="form-control" name="division_Code"  [(ngModel)]="cost.division_Code" placeholder=" write your City code">
         <option *ngFor="let dv of divisions" [value]="dv.code" > {{dv.code}}</option>
       </select>
       <!-- //<div style="color: red;" *ngIf="STisvali" >{{'code must be between 5 and 10 numbres'|translate}}</div> -->
@@ -102,8 +102,8 @@
 
       </select>
     </div>
-    <div class="form-group col-md-6" *ngIf="affichetype==true">
-      <label class="required" for="divisionspeciestype">{{ "divisiontype" | translate }}</label>: {{cost.speciesType}}
+    <div class="form-group col-md-6" *ngIf="affiche==true">
+      <label class="required" for="divisionspeciestype">{{ "divisiontype" | translate }} </label> : {{cost.speciesType}}
       
        <!-- <div style="border: 1px solid red; color : red;" *ngIf="minIspeciesType">{{'species type must be between 1 and 10 charactere'|translate}}</div> -->
   
@@ -112,5 +112,5 @@
       <label  for="farmType">{{ "Farmtype" | translate }} </label> :{{cost.farmType}}
     
     
-    </div>
+    </div> 
 </div>

@@ -81,12 +81,12 @@ export class FreightTermsService {
   }
 
   findbycode(code:any): Observable<FreightTerms>{
-    let url = `${this.baseUrl()}/freightTerms/by-freighttermcode/${code}`;
+    let url = `${this.baseUrl()}/freightTerms/by-code/${code}`;
     return this.http.get<FreightTerms>(url);
 
   }
   findbyName(name:any): Observable<FreightTerms>{
-    let url = `${this.baseUrl()}/freightTerms/getbyfreighttermname/${name}`;
+    let url = `${this.baseUrl()}/freightTerms/getbyname/${name}`;
     return this.http.get<FreightTerms>(url);
 
   }

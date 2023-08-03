@@ -2,11 +2,11 @@
 <div class="row" [formGroup]="addform">
 
     <div class="form-group col-md-6">
-        <label class="required" for="freightermcode">{{ "freightermcode" | translate }}</label>
+        <label class="required" for="freighttermcode">{{ "freighttermcode" | translate }}</label>
 
           
-            <select class="form-control" name="freightermcode" (blur)="isBlurDCisvalid();geValues($event); setList() ;exist();blur1()
-                        "[(ngModel)]="freightterm.freightermcode" formControlName="freightermcode" required aria-invalid="true" type="number"
+            <select class="form-control" name="freighttermcode" (blur)="isBlurDCisvalid();geValues($event); setList() ;exist();blur1()
+                        "[(ngModel)]="freightterm.freighttermcode" formControlName="freighttermcode" required aria-invalid="true" type="number"
                 aria-describedby="code-error" (ngModelChange)="geValues($event)">
             
                 <option value="" disabled selected>     
@@ -52,8 +52,8 @@
 
 
     <div class="form-group col-md-6 ">
-        <label class="required" for="freightermname">{{ "freightermname" | translate }}</label>
-        <input  class="form-control" (blur)="existname();isBlurDNisvalid();geValues($event);" name="freightermname" formControlName="freightermname" [(ngModel)]="freightterm.freightermname" required
+        <label class="required" for="freighttermname">{{ "freighttermname" | translate }}</label>
+        <input  class="form-control" (blur)="existname();isBlurDNisvalid();geValues($event);" name="freighttermname" formControlName="freighttermname" [(ngModel)]="freightterm.freighttermname" required
          placeholder="{{'Write your freight terms name'|translate}}" aria-invalid="true" aria-describedby="name-error" (ngModelChange)="geValues($event)">
             <div style="color: red;" *ngIf="DNisvalid" >{{'Name must be not null'|translate}}</div>
 

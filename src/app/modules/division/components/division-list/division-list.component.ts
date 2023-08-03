@@ -36,7 +36,7 @@ export class DivisionListComponent implements OnInit {
   onPaginationChange: EventEmitter<string> = new EventEmitter<string>();
 
   currentStep = 0;
-  steps: any = ["steps.general", "company", "steps.localisation"];
+  steps: any = ["steps.general",  "steps.localisation"];
 
   constructor(
     private divisionService: DivisionService,

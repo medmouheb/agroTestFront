@@ -1,7 +1,7 @@
 export type FreightTerms = {
     id?: string
-    freightermcode?: string
-    freightermname?: string
+    freighttermcode?: string
+    freighttermname ?: string
     notes?: string
     active?: boolean
  

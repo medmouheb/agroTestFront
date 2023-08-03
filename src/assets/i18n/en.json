@@ -442,10 +442,11 @@
 "name must be unique":"Name must be unique",
 "Code must be unique":"Code must be unique",
 
+"Réutiliser les informations de la Division":"Reuse Division information",
 
 
-"freightermname":"Freight terms name",
-"freightermcode":"Freight terms code",
+"freighttermname":"Freight terms name",
+"freighttermcode":"Freight terms code",
 
 "write your farms name":"write your farms name",
 "write your farms code":"write your farms code",

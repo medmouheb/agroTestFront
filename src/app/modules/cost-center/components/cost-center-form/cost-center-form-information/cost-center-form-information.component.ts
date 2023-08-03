@@ -68,6 +68,16 @@ export class CostCenterFormInformationComponent implements OnInit {
     console.log("====================================");
   }
   div:any
+affiche:boolean=false
+
+setvalue(){
+  if (this.cost.division_Code==undefined ||this.cost.division_Code==""){
+    this.affiche=false
+  }else{
+    this.affiche=true
+  }
+}
+
   selectVAlue(e:any){
     console.log("3==",e.target.value)
     let t=this.divisions.filter(el=>{return el.code==e.target.value})[0]

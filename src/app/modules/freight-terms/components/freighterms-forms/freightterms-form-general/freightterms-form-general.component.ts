@@ -15,18 +15,18 @@ export class FreighttermsFormGeneralComponent implements OnInit {
   constructor(private sharedService: SharedService,private freighttermsservice:FreightTermsService) { }
 
   ngOnInit(): void {
-    if (this.freightterm == undefined) this.freightterm = { freightermcode: "", freightermname: "" };
+    if (this.freightterm == undefined) this.freightterm = { freighttermcode: "", freighttermname : "" };
     this.initForm();
     this.getetat()
   }
   initForm() {
    
     this.addform = new FormGroup({
-      freightermcode: new FormControl(null, [
+      freighttermcode: new FormControl(null, [
         Validators.required, 
 
       ]),
-      freightermname: new FormControl(null, [
+      freighttermname : new FormControl(null, [
         Validators.required 
 
       ]),
@@ -39,7 +39,7 @@ export class FreighttermsFormGeneralComponent implements OnInit {
     console.log("====================================");
   }
   getetat() {
-    if ((this.addform.status == "INVALID") || (this.freightterm.freightermcode == undefined) || (this.freightterm.freightermname == undefined)) {
+    if ((this.addform.status == "INVALID") || (this.freightterm.freighttermcode == undefined) || (this.freightterm.freighttermname  == undefined)) {
       this.sharedService.setIsActive(false);
 
     }
@@ -47,14 +47,14 @@ export class FreighttermsFormGeneralComponent implements OnInit {
   dispotrueCode: boolean = false
   dispotruename: boolean = false
   blur1() {
-    if (this.freightterm.freightermcode == null) {
+    if (this.freightterm.freighttermcode == null) {
       this.dispotrueCode = false
 
     }
   }
   exist() {
-    console.log(this.freightterm.freightermcode)
-    this.freighttermsservice.findbycode(this.freightterm.freightermcode).subscribe(data => {
+    console.log(this.freightterm.freighttermcode)
+    this.freighttermsservice.findbycode(this.freightterm.freighttermcode).subscribe(data => {
       console.log(data)
       if (data != null) {
         this.dispotrueCode = true
@@ -78,7 +78,7 @@ export class FreighttermsFormGeneralComponent implements OnInit {
 
   existname() {
     console.log("e::")
-    this.freighttermsservice.findbyName(this.freightterm.freightermname).subscribe(data => {
+    this.freighttermsservice.findbyName(this.freightterm.freighttermname ).subscribe(data => {
       console.log("e::", data)
       if (data != null) {
         this.dispotruename = true
@@ -102,29 +102,29 @@ export class FreighttermsFormGeneralComponent implements OnInit {
     console.log("le formulaire :", this.addform.value);
     console.log("====================================");
 
-    console.log(this.freightterm.freightermcode);
-    console.log(this.freightterm.freightermname);
+    console.log(this.freightterm.freighttermcode);
+    console.log(this.freightterm.freighttermname );
     console.log(
       "this.freightterms.code.length",
-      this.freightterm.freightermcode.toString().length >= 5
+      this.freightterm.freighttermcode.toString().length >= 5
     );
     console.log(
-      this.freightterm.freightermcode != null &&
-      this.freightterm.freightermcode != "" &&
-      this.freightterm.freightermname != null &&
-      this.freightterm.freightermname != "" &&
-      this.freightterm.freightermcode.toString().length >= 1 &&
-      this.freightterm.freightermname.toString().length >=1
+      this.freightterm.freighttermcode != null &&
+      this.freightterm.freighttermcode != "" &&
+      this.freightterm.freighttermname  != null &&
+      this.freightterm.freighttermname  != "" &&
+      this.freightterm.freighttermcode.toString().length >= 1 &&
+      this.freightterm.freighttermname .toString().length >=1
     );
     if (
       this.dispotrueCode == false && this.dispotruename == false &&
       
-      this.freightterm.freightermcode != null &&
-      this.freightterm.freightermcode != "" &&
-      this.freightterm.freightermname != null &&
-      this.freightterm.freightermname != "" &&
-      this.freightterm.freightermcode.toString().length >= 1 &&
-      this.freightterm.freightermname.toString().length >= 1
+      this.freightterm.freighttermcode != null &&
+      this.freightterm.freighttermcode != "" &&
+      this.freightterm.freighttermname  != null &&
+      this.freightterm.freighttermname  != "" &&
+      this.freightterm.freighttermcode.toString().length >= 1 &&
+      this.freightterm.freighttermname .toString().length >= 1
     ) {
       this.sharedService.setIsActive(true);
     } else {
@@ -139,26 +139,26 @@ export class FreighttermsFormGeneralComponent implements OnInit {
     return this.addform.controls;
   }
   setList(){
-    console.log(this.freightterm.freightermcode)
-    let ch=this.freightterm.freightermcode
+    console.log(this.freightterm.freighttermcode)
+    let ch=this.freightterm.freighttermcode
     switch(ch){
       case "CIF":
-        this.freightterm.freightermname="Cost,Insurance,Freight";
+        this.freightterm.freighttermname ="Cost,Insurance,Freight";
         break; 
         case "CFR":
-        this.freightterm.freightermname="Cost and Freight";
+        this.freightterm.freighttermname ="Cost and Freight";
         break; 
         case "FOB":
-        this.freightterm.freightermname="Free On Board";
+        this.freightterm.freighttermname ="Free On Board";
         break; 
         case "FoB":
-        this.freightterm.freightermname="Freight On Board";
+        this.freightterm.freighttermname ="Freight On Board";
         break; 
         case "DAT":
-        this.freightterm.freightermname="Delivered at Terminal";
+        this.freightterm.freighttermname ="Delivered at Terminal";
         break; 
         case "CIP":
-        this.freightterm.freightermname="Carrier Insurance Paid";
+        this.freightterm.freighttermname ="Carrier Insurance Paid";
         break; 
       
     }
@@ -179,20 +179,20 @@ export class FreighttermsFormGeneralComponent implements OnInit {
   STisvali: boolean = false;
   Misvalid: boolean = false;
   isBlurDCisvalid() {
-    if (this.freightterm.freightermcode == undefined) {
+    if (this.freightterm.freighttermcode == undefined) {
       this.DCisvalid = true
     }
-    else if (this.freightterm.freightermcode.toString().length < 1) { this.DCisvalid = true }
+    else if (this.freightterm.freighttermcode.toString().length < 1) { this.DCisvalid = true }
     else {
       this.DCisvalid = false
     }
   }
 
   isBlurDNisvalid() {
-    if (this.freightterm.freightermname == undefined) {
+    if (this.freightterm.freighttermname  == undefined) {
       this.DNisvalid = true
     }
-    if (this.freightterm.freightermname.toString().length < 1) { this.DNisvalid = true }
+    if (this.freightterm.freighttermname .toString().length < 1) { this.DNisvalid = true }
     else {
       this.DNisvalid = false
     }
