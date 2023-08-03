@@ -447,8 +447,8 @@
 "Write your ship method name":"Ecrivez le nom de méthodes d'expédition",
 
 "Write your freight terms name":"Rédigez le nom de vos conditions de fret",
-
-"freightermname":"Nom du terme de fret",
-"freightermcode":"Code du terme de fret"
+"Réutiliser les informations de la Division":"Réutiliser les informations de la Division",
+"freighttermname":"Nom du terme de fret",
+"freighttermcode":"Code du terme de fret"
 
 }

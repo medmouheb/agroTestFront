@@ -59,6 +59,23 @@
    
 
 
+
+<div class="row">
+  <div class="form-group col-md-6">
+    <label for="company">{{'namecompany' | translate}}</label>
+    <select (click)="selectValue1($event)" class="form-control" [(ngModel)]="division.companyname">
+      <option *ngFor="let dv of companys" [value]="dv.name"> {{dv.name}}</option>
+    </select>
+  </div>
+</div>
+<div class="row">
+  <div   class="form-group col-md-6">
+    <input (click)="setCompany()"  type="checkbox" [checked]="isRemenber">
+    <label class="form-check-label" for="flexCheckChecked">
+    {{'Réutiliser les informations de la Division'|translate}}
+    </label>
+  </div>
+</div>
 <div class="row">
   <div class="form-group col-md-6">
     <label for="address">{{ "Address" | translate }}</label>
@@ -70,8 +87,8 @@
     <input class="form-control" name="email" #email="ngModel" ngModel [(ngModel)]="division.email" 
      placeholder="{{'Write your email'|translate}} " />
   </div>
-
-  
+</div>
+<div class="row">
   <div class="form-group col-md-6">
     <label for="cityCode">{{'codeCity' | translate}}</label>
     <input class="form-control" name="cityCode" #cityCode="ngModel" ngModel  [(ngModel)]="division.codeCity"
@@ -84,6 +101,9 @@
     placeholder="{{'Write your city name'|translate}} ">
   </div>
 
+</div>
+
+<div class="row">
   <div class="form-group col-md-6">
     <label for="wilayaCode">{{ "wilayaCode" | translate }}</label>
     <select (click)="selectValue($event)"  type="number" class="form-control" name="wilayaCode" #wilayaCode="ngModel"  [(ngModel)]="division.wilayaCode">
@@ -97,24 +117,28 @@
      <!-- <div style="border: 1px solid red; color : red;" *ngIf="minIwillaya">{{'wilaya Name  must be between 1 and 100 charactere'|translate}}</div> -->
 
   </div>
-  
-
-  <div class="form-group col-md-6">
-    <label for="zipCode">{{'zipCode' | translate}}</label>
-    <input class="form-control" name="zipCode" #zipCode="ngModel" ngModel  [(ngModel)]="division.zipCode" 
-    placeholder="{{'Write your zip code'|translate}} "> 
-  </div>
-  
-
-
-  <div class="form-group col-md-6">
-    <label for="phone">{{'phoneNumber' | translate}}</label>
-    <input type="phone" class="form-control" name="phone"  (blur)="isBlur3()"   
-    #email="ngModel" ngModel [(ngModel)]="division.phone"
-    placeholder="{{'Write your phone'|translate}} ">
-    <div style="border: 1px solid red; color : red;" *ngIf="minIphone">{{'phone number  must be have 12 charactere'|translate}}</div>
-
-  </div>
-
-
 </div>
+
+  <div class="row">
+    <div class="form-group col-md-6">
+      <label for="zipCode">{{'zipCode' | translate}}</label>
+      <input class="form-control" name="zipCode" #zipCode="ngModel" ngModel  [(ngModel)]="division.zipCode" 
+      placeholder="{{'Write your zip code'|translate}} "> 
+    </div>
+    
+  
+  
+    <div class="form-group col-md-6">
+      <label for="phone">{{'phoneNumber' | translate}}</label>
+      <input type="phone" class="form-control" name="phone"  (blur)="isBlur3()"   
+      #email="ngModel" ngModel [(ngModel)]="division.phone"
+      placeholder="{{'Write your phone'|translate}} ">
+      <div style="border: 1px solid red; color : red;" *ngIf="minIphone">{{'phone number  must be have 12 charactere'|translate}}</div>
+  
+    </div>
+  </div>
+  
+
+ 
+
+
