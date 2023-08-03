@@ -341,7 +341,7 @@
 "write your rate":"Inscrivez votre taxe",
 "write your Unit price Ht":"Inscrivez le prix Unitaire Ht",
 "write your payement term":"Inscrivez votre Terme de paiement",
-
+"Measurement":"Mesure",
 "products": "Produits",
 "Code must be not null":"Le code doit être non null",
 "Name must be not null":"Le nom doit être non nul",
@@ -445,7 +445,7 @@
 "nameship":"Nom de méthodes d'expédition",
 "Write your ship method code":"Ecrivez le code de méthodes d'expédition",
 "Write your ship method name":"Ecrivez le nom de méthodes d'expédition",
-
+"Write your ship name":"Ecrivez le nom de méthodes d'expédition",
 "Write your freight terms name":"Rédigez le nom de vos conditions de fret",
 "Réutiliser les informations de la Division":"Réutiliser les informations de la Division",
 "freighttermname":"Nom du terme de fret",

@@ -90,6 +90,7 @@ setvalue(){
     console.log("5==",this.cost)
     this.div=t
     console.log("4==",t)
+    this.affiche=true
   }
   selectVAlue2(e:any){
     console.log("3==",e.target.value)
@@ -114,6 +115,8 @@ setvalue(){
 
 
   geValues(event) {
+
+
     console.log(this.cost.facilityType)
     if(this.cost.facilityType=='Farm'){
       console.log("okk")

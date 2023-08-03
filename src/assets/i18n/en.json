@@ -329,6 +329,7 @@
 "vous devez remplir la mesure":"you must fill in the measure",
 "le mesure doit être compris entre 3 et 10 caractères":"Measurement must be between 3 and 10 characters",
 "Rédigez votre mesure":"write your measurement",
+"Measurement":"Measurement",
 "rédigez votre code de croissance":"write your Growout code",
 "écrivez le nom de de croissance":"write your Growout name",
 "écrire le code de votre devises":"write your currency code",
@@ -457,7 +458,8 @@
 "codeship":"Shipping method code",
 "nameship":"Shipping method name",
 "Write your ship method code":"Write your ship method code",
-"Write your ship method name":"Write your ship method name"
+"Write your ship method name":"Write your ship method name",
+"Write your ship name":"Write your ship method name"
 
 
 
