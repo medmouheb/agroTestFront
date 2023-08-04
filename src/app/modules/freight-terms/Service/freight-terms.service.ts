@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { FreightTerms } from '../models/freightterms';
 import { Page } from 'app/shared/models';
 import { Observable } from 'rxjs';
+import { environment } from "environments/environment";
 
 @Injectable({
   providedIn: 'root'
@@ -10,8 +11,8 @@ import { Observable } from 'rxjs';
 export class FreightTermsService {
   constructor(private http: HttpClient) { }
   baseUrl() {
-   // return `${environment.apiUrl}`;
-   return "http://localhost:8080" 
+   return `${environment.apiUrl}`;
+  //  return "http://localhost:8080" 
 
   }
   save(id: string | null, freightterms: FreightTerms): Observable<FreightTerms> {
