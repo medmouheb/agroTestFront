@@ -361,6 +361,23 @@ export const ROUTES: Categries[] = [
             
             ],
           },
+          {
+            label: "menu.Transport",
+            title: "Transport",
+            icon: "corporate_fare",
+            id: "Transport-dropdown",
+            class: "",
+            SubC: [
+              {
+                label: "menu.VehicleType",
+                title: "menu.VehicleType",
+                icon: "corporate_fare",
+                class: "",
+                path: "/vehicleType"
+              },
+            
+            ],
+          }
           
         
         ],

@@ -173,6 +173,13 @@ const routes: Routes = [
           ),
       },
       {
+        path: "vehicleType",
+        loadChildren: () =>
+          import("./modules/vehicle-type/vehicle-type.module").then(
+            (m) => m.VehicleTypeModule
+          ),
+      },
+      {
         path: "willaya",
         loadChildren: () =>
           import("./modules/willaya/willaya.module").then(
