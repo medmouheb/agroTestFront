@@ -358,17 +358,34 @@ export const ROUTES: Categries[] = [
                 path: "/Delivery",
 
               },
+              {
+                label: "menu.FreightTerms",
+                title: "menu.FreightTerms",
+                icon: "corporate_fare",
+                class: "",
+                path: "/freightterms",
+
+              },
             
             ],
           },
           {
-            label: "menu.Transport",
-            title: "Transport",
+            label: "menu.transport",
+            title: "transport",
             icon: "corporate_fare",
-            id: "Transport-dropdown",
+            id: "transport-dropdown",
+            //path:"/Delivery",
             class: "",
             SubC: [
               {
+                label: "menu.shipmethode",
+                title: "menu.shipmethode",
+                icon: "corporate_fare",
+                class: "",
+                path: "/shipmethode",
+
+              },
+               {
                 label: "menu.VehicleType",
                 title: "menu.VehicleType",
                 icon: "corporate_fare",
@@ -378,6 +395,7 @@ export const ROUTES: Categries[] = [
             
             ],
           }
+          
           
         
         ],

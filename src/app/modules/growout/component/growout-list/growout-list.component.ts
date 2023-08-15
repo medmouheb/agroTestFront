@@ -69,9 +69,10 @@ export class GrowoutListComponent implements OnInit {
       .findPage(this.pageNumber, this.pageSize, this.filter)
       .subscribe({
         next: (result) => {
-          console.log(result.content)
+          console.log("z;",result)
           this.growouts = result.content;
           this.growoutPage = result;
+          this.growoutPages = result;
         },
         error: (error) => {
           this.loading = false;

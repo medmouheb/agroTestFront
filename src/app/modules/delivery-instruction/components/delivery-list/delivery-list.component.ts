@@ -248,7 +248,7 @@ export class DeliveryListComponent implements OnInit {
     this.deliveryservice.disArchive(id).subscribe({
       next: () => {
         this.findArchivedPage();
-
+this.findPage()
         this.toastService.success(
           this.translateService.instant("success.restore", {
             elem: this.translateService.instant("delivery"),
@@ -265,6 +265,7 @@ export class DeliveryListComponent implements OnInit {
     this.deliveryservice.delete(id).subscribe({
       next: () => {
         this.findArchivedPage();
+        this.findPage()
         console.log("Success");
         this.toastService.success(
           this.translateService.instant("success.deleted", {

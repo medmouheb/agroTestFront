@@ -68,6 +68,16 @@ export class CostCenterFormInformationComponent implements OnInit {
     console.log("====================================");
   }
   div:any
+affiche:boolean=false
+
+setvalue(){
+  if (this.cost.division_Code==undefined ||this.cost.division_Code==""){
+    this.affiche=false
+  }else{
+    this.affiche=true
+  }
+}
+
   selectVAlue(e:any){
     console.log("3==",e.target.value)
     let t=this.divisions.filter(el=>{return el.code==e.target.value})[0]
@@ -80,6 +90,7 @@ export class CostCenterFormInformationComponent implements OnInit {
     console.log("5==",this.cost)
     this.div=t
     console.log("4==",t)
+    this.affiche=true
   }
   selectVAlue2(e:any){
     console.log("3==",e.target.value)
@@ -104,6 +115,8 @@ export class CostCenterFormInformationComponent implements OnInit {
 
 
   geValues(event) {
+
+
     console.log(this.cost.facilityType)
     if(this.cost.facilityType=='Farm'){
       console.log("okk")

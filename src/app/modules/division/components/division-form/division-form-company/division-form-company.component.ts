@@ -54,6 +54,7 @@ export class DivisionFormCompanyComponent implements OnInit {
       next: (result) => {this.divisions = result;console.log("2==",result)},
       error: (error) => console.error(error),
     });
+    this.getAllCompany();
   }
 
   getAllCompany() {

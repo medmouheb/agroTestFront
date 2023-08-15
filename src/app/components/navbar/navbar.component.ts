@@ -155,31 +155,36 @@ export class NavbarComponent implements OnInit {
     var titlee = this.location.prepareExternalUrl(this.location.path()).slice(2);
     switch(titlee){
       case "company": 
-      this.routes= ["GeneralSetups","Admin","company"]
+      this.routes= ["menu.general-Setups","Admin","menu.companies"]
       break;
       case "division": 
-      this.routes= ["GeneralSetups","Admin","division"]
+      this.routes= ["menu.general-Setups","Admin","menu.divisions"]
       break;
       case "growout": 
-      this.routes= ["GeneralSetups","Admin","growout"]
+      this.routes= ["menu.general-Setups","Admin","menu.growout"]
       break;
       case "costCenter": 
-      this.routes= ["GeneralSetups","Admin","costCenter"]
+      this.routes= ["menu.general-Setups","Admin","menu.costCenter"]
       break;
       case "country": 
-      this.routes= ["GeneralSetups","Admin","country"]
+      this.routes= ["menu.general-Setups","Admin","menu.country"]
       break;
       case "willaya": 
-      this.routes= ["GeneralSetups","Admin","willaya"]
+      this.routes= ["menu.general-Setups","Admin","willaya"]
       break;
       case "currency": 
-      this.routes= ["GeneralSetups","Admin","currency"]
+      this.routes= ["menu.general-Setups","Admin","currency"]
       break;
       case "tax": 
-      this.routes= ["GeneralSetups","Admin","tax"]
+      this.routes= ["menu.general-Setups","Admin","tax"]
       break;
-
-
+      case "Delivery": 
+      this.routes= ["menu.general-Setups","menu.Materialhandling","menu.Freightsetup","menu.DeliveryInstruction"]
+      break;
+      case "freightterms": 
+      this.routes= ["menu.general-Setups","menu.Materialhandling","menu.Freightsetup","menu.FreightTerms"];
+      case "shipmethode": 
+      this.routes= ["menu.general-Setups","menu.Materialhandling","menu.transport","menu.shipmethode"];
 
     }
   }

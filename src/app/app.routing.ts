@@ -124,6 +124,20 @@ const routes: Routes = [
             (m) => m.DeliveryInstructionModule
           ),
       },
+      {
+        path: "shipmethode",
+        loadChildren: () =>
+          import("./modules/ship-methods/ship-methods.module").then(
+            (m) => m.ShipMethodsModule
+          ),
+      },
+      {
+        path: "freightterms",
+        loadChildren: () =>
+          import("./modules/freight-terms/freight-terms.module").then(
+            (m) => m.FreightTermsModule
+          ),
+      },
 
       {
         path: "fournisseurs",
