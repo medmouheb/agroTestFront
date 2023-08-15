@@ -9,13 +9,15 @@ import { VehicleTypeRoutingModule } from './vehicle-type-routing.module';
 import { VehicleTypeListComponent } from './component/vehicle-type-list/vehicle-type-list.component';
 import { VehicleTypeFormComponent } from './component/vehicle-type-form/vehicle-type-form.component';
 import { VehicleTypeFormGeneraleComponent } from './component/vehicle-type-form/vehicle-type-form-generale/vehicle-type-form-generale.component';
+import { VehicleTypeFormDetailComponent } from './component/vehicle-type-form/vehicle-type-form-detail/vehicle-type-form-detail.component';
 
 
 @NgModule({
   declarations: [
     VehicleTypeListComponent,
     VehicleTypeFormComponent,
-    VehicleTypeFormGeneraleComponent
+    VehicleTypeFormGeneraleComponent,
+    VehicleTypeFormDetailComponent
   ],
   imports: [
     CommonModule,
