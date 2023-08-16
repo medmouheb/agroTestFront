@@ -386,8 +386,8 @@ export const ROUTES: Categries[] = [
 
               },
                {
-                label: "menu.VehicleType",
-                title: "menu.VehicleType",
+                label: "menu.vehicleType",
+                title: "menu.vehicleType",
                 icon: "corporate_fare",
                 class: "",
                 path: "/vehicleType"
