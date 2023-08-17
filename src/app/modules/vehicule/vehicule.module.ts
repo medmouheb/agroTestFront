@@ -6,6 +6,8 @@ import { VehiculeFormsComponent } from './components/vehicule-forms/vehicule-for
 import { VehiculeListComponent } from './components/vehicule-list/vehicule-list.component';
 import { VehiculeFormsGeneralComponent } from './components/vehicule-forms/vehicule-forms-general/vehicule-forms-general.component';
 import { VehiculeFormsInformationComponent } from './components/vehicule-forms/vehicule-forms-information/vehicule-forms-information.component';
+import { SharedModule } from 'app/shared/shared.module';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 @NgModule({
   declarations: [
@@ -14,6 +16,6 @@ import { VehiculeFormsInformationComponent } from './components/vehicule-forms/v
     VehiculeFormsGeneralComponent,
     VehiculeFormsInformationComponent
   ],
-  imports: [CommonModule, VehiculeRoutingModule],
+  imports: [CommonModule, VehiculeRoutingModule, SharedModule,MatSlideToggleModule],
 })
 export class VehiculeModule {}

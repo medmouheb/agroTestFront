@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Vehicule } from '../../models/vehicule';
 
 @Component({
   selector: 'app-vehicule-forms',
@@ -6,10 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./vehicule-forms.component.scss']
 })
 export class VehiculeFormsComponent implements OnInit {
+  @Input() camp!: Vehicule;
+  @Input() currentStep!: number;
+  wizardStep!: number;
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
+    this.wizardStep = 1;
   }
-
 }

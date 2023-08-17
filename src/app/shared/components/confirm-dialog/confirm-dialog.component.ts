@@ -25,6 +25,31 @@ export class ConfirmDialogComponent implements OnInit {
       }
     }
   }
+  showPermaDelete(confirm: any, cancel?: any) {
+    this.message = {
+      type: 'permadelete',
+      confirm,
+      cancel: () => {
+        this.message = null
+        if (cancel) {
+          cancel()
+        }
+      }
+    }
+  }
+
+  showDearchive(confirm: any, cancel?: any) {
+    this.message = {
+      type: 'dearchive',
+      confirm,
+      cancel: () => {
+        this.message = null
+        if (cancel) {
+          cancel()
+        }
+      }
+    }
+  }
 
   hide() {
     if (this.message.cancel) {

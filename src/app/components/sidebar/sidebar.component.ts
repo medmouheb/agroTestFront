@@ -117,6 +117,20 @@ export const ROUTES: Categries[] = [
             icon: "paid",
             class: "",
           },
+          {
+            label: "commande",
+            path: "/commandes",
+            title: "menu.commandes",
+            icon: "inventory_2",
+            class: "",
+          },
+          {
+            label: "charges",
+            path: "/charges",
+            title: "menu.charges",
+            icon: "person",
+            class: "",
+          },
 
         ],
       },
@@ -366,7 +380,7 @@ export const ROUTES: Categries[] = [
                 path: "/freightterms",
 
               },
-            
+
             ],
           },
           {
@@ -385,19 +399,27 @@ export const ROUTES: Categries[] = [
                 path: "/shipmethode",
 
               },
-               {
+              {
+                label: "menu.Vehicule",
+                title: "menu.Vehicule",
+                icon: "corporate_fare",
+                class: "",
+                path: "/vehicule",
+
+              },
+              {
                 label: "menu.vehicleType",
                 title: "menu.vehicleType",
                 icon: "corporate_fare",
                 class: "",
                 path: "/vehicleType"
               },
-            
+
             ],
           }
-          
-          
-        
+
+
+
         ],
       },
       {
@@ -469,6 +491,91 @@ export const ROUTES: Categries[] = [
             path: "/start",
             id: "AnimalProduct-dropdown",
           },
+        ],
+      },
+      {
+        label: "Places",
+        category: "Places",
+        icon: "place",
+        title: "menu.places",
+        id: "Places-dropdown",
+        subCategories: [
+
+          {
+            id: "dropdown-seaport",
+            label: "Ports",
+            title: "Ports",
+            icon: "Port",
+            class: "",
+            SubC: [{
+              label: "Airports",
+              path: "/airports",
+              title: "menu.airports",
+              icon: "flight",
+              class: "",
+            }, {
+              id: "dropdown-seaport",
+              label: "Seaports",
+              path: "/seaports",
+              title: "menu.seaports",
+              icon: "directions_boat",
+              class: "",
+            }
+
+            ]
+          },
+
+        ],
+      },
+      {
+        label: "Quality",
+        category: "Quality",
+        icon: "grade",
+        title: "menu.quality",
+        id: "Quality-dropdown",
+        subCategories: [
+
+
+          {
+            label: "Reason code",
+            path: "/reasons",
+            title: "menu.reason",
+            icon: "pin",
+            class: "",
+          },
+        ]
+      },
+      {
+        label: "Products",
+        category: "Products",
+        icon: "inventory",
+        title: "menu.products",
+        id: "Products-dropdown",
+        subCategories: [
+
+          {
+            id: "dropdown-definitions",
+            label: "definitions",
+            title: "menu.definitions",
+            icon: "note_alt",
+            class: "",
+            SubC: [{
+              label: "Manufacturers",
+              path: "/manufacturers",
+              title: "menu.manufacturer",
+              icon: "manufacturer",
+              class: "",
+            }, {
+              label: "productCat",
+              path: "/productcategories",
+              title: "menu.productCat",
+              icon: "category",
+              class: "",
+            }
+
+            ]
+          },
+
         ],
       },
       {
@@ -622,7 +729,7 @@ export const ROUTES: Categries[] = [
     icon: "corporate_fare",
     id: "18",
     SubCat: [
-    
+
       {
         label: "Agriculture",
         category: "Agriculture",
@@ -718,7 +825,7 @@ export const ROUTES: Categries[] = [
         id: "8",
         class: "",
       },
-      
+
     ],
   },
   {

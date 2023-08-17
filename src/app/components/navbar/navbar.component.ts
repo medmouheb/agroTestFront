@@ -181,6 +181,12 @@ export class NavbarComponent implements OnInit {
       case "Delivery": 
       this.routes= ["menu.general-Setups","menu.Materialhandling","menu.Freightsetup","menu.DeliveryInstruction"]
       break;
+      case "vehicule": 
+      this.routes= ["menu.general-Setups","menu.Materialhandling","menu.Freightsetup","menu.Vehicule"]
+      break;
+      case "vehicleType": 
+      this.routes= ["menu.general-Setups","menu.Materialhandling","menu.Freightsetup","menu.vehicleType"]
+      break;
       case "freightterms": 
       this.routes= ["menu.general-Setups","menu.Materialhandling","menu.Freightsetup","menu.FreightTerms"];
       case "shipmethode": 

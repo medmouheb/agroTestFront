@@ -87,8 +87,10 @@ const routes: Routes = [
         path: "growout/trash",
         component: TrashGComponent,
       },
-      {path:"fournisseurs/trash",
-    component:TrashFouComponent},
+      {
+        path: "fournisseurs/trash",
+        component: TrashFouComponent
+      },
       {
         path: "company",
         loadChildren: () =>
@@ -184,6 +186,13 @@ const routes: Routes = [
         loadChildren: () =>
           import("./modules/growout/growout.module").then(
             (m) => m.GrowoutModule
+          ),
+      },
+      {
+        path: "vehicule",
+        loadChildren: () =>
+          import("./modules/vehicule/vehicule.module").then(
+            (m) => m.VehiculeModule
           ),
       },
       {
@@ -342,14 +351,60 @@ const routes: Routes = [
             (m) => m.TreatmentModule
           ),
       },
+      {
+        path: "commandes",
+        loadChildren: () =>
+          import("./modules/commande/commande.module").then(
+            (m) => m.CommandeModule
+          ),
+      },
+
+      {
+        path: "charges",
+        loadChildren: () =>
+          import("./modules/charge/charge.module").then(
+            (m) => m.ChargeModule
+          ),
+      },
+
+      {
+        path: "airports",
+        loadChildren: () =>
+          import("./modules/airport/airport.module").then(
+            (m) => m.AirportModule)
+      },
+      {
+        path: "seaports",
+        loadChildren: () =>
+          import("./modules/seaport/seaport.module").then(
+            (m) => m.SeaportModule)
+      },
+      {
+        path: "reasons",
+        loadChildren: () =>
+          import("./modules/reason-code/reason-code.module").then(
+            (m) => m.ReasonCodeModule)
+      },
+      {
+        path: "manufacturers",
+        loadChildren: () =>
+          import("./modules/manufacturer/manufacturer.module").then(
+            (m) => m.ManufacturerModule)
+      },
+      {
+        path: "productcategories",
+        loadChildren: () =>
+          import("./modules/product-category/product-category.module").then(
+            (m) => m.ProductCategoryModule)
+      },
     ],
   },
 ];
 
 @NgModule({
   imports: [
- 
-  CommonModule,
+
+    CommonModule,
     BrowserModule,
     RouterModule.forRoot(routes, {
       useHash: true,
@@ -357,4 +412,4 @@ const routes: Routes = [
   ],
   exports: [],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
