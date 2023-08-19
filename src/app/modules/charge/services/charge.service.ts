@@ -12,8 +12,8 @@ export class ChargeService {
   constructor(private http: HttpClient) {}
 
   baseUrl() {
-    //return `${environment.apiUrl}`;
-    return "http://localhost:8080"
+    return `${environment.apiUrl}`;
+    // return "http://localhost:8080"
   }
 
   save(id: string | null, charge: Charge): Observable<Charge> {

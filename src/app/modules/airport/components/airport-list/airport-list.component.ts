@@ -45,6 +45,13 @@ export class AirportListComponent implements OnInit {
   airports: Array<airport> = [];
   airportName: string = "";
 
+  isChecked: boolean = false;
+
+
+  onCheckboxChange() {
+    window.location.href="/agrotechsolutions.pro#/airports/trash"
+  }
+
   constructor(
     private service: airportService,
     private translateService: TranslateService,

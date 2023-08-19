@@ -20,11 +20,11 @@ export class VehicleTypeFormGeneraleComponent implements OnInit {
 
   @ViewChild("addform")
   addform: FormGroup;
- 
+
   constructor(private sharedService: SharedService, private fb: FormBuilder, private vehicleTypeService: VehicleTypeService) { }
   codes: Array<String> = [];
   ngOnInit(): void {
-    console.log("this.camp ::",this.camp )
+    console.log("this.camp ::", this.camp)
 
     if (this.camp != null) {
       this.sharedService.setIsActive(false);
@@ -32,7 +32,7 @@ export class VehicleTypeFormGeneraleComponent implements OnInit {
         this.codes = data.map(el => { return el.vehicleTypeCode })
 
       })
-    }; 
+    };
 
     if (this.camp == undefined) { this.camp = { vehicleTypeName: "", vehicleTypeCode: "" } };
     this.initForm();
@@ -49,8 +49,8 @@ export class VehicleTypeFormGeneraleComponent implements OnInit {
           Validators.pattern(/^[a-zA-Z ]*$/),
         ],
       ],
-      productType:[""],
-      vehicleTypeName: ["",[
+      productType: [""],
+      vehicleTypeName: ["", [
         Validators.required
       ]],
       active: [false],
@@ -60,19 +60,29 @@ export class VehicleTypeFormGeneraleComponent implements OnInit {
     });
   }
 
+
+  minIstrueName: boolean = false
+
   minIstrueCode: boolean = false
   isBlur() {
-    if (this.camp.vehicleTypeCode == undefined) {
-      this.minIstrueCode = true
-    }
-    else if (this.camp.vehicleTypeCode.toString().length < 3) { this.minIstrueCode = true }
+   if (this.camp.vehicleTypeCode.toString().length < 3) { this.minIstrueCode = true }
     else {
       this.minIstrueCode = false
     }
+
+
+
   }
-  codetouched=false
-  codetouchedfn(){
-    this.codetouched=true
+
+  isBlur1() {
+    if (this.camp.vehicleTypeName.toString().length < 3) { this.minIstrueName = true }
+    else {
+      this.minIstrueName = false
+    }
+  }
+  codetouched = false
+  codetouchedfn() {
+    this.codetouched = true
   }
 
 
@@ -81,7 +91,7 @@ export class VehicleTypeFormGeneraleComponent implements OnInit {
 
 
   exist() {
-    if(this.codes.indexOf(this.camp.vehicleTypeCode.toString())!=-1){
+    if (this.codes.indexOf(this.camp.vehicleTypeCode.toString()) != -1) {
       this.dispotrueCode = true
 
 
@@ -90,17 +100,31 @@ export class VehicleTypeFormGeneraleComponent implements OnInit {
 
     }
 
-  
+
   }
-  
+
 
   geValues(event) {
     this.exist()
     this.isBlur()
-    console.log("ar:",this.codetouched)
+    // console.log("ar:",this.codetouched)
 
     if (
-      !this.dispotrueCode  &&  !this.minIstrueCode && this.codetouched
+      !(this.codes.indexOf(this.camp.vehicleTypeCode.toString()) != -1) && !(this.camp.vehicleTypeName.toString().length < 3) && !(this.camp.vehicleTypeCode.toString().length < 3)
+    ) {
+      this.sharedService.setIsActive(true);
+    } else {
+      this.sharedService.setIsActive(false);
+    }
+  }
+
+
+  geValues1(event) {
+    this.isBlur1()
+    // console.log("ar:",this.codetouched)
+
+    if (
+      !(this.codes.indexOf(this.camp.vehicleTypeCode.toString()) != -1) && !(this.camp.vehicleTypeName.toString().length < 3) && !(this.camp.vehicleTypeCode.toString().length < 3)
     ) {
       this.sharedService.setIsActive(true);
     } else {

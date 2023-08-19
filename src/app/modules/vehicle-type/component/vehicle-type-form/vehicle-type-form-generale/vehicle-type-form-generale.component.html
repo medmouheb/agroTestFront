@@ -14,7 +14,8 @@
         <label class="required" for="vehicleTypeName">{{ "vehicleTypeName" | translate }}</label>
         <input class="form-control" name="vehicleTypeName" [(ngModel)]="camp.vehicleTypeName"
             formControlName="vehicleTypeName" placeholder="{{'PLvehicleTypeName'|translate}} " required
-            aria-invalid="true" type="text" aria-describedby="code-error" (ngModelChange)="geValues($event)">
+            aria-invalid="true" type="text" aria-describedby="code-error" (ngModelChange)="geValues1($event)">
+            <div style=" color : red;" *ngIf="minIstrueName">{{'Name must be not null'|translate}}</div>
     </div>
 
 

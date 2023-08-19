@@ -67,6 +67,7 @@
     "companies": "Companies",
     "companies-list": "Companies list",
     "add-company": "Add New Company",
+
     "edit-company": "Edit a company",
     "country": "Country",
     "tax": "Tax",
@@ -281,6 +282,8 @@
   "biggermessage": "",
   "growoutcode": "Growout code",
   "growoutname": "Growout name",
+  "vehiclecode": "Code vehicle",
+  "vehiclename": "Nom vehicle",
   "growout": "Growout",
   "primaryWarehouse": "Primary warehouse",
   "farmerManagerCode": "Farm manager code",

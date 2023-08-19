@@ -15,7 +15,7 @@ export class FournisseursService {
     return `${environment.apiUrl}`;
   }
 
-  save(id: string | null, fournisseur: Fournisseur): Observable<Fournisseur> {
+  save(id: string | null, fournisseur: any): Observable<Fournisseur> {
     if (id) {
       return this.update(id, fournisseur);
     }

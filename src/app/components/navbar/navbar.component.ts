@@ -189,9 +189,13 @@ export class NavbarComponent implements OnInit {
       break;
       case "freightterms": 
       this.routes= ["menu.general-Setups","menu.Materialhandling","menu.Freightsetup","menu.FreightTerms"];
+      break;
       case "shipmethode": 
       this.routes= ["menu.general-Setups","menu.Materialhandling","menu.transport","menu.shipmethode"];
-
+      break;
+      case "fournisseurs": 
+      this.routes= ["menu.general-Setups","menu.Order-Mangment","menu.vendors"];
+      break;
     }
   }
 }

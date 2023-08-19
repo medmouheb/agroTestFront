@@ -48,6 +48,14 @@ export class TrashComponent implements OnInit {
     private service: airportService
   ) { }
 
+
+  isChecked: boolean = true;
+
+
+  onCheckboxChange() {
+    window.location.href="/agrotechsolutions.pro#/airports"
+  }
+
   ngOnInit(): void {
     this.getArchivedAirports()
 

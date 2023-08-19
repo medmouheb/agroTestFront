@@ -90,7 +90,7 @@ export class VehicleTypeListComponent implements OnInit {
     }, 100);
     setTimeout(()=>{
       this.formModal.show({
-        title: "menu.edit-growout",
+        title: "menu.add-vehicleType",
         stepsCount: this.steps.length - 1,
         confirm: () => this.onWizardSave(id),
         cancel: () => this.onCancel(),
@@ -285,7 +285,7 @@ export class VehicleTypeListComponent implements OnInit {
 
   onClickAdd() {
     this.formModal.show({
-      title: "menu.add-company",
+      title: "menu.add-vehicleType",
       stepsCount: this.steps.length - 1,
       confirm: () => this.onWizardSave(null),
       cancel: () => this.onCancel(),

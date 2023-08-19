@@ -1,15 +1,19 @@
 <div class="main-content">
+  <label class="pure-material-switch">
+    <input type="checkbox" [(ngModel)]="isChecked" (change)="onCheckboxChange()">
+    <span> {{'Go To Trash' | translate}}</span>
+  </label>
   <div class="d-flex flex-wrap justify-content-between align-items-center gap-2">
     <div class="d-flex gap-2">
-      <button class="btn btn-add btn-outline-success btn-sm btn-action" [title]="'btns.add'" (click)="onClickAdd()">
+      <button class="btn btn-add btn-outline-success btn-sm btn-action rounded-pill style-button" (click)="onClickAdd()"
+        [title]="'btns.add' | translate">
+
         <i class="fa fa-plus"></i>
-      </button>
-      <button class="btn btn-add btn-outline-success btn-sm btn-action" [title]="'btns.import'">
-        <i class="fa fa-upload"></i>
+        <span class="style-title"> {{'menu.add-sales'|translate}}</span>
+
       </button>
     </div>
 
-    <a routerLink="/airports/trash"><button class="btn btn-success pull-right">Go To Trash</button></a>
 
     <div class="form-group has-search">
       <span class="fa fa-search form-control-feedback"></span>

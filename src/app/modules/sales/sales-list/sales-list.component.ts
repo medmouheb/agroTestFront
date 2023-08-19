@@ -55,6 +55,7 @@ export class SalesListComponent implements OnInit {
   ngOnInit(): void {
     this.salesservice.findAll().subscribe((saless) => {
       this.saless = saless;
+      console.log("saless",saless)
     });
     this.findPage();
     this.onPaginationChange.subscribe(() => this.findPage());
@@ -66,6 +67,8 @@ export class SalesListComponent implements OnInit {
       .findPage(this.pageNumber, this.pageSize, this.filter)
       .subscribe({
         next: (result) => {
+          console.log("result",result)
+
           this.saless = result.content;
           this.salesPage = result;
         },

@@ -41,8 +41,12 @@ export class FournisseursListComponent implements OnInit {
   affiche:boolean = false;
   loading = false;
   fournisseurs: Array<Fournisseur> = [];
+  fournisseurss: Array<Fournisseur> = [];
+
   fournisseur: Fournisseur = {};
   fournisseursPage: Page<Fournisseur> = initPage;
+  fournisseursPages: Page<Fournisseur> = initPage;
+
   pageNumber = 0;
   pageSize = 10;
   filter = "";
@@ -80,6 +84,7 @@ export class FournisseursListComponent implements OnInit {
   }
   ngOnInit(): void {
     this.findPage();
+    this.findArchivedPage()
     this.onPaginationChange.subscribe(() => this.findPage());
   }
 
@@ -91,6 +96,25 @@ export class FournisseursListComponent implements OnInit {
         next: (result) => {
           this.fournisseurs = result.content;
           this.fournisseursPage = result;
+        },
+        error: (error) => {
+          this.loading = false;
+          console.error(error);
+        },
+        complete: () => (this.loading = false),
+      });
+  }
+
+
+  findArchivedPage() {
+    this.loading = true;
+    this.fournisseursService
+      .findArchivedPage(this.pageNumber, this.pageSize, this.filter)
+      .subscribe({
+        next: (result) => {
+          this.fournisseurss = result.content;
+          this.fournisseursPages = result;
+          console.log("7:",result)
         },
         error: (error) => {
           this.loading = false;
@@ -135,8 +159,8 @@ export class FournisseursListComponent implements OnInit {
       this.translateService.instant("message.loading..."),
       { id: "0" }
     );
-    console.log(this.fournisseur.currencycode)
-    this.fournisseursService.save(id, this.fournisseur!).subscribe({
+    console.log("this.fournisseur",this.fournisseur)
+    this.fournisseursService.save(id, {...this.fournisseur,vendorSKU:this.fournisseur.vendorSKU.id}).subscribe({
       next: () => {
         this.findPage();
         this.formModal.hide();
@@ -252,44 +276,52 @@ export class FournisseursListComponent implements OnInit {
     });
   }
 
-  onClickDelete(id: string) {
-    this.deleteModal.show(() => {
-      this.toastService.loading(
-        this.translateService.instant("message.loading..."),
-        {
-          id: "0",
-        }
-      );
-      this.fournisseursService.delete(id).subscribe({
-        next: () => {
-          this.findPage();
-          this.deleteModal.hide();
-          this.toastService.close("0");
-          this.onFilterChange("");
-          this.toastService.success(
-            this.translateService.instant("success.deleted", {
-              elem: this.translateService.instant("vendor"),
-            })
-          );
-        },
-        error: (error) => {
-          this.deleteModal.hide();
-          this.toastService.close("0");
-          this.toastService.error(
-            this.translateService.instant(error.error, {
-              elem: this.translateService.instant("vendor"),
-            })
-          );
-        },
-      });
+  
+  
+  onClickdisArchive(id: string) {
+    this.fournisseursService.disArchive(id).subscribe({
+      next: () => {
+        this.findArchivedPage();
+        this.findPage()
+        this.toastService.success(
+          this.translateService.instant("success.restore", {
+            elem: this.translateService.instant("menu.vendors"),
+          })
+        );
+        console.log(id);
+      },
     });
   }
+ 
+  
+  onClickDelete(id: string) {
+    console.log("88888",id)
+    this.fournisseursService.delete(id).subscribe({
+      next: () => {
+        this.findArchivedPage();
+        this.findPage();
+ 
+        console.log("Success");
+        this.toastService.success(
+          this.translateService.instant("success.deleted", {
+            elem: this.translateService.instant("menu.vendors"),
+          })
+        );
+      },
+    });
+  }
+
+
+
+
   onClickArchive(id: string) {
     console.log(id)
     this.archiveModal.show(() => {
       this.fournisseursService.archive(id).subscribe({
         next: () => {
           this.findPage();
+          this.findArchivedPage();
+
           this.archiveModal.hide();
           this.toastService.close("0");
           this.toastService.success(
@@ -311,6 +343,8 @@ export class FournisseursListComponent implements OnInit {
       });
     });
   }
+
+  
 
 
 

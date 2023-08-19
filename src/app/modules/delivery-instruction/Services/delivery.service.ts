@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Page } from 'app/shared/models';
 import { Observable } from 'rxjs';
 import { Delivery } from '../models/delivery';
+import { environment } from 'environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +12,8 @@ export class DeliveryService {
   constructor(private http: HttpClient) {}
 
   baseUrl() {
-   // return `${environment.apiUrl}`;
-   return "http://localhost:8080" 
+   return `${environment.apiUrl}`;
+  //  return "http://localhost:8080" 
   }
 
   save(id: string | null, delivery: Delivery): Observable<Delivery> {

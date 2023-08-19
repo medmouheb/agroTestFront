@@ -283,6 +283,8 @@
   "growout": "Croissance",
   "growoutcode": "Code Croissance",
   "growoutname": "Nom Croissance",
+  "vehiclecode": "Code vehicle",
+  "vehiclename": "Nom vehicle",
   "primaryWarehouse": "Entrepot primaire",
   "farmerManagerCode": "Code du gérant",
   "farmerManagerName": "Nom du gérant",

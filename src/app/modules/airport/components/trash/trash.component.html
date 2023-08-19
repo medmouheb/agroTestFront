@@ -1,7 +1,9 @@
 <div class="main-content">
 
-
-    <a routerLink="/airports"><button class="btn btn-success pull-right">Back to list</button></a>
+    <label class="pure-material-switch">
+        <input type="checkbox" [(ngModel)]="isChecked" (change)="onCheckboxChange()" >
+        <span > {{'Go To Trash' | translate}}</span>
+      </label>
 
     <div class="d-flex flex-wrap justify-content-between align-items-center gap-2">
 

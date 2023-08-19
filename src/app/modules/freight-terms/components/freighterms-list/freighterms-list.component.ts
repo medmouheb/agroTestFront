@@ -78,6 +78,23 @@ export class FreightermsListComponent implements OnInit {
        complete: () => (this.loading = false),
      });
  }
+ findArchivedPage() {
+  this.loading = true;
+  this.freighttermsservice
+    .findArchivedPage(this.pageNumber, this.pageSize, this.filter)
+    .subscribe({
+      next: (result) => {
+        this.freighttermss = result.content;
+        this.freighttermPages = result;
+      
+      },
+      error: (error) => {
+        this.loading = false;
+        console.error(error);
+      },
+      complete: () => (this.loading = false),
+    });
+}
 
  findById(id: string) {
    this.freighttermsservice.findById(id).subscribe({
@@ -243,23 +260,6 @@ export class FreightermsListComponent implements OnInit {
 
 
 
- findArchivedPage() {
-   this.loading = true;
-   this.freighttermsservice
-     .findArchivedPage(this.pageNumber, this.pageSize, this.filter)
-     .subscribe({
-       next: (result) => {
-         this.freighttermss = result.content;
-         this.freighttermPages = result;
-       
-       },
-       error: (error) => {
-         this.loading = false;
-         console.error(error);
-       },
-       complete: () => (this.loading = false),
-     });
- }
 
 
 
