@@ -196,6 +196,15 @@ export class NavbarComponent implements OnInit {
       case "fournisseurs": 
       this.routes= ["menu.general-Setups","menu.Order-Mangment","menu.vendors"];
       break;
+      case "airports": 
+      this.routes= ["menu.general-Setups","menu.places","Ports","menu.airports"];
+      break;
+      case "sales": 
+      this.routes= ["menu.general-Setups","menu.Order-Mangment","menu.sales"];
+      break;
+      case "warehouses": 
+      this.routes= ["menu.general-Setups","menu.facilities","menu.warehouses"];
+      break;
     }
   }
 }

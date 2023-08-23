@@ -1,5 +1,8 @@
 {
   "menu": {
+    "growout": "Growout",
+
+    "add-airports":"Add New Airport",
     "add-vehicule": "Add New Vehicule",
     "edit-costcenter": "Edit a Cost Center",
     "add-costcenter": "Add New Cost Center",
@@ -67,6 +70,7 @@
     "companies": "Companies",
     "companies-list": "Companies list",
     "add-company": "Add New Company",
+    "costCenter": "Cost center",
 
     "edit-company": "Edit a company",
     "country": "Country",

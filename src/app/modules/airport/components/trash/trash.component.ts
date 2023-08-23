@@ -118,70 +118,99 @@ export class TrashComponent implements OnInit {
 
 
 
-  onclickActivateModal(id: string) {
-    this.dearchivedModal.showDearchive(() => {
-      this.toastService.loading(
-        this.translateService.instant("message.loading..."),
-        {
-          id: "0",
-        }
-      );
-      this.service.ActivateAirport(id).subscribe({
-        next: () => {
-          this.getArchivedAirports()
-          this.dearchivedModal.hide();
-          this.toastService.close("0");
-          this.toastService.success(
-            this.translateService.instant("success.restore", {
-              elem: this.translateService.instant("airport"),
-            })
-          );
-        },
+  // onclickActivateModal(id: string) {
+  //   this.dearchivedModal.showDearchive(() => {
+  //     this.toastService.loading(
+  //       this.translateService.instant("message.loading..."),
+  //       {
+  //         id: "0",
+  //       }
+  //     );
+  //     this.service.ActivateAirport(id).subscribe({
+  //       next: () => {
+  //         this.getArchivedAirports()
+  //         this.dearchivedModal.hide();
+  //         this.toastService.close("0");
+  //         this.toastService.success(
+  //           this.translateService.instant("success.restore", {
+  //             elem: this.translateService.instant("airport"),
+  //           })
+  //         );
+  //       },
 
-        error: (error) => {
-          this.dearchivedModal.hide();
-          this.toastService.close("0");
-          this.toastService.error(
-            this.translateService.instant(error.error, {
-              elem: this.translateService.instant("airport"),
-            })
-          );
-        },
-      });
+  //       error: (error) => {
+  //         this.dearchivedModal.hide();
+  //         this.toastService.close("0");
+  //         this.toastService.error(
+  //           this.translateService.instant(error.error, {
+  //             elem: this.translateService.instant("airport"),
+  //           })
+  //         );
+  //       },
+  //     });
+  //   });
+  // }
+
+  onclickActivateModal(id: string) {
+    this.service.ActivateAirport(id).subscribe({
+      next: () => {
+        this.getArchivedAirports()
+        this.toastService.success(
+          this.translateService.instant("success.restore", {
+            elem: this.translateService.instant("menu.vendors"),
+          })
+        );
+        console.log(id);
+      },
     });
   }
 
   onclickDeletePerma(id: string) {
-    this.deletePermaModal.showPermaDelete(() => {
-      this.toastService.loading(
-        this.translateService.instant("message.loading..."),
-        {
-          id: "0",
-        }
-      );
-      this.service.delete(id).subscribe({
-        next: () => {
-          this.getArchivedAirports()
-          this.deletePermaModal.hide();
-          this.toastService.close("0");
-          this.toastService.success(
-            this.translateService.instant("success.permadeleted", {
-              elem: this.translateService.instant("airport"),
-            })
-          );
-        },
-        error: (error) => {
-          this.deleteModal.hide();
-          this.toastService.close("0");
-          this.toastService.error(
-            this.translateService.instant(error.error, {
-              elem: this.translateService.instant("airport"),
-            })
-          );
-        },
-      });
+    this.service.delete(id).subscribe({
+      next: () => {
+        this.getArchivedAirports()
+ 
+        console.log("Success");
+        this.toastService.success(
+          this.translateService.instant("success.deleted", {
+            elem: this.translateService.instant("menu.vendors"),
+          })
+        );
+      },
     });
   }
+
+  // onclickDeletePerma(id: string) {
+  //   this.deletePermaModal.showPermaDelete(() => {
+  //     this.toastService.loading(
+  //       this.translateService.instant("message.loading..."),
+  //       {
+  //         id: "0",
+  //       }
+  //     );
+  //     this.service.delete(id).subscribe({
+  //       next: () => {
+  //         this.getArchivedAirports()
+  //         this.deletePermaModal.hide();
+  //         this.toastService.close("0");
+  //         this.toastService.success(
+  //           this.translateService.instant("success.permadeleted", {
+  //             elem: this.translateService.instant("airport"),
+  //           })
+  //         );
+  //       },
+  //       error: (error) => {
+  //         this.deleteModal.hide();
+  //         this.toastService.close("0");
+  //         this.toastService.error(
+  //           this.translateService.instant(error.error, {
+  //             elem: this.translateService.instant("airport"),
+  //           })
+  //         );
+  //       },
+  //     });
+  //   });
+  // }
 
   searchByAirportName() {
     this.service.searchAirportByNameArchived(this.airportName).subscribe({

@@ -1,5 +1,6 @@
 {
   "menu": {
+    "add-airports":"Ajouter un nouvel aéroportt",
     "Transport": "Transport",
     "vehicleType": "Vehicle Type",
     "FreightTerms": "Conditions de fret",

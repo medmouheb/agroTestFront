@@ -28,36 +28,39 @@ export class SalesListComponent implements OnInit {
   pageSize = 10;
   sales: Sales = {};
   saless: Array<Sales> = [];
+  salesss: Array<Sales> = [];
   loading = false;
   salesPage: Page<Sales> = initPage;
+  salesPages: Page<Sales> = initPage;
   isChecked: boolean = false;
-  affiche:boolean = false;
+  affiche: boolean = false;
   onPaginationChange: EventEmitter<string> = new EventEmitter<string>();
 
   currentStep = 0;
-  steps: any = ["steps.general",  "currency"];
+  steps: any = ["steps.general", "currency"];
 
   constructor(
     private salesservice: SalesService,
     private translateService: TranslateService,
     private toastService: HotToastService
-  ) {}
+  ) { }
   onCheckboxChange() {
     console.log("La valeur de la case à cocher est : ", this.isChecked);
-    if (this.isChecked==false){
+    if (this.isChecked == false) {
 
-      this.affiche=false
+      this.affiche = false
     }
-    else{
-      this.affiche=true
+    else {
+      this.affiche = true
     }
   }
   ngOnInit(): void {
-    this.salesservice.findAll().subscribe((saless) => {
-      this.saless = saless;
-      console.log("saless",saless)
-    });
+    // this.salesservice.findAll().subscribe((saless) => {
+    //   this.saless = saless;
+    //   console.log("saless",saless)
+    // });
     this.findPage();
+    this.findArchivedPage();
     this.onPaginationChange.subscribe(() => this.findPage());
   }
 
@@ -67,10 +70,60 @@ export class SalesListComponent implements OnInit {
       .findPage(this.pageNumber, this.pageSize, this.filter)
       .subscribe({
         next: (result) => {
-          console.log("result",result)
+          console.log("findPage", result)
 
           this.saless = result.content;
           this.salesPage = result;
+        },
+        error: (error) => {
+          this.loading = false;
+          console.error(error);
+        },
+        complete: () => (this.loading = false),
+      });
+  }
+
+  onClickdisArchive(id: string) {
+    this.salesservice.disArchive(id).subscribe({
+      next: () => {
+        this.findPage();
+        this.findArchivedPage();
+        this.toastService.success(
+          this.translateService.instant("success.restore", {
+            elem: this.translateService.instant("sales"),
+          })
+        );
+        console.log(id);
+      },
+    });
+  }
+
+  onClickDelete(id: string) {
+    this.salesservice.delete(id).subscribe({
+      next: () => {
+        this.findPage();
+        this.findArchivedPage();
+        console.log("Success");
+        this.toastService.success(
+          this.translateService.instant("success.deleted", {
+            elem: this.translateService.instant("sales"),
+          })
+        );
+      },
+    });
+  }
+
+  findArchivedPage() {
+    this.loading = true;
+    this.salesservice
+      .findArchivedPage(this.pageNumber, this.pageSize, this.filter)
+      .subscribe({
+        next: (result) => {
+
+          console.log("findArchivedPage", result)
+
+          this.salesss = result.content;
+          this.salesPages = result;
         },
         error: (error) => {
           this.loading = false;
@@ -109,7 +162,7 @@ export class SalesListComponent implements OnInit {
     this.sales = {};
     this.currentStep = 0;
   }
-   estObjetVide(obj: object): boolean {
+  estObjetVide(obj: object): boolean {
     return Object.keys(obj).length === 0;
   }
   onSave(id: string | null) {
@@ -121,7 +174,7 @@ export class SalesListComponent implements OnInit {
       }
     );
     console.log(this.sales.currency)
-    if (this.estObjetVide(this.sales.currency)){
+    if (this.estObjetVide(this.sales.currency)) {
       this.toastService.error("you must select a currency ")
       return console.log("okk");
     }
@@ -177,47 +230,48 @@ export class SalesListComponent implements OnInit {
       stepsCount: this.steps.length - 1,
       confirm: () => this.onWizardSave(id),
       cancel: () => this.onCancel(),
-      prev: () => this.stepper.prevStep(), 
+      prev: () => this.stepper.prevStep(),
     });
   }
 
-  onClickDelete(id: string) {
-    this.deleteModal.show(() => {
-      this.toastService.loading(
-        this.translateService.instant("message.loading..."),
-        {
-          id: "0",
-        }
-      );
-      this.salesservice.delete(id).subscribe({
-        next: () => {
-          this.findPage();
-          this.deleteModal.hide();
-          this.toastService.close("0");
-          this.toastService.success(
-            this.translateService.instant("success.deleted", {
-              elem: this.translateService.instant("sales"),
-            })
-          );
-        },
-        error: (error) => {
-          this.deleteModal.hide();
-          this.toastService.close("0");
-          this.toastService.error(
-            this.translateService.instant(error.error, {
-              elem: this.translateService.instant("sales"),
-            })
-          );
-        },
-      });
-    });
-  }
+  // onClickDelete(id: string) {
+  //   this.deleteModal.show(() => {
+  //     this.toastService.loading(
+  //       this.translateService.instant("message.loading..."),
+  //       {
+  //         id: "0",
+  //       }
+  //     );
+  //     this.salesservice.delete(id).subscribe({
+  //       next: () => {
+  //         this.findPage();
+  //         this.deleteModal.hide();
+  //         this.toastService.close("0");
+  //         this.toastService.success(
+  //           this.translateService.instant("success.deleted", {
+  //             elem: this.translateService.instant("sales"),
+  //           })
+  //         );
+  //       },
+  //       error: (error) => {
+  //         this.deleteModal.hide();
+  //         this.toastService.close("0");
+  //         this.toastService.error(
+  //           this.translateService.instant(error.error, {
+  //             elem: this.translateService.instant("sales"),
+  //           })
+  //         );
+  //       },
+  //     });
+  //   });
+  // }
 
   onClickArchive(id: string) {
     this.archiveModal.show(() => {
       this.salesservice.archive(id).subscribe({
         next: () => {
           this.findPage();
+          this.findArchivedPage();
           this.archiveModal.hide();
           this.toastService.close("0");
           this.toastService.success(

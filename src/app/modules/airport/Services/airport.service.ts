@@ -11,18 +11,20 @@ import { environment } from "environments/environment";
 })
 export class airportService {
 
+  baseUrl() {
+    return `${environment.apiUrl}`;
+  }
 
-  baseUrl = 'http://localhost:8080';
 
   constructor(private http: HttpClient) { }
 
 
 
   getActiveAirports(): Observable<airport[]> {
-    return this.http.get<airport[]>(this.baseUrl + '/airport/active');
+    return this.http.get<airport[]>(this.baseUrl() + '/airport/active');
   }
   getArchivedAirports(): Observable<airport[]> {
-    return this.http.get<airport[]>(this.baseUrl + '/airport/archived');
+    return this.http.get<airport[]>(this.baseUrl() + '/airport/archived');
   }
 
   save(id: string | null, airport: airport): Observable<airport> {
@@ -32,41 +34,41 @@ export class airportService {
     return this.create(airport);
   }
   create(airport: airport): Observable<airport> {
-    let url = this.baseUrl + '/airport';
+    let url = this.baseUrl() + '/airport';
     return this.http.post<airport>(url, airport);
   }
 
   update(id: string, airport: airport): Observable<airport> {
-    let url = `${this.baseUrl}/airport/${id}`;
+    let url = `${this.baseUrl()}/airport/${id}`;
     return this.http.put<airport>(url, airport);
   }
   delete(id: string): Observable<boolean> {
-    let url = `${this.baseUrl}/airport/${id}`;
+    let url = `${this.baseUrl()}/airport/${id}`;
     return this.http.delete<boolean>(url);
   }
 
   findAirportById(id: string): Observable<airport> {
-    let url = `${this.baseUrl}/airport/${id}`;
+    let url = `${this.baseUrl()}/airport/${id}`;
     return this.http.get<airport>(url);
   }
 
   searchAirportByNameActive(airportName: string): Observable<airport[]> {
     const params = { airportName: airportName };
-    return this.http.get<airport[]>(this.baseUrl + "/airport/searchactive", { params });
+    return this.http.get<airport[]>(this.baseUrl() + "/airport/searchactive", { params });
   }
   searchAirportByNameArchived(airportName: string): Observable<airport[]> {
     const params = { airportName: airportName };
-    return this.http.get<airport[]>(this.baseUrl + "/airport/searcharchived", { params });
+    return this.http.get<airport[]>(this.baseUrl() + "/airport/searcharchived", { params });
   }
 
 
   deactivateAirport(id: string): Observable<void> {
-    const url = `${this.baseUrl}/airport/deactivate/${id}`;
+    const url = `${this.baseUrl()}/airport/deactivate/${id}`;
     return this.http.patch<void>(url, null);
   }
 
   ActivateAirport(id: string): Observable<void> {
-    const url = `${this.baseUrl}/airport/activate/${id}`;
+    const url = `${this.baseUrl()}/airport/activate/${id}`;
     return this.http.patch<void>(url, null);
   }
 
