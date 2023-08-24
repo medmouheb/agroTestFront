@@ -1,6 +1,9 @@
 {
   "menu": {
     "growout": "Growout",
+    "add-Logistic":"Add new Logistic Unite",
+    "logistic-Unit":"Logistic Unit",
+    "add-LogisticUnity":"add Logistic Unity",
 
     "add-airports":"Add New Airport",
     "add-vehicule": "Add New Vehicule",

@@ -1,7 +1,11 @@
 {
   "menu": {
+    "logistic-Unit":"Logistique Unité",
+
     "add-airports":"Ajouter un nouvel aéroportt",
     "Transport": "Transport",
+    "add-Logistic":"Ajouter une Logistique unité ",
+    "add-LogisticUnity":"Ajouter un nouveau Logistique Unité",
     "vehicleType": "Vehicle Type",
     "FreightTerms": "Conditions de fret",
     "transport": "Transport",

@@ -374,6 +374,13 @@ const routes: Routes = [
             (m) => m.AirportModule)
       },
       {
+        path: "logisticUnit",
+        loadChildren: () =>
+          import("./modules/logistic-unit/logistic-unit.module").then(
+            (m) => m.LogisticUnitModule
+          ),
+      },
+      {
         path: "seaports",
         loadChildren: () =>
           import("./modules/seaport/seaport.module").then(
