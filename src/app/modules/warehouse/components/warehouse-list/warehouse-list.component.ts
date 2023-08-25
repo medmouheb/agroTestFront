@@ -37,14 +37,18 @@ export class WarehouseListComponent implements OnInit {
   myForm: FormGroup;
   loading = false;
   warehouses: Array<Warehouse> = [];
+  warehousess: Array<Warehouse> = [];
+
   warehouse: Warehouse = {};
   warehousesPage: Page<Warehouse> = initPage;
+
   pageNumber = 0;
   pageSize = 10;
   filter = "";
   onPaginationChange: EventEmitter<string> = new EventEmitter<string>();
   file: File | null = null;
   Pagewarehouse: Page<Warehouse> = initPage;
+  Pagewarehouses: Page<Warehouse> = initPage;
   constructor(
     private warehouseService: WarehouseService,
     private translateService: TranslateService,
@@ -108,6 +112,7 @@ export class WarehouseListComponent implements OnInit {
         next: (result) => {
           this.warehouses = result.content;
           this.warehousesPage = result;
+          console.log('findPage',result)
         },
 
         error: (error) => {
@@ -342,8 +347,10 @@ export class WarehouseListComponent implements OnInit {
       .findArchivedPage(this.pageNumber, this.pageSize, this.filter)
       .subscribe({
         next: (result) => {
-          this.warehouses = result.content;
-          this.Pagewarehouse = result;
+          this.warehousess = result.content;
+          this.Pagewarehouses = result;
+          console.log('findArchivedPage',result)
+
         },
         error: (error) => {
           this.loading = false;

@@ -133,12 +133,12 @@ export class NavbarComponent implements OnInit {
   getTitle() {
     var titlee = this.location.prepareExternalUrl(this.location.path());
     var title = this.location.prepareExternalUrl;
-    console.log("aa::",this.listTitles)
-// console.log(title)
-//     console.log(titlee);
+    console.log("aa::", this.listTitles)
+    // console.log(title)
+    //     console.log(titlee);
     if (titlee.charAt(0) === "#") {
       titlee = titlee.slice(2);
-     // console.log(titlee);
+      // console.log(titlee);
     }
 
     for (var item = 0; item < this.listTitles.length; item++) {
@@ -149,62 +149,65 @@ export class NavbarComponent implements OnInit {
     return titlee;
   }
 
-  routes:String[]=[]
+  routes: String[] = []
 
-  getRoute(){
+  getRoute() {
     var titlee = this.location.prepareExternalUrl(this.location.path()).slice(2);
-    switch(titlee){
-      case "company": 
-      this.routes= ["menu.general-Setups","Admin","menu.companies"]
-      break;
-      case "division": 
-      this.routes= ["menu.general-Setups","Admin","menu.divisions"]
-      break;
-      case "growout": 
-      this.routes= ["menu.general-Setups","Admin","menu.growout"]
-      break;
-      case "costCenter": 
-      this.routes= ["menu.general-Setups","Admin","menu.costCenter"]
-      break;
-      case "country": 
-      this.routes= ["menu.general-Setups","Admin","menu.country"]
-      break;
-      case "willaya": 
-      this.routes= ["menu.general-Setups","Admin","willaya"]
-      break;
-      case "currency": 
-      this.routes= ["menu.general-Setups","Admin","currency"]
-      break;
-      case "tax": 
-      this.routes= ["menu.general-Setups","Admin","tax"]
-      break;
-      case "Delivery": 
-      this.routes= ["menu.general-Setups","menu.Materialhandling","menu.Freightsetup","menu.DeliveryInstruction"]
-      break;
-      case "vehicule": 
-      this.routes= ["menu.general-Setups","menu.Materialhandling","menu.Freightsetup","menu.Vehicule"]
-      break;
-      case "vehicleType": 
-      this.routes= ["menu.general-Setups","menu.Materialhandling","menu.Freightsetup","menu.vehicleType"]
-      break;
-      case "freightterms": 
-      this.routes= ["menu.general-Setups","menu.Materialhandling","menu.Freightsetup","menu.FreightTerms"];
-      break;
-      case "shipmethode": 
-      this.routes= ["menu.general-Setups","menu.Materialhandling","menu.transport","menu.shipmethode"];
-      break;
-      case "fournisseurs": 
-      this.routes= ["menu.general-Setups","menu.Order-Mangment","menu.vendors"];
-      break;
-      case "airports": 
-      this.routes= ["menu.general-Setups","menu.places","Ports","menu.airports"];
-      break;
-      case "sales": 
-      this.routes= ["menu.general-Setups","menu.Order-Mangment","menu.sales"];
-      break;
-      case "warehouses": 
-      this.routes= ["menu.general-Setups","menu.facilities","menu.warehouses"];
-      break;
+    switch (titlee) {
+      case "company":
+        this.routes = ["menu.general-Setups", "Admin", "menu.companies"]
+        break;
+      case "division":
+        this.routes = ["menu.general-Setups", "Admin", "menu.divisions"]
+        break;
+      case "growout":
+        this.routes = ["menu.general-Setups", "Admin", "menu.growout"]
+        break;
+      case "costCenter":
+        this.routes = ["menu.general-Setups", "Admin", "menu.costCenter"]
+        break;
+      case "country":
+        this.routes = ["menu.general-Setups", "Admin", "menu.country"]
+        break;
+      case "willaya":
+        this.routes = ["menu.general-Setups", "Admin", "willaya"]
+        break;
+      case "currency":
+        this.routes = ["menu.general-Setups", "Admin", "currency"]
+        break;
+      case "tax":
+        this.routes = ["menu.general-Setups", "Admin", "tax"]
+        break;
+      case "Delivery":
+        this.routes = ["menu.general-Setups", "menu.Materialhandling", "menu.Freightsetup", "menu.DeliveryInstruction"]
+        break;
+      case "vehicule":
+        this.routes = ["menu.general-Setups", "menu.Materialhandling", "menu.Freightsetup", "menu.Vehicule"]
+        break;
+      case "vehicleType":
+        this.routes = ["menu.general-Setups", "menu.Materialhandling", "menu.Freightsetup", "menu.vehicleType"]
+        break;
+      case "freightterms":
+        this.routes = ["menu.general-Setups", "menu.Materialhandling", "menu.Freightsetup", "menu.FreightTerms"];
+        break;
+      case "shipmethode":
+        this.routes = ["menu.general-Setups", "menu.Materialhandling", "menu.transport", "menu.shipmethode"];
+        break;
+      case "fournisseurs":
+        this.routes = ["menu.general-Setups", "menu.Order-Mangment", "menu.vendors"];
+        break;
+      case "airports":
+        this.routes = ["menu.general-Setups", "menu.places", "Ports", "menu.airports"];
+        break;
+      case "sales":
+        this.routes = ["menu.general-Setups", "menu.Order-Mangment", "menu.sales"];
+        break;
+      case "warehouses":
+        this.routes = ["menu.general-Setups", "menu.facilities", "menu.warehouses"];
+        break;
+      case "logisticUnit":
+        this.routes = ["menu.general-Setups", "menu.Logistic", "menu.logistic-Unit"];
+        break;
     }
   }
 }

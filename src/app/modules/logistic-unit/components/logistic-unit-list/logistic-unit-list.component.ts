@@ -32,6 +32,8 @@ export class LogisticUnitListComponent implements OnInit {
   companyss: Array<LogisticUnit> = [];
   loading = false;
   companyPage: Page<LogisticUnit> = initPage;
+  companyPages: Page<LogisticUnit> = initPage;
+
   isChecked: boolean = false;
   affiche:boolean = false;
   onPaginationChange: EventEmitter<string> = new EventEmitter<string>();
@@ -85,6 +87,7 @@ export class LogisticUnitListComponent implements OnInit {
           console.log("aze",result.content)
           this.companys = result.content;
           this.companyPage = result;
+
         },
         error: (error) => {
           this.loading = false;
@@ -318,6 +321,8 @@ this.findPage()
       .subscribe({
         next: (result) => {
           this.companyss = result.content;
+          this.companyPages = result;
+
         },
         error: (error) => {
           this.loading = false;

@@ -117,60 +117,60 @@ export const ROUTES: Categries[] = [
             icon: "paid",
             class: "",
           },
-          {
-            label:"commande",
-            path: "/commandes",
-            title: "menu.commandes",
-            icon: "inventory_2",
-            class: "",
-          },
-          {
-            label: "charges",
-             path: "/charges",
-             title: "menu.charges",
-             icon: "person",
-             class: "",
-           },
+          // {
+          //   label:"commande",
+          //   path: "/commandes",
+          //   title: "menu.commandes",
+          //   icon: "inventory_2",
+          //   class: "",
+          // },
+          // {
+          //   label: "charges",
+          //    path: "/charges",
+          //    title: "menu.charges",
+          //    icon: "person",
+          //    class: "",
+          //  },
            
 
         ],
       },
-      {
-        label: "Places",
-        category: "Places",
-        icon: "place",
-        title: "menu.places",
-        id: "Places-dropdown",
-        subCategories: [
+      // {
+      //   label: "Places",
+      //   category: "Places",
+      //   icon: "place",
+      //   title: "menu.places",
+      //   id: "Places-dropdown",
+      //   subCategories: [
 
-          {
-            id: "Ports-dropdown",
-            label: "Ports",
-            title: "Ports",
-            icon: "Port",
-            class: "",
-            SubC: [{
-              label: "Airports",
-              path: "/airports",
-              title: "menu.airports",
-              icon: "flight",
-              class: "",
-              id:"Ports-dropdown"
-            }
-            // , {
-            //   id: "dropdown-seaport",
-            //   label: "Seaports",
-            //   path: "/seaports",
-            //   title: "menu.seaports",
-            //   icon: "directions_boat",
-            //   class: "",
-            // }
+      //     {
+      //       id: "Ports-dropdown",
+      //       label: "Ports",
+      //       title: "Ports",
+      //       icon: "Port",
+      //       class: "",
+      //       SubC: [{
+      //         label: "Airports",
+      //         path: "/airports",
+      //         title: "menu.airports",
+      //         icon: "flight",
+      //         class: "",
+      //         id:"Ports-dropdown"
+      //       }
+      //       // , {
+      //       //   id: "dropdown-seaport",
+      //       //   label: "Seaports",
+      //       //   path: "/seaports",
+      //       //   title: "menu.seaports",
+      //       //   icon: "directions_boat",
+      //       //   class: "",
+      //       // }
 
-            ]
-          },
+      //       ]
+      //     },
 
-        ],
-      },
+      //   ],
+      // },
       // {
       //   label: "Quality",
       //   category: "Quality",
@@ -629,6 +629,13 @@ export const ROUTES: Categries[] = [
                 icon: "corporate_fare",
                 class: "",
                 path: "/start",
+              },
+              {
+                label: "menu.logistic-Unit",
+                path: "/logisticUnit",
+                title: "menu.logistic-Unit",
+                icon: "corporate_fare",
+                class: "",
               },
             ],
           },
