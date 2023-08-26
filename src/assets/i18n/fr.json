@@ -1,7 +1,13 @@
 {
   "menu": {
     "logistic-Unit":"Logistique Unité",
-
+    "add-Drivers":"Ajouter un Chauffeur",
+    "edit-Drivers":"Modifier un chauffeur",
+    "Drivers":"Chauffeur",
+    "Vehicles":"Vehicules",
+    "Inventaireinitial":"Inventaire Initial",
+    "add-Vehicles":"Ajouter une Véhicules",
+    "edit-Vehicles":"Modifier la Véhicules",
     "add-airports":"Ajouter un nouvel aéroportt",
     "Transport": "Transport",
     "add-Logistic":"Ajouter une Logistique unité ",

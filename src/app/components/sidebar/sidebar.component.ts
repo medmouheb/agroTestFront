@@ -612,6 +612,13 @@ export const ROUTES: Categries[] = [
             ],
           },
           {
+            label: "menu.Drivers",
+            title: "Drivers",
+            icon: "corporate_fare",
+            path:"/drivers",
+            class: "",
+            },
+          {
             label: "menu.Driver",
             title: "Driver",
             icon: "corporate_fare",
@@ -629,6 +636,13 @@ export const ROUTES: Categries[] = [
                 icon: "corporate_fare",
                 class: "",
                 path: "/start",
+              },
+              {
+                path:"/vehicles",
+                label: "menu.Vehicles",
+                title: "menu.Vehicles",
+                icon: "corporate_fare",
+                class: "",
               },
               {
                 label: "menu.logistic-Unit",

@@ -1,5 +1,14 @@
 {
   "menu": {
+    "add-Drivers":"Add new Driver",
+    "edit-Drivers":"Edit a Driver",
+    "Drivers":"Driver",
+    "Inventaireinitial":"Initial inventory",
+    "Vehicles":"Vehicles",
+
+    "add-Vehicles":"Add new Vehicles",
+    "edit-Vehicles":"Edit a Vehicles",
+    
     "growout": "Growout",
     "add-Logistic":"Add new Logistic Unite",
     "logistic-Unit":"Logistic Unit",

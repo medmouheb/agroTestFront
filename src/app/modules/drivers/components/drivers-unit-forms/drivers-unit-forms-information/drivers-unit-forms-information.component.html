@@ -1,0 +1,45 @@
+
+
+
+<div class="row">
+    <div class="form-group col-md-6">
+      <label for="typeDeDriver">{{ "typeDeDriver" | translate }}</label>
+      <select class="form-control" name="typeDeDriver" #typeDeDriver="ngModel" ngModel [(ngModel)]="camp.typeDeDriver">
+        <option value="Poids lourd" >Poids lourd</option>
+        <option value="Véhicule léger" >Véhicule léger</option>
+        <option value="Machines agricoles" >Machines agricoles</option>
+    </select>
+    </div>
+  
+    <div class="form-group col-md-6">
+      <label for="division">{{ "division" | translate }}</label>
+      <select class="form-control" name="division" [(ngModel)]="selectedDivisionCompanyName">
+        <option *ngFor="let name of divisionCompanyNames" [value]="name">{{ name }}</option>
+      </select>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="nombreMaximumHeureTravailles">{{ "nombreMaximumHeureTravailles" | translate }}</label>
+      <input type="number" class="form-control" name="nombreMaximumHeureTravailles" #nombreMaximumHeureTravailles="ngModel" ngModel [(ngModel)]="camp.nombreMaximumHeureTravailles"
+      placeholder="{{'Write your nombreMaximumHeureTravailles'|translate}} "/>
+    </div>
+    
+
+      <div class="form-group col-md-6">
+        <label for="DriverLicenceExpiration">{{ "DriverLicenceExpiration" | translate }}</label>
+        <input type="date" class="form-control" name="DriverLicenceExpiration" #DriverLicenceExpiration="ngModel" ngModel [(ngModel)]="camp.DriverLicenceExpiration"
+          placeholder="{{'Write your DriverLicenceExpiration'|translate}} "/>
+     
+      </div>
+    
+      <div class="form-group col-md-6">
+        <label for="coutHoraire">{{ "coutHoraire" | translate }}</label>
+        <input type="number" class="form-control" name="coutHoraire" #coutHoraire="ngModel" ngModel [(ngModel)]="camp.coutHoraire"
+          placeholder="{{'Write your coutHoraire'|translate}} "/>
+      </div>
+
+      <div class="form-group col-md-6">
+        <label for="driverLicense">{{ "driverLicense" | translate }}</label>
+        <input type="file" class="form-control" name="driverLicense" #driverLicense="ngModel" ngModel [(ngModel)]="camp.driverLicense"
+          placeholder="{{'Write your driverLicense'|translate}} "/>
+  
+  </div>

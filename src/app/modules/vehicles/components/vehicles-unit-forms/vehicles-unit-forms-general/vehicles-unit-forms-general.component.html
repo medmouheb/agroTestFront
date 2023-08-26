@@ -1,0 +1,21 @@
+<div class="row" [formGroup]="addform">
+
+    <div class="form-group col-md-6">
+        <label class="required" for="codeVehicule">{{ "codeVehicule" | translate }}</label>
+        <input (blur)="isBlur();exist();blur1()" class="form-control" name="codeVehicule" [(ngModel)]="camp.codeVehicule" formControlName="codeVehicule" placeholder="{{'Write your  codeVehicule'|translate}} "
+            required aria-invalid="true" type="number" aria-describedby="code-error" (ngModelChange)="geValues($event)">
+
+            <div style=" color : red;" *ngIf="dispotrueCode">{{'codeVehicule Code must be unique'|translate}}</div>
+            <div style=" color : red;" *ngIf="minIstrueCode">{{'codeVehicule Code must be not null'|translate}}</div>
+    </div>
+
+    <div class="form-group col-md-6 ">
+        <label class="required" for="nomDuVehicule"> {{ "nomDuVehicule" | translate }} </label>
+        <input (blur)="isBlur1();existname();exist1()"  class="form-control" name="nomDuVehicule" formControlName="nomDuVehicule" [(ngModel)]="camp.nomDuVehicule"  placeholder="{{'Write your nomDuVehicule'|translate}} "
+            required aria-invalid="true" aria-describedby="name-error" (ngModelChange)="geValues($event)">
+        <div style=" color : red;" *ngIf="minIstrueName">{{'nomDuVehicule must be not null'|translate}} </div> 
+
+        <div style=" color : red;" *ngIf="dispotruename">{{'nomDuVehicule must be unique'|translate}}</div>
+        <!-- <div style=" color : black;" *ngIf="dispotruename">{{newSeggestions}}</div> -->
+
+</div>
