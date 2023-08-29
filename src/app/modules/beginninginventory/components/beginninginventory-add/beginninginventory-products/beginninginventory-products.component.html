@@ -1,0 +1,60 @@
+
+<div class="row">
+    <div class="form-group col-md-6">
+      <label for="codeDeTransaction">{{ "codeDeTransaction" | translate }}</label>
+      <select class="form-control" name="codeDeTransaction" #codeDeTransaction="ngModel" ngModel [(ngModel)]="camp.codeDeTransaction">
+        <option value="FieldsProducts">FieldsProducts</option>
+        <option value="Medication">Medication</option>
+        <option value="Semen">Semen</option>
+        <option value="Vaccinations">Vaccinations</option>
+    </select>
+    </div>
+  
+    <div class="form-group col-md-6">
+      <label for="uniteDinventaire">{{ "uniteDinventaire" | translate }}</label>
+      <input  class="form-control" name="uniteDinventaire" #uniteDinventaire="ngModel" ngModel [(ngModel)]="camp.uniteDinventaire"
+      placeholder="{{'Write your uniteDinventaire'|translate}} "/>
+    </div>
+    
+
+      <div class="form-group col-md-6">
+        <label for="prixUnitaire">{{ "prixUnitaire" | translate }}</label>
+        <input type="number" class="form-control" name="prixUnitaire" #prixUnitaire="ngModel" ngModel [(ngModel)]="camp.prixUnitaire"
+          placeholder="{{'Write your prixUnitaire'|translate}} "/>
+     
+      </div>
+    
+      <div class="form-group col-md-6">
+        <label for="codeDeLot">{{ "codeDeLot" | translate }}</label>
+        <input type="number" class="form-control" name="codeDeLot" #codeDeLot="ngModel" ngModel [(ngModel)]="camp.codeDeLot"
+          placeholder="{{'Write your codeDeLot'|translate}} "/>
+      </div>
+
+      <div class="form-group col-md-6">
+        <label for="codeDeLocalisation">{{ "codeDeLocalisation" | translate }}</label>
+        <input type="number" class="form-control" name="codeDeLocalisation" #codeDeLocalisation="ngModel" ngModel [(ngModel)]="camp.codeDeLocalisation"
+          placeholder="{{'Write your codeDeLocalisation'|translate}} "/>
+      </div>
+            
+      <div class="form-group col-md-6">
+        <label for="codeDeReference">{{ "codeDeReference" | translate }}</label>
+        <input type="number" class="form-control" name="codeDeReference" #codeDeReference="ngModel" ngModel [(ngModel)]="camp.codeDeReference"
+          placeholder="{{'Write your codeDeReference'|translate}} "/>
+      </div>
+
+      <div class="form-group col-md-6">
+        <label for="commentaire">{{ "commentaire" | translate }}</label>
+        <input  class="form-control" name="commentaire" #commentaire="ngModel" ngModel [(ngModel)]="camp.commentaire"
+          placeholder="{{'Write your commentaire'|translate}} "/>
+      </div>
+
+      <div class="form-group col-md-6">
+        <label for="Vide">{{ "Vide" | translate }}</label>
+        <input type="checkbox"
+               class="form-control custom-checkbox"
+               name="Vide"
+               #Vide="ngModel"
+               ngModel [(ngModel)]="camp.Vide"
+               placeholder="{{ 'Write your Vide' | translate }}"/>
+      </div>
+  </div>

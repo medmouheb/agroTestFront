@@ -50,10 +50,13 @@ export class FarmsListComponent implements OnInit {
   farms: Array<Farm> = [];
   farm: Farm = {};
   farmsPage: Page<Farm> = initPage;
+  companyss: Array<Farm> = [];
   pageNumber = 0;
   pageSize = 10;
   filter = "";
   onPaginationChange: EventEmitter<string> = new EventEmitter<string>();
+  isChecked: boolean = false;
+  affiche:boolean = false;
 
   constructor(
     private farmsService: FarmsService,
@@ -63,6 +66,7 @@ export class FarmsListComponent implements OnInit {
 
   ngOnInit(): void {
     this.findPage();
+    this.findArchivedPage()
     this.onPaginationChange.subscribe(() => this.findPage());
   }
 
@@ -81,6 +85,17 @@ export class FarmsListComponent implements OnInit {
         },
         complete: () => (this.loading = false),
       });
+  }
+
+  onCheckboxChange() {
+    console.log("La valeur de la case à cocher est : ", this.isChecked);
+    if (this.isChecked==false){
+
+      this.affiche=false
+    }
+    else{
+      this.affiche=true
+    }
   }
 
   findById(id: string) {
@@ -206,6 +221,23 @@ export class FarmsListComponent implements OnInit {
         },
       });
     });
+  }
+
+  
+  findArchivedPage() {
+    this.loading = true;
+    this.farmsService
+      .findArchivedPage(this.pageNumber, this.pageSize, this.filter)
+      .subscribe({
+        next: (result) => {
+          this.companyss= result.content;
+        },
+        error: (error) => {
+          this.loading = false;
+          console.error(error);
+        },
+        complete: () => (this.loading = false),
+      });
   }
 
   onClickArchive(id: string) {

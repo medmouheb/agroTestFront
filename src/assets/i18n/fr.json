@@ -1,5 +1,15 @@
 {
   "menu": {
+
+"Initialinventory":"Inventaire Initial",
+    "Farms":"ferme",
+    "Agriculture":"Agriculture",
+    "beginninginventories":"Inventaire Initial",
+    "add-farms":"Ajouter Ferme",
+    "add-BeginningInventaire":"Ajouter un nouveau inventaire initial",
+    "edit-BeginningInventaire":"Modifier l'inventaire initial",
+
+
     "logistic-Unit":"Logistique Unité",
     "add-Drivers":"Ajouter un Chauffeur",
     "edit-Drivers":"Modifier un chauffeur",
@@ -199,7 +209,9 @@
     "paiement": "Informations sur le paiement",
     "Distance": "Distance",
     "contract": "Fermes contractuelles",
-    "visitors": "Journal des visiteurs"
+    "visitors": "Journal des visiteurs",
+    "facility-details": "Détails de l'installation",
+  "bin-details": "Détails de la benne"
   },
   "success": {
     "restore": "{{elem}} Restauré avec succès",
@@ -564,5 +576,130 @@
   "category name": "Nom de la catégorie du produit",
   "Code productCat": "Code de la catégorie du produit",
   "Nom productCat": "Nom de la catégorie du produit",
-  "productCat type": "Type de la catégorie du produit"
+  "productCat type": "Type de la catégorie du produit",
+
+
+
+
+  "nameVehicule":"Nom de vehicule",
+
+  
+  
+    "Breed Code must be unique": "Le code de race doit être unique",
+    "Breed Code must be not null": "Le code de race ne doit pas être vide",
+    "Breed Code Name must be not null": "Le nom du code de race ne doit pas être vide",
+    "Breed Code Name must be unique": "Le nom du code de race doit être unique",
+    "Write your Product Type": "Indiquez votre type de produit",
+    "Write your Breed Type Code": "Indiquez votre code de type de race",
+    "Write your Male Ratio": "Indiquez votre ratio de mâles",
+    "Write your POL": "Indiquez votre âge au début de la production d'œufs (POL)",
+    "Write your Saleability": "Indiquez votre capacité à être vendu",
+    "Write your Egg Allocation": "Indiquez votre allocation d'œufs",
+    "Write your Notes": "Écrivez vos notes",
+    
+    "Search by Breed Code Name": "Recherche par nom de code de race",
+    "Breed Code": "Code de race",
+    "Breed Code Name": "Nom du code de race",
+    "speciesType": "Type d'espèce",
+    "primarySex": "Sexe principal",
+    "breedTypeCode": "Code de type de race",
+    "placement": "Placement",
+    
+    
+  "maleRatio": "Ratio de mâles",
+  "pOL": "Âge au début de la production d'œufs (POL)",
+  "saleability": "Capacité à être vendu",
+  "eggAllocation": "Allocation d'œufs",
+  "breedCode": "Code de race",
+  "breedCodeName": "Nom du code de race",
+
+  "Write your breedCodeName":"Ecrire le Nom du code de race",
+
+
+
+  "Search by logisticName":"Rechercher par Logistic Nom",
+  "logistic Code must be unique": "Le code Logistique doit être unique",
+  "logistic Code must be not null": "Le code logistique ne doit pas être vide",
+  "Logistic Name Name must be not null": "Le nom logistique ne doit pas être vide",
+  "Logistic Name Name must be unique": "Le nom logistique doit être unique",
+  "companyName": "Nom de Campanie",
+  "Logistic Code":"Logistique Code",
+  "Logistic Name":"Logistique Nom",
+  "logisticName": "Logistique Nom",
+  "logisticCode": "Logistique Code",
+  "Write your  logisticCode":"Ecrire le Code Logistique",
+  "Write your logisticName":"Ecrire le Nom Logistique ",
+  "Search by vehiclesName":"Recherche avec Nom Vehicules",
+  "Code Vehicles": "Code Vehicules",
+  "Nom Veshicle":"Nom Vehicles",
+  "Search by Drivers":"Chercher par Nom chauffeur",
+  "Code Employe":"Code Employee",
+  "Nom Chauffeur":"Nom Chauffeur",
+  "typeDeProduit":"Type de Produit",
+  "codeProduit":"Code Produit",
+  "nomDuProduit":"Nom du Produit",
+  "uniteDinventaire":"Unite d'Inventaire ",
+  "prixUnitaire":" Prix Unitaire",
+  "codeDeLocalisation":"Code de Localisation",
+  "transactionCode":"Transaction Code",
+  "dateDeEvenement":"Date de Evenement",
+  "dateExpiration":"Date Expiration",
+  "temps":"Temps",
+  "codeDeReference":"Code de Reference",
+  "commentaire":"Commentaire",
+  "Vide":"Vide",
+
+  "Search by BeginningInventaire":"Rechercher par Inventaire Initial",
+  "Code Produit":"Code Produit :",
+  "Nom du produit":"Nom du Produit ",
+  "Write your temps":"Entrez votre Heure ",
+  "Write your Expiration":"Entrez votre Date d'Expiration ",
+  "Write your dateDeEvenement":"Entrez la Date de l'Événement ",
+  "Write your codeDeTransaction":"Entrez le Code de Transaction ",
+  "codeDeTransaction":"Code de Transaction ",
+  "codeDeLot":"Code de Lot ",
+  "Expiration":"Expiration ",
+  "Write your uniteDinventaire":"Entrez l'Unité d'Inventaire ",
+  "Write your prixUnitaire":"Entrez le Prix Unitaire ",
+  "Write your codeDeLot":"Entrez le Code de Lot ",
+  "Write your codeDeLocalisation":"Entrez le Code de Localisation ",
+  "Write your codeDeReference":"Entrez le Code de Référence ",
+  "Write your commentaire":"Entrez votre Commentaire ",
+  "Write your vide":"Entrez un Champ Vide ",
+  "codeProduit Beginning must be unique":"Le code produit doit être unique ",
+  
+  "codeProduit Beginning must be not null":"Le code produit ne doit pas être vide ",
+  "nomDuProduit Beginning Name must be not null":"Le nom du produit ne doit pas être vide ",
+  "nomDuProduit Beginning Name must be unique":"Le nom du produit doit être unique ",
+  "Write your codeProduit":"Ecrire Code Produit",
+  "Write your nomDuProduit":"Ecrire your Name Produit ",
+
+  "vehiculeCodev": "Code du véhicule",
+  "vehiculeNamev": "Nom du véhicule",
+  "vehiculeCodev must be unique": "Le code du véhicule doit être unique",
+  "vehiculeCodev must be not null": "Le code du véhicule ne doit pas être vide",
+  "vehiculeNamev must be not null": "Le nom du véhicule ne doit pas être vide",
+  "vehiculeNamev must be unique": "Le nom du véhicule doit être unique",
+  "facilitytypev must be not null": "Le type d'installation ne doit pas être vide",
+  "measurementTypev must be not null": "Le type de mesure ne doit pas être vide",
+  "Write your Vehicule code": "Entrez le code de votre véhicule",
+  "Write your Vehicule name": "Entrez le nom de votre véhicule",
+  "Write your Vehicule facilitytype": "Entrez le type d'installation de votre véhicule",
+  "Write your Vehicule measurementType": "Entrez le type de mesure de votre véhicule",
+  "yardBuggy": "Chariot de cour",
+  "bioSecurityLevelCode": "Code de niveau de biosécurité",
+  "tareVariance": "Écart de tare",
+  "tareWtRecord": "Enregistrement du poids à vide",
+  "tareWtRecordRef": "Référence de l'enregistrement du poids à vide",
+  "trailer": "Remorque",
+  "facilityID": "ID de l'installation",
+  "Write your facilityID": "Entrez votre ID d'installation",
+  "facilityName": "Nom de l'installation",
+  "Write your primary": "Entrez votre principal",
+  "alternative": "Alternative",
+  "Write your alternative": "Entrez votre alternative",
+  "bin": "Benne",
+  "Write your bin": "Entrez votre benne",
+  "capacity2": "Capacité de la benne",
+  "Write your capacity2": "Entrez la capacité de la benne"
 }

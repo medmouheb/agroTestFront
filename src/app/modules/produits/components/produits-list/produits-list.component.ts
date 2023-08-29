@@ -45,7 +45,10 @@ export class ProduitsListComponent implements OnInit {
   produitsPage: Page<Produit> = initPage;
   pageNumber = 0;
   pageSize = 10;
+  companyss: Array<Produit> = [];
   filter = "";
+  isChecked: boolean = false;
+  affiche:boolean = false;
   onPaginationChange: EventEmitter<string> = new EventEmitter<string>();
 
   file: File | null = null;
@@ -59,7 +62,19 @@ export class ProduitsListComponent implements OnInit {
 
   ngOnInit(): void {
     this.findPage();
+    this.findArchivedPage()
     this.onPaginationChange.subscribe(() => this.findPage());
+  }
+
+  onCheckboxChange() {
+    console.log("La valeur de la case à cocher est : ", this.isChecked);
+    if (this.isChecked==false){
+
+      this.affiche=false
+    }
+    else{
+      this.affiche=true
+    }
   }
 
   findPage() {
@@ -265,6 +280,24 @@ export class ProduitsListComponent implements OnInit {
       });
     });
   }
+
+
+  findArchivedPage() {
+    this.loading = true;
+    this.produitsService
+      .findArchivedPage(this.pageNumber, this.pageSize, this.filter)
+      .subscribe({
+        next: (result) => {
+          this.companyss = result.content;
+        },
+        error: (error) => {
+          this.loading = false;
+          console.error(error);
+        },
+        complete: () => (this.loading = false),
+      });
+  }
+
 
   onClickArchive(id: string) {
     this.archiveModal.show(() => {

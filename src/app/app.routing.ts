@@ -163,6 +163,13 @@ const routes: Routes = [
           ),
       },
       {
+        path: "Initialinventory",
+        loadChildren: () =>
+          import("./modules/beginninginventory/beginninginventory.module").then(
+            (m) => m.BeginninginventoryModule
+          ),
+      },
+      {
         path: "farms",
         loadChildren: () =>
           import("./modules/farms/farms.module").then((m) => m.FarmsModule),

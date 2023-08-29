@@ -96,8 +96,8 @@ export class TrashComponent implements OnInit {
   onClickdisArchive(id: string) {
     this.farmService.disArchive(id).subscribe({
       next: () => {
+        
         this.findArchivedPage();
-
         this.toastService.success(
           this.translateService.instant("success.deleted", {
             elem: this.translateService.instant("warehouse"),

@@ -31,8 +31,6 @@ export class VehiculeListComponent implements OnInit {
   companyss: Array<Vehicule> = [];
   loading = false;
   companyPage: Page<Vehicule> = initPage;
-  companyPages: Page<Vehicule> = initPage;
-
   isChecked: boolean = false;
   affiche:boolean = false;
   onPaginationChange: EventEmitter<string> = new EventEmitter<string>();
@@ -41,7 +39,9 @@ export class VehiculeListComponent implements OnInit {
   fullDetail=false
 
   currentStep = 0;
-  steps: any = ["steps.general", "steps.localisation"];
+  steps: any = ["steps.general", "steps.localisation",
+  "steps.facility-details" , "steps.bin-details"
+];
 
   constructor(
     private vehiculeService: VehiculeService,
@@ -319,7 +319,7 @@ this.findPage()
       .subscribe({
         next: (result) => {
           this.companyss = result.content;
-          this.companyPages = result;
+          this.companyPage = result;
         },
         error: (error) => {
           this.loading = false;

@@ -1,0 +1,19 @@
+<div class="row" [formGroup]="addform">
+
+    <div class="form-group col-md-6">
+        <label class="required" for="codeProduit">{{ "codeProduit" | translate }}</label>
+        <input (blur)="isBlur();exist();blur1()" class="form-control" name="codeProduit" [(ngModel)]="camp.codeProduit" formControlName="codeProduit" placeholder="{{'Write your codeProduit'|translate}} "
+            required aria-invalid="true" type="number" aria-describedby="code-error" (ngModelChange)="geValues($event)">
+
+            <div style=" color : red;" *ngIf="dispotrueCode">{{'codeProduit Beginning must be unique'|translate}}</div>
+            <div style=" color : red;" *ngIf="minIstrueCode">{{'codeProduit Beginning must be not null'|translate}}</div>
+    </div>
+
+    <div class="form-group col-md-6 ">
+        <label class="required" for="nomDuProduit">{{ "nomDuProduit" | translate }}</label>
+        <input (blur)="isBlur1();existname();exist1()"  class="form-control" name="nomDuProduit" formControlName="nomDuProduit" [(ngModel)]="camp.nomDuProduit"placeholder="{{'Write your nomDuProduit'|translate}} "
+            required aria-invalid="true" aria-describedby="name-error" (ngModelChange)="geValues($event)">
+        <div style=" color : red;" *ngIf="minIstrueName">{{'nomDuProduit Beginning Name must be not null'|translate}} </div> 
+        <div style=" color : red;" *ngIf="dispotruename">{{'nomDuProduit Beginning Name must be unique'|translate}}</div>
+
+</div>

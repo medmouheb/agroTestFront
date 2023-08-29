@@ -9,6 +9,12 @@
   <div *ngIf="currentStep == 1">
     <app-vehicule-forms-information [camp]="camp"></app-vehicule-forms-information>
   </div>
+  <div *ngIf="currentStep == 2">
+    <app-vehicule-forms-facility-details [camp]="camp"></app-vehicule-forms-facility-details>
+  </div>
+  <div *ngIf="currentStep == 3">
+    <app-vehicule-forms-bin-details [camp]="camp"></app-vehicule-forms-bin-details>
+  </div>
 
 
 

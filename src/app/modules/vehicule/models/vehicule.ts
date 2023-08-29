@@ -18,4 +18,12 @@ export type Vehicule ={
     trailerSequence?:any
     capacity?:any
     color?:any
+    notes?:string
+    facilityID?:string
+    facilityName?:string
+    primary?:string
+    alternative?:string
+    bin?:any
+    capacity2?:any
+    
 }

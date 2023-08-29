@@ -1,0 +1,29 @@
+
+
+
+<div class="row">
+
+      <div class="form-group col-md-6">
+        <label for="facilityID">{{ "facilityID" | translate }}</label>
+        <input class="form-control" name="facilityID" #facilityID="ngModel" ngModel [(ngModel)]="camp.facilityID"
+          placeholder="{{'Write your facilityID'|translate}} "/>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="facilityName">{{ "facilityName" | translate }}</label>
+        <input  class="form-control" name="facilityName" #facilityName="ngModel" ngModel [(ngModel)]="camp.facilityName"
+          placeholder="{{'Write your tareVariance'|translate}} "/>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="primary">{{ "primary" | translate }}</label>
+        <input  class="form-control" name="primary" #primary="ngModel" ngModel [(ngModel)]="camp.primary"
+          placeholder="{{'Write your primary'|translate}} "/>
+      </div>
+
+      <div class="form-group col-md-6">
+        <label for="alternative">{{ "alternative" | translate }}</label>
+        <input  class="form-control" name="alternative" #alternative="ngModel" ngModel [(ngModel)]="camp.alternative"
+          placeholder="{{'Write your alternative'|translate}} "/>
+      </div>
+
+ 
+  </div>

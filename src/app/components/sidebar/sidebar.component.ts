@@ -69,6 +69,13 @@ export const ROUTES: Categries[] = [
             class: "",
           },
           {
+            label: "Beginning inventories",
+             path: "/beginninginventory",
+               title: "menu.beginninginventories",
+                icon: "inventory_2",
+             class: "",
+           },
+          {
             label: "division",
             path: "/division",
             title: "menu.divisions",
@@ -487,14 +494,14 @@ export const ROUTES: Categries[] = [
                 path: "/shipmethode",
 
               },
-              // {
-              //   label: "menu.Vehicule",
-              //   title: "menu.Vehicule",
-              //   icon: "corporate_fare",
-              //   class: "",
-              //   path: "/vehicule",
+              {
+                label: "menu.Vehicule",
+                title: "menu.Vehicule",
+                icon: "corporate_fare",
+                class: "",
+                path: "/vehicule",
 
-              // },
+              },
               //  {
               //   label: "menu.vehicleType",
               //   title: "menu.vehicleType",
@@ -788,9 +795,9 @@ export const ROUTES: Categries[] = [
           //   // class: "",
           // },
           {
-            label: "Warehouses",
-            path: "/warehouses",
-            title: "menu.warehouses",
+            label: "Initial inventory",
+            path: "/Initialinventory",
+            title: "menu.Initialinventory",
             icon: "warehouse",
             class: "",
           },

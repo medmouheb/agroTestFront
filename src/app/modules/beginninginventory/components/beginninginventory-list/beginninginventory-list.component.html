@@ -11,17 +11,15 @@
         <button class="btn btn-add btn-outline-success btn-sm btn-action rounded-pill style-button" (click)="onClickAdd()"
           [title]="'btns.add' | translate">
           <i class="fa fa-plus style-icons"></i>
-          <span class="style-title"> {{'menu.add-vehicule'|translate}}</span>
+          <span class="style-title"> {{'menu.add-BeginningInventaire'|translate}}</span>
         </button>
   
       </div>
       
-  
-  
       <div class="form-group has-search">
         <span class="fa fa-search form-control-feedback"></span>
         <input #search (input)="onFilterChange(search.value)" type="text" class="form-control bg-white"
-          placeholder="{{'Search by vehiculeName'|translate}}" />
+          placeholder="{{'Search by BeginningInventaire'|translate}}" />
       </div>
     </div>
   
@@ -35,13 +33,20 @@
       </ng-container>
 
 
+      {{
+        companyPage.empty
+      }}
+
+
+  
+
       <div *ngIf="fullDetail==false" >
         <table class="table" *ngIf="!loading && !companyPage.empty">
           <thead class="datatable-header">
             <tr>
               <th>
                 <strong class="style-text">
-                  {{ "vehiculeCodev" | translate }}
+                  {{ "Code Produit" | translate }}
                   <a href="javascript:void(0);">
                     <svg (click)="sortByCode()" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                       fill="currentColor" class="bi bi-chevron-double-down custom-color" viewBox="0 0 16 16">
@@ -54,7 +59,7 @@
               </th>
               <th>
                 <strong class="style-text">
-                  {{ "vehiculeNamev" | translate }}
+                  {{ "Nom du produit" | translate }}
                   <a href="javascript:void(0);">
                     <svg (click)="sortByName()" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                       fill="currentColor" class="bi bi-chevron-double-down custom-color" viewBox="0 0 16 16">
@@ -75,10 +80,10 @@
           <tbody class="text-sm" *ngIf="affiche==false">
             <tr class="row-data" *ngFor="let comp of companys">
               <td>
-                {{ comp.vehiculeCode }}
+                {{ comp.codeProduit }}
               </td>
               <td>
-                {{ comp.vehiculeName}}
+                {{ comp.nomDuProduit}}
   
               </td>
   
@@ -97,12 +102,13 @@
           </tbody>
           <tbody *ngIf="affiche==true">
             <tr class="row-data" *ngFor="let comp of companyss">
-              <td>
-                {{ comp.vehiculeCode }}
-              </td>
-              <td>
-                {{ comp.vehiculeName}}
-              </td>
+                <td>
+                    {{ comp.codeProduit}}
+                  </td>
+                  <td>
+                    {{ comp.nomDuProduit}}
+      
+                  </td>
   
               <td class="d-flex gap-4">
   
@@ -133,12 +139,12 @@
       (onPageNumberChange)="onPageNumberChange($event)" (onPageSizeChange)="onPageSizeChange($event)">
     </app-pagination>
   
-    <app-wizard-dialog [currentStep]="currentStep" [entity]="camp" [type]="'vehicule'" [field]="null" #formModal>
-      <app-vehicule-forms [currentStep]="currentStep" [camp]="camp">
+   <app-wizard-dialog [currentStep]="currentStep" [entity]="camp" [type]="'beginninginventory'" [field]="null" #formModal>
+      <app-beginninginventory-add [currentStep]="currentStep" [camp]="camp">
         <app-stepper #stepper [currentStep]="currentStep" [steps]="steps"
           (onStepChange)="onStepChange($event)"></app-stepper>
-      </app-vehicule-forms>
-    </app-wizard-dialog>
+      </app-beginninginventory-add>
+    </app-wizard-dialog> 
   
     <app-confirm-dialog #archiveModal></app-confirm-dialog>
   </div>

@@ -1,0 +1,19 @@
+<ng-content>
+</ng-content>
+<form class="form-card">
+
+  <div *ngIf="currentStep == 0">
+    <app-beginninginventory-details [camp]="camp"></app-beginninginventory-details>
+  </div>
+
+  <div *ngIf="currentStep == 1">
+    <app-beginninginventory-products [camp]="camp"></app-beginninginventory-products>
+  </div>
+
+  <div *ngIf="currentStep == 2">
+    <app-beginninginventory-transactions [camp]="camp"></app-beginninginventory-transactions>
+  </div>
+
+  
+
+</form>

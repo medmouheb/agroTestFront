@@ -8,13 +8,17 @@ import { VehiculeFormsGeneralComponent } from './components/vehicule-forms/vehic
 import { VehiculeFormsInformationComponent } from './components/vehicule-forms/vehicule-forms-information/vehicule-forms-information.component';
 import { SharedModule } from 'app/shared/shared.module';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { VehiculeFormsFacilityDetailsComponent } from './components/vehicule-forms/vehicule-forms-facility-details/vehicule-forms-facility-details.component';
+import { VehiculeFormsBinDetailsComponent } from './components/vehicule-forms/vehicule-forms-bin-details/vehicule-forms-bin-details.component';
 
 @NgModule({
   declarations: [
     VehiculeFormsComponent,
     VehiculeListComponent,
     VehiculeFormsGeneralComponent,
-    VehiculeFormsInformationComponent
+    VehiculeFormsInformationComponent,
+    VehiculeFormsFacilityDetailsComponent,
+    VehiculeFormsBinDetailsComponent
   ],
   imports: [CommonModule, VehiculeRoutingModule, SharedModule,MatSlideToggleModule],
 })

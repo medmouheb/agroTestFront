@@ -1,0 +1,55 @@
+<!-- <div class="row" [formGroup]="addform">
+    <div class="form-group col-md-6">
+        <label  for="codeDeTransaction">{{'transactionCode' | translate}}</label>
+        <input class="form-control" type="text" name="codeDeTransaction" formControlName="codeDeTransaction"  value="Beginning Inventory" [(ngModel)]="camp.codeDeTransaction" />
+    </div>
+
+
+
+    <div class="form-group col-md-6">
+        <label for="dateDeEvenement">{{'dateDeEvenement' | translate}}</label>
+        <input class="form-control" type="date" name="dateDeEvenement" formControlName="dateDeEvenement" [(ngModel)]="camp.dateDeEvenement" />
+    </div>
+
+    <div class="form-group col-md-6">
+        <label for="Expiration">{{'Expiration' | translate}}</label>
+        <input class="form-control" name="Expiration" type="date" formControlName="Expiration" [(ngModel)]="camp.Expiration"/>
+    </div>
+
+    <div class="form-group col-md-6">
+        <label>{{ 'temps' | translate }}</label>
+        <input class="form-control" type="text" name="temps" formControlName="temps" value="12:00 am" [(ngModel)]="camp.temps" />
+    </div>
+
+    
+</div> -->
+
+
+
+<div class="row">
+    
+    <div class="form-group col-md-6">
+      <label for="codeDeTransaction">{{ "codeDeTransaction" | translate }}</label>
+        <input class="form-control" name="codeDeTransaction" #codeDeTransaction="ngModel"  [(ngModel)]="camp.codeDeTransaction"
+        placeholder="{{'Write your codeDeTransaction'|translate}} "/>
+    </div>
+  
+    <div class="form-group col-md-6">
+      <label for="division">{{ "dateDeEvenement" | translate }}</label>
+        <input class="form-control" type="date" name="dateDeEvenement" formControlName="dateDeEvenement" [(ngModel)]="camp.dateDeEvenement" 
+        placeholder="{{'Write your dateDeEvenement'|translate}} "/>
+    </div>
+
+    <div class="form-group col-md-6">
+      <label for="Expiration">{{ "Expiration" | translate }}</label>
+        <input type="date" class="form-control" name="Expiration" #Expiration="ngModel" ngModel [(ngModel)]="camp.Expiration"
+            placeholder="{{'Write your Expiration'|translate}} "/>
+    </div>
+    
+    <div class="form-group col-md-6">
+        <label for="temps">{{ "temps" | translate }}</label>
+        <input  class="form-control" name="temps" #temps="ngModel" ngModel [(ngModel)]="camp.temps" value="12:00 am"
+            placeholder="{{'Write your temps'|translate}} "/>
+    </div>
+
+</div>

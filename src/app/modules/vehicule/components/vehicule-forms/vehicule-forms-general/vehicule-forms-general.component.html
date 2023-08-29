@@ -1,21 +1,21 @@
 <div class="row" [formGroup]="addform">
 
     <div class="form-group col-md-6">
-        <label class="required" for="vehiculeCode">{{ "vehiculeCode" | translate }}</label>
+        <label class="required" for="vehiculeCode">{{ "vehiculeCodev" | translate }}</label>
         <input (blur)="isBlur();exist();blur1()" class="form-control" name="vehiculeCode" [(ngModel)]="camp.vehiculeCode" formControlName="vehiculeCode" placeholder="{{'Write your Vehicule code'|translate}} "
             required aria-invalid="true" type="number" aria-describedby="code-error" (ngModelChange)="geValues($event)">
 
-            <div style=" color : red;" *ngIf="dispotrueCode">{{'vehiculeCode must be unique'|translate}}</div>
-            <div style=" color : red;" *ngIf="minIstrueCode">{{'vehiculeCode must be not null'|translate}}</div>
+            <div style=" color : red;" *ngIf="dispotrueCode">{{'vehiculeCodev must be unique'|translate}}</div>
+            <div style=" color : red;" *ngIf="minIstrueCode">{{'vehiculeCodev must be not null'|translate}}</div>
     </div>
 
     <div class="form-group col-md-6 ">
-        <label class="required" for="vehiculeName">{{ "nameVehicule" | translate }}</label>
+        <label class="required" for="vehiculeName">{{ "nameVehiculev" | translate }}</label>
         <input (blur)="isBlur1();existname()"  class="form-control" name="vehiculeName" formControlName="vehiculeName" [(ngModel)]="camp.vehiculeName"  placeholder="{{'Write your Vehicule name'|translate}} "
             required aria-invalid="true" aria-describedby="name-error" (ngModelChange)="geValues($event)">
-        <div style=" color : red;" *ngIf="minIstrueName">{{'vehiculeName must be not null'|translate}} </div> 
+        <div style=" color : red;" *ngIf="minIstrueName">{{'vehiculeNamev must be not null'|translate}} </div> 
 
-        <div style=" color : red;" *ngIf="dispotruename">{{'vehiculeName must be unique'|translate}}</div>
+        <div style=" color : red;" *ngIf="dispotruename">{{'vehiculeNamev must be unique'|translate}}</div>
         <!-- <div style=" color : black;" *ngIf="dispotruename">{{newSeggestions}}</div> -->
 
 
@@ -25,7 +25,7 @@
         <label class="required" for="facilitytype">{{ "facilitytype" | translate }}</label>
         <input (blur)="isBlur3();"  class="form-control" name="facilitytype" formControlName="facilitytype" [(ngModel)]="camp.facilitytype"  placeholder="{{'Write your Vehicule facilitytype'|translate}} "
             required aria-invalid="true" aria-describedby="name-error" (ngModelChange)="geValues($event)">
-        <div style=" color : red;" *ngIf="minIphone">{{'facilitytype must be not null'|translate}} </div> 
+        <div style=" color : red;" *ngIf="minIphone">{{'facilitytypev must be not null'|translate}} </div> 
 
         <!-- <div style=" color : black;" *ngIf="dispotruename">{{newSeggestions}}</div> -->
 
@@ -36,7 +36,7 @@
         <label class="required" for="measurementType">{{ "measurementType" | translate }}</label>
         <input (blur)="isBlur4();"  class="form-control" name="measurementType" formControlName="measurementType" [(ngModel)]="camp.measurementType"  placeholder="{{'Write your Vehicule measurementType'|translate}} "
             required aria-invalid="true" aria-describedby="name-error" (ngModelChange)="geValues($event)">
-        <div style=" color : red;" *ngIf="minMeasurementType">{{'measurementType must be not null'|translate}} </div> 
+        <div style=" color : red;" *ngIf="minMeasurementType">{{'measurementTypev must be not null'|translate}} </div> 
 
         <!-- <div style=" color : black;" *ngIf="dispotruename">{{newSeggestions}}</div> -->
 
