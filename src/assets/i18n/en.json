@@ -182,6 +182,7 @@
     "no-data": "No Data Available"
   },
   "steps": {
+    "historique-de-maintenance":"Maintenance history",
     "productGroup": "Product group",
     "productUsage": "Product usage",
     "vendorSKU": "Vendor SKU",
@@ -678,5 +679,7 @@
   "bin": "Bin",
   "Write your bin": "Write your bin",
   "capacity2": "Capacity Bin",
-  "Write your capacity2": "Write your capacity Bin"
+  "Write your capacity2": "Write your capacity Bin",
+  "dateDeEvenement":"Date of Event"
+
 }

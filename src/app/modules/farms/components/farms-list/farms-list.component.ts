@@ -76,6 +76,7 @@ export class FarmsListComponent implements OnInit {
       .findPage(this.pageNumber, this.pageSize, this.filter)
       .subscribe({
         next: (result) => {
+          console.log("a::",result)
           this.farms = result.content;
           this.farmsPage = result;
         },
@@ -230,6 +231,8 @@ export class FarmsListComponent implements OnInit {
       .findArchivedPage(this.pageNumber, this.pageSize, this.filter)
       .subscribe({
         next: (result) => {
+          console.log("b::",result)
+
           this.companyss= result.content;
         },
         error: (error) => {

@@ -32,7 +32,7 @@
     </div>
   </div>
 
-  <div class="datatable">
+  <div *ngIf="!affiche" class="datatable">
 
     <ng-container *ngIf="loading">
       <app-spinner></app-spinner>
@@ -117,7 +117,7 @@
               [title]="'btns.edit' | translate">
               <i class="fa fa-pencil"></i>
             </button>
-            <button class="text-danger datatable-action-btn" (click)="onClickArchive(div.id!)"
+            <button class="text-danger datatable-action-btn" (click)="onClickArchive(produit.id!)"
               [title]="'btns.delete' | translate">
               <i class="fa fa-trash"></i>
             </button>
@@ -126,6 +126,105 @@
       </tbody>
     </table>
   </div>
+
+  <div *ngIf="affiche" class="datatable">
+
+    <ng-container *ngIf="loading">
+      <app-spinner></app-spinner>
+    </ng-container>
+
+    <ng-container *ngIf="!loading && produitsPages.empty">
+      <app-no-data></app-no-data>
+    </ng-container>
+
+    <table class="table" *ngIf="!loading && !produitsPages.empty">
+      <thead class="datatable-header">
+        <tr>
+          <th>
+            <strong>
+              {{'code' | translate}}
+            </strong>
+          </th>
+          <th>
+            <strong>
+              {{'name' | translate}}
+            </strong>
+          </th>
+          <th>
+            <strong>
+              {{'category' | translate}}
+            </strong>
+          </th>
+          <th>
+            <strong>
+              {{'status' | translate}}
+            </strong>
+          </th>
+          <th>
+            <strong>
+              {{'prixUnitaireHt' | translate}}
+            </strong>
+          </th>
+          <th>
+            <strong>
+              {{'tauxTva' | translate}}
+            </strong>
+          </th>
+          <th>
+            <strong>
+              {{'prixTTC' | translate}}
+            </strong>
+          </th>
+          <th>
+            <strong>
+              {{'actions' | translate}}
+            </strong>
+          </th>
+        </tr>
+      </thead>
+      <tbody class="text-sm">
+        <tr class="row-data" *ngFor="let produit of produitss">
+          <td>
+            {{produit.code}}
+          </td>
+          <td>
+            {{produit.name}}
+          </td>
+          <td>
+            {{produit.category?.id}}
+          </td>
+          <td>
+            <i *ngIf="!produit.status" class="zmdi zmdi-close text-danger text-lg"></i>
+            <i *ngIf="produit.status" class="zmdi zmdi-check text-success text-lg"></i>
+          </td>
+          <td>
+            {{produit.prixUnitaireHt}}
+          </td>
+          <td>
+            {{produit.tauxTva}}%
+          </td>
+          <td>
+            {{produit.prixUnitaireTtc}}
+          </td>
+
+          <td class="d-flex gap-4">
+
+
+            <button class="text-primary datatable-action-btn" (click)="onClickdisArchive(produit.id!)"
+            [title]="'Restore line' | translate">
+            <i class="fa fa-reply-all"></i>
+          </button>
+          <button class="text-danger datatable-action-btn" (click)="onClickDelete(produit.id!)"
+            [title]="'Delete permanently' | translate">
+            <i class="fa fa-trash"></i>
+          </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <app-confirm-dialog #archiveModal></app-confirm-dialog>
+
   <app-pagination [pageNumber]="pageNumber" [pageSize]="pageSize" [page]="produitsPage"
     (onPageNumberChange)="onPageNumberChange($event)" (onPageSizeChange)="onPageSizeChange($event)">
   </app-pagination>

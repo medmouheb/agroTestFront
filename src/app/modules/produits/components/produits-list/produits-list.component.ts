@@ -41,8 +41,12 @@ export class ProduitsListComponent implements OnInit {
 
   loading = false;
   produits: Array<Produit> = [];
+  produitss: Array<Produit> = [];
+
   produit: Produit = {};
   produitsPage: Page<Produit> = initPage;
+  produitsPages: Page<Produit> = initPage;
+
   pageNumber = 0;
   pageSize = 10;
   companyss: Array<Produit> = [];
@@ -85,6 +89,23 @@ export class ProduitsListComponent implements OnInit {
         next: (result) => {
           this.produits = result.content;
           this.produitsPage = result;
+        },
+        error: (error) => {
+          this.loading = false;
+          console.error(error);
+        },
+        complete: () => (this.loading = false),
+      });
+  }
+
+  findArchivedPage() {
+    this.loading = true;
+    this.produitsService
+      .findArchivedPage(this.pageNumber, this.pageSize, this.filter)
+      .subscribe({
+        next: (result) => {
+          this.produitss = result.content;
+          this.produitsPages = result;
         },
         error: (error) => {
           this.loading = false;
@@ -281,33 +302,35 @@ export class ProduitsListComponent implements OnInit {
     });
   }
 
-
-  findArchivedPage() {
-    this.loading = true;
-    this.produitsService
-      .findArchivedPage(this.pageNumber, this.pageSize, this.filter)
-      .subscribe({
-        next: (result) => {
-          this.companyss = result.content;
-        },
-        error: (error) => {
-          this.loading = false;
-          console.error(error);
-        },
-        complete: () => (this.loading = false),
-      });
-  }
-
-
   onClickArchive(id: string) {
     this.archiveModal.show(() => {
       this.produitsService.archive(id).subscribe({
         next: () => {
+          this.findPage();
+          this.findArchivedPage()
           this.archiveModal.hide();
           this.toastService.success;
+
           console.log(id);
         },
       });
+    });
+  }
+
+
+
+  onClickdisArchive(id: string) {
+    this.produitsService.disArchive(id).subscribe({
+      next: () => {
+        this.findArchivedPage();
+        this.findPage()
+        this.toastService.success(
+          this.translateService.instant("success.restore", {
+            elem: this.translateService.instant("menu.vendors"),
+          })
+        );
+        console.log(id);
+      },
     });
   }
 }

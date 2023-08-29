@@ -191,6 +191,7 @@
     "no-data": "Pas de données disponibles"
   },
   "steps": {
+    "historique-de-maintenance":"Historique de maintenance",
     "productGroup": "Groupe des produit",
     "productUsage": "Utilisation des produit",
     "vendorSKU": "Fournisseur SKU",
