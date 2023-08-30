@@ -59,12 +59,12 @@
         <label class="required" for="instructiuonCode">{{ "instructiuonCode" | translate }}</label>
        
         <input class="form-control" name="instructiuonCode" [(ngModel)]="delivery.instructiuonCode" formControlName="instructiuonCode" required
-        placeholder="{{'write your instruction Code'|translate}}" aria-invalid="true" type="text" aria-describedby="code-error" (ngModelChange)="getValue($event)">
+        placeholder="{{'write your instructionCode'|translate}}" aria-invalid="true" type="text" aria-describedby="code-error" (ngModelChange)="getValue($event)">
     </div>
     <div class="form-group col-md-6" *ngIf="afficheother==false"  >
         <label class="required" for="instructiuonName">{{ "instructiuonName" | translate }}</label>
         <input class="form-control" name="code"  [(ngModel)]="delivery.instructiuonName" formControlName="instructiuonName" required 
-        placeholder=" {{'write your country code'|translate}}"
+        placeholder=" {{'write your instructionname'|translate}}"
             aria-invalid="true" type="text" aria-describedby="code-error" (ngModelChange)="getValue($event)">
 
          <!-- <div style="color: red;" *ngIf="DCouisvalid" >{{'Code must be not null'|translate}}</div> -->
@@ -74,7 +74,7 @@
         <label class="required" for="instructiuonName">{{ "instructiuonName" | translate }}</label>
        
         <input class="form-control" name="instructiuonName" [(ngModel)]="delivery.instructiuonName" formControlName="instructiuonName" required
-        placeholder="{{'write your instruction Code'|translate}}" aria-invalid="true" type="text" aria-describedby="code-error" (ngModelChange)="getValue($event)">
+        placeholder="{{'write your instructionname'|translate}}" aria-invalid="true" type="text" aria-describedby="code-error" (ngModelChange)="getValue($event)">
 
         
 

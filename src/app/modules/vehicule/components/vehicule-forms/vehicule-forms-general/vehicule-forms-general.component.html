@@ -10,7 +10,7 @@
     </div>
 
     <div class="form-group col-md-6 ">
-        <label class="required" for="vehiculeName">{{ "nameVehiculev" | translate }}</label>
+        <label class="required" for="vehiculeName">{{ "vehiculeNamev" | translate }}</label>
         <input (blur)="isBlur1();existname()"  class="form-control" name="vehiculeName" formControlName="vehiculeName" [(ngModel)]="camp.vehiculeName"  placeholder="{{'Write your Vehicule name'|translate}} "
             required aria-invalid="true" aria-describedby="name-error" (ngModelChange)="geValues($event)">
         <div style=" color : red;" *ngIf="minIstrueName">{{'vehiculeNamev must be not null'|translate}} </div> 

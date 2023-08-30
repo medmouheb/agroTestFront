@@ -495,8 +495,8 @@ export const ROUTES: Categries[] = [
 
               },
               {
-                label: "menu.Vehicule",
-                title: "menu.Vehicule",
+                label: "menu.Vehiculess",
+                title: "menu.Vehiculess",
                 icon: "corporate_fare",
                 class: "",
                 path: "/vehicule",

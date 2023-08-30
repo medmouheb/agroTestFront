@@ -182,7 +182,7 @@ export class NavbarComponent implements OnInit {
         this.routes = ["menu.general-Setups", "menu.Materialhandling", "menu.Freightsetup", "menu.DeliveryInstruction"]
         break;
       case "vehicule":
-        this.routes = ["menu.general-Setups", "menu.Materialhandling", "menu.Freightsetup", "menu.Vehicule"]
+        this.routes = ["menu.general-Setups", "menu.Materialhandling", "menu.Freightsetup", "menu.Vehiculess"]
         break;
       case "vehicleType":
         this.routes = ["menu.general-Setups", "menu.Materialhandling", "menu.Freightsetup", "menu.vehicleType"]
@@ -211,6 +211,12 @@ export class NavbarComponent implements OnInit {
       case "Initialinventory":
         this.routes = ["menu.Business", "Agriculture", "menu.Initialinventory"];
         break;
+      case "farms":
+        this.routes = ["menu.Business", "Agriculture", "menu.farms"];
+        break;
+      case "Field-product":
+        this.routes = ["menu.Business", "Agriculture", "menu.Field-product"];
+      
     }
   }
 }
