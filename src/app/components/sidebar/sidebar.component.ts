@@ -68,13 +68,13 @@ export const ROUTES: Categries[] = [
             icon: "corporate_fare",
             class: "",
           },
-          {
-            label: "Beginning inventories",
-             path: "/beginninginventory",
-               title: "menu.beginninginventories",
-                icon: "inventory_2",
-             class: "",
-           },
+          // {
+          //   label: "Beginning inventories",
+          //    path: "/beginninginventory",
+          //      title: "menu.beginninginventories",
+          //       icon: "inventory_2",
+          //    class: "",
+          //  },
           {
             label: "division",
             path: "/division",
@@ -709,9 +709,7 @@ export const ROUTES: Categries[] = [
                 path: "/start",
                 class: "",
               },
-
             ],
-
           },
           {
             label: "menu.Symptoms",
@@ -795,12 +793,28 @@ export const ROUTES: Categries[] = [
           //   // class: "",
           // },
           {
-            label: "Initial inventory",
-            path: "/Initialinventory",
-            title: "menu.Initialinventory",
-            icon: "warehouse",
+            label: "menu.Warhouse",
+            title: "Warhouse",
+            icon: "corporate_fare",
+            id: "Warhouse-dropdown",
             class: "",
+            SubC: [
+              {
+                  label: "Initial inventory",
+                  path: "/Initialinventory",
+                  title: "menu.Initialinventory",
+                  icon: "warehouse",
+                  class: "",
+                },{
+                label: "Product Usage",
+                path: "/ProductUsage",
+                title: "menu.ProductUsage",
+                icon: "warehouse",
+                class: "",
+              },
+            ],
           },
+           
           {
             label: "menu.Order-Management",
             title: "menu.Feed-Product",

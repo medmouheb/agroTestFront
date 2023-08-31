@@ -120,6 +120,11 @@ const routes: Routes = [
           ),
       },
       {
+        path: "ProductUsage",
+        loadChildren: () =>
+          import("./modules/product-usage/product-usage.module").then((m) => m.ProductUsageModule),
+      },
+      {
         path: "Delivery",
         loadChildren: () =>
           import("./modules/delivery-instruction/delivery-instruction.module").then(

@@ -1,9 +1,13 @@
 {
   "menu": {
+    "Warhouse": "Warhouse",
+    "ProductUsage": "Product Usage",
+    "add-ProductUsage": "Add the Product Usage",
+    "edit-ProductUsage": "Edit the Product Usage",
     "Field-product": "Field-Product",
-    "Initialinventory":"Initial Inventory",
+    "Initialinventory": "Initial Inventory",
     "Farms": "Farms",
-    "add-FieldProduct":"Add new Field-Product",
+    "add-FieldProduct": "Add new Field-Product",
     "Agriculture": "Agriculture",
     "beginninginventories": "Beginning Inventaire",
     "add-BeginningInventaire": "Add new Initial Inventaire",
@@ -183,7 +187,8 @@
     "no-data": "No Data Available"
   },
   "steps": {
-    "historique-de-maintenance":"Maintenance history",
+    "details": "Details",
+    "historique-de-maintenance": "Maintenance history",
     "productGroup": "Product group",
     "productUsage": "Product usage",
     "vendorSKU": "Vendor SKU",
@@ -203,9 +208,8 @@
     "Distance": "Distance",
     "contract": "Contract farms",
     "visitors": "Visitor log",
-    "facility-details":"Facility Details",
-
-    "bin-details":"Bin Details"
+    "facility-details": "Facility Details",
+    "bin-details": "Bin Details"
   },
   "success": {
     "restore": "{{elem}} restore successfully",
@@ -674,7 +678,7 @@
   "facilityID": "Facility ID",
   "Write your facilityID": "Write your facilityID",
   "facilityName": " Facility Name",
-  "Write your facilityNam":"Write your Facility Name",
+  "Write your facilityNam": "Write your Facility Name",
   "Write your primary": "Write your primary",
   "alternative": "Alternative",
   "Write your alternative": "Write your alternative",
@@ -682,7 +686,21 @@
   "Write your bin": "Write your bin",
   "capacity2": "Capacity Bin",
   "Write your capacity2": "Write your capacity Bin",
-  "dateDeEvenement":"Date of Event",
-  "write your instructionname":"Write your Instruction Name"
-
+  "dateDeEvenement": "Date of Event",
+  "write your instructionname": "Write your Instruction Name",
+  "transCode": "Trans Date",
+  "quantite": "Quantity",
+  "montant": "Amount",
+  "numeroDeLot": "Lot No",
+  "Write your numeroDeLot": "Write Your Lot No",
+  "numeroDeLot  must be unique": "Lot No must be unique",
+  "numeroDeLot  must be not null": "Lot No must be not null",
+  "nDeReference": "Ref No",
+  "nDeReference  must be unique": "Ref No must be unique",
+  "nDeReference  must be not null": "Ref No must be not null ",
+  "Write your nDeReference": "Write your Ref-No",
+  "dateDeTransposition": "Trans Date",
+  "codeEntrepot": "Warhouse Code",
+  "unitesSaisies": "Units Entered",
+  "Search by nomduproduit": "Search by Product Name"
 }
