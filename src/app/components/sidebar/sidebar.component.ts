@@ -42,9 +42,6 @@ declare interface RouteInfo {
   class?: string;
   subCategories?: Categry[];
 
-  //   <span class="material-symbols-outlined">
-  // settings_applications
-  // </span>
 }
 export const ROUTES: Categries[] = [
   {
@@ -124,78 +121,9 @@ export const ROUTES: Categries[] = [
             icon: "paid",
             class: "",
           },
-          // {
-          //   label:"commande",
-          //   path: "/commandes",
-          //   title: "menu.commandes",
-          //   icon: "inventory_2",
-          //   class: "",
-          // },
-          // {
-          //   label: "charges",
-          //    path: "/charges",
-          //    title: "menu.charges",
-          //    icon: "person",
-          //    class: "",
-          //  },
            
-
         ],
       },
-      // {
-      //   label: "Places",
-      //   category: "Places",
-      //   icon: "place",
-      //   title: "menu.places",
-      //   id: "Places-dropdown",
-      //   subCategories: [
-
-      //     {
-      //       id: "Ports-dropdown",
-      //       label: "Ports",
-      //       title: "Ports",
-      //       icon: "Port",
-      //       class: "",
-      //       SubC: [{
-      //         label: "Airports",
-      //         path: "/airports",
-      //         title: "menu.airports",
-      //         icon: "flight",
-      //         class: "",
-      //         id:"Ports-dropdown"
-      //       }
-      //       // , {
-      //       //   id: "dropdown-seaport",
-      //       //   label: "Seaports",
-      //       //   path: "/seaports",
-      //       //   title: "menu.seaports",
-      //       //   icon: "directions_boat",
-      //       //   class: "",
-      //       // }
-
-      //       ]
-      //     },
-
-      //   ],
-      // },
-      // {
-      //   label: "Quality",
-      //   category: "Quality",
-      //   icon: "grade",
-      //   title: "menu.quality",
-      //   id: "Quality-dropdown",
-      //   subCategories: [
-
-
-      //     {
-      //       label: "Reason code",
-      //       path: "/reasons",
-      //       title: "menu.reason",
-      //       icon: "pin",
-      //       class: "",
-      //     },
-      //   ]
-      // },
       {
         label: "Products",
         category: "Products",
@@ -271,43 +199,7 @@ export const ROUTES: Categries[] = [
             icon: "rate_review",
             id: "FeedMill-dropdown",
             class: "",
-            SubC: [
-              //     {
-              //       title: "menu.Feed-Mill",
-              //       icon: "corporate_fare",
-              //       class: "",
-              //       path: "/start",
-
-              //     },
-              //     {
-              //       title: "menu.Feed-Type",
-              //       icon: "corporate_fare",
-              //       class: "",
-              //       path: "/start",
-
-              //     },
-              //     {
-              //       title: "menu.Feed-Formula",
-              //       icon: "corporate_fare",
-              //       class: "",
-              //       path: "/start",
-
-              //     },
-              //     {
-              //       title: "Feed-Formula-Version  ",
-              //       icon: "corporate_fare",
-              //       class: "",
-              //       path: "/start",
-
-              //     },
-              //     {
-              //       title: "menu.Formula-Price",
-              //       icon: "corporate_fare",
-              //       class: "",
-              //       path: "/start",
-
-              //     },
-            ],
+            SubC: [],
           },
           {
             label: "Warehouses",
@@ -456,7 +348,6 @@ export const ROUTES: Categries[] = [
             title: "Freightsetup",
             icon: "corporate_fare",
             id: "Freightsetup-dropdown",
-            //path:"/Delivery",
             class: "",
             SubC: [
               {
@@ -483,7 +374,6 @@ export const ROUTES: Categries[] = [
             title: "transport",
             icon: "corporate_fare",
             id: "transport-dropdown",
-            //path:"/Delivery",
             class: "",
             SubC: [
               {
@@ -509,6 +399,7 @@ export const ROUTES: Categries[] = [
               //   class: "",
               //   path: "/vehicleType"
               // },
+
             
             ],
           }
@@ -544,13 +435,6 @@ export const ROUTES: Categries[] = [
             icon: "corporate_fare",
             class: "",
           },
-          // {
-          //   label: "sales Sku",
-          //   path: "/salesku",
-          //   title: "sales Sku",
-          //   icon: "corporate_fare",
-          //   class: "",
-          // },
           {
             label: "menu.Addons",
             title: "Addons",
@@ -678,16 +562,6 @@ export const ROUTES: Categries[] = [
             SubC: []
 
           },
-
-
-          // {
-          //   label: "menu.Field-and-Feed-products",
-          //   title: "Field-and-Feed-products",
-          //   icon: "feed",
-          //   id: "Field-dropdown",
-          //   class: "",
-
-          // },
           {
             label: "menu.Field-and-Feed-products",
             title: "Medicated",
@@ -744,13 +618,8 @@ export const ROUTES: Categries[] = [
 
           },
 
-
         ],
       },
-
-
-
-
     ],
   },
   {
@@ -780,18 +649,6 @@ export const ROUTES: Categries[] = [
             icon: "content_paste",
             class: "",
           },
-          //  {
-          //   label: "Field-product",
-          //   path: "/Field-product",
-          //   title: "Field-product",
-          //   icon: "corporate_fare",
-          //   class: "",
-          //   // label: "menu.Field-product",
-          //   // title: "menu.Field-product",
-          //   // path: "/produits",
-          //   // icon: "corporate_fare",
-          //   // class: "",
-          // },
           {
             label: "menu.Warhouse",
             title: "Warhouse",
@@ -809,6 +666,13 @@ export const ROUTES: Categries[] = [
                 label: "Product Usage",
                 path: "/ProductUsage",
                 title: "menu.ProductUsage",
+                icon: "warehouse",
+                class: "",
+              },
+              {
+                label: "Rapprochement-des-stocks",
+                path: "/Rapprochement-des-stocks",
+                title: "menu.Rapprochement-des-stocks",
                 icon: "warehouse",
                 class: "",
               },
@@ -830,7 +694,7 @@ export const ROUTES: Categries[] = [
           },
           {
             label: "menu.Simulateur",
-            path: "/table-list",
+            path: "/simulator",
             title: "Simulateur",
             icon: "content_paste",
             class: "",
@@ -935,6 +799,8 @@ export class SidebarComponent implements OnInit {
   selectedIndex3: number = -1
   selectedType4: string = ""
   selectedIndex4: number = -1
+  selectedType5: string = ""
+  selectedIndex5: number = -1
 
   handleClickTitle1(index: number) {
 
@@ -957,7 +823,7 @@ export class SidebarComponent implements OnInit {
   //   }
   // }
 
-  handleClickTitle2(index: number) {
+  handleClickTitle2(index: number, id) {
 
     this.selectedType1 = ""
     this.selectedIndex1 = -1
@@ -967,6 +833,12 @@ export class SidebarComponent implements OnInit {
     this.selectedIndex3 = -1
     this.selectedType4 = ""
     this.selectedIndex4 = -1
+    this.selectedType5 = ""
+    this.selectedIndex5 = -1
+
+    if(id === "users_list"){
+      this.router.navigate(["/admin/users"]);
+    }
   }
 
   handleClickTitle3(index: number) {

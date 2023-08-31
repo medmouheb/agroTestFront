@@ -1,0 +1,25 @@
+<ng-content>
+</ng-content>
+<form class="form-card">
+
+  <div *ngIf="currentStep == 0">
+    <app-rapprochementdes-stocks-forms-general [camp]="camp"></app-rapprochementdes-stocks-forms-general>
+  </div>
+
+  <div *ngIf="currentStep == 1">
+    <app-rapprochementdes-stocks-forms-plus [camp]="camp"></app-rapprochementdes-stocks-forms-plus>
+  </div>
+
+  <div *ngIf="currentStep == 2">
+    <app-rapprochementdes-stocks-forms-supplementaire [camp]="camp"></app-rapprochementdes-stocks-forms-supplementaire>
+  </div>
+
+  <div *ngIf="currentStep == 3">
+    <app-rapprochementdes-stocks-forms-details [camp]="camp"></app-rapprochementdes-stocks-forms-details>
+  </div>
+
+  <div *ngIf="currentStep == 4">
+    <app-rapprochementdes-stocks-forms-information [camp]="camp"></app-rapprochementdes-stocks-forms-information>
+  </div>
+  
+</form>

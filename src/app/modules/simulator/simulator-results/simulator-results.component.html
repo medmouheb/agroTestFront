@@ -1,0 +1,73 @@
+<br><br><br>
+
+
+<!-- card.component.html -->
+<div class="container">
+  <div class="row">
+    <div class="col-md-4" *ngFor="let card of cards">
+      <div class="card">
+        <div class="circle first_color">{{ card.id }}</div>
+
+        <div class="card-body">
+          <p class="card-text">{{ card.name }}</p>
+        </div>
+
+        <div class="checkbox-container">
+          <label>
+            <input type="checkbox" name="show-toggle" id="show-toggle">
+            Show On
+          </label>
+        </div>
+
+        <div class="number-section">
+          <span class="number"> <i class="material-icons">flag</i> {{ card.flag }}</span>
+          <hr class="line">
+          <span class="vertical-line"></span>
+
+          <span class="number"> <i class="material-icons">people</i> {{ card.people }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<kendo-gantt
+[style.height.px]="500"
+[kendoGanttHierarchyBinding]="data"
+childrenField="subtasks"
+kendoGanttExpandable
+[initiallyExpanded]="true"
+[dependencies]="dependencies"
+[filterable]="true"
+[sortable]="true"
+[columnMenu]="true"
+[columnsResizable]="true"
+[columnsReorderable]="true"
+>
+<kendo-gantt-column
+  field="title"
+  title="Task"
+  [width]="200"
+  [expandable]="true"
+>
+</kendo-gantt-column>
+<kendo-gantt-column-group title="Estimation">
+  <kendo-gantt-column
+    field="start"
+    title="Start"
+    format="dd-MMM-yyyy"
+    [width]="120"
+    filter="date"
+  ></kendo-gantt-column>
+  <kendo-gantt-column
+    field="end"
+    title="End"
+    format="dd-MMM-yyyy"
+    [width]="120"
+    filter="date"
+  >
+  </kendo-gantt-column>
+</kendo-gantt-column-group>
+<kendo-gantt-timeline-day-view></kendo-gantt-timeline-day-view>
+<kendo-gantt-timeline-week-view></kendo-gantt-timeline-week-view>
+<kendo-gantt-timeline-month-view></kendo-gantt-timeline-month-view>
+</kendo-gantt>

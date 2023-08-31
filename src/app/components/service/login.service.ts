@@ -14,4 +14,10 @@ export class LoginService {
   signIn(username , password){
     return this.http.post(this.baseURL + "/signin" , {username , password} )
   }
+  signUp(user){
+    return this.http.post(this.baseURL + "/signup" , user )
+  }
+  verify(verificationCode){
+    return this.http.get(this.baseURL + "/verify/" + verificationCode )
+  }
 }

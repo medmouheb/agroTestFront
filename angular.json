@@ -21,6 +21,10 @@
               "src/favicon.ico"
             ],
             "styles": [
+<<<<<<< HEAD
+=======
+              "node_modules/bootstrap/scss/bootstrap.scss",
+>>>>>>> b9e721a (change repo)
               {
                 "input": "node_modules/@progress/kendo-theme-default/dist/all.css"
               },
@@ -36,6 +40,7 @@
               "node_modules/moment/moment.js",
               "node_modules/perfect-scrollbar/dist/perfect-scrollbar.min.js",
               "node_modules/bootstrap-notify/bootstrap-notify.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js",
               "node_modules/chartist/dist/chartist.js"
             ],
             "allowedCommonJsDependencies": [
@@ -121,15 +126,27 @@
               "node_modules/moment/moment.js",
               "node_modules/perfect-scrollbar/dist/perfect-scrollbar.min.js",
               "node_modules/bootstrap-notify/bootstrap-notify.js",
+<<<<<<< HEAD
               "node_modules/chartist/dist/chartist.js"
+=======
+              "node_modules/bootstrap/dist/js/bootstrap.min.js"
+
+>>>>>>> b9e721a (change repo)
             ],
             "styles": [
               {
                 "input": "node_modules/@progress/kendo-theme-default/dist/all.css"
               },
               "node_modules/perfect-scrollbar/css/perfect-scrollbar.css",
+<<<<<<< HEAD
               "src/assets/scss/material-dashboard.  ",
               "src/assets/css/demo.css"
+=======
+              "src/assets/scss/material-dashboard.scss",
+              "src/assets/css/demo.css",
+              "node_modules/bootstrap/scss/bootstrap.scss"
+
+>>>>>>> b9e721a (change repo)
             ],
             "assets": [
               "src/assets",

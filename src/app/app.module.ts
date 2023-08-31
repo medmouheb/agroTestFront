@@ -37,6 +37,7 @@ import { WeightComponent } from './modules/weight/weight.component';
 import { BreedCodeTypeComponent } from './modules/breed-code-type/breed-code-type.component';
 import { AgeAssignmentComponent } from './modules/age-assignment/age-assignment.component';
 import { EggClassComponent } from './modules/egg-class/egg-class.component';
+import { GanttModule } from "@progress/kendo-angular-gantt";
 
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http);
@@ -60,6 +61,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     DateInputsModule,
     DatePickerModule,
     SharedModule,
+    GanttModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

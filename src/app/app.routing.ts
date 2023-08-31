@@ -7,6 +7,8 @@ import { DashboardComponent } from "./dashboard/dashboard.component";
 import { HomeComponent } from "./home/home.component";
 import { AdminLayoutComponent } from "./layouts/admin-layout/admin-layout.component";
 import { LoginComponent } from "./login/login.component";
+import { UsersListComponent } from "./modules/administration/users-list/users-list.component";
+import { VerifyEmailComponent } from "./modules/administration/verify-email/verify-email.component";
 import { TrashCComponent } from "./modules/company/trash/trashC.component";
 import { CostTrashComponent } from "./modules/cost-center/trash/costtrash.component";
 import { CurrTrashComponent } from "./modules/currency/trash/curtrash.component";
@@ -15,6 +17,8 @@ import { TrashFouComponent } from "./modules/fournisseurs/trash/trash.component"
 import { TrashGComponent } from "./modules/growout/trash/trashG.component";
 import { TrashsalesskuComponent } from "./modules/sales-sku/trashsalessku/trashsalessku.component";
 import { TrasSAComponent } from "./modules/sales/tras-sa/tras-sa.component";
+import { SimulatorMainPageComponent } from "./modules/simulator/simulator-main-page/simulator-main-page.component";
+import { SimulatorResultsComponent } from "./modules/simulator/simulator-results/simulator-results.component";
 import { TrashvendskuComponent } from "./modules/vendor-sku/trashvendsku/trashvendsku.component";
 import { TrashWComponent } from "./modules/warehouse/trash/trashw.component";
 import { TrashwilComponent } from "./modules/willaya/trashwil/trashwil.component";
@@ -31,6 +35,10 @@ const routes: Routes = [
     path: "login",
     component: LoginComponent,
     pathMatch: "full",
+  },
+  {
+    path: "verify",
+    component: VerifyEmailComponent,
   },
   {
     path: "home",
@@ -88,9 +96,18 @@ const routes: Routes = [
         component: TrashGComponent,
       },
       {
-        path: "fournisseurs/trash",
-        component: TrashFouComponent
+        path:"fournisseurs/trash",
+        component:TrashFouComponent
       },
+      {
+        path: "simulatorMain/results",
+        component: SimulatorResultsComponent,
+      },
+      {
+        path: "simulator/home",
+        component: SimulatorMainPageComponent,
+      },
+
       {
         path: "company",
         loadChildren: () =>
@@ -117,6 +134,13 @@ const routes: Routes = [
         loadChildren: () =>
           import("./modules/produits/produits.module").then(
             (m) => m.ProduitsModule
+          ),
+      },
+      {
+        path: "Rapprochement-des-stocks",
+        loadChildren: () =>
+          import("./modules/rapprochementdes-stock/rapprochementdes-stock.module").then(
+            (m) => m.RapprochementdesStockModule
           ),
       },
       {
@@ -364,6 +388,25 @@ const routes: Routes = [
           ),
       },
       {
+        path: "admin/users",
+        component: UsersListComponent,
+      },
+      {
+        path: "admin",
+        loadChildren: () =>
+          import("./modules/administration/administration.module").then(
+            (m) => m.AdministrationModule
+          ),
+      },
+      {
+        path: "simulator",
+        loadChildren: () =>
+          import("./modules/simulator/simulator.module").then(
+            (m) => m.SiumulatorModule
+          ),
+      },
+
+      {
         path: "commandes",
         loadChildren: () =>
           import("./modules/commande/commande.module").then(
@@ -437,7 +480,7 @@ const routes: Routes = [
 @NgModule({
   imports: [
 
-    CommonModule,
+  CommonModule,
     BrowserModule,
     RouterModule.forRoot(routes, {
       useHash: true,
@@ -445,4 +488,4 @@ const routes: Routes = [
   ],
   exports: [],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

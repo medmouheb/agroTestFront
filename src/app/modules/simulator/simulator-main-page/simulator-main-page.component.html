@@ -1,0 +1,185 @@
+
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">Choisissez votre scénario</h4>
+                    </div>
+                    <div class="card-body">
+                        <div id="accordion" role="tablist">
+                            <div class="card-collapse">
+                                <div role="tab" id="headingOne" class="card-header">
+                                    <h5 class="mb-0">
+                                        <a data-toggle="collapse" href="#collapseOne" aria-expanded="false"
+                                            aria-controls="collapseOne" class="collapsed"> Sélectionner une ferme
+                                            existante
+                                            <i class="material-icons">keyboard_arrow_down</i>
+                                        </a>
+                                    </h5>
+                                </div>
+                                <div id="collapseOne" role="tabpanel" aria-labelledby="headingOne"
+                                    data-parent="#accordion" class="collapse" style="">
+                                    <div class="card-body">
+                                        <select class="custom-select" #products
+                                            (change)="onSelectedProduct(products.value)">
+                                            <option default>Variété cultivé</option>
+                                            <option value="OLIVE_OIL">Huile d'olive</option>
+                                            <option value="POTATOES">Pomme de terre</option>
+                                            <option value="AGRUMES">Agrumes</option>
+                                            <option value="CEREALE">Céréale</option>
+                                            <option value="TOMATE">Tomate</option>
+
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card-collapse">
+                                <div role="tab" id="headingTwo" class="card-header">
+                                    <h5 class="mb-0"><a data-toggle="collapse" href="#collapseTwo" aria-expanded="false"
+                                            aria-controls="collapseTwo" class="collapsed"> Créer un nouveau projet
+                                            agricole
+                                            <i class="material-icons">keyboard_arrow_down</i>
+                                        </a>
+                                    </h5>
+                                </div>
+                                <div id="collapseTwo" role="tabpanel" aria-labelledby="headingTwo"
+                                    data-parent="#accordion" class="collapse">
+                                    <div class="card-body">
+                                        <div class="col-12">
+                                            <form [formGroup]="newProjectForm" (ngSubmit)="onSubmit()">
+
+                                                <!-- farmName input -->
+                                                <div class="form-outline mb-3">
+                                                    <input formControlName="farmName" name="farmName" id="farmName"
+                                                        class="form-control form-control-lg" />
+                                                    <label class="form-label" for="farmName">Nom de la ferme</label>
+                                                </div>
+                                                <!-- country input -->
+                                                <div class="form-outline mb-3">
+                                              
+                                                    <label class="form-label" for="country">Pays/ Region</label>
+                                                    <select class="custom-select" #countries (change)="onSelectedCountry(countries.value)">
+                                                        <option default>Choisissez un pays...</option>
+                                                        <option value="Tunisia">Tunisie </option>
+                                                        <!-- <option value="Algeria" >Algérie </option> -->
+                                        
+                                                    </select>
+                                                </div>
+
+                                                <div class="form-outline mb-3">
+                                                    <input [(ngModel)]="area" formControlName="area" name="area" type="number" id="area"
+                                                        class="form-control form-control-lg" />
+                                                    <label class="form-label" for="area">Superficie (ha)</label>
+                                                </div>
+                                                <div class="form-outline mb-3">
+                                                    <label class="form-label">Produits</label>
+                                                  
+                                                    <div class="form-check">
+                                                      <input style="cursor: pointer;" type="checkbox" id="olive_oil" value="OLIVE_OIL" (change)="onProductChange($event)">
+                                                      <label class="form-check-label label" for="olive_oil">Huile d'olive</label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                      <input style="cursor: pointer;" type="checkbox" id="potatoes" value="POTATOES" (change)="onProductChange($event)">
+                                                      <label class="form-check-label label" for="potatoes">Pomme de terre</label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                      <input style="cursor: pointer;" type="checkbox" id="agrumes" value="AGRUMES" (change)="onProductChange($event)">
+                                                      <label class="form-check-label label" for="agrumes">Agrumes</label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                      <input  style="cursor: pointer;" type="checkbox" id="cereale" value="CEREALE" (change)="onProductChange($event)">
+                                                      <label class="form-check-label label" for="cereale">Céréale</label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                      <input style="cursor: pointer;" type="checkbox" id="tomate" value="TOMATE" (change)="onProductChange($event)">
+                                                      <label class="form-check-label label" for="tomate">Tomate</label>
+                                                    </div>
+                                                  </div>
+                                                  
+
+                                                <div class="form-outline mb-3">
+             
+                                                    <select *ngIf="productName == 'POTATOES'" class="custom-select"
+                                                        #varieties (change)="onSelectedVariety(varieties.value)">
+                                                        <option default>Choisissez une variété ...</option>
+                                                        <option value="NONE">Non Spécifié</option>
+                                                        <option value="PRIMEUR">Primeur</option>
+                                                        <option value="SAISON">Saison</option>
+                                                        <option value="ARRIERE_SAISON">Arriére Saison</option>
+
+                                                    </select>
+
+                                                    <select *ngIf="productName == 'AGRUMES'" class="custom-select"
+                                                        #varieties (change)="onSelectedVariety(varieties.value)">
+                                                        <option default>Choisissez une variété ...</option>
+                                                        <option value="NONE">Non Spécifié</option>
+                                                        <option value="CITRONS">Citrons</option>
+                                                        <option value="MANDARINES">Mandarines</option>
+                                                        <option value="ORANGE_TOMPSON">Orange Tompson</option>
+
+                                                    </select>
+
+                                                    <select *ngIf="productName == 'CEREALE'" class="custom-select"
+                                                        #varieties (change)="onSelectedVariety(varieties.value)">
+                                                        <option default>Choisissez une variété ...</option>
+                                                        <option value="NONE">Non Spécifié</option>
+                                                        <option value="BLE_DUR">Blé dur</option>
+                                                        <option value="BLE_TENDRE">Blé tendre</option>
+                                                        <option value="ORGE">Orge</option>
+                                                        <option value="TRITICALE">Triticale</option>
+
+
+                                                    </select>
+                                                </div>
+
+
+                                                <div *ngIf="otherError" class="text-danger">An error has occurred !
+                                                </div>
+
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <div class="form-check mb-0">
+                                                        <input class="form-check-input me-2" type="checkbox" value=""
+                                                            id="form2Example3" />
+
+                                                    </div>
+                                                </div>
+
+                                                <div class="text-center text-lg-start mt-4 pt-2">
+                                                    <button type="button" class="btn btn-primary btn-lg"
+                                                        style="padding-left: 2.5rem; padding-right: 2.5rem;background-color: #394c20;"
+                                                        (click)="onSubmit()"
+                                                        >Valider la Simulation</button>
+                                                </div>
+
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-collapse">
+                                <div role="tab" id="headingThree" class="card-header">
+                                    <h5 class="mb-0">
+                                        <a data-toggle="collapse" href="#collapseThree" aria-expanded="false"
+                                            aria-controls="collapseThree" class="collapsed"> Créer un nouveau projet
+                                            pour les bovins
+                                            <i class="material-icons">keyboard_arrow_down</i>
+                                        </a>
+                                    </h5>
+                                </div>
+                                <div id="collapseThree" role="tabpanel" aria-labelledby="headingThree"
+                                    data-parent="#accordion" class="collapse">
+                                    <div class="card-body"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>

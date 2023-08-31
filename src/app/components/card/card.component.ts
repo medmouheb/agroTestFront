@@ -20,6 +20,17 @@ export class CardComponent implements OnInit {
 
   constructor() { }
   ngOnInit(): void {
+    this.averageArea = this.formatNumberWithSeparators(this.averageArea);
+  }
+   formatNumberWithSeparators(number: number): string {
+    const separator = ','; // Set your desired separator character
+    const decimalSeparator = '.'; // Set your desired decimal separator character
+  
+    const parts = number.toFixed(2).toString().split('.');
+    const integerPart = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, separator);
+    const decimalPart = parts[1];
+  
+    return `${integerPart}${decimalSeparator}${decimalPart}`;
     console.log(this.averageArea)
   }
 

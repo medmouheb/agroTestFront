@@ -38,6 +38,7 @@ import { NotificationsComponent } from "../../notifications/notifications.compon
 import { BrowserModule } from "@angular/platform-browser";
 import { CardComponent } from "app/components/card/card.component";
 import { HomeComponent } from "app/home/home.component";
+import { NumberSeparatorPipe } from "app/components/NumberSeparatorPipe";
 
 @NgModule({
   imports: [
@@ -83,6 +84,7 @@ import { HomeComponent } from "app/home/home.component";
     NotificationsComponent,
     UpgradeComponent,
     CardComponent,
+    NumberSeparatorPipe
   ],
 })
 export class AdminLayoutModule {}
