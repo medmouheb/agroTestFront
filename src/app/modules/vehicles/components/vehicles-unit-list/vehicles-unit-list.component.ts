@@ -8,6 +8,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { VehiclesService } from '../../services/vehicles.service';
 import { TranslateService } from '@ngx-translate/core';
 import { HotToastService } from '@ngneat/hot-toast';
+import { environment } from 'environments/environment';
 
 @Component({
   selector: 'app-vehicles-unit-list',
@@ -32,8 +33,10 @@ export class VehiclesUnitListComponent implements OnInit {
   companyss: Array<Vehicles> = [];
   loading = false;
   companyPage: Page<Vehicles> = initPage;
+  companyPages: Page<Vehicles> = initPage;
   isChecked: boolean = false;
   affiche:boolean = false;
+  existe:string ;
   onPaginationChange: EventEmitter<string> = new EventEmitter<string>();
   form: FormGroup;
 
@@ -294,6 +297,10 @@ export class VehiclesUnitListComponent implements OnInit {
     });
   }
 
+  getImage(id:any){
+    window.open( `${environment.apiUrl}/images/${id}`,"_blank" )
+  }
+
 
 
   findArchivedPage() {
@@ -303,6 +310,7 @@ export class VehiclesUnitListComponent implements OnInit {
       .subscribe({
         next: (result) => {
           this.companyss = result.content;
+          this.companyPages=result;
         },
         error: (error) => {
           this.loading = false;

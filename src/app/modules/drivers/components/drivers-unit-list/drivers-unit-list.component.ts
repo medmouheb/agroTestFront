@@ -32,6 +32,7 @@ export class DriversUnitListComponent implements OnInit {
   companyss: Array<Drivers> = [];
   loading = false;
   companyPage: Page<Drivers> = initPage;
+  companyPages: Page<Drivers> = initPage;
   isChecked: boolean = false;
   affiche:boolean = false;
   onPaginationChange: EventEmitter<string> = new EventEmitter<string>();
@@ -322,6 +323,7 @@ this.findPage()
       .subscribe({
         next: (result) => {
           this.companyss = result.content;
+          this.companyPages=result;
         },
         error: (error) => {
           this.loading = false;

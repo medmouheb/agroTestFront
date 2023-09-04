@@ -93,10 +93,17 @@ export class VehiclesService {
   }
 
 
-  findbylogisticCode(): Observable<string[]>{
+  findbydivision(): Observable<string[]>{
     let url = `${this.baseUrl()}/vehicles/getbylogisticUnit`;
     return this.http.get<string[]>(url);
    
   }
+
+  uploadImage(b: any): Observable<any> {
+    let url = this.baseUrl()+"/images";
+    return this.http.post(url, b);
+  }
+
+ 
 
 }

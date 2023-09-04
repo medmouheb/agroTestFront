@@ -10,6 +10,7 @@ import { GrowoutService } from "app/modules/growout/services/growout.service";
 import { Warehouse } from "app/modules/warehouse/models/warehouse.model";
 import { WarehouseService } from "app/modules/warehouse/services/warehouse.service";
 import { Farm } from "../../../models/farm";
+import { log } from "console";
 
 @Component({
   selector: "app-farms-form-general",
@@ -157,6 +158,7 @@ selectValue(e:any){
       this.farm.technician_Code.toString().length >= 5 &&
       this.farm.technician_Name.toString().length >= 3
     )
+    console.log("d:",this.farm)
     if (
       this.farm.code != null &&
       this.farm.code != "" &&

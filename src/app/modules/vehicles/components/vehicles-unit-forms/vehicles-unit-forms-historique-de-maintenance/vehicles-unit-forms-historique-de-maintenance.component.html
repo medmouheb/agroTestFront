@@ -12,7 +12,7 @@
     <div class="form-group col-md-6">
       <label for="numerooperationmaintenance">{{ "numerooperationmaintenance" | translate }}</label>
         <input type="number" class="form-control" name="numerooperationmaintenance" #numerooperationmaintenance="ngModel" ngModel [(ngModel)]="camp.numerooperationmaintenance"
-          placeholder="{{'Write your weightCapacity'|translate}} "/>
+          placeholder="{{'Write your numerooperationmaintenance'|translate}} "/>
   </div>
 
   <div class="form-group col-md-6">
@@ -33,9 +33,10 @@
       <input class="form-control" name="listeDesOperationsEffectuees" #listeDesOperationsEffectuees="ngModel" ngModel [(ngModel)]="camp.listeDesOperationsEffectuees"
         placeholder="{{'Write your listeDesOperationsEffectuees'|translate}} "/>
   </div>
-  
   <div class="form-group col-md-6">
     <label for="papiersDuVehicule">{{ "papiersDuVehicule" | translate }}</label>
-      <input class="form-control" name="papiersDuVehicule" #papiersDuVehicule="ngModel" ngModel [(ngModel)]="camp.papiersDuVehicule"
-        placeholder="{{'Write your papiersDuVehicule'|translate}} "/>
+      <!-- <input class="form-control" name="papiersDuVehicule" #papiersDuVehicule="ngModel" ngModel [(ngModel)]="camp.papiersDuVehicule" -->
+    
   </div>
+  <input type="file" (change)="handleFile($event)">
+

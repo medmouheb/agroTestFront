@@ -14,8 +14,8 @@
 
   <div class="form-group col-md-6">
     <label for=" logisticCode">{{ "logisticCode" | translate }}</label>
-    <select class="form-control" name="logisticCode" [(ngModel)]="selectedLogisticCode">
-      <option *ngFor="let name of logisticCodes" [value]="name">{{ name }}</option>
+    <select class="form-control" name="logisticCode"[(ngModel)]="selectedDivisionName">
+      <option *ngFor="let name of divisionNames" [value]="name">{{ name }}</option>
     </select>
     
   </div>

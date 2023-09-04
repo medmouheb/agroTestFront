@@ -32,6 +32,8 @@ export class DivisionListComponent implements OnInit {
   divisionss: Array<Division> = [];
   loading = false;
   divisionPage: Page<Division> = initPage;
+  divisionPages: Page<Division> = initPage;
+
 
   onPaginationChange: EventEmitter<string> = new EventEmitter<string>();
 
@@ -297,7 +299,7 @@ export class DivisionListComponent implements OnInit {
       .subscribe({
         next: (result) => {
           this.divisionss = result.content;
-          this.divisionPage = result;
+          this.divisionPages = result;
         },
         error: (error) => {
           this.loading = false;

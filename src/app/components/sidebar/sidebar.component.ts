@@ -67,11 +67,11 @@ export const ROUTES: Categries[] = [
           },
           // {
           //   label: "Beginning inventories",
-          //    path: "/beginninginventory",
-          //      title: "menu.beginninginventories",
-          //       icon: "inventory_2",
-          //    class: "",
-          //  },
+          //   path: "/beginninginventory",
+          //   title: "menu.beginninginventories",
+          //   icon: "inventory_2",
+          //   class: "",
+          // },
           {
             label: "division",
             path: "/division",
@@ -121,7 +121,7 @@ export const ROUTES: Categries[] = [
             icon: "paid",
             class: "",
           },
-           
+
         ],
       },
       {
@@ -366,7 +366,7 @@ export const ROUTES: Categries[] = [
                 path: "/freightterms",
 
               },
-            
+
             ],
           },
           {
@@ -400,12 +400,12 @@ export const ROUTES: Categries[] = [
               //   path: "/vehicleType"
               // },
 
-            
+
             ],
           }
-          
-          
-        
+
+
+
         ],
       },
       {
@@ -472,7 +472,7 @@ export const ROUTES: Categries[] = [
           },
         ],
       },
-      
+
       {
         label: "menu.Logistic",
         category: "logistic",
@@ -502,13 +502,13 @@ export const ROUTES: Categries[] = [
               },
             ],
           },
-          {
-            label: "menu.Drivers",
-            title: "Drivers",
-            icon: "corporate_fare",
-            path:"/drivers",
-            class: "",
-            },
+          // {
+          //   label: "menu.Drivers",
+          //   title: "Drivers",
+          //   icon: "corporate_fare",
+          //   path: "/drivers",
+          //   class: "",
+          // },
           {
             label: "menu.Driver",
             title: "Driver",
@@ -529,7 +529,7 @@ export const ROUTES: Categries[] = [
                 path: "/start",
               },
               {
-                path:"/vehicles",
+                path: "/vehicles",
                 label: "menu.Vehicles",
                 title: "menu.Vehicles",
                 icon: "corporate_fare",
@@ -628,7 +628,7 @@ export const ROUTES: Categries[] = [
     icon: "corporate_fare",
     id: "18",
     SubCat: [
-    
+
       {
         label: "Agriculture",
         category: "Agriculture",
@@ -657,12 +657,13 @@ export const ROUTES: Categries[] = [
             class: "",
             SubC: [
               {
-                  label: "Initial inventory",
-                  path: "/Initialinventory",
-                  title: "menu.Initialinventory",
-                  icon: "warehouse",
-                  class: "",
-                },{
+                label: "Initial inventory",
+                path: "/Initialinventory",
+                title: "menu.Initialinventory",
+                icon: "warehouse",
+                class: "",
+              }
+              , {
                 label: "Product Usage",
                 path: "/ProductUsage",
                 title: "menu.ProductUsage",
@@ -678,7 +679,7 @@ export const ROUTES: Categries[] = [
               },
             ],
           },
-           
+
           {
             label: "menu.Order-Management",
             title: "menu.Feed-Product",
@@ -735,7 +736,7 @@ export const ROUTES: Categries[] = [
         id: "8",
         class: "",
       },
-      
+
     ],
   },
   {
@@ -836,7 +837,7 @@ export class SidebarComponent implements OnInit {
     this.selectedType5 = ""
     this.selectedIndex5 = -1
 
-    if(id === "users_list"){
+    if (id === "users_list") {
       this.router.navigate(["/admin/users"]);
     }
   }
@@ -892,7 +893,7 @@ export class SidebarComponent implements OnInit {
 
   public clicksub(menu: string, target: any) {
     let result = target.hasAttribute("subcat");
-    console.log(`#${menu}-dropdown`,"a::::",menu)
+    console.log(`#${menu}-dropdown`, "a::::", menu)
     if (result) {
       $(`#${menu}-dropdown`).toggleClass("show");
       $(`#${menu}`).toggleClass("collapsed");

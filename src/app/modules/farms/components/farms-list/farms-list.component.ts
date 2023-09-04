@@ -48,8 +48,12 @@ export class FarmsListComponent implements OnInit {
 
   loading = false;
   farms: Array<Farm> = [];
+  farmss: Array<Farm> = [];
+
   farm: Farm = {};
   farmsPage: Page<Farm> = initPage;
+  farmsPages: Page<Farm> = initPage;
+
   companyss: Array<Farm> = [];
   pageNumber = 0;
   pageSize = 10;
@@ -86,6 +90,39 @@ export class FarmsListComponent implements OnInit {
         },
         complete: () => (this.loading = false),
       });
+  }
+
+  onClickdisArchive(id: string) {
+    console.log(id);
+
+    this.farmsService.disArchive(id).subscribe({
+      next: () => {
+        this.findArchivedPage();
+this.findPage()
+        this.toastService.success(
+          this.translateService.instant("success.restore", {
+            elem: this.translateService.instant("farms"),
+          })
+        );
+        console.log(id);
+      },
+    });
+  }
+
+  onClickDelete(id: string) {
+    console.log("id: " + id);
+    this.farmsService.delete(id).subscribe({
+      next: () => {
+        this.findArchivedPage();
+        this.findPage()
+        console.log("Success");
+        this.toastService.success(
+          this.translateService.instant("success.deleted", {
+            elem: this.translateService.instant("farms"),
+          })
+        );
+      },
+    });
   }
 
   onCheckboxChange() {
@@ -129,6 +166,19 @@ export class FarmsListComponent implements OnInit {
   }
 
   onSave(id: string | null) {
+    console.log("eee::",this.farm)
+    
+    if(this.farm.warehouse==undefined){
+      this.farm.warehouse = null;
+    } else if(Object.keys(this.farm.warehouse).length==0){
+      this.farm.warehouse = null;
+    }
+    
+    if(this.farm.vendor==undefined){
+      this.farm.vendor = null;
+    } else if(Object.keys(this.farm.vendor).length==0){
+      this.farm.vendor = null;
+    }
     this.toastService.loading(
       this.translateService.instant("message.loading..."),
       {
@@ -191,38 +241,38 @@ export class FarmsListComponent implements OnInit {
     });
   }
 
-  onClickDelete(id: string) {
-    this.deleteModal.show(() => {
-      this.toastService.loading(
-        this.translateService.instant("message.loading..."),
-        {
-          id: "0",
-        }
-      );
-      this.farmsService.delete(id).subscribe({
-        next: () => {
-          this.findPage();
-          this.deleteModal.hide();
-          this.toastService.close("0");
-          this.onFilterChange("");
-          this.toastService.success(
-            this.translateService.instant("success.deleted", {
-              elem: this.translateService.instant("farm"),
-            })
-          );
-        },
-        error: (error) => {
-          this.deleteModal.hide();
-          this.toastService.close("0");
-          this.toastService.error(
-            this.translateService.instant(error.error, {
-              elem: this.translateService.instant("farm"),
-            })
-          );
-        },
-      });
-    });
-  }
+  // onClickDelete(id: string) {
+  //   this.deleteModal.show(() => {
+  //     this.toastService.loading(
+  //       this.translateService.instant("message.loading..."),
+  //       {
+  //         id: "0",
+  //       }
+  //     );
+  //     this.farmsService.delete(id).subscribe({
+  //       next: () => {
+  //         this.findPage();
+  //         this.deleteModal.hide();
+  //         this.toastService.close("0");
+  //         this.onFilterChange("");
+  //         this.toastService.success(
+  //           this.translateService.instant("success.deleted", {
+  //             elem: this.translateService.instant("farm"),
+  //           })
+  //         );
+  //       },
+  //       error: (error) => {
+  //         this.deleteModal.hide();
+  //         this.toastService.close("0");
+  //         this.toastService.error(
+  //           this.translateService.instant(error.error, {
+  //             elem: this.translateService.instant("farm"),
+  //           })
+  //         );
+  //       },
+  //     });
+  //   });
+  // }
 
   
   findArchivedPage() {
@@ -232,7 +282,8 @@ export class FarmsListComponent implements OnInit {
       .subscribe({
         next: (result) => {
           console.log("b::",result)
-
+          this.farmss = result.content;
+          this.farmsPages = result;
           this.companyss= result.content;
         },
         error: (error) => {
@@ -247,12 +298,15 @@ export class FarmsListComponent implements OnInit {
     this.archiveModal.show(() => {
       this.farmsService.archive(id).subscribe({
         next: () => {
-          //   this.findPage();
+          this.findPage();
+          this.findArchivedPage()
           this.archiveModal.hide();
-          //   this.toastService.close("0");
-          this.toastService.success;
-          console.log(id);
-
+          this.toastService.close("0");
+          this.toastService.success(
+            this.translateService.instant("success.deleted", {
+              elem: this.translateService.instant("farms"),
+            })
+          );
           //   console.log(id);
         },
         // error: (error) => {
@@ -267,4 +321,29 @@ export class FarmsListComponent implements OnInit {
       });
     });
   }
+
+  // onClickArchive(id: string) {
+  //   this.archiveModal.show(() => {
+  //     this.farmsService.archive(id).subscribe({
+  //       next: () => {
+  //         //   this.findPage();
+  //         this.archiveModal.hide();
+  //         //   this.toastService.close("0");
+  //         this.toastService.success;
+  //         console.log(id);
+
+  //         //   console.log(id);
+  //       },
+  //       // error: (error) => {
+  //       //   this.archiveModal.hide();
+  //       //   this.toastService.close("0");
+  //       //   this.toastService.error(
+  //       //     this.translateService.instant(error.error, {
+  //       //       elem: this.translateService.instant("growout"),
+  //       //     })
+  //       //   );
+  //       // },
+  //     });
+  //   });
+  // }
 }

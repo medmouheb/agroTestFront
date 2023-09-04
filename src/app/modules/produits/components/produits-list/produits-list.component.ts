@@ -16,6 +16,8 @@ import { HotToastService } from "@ngneat/hot-toast";
   styleUrls: ["./produits-list.component.scss"],
 })
 export class ProduitsListComponent implements OnInit {
+
+  
   @ViewChild("deleteModal")
   deleteModal!: ConfirmDialogComponent;
 
@@ -270,35 +272,18 @@ export class ProduitsListComponent implements OnInit {
   }
 
   onClickDelete(id: string) {
-    this.deleteModal.show(() => {
-      this.toastService.loading(
-        this.translateService.instant("message.loading..."),
-        {
-          id: "0",
-        }
-      );
-      this.produitsService.delete(id).subscribe({
-        next: () => {
-          this.findPage();
-          this.deleteModal.hide();
-          this.toastService.close("0");
-          this.onFilterChange("");
-          this.toastService.success(
-            this.translateService.instant("success.deleted", {
-              elem: this.translateService.instant("product"),
-            })
-          );
-        },
-        error: (error) => {
-          this.deleteModal.hide();
-          this.toastService.close("0");
-          this.toastService.error(
-            this.translateService.instant(error.error, {
-              elem: this.translateService.instant("product"),
-            })
-          );
-        },
-      });
+    console.log("id: " + id);
+    this.produitsService.delete(id).subscribe({
+      next: () => {
+        this.findArchivedPage();
+        this.findPage()
+        console.log("Success");
+        this.toastService.success(
+          this.translateService.instant("success.deleted", {
+            elem: this.translateService.instant("company"),
+          })
+        );
+      },
     });
   }
 
@@ -333,4 +318,6 @@ export class ProduitsListComponent implements OnInit {
       },
     });
   }
+
+
 }

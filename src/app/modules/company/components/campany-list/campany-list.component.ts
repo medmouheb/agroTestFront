@@ -31,6 +31,8 @@ export class CampanyListComponent implements OnInit {
   companyss: Array<Company> = [];
   loading = false;
   companyPage: Page<Company> = initPage;
+  companyPages: Page<Company> = initPage;
+
   isChecked: boolean = false;
   affiche:boolean = false;
   onPaginationChange: EventEmitter<string> = new EventEmitter<string>();
@@ -368,7 +370,7 @@ this.findPage()
       .subscribe({
         next: (result) => {
           this.companyss = result.content;
-          this.companyPage = result;
+          this.companyPages = result;
         },
         error: (error) => {
           this.loading = false;

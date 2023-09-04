@@ -3,6 +3,8 @@ import { FormGroup } from '@angular/forms';
 import { SharedService } from 'app/modules/company/services/shared.service';
 import { Vehicles } from 'app/modules/vehicles/models/vehicles';
 import { VehiclesService } from 'app/modules/vehicles/services/vehicles.service';
+import { error } from 'console';
+import { environment } from 'environments/environment';
 
 @Component({
   selector: 'app-vehicles-unit-forms-historique-de-maintenance',
@@ -20,7 +22,7 @@ export class VehiclesUnitFormsHistoriqueDeMaintenanceComponent implements OnInit
 
 
   constructor(private sharedService: SharedService,
-
+    private vehiclesService: VehiclesService
     ) {}
 
     ngOnInit(): void {
@@ -30,8 +32,28 @@ export class VehiclesUnitFormsHistoriqueDeMaintenanceComponent implements OnInit
 
   
   
+    handleFile(file: any) {
+      let dataFile = new FormData();
+      dataFile.append("file", file.target.files[0]);
+      this.vehiclesService.uploadImage(dataFile).subscribe((res) => {
 
+        
+        this.addform.get('papiersDuVehicule')
+        
+        
+        localStorage.setItem("avatar", res);
+        // console.log("uploadImage success");
+        
+      },(error)=>{
+        this.camp.papiersDuVehicule=        error.error.text
+      
+     
+        this.addform.get('papiersDuVehicule').
+        setValue(error.error.text);
+      });
+    }
 
+   
 
 
   initForm() {

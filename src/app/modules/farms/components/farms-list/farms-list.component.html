@@ -25,7 +25,7 @@
         </div>
     </div>
 
-    <div class="datatable">
+    <div *ngIf="affiche==false" class="datatable">
 
         <ng-container *ngIf="loading">
             <app-spinner></app-spinner>
@@ -85,10 +85,78 @@
                             [title]="'btns.edit' | translate">
                             <i class="fa fa-pencil"></i>
                         </button>
-                        <button class="text-danger datatable-action-btn" (click)="onClickArchive(div.id!)"
+                        <button class="text-danger datatable-action-btn" (click)="onClickArchive(farm.id!)"
                             [title]="'btns.delete' | translate">
                             <i class="fa fa-trash"></i>
                         </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="affiche==true" class="datatable">
+        <ng-container *ngIf="loading">
+            <app-spinner></app-spinner>
+        </ng-container>
+
+        <ng-container *ngIf="!loading && farmsPages.empty">
+            <app-no-data></app-no-data>
+        </ng-container>
+
+        <table class="table" *ngIf="!loading && !farmsPages.empty">
+            <thead class="datatable-header">
+                <tr>
+                    <th>
+                        <strong>
+                            {{'code' | translate}}
+                        </strong>
+                    </th>
+                    <th>
+                        <strong>
+                            {{'name' | translate}}
+                        </strong>
+                    </th>
+                    <th>
+                        <strong>
+                            {{'type' | translate}}
+                        </strong>
+                    </th>
+                    <th>
+                        <strong>
+                            {{'owner' | translate}}
+                        </strong>
+                    </th>
+                    <th>
+                        <strong>
+                            {{'actions' | translate}}
+                        </strong>
+                    </th>
+                </tr>
+            </thead>
+            <tbody class="text-sm">
+                <tr class="row-data" *ngFor="let farm of farmss">
+                    <td>
+                        {{farm.code}}
+                    </td>
+                    <td>
+                        {{farm.nom}}
+                    </td>
+                    <td>
+                        {{farm.type}}
+                    </td>
+                    <td>
+                        {{farm.owner_Name}}
+                    </td>
+
+                    <td class="d-flex gap-4">
+                        <button class="text-primary datatable-action-btn" (click)="onClickdisArchive(farm.id!)"
+                        [title]="'Restore line' | translate">
+                        <i class="fa fa-reply-all"></i>
+                      </button>
+                      <button class="text-danger datatable-action-btn" (click)="onClickDelete(farm.id!)"
+                        [title]="'Delete permanently' | translate">
+                        <i class="fa fa-trash"></i>
+                      </button>
                     </td>
                 </tr>
             </tbody>
@@ -104,6 +172,8 @@
                 (onStepChange)="onStepChange($event)"></app-stepper>
         </app-farms-form>
     </app-wizard-dialog>
+    <app-confirm-dialog #archiveModal></app-confirm-dialog>
+
 
     <app-confirm-dialog #deleteModal></app-confirm-dialog>
 </div>

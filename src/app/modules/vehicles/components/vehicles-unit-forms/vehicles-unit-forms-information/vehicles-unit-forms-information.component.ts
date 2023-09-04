@@ -16,8 +16,8 @@ export class VehiclesUnitFormsInformationComponent implements OnInit {
  
   @Input() camp!: Vehicles;
   addform: FormGroup;
-  logisticCodes: string[] = [];
-  selectedLogisticCode: string = '';
+  divisionNames: string[] = [];
+  selectedDivisionName: string = '';
   // Array to hold the list of companies
 
 
@@ -27,27 +27,19 @@ export class VehiclesUnitFormsInformationComponent implements OnInit {
     ) {}
 
     ngOnInit(): void {
+      this.loadDivisionNames();
+
       this.initForm();
-      this.loadLogisticCodes();
-    }
-  
-    loadLogisticCodes() {
-      this.vehiclesService.findbylogisticCode().subscribe(
-        (name: string[]) => {
-          this.logisticCodes = name;
-        },
-        (error) => {
-          console.error('Error loading Produit code:', error);
-        }
-      );
     
     }
-    
   
-  
-
-
-
+    loadDivisionNames() {
+      this.vehiclesService.findbydivision().subscribe(data=>{
+        console.log("aq::",data)
+        this.divisionNames=data
+      })
+      
+    }
 
   initForm() {
     this.addform = new FormGroup({

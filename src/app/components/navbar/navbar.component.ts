@@ -222,7 +222,13 @@ export class NavbarComponent implements OnInit {
         break;
       case "Rapprochement-des-stocks":
         this.routes = ["menu.Business", "Agriculture", "menu.Warehouse", "menu.Rapprochement-des-stocks"];
-        break;
+      break;
+      case "drivers":
+        this.routes = ["menu.general-Setups", "menu.Logistic", "menu.Drivers"];
+      break;
+      case "vehicles":
+          this.routes = ["menu.general-Setups", "menu.Logistic", "menu.Driver","menu.Vehicles"];
+      break;
 
     }
   }
