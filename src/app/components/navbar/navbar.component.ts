@@ -158,7 +158,7 @@ export class NavbarComponent implements OnInit {
         this.routes = ["menu.general-Setups", "Admin", "menu.companies"]
         break;
       case "division":
-        this.routes = ["menu.general-Setups", "Admin", "menu.divisions"]
+        this.routes = ["menu.general-Setups", "Admin", "menu.division"]
         break;
       case "growout":
         this.routes = ["menu.general-Setups", "Admin", "menu.growout"]
@@ -182,7 +182,7 @@ export class NavbarComponent implements OnInit {
         this.routes = ["menu.general-Setups", "menu.Materialhandling", "menu.Freightsetup", "menu.DeliveryInstruction"]
         break;
       case "vehicule":
-        this.routes = ["menu.general-Setups", "menu.Materialhandling", "menu.Freightsetup", "menu.Vehiculess"]
+        this.routes = ["menu.general-Setups", "menu.Materialhandling", "menu.Freightsetup", "menu.Vehicules"]
         break;
       case "vehicleType":
         this.routes = ["menu.general-Setups", "menu.Materialhandling", "menu.Freightsetup", "menu.vehicleType"]

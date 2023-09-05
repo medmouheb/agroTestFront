@@ -622,13 +622,14 @@ export const ROUTES: Categries[] = [
       },
     ],
   },
+
+
   {
     label: "menu.Business",
     cateeg: "Business",
     icon: "corporate_fare",
     id: "18",
     SubCat: [
-
       {
         label: "Agriculture",
         category: "Agriculture",
@@ -656,6 +657,13 @@ export const ROUTES: Categries[] = [
             id: "Warhouse-dropdown",
             class: "",
             SubC: [
+              {
+                label: "Warehouses",
+                path: "/warehouses",
+                title: "Warehouses",
+                icon: "warehouse",
+                class: "",
+              },
               {
                 label: "Initial inventory",
                 path: "/Initialinventory",

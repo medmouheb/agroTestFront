@@ -209,11 +209,15 @@ this.findPage()
   }
 
   onWizardSave(id: string | null) {
+
     if (this.stepper.lastStep()) {
+  
       this.onSave(id);
       return;
     }
     this.stepper.nextStep();
+    let a = document.getElementsByClassName("modal-content")[0] as HTMLElement 
+    a.style.height="1680px"
   }
 
   onStepChange(step: number) {
@@ -228,17 +232,27 @@ this.findPage()
       cancel: () => this.onCancel(),
       prev: () => this.stepper.prevStep(),
     });
+
   }
 
   onClickEdit(id: string) {
     this.findById(id);
-    this.formModal.show({
-      title: "menu.edit-farm",
-      stepsCount: this.steps.length - 1,
-      confirm: () => this.onWizardSave(id),
-      cancel: () => this.onCancel(),
-      prev: () => this.stepper.prevStep(),
-    });
+
+    this.stepper.nextStep();
+    setTimeout(() => {
+      this.stepper.prevStep();
+
+    }, 100);
+    setTimeout(() => {
+      this.formModal.show({
+        title: "menu.edit-farm",
+        stepsCount: this.steps.length - 1,
+        confirm: () => this.onWizardSave(id),
+        cancel: () => this.onCancel(),
+        prev: () => this.stepper.prevStep(),
+      });
+    }, 200);
+    
   }
 
   // onClickDelete(id: string) {

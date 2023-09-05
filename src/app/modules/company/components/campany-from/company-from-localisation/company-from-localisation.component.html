@@ -32,8 +32,7 @@
     <label for="wilayaName">{{ "wilayaName" | translate }}</label>
     <input (blur)="isBlur()" class="form-control" name="wilayaName" #wilayaName="ngModel" ngModel
       [(ngModel)]="camp.wilayaName" placeholder="{{'Write your wilaya name'|translate}} " />
-    <div style="border: 1px solid red; color : red;" *ngIf="minIwillaya">{{'wilaya Name must be between 1 and 100
-      charactere'|translate}}</div>
+    <div style="border: 1px solid red; color : red;" *ngIf="minIwillaya">{{'wilaya Name must be between 1 and 100 charactere'|translate}}</div>
 
   </div>
 
@@ -42,8 +41,7 @@
     <label for="zipCode">{{ "zipCode" | translate }}</label>
     <input (blur)="isBlur2()" class="form-control" name="zipCode" #zipCode="ngModel" ngModel [(ngModel)]="camp.zipCode"
       placeholder="{{'Write your zip code'|translate}} ">
-    <div style="border: 1px solid red; color : red;" *ngIf="minIzipcode">{{'Zip code must be between 1 and 10
-      charactere'|translate}}</div>
+    <div style="border: 1px solid red; color : red;" *ngIf="minIzipcode">{{'Zip code must be between 1 and 10 charactere'|translate}}</div>
 
   </div>
 
@@ -53,8 +51,7 @@
     <label for="phone">{{ "phoneNumber" | translate }}</label>
     <input (blur)="isBlur3()" class="form-control" name="phone" #phone="ngModel" ngModel [(ngModel)]="camp.number"
       (ngModelChange)="geValues($event)" placeholder="{{'Write your phone'|translate}} " />
-    <div style="border: 1px solid red; color : red;" *ngIf="minIphone">{{'phone number must be have 12
-      charactere'|translate}}</div>
+    <div style="border: 1px solid red; color : red;" *ngIf="minIphone">{{'phone number must be have 12 charactere'|translate}}</div>
 
   </div>
 

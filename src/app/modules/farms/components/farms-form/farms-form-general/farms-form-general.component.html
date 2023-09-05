@@ -17,13 +17,13 @@
   </div>
   <div class="form-group col-md-6 align-self-end">
     <label for="active">
-      <input type="checkbox" id="active" name="active" #active="ngModel" ngModel [(ngModel)]="farm.status" />
+      <input type="checkbox" id="active" name="active" #active="ngModel" ngModel [(ngModel)]="farm.status" (change)="geValues($event)" />
       {{ "active" | translate }}
     </label>
   </div>
     <div class="form-group col-md-6">
     <label for="growout">{{ "growoutnumber" | translate }}</label>
-    <select (click)="selectValue($event)"   class="form-control" name="growoutcode" #growoutcode="ngModel" ngModel [(ngModel)]="farm.growoutcode">
+    <select (click)="selectValue($event)"   class="form-control" name="growoutcode" #growoutcode="ngModel" ngModel [(ngModel)]="farm.growoutcode" (change)="geValues($event)">
       <option *ngFor="let dv of growouts" [value]="dv.code" > {{dv.name}}</option>
     </select>
    
@@ -46,7 +46,7 @@
 </div>
 <div class="form-group col-md-6">
   <label for="warehouse">{{ "primaryWarehouse" | translate }}</label>
-  <select class="form-control" name="warehouse" #warehouse="ngModel" ngModel [(ngModel)]="farm.warehouse!.id"
+  <select class="form-control" name="warehouse" #warehouse="ngModel" ngModel [(ngModel)]="farm.warehouse!.id" (change)="geValues($event)"
     (change)="onWarehouseChange()">
     <option *ngFor="let warehouse of warehouses" [value]="warehouse.id">
       {{ warehouse.name }}

@@ -6,14 +6,14 @@
       <label for="active">{{ "active" | translate }}</label>
       <select class="form-control" name="active" #active="ngModel" ngModel [(ngModel)]="camp.active">
         <option value="false" >false</option>
-        <option value="true" >true</option>
+        <option value="true" >True</option>
     </select>
     </div>
     <div class="form-group col-md-6">
         <label for="yardBuggy">{{ "yardBuggy" | translate }}</label>
         <select class="form-control" name="yardBuggy" #yardBuggy="ngModel" ngModel [(ngModel)]="camp.yardBuggy">
-            <option value="false" >false</option>
-            <option value="true" >true</option>
+            <option value="false" >False</option>
+            <option value="true" >True</option>
         </select>
       </div>
       <div class="form-group col-md-6">
@@ -58,8 +58,8 @@
       <div class="form-group col-md-6">
         <label for="trailer">{{ "trailer" | translate }}</label>
         <select class="form-control" name="trailer" #trailer="ngModel" ngModel [(ngModel)]="camp.trailer">
-            <option value="false" >false</option>
-            <option value="true" >true</option>
+            <option value="false" >False</option>
+            <option value="true" >True</option>
         </select>
       </div>
       <div class="form-group col-md-6">
@@ -74,7 +74,9 @@
       </div>
       <div class="form-group col-md-6">
         <label for="color">{{ "color" | translate }}</label>
-        <input class="form-control" name="color" #color="ngModel" ngModel [(ngModel)]="camp.color"
-          placeholder="{{'Write your color'|translate}} "/>
+        <input type="color" class="form-control" class="form-control" name="color" #color="ngModel" ngModel [(ngModel)]="camp.color"
+        placeholder="{{'Write your color'|translate}} ">
+
+        
       </div>
   </div>

@@ -123,10 +123,11 @@ export class DivisionListComponent implements OnInit {
       }
     );
     console.log(this.division)
-    if (this.estObjetVide(this.division.companycode)){
-      this.toastService.error("you must select a campany  ")
-      return console.log("okk");
-    }
+    // if(!this.division.companycode){
+    //     this.toastService.error("you must select a campany  ")
+    //     return console.log("okk");
+    // }
+    
     this.divisionService.save(id, this.division!).subscribe({
       next: () => {
         this.findPage();

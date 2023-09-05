@@ -15,7 +15,8 @@ export class DeliveryFormGeneralComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.delivery==undefined)this.delivery={
-      productType:"", instructiuonCode:""};
+      productType:"", instructiuonCode:""
+    };
       this.infiForm()
       
     }

@@ -27,9 +27,9 @@ export class DivisionFromLocalisationComponent implements OnInit {
 
   ngOnInit(): void {
     if(localStorage.getItem("company")){
-      this.isRemenber=true
-      this.division.companyname=JSON.parse(  localStorage.getItem("company")).companyname
-      this.division.companycode=JSON.parse(  localStorage.getItem("company")).codecompany
+      this.isRemenber=false
+      // this.division.companyname=JSON.parse(  localStorage.getItem("company")).companyname
+      // this.division.companycode=JSON.parse(  localStorage.getItem("company")).codecompany
     }
 this.getAllWillaya()
 this.getAllCompany()
@@ -44,9 +44,10 @@ getAllWillaya(){
 setCompany(){
   this.isRemenber=!this.isRemenber
   if(this.isRemenber==false){
-    localStorage.setItem("company","")
+    this.division={companyname:this.wil.name}
   }else{
-    localStorage.setItem("company", JSON.stringify({companyname:this.division.companyname,codecompany:this.companyname}) )
+      this.division={...this.wil,phone:this.wil.number,codeCity:this.wil.cityCode,nameCity:this.wil.cityName,companyname:this.wil.name}
+    
   }
 }
 selectValue(e:any){
@@ -93,19 +94,29 @@ getAllCompany() {
 //     console.log(this.division.campany)
 //   }
 // }
+wil:any
 selectValue1(e:any){
 
-  let wil=this.companys.filter(el=>{
+  this.wil={...this.companys.filter(el=>{
     //console.log(el)
     return el.name==e.target.value
 
-  })[0].code
-  console.log(wil)
+  })[0]}
 
-  this.division.companycode=wil
-  console.log(this.division.companyname)
-  console.log(this.division.companycode)
-  this.companyname=wil
+  console.log(this.companys.filter(el=>{
+    //console.log(el)
+    return el.name==e.target.value
+
+  })[0])
+console.log(this.division)
+if(this.isRemenber){
+  this.division={...this.wil,phone:this.wil.number,codeCity:this.wil.cityCode,nameCity:this.wil.cityName}
+
+}
+  // this.division.companycode=wil
+  // console.log(this.division.companyname)
+  // console.log(this.division.companycode)
+  // this.companyname=wil
 
   
 

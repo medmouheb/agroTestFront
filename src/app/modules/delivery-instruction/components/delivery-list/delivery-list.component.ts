@@ -37,7 +37,7 @@ export class DeliveryListComponent implements OnInit {
   isChecked: boolean = false;
   affiche:boolean = false;
   currentStep = 0;
-  steps: any = ["steps.general"];
+  steps: any = ["steps.general","steps.general"];
 
   constructor(
     private deliveryservice: DeliveryService,
@@ -80,7 +80,9 @@ export class DeliveryListComponent implements OnInit {
 
   findById(id: string) {
     this.deliveryservice.findById(id).subscribe({
-      next: (result) => (this.delivery = result),
+      next: (result) => {
+        this.delivery = result
+      console.log(result,id)},
       error: (error) => console.error(error),
     });
   }
@@ -150,6 +152,10 @@ export class DeliveryListComponent implements OnInit {
 
   onClickEdit(id: string) {
     this.findById(id);
+    setTimeout(()=>{
+      console.log('ee:',this.delivery)
+
+    },2000)
     this.formModal.show({
       title: "menu.edit-delivery",
       confirm: () => this.onSave(id),

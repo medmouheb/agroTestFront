@@ -45,7 +45,7 @@ export class VehiclesUnitFormsHistoriqueDeMaintenanceComponent implements OnInit
         // console.log("uploadImage success");
         
       },(error)=>{
-        this.camp.papiersDuVehicule=        error.error.text
+        this.camp.papiersDuVehicule= error.error.text
       
      
         this.addform.get('papiersDuVehicule').

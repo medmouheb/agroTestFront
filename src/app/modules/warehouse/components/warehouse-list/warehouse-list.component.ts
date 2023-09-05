@@ -84,10 +84,12 @@ export class WarehouseListComponent implements OnInit {
      });
   }
   onCSVImport() {
-   
+   console.log("1111111")
     if (!this.file) {
       return;
     }
+    console.log("222222")
+
     this.toastService.loading(
       this.translateService.instant("message.loading..."),
       {
@@ -98,9 +100,20 @@ export class WarehouseListComponent implements OnInit {
     formData.append("file", this.file);
     this.warehouseService.importCSV(formData).subscribe({
       next: () => {
+        this.importModal.hide();
         this.findPage();
+        this.file = null;
+        this.toastService.close("0");
+        this.toastService.success(
+          this.translateService.instant("success.imported", {
+            elem: this.translateService.instant("menu.products"),
+          })
+        );
       },
-      error: (error) => console.error(error),
+      error: (error) => {
+        this.toastService.close("0");
+        this.toastService.error(this.translateService.instant(error.error));
+      },
     });
   }
 

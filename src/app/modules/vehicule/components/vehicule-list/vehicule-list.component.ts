@@ -141,7 +141,7 @@ export class VehiculeListComponent implements OnInit {
         this.toastService.close("0");
         this.toastService.success(
           this.translateService.instant("success.saved", {
-            elem: this.translateService.instant("company"),
+            elem: this.translateService.instant("vehicule"),
           })
         );
       },
@@ -170,7 +170,7 @@ export class VehiculeListComponent implements OnInit {
 
   onClickAdd() {
     this.formModal.show({
-      title: "menu.add-company",
+      title: "menu.add-Vehicles",
       stepsCount: this.steps.length - 1,
       confirm: () => this.onWizardSave(null),
       cancel: () => this.onCancel(),
@@ -188,7 +188,7 @@ export class VehiculeListComponent implements OnInit {
     }, 100);
     setTimeout(() => {
       this.formModal.show({
-        title: "menu.edit-company",
+        title: "menu.edit-Vehicles",
         stepsCount: this.steps.length - 1,
         confirm: () => this.onWizardSave(id),
         cancel: () => this.onCancel(),
@@ -210,7 +210,7 @@ export class VehiculeListComponent implements OnInit {
           this.toastService.close("0");
           this.toastService.success(
             this.translateService.instant("success.deleted", {
-              elem: this.translateService.instant("company"),
+              elem: this.translateService.instant("vehicule"),
             })
           );
           //   console.log(id);
@@ -267,7 +267,7 @@ export class VehiculeListComponent implements OnInit {
 this.findPage()
         this.toastService.success(
           this.translateService.instant("success.restore", {
-            elem: this.translateService.instant("company"),
+            elem: this.translateService.instant("vehicule"),
           })
         );
         console.log(id);
@@ -284,7 +284,7 @@ this.findPage()
         console.log("Success");
         this.toastService.success(
           this.translateService.instant("success.deleted", {
-            elem: this.translateService.instant("company"),
+            elem: this.translateService.instant("vehicule"),
           })
         );
       },

@@ -173,7 +173,8 @@ export class WillayaListComponent implements OnInit {
     this.archiveModal.show(() => {
       this.willayaservice.archive(id).subscribe({
         next: () => {
-             this.findPage();
+          this.findArchivedPage();
+          this.findPage()
           this.archiveModal.hide();
             this.toastService.close("0");
             this.toastService.success(
@@ -234,7 +235,6 @@ export class WillayaListComponent implements OnInit {
         next: (result) => {
           this.willayass = result.content;
           this.willayaPages = result;
-          this.findArchivedPage();
         },
         error: (error) => {
           this.loading = false;
@@ -245,9 +245,13 @@ export class WillayaListComponent implements OnInit {
   }
 
 
-
+  lm(){
+    alert("aaaa")
+    console.log("kkkkk")
+  }
   
   onClickdisArchive(id: string) {
+    console.log('aaa')
     this.willayaservice.disArchive(id).subscribe({
       next: () => {
         this.findArchivedPage();
