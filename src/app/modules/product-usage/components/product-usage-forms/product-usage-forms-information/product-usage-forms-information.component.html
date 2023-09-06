@@ -6,7 +6,10 @@
 
   <div class="form-group col-md-6">
     <label for="codeEntrepot">{{ "codeEntrepot" | translate }}</label>
-    <input type="number" class="form-control" name="codeEntrepot" [(ngModel)]="camp.codeEntrepot ">
+    <select  class="form-control" name="codeEntrepot" [(ngModel)]="camp.codeEntrepot ">
+    
+        <option *ngFor="let d of listWh"  > {{d.code}} </option>
+    </select>
        
 </div>
     <div class="form-group col-md-6">

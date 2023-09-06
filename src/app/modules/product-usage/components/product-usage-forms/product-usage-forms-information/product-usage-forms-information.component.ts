@@ -3,6 +3,9 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { SharedService } from 'app/modules/company/services/shared.service';
 import { ProductUsage } from 'app/modules/product-usage/model/product-usage';
 import { ProductUsageService } from 'app/modules/product-usage/service/product-usage.service';
+import { Warehouse } from 'app/modules/warehouse/models/warehouse.model';
+import { WarehouseService } from 'app/modules/warehouse/services/warehouse.service';
+import { data } from 'jquery';
 
 @Component({
   selector: 'app-product-usage-forms-information',
@@ -17,18 +20,24 @@ export class ProductUsageFormsInformationComponent implements OnInit {
 
   divisionNames: string[] = [];
   selectedDivisionName: string = '';
+  listWh: Warehouse[] = [];
 
   // Array to hold the list of companies
 
 
   constructor(private sharedService: SharedService,
-    private productUsageService: ProductUsageService
+    private productUsageService: ProductUsageService,
+    private warehouseService: WarehouseService 
+    
 
     ) {}
 
     ngOnInit(): void {
       this.initForm();
       this.loadDivisionNames();
+      this.warehouseService.findAll().subscribe(data=>{
+        this.listWh=data
+      })
     }
   
 
@@ -42,6 +51,8 @@ export class ProductUsageFormsInformationComponent implements OnInit {
         }
       );
     }
+
+
     
   initForm() {
     this.addform = new FormGroup({  

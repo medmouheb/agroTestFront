@@ -94,7 +94,7 @@ export const ROUTES: Categries[] = [
             class: "",
           },
           {
-            label: "country",
+            label: "menu.country",
             path: "/country",
             title: "menu.country",
             icon: "location_on",
@@ -202,7 +202,7 @@ export const ROUTES: Categries[] = [
             SubC: [],
           },
           {
-            label: "Warehouses",
+            label: "menu.Warehouses",
             path: "/warehouses",
             title: "Warehouses",
             icon: "warehouse",
@@ -658,9 +658,9 @@ export const ROUTES: Categries[] = [
             class: "",
             SubC: [
               {
-                label: "Warehouses",
+                label: "menu.Warhouse",
                 path: "/warehouses",
-                title: "Warehouses",
+                title: "menu.Warehouses",
                 icon: "warehouse",
                 class: "",
               },

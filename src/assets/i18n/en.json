@@ -2,13 +2,13 @@
   "menu": {
     "Vehicles":"Vehicles",
     "Drivers":"Drivers",
-
+    "Warehouses":"Warehouse",
     "add-Drivers": "Add New Drivers",
     "edit-Drivers": "Edit the Drivers",
     "Rapprochement-des-stocks":"Inventory Reconciliation",
     "add-Rapprochement-des-stocks":"Add New Inventory Reconciliation",
     "edit-Rapprochement-des-stocks":"Edit The Inventory Reconciliation",
-    "Warhouse": "Warehouses ",
+    "Warhouse": "Warehouse ",
     "ProductUsage": "Product Usage",
     "add-ProductUsage": "Add the Product Usage",
     "edit-ProductUsage": "Edit the Product Usage",

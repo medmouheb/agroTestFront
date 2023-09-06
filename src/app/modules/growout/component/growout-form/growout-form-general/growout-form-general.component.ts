@@ -103,9 +103,44 @@ if (data!=null){
   selectVAlue(e:any){
     console.log("3==",e.target.value)
     let t=this.divisions.filter(el=>{return el.code==e.target.value})[0].name
+    let a=this.divisions.filter(el=>{return el.code==e.target.value})[0].address
+    let em=this.divisions.filter(el=>{return el.code==e.target.value})[0].email
+    let c=this.divisions.filter(el=>{return el.code==e.target.value})[0].codeCity
+    let n=this.divisions.filter(el=>{return el.code==e.target.value})[0].nameCity
+    let wc=this.divisions.filter(el=>{return el.code==e.target.value})[0].wilayaCode
+    let wn=this.divisions.filter(el=>{return el.code==e.target.value})[0].wilayaName
+    let zc=this.divisions.filter(el=>{return el.code==e.target.value})[0].zipCode
+    let pn=this.divisions.filter(el=>{return el.code==e.target.value})[0].phone
+
     this.addform.value.divisionName=t
+    this.addform.value.divisionName=a
+    this.addform.value.divisionName=em
+    this.addform.value.divisionName=c
+    this.addform.value.divisionName=n
+    this.addform.value.divisionName=wc
+    this.addform.value.divisionName=zc
+    this.addform.value.divisionName=pn
+
     this.growout.divisionName=t
+    this.growout.address=a
+    this.growout.email=em
+    this.growout.codeCity=c
+    this.growout.nameCity=n
+    this.growout.wilayaCode=wc
+    this.growout.wilayaName=wn
+    this.growout.zipCode=zc
+    this.growout.phoneNumber=pn
+
     this.addform.value['divisionName']=t
+    this.addform.value['address']=a
+    this.addform.value['email']=em
+    this.addform.value['codeCity']=c
+    this.addform.value['nameCity']=n
+    this.addform.value['wilayaCode']=wc
+    this.addform.value['wilayaName']=wn
+    this.addform.value['zipCode']=zc
+    this.addform.value['phoneNumber']=pn
+
     console.log("3==",this.addform.value)
     console.log("5==",this.growout)
 

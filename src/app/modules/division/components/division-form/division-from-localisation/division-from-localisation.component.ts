@@ -58,7 +58,6 @@ selectValue(e:any){
   this.division.wilayaName=wil.name
   this.division.wilayaCode=wil.code
 
-
 }
 minIphone: boolean = false
 isBlur3() {
