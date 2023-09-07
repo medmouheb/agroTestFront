@@ -536,7 +536,7 @@
   "external": "External",
   "facilitytype": "facility type",
   "measurementType": "Measurement Type",
-  "Write your bioSecurityLevelCode": "Write your bioSecurityLevelCode",
+  "Write your bioSecurityLevelCode": "Write your bioSecurity Level Code",
   "Write your tareVariance": "Write your tareVariance",
   "Write your tareWeight": "Write your tareWeight",
   "Write your tareWtRecord": "Write your tareWtRecord",
@@ -886,6 +886,9 @@
 "type de la Ferme":"Farms Type",
 "phoneNumber":"Phone number",
 "willaya code":"Willaya code",
-"willaya name":"Willaya name"
+"willaya name":"Willaya name",
+"wcode":"Warehouse code ",
+ "wname":"Warehouse name ",
+ "menu.add-sales":"Add new sales"
 
 }

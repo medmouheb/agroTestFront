@@ -176,7 +176,7 @@ export class NavbarComponent implements OnInit {
         this.routes = ["menu.general-Setups", "Admin", "currency"]
         break;
       case "tax":
-        this.routes = ["menu.general-Setups", "Admin", "tax"]
+        this.routes = ["menu.general-Setups", "Admin", "menu.tax"]
         break;
       case "Delivery":
         this.routes = ["menu.general-Setups", "menu.Materialhandling", "menu.Freightsetup", "menu.DeliveryInstruction"]

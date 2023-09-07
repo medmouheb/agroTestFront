@@ -115,7 +115,7 @@ export const ROUTES: Categries[] = [
             class: "",
           },
           {
-            label: "tax",
+            label: "menu.tax",
             path: "/tax",
             title: "menu.tax",
             icon: "paid",

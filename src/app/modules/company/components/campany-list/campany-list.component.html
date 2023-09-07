@@ -135,6 +135,11 @@
                 </a>
               </strong>
             </th>
+            <th>
+              <strong class="style-text">
+                  {{'actions' | translate}}
+              </strong>
+          </th>
           </tr>
         </thead>
         <tbody class="text-sm" >
@@ -172,7 +177,7 @@
               </button>
             </td>
           </tr>
-
+  
         </tbody>
       </table>
     </div>
@@ -292,6 +297,11 @@
                 </a>
               </strong>
             </th>
+            <th>
+              <strong class="style-text">
+                  {{'actions' | translate}}
+              </strong>
+          </th>
           </tr>
         </thead>
         <tbody class="text-sm" *ngIf="affiche==false">
@@ -338,7 +348,7 @@
               </button>
             </td>
           </tr>
-
+    
         </tbody>
         
       </table>
@@ -452,6 +462,12 @@
                 </a>
               </strong>
             </th>
+
+            <th>
+              <strong class="style-text">
+                {{'actions' | translate}}
+            </strong>
+            </th>
           </tr>
         </thead>
         <tbody class="text-sm" *ngIf="affiche==false">
@@ -477,7 +493,9 @@
             <td>
               {{ comp.email }}
             </td>
-
+            <th>
+         
+          </th>
             <td class="d-flex gap-4">
               <button class="text-primary datatable-action-btn" (click)="onClickEdit(comp.id!)"
                 [title]="'btns.edit' | translate">
@@ -489,7 +507,6 @@
               </button>
             </td>
           </tr>
-
         </tbody>
         <tbody *ngIf="affiche==true">
           <tr class="row-data" *ngFor="let comp of companyss">
@@ -527,6 +544,7 @@
               </button>
 
             </td>
+         
           </tr>
         </tbody>
       </table>
@@ -646,7 +664,7 @@
                   </svg>
                 </a>
               </strong>
-            </th>
+           
           </tr>
         </thead>
         <tbody class="text-sm" *ngIf="affiche==false">
@@ -692,6 +710,7 @@
                 <i class="fa fa-trash"></i>
               </button>
             </td>
+            
           </tr>
 
         </tbody>
@@ -738,6 +757,7 @@
                 <i class="fa fa-trash"></i>
               </button>
 
+              
             </td>
           </tr>
         </tbody>
