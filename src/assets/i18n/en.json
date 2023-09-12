@@ -495,8 +495,8 @@
 "Réutiliser les informations de la Division":"Reuse Division information",
 
 
-"freighttermname":"Freight terms name",
-"freighttermcode":"Freight terms code",
+"freighttermname":"Freight Terms Name",
+"freighttermcode":"Freight Terms Code",
 
 "write your farms name":"Write your farms name",
 "write your farms code":"Write your farms code",
@@ -888,8 +888,8 @@
 "phoneNumber":"Phone number",
 "willaya code":"Willaya Code",
 "willaya name":"Willaya Name",
-"wcode":"Warehouse code ",
- "wname":"Warehouse name ",
+"wcode":"Warehouse Code ",
+ "wname":"Warehouse Name ",
  "menu.add-sales":"Add new sales",
 
  "Email is required": "Email is required",

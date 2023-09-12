@@ -45,7 +45,7 @@
         <tr>
           <th>
             <strong  class="style-text" >
-              {{'wcode' | translate}}
+              {{'wname' | translate}}
               <a href="javascript:void(0);">
                 <svg (click)="sortByName()" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                   fill="currentColor" class="bi bi-chevron-double-down custom-color" viewBox="0 0 16 16">
@@ -57,7 +57,7 @@
           </th>
           <th>
             <strong  class="style-text" >
-              {{'wname' | translate}}
+              {{'wcode' | translate}}
               <a href="javascript:void(0);">
                 <svg (click)="sortByName()" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                   fill="currentColor" class="bi bi-chevron-double-down custom-color" viewBox="0 0 16 16">
@@ -137,10 +137,12 @@
       <tbody class="text-sm">
         <tr class="row-data" *ngFor="let warehouse of warehouses">
           <td>
-            {{warehouse.code}}
+            {{warehouse.name}}
+
           </td>
           <td>
-            {{warehouse.name}}
+            {{warehouse.code}}
+
           </td>
           <td>
             {{warehouse.costCenterName}}
@@ -189,7 +191,7 @@
         <tr>
           <th>
             <strong  class="style-text" >
-              {{'code' | translate}}
+              {{'wname' | translate}}
               <a href="javascript:void(0);">
                 <svg (click)="sortByName()" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                   fill="currentColor" class="bi bi-chevron-double-down custom-color" viewBox="0 0 16 16">
@@ -201,7 +203,7 @@
           </th>
           <th>
             <strong  class="style-text" >
-              {{'name' | translate}}
+              {{'wcode' | translate}}
               <a href="javascript:void(0);">
                 <svg (click)="sortByName()" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                   fill="currentColor" class="bi bi-chevron-double-down custom-color" viewBox="0 0 16 16">
@@ -211,6 +213,7 @@
               </a>
             </strong>
           </th>
+  
           <th>
             <strong  class="style-text" >
               {{'costCenter' | translate}}
@@ -282,10 +285,12 @@
       <tbody class="text-sm" >
         <tr class="row-data" *ngFor="let warehouse of warehousess">
           <td>
-            {{warehouse.code}}
+            {{warehouse.name}}
+
           </td>
           <td>
-            {{warehouse.name}}
+            {{warehouse.code}}
+
           </td>
           <td>
             {{warehouse.costCenterName}}
