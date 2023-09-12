@@ -22,6 +22,7 @@ export type Farm = {
   area_type?: string;
   owner_Name?: string;
   attachments?: string;
+  comments?: string;
   address1?: string;
   address2?: string;
   customerCode?: string;
@@ -40,69 +41,69 @@ export type Farm = {
   longitude?: number;
   vendorcode?: string;
   warehousecode?: string;
-  growout?:any
-  product?:any
-  phonefix?:any
-	 land?:any
-	 planning?:any
-	 logistic?:any
-	 feedMillcode?:any
-	 primaryMarket?:any
-	 liveProductday?:any
-	 maxturckcapacity?:any
-	 payee?:any
-   //projection
- projectwarehouse?:any
- projectligistic?:any
+  growout?: any
+  product?: any
+  phonefix?: any
+  land?: any
+  planning?: any
+  logistic?: any
+  feedMillcode?: any
+  primaryMarket?: any
+  liveProductday?: any
+  maxturckcapacity?: any
+  payee?: any
+  //projection
+  projectwarehouse?: any
+  projectligistic?: any
 
-	//distance
- distnfarmlogi?:any
- distnfarmMarket?:any
+  //distance
+  distnfarmlogi?: any
+  distnfarmMarket?: any
 
- warehouseprimary?:any
- warehousesecondry?:any
+  warehouseprimary?: any
+  warehousesecondry?: any
 
-	//Visitors Logs
- VisitDate?:any
- FirstNameVisit?:any
- LastNameVisit?:any
- IDNumberVisit?:any
- TimeinVisit?:any
- TimeoutVisit?:any
- Purposeofthevisit?:any
+  //Visitors Logs
+  VisitDate?: any
+  FirstNameVisit?: any
+  LastNameVisit?: any
+  IDNumberVisit?: any
+  TimeinVisit?: any
+  TimeoutVisit?: any
+  Purposeofthevisit?: any
 
- //cezrtiff
- Certifications?:any
+  //cezrtiff
+  Certifications?: any
 
- //Contract Farms
- ContractNumber?:any
- contratPay?:any
-  startDateFarms?:any
-  endDateFarms?:any
-  renewalDateFarms?:any
+  //Contract Farms
+  ContractNumber?: any
+  contratPay?: any
+  startDateFarms?: any
+  endDateFarms?: any
+  renewalDateFarms?: any
 
- //Paiement information
- PaymentType?:any//Checking, saving or paycheck 
- 	AccountNumber?:any
- 	BankName?:any
- 	BankCode?:any
- 	Bankaddress?:any
- 	DirectDepositflag?:any
- 	typepayment ?:any//auto or not
-  OperationDate?:any //satesystem
- 	amounttransferred?:any
- //Resource Information
- ressourceInformation?:any
- statutInformation?:any
- adressInformation?:any
- FirstNameInformation?:any
- LastNameInformation?:any
- phoneInformation?:any
-  startDateInformation?:any
-  endDateInformation?:any
+  //Paiement information
+  PaymentType?: any//Checking, saving or paycheck 
+  AccountNumber?: any
+  BankName?: any
+  BankCode?: any
+  Bankaddress?: any
+  DirectDepositflag?: any
+  typepayment?: any//auto or not
+  OperationDate?: any //satesystem
+  amounttransferred?: any
+  //Resource Information
+  ressourceInformation?: any
+  statutInformation?: any
+  adressInformation?: any
+  FirstNameInformation?: any
+  LastNameInformation?: any
+  phoneInformation?: any
+  startDateInformation?: any
+  endDateInformation?: any
 };
 
 
-	
-	
+
+
 

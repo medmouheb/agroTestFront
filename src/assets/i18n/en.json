@@ -316,7 +316,7 @@
   "farmCode": "Farm code",
   "houseCode": "House code",
   "startingDate": "Starting date",
-  "owner": "me",
+  "owner": "Owner",
   "Division name":"divisionCoOwner Name",
   "vehiclecode": "Code vehicle",
   "vehiclename": "Nom vehicle",
@@ -443,7 +443,7 @@
 "write your sailor Name Sku":"Write your sales Name Sku",
 "codefarms":" Farm Number",
 "namefarms":"Farms Name",
-"land":"Product Name",
+"land":"Land",
 
 "areafarms": "Area Farms",
 "warehouseprimary":"Primary warehouse code",
@@ -889,6 +889,12 @@
 "willaya name":"Willaya name",
 "wcode":"Warehouse code ",
  "wname":"Warehouse name ",
- "menu.add-sales":"Add new sales"
+ "menu.add-sales":"Add new sales",
 
+
+
+
+"Farm Status":"Farm Status ",
+"Attachments":"Attachments",
+"comments":"Comments"
 }

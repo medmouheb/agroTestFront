@@ -11,6 +11,7 @@ import { Warehouse } from "app/modules/warehouse/models/warehouse.model";
 import { WarehouseService } from "app/modules/warehouse/services/warehouse.service";
 import { Farm } from "../../../models/farm";
 import { log } from "console";
+import { FarmsService } from "app/modules/farms/services/farms.service";
 
 @Component({
   selector: "app-farms-form-general",
@@ -26,62 +27,95 @@ export class FarmsFormGeneralComponent implements OnInit {
   addform: FormGroup;
   fieldControl: FormControl;
   constructor(
+    private farmsService: FarmsService,
     private warehouseService: WarehouseService,
     private fournisseurService: FournisseursService,
     private sharedService: SharedService,
-    private growoutservice:GrowoutService,
-    private costcenterservice:CostCenterService
-  ) {}
-getAllgrowout(){
-  this.growoutservice.findAll().subscribe({
-    next: (result) => (this.growouts = result),
-    error: (error) => console.error(error),
-  });
-}
-getallcostCenter(){
-  this.costcenterservice.findAll().subscribe({
-    next:(res)=>(this.costcenters=res),
-    error: (error) => console.error(error),
+    private growoutservice: GrowoutService,
+    private costcenterservice: CostCenterService
+  ) { }
+  getAllgrowout() {
+    this.growoutservice.findAll().subscribe({
+      next: (result) => (this.growouts = result),
+      error: (error) => console.error(error),
+    });
+  }
+  getallcostCenter() {
+    this.costcenterservice.findAll().subscribe({
+      next: (res) => (this.costcenters = res),
+      error: (error) => console.error(error),
 
-  })
-}
-selectValue(e:any){
+    })
+  }
+  selectValue(e: any) {
 
-  let wil=this.growouts.filter(el=>{
-   // console.log(el)
-    return el.name==e.target.value
+    let wil = this.growouts.filter(el => {
+      // console.log(el)
+      return el.code == e.target.value
 
-  })[0]
-  console.log(wil)
+    })[0]
 
-  this.farm.growout=wil
+    this.farm.growout = wil
+    this.farm.growoutcode = wil.code
+    console.log("44::", this.farm, wil, e.target.value)
 
 
-  
 
-}
+  }
+
+
+  selectValuecostCenter(e: any) {
+
+    let wil = this.costcenters.filter(el => {
+      // console.log(el)
+      return el.code == e.target.value
+
+    })[0]
+
+    // this.farm.growout=wil
+    this.farm.cost_Center = wil.code
+    console.log("44::", this.farm, wil, e.target.value)
+
+
+
+  }
+
+  setActif() {
+    this.farm.status = !this.farm.status
+  }
   ngOnInit(): void {
-    if (this.farm==undefined)
-      this.farm={nom:"",code:""}
-    
+    console.log("rr::", this.farm)
+    if (this.farm == undefined) {
+      this.farm = { nom: "", code: "", status: true }
+
+    }
+
+
 
     this.getallcostCenter()
     this.getAllgrowout()
     this.initForm();
     if (!this.farm.warehouse) {
       this.farm.warehouse = {};
+
+
     }
     if (!this.farm.vendor) {
       this.farm.vendor = {};
+
     }
+
     this.getAllWarehouses();
     this.getAllVendors();
+
+    console.log("44::", this.farm)
+
   }
 
   initForm() {
     this.fieldControl = new FormControl('', [
       Validators.required,
-     
+
       Validators.pattern(/^[a-zA-Z ]*$/),
     ]);
     this.addform = new FormGroup({
@@ -158,7 +192,7 @@ selectValue(e:any){
       this.farm.technician_Code.toString().length >= 5 &&
       this.farm.technician_Name.toString().length >= 3
     )
-    console.log("d:",this.farm)
+    console.log("d:", this.farm)
     if (
       this.farm.code != null &&
       this.farm.code != "" &&
@@ -183,17 +217,16 @@ selectValue(e:any){
       this.farm.technician_Name.toString().length >= 3
     ) {
       this.sharedService.setIsActive(true);
-    //  console.log("bbbb", this.sharedService.setIsActive(true));
+      //  console.log("bbbb", this.sharedService.setIsActive(true));
     } else {
       this.sharedService.setIsActive(false);
-    //  console.log("cccc", this.sharedService.setIsActive(false));
+      //  console.log("cccc", this.sharedService.setIsActive(false));
     }
   }
 
-  onWarehouseChange() {
-    this.farm.warehouse = this.warehouses.find(
-      (elem) => elem.id === this.farm.warehouse?.id
-    );
+  onWarehouseChange(e: any) {
+    this.farm.warehouse = this.warehouses.filter(el => { return el.id == e.target.value })[0];
+    console.log('44::', this.warehouses.filter(el => { return el.id == e.target.value }))
   }
 
   getAllWarehouses() {
@@ -203,10 +236,8 @@ selectValue(e:any){
     });
   }
 
-  onVendorChange() {
-    this.farm.vendor = this.vendors.find(
-      (elem) => elem.id === this.farm.vendor?.id
-    );
+  onVendorChange(e: any) {
+    this.farm.vendor = this.vendors.filter(el => { return el.id == e.target.value })[0]
   }
 
   getAllVendors() {
@@ -239,18 +270,18 @@ selectValue(e:any){
   valid5: boolean = false;
   minIstrueName: boolean = false
   isBlur2() {
-    if (this.fieldControl.status=="INVALID"){
+    if (this.fieldControl.status == "INVALID") {
       this.minIstrueName = true
 
     }
-    else if(this.fieldControl.status=="VALID") {
+    else if (this.fieldControl.status == "VALID") {
       this.minIstrueName = false
 
     }
   }
   isBlur4() {
     console.log(this.fieldControl.value)
-    if ((this.fieldControl.value == '')||(this.fieldControl.value == undefined)) {
+    if ((this.fieldControl.value == '') || (this.fieldControl.value == undefined)) {
       this.minIstrueName = false
 
     }
@@ -274,7 +305,7 @@ selectValue(e:any){
 
   codeISvalid: boolean = false;
   codeBlur() {
-    if (this.addform.value.code.toString().length <1) {
+    if (this.addform.value.code.toString().length < 1) {
       this.codeISvalid = true;
     } else {
       this.codeISvalid = false;
@@ -372,5 +403,26 @@ selectValue(e:any){
     } else {
       this.valid5 = false;
     }
+  }
+  handleAttachments(e:any){
+    let dataFile = new FormData();
+    dataFile.append("file", e.target.files[0]);
+    this.farmsService.handleFileUpload(dataFile).subscribe(data=>{
+      this.farm.attachments=data
+      console.log("oui",data)
+    },(err)=>{
+      this.farm.attachments=err.error.text
+    })
+  }
+
+  handleComments(e:any){
+    let dataFile = new FormData();
+    dataFile.append("file", e.target.files[0]);
+    this.farmsService.handleFileUpload(dataFile).subscribe(data=>{
+      this.farm.comments=data
+      console.log("oui",data)
+    },(err)=>{
+      this.farm.comments=err.error.text
+    })
   }
 }

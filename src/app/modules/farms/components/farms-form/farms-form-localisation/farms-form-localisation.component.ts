@@ -12,6 +12,7 @@ export class FarmsFormLocalisationComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    console.log("44::",this.farm)
   }
 
 }
