@@ -132,6 +132,7 @@ export class VehiclesUnitListComponent implements OnInit {
   }
 
   onSave(id: string | null) {
+    console.log(this.camp)
     this.toastService.loading(
       this.translateService.instant("message.loading..."),
       {

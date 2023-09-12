@@ -44,7 +44,7 @@ export class RapprochementdesStocksFormsPlusComponent implements OnInit {
       dateDuFil: new FormControl(),
       quantiteDeFil: new FormControl(),
       typeEnregistrementDeThread: new FormControl(""),
-      nDeReferenceDuFiletage: new FormControl(),
+      ndeReferenceDuFiletage: new FormControl(),
       quantiteRestanteDeFil: new FormControl(),
       valeurUnitaireRestanteDuFil: new FormControl(),
       valeurRestanteDuFil: new FormControl(),

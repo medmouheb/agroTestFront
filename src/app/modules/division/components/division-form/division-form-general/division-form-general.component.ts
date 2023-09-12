@@ -149,12 +149,16 @@ export class DivisionFormGeneralComponent implements OnInit {
       case "Aviculture": this.listA = ["Chicken", "Layer", "Turkey", "Duck"]; break;
       case "Bovin": this.listA = ["fattening cow farms", "Dairy farms"]; break;
     }
+    this.division.speciesType=""
   }
 
   geValues(event) {
-    // console.log(this.addform.value.speciesType);
-    // console.log(this.division.speciesType);
-    // console.log("event :", event);
+
+
+    console.log("123::", !this.division.speciesType )
+    console.log(this.addform.value.speciesType);
+    console.log(this.division.speciesType);
+     console.log("event :", event);
     // console.log("====================================");
 
     // console.log("====================================");
@@ -175,27 +179,18 @@ export class DivisionFormGeneralComponent implements OnInit {
     //     this.division.code.toString().length >= 5 &&
     //     this.division.name.toString().length >= 3
     // );
-    // console.log(this.division.code)
-    // console.log(this.division.name)
-    // console.log(this.division.speciesType)
-    // console.log(this.division.currencycode)
-    // console.log(this.division.name)
 
-    // console.log("ok",
-
-
-    //   this.division.code != null &&
-    //   this.division.code != "" &&
-    //   this.division.name != null &&
-    //   this.division.name != ""
-    //   && this.division.currencycode != "" && this.division.speciesType != "" && 
-    //   this.division.currencycode != undefined &&   this.division.currencycode != null && 
-    //   this.dispotrueCode == false && this.dispotruename == false
-    // )
-    // console.log('3===', this.dispotrueCode )
-
-
-
+    console.log(this.division.code )
+    console.log( this.division.name )
+    console.log( this.division.speciesType )
+    console.log( this.division.currencycode )
+    console.log( this.division.name )
+    console.log(this.division.code != null &&
+      this.division.code != "" &&
+      this.division.name != null &&
+      this.division.name != "" 
+      && this.division.currencycode!="" && this.division.speciesType!="" && this.division.speciesType!=undefined&& this.division.currencycode!=undefined
+)
     if (
 
       this.dispotrueCode == false && this.dispotruename == false &&
@@ -203,11 +198,10 @@ export class DivisionFormGeneralComponent implements OnInit {
       this.division.code != null &&
       this.division.code != "" &&
       this.division.name != null &&
-      this.division.name != "" &&
-      this.division.currencycode != null
-      && this.division.currencycode != ""
-      && this.division.speciesType != "" && this.division.currencycode != undefined
 
+      this.division.name != "" && !(!this.division.speciesType)
+      && this.division.currencycode!="" &&this.division.speciesType!="" && this.division.currencycode!=undefined
+      && this.division.speciesType!=undefined
     ) {
 
       console.log("aa1::", this.dispotrueCode == false)

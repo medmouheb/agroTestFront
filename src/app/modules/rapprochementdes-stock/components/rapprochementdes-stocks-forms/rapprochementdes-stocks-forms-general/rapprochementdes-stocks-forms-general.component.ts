@@ -24,11 +24,11 @@ export class RapprochementdesStocksFormsGeneralComponent implements OnInit {
       this.sharedService.setIsActive(true);
       this.compaser.findAll().subscribe(data => {
         console.log("777::",data.map(el => { return el.numeroDeLot }))
-        this.codes = data.map(el => { return el.nDeReference })
+        this.codes = data.map(el => { return el.ndeReference })
       })
     }; 
 
-    if (this.camp == undefined) { this.camp = { nDeReference: "", numeroDeLot: "" } };
+    if (this.camp == undefined) { this.camp = { ndeReference: "", numeroDeLot: "" } };
     this.initForm();
     console.log(this.addform);
   }
@@ -50,7 +50,7 @@ export class RapprochementdesStocksFormsGeneralComponent implements OnInit {
           Validators.pattern(/^[a-zA-Z ]*$/),
         ],
       ],
-      nDeReference: [
+      ndeReference: [
         null,
         Validators.required,
       ],
@@ -102,8 +102,8 @@ export class RapprochementdesStocksFormsGeneralComponent implements OnInit {
   }
 
   exist1() {
-    console.log(this.camp.nDeReference);
-    this.compaser.findbyName(this.camp.nDeReference).subscribe(
+    console.log(this.camp.ndeReference);
+    this.compaser.findbyName(this.camp.ndeReference).subscribe(
       (data) => {
         console.log(data);
         if (data != null) {
@@ -137,7 +137,7 @@ export class RapprochementdesStocksFormsGeneralComponent implements OnInit {
 
   existname() {
     console.log("aa::",this.codes)
-    if (this.codes.indexOf(this.camp.nDeReference) != -1) {
+    if (this.codes.indexOf(this.camp.ndeReference) != -1) {
       this.dispotruename = true
      // this.newSeggestions= "chose "+this.camp.name+this.generateRandomCode()+" or "+this.camp.name+this.generateRandomCode()+" or "+this.camp.name+this.generateRandomCode()+" or "+this.camp.name+this.generateRandomCode()
 
@@ -173,10 +173,10 @@ export class RapprochementdesStocksFormsGeneralComponent implements OnInit {
   //   }
   // }
   isBlur1() {
-    console.log(this.camp.nDeReference);
+    console.log(this.camp.ndeReference);
     if (
-      this.camp.nDeReference === undefined ||
-      this.camp.nDeReference.trim() === ""
+      this.camp.ndeReference === undefined ||
+      this.camp.ndeReference.trim() === ""
     ) {
       this.minIstrueName = true;
     } else {
@@ -191,10 +191,10 @@ export class RapprochementdesStocksFormsGeneralComponent implements OnInit {
       this.dispotrueCode == false && this.dispotruename == false &&
       this.camp.numeroDeLot != null &&
       this.camp.numeroDeLot != "" &&
-      this.camp.nDeReference != null &&
-      this.camp.nDeReference != "" &&
+      this.camp.ndeReference != null &&
+      this.camp.ndeReference != "" &&
       this.camp.numeroDeLot.toString().length >= 1 &&
-      this.camp.nDeReference.toString().length >= 1
+      this.camp.ndeReference.toString().length >= 1
     ) {
       this.sharedService.setIsActive(true);
     } else {

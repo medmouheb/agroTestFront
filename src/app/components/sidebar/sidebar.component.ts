@@ -480,6 +480,20 @@ export const ROUTES: Categries[] = [
         icon: "trolley",
         subCategories: [
           {
+            label: "menu.logistic-Unit",
+            path: "/logisticUnit",
+            title: "menu.logistic-Unit",
+            icon: "corporate_fare",
+            class: "",
+          },
+          {
+            path: "/vehicles",
+            label: "menu.Vehicles",
+            title: "menu.Vehicles",
+            icon: "corporate_fare",
+            class: "",
+          },
+          {
             label: "menu.Vehicule",
             title: "Vehicule",
             icon: "corporate_fare",
@@ -528,20 +542,7 @@ export const ROUTES: Categries[] = [
                 class: "",
                 path: "/start",
               },
-              {
-                path: "/vehicles",
-                label: "menu.Vehicles",
-                title: "menu.Vehicles",
-                icon: "corporate_fare",
-                class: "",
-              },
-              {
-                label: "menu.logistic-Unit",
-                path: "/logisticUnit",
-                title: "menu.logistic-Unit",
-                icon: "corporate_fare",
-                class: "",
-              },
+           
             ],
           },
         ],

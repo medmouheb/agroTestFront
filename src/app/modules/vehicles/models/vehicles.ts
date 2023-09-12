@@ -4,14 +4,14 @@ export type Vehicles ={
     typeDeVehicule?:string
     codeVehicule?:string
     nomDuVehicule?:string
-    logisticCode?:string
+    logisticCode?:any
     weightCapacity?:any
     utilisation?:any
     coutHoraire?:any
     nomOperationmaintenance?:string
     numerooperationmaintenance?:string
     dateDerealisation?:any
-    KilometrageDerealisation?:string
+    kilometrageDerealisation?:any
     listeDesOperationsEffectuees?:string
     papiersDuVehicule?:string
 }
