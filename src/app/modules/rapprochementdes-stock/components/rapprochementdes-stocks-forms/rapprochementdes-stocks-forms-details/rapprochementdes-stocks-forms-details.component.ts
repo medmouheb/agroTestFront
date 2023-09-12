@@ -37,7 +37,7 @@ export class RapprochementdesStocksFormsDetailsComponent implements OnInit {
       typeEnregistrement:new FormControl(this.camp.typeEnregistrement),
       transCode: new FormControl(""),
       dateInventaire: new FormControl(),
-      iDEntiteDeTransaction: new FormControl(""),
+      identiteDeTransaction: new FormControl(""),
       nomEntiteDeTransaction: new FormControl(""),
       numeroDeProduit: new FormControl(""),
       nomDuProduit: new FormControl(""),

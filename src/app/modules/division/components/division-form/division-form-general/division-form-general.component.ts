@@ -149,6 +149,7 @@ export class DivisionFormGeneralComponent implements OnInit {
       case "Aviculture": this.listA = ["Chicken", "Layer", "Turkey", "Duck"]; break;
       case "Bovin": this.listA = ["fattening cow farms", "Dairy farms"]; break;
     }
+    this.division.speciesType=""
   }
 
   geValues(event) {

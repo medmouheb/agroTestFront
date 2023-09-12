@@ -2,19 +2,34 @@
 
    <div class="form-group col-md-6">
     <label for="address">{{'Address' | translate}} </label>
-    <input class="form-control" name="address" #address="ngModel" ngModel [(ngModel)]="warehouse.address" 
+    <input class="form-control" name="address" #address1="ngModel" ngModel [(ngModel)]="warehouse.address1" 
     placeholder="{{'Write your Address'|translate}} ">
   </div>
+  <!-- <div class="form-group col-md-6">
+    <label for="email">{{ "emailcontact" | translate }}</label>
+    <input type="email" class="form-control" name="email"  #email="ngModel" ngModel [(ngModel)]="warehouse.email" 
+     placeholder="{{'Write your email'|translate}} " />
+  </div>  -->
   <div class="form-group col-md-6">
     <label for="email">{{ "emailcontact" | translate }}</label>
-    <input class="form-control" name="email" #email="ngModel" ngModel [(ngModel)]="warehouse.email" 
-     placeholder="{{'Write your email'|translate}} " />
-  </div> 
+    <input type="email" class="form-control" name="email" #email="ngModel" [(ngModel)]="warehouse.email" 
+      placeholder="{{ 'Write your email' | translate }}" (blur)="validationEmail()" />
+      <div  style="color: red;" *ngIf="emailIsvalid">{{ "Invalid email format" }}</div>
+    <!-- <div class="invalid-feedback" *ngIf="emailInput.invalid && (emailInput.dirty || emailInput.touched)">
+      <div *ngIf="emailInput.errors.required">{{ "Email is required" }}</div>
+      <div *ngIf="emailInput.errors.email">{{ "Invalid email format" }}</div>
+      <div *ngIf="emailInput.errors.invalidEmailDomain">{{ "Invalid email domain" }}</div>
+    </div> -->
+  </div>
+  
+
+
+
 
 
   <div class="form-group col-md-6">
     <label for="cityCode">{{'codeCity' | translate}}</label>
-    <input class="form-control" name="cityCode" #cityCode="ngModel" ngModel [(ngModel)]="warehouse.cityCode"
+    <input type="number" class="form-control" name="cityCode" #cityCode="ngModel" ngModel [(ngModel)]="warehouse.cityCode"
     placeholder="{{'Write your city code'|translate}} " >
   </div>
 
@@ -26,7 +41,7 @@
 
   <div class="form-group col-md-6">
     <label for="wilayaCode">{{ "wilayaCode" | translate }}</label>
-    <select (click)="selectValue($event)"  type="number" class="form-control" name="wilayaCode" formControlName="wilayaCode" [(ngModel)]="warehouse.wilayaCode">
+    <select (click)="selectValue($event)"  type="number" class="form-control" name="wilayaCode" #wilayaCode="ngModel" [(ngModel)]="warehouse.wilayaCode">
       <option *ngFor="let dv of wilayas" [value]="dv.code" > {{dv.code}}</option>
     </select>
   </div>
@@ -40,7 +55,7 @@
 
   <div class="form-group col-md-6">
     <label class="required" for="isPrimary">{{ "isPrimary" | translate }}   </label>
-    <select class="form-control" name="isPrimary" formControlName="isPrimary" required aria-invalid="true"
+    <select class="form-control" name="isPrimary"   #isPrimary="ngModel" required aria-invalid="true"
       aria-describedby="code-error" [(ngModel)]="warehouse.isPrimary">
       <option [value]="" selected disabled>
         {{'Select your option'|translate}}
@@ -57,20 +72,20 @@
   </div>
   <div class="form-group col-md-6">
     <label for="zipCode">{{'zipCode' | translate}}</label>
-    <input class="form-control" name="zipCode" #zipCode="ngModel" ngModel [(ngModel)]="warehouse.zipCode"
+    <input class="form-control" type="number" name="zipCode" #zipCode="ngModel" ngModel [(ngModel)]="warehouse.zipCode"
     placeholder="{{'Write your zip code'|translate}} ">
   </div>
 
 
   <div class="form-group col-md-6">
     <label for="phoneNumber">{{'phoneNumber' | translate}}</label>
-    <input class="form-control" name="phoneNumber" #phoneNumber="ngModel" ngModel [(ngModel)]="warehouse.phoneNumber"
+    <input (blur)="phoneNumber()"type="number" class="form-control" name="phoneNumber" #phoneNumber="ngModel" ngModel [(ngModel)]="warehouse.phoneNumber"
     placeholder="{{'Write your phone'|translate}} ">
   </div>
 
   <div class="form-group col-md-6">
     <label for="faxNumber">{{'faxNumber' | translate}}</label>
-    <input class="form-control" name="faxNumber" #faxNumber="ngModel" ngModel [(ngModel)]="warehouse.faxNumber"
+    <input  type="number" class="form-control" name="faxNumber" #faxNumber="ngModel" ngModel [(ngModel)]="warehouse.faxNumber"
      placeholder=" {{'Write your fax Number'|translate}}">
   </div>
 

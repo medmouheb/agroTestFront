@@ -8,14 +8,14 @@ export type Warehouse = {
     costCenterCode?: string
     costCenterName?: string
     startingDate?: string
-    isPrimary?: boolean
-    address?: string
+    isPrimary?: any
+    address1?: string
     cityCode?: string
     cityName?: string
     wilayaCode?: string
     wilayaName?: string
     zipCode?: string
-    email?: string
+    email?: any
     phoneNumber?: string
     faxNumber?: string
     latitude?: number  

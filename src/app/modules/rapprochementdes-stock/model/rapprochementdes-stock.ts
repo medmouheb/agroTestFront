@@ -3,8 +3,8 @@ export type RapprochementDesStocks = {
     typeEnregistrement?:string 
     transCode?:string
     dateInventaire?:any
-    nDeReference?:string
-    iDEntiteDeTransaction?:string
+    ndeReference?:string
+    identiteDeTransaction?:string
     nomEntiteDeTransaction?:string
     numeroDeProduit?:string
     nomDuProduit?:string
@@ -26,18 +26,18 @@ export type RapprochementDesStocks = {
     complexeDeTransfertDeConsignationBonDeCommandeN?:string
     numeroDeReferenceDuTransfertDeConsignation?:any
     nomDuCentreDeCouts?:string
-    nDuCentreDeCouts?:any
+    nduCentreDeCouts?:any
     dateDeCreation?:any
     dateDeFinDeReception?:any
     dateDExpiration?:any
     typeInstallationDuCentreDeCoutsExterne?:string
     nomDuCentreDeCoutsExterne?:string
-    nDuCentreDeCoutsExterne?:any
+    nduCentreDeCoutsExterne?:any
     nomDeLaFerme?:string
-    nDeLaFerme?:any
+    ndeLaFerme?:any
     typeDeFerme?:string
     dateDinactivite?:string
-    IRN?:string
+    irn?:string
     nombreDeReceptions?:any
     baseDeRemuneration?:string
     termeDePaiementN?:any
@@ -56,7 +56,7 @@ export type RapprochementDesStocks = {
     dateDuFil?:any
     quantiteDeFil?:any
     typeEnregistrementDeThread?:string
-    nDeReferenceDuFiletage?:any
+    ndeReferenceDuFiletage?:any
     quantiteRestanteDeFil?:any
     valeurUnitaireRestanteDuFil?:any
     valeurRestanteDuFil?:any
@@ -69,7 +69,7 @@ export type RapprochementDesStocks = {
     valeurTrans?:any
     emplacementDeDestinationDuTransfertNon?:string
     numeroDeLotDeDestinationDuTransfert?:any
-    nDuProduitDeDestinationDuTransfert?:any
+    nduProduitDeDestinationDuTransfert?:any
     nomDuProduitDeDestinationDuTransfert?:string
     numeroDeReferenceDeLaDestinationDuTransfert?:any
     idEntiteDeTransactionDeDestinationDeTransfert?:string
@@ -77,13 +77,13 @@ export type RapprochementDesStocks = {
     typeEntrepotDeDestinationDuTransfert?:string
     emplacementDeLaSourceDeTransfertNon?:string
     numeroDeLotSourceDeTransfert?:any
-    nDuProduitSourceDeTransfert?:any
+    nduProduitSourceDeTransfert?:any
     nomDuProduitSourceDeTransfert?:string
     typeEntrepotOrigineDuTransfert?:string
     descriptionDeUnite?:string
     valeurUnitaire?:any
     unitesPar?:string
-    nDuVendeur?:any
+    nduVendeur?:any
     nomDuVendeur?:string
     noSKUDuFournisseur?:any
     nomSKUDuFournisseur?:string

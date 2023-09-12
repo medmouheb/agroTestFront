@@ -23,7 +23,7 @@
     <div class="form-group col-md-6">
       <label for="wilayaCode">{{'divisiontype' | translate}}</label>
       <select  class="form-control"
-      (click)="setList();geValues($event)"
+      (change)="setList();geValues($event)"
        name="divisiontype"
        formControlName="divisiontype"
         required

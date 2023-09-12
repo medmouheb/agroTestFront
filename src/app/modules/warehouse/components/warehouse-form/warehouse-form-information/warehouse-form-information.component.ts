@@ -3,6 +3,7 @@ import { Warehouse } from '../../../models/warehouse.model';
 import { Willaya } from 'app/modules/willaya/models/willaya';
 import { SharedService } from 'app/modules/company/services/shared.service';
 import { WillayaService } from 'app/modules/willaya/services/willaya.service';
+import { cssNumber } from 'jquery';
 
 @Component({
   selector: 'app-warehouse-form-information',
@@ -14,11 +15,15 @@ export class WarehouseFormInformationComponent implements OnInit {
   @Input()
   warehouse: Warehouse = {}
   wilayas:Array<Willaya>=[]
+  ok:boolean
+
+
   constructor(private sharedService: SharedService,
     private wilayaservice:WillayaService) {}
 
   ngOnInit(): void {
 this.getAllWillaya()
+this.lengthPhone(false)
   }
 
 getAllWillaya(){
@@ -35,7 +40,29 @@ selectValue(e:any){
   this.warehouse.wilayaName=wil
 
 }
+emailIsvalid = false
 
+validationEmail() {
+  const emailRegex: RegExp =/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+  console.log(this.warehouse.email)
+  if (emailRegex.test(this.warehouse.email)) {
+    this.emailIsvalid = false;
+  console.log(this.warehouse.email)
+
+  }
+  else {
+  this.emailIsvalid=true
+  }
+
+}
+
+
+
+lengthPhone(ok:boolean){
+  if(this.warehouse.faxNumber.length ==12) {
+       ok==true
+  }
+}
 
 }
   

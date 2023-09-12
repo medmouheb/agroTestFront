@@ -15,7 +15,8 @@ export class VehiclesUnitFormsHistoriqueDeMaintenanceComponent implements OnInit
 
  
  
-  @Input() camp!: Vehicles;
+  @Input()
+  camp: Vehicles= {} 
   addform: FormGroup;
 
   // Array to hold the list of companies
@@ -26,7 +27,7 @@ export class VehiclesUnitFormsHistoriqueDeMaintenanceComponent implements OnInit
     ) {}
 
     ngOnInit(): void {
-      this.initForm();
+  
     }
   
 
@@ -56,46 +57,6 @@ export class VehiclesUnitFormsHistoriqueDeMaintenanceComponent implements OnInit
    
 
 
-  initForm() {
-    this.addform = new FormGroup({
-      nomOperationmaintenance:new FormGroup(this.camp.nomOperationmaintenance),
-      numeroopérationmaintenance:new FormGroup(this.camp.numerooperationmaintenance),
-      dateDerealisation:new FormGroup(this.camp.dateDerealisation),
-      KilometrageDerealisation:new FormGroup(this.camp.KilometrageDerealisation),
-      listeDesOperationsEffectuees:new FormGroup(this.camp.listeDesOperationsEffectuees),
-      papiersDuVehicule:new FormGroup(this.camp.papiersDuVehicule),
-    });
-  
-    console.log("====================================");
-    console.log(" add form :", this.addform);
-    console.log("====================================");
-    
-  }
-  
-//getAll Campany name from service findbycompany
-
-
-
-
-  get f() {
-    return this.addform.controls;
-  }
-  //methode pour get tous les nom from company
-
-
-  isControlValid(controlName: string): boolean {
-    const control = this.addform.controls[controlName];
-    return control.invalid && (control.dirty || control.touched);
-  }
-
-  isControlInValid(controlName: string): boolean {
-    const control = this.addform.controls[controlName];
-    return (
-      control.invalid && (control.dirty || control.touched || control.invalid)
-    );
-  }
-
-  minIwillaya: boolean = false
 
 
 }

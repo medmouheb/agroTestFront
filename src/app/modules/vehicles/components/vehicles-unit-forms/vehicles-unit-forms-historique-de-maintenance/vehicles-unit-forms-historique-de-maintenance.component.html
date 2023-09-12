@@ -4,14 +4,14 @@
 <div class="row">
   <div class="form-group col-md-6">
     <label for="nomOperationmaintenance">{{ "nomOperationmaintenance" | translate }}</label>
-      <input type="number" class="form-control" name="nomOperationmaintenance" #nomOperationmaintenance="ngModel" ngModel [(ngModel)]="camp.nomOperationmaintenance"
+      <input  class="form-control" name="nomOperationmaintenance" #nomOperationmaintenance="ngModel" ngModel [(ngModel)]="camp.nomOperationmaintenance"
         placeholder="{{'Write your nomOperationmaintenance'|translate}} "/>
   </div>
       
-  </div>
+ 
     <div class="form-group col-md-6">
       <label for="numerooperationmaintenance">{{ "numerooperationmaintenance" | translate }}</label>
-        <input type="number" class="form-control" name="numerooperationmaintenance" #numerooperationmaintenance="ngModel" ngModel [(ngModel)]="camp.numerooperationmaintenance"
+        <input  class="form-control" name="numerooperationmaintenance" #numerooperationmaintenance="ngModel" ngModel [(ngModel)]="camp.numerooperationmaintenance"
           placeholder="{{'Write your numerooperationmaintenance'|translate}} "/>
   </div>
 
@@ -24,7 +24,7 @@
 
   <div class="form-group col-md-6">
     <label for="KilometrageDerealisation">{{ "KilometrageDerealisation" | translate }}</label>
-      <input type="number" class="form-control" name="KilometrageDerealisation" #KilometrageDerealisation="ngModel" ngModel [(ngModel)]="camp.KilometrageDerealisation"
+      <input type="number" class="form-control" name="kilometrageDerealisation" #kilometrageDerealisation="ngModel" ngModel [(ngModel)]="camp.kilometrageDerealisation"
         placeholder="{{'Write your KilometrageDerealisation'|translate}} "/>
   </div>
 
@@ -38,5 +38,6 @@
       <!-- <input class="form-control" name="papiersDuVehicule" #papiersDuVehicule="ngModel" ngModel [(ngModel)]="camp.papiersDuVehicule" -->
     
   </div>
-  <input type="file" (change)="handleFile($event)">
+ <input type="file" (change)="handleFile($event)">
 
+</div>

@@ -1,7 +1,7 @@
 {
   "menu": {
     "Vehiculess":"Vehicule",
-
+    "edit-Logistic-Unit":"Modifier la Logistique Unité",
     "Rapprochement-des-stocks":"Rapprochement De Stock",
     "add-Rapprochement-des-stocks":"Ajouter un Rapprochement De Stock",
     "edit-Rapprochement-des-stocks":"Modifier le Rapprochement De Stock",
@@ -878,7 +878,16 @@
  "add-sales":"Ajouter de nouvelles ventes",
  "SalesCode":"Code de vente",
  "SalesName":" Nom de vente",
- "Write your sailor name":"Ecrivez votre nom de vente"
+ "Write your sailor name":"Ecrivez votre nom de vente",
+ "Email is required": "L'adresse e-mail est requise",
+ "Invalid email format": "Format d'e-mail invalide",
+ "Invalid email domain": "Domaine d'e-mail invalide",
+ "Véhicule léger":"Véhicule léger",
+"Poids lourd":"Poids lourd",
+"Semi-remorque":"Semi-remorque",
+"Machine":"Machine",
+"typeEnregistrement":"type d'enregistrement"
+
   
 
 }

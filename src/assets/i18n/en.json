@@ -1,5 +1,6 @@
 {
   "menu": {
+    "edit-Logistic-Unit":"Edit the Logistic Unit",
     "Vehicles":"Vehicles",
     "Drivers":"Drivers",
     "Warehouses":"Warehouse",
@@ -730,10 +731,10 @@
 "Write your numeroDeLot":"Write Your Lot No",
 "numeroDeLot  must be unique":"Lot No must be unique",
 "numeroDeLot  must be not null":"Lot No must be not null",
-"nDeReference":"Ref No",
-"nDeReference  must be unique":"Ref No must be unique",
-"nDeReference  must be not null":"Ref No must be not null ",
-"Write your nDeReference":"Write your Ref-No",
+"nDeReference":"Reference Number",
+"nDeReference  must be unique":"Reference Number must be unique",
+"nDeReference  must be not null":"Reference Number must be not null ",
+"Write your nDeReference":"Write your Reference Number",
 "dateDeTransposition":"Trans Date",
 "codeEntrepot":"Warhouse Code",
 "unitesSaisies":"Units Entered",
@@ -889,6 +890,16 @@
 "willaya name":"Willaya name",
 "wcode":"Warehouse code ",
  "wname":"Warehouse name ",
- "menu.add-sales":"Add new sales"
+ "menu.add-sales":"Add new sales",
+ "Email is required": "Email is required",
+ "Invalid email format": "Invalid email format",
+ "Invalid email domain": "Invalid email domain",
+ "Véhicule léger": "Light Vehicle",
+"Poids lourd": "Heavy Vehicle",
+"Semi-remorque": "Semi-trailer",
+"Machine": "Machine",
+"typeEnregistrement":"Enregistrement type",
+"growoutname":"Growout Name",
+"growoutcode":"Growout Code"
 
 }

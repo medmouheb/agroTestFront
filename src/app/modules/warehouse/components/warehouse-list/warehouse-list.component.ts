@@ -164,36 +164,51 @@ export class WarehouseListComponent implements OnInit {
     this.warehouse = {};
     this.currentStep = 0;
   }
+  
 
   onSave(id: string | null) {
-    console.log(this.warehouse!)
-    this.toastService.loading(
-      this.translateService.instant("message.loading..."),
-      {
-        id: "0",
-      }
-    );
-    this.warehouseService.save(id, this.warehouse!).subscribe({
-      next: () => {
-        this.findPage();
-        this.formModal.hide();
-        this.onCancel();
-        this.toastService.close("0");
-        this.toastService.success(
-          this.translateService.instant("success.saved", {
-            elem: this.translateService.instant("warehouse"),
-          })
-        );
-      },
-      error: (error) => {
-        this.toastService.close("0");
-        this.toastService.error(
-          this.translateService.instant(error.error, {
-            elem: this.translateService.instant("warehouse"),
-          })
-        );
-      },
-    });
+    const emailRegex: RegExp = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+    console.log(this.warehouse.email)
+    if (emailRegex.test(this.warehouse!.email)) {
+      this.toastService.close("0");
+      this.toastService.warning("Verify your email "
+       
+      );
+      
+    }
+    else{
+      console.log(this.warehouse!)
+      this.toastService.loading(
+        this.translateService.instant("message.loading..."),
+        {
+          id: "0",
+        }
+      );
+      console.log(this.warehouse)
+      this.warehouseService.save(id, this.warehouse!).subscribe({
+        next: () => {
+          this.findPage();
+          this.formModal.hide();
+          this.onCancel();
+          this.toastService.close("0");
+          this.toastService.success(
+            this.translateService.instant("success.saved", {
+              elem: this.translateService.instant("warehouse"),
+            })
+          );
+        },
+        error: (error) => {
+          this.toastService.close("0");
+          this.toastService.error(
+            this.translateService.instant(error.error, {
+              elem: this.translateService.instant("warehouse"),
+            })
+          );
+        },
+      });
+    }
+
+   
   }
   openImportModal() {
     this.importModal.show({
@@ -227,7 +242,9 @@ export class WarehouseListComponent implements OnInit {
   }
 
   onClickEdit(id: string) {
+
     this.findById(id);
+    console.log(this.findById(id))
     this.formModal.show({
       title: "menu.edit-warehouse",
       stepsCount: this.steps.length - 1,

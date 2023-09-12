@@ -1,4 +1,4 @@
-
+<div class="row">
 <div class="form-group col-md-6">
     <label for="dateDeDebut">{{ "dateDeDebut" | translate }}</label>
     <input type="date" class="form-control" name="dateDeDebut" [(ngModel)]="camp.dateDeDebut">
@@ -61,8 +61,8 @@
 </div>
 
 <div class="form-group col-md-6">
-    <label for="nDuCentreDeCouts">{{ "nDuCentreDeCouts" | translate }}</label>
-    <input type="number" class="form-control" name="nDuCentreDeCouts" [(ngModel)]="camp.nDuCentreDeCouts">
+    <label for="nduCentreDeCouts">{{ "nDuCentreDeCouts" | translate }}</label>
+    <input type="number" class="form-control" name="nduCentreDeCouts" [(ngModel)]="camp.nduCentreDeCouts">
 
 </div>
 
@@ -83,7 +83,7 @@
 
 <div class="form-group col-md-6">
     <label for="typeInstallationDuCentreDeCoutsExterne">{{ "typeInstallationDuCentreDeCoutsExterne" | translate}}</label>
-    <input type="number" class="form-control" name="typeInstallationDuCentreDeCoutsExterne"
+    <input class="form-control" name="typeInstallationDuCentreDeCoutsExterne"
         [(ngModel)]="camp.typeInstallationDuCentreDeCoutsExterne">
 </div>
 
@@ -93,8 +93,8 @@
 </div>
 
 <div class="form-group col-md-6">
-    <label for="nDuCentreDeCoutsExterne">{{ "nDuCentreDeCoutsExterne" | translate }}</label>
-    <input type="number" class="form-control"  name="nDuCentreDeCoutsExterne" [(ngModel)]="camp.nDuCentreDeCoutsExterne">
+    <label for="nduCentreDeCoutsExterne">{{ "nDuCentreDeCoutsExterne" | translate }}</label>
+    <input type="number" class="form-control"  name="nduCentreDeCoutsExterne" [(ngModel)]="camp.nduCentreDeCoutsExterne">
 </div>
 
 <div class="form-group col-md-6">
@@ -103,8 +103,8 @@
 </div>
 
 <div class="form-group col-md-6">
-    <label for="nDeLaFerme">{{ "nDeLaFerme" | translate }}</label>
-    <input  type="number" class="form-control" name="nDeLaFerme" [(ngModel)]="camp.nDeLaFerme">
+    <label for="ndeLaFerme">{{ "nDeLaFerme" | translate }}</label>
+    <input  type="number" class="form-control" name="ndeLaFerme" [(ngModel)]="camp.ndeLaFerme">
 
 </div>
 
@@ -115,15 +115,15 @@
 
 <div class="form-group col-md-6">
     <label for="dateDinactivite">{{ "dateDinactivite" | translate }}</label>
-    <input  type="date" class="form-control" name="dateDinactivite"
+    <input  class="form-control" name="dateDinactivite"
         [(ngModel)]="camp.dateDinactivite">
 
 </div>
 
 <div class="form-group col-md-6">
-    <label for="IRN">{{ "IRN" | translate}}</label>
-    <input  class="form-control" type="text" name="IRN"
-        [(ngModel)]="camp.IRN">
+    <label for="irn">{{ "IRN" | translate}}</label>
+    <input  class="form-control" type="text" name="irn"
+        [(ngModel)]="camp.irn">
 </div>
 
 <div class="form-group col-md-6">
@@ -161,4 +161,5 @@
 <div class="form-group col-md-6">
     <label for="commandeAchatcomplexeNon">{{ "commandeAchatcomplexeNon" | translate }}</label>
     <input class="form-control" name="commandeAchatcomplexeNon" [(ngModel)]="camp.commandeAchatcomplexeNon">
+</div>
 </div>

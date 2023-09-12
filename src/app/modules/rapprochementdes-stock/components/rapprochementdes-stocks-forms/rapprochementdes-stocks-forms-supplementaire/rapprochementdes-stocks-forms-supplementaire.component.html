@@ -1,4 +1,4 @@
-
+<div class="row">
 <div class="form-group col-md-6">
     <label for="emplacementDeDestinationDuTransfertNon">{{ "emplacementDeDestinationDuTransfertNon" | translate }}</label>
     <input class="form-control" name="emplacementDeDestinationDuTransfertNon" [(ngModel)]="camp.emplacementDeDestinationDuTransfertNon">
@@ -11,8 +11,8 @@
 </div>
 
 <div class="form-group col-md-6">
-    <label for="nDuProduitDeDestinationDuTransfert">{{ "nDuProduitDeDestinationDuTransfert" | translate }}</label>
-    <input  type=number class="form-control" name="nDuProduitDeDestinationDuTransfert" [(ngModel)]="camp.nDuProduitDeDestinationDuTransfert">
+    <label for="nduProduitDeDestinationDuTransfert">{{ "nDuProduitDeDestinationDuTransfert" | translate }}</label>
+    <input  type=number class="form-control" name="nduProduitDeDestinationDuTransfert" [(ngModel)]="camp.nduProduitDeDestinationDuTransfert">
 </div>
 <div class="form-group col-md-6">
     <label for="nomDuProduitDeDestinationDuTransfert">{{ "nomDuProduitDeDestinationDuTransfert" | translate }}</label>
@@ -54,10 +54,15 @@
     <input type="number" class="form-control" type="text" name="numeroDeLotSourceDeTransfert"
         [(ngModel)]="camp.numeroDeLotSourceDeTransfert">
 </div>
+<div class="form-group col-md-6">
+    <label for="typeEnregistrement">{{ "typeEnregistrement" | translate }}</label>
+    <input   class="form-control" name="typeEnregistrement" [(ngModel)]="camp.typeEnregistrement">
+
+</div>
 
 <div class="form-group col-md-6">
-    <label for="nDuProduitSourceDeTransfert">{{ "nDuProduitSourceDeTransfert" | translate }}</label>
-    <input type="number" class="form-control" name="nDuProduitSourceDeTransfert" [(ngModel)]="camp.nDuProduitSourceDeTransfert">
+    <label for="nduProduitSourceDeTransfert">{{ "nDuProduitSourceDeTransfert" | translate }}</label>
+    <input type="number" class="form-control" name="nduProduitSourceDeTransfert" [(ngModel)]="camp.nduProduitSourceDeTransfert">
 </div>
 
 <div class="form-group col-md-6">
@@ -88,8 +93,8 @@
 </div>
 
 <div class="form-group col-md-6">
-    <label for="nDuVendeur">{{ "nDuVendeur" | translate }}</label>
-    <input type="number" class="form-control" name="nDuVendeur" [(ngModel)]="camp.nDuVendeur">
+    <label for="nduVendeur">{{ "nDuVendeur" | translate }}</label>
+    <input type="number" class="form-control" name="nduVendeur" [(ngModel)]="camp.nduVendeur">
 </div>
 
 
@@ -105,7 +110,7 @@
 
 <div class="form-group col-md-6">
     <label for="nomSKUDuFournisseur">{{ "nomSKUDuFournisseur" | translate }}</label>
-    <input class="form-control" type="text" name="nomSKUDuFournisseur" [(ngModel)]="camp.nomSKUDuFournisseur">
+    <input class="form-control"  name="nomSKUDuFournisseur" [(ngModel)]="camp.nomSKUDuFournisseur">
 </div>
 
 <div class="form-group col-md-6">
@@ -113,4 +118,4 @@
     <input class="form-control" name="typeEntrepot"
         [(ngModel)]="camp.typeEntrepot">
 </div>
-
+</div>

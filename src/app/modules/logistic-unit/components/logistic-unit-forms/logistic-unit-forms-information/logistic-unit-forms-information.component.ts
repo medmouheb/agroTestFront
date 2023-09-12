@@ -30,7 +30,7 @@ export class LogisticUnitFormsInformationComponent implements OnInit {
     ) {}
 
     ngOnInit(): void {
-      this.initForm();
+   
       this.loadCompanyNames();
       this.loadDivisionNames();
     }
@@ -64,27 +64,13 @@ export class LogisticUnitFormsInformationComponent implements OnInit {
 
 
 
-  initForm() {
-    this.addform = new FormGroup({
-      companyName: new FormControl(this.camp.companyName),
-      divisionName: new FormControl(this.camp.divisionName),
-    });
   
-    console.log("====================================");
-    console.log(" add form :", this.addform);
-    console.log("====================================");
-    
-  }
   
 //getAll Campany name from service findbycompany
 
 
 
 
-  get f() {
-    return this.addform.controls;
-  }
-  //methode pour get tous les nom from company
 
 
   isControlValid(controlName: string): boolean {
