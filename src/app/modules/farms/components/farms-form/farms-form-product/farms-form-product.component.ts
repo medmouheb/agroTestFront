@@ -27,4 +27,10 @@ export class FarmsFormProductComponent implements OnInit {
   
     })
   }
+
+
+  setProduct(e:any){
+    console.log("aa::",this.produits)
+    this.farm.land=e.target.value
+  }
 }

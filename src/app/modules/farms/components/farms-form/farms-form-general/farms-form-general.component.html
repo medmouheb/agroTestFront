@@ -2,63 +2,74 @@
   <div class="form-group col-md-6">
     <label class="required" for="code">{{ "codefarms" | translate }}</label>
     <input (blur)="codeBlur()" class="form-control" name="code" [(ngModel)]="farm.code" formControlName="code"
-    placeholder=" {{'write your farms code'|translate}}" required
-      aria-invalid="true" type="number" aria-describedby="code-error" (change)="geValues($event)">
+      placeholder=" {{'write your farms code'|translate}}" required aria-invalid="true" type="number"
+      aria-describedby="code-error" (change)="geValues($event)">
     <div *ngIf="codeISvalid" style="color: red;">{{'Code must be not null'|translate}}</div>
   </div>
- 
+
   <div class="form-group col-md-6">
     <label class="required" for="name">{{ "namefarms" | translate }}</label>
-    <input (blur)="nameBlur();isBlur4();isBlur2()" [formControl]="fieldControl" class="form-control" name="name" formControlName="name" [(ngModel)]="farm.nom" required
-      aria-invalid="true" aria-describedby="name-error"  placeholder=" {{'write your farms name'|translate}}" (change)="geValues($event)">
+    <input (blur)="nameBlur();isBlur4();isBlur2()" [formControl]="fieldControl" class="form-control" name="name"
+      formControlName="name" [(ngModel)]="farm.nom" required aria-invalid="true" aria-describedby="name-error"
+      placeholder=" {{'write your farms name'|translate}}" (change)="geValues($event)">
     <div *ngIf="nameISvalid" style="color: red;">{{'Name must be not null'|translate}}</div>
     <div style=" color : red;" *ngIf="minIstrueName">{{"Format is invalid"|translate}}</div>
 
   </div>
   <div class="form-group col-md-6 align-self-end">
     <label for="active">
-      <input type="checkbox" id="active" name="active" #active="ngModel" ngModel [(ngModel)]="farm.status" (change)="geValues($event)" />
-      {{ "active" | translate }}
+      <input [checked]="farm.status" (click)="setActif()" type="checkbox" id="active" name="active" #active="ngModel" ngModel [(ngModel)]="farm.status" [value]="farm.status"
+        (change)="geValues($event)" />
+
+      {{ "Farm Status" | translate }}
     </label>
   </div>
-    <div class="form-group col-md-6">
-    <label for="growout">{{ "growoutnumber" | translate }}</label>
-    <select (click)="selectValue($event)"   class="form-control" name="growoutcode" #growoutcode="ngModel" ngModel [(ngModel)]="farm.growoutcode" (change)="geValues($event)">
-      <option *ngFor="let dv of growouts" [value]="dv.code" > {{dv.name}}</option>
+  <div class="form-group col-md-6">
+    <label  for="growout">{{ "growoutnumber" | translate }}</label>
+    <select [ngStyle]="{'color': (farm.growoutcode) ? 'black' : '#AAAAAA'}"  (click)="selectValue($event)" class="form-control" name="growoutcode" (change)="geValues($event)">
+      <option value=""> {{'you must chose' |translate}}</option>
+
+      <option [selected]="dv.code==farm.growoutcode" *ngFor="let dv of growouts;let index=index" [value]="dv.code">
+        {{dv.name}}</option>
     </select>
-   
+
   </div>
 
   <div class="form-group col-md-6">
     <label class="required" for="type">{{"Farmtype"| translate }}</label>
-      <select    class="form-control" name="type" formControlName="type" [(ngModel)]="farm.type" required aria-invalid="true"
+    <select class="form-control" name="type" formControlName="type" [(ngModel)]="farm.type" required aria-invalid="true"
       aria-describedby="type-error" (change)="geValues($event)">
       <option value="INTERN">INTERN</option>
-        <option value="EXTERN">EXTERN</option>
-      </select>
+      <option value="EXTERN">EXTERN</option>
+    </select>
   </div>
   <div class="form-group col-md-6">
     <label for="costCenter">{{ "costCenter" | translate }}</label>
-   
-  <select    class="form-control" name="costCenter" #costCenter="ngModel" ngModel [(ngModel)]="farm.cost_Center">
-    <option *ngFor="let dv of costcenters" [value]="dv.code" > {{dv.name}}</option>
-  </select>
-</div>
-<div class="form-group col-md-6">
-  <label for="warehouse">{{ "primaryWarehouse" | translate }}</label>
-  <select class="form-control" name="warehouse" #warehouse="ngModel" ngModel [(ngModel)]="farm.warehouse!.id" (change)="geValues($event)"
-    (change)="onWarehouseChange()">
-    <option *ngFor="let warehouse of warehouses" [value]="warehouse.id">
-      {{ warehouse.name }}
-    </option>
-  </select>
-</div>
+
+    <select [ngStyle]="{'color': (farm.cost_Center) ? 'black' : '#AAAAAA'}"  (click)="selectValuecostCenter($event)" class="form-control" name="costCenter">
+      <option value=""> {{'you must chose' |translate}}</option>
+
+      <option *ngFor="let dv of costcenters" [selected]="dv.code==farm.cost_Center" [value]="dv.code"> {{dv.name}}
+      </option>
+    </select>
+  </div>
+  <div class="form-group col-md-6">
+    <label for="warehouse">{{ "primaryWarehouse" | translate }}</label>
+    <select [ngStyle]="{'color': (farm.warehouse.id) ? 'black' : '#AAAAAA'}"  class="form-control" name="warehouse"  (change)="onWarehouseChange($event);geValues($event);">
+      <option value=""> {{'you must chose' |translate}}</option>
+
+      <option *ngFor="let warehouse of warehouses" [selected]="warehouse.id==farm.warehouse.id" [value]="warehouse.id">
+        {{ warehouse.name }}
+      </option>
+    </select>
+  </div>
 
   <div class="form-group col-md-6">
     <label for="vendor">{{ "vendornumber" | translate }}</label>
-    <select class="form-control" name="vendor" #vendor="ngModel" ngModel [(ngModel)]="farm.vendor!.id"
-      (change)="onVendorChange()">
-      <option *ngFor="let vendor of vendors" [value]="vendor.id">
+    <select [ngStyle]="{'color': (farm.vendor.id) ? 'black' : '#AAAAAA'}"  class="form-control" name="vendor" (change)="onVendorChange($event)">
+      <option value=""> {{'you must chose' |translate}}</option>
+
+      <option *ngFor="let vendor of vendors" [selected]="vendor.id==farm.vendor.id" [value]="vendor.id">
         {{ vendor.name }}
       </option>
     </select>
@@ -129,11 +140,25 @@
 
   </div>
 
-  
+
+  <div class=" col-md-6">
+    <label >{{ "Attachments" | translate }}</label>
+    <input style="width: 100%;" (change)="handleAttachments($event)" type="file"  >
+  </div>
+
+
+  <div class=" col-md-6">
+    <label >{{ "comments" | translate }}</label>
+    <input style="width: 100%;" (change)="handleComments($event)" type="file"  >
+  </div>
 
 
 
-<!-- 
+
+
+
+
+  <!-- 
   <div class="form-group col-md-6">
     <label for="customerName">{{ "customerName" | translate }}</label>
     <input class="form-control" name="customerName" #customerName="ngModel" ngModel [(ngModel)]="farm.customerName" />
@@ -148,6 +173,6 @@
     <input class="form-control" name="areaType" #areaType="ngModel" ngModel [(ngModel)]="farm.area_type" />
   </div> -->
 
- 
- 
+
+
 </div>

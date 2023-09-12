@@ -15,8 +15,13 @@
     </div>
     <div class="form-group col-md-6">
       <label for="logistic">{{'codeLogistic'| translate}}</label>
-      <input type="number" class="form-control" name="logistic" #logistic="ngModel" ngModel
-        [(ngModel)]="farm.logistic">
+      
+        <select [ngStyle]="{'color': (farm.logistic) ? 'black' : '#AAAAAA'}"  (click)="selectValue($event)" class="form-control" name="logistic">
+          <option value=""> {{'you must chose' |translate}}</option>
+    
+          <option [selected]="dv.logisticCode==farm.logistic" *ngFor="let dv of logistics;let index=index" [value]="dv.logisticCode">
+            {{dv.logisticName}}</option>
+        </select>
     </div>
   
   </div>

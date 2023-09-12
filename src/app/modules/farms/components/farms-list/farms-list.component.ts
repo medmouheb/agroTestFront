@@ -9,6 +9,7 @@ import { WizardDialogComponent } from "app/shared/components/wizard-dialog/wizar
 import { initPage, Page } from "app/shared/models";
 import { Farm } from "../../models/farm";
 import { FarmsService } from "../../services/farms.service";
+import { SharedService } from "app/modules/company/services/shared.service";
 
 @Component({
   selector: "app-farms-list",
@@ -43,7 +44,7 @@ export class FarmsListComponent implements OnInit {
     "steps.Distance",
     "steps.contract",
     "steps.visitors",
-    
+
   ];
 
   loading = false;
@@ -60,13 +61,14 @@ export class FarmsListComponent implements OnInit {
   filter = "";
   onPaginationChange: EventEmitter<string> = new EventEmitter<string>();
   isChecked: boolean = false;
-  affiche:boolean = false;
+  affiche: boolean = false;
 
   constructor(
+    private sharedService: SharedService,
     private farmsService: FarmsService,
     private translateService: TranslateService,
     private toastService: HotToastService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.findPage();
@@ -80,7 +82,7 @@ export class FarmsListComponent implements OnInit {
       .findPage(this.pageNumber, this.pageSize, this.filter)
       .subscribe({
         next: (result) => {
-          console.log("a::",result)
+          console.log("a::", result)
           this.farms = result.content;
           this.farmsPage = result;
         },
@@ -98,7 +100,7 @@ export class FarmsListComponent implements OnInit {
     this.farmsService.disArchive(id).subscribe({
       next: () => {
         this.findArchivedPage();
-this.findPage()
+        this.findPage()
         this.toastService.success(
           this.translateService.instant("success.restore", {
             elem: this.translateService.instant("farms"),
@@ -127,12 +129,12 @@ this.findPage()
 
   onCheckboxChange() {
     console.log("La valeur de la case à cocher est : ", this.isChecked);
-    if (this.isChecked==false){
+    if (this.isChecked == false) {
 
-      this.affiche=false
+      this.affiche = false
     }
-    else{
-      this.affiche=true
+    else {
+      this.affiche = true
     }
   }
 
@@ -166,17 +168,17 @@ this.findPage()
   }
 
   onSave(id: string | null) {
-    console.log("eee::",this.farm)
-    
-    if(this.farm.warehouse==undefined){
+    console.log("eee::", this.farm)
+
+    if (this.farm.warehouse == undefined) {
       this.farm.warehouse = null;
-    } else if(Object.keys(this.farm.warehouse).length==0){
+    } else if (Object.keys(this.farm.warehouse).length == 0) {
       this.farm.warehouse = null;
     }
-    
-    if(this.farm.vendor==undefined){
+
+    if (this.farm.vendor == undefined) {
       this.farm.vendor = null;
-    } else if(Object.keys(this.farm.vendor).length==0){
+    } else if (Object.keys(this.farm.vendor).length == 0) {
       this.farm.vendor = null;
     }
     this.toastService.loading(
@@ -211,13 +213,13 @@ this.findPage()
   onWizardSave(id: string | null) {
 
     if (this.stepper.lastStep()) {
-  
+
       this.onSave(id);
       return;
     }
     this.stepper.nextStep();
-    let a = document.getElementsByClassName("modal-content")[0] as HTMLElement 
-    a.style.height="1680px"
+    let a = document.getElementsByClassName("modal-content")[0] as HTMLElement
+    a.style.height = "1680px"
   }
 
   onStepChange(step: number) {
@@ -225,6 +227,9 @@ this.findPage()
   }
 
   onClickAdd() {
+    this.sharedService.setIsActive(false);
+    this.farm.status=true
+    this.farm.land=100
     this.formModal.show({
       title: "menu.add-farm",
       stepsCount: this.steps.length - 1,
@@ -252,7 +257,7 @@ this.findPage()
         prev: () => this.stepper.prevStep(),
       });
     }, 200);
-    
+
   }
 
   // onClickDelete(id: string) {
@@ -288,17 +293,17 @@ this.findPage()
   //   });
   // }
 
-  
+
   findArchivedPage() {
     this.loading = true;
     this.farmsService
       .findArchivedPage(this.pageNumber, this.pageSize, this.filter)
       .subscribe({
         next: (result) => {
-          console.log("b::",result)
+          console.log("b::", result)
           this.farmss = result.content;
           this.farmsPages = result;
-          this.companyss= result.content;
+          this.companyss = result.content;
         },
         error: (error) => {
           this.loading = false;

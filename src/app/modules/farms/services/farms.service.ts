@@ -27,6 +27,11 @@ export class FarmsService {
     return this.http.post<Farm>(url, farm);
   }
 
+  handleFileUpload(file: any): Observable<any> {
+    let url = this.baseUrl()+'/files/upload';
+    return this.http.post(url, file);
+  }
+
   update(id: string, farm: Farm): Observable<Farm> {
     let url = `${this.baseUrl()}/ferme/${id}`;
     return this.http.put<Farm>(url, farm);
