@@ -180,6 +180,26 @@ export class WillayaFormGeneralComponent implements OnInit {
       this.DNisvalid = false
     }
   }
+
+
+
+  codeIsvalid = false
+
+validationCode() {
+  const codeRegex: RegExp =/^[a-zA-Z0-9]*$/;
+  console.log(this.willaya.code)
+  if (codeRegex.test(this.willaya.code)) {
+    this.codeIsvalid = false;
+  console.log(this.willaya.code)
+
+  }
+  else {
+  this.codeIsvalid=true
+  }
+
+}
+
+
   minIstrueName2: boolean = false
   // isBlur2() {
   //   if (this.fieldControl.status == "INVALID") {

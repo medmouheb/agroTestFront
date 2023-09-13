@@ -235,6 +235,23 @@ if (data!=null){
   
     }
   }
+
+  
+  codeIsvalid = false
+
+validationCode() {
+  const codeRegex: RegExp =/^[a-zA-Z0-9]*$/;
+  console.log(this.growout.code)
+  if (codeRegex.test(this.growout.code)) {
+    this.codeIsvalid = false;
+  console.log(this.growout.code)
+
+  }
+  else {
+  this.codeIsvalid=true
+  }
+
+}
  
   isControlValid(controlCode: string): boolean {
     const control = this.addform.controls[controlCode];

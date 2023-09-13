@@ -2,12 +2,12 @@
 
   <div class="form-group col-md-6">
     <label class="required" for="code">{{'divisionCode' | translate}}</label>
-    <input (blur)="isBlurDCisvalid();exist();blur1()" class="form-control" name="code" [(ngModel)]="division.code"
+    <input (blur)="isBlurDCisvalid();exist();blur1();validationCode()" class="form-control" name="code" [(ngModel)]="division.code"
       formControlName="code" required placeholder="{{'Write your division code'|translate}} " aria-invalid="true"
-      type="number" aria-describedby="code-error" (ngModelChange)="geValues($event)">
+       aria-describedby="code-error" (ngModelChange)="geValues($event)">
     <div style="color: red;" *ngIf="DCisvalid">{{'Code must be not null'|translate}}</div>
     <div style=" color : red;" *ngIf="dispotrueCode">{{'Code must be unique'|translate}}</div>
-
+    <div  style="color: red;" *ngIf="codeIsvalid">{{ "Invalid code format" }}</div>
   </div>
 
   <div class="form-group col-md-6">

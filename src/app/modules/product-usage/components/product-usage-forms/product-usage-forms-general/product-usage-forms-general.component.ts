@@ -101,6 +101,23 @@ export class ProductUsageFormsGeneralComponent implements OnInit {
 
   }
 
+
+  codeIsvalid = false
+
+validationCode() {
+  const codeRegex: RegExp =/^[a-zA-Z0-9]*$/;
+  console.log(this.camp.numeroDeLot)
+  if (codeRegex.test(this.camp.numeroDeLot)) {
+    this.codeIsvalid = false;
+  console.log(this.camp.numeroDeLot)
+
+  }
+  else {
+  this.codeIsvalid=true
+  }
+
+}
+
   exist1() {
     console.log(this.camp.ndeReference);
     this.compaser.findbyName(this.camp.ndeReference).subscribe(

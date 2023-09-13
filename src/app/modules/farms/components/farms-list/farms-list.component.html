@@ -39,27 +39,60 @@
             <thead class="datatable-header">
                 <tr>
                     <th>
-                        <strong>
-                            {{'code de la Ferme' | translate}}
-                        </strong>
-                    </th>
-                    <th>
-                        <strong>
+                        <strong class="style-text">
                             {{'name de la Ferme' | translate}}
+                            <a href="javascript:void(0);">
+                                <svg (click)="sortByName()" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                  fill="currentColor" class="bi bi-chevron-double-down custom-color" viewBox="0 0 16 16">
+                                  <path fill-rule="evenodd"
+                                    d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z" />
+              
+                                </svg>
+                              </a>
                         </strong>
                     </th>
                     <th>
-                        <strong>
+                        <strong class="style-text">
+                            {{'code de la Ferme' | translate}}
+                            <a href="javascript:void(0);">
+                                <svg (click)="sortByCode()" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                  fill="currentColor" class="bi bi-chevron-double-down custom-color" viewBox="0 0 16 16">
+                                  <path fill-rule="evenodd"
+                                    d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z" />
+              
+                                </svg>
+                              </a>
+                        </strong>
+                    </th>
+         
+                    <th>
+                        <strong class="style-text">
                             {{'type de la Ferme' | translate}}
+                            <a href="javascript:void(0);">
+                                <svg (click)="sortBytype()" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                  fill="currentColor" class="bi bi-chevron-double-down custom-color" viewBox="0 0 16 16">
+                                  <path fill-rule="evenodd"
+                                    d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z" />
+              
+                                </svg>
+                              </a>
                         </strong>
                     </th>
                     <th>
-                        <strong>
+                        <strong class="style-text">
                             {{'owner' | translate}}
+                            <a href="javascript:void(0);">
+                                <svg (click)="sortByOwner()" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                  fill="currentColor" class="bi bi-chevron-double-down custom-color" viewBox="0 0 16 16">
+                                  <path fill-rule="evenodd"
+                                    d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z" />
+              
+                                </svg>
+                              </a>
                         </strong>
                     </th>
                     <th>
-                        <strong>
+                        <strong class="style-text">
                             {{'actions' | translate}}
                         </strong>
                     </th>
@@ -68,10 +101,11 @@
             <tbody class="text-sm">
                 <tr class="row-data" *ngFor="let farm of farms">
                     <td>
-                        {{farm.code}}
-                    </td>
-                    <td>
                         {{farm.nom}}
+                  </td>
+                    <td>
+                        {{farm.code}}
+
                     </td>
                     <td>
                         {{farm.type}}
@@ -107,27 +141,60 @@
             <thead class="datatable-header">
                 <tr>
                     <th>
-                        <strong>
-                            {{'code de la Ferme' | translate}}
-                        </strong>
-                    </th>
-                    <th>
-                        <strong>
+                        <strong class="style-text">
                             {{'name de la Ferme' | translate}}
+                            <a href="javascript:void(0);">
+                                <svg (click)="sortByName()" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                  fill="currentColor" class="bi bi-chevron-double-down custom-color" viewBox="0 0 16 16">
+                                  <path fill-rule="evenodd"
+                                    d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z" />
+              
+                                </svg>
+                              </a>
                         </strong>
                     </th>
                     <th>
-                        <strong>
+                        <strong class="style-text">
+                            {{'code de la Ferme' | translate}}
+                            <a href="javascript:void(0);">
+                                <svg (click)="sortByCode()" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                  fill="currentColor" class="bi bi-chevron-double-down custom-color" viewBox="0 0 16 16">
+                                  <path fill-rule="evenodd"
+                                    d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z" />
+              
+                                </svg>
+                              </a>
+                        </strong>
+                    </th>
+     
+                    <th>
+                        <strong class="style-text">
                             {{'type de la Ferme' | translate}}
+                            <a href="javascript:void(0);">
+                                <svg (click)="sortBytype()" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                  fill="currentColor" class="bi bi-chevron-double-down custom-color" viewBox="0 0 16 16">
+                                  <path fill-rule="evenodd"
+                                    d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z" />
+              
+                                </svg>
+                              </a>
                         </strong>
                     </th>
                     <th>
-                        <strong>
+                        <strong class="style-text">
                             {{'owner' | translate}}
+                            <a href="javascript:void(0);">
+                                <svg (click)="sortByOwner()" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                  fill="currentColor" class="bi bi-chevron-double-down custom-color" viewBox="0 0 16 16">
+                                  <path fill-rule="evenodd"
+                                    d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z" />
+              
+                                </svg>
+                              </a>
                         </strong>
                     </th>
                     <th>
-                        <strong>
+                        <strong class="style-text">
                             {{'actions' | translate}}
                         </strong>
                     </th>
@@ -136,10 +203,11 @@
             <tbody class="text-sm">
                 <tr class="row-data" *ngFor="let farm of farmss">
                     <td>
-                        {{farm.code}}
+                        {{farm.nom}}
                     </td>
                     <td>
-                        {{farm.nom}}
+                        {{farm.code}}
+
                     </td>
                     <td>
                         {{farm.type}}

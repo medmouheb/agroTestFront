@@ -76,6 +76,25 @@ export class GrowoutFormLocationComponent implements OnInit {
       this.minIwillayacode = false;
     }
   }
+
+  emailIsvalid = false
+
+validationEmail() {
+  const emailRegex: RegExp =/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+  console.log(this.growout.email)
+  if (emailRegex.test(this.growout.email)) {
+    this.emailIsvalid = false;
+  console.log(this.growout.email)
+
+  }
+  else {
+  this.emailIsvalid=true
+  }
+
+}
+
+
+
   isBlur3() {
     if ((this.growout.phoneNumber.toString().length <12 )|| (this.growout.phoneNumber.toString().length > 13)) {
       this.minIphone = true;

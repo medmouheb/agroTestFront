@@ -320,4 +320,76 @@ export class ProduitsListComponent implements OnInit {
   }
 
 
+  sortByCodeValid: boolean = true;
+  sortByCode() {
+    if (this.sortByCodeValid) {
+      this.produits.sort((a, b) => a.code.localeCompare(b.code));
+      this.sortByCodeValid = false
+    } else {
+      this.produits.sort((a, b) => b.code.localeCompare(a.code));
+      this.sortByCodeValid = true
+    }
+  }
+
+
+
+  sortByNameValid: boolean = true;
+  sortByName() {
+    if (this.sortByNameValid) {
+      this.produits.sort((a, b) => a.name.localeCompare(b.name));
+      this.sortByNameValid = false
+    } else {
+      this.produits.sort((a, b) => b.name.localeCompare(a.name));
+      this.sortByNameValid = true
+    }
+  }
+
+
+  sortByCityNameValid: boolean = true;
+  sortByCategorie() {
+    if (this.sortByCityNameValid) {
+      this.produits.sort((a, b) => (a.category?.id || "").localeCompare((b.category?.id || "")));
+      this.sortByCityNameValid = false
+    } else {
+      this.produits.sort((a, b) => (b.category?.id || "").localeCompare((a.category?.id || "")));
+      this.sortByCityNameValid = true
+    }
+  }
+  sortBywillayaValid: boolean = true;
+  sortByprixUnitaireHt() {
+    if (this.sortBywillayaValid) {
+      this.produits.sort((a, b) => (a.prixUnitaireHt || "").localeCompare((b.prixUnitaireHt || "")));
+      this.sortBywillayaValid = false
+    } else {
+      this.produits.sort((a, b) => (b.prixUnitaireHt || "").localeCompare((a.prixUnitaireHt || "")));
+      this.sortBywillayaValid = true
+    }
+  }
+
+
+  sortByAddressValid: boolean = true;
+  sortByAddress() {
+    if (this.sortByAddressValid) {
+      this.produits.sort((a, b) => (a.tauxTva || "").localeCompare((b.tauxTva || "")));
+      this.sortByAddressValid = false
+    } else {
+      this.produits.sort((a, b) => (b.tauxTva || "").localeCompare((a.tauxTva || "")));
+      this.sortByAddressValid = true
+    }
+  }
+
+  sortByEmailValid: boolean = true;
+  sortByEmail() {
+    if (this.sortByEmailValid) {
+      this.produits.sort((a, b) => (a.prixUnitaireTtc || "").localeCompare((b.prixUnitaireTtc || "")));
+      this.sortByEmailValid = false
+    } else {
+      this.produits.sort((a, b) => (b.prixUnitaireTtc || "").localeCompare((a.prixUnitaireTtc || "")));
+      this.sortByEmailValid = true
+    }
+  }
+
+
+
+
 }

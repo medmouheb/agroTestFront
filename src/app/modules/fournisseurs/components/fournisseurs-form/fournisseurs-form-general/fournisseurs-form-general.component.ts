@@ -152,6 +152,23 @@ export class FournisseursFormGeneralComponent implements OnInit {
 
   }
 
+  codeIsvalid = false
+
+validationCode() {
+  const codeRegex: RegExp =/^[a-zA-Z0-9]*$/;
+  console.log(this.fournisseur.code)
+  if (codeRegex.test(this.fournisseur.code)) {
+    this.codeIsvalid = false;
+  console.log(this.fournisseur.code)
+
+  }
+  else {
+  this.codeIsvalid=true
+  }
+
+}
+
+
   get f() {
     return this.addform.controls;
   }

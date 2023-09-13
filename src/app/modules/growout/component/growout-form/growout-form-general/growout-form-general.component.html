@@ -1,11 +1,12 @@
 <div class="row" [formGroup]="addform">
   <div class="form-group col-md-6">
     <label class="required" for="code">{{ "growoutcode" | translate }}</label>
-    <input (blur)="isBlurDCisvalid();exist();blur1()" class="form-control" name="code" 
+    <input (blur)="isBlurDCisvalid();exist();blur1();validationCode()" class="form-control" name="code" 
     [(ngModel)]="growout.code" formControlName="code" required placeholder="{{'Write your Growout code'|translate}}"
-      aria-invalid="true" type="number" aria-describedby="code-error" (ngModelChange)="geValues($event)">
+      aria-invalid="true"  aria-describedby="code-error" (ngModelChange)="geValues($event)">
       <div style="color: red;" *ngIf="DCisvalid" >{{'Code must be not null'|translate}}</div>
       <div style=" color : red;" *ngIf="dispotrueCode">{{'Code must be unique'|translate}}</div>
+      <div  style="color: red;" *ngIf="codeIsvalid">{{ "Invalid code format" }}</div>
 
     </div> 
 

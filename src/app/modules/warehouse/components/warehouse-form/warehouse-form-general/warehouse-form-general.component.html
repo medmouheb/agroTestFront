@@ -3,12 +3,12 @@
 
   <div class="form-group col-md-6">
     <label class="required" for="code">{{ "warehousescode" | translate }}</label>
-    <input (blur)="existcode();isBlurDCisvalid();" class="form-control" name="code" [(ngModel)]="warehouse.code" formControlName="code" required
+    <input (blur)="existcode();isBlurDCisvalid();validationCode()" class="form-control" name="code" [(ngModel)]="warehouse.code" formControlName="code" required
      placeholder=" {{'Write your warehouse code'|translate}}" 
-      aria-invalid="true" type="number" aria-describedby="code-error" (ngModelChange)="geValues($event)">
+      aria-invalid="true"  aria-describedby="code-error" (ngModelChange)="geValues($event)">
       <div style="color: red;" *ngIf="DCisvalid" >{{'Code must be not null'|translate}}</div>
       <div style="color: red;" *ngIf="existcodeIsvalid" >{{'Code must be unique'|translate}}</div>
-
+      <div  style="color: red;" *ngIf="codeIsvalid">{{ "Invalid code format" }}</div>
 
   </div> 
 

@@ -226,7 +226,21 @@ if (data!=null){
     }
   }
 
+  codeIsvalid = false
 
+validationCode() {
+  const codeRegex: RegExp =/^[a-zA-Z0-9]*$/;
+  console.log(this.currency.code)
+  if (codeRegex.test(this.currency.code)) {
+    this.codeIsvalid = false;
+  console.log(this.currency.code)
+
+  }
+  else {
+  this.codeIsvalid=true
+  }
+
+}
 
   
  

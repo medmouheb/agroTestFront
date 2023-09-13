@@ -105,6 +105,22 @@ selectValue(e:any){
   }
   minIphone: boolean = false
 
+  emailIsvalid = false
+
+validationEmail() {
+  const emailRegex: RegExp =/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+  console.log(this.camp.email)
+  if (emailRegex.test(this.camp.email)) {
+    this.emailIsvalid = false;
+  console.log(this.camp.email)
+
+  }
+  else {
+  this.emailIsvalid=true
+  }
+
+}
+
   isBlur3() {
     if ((this.camp.number.toString().length <12 )|| (this.camp.number.toString().length > 13)) {
       this.minIphone = true;

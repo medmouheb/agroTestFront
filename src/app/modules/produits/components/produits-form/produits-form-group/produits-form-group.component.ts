@@ -116,6 +116,23 @@ export class ProduitsFormGroupComponent implements OnInit {
     );
   }
 
+  
+  codeIsvalid = false
+
+validationCode() {
+  const codeRegex: RegExp =/^[a-zA-Z0-9]*$/;
+  console.log(this.produit.code)
+  if (codeRegex.test(this.produit.code)) {
+    this.codeIsvalid = false;
+  console.log(this.produit.code)
+
+  }
+  else {
+  this.codeIsvalid=true
+  }
+
+}
+
   get f() {
     return this.addform.controls;
   }

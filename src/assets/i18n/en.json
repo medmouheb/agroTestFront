@@ -504,8 +504,8 @@
 "instructiuonName":"Instruction Name",
 "notes":"Notes",
 "write your notes":"Write your notes",
-"codeship":"Shipping method code",
-"nameship":"Shipping method name",
+"codeship":"Shipping Method Code",
+"nameship":"Shipping Method Name",
 
   "vehicleTypeCode": " Vehicle Type Code",
   "vehicleTypeName": "Vehicle type name",
@@ -902,10 +902,8 @@
 "typeEnregistrement":"Enregistrement type",
 "growoutname":"Growout Name",
 "growoutcode":"Growout Code",
-
-
-
-
+"SalesName":"Sales Name",
+"SalesCode":"Sales Code",
 "Farm Status":"Farm Status ",
 "Attachments":"Attachments",
 "comments":"Comments"

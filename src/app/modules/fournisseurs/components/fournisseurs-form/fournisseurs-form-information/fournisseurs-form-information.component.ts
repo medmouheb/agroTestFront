@@ -36,5 +36,20 @@ selectValue(e:any){
 
 }
 
+emailIsvalid = false
+
+validationEmail() {
+  const emailRegex: RegExp =/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+  console.log(this.fournisseur.email)
+  if (emailRegex.test(this.fournisseur.email)) {
+    this.emailIsvalid = false;
+  console.log(this.fournisseur.email)
+
+  }
+  else {
+  this.emailIsvalid=true
+  }
+
+}
 
 }

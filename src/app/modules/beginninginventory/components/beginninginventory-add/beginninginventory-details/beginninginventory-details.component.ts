@@ -151,6 +151,23 @@ export class BeginninginventoryDetailsComponent implements OnInit {
   
     }
   
+
+    codeIsvalid = false
+
+    validationCode() {
+      const codeRegex: RegExp =/^[a-zA-Z0-9]*$/;
+      console.log(this.camp.codeProduit)
+      if (codeRegex.test(this.camp.codeProduit)) {
+        this.codeIsvalid = false;
+      console.log(this.camp.codeProduit)
+    
+      }
+      else {
+      this.codeIsvalid=true
+      }
+    
+    }
+
     minIstrueName: boolean = false
     minIstrueName2: boolean = false
     // isBlur2() {

@@ -225,4 +225,21 @@ export class CostCenterFormGeneralComponent implements OnInit {
       this.minIstrueName = false;
     }
   }
+
+
+  codeIsvalid = false
+
+  validationCode() {
+    const codeRegex: RegExp =/^[a-zA-Z0-9]*$/;
+    console.log(this.cost.code)
+    if (codeRegex.test(this.cost.code)) {
+      this.codeIsvalid = false;
+    console.log(this.cost.code)
+  
+    }
+    else {
+    this.codeIsvalid=true
+    }
+  
+  }
 }

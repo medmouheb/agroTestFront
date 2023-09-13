@@ -303,6 +303,24 @@ export class FarmsFormGeneralComponent implements OnInit {
     }
   }
 
+
+
+  codeIsvalid = false
+
+validationCode() {
+  const codeRegex: RegExp =/^[a-zA-Z0-9]*$/;
+  console.log(this.farm.code)
+  if (codeRegex.test(this.farm.code)) {
+    this.codeIsvalid = false;
+  console.log(this.farm.code)
+
+  }
+  else {
+  this.codeIsvalid=true
+  }
+
+}
+
   codeISvalid: boolean = false;
   codeBlur() {
     if (this.addform.value.code.toString().length < 1) {
