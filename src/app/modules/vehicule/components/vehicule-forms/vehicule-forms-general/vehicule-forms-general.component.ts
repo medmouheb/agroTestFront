@@ -137,6 +137,7 @@ export class VehiculeFormsGeneralComponent implements OnInit {
 
   }
 
+  
   minIstrueName: boolean = false
   minIstrueName2: boolean = false
   // isBlur2() {
@@ -219,6 +220,25 @@ export class VehiculeFormsGeneralComponent implements OnInit {
       this.minIphone = false;
     }
   }
+
+
+  codeIsvalid = false
+
+validationCode() {
+  const codeRegex: RegExp =/^[a-zA-Z0-9]*$/;
+  console.log(this.camp.vehiculeCode)
+  if (codeRegex.test(this.camp.vehiculeCode)) {
+    this.codeIsvalid = false;
+  console.log(this.camp.vehiculeCode)
+
+  }
+  else {
+  this.codeIsvalid=true
+  }
+
+}
+
+
   minMeasurementType: boolean = false
 
   isBlur4() {

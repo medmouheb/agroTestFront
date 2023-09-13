@@ -174,4 +174,21 @@ export class SalesFormGeneralComponent implements OnInit {
     }
   }
 
+
+  codeIsvalid = false
+
+  validationCode() {
+    const codeRegex: RegExp =/^[a-zA-Z0-9]*$/;
+    console.log(this.sales.code)
+    if (codeRegex.test(this.sales.code)) {
+      this.codeIsvalid = false;
+    console.log(this.sales.code)
+  
+    }
+    else {
+    this.codeIsvalid=true
+    }
+  
+  }
+
 }

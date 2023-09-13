@@ -260,6 +260,51 @@ export class FarmsListComponent implements OnInit {
 
   }
 
+  sortByNameValid: boolean = true;
+  sortByName() {
+    if (this.sortByNameValid) {
+      this.farms.sort((a, b) => a.nom.localeCompare(b.nom));
+      this.sortByNameValid = false
+    } else {
+      this.farms.sort((a, b) => b.nom.localeCompare(a.nom));
+      this.sortByNameValid = true
+    }
+  }
+
+
+  sortByCityNameValid: boolean = true;
+  sortByCode() {
+    if (this.sortByCityNameValid) {
+      this.farms.sort((a, b) => (a.code || "").localeCompare((b.code || "")));
+      this.sortByCityNameValid = false
+    } else {
+      this.farms.sort((a, b) => (b.code || "").localeCompare((a.code || "")));
+      this.sortByCityNameValid = true
+    }
+  }
+  sortBywillayaValid: boolean = true;
+  sortByType() {
+    if (this.sortBywillayaValid) {
+      this.farms.sort((a, b) => (a.type || "").localeCompare((b.type || "")));
+      this.sortBywillayaValid = false
+    } else {
+      this.farms.sort((a, b) => (b.type || "").localeCompare((a.type || "")));
+      this.sortBywillayaValid = true
+    }
+  }
+
+
+  sortByAddressValid: boolean = true;
+  sortByOwner() {
+    if (this.sortByAddressValid) {
+      this.farms.sort((a, b) => (a.owner_Name || "").localeCompare((b.owner_Name || "")));
+      this.sortByAddressValid = false
+    } else {
+      this.farms.sort((a, b) => (b.owner_Name || "").localeCompare((a.owner_Name || "")));
+      this.sortByAddressValid = true
+    }
+  }
+
   // onClickDelete(id: string) {
   //   this.deleteModal.show(() => {
   //     this.toastService.loading(

@@ -148,7 +148,8 @@
     <div class="form-group col-md-6">
       <label for="email">{{ "emailcontact" | translate }}</label>
       <input class="form-control" name="email" #email="ngModel" ngModel [(ngModel)]="growout.email" 
-       placeholder="{{'Write your email'|translate}} " />
+      placeholder="{{ 'Write your email' | translate }}" (blur)="validationEmail()" />
+      <div  style="color: red;" *ngIf="emailIsvalid">{{ "Invalid email format" }}</div>
     </div>
   
     

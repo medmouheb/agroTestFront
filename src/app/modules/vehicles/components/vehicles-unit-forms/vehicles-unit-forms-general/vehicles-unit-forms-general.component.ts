@@ -78,6 +78,24 @@ export class VehiclesUnitFormsGeneralComponent implements OnInit {
 
     }
   }
+
+
+  
+  codeIsvalid = false
+
+validationCode() {
+  const codeRegex: RegExp =/^[a-zA-Z0-9]*$/;
+  console.log(this.camp.codeVehicule)
+  if (codeRegex.test(this.camp.codeVehicule)) {
+    this.codeIsvalid = false;
+  console.log(this.camp.codeVehicule)
+
+  }
+  else {
+  this.codeIsvalid=true
+  }
+
+}
   exist() {
     console.log(this.camp.codeVehicule)
     this.compaser.findbycode(this.camp.codeVehicule).subscribe(data => {

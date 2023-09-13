@@ -14,9 +14,9 @@ export type Produit = {
   couleur?: string
   methodeutilisation?: ProductUsage
   maxdepasse?: string
-  prixUnitaireHt?: number
-  tauxTva?: number
-  prixUnitaireTtc?: number
+  prixUnitaireHt?: any
+  tauxTva?: any
+  prixUnitaireTtc?: any
   category?: any
   vendorSKU?: any
   salesSKU?: any

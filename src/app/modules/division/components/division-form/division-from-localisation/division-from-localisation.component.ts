@@ -124,4 +124,19 @@ export class DivisionFromLocalisationComponent implements OnInit {
 
 
   }
+  emailIsvalid = false
+
+validationEmail() {
+  const emailRegex: RegExp =/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+  console.log(this.division.email)
+  if (emailRegex.test(this.division.email)) {
+    this.emailIsvalid = false;
+  console.log(this.division.email)
+
+  }
+  else {
+  this.emailIsvalid=true
+  }
+
+}
 }

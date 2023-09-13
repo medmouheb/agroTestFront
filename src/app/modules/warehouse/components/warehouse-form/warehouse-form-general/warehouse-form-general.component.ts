@@ -273,6 +273,22 @@ export class WarehouseFormGeneralComponent implements OnInit {
     }
   }
 
+  codeIsvalid = false
+
+  validationCode() {
+    const codeRegex: RegExp =/^[a-zA-Z0-9]*$/;
+    console.log(this.warehouse.code)
+    if (codeRegex.test(this.warehouse.code)) {
+      this.codeIsvalid = false;
+    console.log(this.warehouse.code)
+  
+    }
+    else {
+    this.codeIsvalid=true
+    }
+  
+  }
+
   DCisvalid: boolean = false;
   DNisvalid: boolean = false;
   minIstrueName2: boolean = false

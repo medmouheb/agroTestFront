@@ -2,9 +2,9 @@
 
     <div class="form-group col-md-6">
         <label class="required" for="vehiculeCode">{{ "vehiculeCodev" | translate }}</label>
-        <input (blur)="isBlur();exist();blur1()" class="form-control" name="vehiculeCode" [(ngModel)]="camp.vehiculeCode" formControlName="vehiculeCode" placeholder="{{'Write your Vehicule code'|translate}} "
-            required aria-invalid="true" type="number" aria-describedby="code-error" (ngModelChange)="geValues($event)">
-
+        <input (blur)="isBlur();exist();blur1();validationCode()" class="form-control" name="vehiculeCode" [(ngModel)]="camp.vehiculeCode" formControlName="vehiculeCode" placeholder="{{'Write your Vehicule code'|translate}} "
+            required aria-invalid="true"  aria-describedby="code-error" (ngModelChange)="geValues($event)">
+            <div  style="color: red;" *ngIf="codeIsvalid">{{ "Invalid code format" }}</div>
             <div style=" color : red;" *ngIf="dispotrueCode">{{'vehiculeCodev must be unique'|translate}}</div>
             <div style=" color : red;" *ngIf="minIstrueCode">{{'vehiculeCodev must be not null'|translate}}</div>
     </div>

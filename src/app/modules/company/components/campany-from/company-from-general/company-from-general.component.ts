@@ -103,6 +103,7 @@ export class CompanyFromGeneralComponent implements OnInit {
   }
   
 
+
  generateRandomCode() {
   const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
   let code = '';
@@ -203,4 +204,21 @@ export class CompanyFromGeneralComponent implements OnInit {
   get f() {
     return this.addform.controls;
   }
+
+
+  codeIsvalid = false
+
+validationCode() {
+  const codeRegex: RegExp =/^[a-zA-Z0-9]*$/;
+  console.log(this.camp.code)
+  if (codeRegex.test(this.camp.code)) {
+    this.codeIsvalid = false;
+  console.log(this.camp.code)
+
+  }
+  else {
+  this.codeIsvalid=true
+  }
+
+}
 }

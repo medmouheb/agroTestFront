@@ -272,7 +272,21 @@ export class DivisionFormGeneralComponent implements OnInit {
     }
   }
 
+  codeIsvalid = false
 
+validationCode() {
+  const codeRegex: RegExp =/^[a-zA-Z0-9]*$/;
+  console.log(this.division.code)
+  if (codeRegex.test(this.division.code)) {
+    this.codeIsvalid = false;
+  console.log(this.division.code)
+
+  }
+  else {
+  this.codeIsvalid=true
+  }
+
+}
 
   get f() {
     return this.addform.controls;

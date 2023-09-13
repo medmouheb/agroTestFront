@@ -101,6 +101,21 @@ export class LogisticUnitFormsGeneralComponent implements OnInit {
 
   }
 
+  codeIsvalid = false
+
+validationCode() {
+  const codeRegex: RegExp =/^[a-zA-Z0-9]*$/;
+  console.log(this.camp.logisticCode)
+  if (codeRegex.test(this.camp.logisticCode)) {
+    this.codeIsvalid = false;
+  console.log(this.camp.logisticCode)
+
+  }
+  else {
+  this.codeIsvalid=true
+  }
+
+}
   exist1() {
     console.log(this.camp.logisticName);
     this.compaser.findbyName(this.camp.logisticName).subscribe(
