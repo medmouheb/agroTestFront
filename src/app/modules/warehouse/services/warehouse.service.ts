@@ -93,7 +93,12 @@ export class WarehouseService {
     return this.http.get<Page<Warehouse>>(url, { params });
   }
   downloadCSVTemplate(): Observable<any> {
-    let url = `${this.baseUrl()}/warehouse/csv-template`;
+    let url = `${this.baseUrl()}/warehouse/entityCSV`;
     return this.http.get(url, { responseType: "blob" });
+  }
+
+  uploadCSVTemplate(file:any): Observable<any> {
+    let url = `${this.baseUrl()}/warehouse/upload`;
+    return this.http.post(url, file);
   }
 }

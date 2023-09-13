@@ -45,10 +45,11 @@ export class RapprochementdesStocksListComponent implements OnInit {
   currentStep = 0;
   steps: any = [
     "steps.general",
-    "steps.plus",
-    "steps.localisation",
     "steps.details",
-    "steps.supplementaires"
+    "steps.pluss",
+    "steps.localisations",
+    
+    "steps.supplementairess"
   ];
 
   constructor(

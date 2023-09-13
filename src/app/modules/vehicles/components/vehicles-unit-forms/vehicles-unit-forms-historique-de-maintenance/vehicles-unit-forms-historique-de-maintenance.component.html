@@ -30,14 +30,20 @@
 
   <div class="form-group col-md-6">
     <label for="listeDesOperationsEffectuees">{{ "listeDesOperationsEffectuees" | translate }}</label>
-      <input class="form-control" name="listeDesOperationsEffectuees" #listeDesOperationsEffectuees="ngModel" ngModel [(ngModel)]="camp.listeDesOperationsEffectuees"
+      <input *ngIf="otherChek" class="form-control" name="listeDesOperationsEffectuees" #listeDesOperationsEffectuees="ngModel" ngModel [(ngModel)]="camp.listeDesOperationsEffectuees"
         placeholder="{{'Write your listeDesOperationsEffectuees'|translate}} "/>
+        <select *ngIf="!otherChek" [ngStyle]="{'color': (camp.listeDesOperationsEffectuees) ? 'black' : '#AAAAAA'}"   class="form-control" name="listeDesOperationsEffectuees" >
+          <option value=""> {{'you must chose' |translate}}</option>
+    
+          <option [selected]="dv==camp.listeDesOperationsEffectuees" *ngFor="let dv of listStrings;let index=index" [value]="dv">
+            {{dv}}</option>
+        </select>
+        <input type="checkbox" value="otherChek" (click)="changeotherChek()" aria-label="other" >
   </div>
-  <div class="form-group col-md-6">
+  <div class=" col-md-6">
     <label for="papiersDuVehicule">{{ "papiersDuVehicule" | translate }}</label>
-      <!-- <input class="form-control" name="papiersDuVehicule" #papiersDuVehicule="ngModel" ngModel [(ngModel)]="camp.papiersDuVehicule" -->
+    <input style="width: 100%;" type="file" (change)="handleFile($event)">
     
   </div>
- <input type="file" (change)="handleFile($event)">
 
 </div>

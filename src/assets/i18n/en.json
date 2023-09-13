@@ -200,7 +200,9 @@
   },
   "steps": {
     "supplementaires":"Additional",
+    "supplementairess":"Additional",
     "plus":"More",
+    "pluss":"optionnal n°3",
     "details": "Details",
     "historique-de-maintenance": "Maintenance history",
     "productGroup": "Product group",
@@ -210,6 +212,7 @@
     "general": "Génerale",
     "information": "Information",
     "localisation": "Localisation",
+    "localisations": "optionnal n°2",
     "productAndLandUsed": "Product and land used",
     "planning": "Planning",
     "warehouse": "Warehouse",
@@ -908,5 +911,6 @@
 
 "Farm Status":"Farm Status ",
 "Attachments":"Attachments",
-"comments":"Comments"
+"comments":"Comments",
+"other":"Other"
 }

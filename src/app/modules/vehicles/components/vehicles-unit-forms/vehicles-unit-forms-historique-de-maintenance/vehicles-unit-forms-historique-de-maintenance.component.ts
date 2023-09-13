@@ -19,6 +19,7 @@ export class VehiclesUnitFormsHistoriqueDeMaintenanceComponent implements OnInit
   camp: Vehicles= {} 
   addform: FormGroup;
 
+  listStrings=[]
   // Array to hold the list of companies
 
 
@@ -27,10 +28,17 @@ export class VehiclesUnitFormsHistoriqueDeMaintenanceComponent implements OnInit
     ) {}
 
     ngOnInit(): void {
-  
+      this.vehiclesService.findAll().subscribe(data=>{
+        console.log("ee;;",data)
+        this.listStrings=data.map(el=>{return el.listeDesOperationsEffectuees})
+      })
     }
-  
 
+    otherChek=false
+  
+    changeotherChek(){
+      this.otherChek=!this.otherChek
+    }
   
   
     handleFile(file: any) {
