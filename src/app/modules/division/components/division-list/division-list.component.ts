@@ -83,7 +83,8 @@ export class DivisionListComponent implements OnInit {
 
   findById(id: string) {
     this.divisionService.findById(id).subscribe({
-      next: (result) => (this.division = result),
+      next: (result) =>  {this.division = result 
+      console.log(result)},
       error: (error) => console.error(error),
     });
   }
@@ -174,7 +175,13 @@ export class DivisionListComponent implements OnInit {
   }
 
   onClickEdit(id: string) {
+    this.stepper.nextStep();
+    setTimeout(() => {
+      this.stepper.prevStep();
+
+    }, 100);
     this.findById(id);
+   
     this.formModal.show({
       title: "menu.edit-division",
       stepsCount: this.steps.length - 1,

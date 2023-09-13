@@ -5,7 +5,7 @@
         <label class="required" for="numeroDeLot">{{ "numeroDeLot" | translate }}</label>
         <input (blur)="isBlur();exist();blur1();validationCode()" class="form-control" name="numeroDeLot" [(ngModel)]="camp.numeroDeLot" formControlName="numeroDeLot" placeholder="{{'Write your numeroDeLot'|translate}} "
             required aria-invalid="true"  aria-describedby="code-error" (ngModelChange)="geValues($event)">
-            <div  style="color: red;" *ngIf="codeIsvalid">{{ "Invalid code format" }}</div>
+            <div  style="color: red;" *ngIf="codeIsvalid">{{ "Invalid code format" |translate }}</div>
             <div style=" color : red;" *ngIf="dispotrueCode">{{'numeroDeLot  must be unique'|translate}}</div>
             <div style=" color : red;" *ngIf="minIstrueCode">{{'numeroDeLot  must be not null'|translate}}</div>
     </div>

@@ -5,7 +5,7 @@
         <input  (blur)="isBlurDCisvalid();exist();blur1();validationCode()"  class="form-control"  name="code" ngModel [(ngModel)]="fournisseur.code"
             formControlName="code" required aria-invalid="true" (ngModelChange)="geValues($event)"
             placeholder="{{'Write your vendor code'|translate}} "    />
-            <div  style="color: red;" *ngIf="codeIsvalid">{{ "Invalid code format" }}</div>
+            <div  style="color: red;" *ngIf="codeIsvalid">{{ "Invalid code format" |translate }}</div>
             <div style="color: red;" *ngIf="DCisvalid" >{{'Code must be not null'|translate}}</div>
             <div style=" color : red;" *ngIf="dispotrueCode">{{'Code must be unique'|translate}}</div>
     </div>

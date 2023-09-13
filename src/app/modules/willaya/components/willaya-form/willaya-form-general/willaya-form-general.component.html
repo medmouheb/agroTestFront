@@ -7,7 +7,7 @@
             aria-invalid="true" aria-describedby="code-error" (ngModelChange)="geValues($event)">
             <div style=" color : red;" *ngIf="dispotrueCode">{{'Code must be unique'|translate}}</div>
             <div style="color: red;" *ngIf="DCisvalid" >{{'Code must be not null'|translate}}</div>
-            <div  style="color: red;" *ngIf="codeIsvalid">{{ "Invalid code format" }}</div>
+            <div  style="color: red;" *ngIf="codeIsvalid">{{ "Invalid code format" |translate }}</div>
 
     </div>
 

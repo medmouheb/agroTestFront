@@ -181,18 +181,26 @@ export class WarehouseListComponent implements OnInit {
     this.currentStep = 0;
   }
 
+  emailIsvalid = false
 
+  validationEmail() {
+    const emailRegex: RegExp =/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+    console.log(this.warehouse.email)
+    if (emailRegex.test(this.warehouse.email)) {
+     return false;
+    console.log(this.warehouse.email)
+  
+    }
+    else {
+   return true
+    }
+  
+  }
+  
   onSave(id: string | null) {
     const emailRegex: RegExp = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
     console.log(this.warehouse.email)
-    if (emailRegex.test(this.warehouse!.email)) {
-      this.toastService.close("0");
-      this.toastService.warning("Verify your email "
-
-      );
-
-    }
-    else {
+   
       console.log(this.warehouse!)
       this.toastService.loading(
         this.translateService.instant("message.loading..."),
@@ -222,7 +230,7 @@ export class WarehouseListComponent implements OnInit {
           );
         },
       });
-    }
+    
 
 
   }

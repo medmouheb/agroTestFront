@@ -7,7 +7,7 @@
        aria-describedby="code-error" (ngModelChange)="geValues($event)">
     <div style="color: red;" *ngIf="DCisvalid">{{'Code must be not null'|translate}}</div>
     <div style=" color : red;" *ngIf="dispotrueCode">{{'Code must be unique'|translate}}</div>
-    <div  style="color: red;" *ngIf="codeIsvalid">{{ "Invalid code format" }}</div>
+    <div  style="color: red;" *ngIf="codeIsvalid">{{ "Invalid code format" |translate }}</div>
   </div>
 
   <div class="form-group col-md-6">
@@ -47,7 +47,7 @@
      
     </div>
     <div class="form-group col-md-6">
-        <label class="required" for="speciesType">{{ "Species Type" | translate }}   </label>
+        <label class="required" for="speciesType">{{ "Species Type" | translate }}  {{division.speciesType}}   </label>
         <select class="form-control"
         (click)="geValues($event)"
          name="speciesType"
@@ -77,39 +77,26 @@
      
     </div>
 
-
-
     <div class="form-group col-md-6">
-        <label for="measurement">{{'Measurement' | translate}}    </label>
-        <input (blur)="geValues($event)" (ngModelChange)="geValues($event)" class="form-control" name="measurement" formControlName="measurement" placeholder=" {{'Write your measurement'|translate}}"
-            [(ngModel)]="division.measurement" required aria-invalid="true" aria-describedby="measurement-error"
-            >
-           
-        
-
+      <label class="required" for="currencyname">{{'currencyName' | translate}}</label>
+      <input class="form-control" name="currencyname" formControlName="currencyname" [(ngModel)]="division.currencyname" (ngModelChange)="geValues($event)"
+        required aria-invalid="true" aria-describedby="code-error">
     </div>
+
     <div class="form-group col-md-6">
       <label class="required" for="currencyCode" >{{ "currencyCode" | translate }}</label>
-      <select (blur)="isBlur4();selectValue($event);affiche()"  (ngModelChange)="geValues($event)" (click)="selectValue($event);"  type="number" class="form-control" name="currencycode" formControlName="currencycode" [(ngModel)]="division.currencycode">
+      <select (blur)="isBlur4();selectValue($event)"  (ngModelChange)="geValues($event)" (click)="selectValue($event);"  type="number" class="form-control" name="currencycode" formControlName="currencycode" [(ngModel)]="division.currencycode">
         <option *ngFor="let dv of cuurencys" [value]="dv.code" > {{dv.code}}</option>
       </select>
       <div style="color: red;" *ngIf="currecnyinv">{{'you must chose'|translate}}</div>
 
   </div>
-  <div class="form-group col-md-6">
-    <label class="required" for="currencyCode">{{ "currencyCode" | translate }}</label>
-    <select (blur)="isBlur4();selectValue($event);affiche()" (click)="selectValue($event);"
-      type="number" class="form-control" name="currencycode" formControlName="currencycode"
-      [(ngModel)]="division.currencycode">
-      <option *ngFor="let dv of cuurencys" [value]="dv.code"> {{dv.code}}</option>
-    </select>
-    <div style="color: red;" *ngIf="currecnyinv">{{'you must chose'|translate}}</div>
 
-  </div>
-  <div class="form-group col-md-6">
-    <label class="required" for="currencyname">{{'currencyName' | translate}}</label>
-    <input class="form-control" name="currencyname" [(ngModel)]="division.currencyname" [value]="division.currencyname" (ngModelChange)="geValues($event)"
-      required aria-invalid="true" aria-describedby="code-error">
-
-  </div>
  
+  <div class="form-group col-md-6">
+    <label for="measurement">{{'Measurement' | translate}}    </label>
+    <input (blur)="geValues($event)" (ngModelChange)="geValues($event)" class="form-control" name="measurement" formControlName="measurement" placeholder=" {{'Write your measurement'|translate}}"
+        [(ngModel)]="division.measurement" required aria-invalid="true" aria-describedby="measurement-error">
+  </div>
+
+</div>

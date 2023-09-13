@@ -525,7 +525,7 @@
   "Write your ship method name": "Ecrire le nom de méthodes d'expédition",
   "Write your ship name": "Ecrire le nom de méthodes d'expédition",
   "Write your freight terms name": "Ecrire le nom de vos conditions de fret",
-  "Réutiliser les informations de la Division": "Réutiliser les informations de la Division",
+  "Réutiliser les informations de la Division": "Réutiliser les informations de la Entreprise",
   "freighttermname": "Nom de fret",
   "freighttermcode": "Code de terme",
   "Search by vehiculeName": "Recherche par vehiculeNom",
@@ -891,8 +891,7 @@
 "Poids lourd":"Poids lourd",
 "Semi-remorque":"Semi-remorque",
 "Machine":"Machine",
-"typeEnregistrement":"type d'enregistrement"
-
+"typeEnregistrement":"type d'enregistrement",
+"Invalid code format":"format de code invalide"
   
-
 }

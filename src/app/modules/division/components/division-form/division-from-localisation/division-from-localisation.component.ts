@@ -33,6 +33,22 @@ export class DivisionFromLocalisationComponent implements OnInit {
     }
     this.getAllWillaya()
     this.getAllCompany()
+
+    
+    setTimeout(()=>{
+      this.wil = {
+        ...this.companys.filter(el => {
+          //console.log(el)
+          return el.name == this.division.companyname
+  
+        })[0]
+      }
+      this.division = { ...this.wil, phone: this.wil.number, codeCity: this.wil.cityCode, nameCity: this.wil.cityName, companyname: this.wil.name }
+      this.isRemenber=true
+
+    },500)
+    
+    
   }
   isRemenber = false
   getAllWillaya() {
@@ -42,7 +58,9 @@ export class DivisionFromLocalisationComponent implements OnInit {
     });
   }
   setCompany() {
+    console.log("=>",this.wil)
     this.isRemenber = !this.isRemenber
+
     if (this.isRemenber == false) {
       this.division = { companyname: this.wil.name }
     } else {

@@ -30,7 +30,7 @@ export class DivisionFormGeneralComponent implements OnInit {
         return el.code
       })
     })
-    console.log(this.division)
+    console.log("==>",this.division)
     if (this.division != null) {
       console.log("olll")
       this.sharedService.setIsActive(true);
@@ -38,6 +38,14 @@ export class DivisionFormGeneralComponent implements OnInit {
     this.affiche()
     this.initForm();
     this.getAllCurrency()
+
+
+    switch (this.division.divisiontype) {
+      case "Agriculture": this.listA = ["Agriculture maraîchère", "Arboriculture", "Agriculture biologique", "Permaculture"]; break;
+      case "Aviculture": this.listA = ["Chicken", "Layer", "Turkey", "Duck"]; break;
+      case "Bovin": this.listA = ["fattening cow farms", "Dairy farms"]; break;
+    }
+
   }
   affiche() {
     if (this.division.code != null &&
@@ -155,7 +163,7 @@ export class DivisionFormGeneralComponent implements OnInit {
   geValues(event) {
 
 
-    console.log("123::", !this.division.speciesType )
+    console.log(this.division.speciesType!="","123::", this.division )
     console.log(this.addform.value.speciesType);
     console.log(this.division.speciesType);
      console.log("event :", event);

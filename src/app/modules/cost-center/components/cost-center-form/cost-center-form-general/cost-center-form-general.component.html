@@ -22,7 +22,7 @@
           placeholder=" {{'Write your cost center code'|translate}} "
             required aria-invalid="true"  aria-describedby="code-error" (keyup)="geValuesCode($event)">
         <div style=" color : red;" *ngIf="minIstrueCode">{{'Code must be not null'|translate}}</div>
-        <div  style="color: red;" *ngIf="codeIsvalid">{{ "Invalid code format" }}</div>
+        <div  style="color: red;" *ngIf="codeIsvalid">{{ "Invalid code format" |translate }}</div>
         <div style=" color : red;" *ngIf="dispotrueCode">{{'Code must be unique'|translate}}</div>
 
     </div>

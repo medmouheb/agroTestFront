@@ -14,7 +14,7 @@
     <label for="email">{{ "emailcontact" | translate }}</label>
     <input type="email" class="form-control" name="email" #email="ngModel" [(ngModel)]="warehouse.email" 
       placeholder="{{ 'Write your email' | translate }}" (blur)="validationEmail()" />
-      <div  style="color: red;" *ngIf="emailIsvalid">{{ "Invalid email format" }}</div>
+        <div  style="color: red;" *ngIf="emailIsvalid">{{ "Invalid email format" | translate }}</div>
     <!-- <div class="invalid-feedback" *ngIf="emailInput.invalid && (emailInput.dirty || emailInput.touched)">
       <div *ngIf="emailInput.errors.required">{{ "Email is required" }}</div>
       <div *ngIf="emailInput.errors.email">{{ "Invalid email format" }}</div>
