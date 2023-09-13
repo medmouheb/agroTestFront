@@ -200,9 +200,9 @@
   },
   "steps": {
     "supplementaires":"Additional",
-    "supplementairess":"Additional",
+    "supplementairess":"optionnal n°3",
     "plus":"More",
-    "pluss":"optionnal n°3",
+    "pluss":"optionnal n°1",
     "details": "Details",
     "historique-de-maintenance": "Maintenance history",
     "productGroup": "Product group",
@@ -268,13 +268,13 @@
   "namecostCenter": "Cost Center Name",
   "type":"Type",
   "category": "Category",
-  "countryName":"Country Name",
-  "countryCode":"Country Code",
- "codewillaya":"Willaya Code",
+  "countryName":"Country name",
+  "countryCode":"Country code",
+ "codewillaya":"Willaya code",
  "namewillaya":"Willaya Name",
-  "currencyCode": "Currency Code",
-  "currencyName": "Currency Name",
-  "Digitalcode": "Digital Code",
+  "currencyCode": "Currency code",
+  "currencyName": "Currency name",
+  "Digitalcode": "Digital code",
   "warehousesname": "Warehouse Name",
   "warehousescode": "Warehouse Code",
   "currency": "Currency",
@@ -498,8 +498,8 @@
 "Réutiliser les informations de la Division":"Reuse Division information",
 
 
-"freighttermname":"Freight Terms Name",
-"freighttermcode":"Freight Terms Code",
+"freighttermname":"Freight terms name",
+"freighttermcode":"Freight terms code",
 
 "write your farms name":"Write your farms name",
 "write your farms code":"Write your farms code",
@@ -507,8 +507,8 @@
 "instructiuonName":"Instruction Name",
 "notes":"Notes",
 "write your notes":"Write your notes",
-"codeship":"Shipping Method Code",
-"nameship":"Shipping Method Name",
+"codeship":"Shipping method code",
+"nameship":"Shipping method name",
 
   "vehicleTypeCode": " Vehicle Type Code",
   "vehicleTypeName": "Vehicle type name",
@@ -889,10 +889,10 @@
 "name de la Ferme":"Farms Name",
 "type de la Ferme":"Farms Type",
 "phoneNumber":"Phone number",
-"willaya code":"Willaya Code",
-"willaya name":"Willaya Name",
-"wcode":"Warehouse Code ",
- "wname":"Warehouse Name ",
+"willaya code":"Willaya code",
+"willaya name":"Willaya name",
+"wcode":"Warehouse code ",
+ "wname":"Warehouse name ",
  "menu.add-sales":"Add new sales",
 
  "Email is required": "Email is required",
@@ -905,8 +905,10 @@
 "typeEnregistrement":"Enregistrement type",
 "growoutname":"Growout Name",
 "growoutcode":"Growout Code",
-"SalesName":"Sales Name",
-"SalesCode":"Sales Code",
+
+
+
+
 "Farm Status":"Farm Status ",
 "Attachments":"Attachments",
 "comments":"Comments",

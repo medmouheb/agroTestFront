@@ -205,7 +205,11 @@
   },
   "steps": {
     "supplementaires":"Suplémentaire",
+    "supplementairess":"optionnal n°3",
+
     "plus":"Plus",
+    "pluss":"optionnal n°1",
+
     "details": "Détails",
     "historique-de-maintenance": "Historique de maintenance",
     "productGroup": "Groupe des produit",
@@ -215,6 +219,7 @@
     "general": "Géneral",
     "information": "Information",
     "localisation": "Localisation",
+    "localisations": "optionnal n°2",
     "productAndLandUsed": "Produit et terrain utilisé",
     "planning": "Planification",
     "warehouse": "Entrepot",
