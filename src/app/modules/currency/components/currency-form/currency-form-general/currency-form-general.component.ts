@@ -14,42 +14,46 @@ export class CurrencyFormGeneralComponent implements OnInit {
   addform: FormGroup;
   fieldControl: FormControl;
   fieldControl2: FormControl;
-  constructor(private sharedService: SharedService, private cuurencyserv:CurrencyService) {}
+  constructor(private sharedService: SharedService, private cuurencyserv: CurrencyService) { }
 
   ngOnInit(): void {
     if (this.currency == undefined) this.currency = { name: "", code: "" };
     this.initForm();
+
+
   }
   dispotrueCode: boolean = false
   dispotruename: boolean = false
-  
-  blur1(){
-    if (this.currency.code==null){
-  this.dispotrueCode = false
+
+  blur1() {
+    if (this.currency.code == null) {
+      this.dispotrueCode = false
 
     }
   }
-  exist(){
+  exist() {
     console.log(this.currency.code)
-    this.cuurencyserv.findbycode(this.currency.code).subscribe(data=>{
+    this.cuurencyserv.findbycode(this.currency.code).subscribe(data => {
       console.log(data)
-if (data!=null){
-  this.dispotrueCode = true
+      if (data != null) {
+        this.dispotrueCode = true
 
 
-}else{
-  this.dispotrueCode = false
+      } else {
+        this.dispotrueCode = false
 
-}
+      }
 
-    },error=>{console.log(error.status)
-    if (error.status==404){
-  this.dispotrueCode = false
+    }, error => {
+      console.log(error.status)
+      if (error.status == 404) {
+        this.dispotrueCode = false
 
-    }})
+      }
+    })
 
   }
- 
+
   // generateRandomCode() {
   //   const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
   //   let code = '';
@@ -62,31 +66,31 @@ if (data!=null){
 
   newSeggestions = ""
 
-  existname(){
-this.cuurencyserv.findbyName(this.currency.name).subscribe(data=>{
+  existname() {
+    this.cuurencyserv.findbyName(this.currency.name).subscribe(data => {
       console.log(data)
-if (data!=null){
-   this.dispotruename = true
+      if (data != null) {
+        this.dispotruename = true
 
- //  this.newSeggestions = "chose " + this.currency.name + this.generateRandomCode() + " or " + this.currency.name + this.generateRandomCode() + " or " + this.currency.name + this.generateRandomCode() + " or " + this.currency.name + this.generateRandomCode()
+        //  this.newSeggestions = "chose " + this.currency.name + this.generateRandomCode() + " or " + this.currency.name + this.generateRandomCode() + " or " + this.currency.name + this.generateRandomCode() + " or " + this.currency.name + this.generateRandomCode()
 
- }else{
-  this.dispotruename = false
+      } else {
+        this.dispotruename = false
 
- }
+      }
 
-    },error=>console.log(error))
+    }, error => console.log(error))
 
   }
   initForm() {
-   
+
     this.fieldControl2 = new FormControl('', [
       Validators.required
     ]);
     this.addform = new FormGroup({
       code: new FormControl(null, [
         Validators.required,
-       
+
       ]),
       name: new FormControl(null, [
         Validators.required,
@@ -98,45 +102,23 @@ if (data!=null){
       ]),
       Countrcode: new FormControl(null, [
         Validators.required,
-       
+
       ]),
       Digitalcode: new FormControl(null, [
         Validators.required,
-       
+
       ]),
     });
-    console.log("====================================");
-    console.log(" add form :", this.addform);
-    console.log("====================================");
+
   }
 
   geValues(event) {
-    console.log("====================================");
-    console.log("event :", event);
-    console.log("====================================");
 
-    console.log("====================================");
-    console.log("le formulaire :", this.addform);
-    console.log("====================================");
-
-    console.log(this.currency.code);
-    console.log(this.currency.name);
-    console.log(
-      "this.currency.code.length",
-      this.currency.code.toString().length >= 5
-    );
-    console.log(
-      this.dispotrueCode==false&&this.dispotruename==false&&
-      this.currency.code != null &&
-        this.currency.code != "" &&
-        this.currency.name != null &&
-        this.currency.name != "" &&
-        this.currency.code.toString().length >= 1 &&
-        this.currency.name.toString().length >= 1
-    );
+    console.log("rtrtr",!!(this.currency.countrycode && this.currency.countryname && this.currency.digitalcode) )
     if (
-      this.dispotrueCode==false&&this.dispotruename==false&&
-      this.currency.digitalcode!= null &&
+      !!(this.currency.countrycode && this.currency.countryname && this.currency.digitalcode) &&
+      this.dispotrueCode == false && this.dispotruename == false &&
+      this.currency.digitalcode != null &&
       this.currency.digitalcode != "" &&
       this.currency.countrycode != null &&
       this.currency.countrycode != "" &&
@@ -146,8 +128,8 @@ if (data!=null){
       this.currency.code != "" &&
       this.currency.name != null &&
       this.currency.name != "" &&
-      this.currency.code.toString().length >= 1 && 
-      this.currency.name.toString().length >= 1 ){
+      this.currency.code.toString().length >= 1 &&
+      this.currency.name.toString().length >= 1) {
       this.sharedService.setIsActive(true);
     } else {
       this.sharedService.setIsActive(false);
@@ -160,88 +142,91 @@ if (data!=null){
 
   isControlValid(controlName: string): boolean {
     const control = this.addform.controls[controlName];
-    return control.invalid && (control.dirty || control.touched|| control.invalid);
+    return control.invalid && (control.dirty || control.touched || control.invalid);
   }
 
   isControlInValid(controlName: string): boolean {
     const control = this.addform.controls[controlName];
-    return control.invalid && (control.dirty || control.touched|| control.invalid);
+    return control.invalid && (control.dirty || control.touched || control.invalid);
   }
   DCisvalid: boolean = false;
-  DNisvalid: boolean = false; 
-   DCouisvalid: boolean = false;
-   DCgiisvalid: boolean = false;
+  DNisvalid: boolean = false;
+  DCouisvalid: boolean = false;
+  DCgiisvalid: boolean = false;
   DNcouisvalid: boolean = false;
   STisvali: boolean = false;
   Misvalid: boolean = false;
   minIstrueName2: boolean = false
 
   minIstrueName3: boolean = false
- 
+
   isBlurDCouisvalid() {
-    if (this.currency.digitalcode== undefined){
-      this.DCgiisvalid = true 
-    }else
-    if (this.currency.digitalcode.toString().length < 0) { this.DCgiisvalid = true }
-    else {
-      this.DCgiisvalid = false
-    }
+    if (this.currency.digitalcode == undefined) {
+      this.DCgiisvalid = true
+    } else
+      if (this.currency.digitalcode.toString().length < 0) { this.DCgiisvalid = true }
+      else {
+        this.DCgiisvalid = false
+      }
   }
   isBlurDCjiisvalid() {
-    if (this.currency.countrycode== undefined){
-      this.DCouisvalid = true 
-    }else
-    if (this.currency.countrycode.toString().length < 0) { this.DCouisvalid = true }
-    else {
-      this.DCouisvalid = false
-    }
-  } 
+    if (this.currency.countrycode == undefined) {
+      this.DCouisvalid = true
+    } else
+      if (this.currency.countrycode.toString().length < 0) { this.DCouisvalid = true }
+      else {
+        this.DCouisvalid = false
+      }
+  }
   isBlurDCisvalid() {
-    if (this.currency.code== undefined){
-      this.DCisvalid = true 
-    }else
-    if (this.currency.code.toString().length < 0) { this.DCisvalid = true }
-    else {
-      this.DCisvalid = false
-    }
+    if (this.currency.code == undefined) {
+      this.DCisvalid = true
+    } else
+      if (this.currency.code.toString().length < 0) { this.DCisvalid = true }
+      else {
+        this.DCisvalid = false
+      }
   }
   isBlurDNouisvalid() {
-    if (this.currency.countryname== undefined){
-      this.DNcouisvalid = true 
-    }else
-    
-    if (this.currency.countryname.toString().length < 0) { this.DNcouisvalid = true }
-    else {
-      this.DNcouisvalid = false
-    }
+    if (this.currency.countryname == undefined) {
+      this.DNcouisvalid = true
+    } else
+
+      if (this.currency.countryname.toString().length < 0) { this.DNcouisvalid = true }
+      else {
+        this.DNcouisvalid = false
+      }
   }
   isBlurDNisvalid() {
-    if (this.currency.name== undefined){
-      this.DNisvalid = true 
-    }else
-    
-    if (this.currency.name.toString().length < 0) { this.DNisvalid = true }
-    else {
-      this.DNisvalid = false
-    }
+    if (this.currency.name == undefined) {
+      this.DNisvalid = true
+    } else
+
+      if (this.currency.name.toString().length < 0) { this.DNisvalid = true }
+      else {
+        this.DNisvalid = false
+      }
   }
 
   codeIsvalid = false
 
-validationCode() {
-  const codeRegex: RegExp =/^[a-zA-Z0-9]*$/;
-  console.log(this.currency.code)
-  if (codeRegex.test(this.currency.code)) {
-    this.codeIsvalid = false;
-  console.log(this.currency.code)
+  validationCode() {
+    const codeRegex: RegExp = /^[a-zA-Z0-9]*$/;
+    console.log(this.currency.code)
+    if (codeRegex.test(this.currency.code)) {
+      this.codeIsvalid = false;
+      console.log(this.currency.code)
+      this.sharedService.setIsActive(false);
+
+    }
+    else {
+      this.codeIsvalid = true
+      this.sharedService.setIsActive(true);
+
+    }
 
   }
-  else {
-  this.codeIsvalid=true
-  }
 
-}
 
-  
- 
+
 }

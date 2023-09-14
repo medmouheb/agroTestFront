@@ -40,6 +40,7 @@ export class CostCenterListComponent implements OnInit {
   costCenterss: Array<CostCenter> = [];
   loading = false;
   costCenterPage: Page<CostCenter> = initPage;
+  costCenterPages: Page<CostCenter> = initPage;
 
   onPaginationChange: EventEmitter<string> = new EventEmitter<string>();
   isChecked: boolean = false;
@@ -94,22 +95,7 @@ export class CostCenterListComponent implements OnInit {
   //   });
   // }
 
-  findPage() {
-    this.loading = true;
-    this.costcenterServive
-      .findPage(this.pageNumber, this.pageSize, this.filter)
-      .subscribe({
-        next: (result) => {
-          this.costCenters = result.content;
-          this.costCenterPage = result;
-        },
-        error: (error) => {
-          this.loading = false;
-          console.error(error);
-        },
-        complete: () => (this.loading = false),
-      });
-  }
+
 
   findById(id: string) {
     this.costcenterServive.findById(id).subscribe({
@@ -191,7 +177,7 @@ export class CostCenterListComponent implements OnInit {
       this.formModal.show({
         title: "menu.edit-costcenter",
         stepsCount: this.steps.length - 1,
-        confirm: () => this.onSave(id),
+        confirm: () => this.onWizardSave(id),
         cancel: () => this.onCancel(),
         prev: () => this.stepper.prevStep(),
       });
@@ -308,8 +294,7 @@ findArchivedPage() {
     .subscribe({
       next: (result) => {
         this.costCenterss = result.content;
-        this.costCenterPage = result;
-        this.findPage()
+        this.costCenterPages = result;
       },
       error: (error) => {
         this.loading = false;
@@ -318,7 +303,22 @@ findArchivedPage() {
       complete: () => (this.loading = false),
     });
 }
-
+findPage() {
+  this.loading = true;
+  this.costcenterServive
+    .findPage(this.pageNumber, this.pageSize, this.filter)
+    .subscribe({
+      next: (result) => {
+        this.costCenters = result.content;
+        this.costCenterPage = result;
+      },
+      error: (error) => {
+        this.loading = false;
+        console.error(error);
+      },
+      complete: () => (this.loading = false),
+    });
+}
 
 
 

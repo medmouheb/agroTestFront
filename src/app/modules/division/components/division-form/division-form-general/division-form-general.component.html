@@ -47,7 +47,7 @@
      
     </div>
     <div class="form-group col-md-6">
-        <label class="required" for="speciesType">{{ "Species Type" | translate }}  {{division.speciesType}}   </label>
+        <label class="required" for="speciesType">{{ "Species Type" | translate }}   </label>
         <select class="form-control"
         (click)="geValues($event)"
          name="speciesType"
@@ -79,7 +79,7 @@
 
     <div class="form-group col-md-6">
       <label class="required" for="currencyname">{{'currencyName' | translate}}</label>
-      <input class="form-control" name="currencyname" formControlName="currencyname" [(ngModel)]="division.currencyname" (ngModelChange)="geValues($event)"
+      <input readonly class="form-control" name="currencyname" formControlName="currencyname" [(ngModel)]="division.currencyname" (ngModelChange)="geValues($event)"
         required aria-invalid="true" aria-describedby="code-error">
     </div>
 

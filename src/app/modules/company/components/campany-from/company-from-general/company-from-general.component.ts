@@ -171,9 +171,9 @@ export class CompanyFromGeneralComponent implements OnInit {
   }
   geValues(event) {
     
-
+    console.log("ds::",!this.codeIsvalid    , this.dispotrueCode == false , this.dispotruename )
     if (
-      this.dispotrueCode == false && this.dispotruename == false &&
+      !this.codeIsvalid    && this.dispotrueCode == false && !this.dispotruename  &&
       this.camp.code != null &&
       this.camp.code != "" &&
       this.camp.name != null &&

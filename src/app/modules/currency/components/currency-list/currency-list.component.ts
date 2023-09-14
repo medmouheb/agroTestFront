@@ -7,6 +7,7 @@ import { StepperComponent } from "app/shared/components/stepper/stepper.componen
 import { Page, initPage } from "app/shared/models";
 import { Currency } from "../../models/currency";
 import { CurrencyService } from "../../services/currency.service";
+import { SharedService } from "app/modules/company/services/shared.service";
 
 @Component({
   selector: "app-currency-list",
@@ -39,6 +40,7 @@ export class CurrencyListComponent implements OnInit {
   steps: any = ["steps.general"];
 
   constructor(
+    private sharedService: SharedService,
     private currencyService: CurrencyService,
     private translateService: TranslateService,
     private toastService: HotToastService
@@ -114,9 +116,9 @@ export class CurrencyListComponent implements OnInit {
       }
     );
     console.log(this.currency)
-    if((this.currency.code==undefined) ||(this.currency.name==undefined)  ){
+    if((this.currency.code==undefined) ||(this.currency.name==undefined) || (this.currency.countrycode==undefined) || (this.currency.countryname==undefined) || (this.currency.digitalcode ==undefined) ){
       this.toastService.close("0");
-      this.toastService.warning("verify your code and name"
+      this.toastService.warning("verify your code , name , countrycode , countryname and digitalcode"
        
       );
       return;
@@ -150,6 +152,8 @@ export class CurrencyListComponent implements OnInit {
       confirm: () => this.onSave(null),
       cancel: () => this.onCancel(),
     });
+
+
   }
 
   onClickEdit(id: string) {
@@ -260,6 +264,7 @@ export class CurrencyListComponent implements OnInit {
   onClickdisArchive(id: string) {
     this.currencyService.disArchive(id).subscribe({
       next: () => {
+        this.findPage();
         this.findArchivedPage();
 
         this.toastService.success(

@@ -98,7 +98,11 @@ validationEmail() {
   isBlur3() {
     if ((this.growout.phoneNumber.toString().length <12 )|| (this.growout.phoneNumber.toString().length > 13)) {
       this.minIphone = true;
+      this.sharedService.setIsActive(false);
+
     } else {
+      this.sharedService.setIsActive(true);
+
       this.minIphone = false;
     }
   }  minIphone: boolean = false
