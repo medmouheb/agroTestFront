@@ -1,6 +1,9 @@
 {
   "menu": {
+    "Feed formula-price":"Prix ​​de la Formule Alimentaire",
+    "Field-Product": "Produit de terrain",
     "Vehiculess":"Vehicule",
+    "Warehouse":"Entrepot",
     "edit-Logistic-Unit":"Modifier la Logistique Unité",
     "Rapprochement-des-stocks":"Rapprochement De Stock",
     "add-Rapprochement-des-stocks":"Ajouter un Rapprochement De Stock",
@@ -10,7 +13,7 @@
     "ProductUsage": "Utilisation du produit",
     "add-ProductUsage": "Ajouter un Utilisation du Produit",
     "edit-ProductUsage": "Modifier la Utilisation du Produit",
-    "Field-product": "Produit de terrain",
+
     "Initialinventory": "Début de l'inventaire",
     "Farms": "ferme",
     "Agriculture": "Agriculture",
@@ -138,7 +141,7 @@
     "Formula Price": "Prix Formule",
     "FeedMill": "Provenderie",
     "Formula-Price": "Formula Price",
-    "Feed-Mill": "Feed Mill",
+    "Feed-Mill": "Provenderie",
     "Feed-Type": "Type d'alimentation",
     "Feed-Formula": "Formule d'alimentation",
     "Weigh-scale-using-IOT": "Échelle de poids utilisant IOT",
@@ -150,7 +153,7 @@
     "Dashbord": "Tableau de bord",
     "Simulateur": "Simulateur",
     "Order-Management": "La gestion des commandes",
-    "Field-Product": "Produits de terrain",
+    
     "add-willaya":"Ajouter une willaya",
     "edit-willaya":"Modifier une willaya",
     "Business": "Entreprise",
@@ -160,7 +163,7 @@
     "account_add" : "Ajouter Compte",
 
     "Bovine": "Bovine",
-    "Poultry": "Poultry",
+    "Poultry": "Volaille",
     "add-vehicule": "Ajouter une Vehicule",
     "Field": "Champ",
     "Dashboard": "Tableau de bord",
@@ -406,7 +409,7 @@
   "Write your warehouse name": "Ecrire le nom de l'entrepot ",
   "Write your fax Number": "Ecrire votre numéro de fax ",
   "False": "Faux",
-  "True": "Vrais",
+  "True": "Vrai",
   "you must chose": "Il faut choisir",
   "write your latitude": "Ecrire votre latitude",
   "write your longitude": "Ecrire votre longitude",
@@ -525,7 +528,7 @@
   "Write your ship method name": "Ecrire le nom de méthodes d'expédition",
   "Write your ship name": "Ecrire le nom de méthodes d'expédition",
   "Write your freight terms name": "Ecrire le nom de vos conditions de fret",
-  "Réutiliser les informations de la Division": "Réutiliser les informations de la Entreprise",
+  "Réutiliser les informations de la Division": "Réutiliser les informations de l'Entreprise",
   "freighttermname": "Nom de fret",
   "freighttermcode": "Code de terme",
   "Search by vehiculeName": "Recherche par vehiculeNom",
@@ -892,6 +895,7 @@
 "Semi-remorque":"Semi-remorque",
 "Machine":"Machine",
 "typeEnregistrement":"type d'enregistrement",
-"Invalid code format":"format de code invalide"
+"Invalid code format":"format de code invalide",
+"typeCs":"Type Centre de coûts"
   
 }
