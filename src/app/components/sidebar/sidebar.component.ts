@@ -165,8 +165,8 @@ export const ROUTES: Categries[] = [
         title: "menu.facilities",
         subCategories: [
           {
-            label: "Hatchery",
-            title: "Hatchery",
+            label: "menu.Hatchery",
+            title: "menu.Hatchery",
             icon: "corporate_fare",
             id: "Hatchery-dropdown",
             class: "",
@@ -195,7 +195,7 @@ export const ROUTES: Categries[] = [
           },
           {
             label: "menu.Feed-Mill",
-            title: "FeedMill",
+            title: "menu.FeedMill",
             icon: "rate_review",
             id: "FeedMill-dropdown",
             class: "",
@@ -209,7 +209,7 @@ export const ROUTES: Categries[] = [
             class: "",
           },
           {
-            label: "Plant",
+            label: "menu.Plant",
             title: "menu.Plant",
             id: "Plant-dropdown",
             icon: "corporate_fare",
@@ -326,8 +326,8 @@ export const ROUTES: Categries[] = [
                 path: "/start",
               },
               {
-                label: "menu.Feed-formula-price",
-                title: "Feed formula-price",
+                label: "menu.Feed formula-price",
+                title: "menu.Feed formula-price",
                 icon: "corporate_fare",
                 class: "",
                 path: "/start",
@@ -645,7 +645,7 @@ export const ROUTES: Categries[] = [
             class: "",
           },
           {
-            label: "Field-Product",
+            label: "menu.Field-Product",
             path: "/Field-product",
             title: "menu.Simulateur",
             icon: "content_paste",
