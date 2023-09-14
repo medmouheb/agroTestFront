@@ -7,7 +7,7 @@
   <div class="form-group col-md-6">
     <label for="email">{{ "emailcontact" | translate }}</label>
     <input class="form-control" name="email" #email="ngModel" ngModel [(ngModel)]="camp.email"
-    placeholder="{{'Write your city code'|translate}} " (blur)="validationEmail()" />
+    placeholder="{{'Write your email'|translate}} " (blur)="validationEmail()" />
       <div  style="color: red;" *ngIf="emailIsvalid">{{ "Invalid email format" | translate }}</div>
   </div>
 

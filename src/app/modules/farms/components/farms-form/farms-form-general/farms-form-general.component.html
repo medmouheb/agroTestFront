@@ -79,12 +79,17 @@
     <label for="constructionStatus">{{
       "constructionStatus" | translate
       }}</label>
-    <input class="form-control" name="constructionStatus" #constructionStatus="ngModel" ngModel
-      [(ngModel)]="farm.status_Construction" />
+    <input 
+      class="form-control" name="status_Construction" [(ngModel)]="farm.status_Construction"
+    formControlName="status_Construction" required aria-invalid="true" type="text" 
+    (change)="geValues($event)"
+      />
   </div>
   <div class="form-group col-md-6">
     <label for="customerCode">{{ "customerNumber" | translate }}</label>
-    <input class="form-control" Code="customerCode" #customerCode="ngModel" ngModel [(ngModel)]="farm.customerCode" />
+    <input  class="form-control" name="customerCode" [(ngModel)]="farm.customerCode"
+    formControlName="customerCode" required aria-invalid="true" type="text" 
+    (change)="geValues($event)"/>
   </div>
   <div class="form-group col-md-6">
     <label class="required" for="farmerManagerCode">{{
