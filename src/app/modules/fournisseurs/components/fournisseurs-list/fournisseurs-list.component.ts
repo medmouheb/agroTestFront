@@ -215,8 +215,8 @@ export class FournisseursListComponent implements OnInit {
     );
     let formData: FormData = new FormData();
     formData.append("file", this.file);
-    this.fournisseursService.importCSV(formData).subscribe({
-      next: () => {
+    this.fournisseursService.uploadCSVTemplate(formData).subscribe(
+       () => {
         this.toastService.close("0");
         this.importModal.hide();
         this.findPage();
@@ -227,11 +227,25 @@ export class FournisseursListComponent implements OnInit {
           })
         );
       },
-      error: (error) => {
-        this.toastService.close("0");
-        this.toastService.error(this.translateService.instant(error.error));
+      (error) => {
+        console.log('error',error.status)
+        if(error.status=="200"){
+          console.log('succes')
+          this.importModal.hide();
+          this.findPage();
+          this.file = null;
+          this.toastService.close("0");
+          this.toastService.success(
+            this.translateService.instant("success.imported", {
+              elem: this.translateService.instant("menu.products"),
+            })
+          );
+        }else{
+          this.toastService.close("0");
+          this.toastService.error(this.translateService.instant(error.error));
+        }
       },
-    });
+    );
   }
 
   openImportModal() {
