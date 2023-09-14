@@ -50,7 +50,7 @@
     <select [ngStyle]="{'color': (farm.cost_Center) ? 'black' : '#AAAAAA'}"  (click)="selectValuecostCenter($event)" class="form-control" name="costCenter">
       <option value=""> {{'you must chose' |translate}}</option>
 
-      <option *ngFor="let dv of costcenters" [selected]="dv.code==farm.cost_Center" [value]="dv.code"> {{dv.name}}
+      <option *ngFor="let dv of costcenters"  [selected]="dv.code==farm.cost_Center" [value]="dv.code"> {{dv.name}}
       </option>
     </select>
   </div>
