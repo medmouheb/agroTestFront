@@ -14,29 +14,37 @@ import { WillayaService } from "app/modules/willaya/services/willaya.service";
 export class CompanyFromLocalisationComponent implements OnInit {
   @Input() camp!: Company;
   addform: FormGroup;
-  wilayas:Array<Willaya>=[]
+  wilayas: Array<Willaya> = []
 
   constructor(private sharedService: SharedService,
-    private wilayaservice:WillayaService) {}
+    private wilayaservice: WillayaService) { }
 
   ngOnInit(): void {
-this.getAllWillaya()
+    this.getAllWillaya()
   }
 
-getAllWillaya(){
-  this.wilayaservice.findAll().subscribe({
-    next: (result) => { this.wilayas = result; console.log("2==", result) },
-    error: (error) => console.error(error),
-  });
-}
-selectValue(e:any){
-  let wil=this.wilayas.filter(el=>{
-    return el.code==e.target.value
+  getAllWillaya() {
+    this.wilayaservice.findAll().subscribe({
+      next: (result) => { this.wilayas = result; console.log("2==", result) },
+      error: (error) => console.error(error),
+    });
+  }
+  selectValue(e: any) {
+    let wil = this.wilayas.filter(el => {
+      return el.code == e.target.value
 
-  })[0].name
-  this.camp.wilayaName=wil
+    })[0].name
+    
+    this.camp.wilayaCode=this.wilayas.filter(el => {
+      return el.code == e.target.value
 
-}
+    })[0].code
+    this.camp.wilayaName = wil
+
+    console.log("ee===zz",this.camp)
+
+
+  }
 
 
 
@@ -45,11 +53,11 @@ selectValue(e:any){
     this.addform = new FormGroup({
       code: new FormControl("", [
         Validators.required,
-       
+
       ]),
       name: new FormControl("", [
         Validators.required,
-      
+
       ]),
     });
     console.log("====================================");
@@ -88,7 +96,7 @@ selectValue(e:any){
   minIwillaya: boolean = false
 
   isBlur() {
-    if ((this.camp.wilayaName.toString().length <=0 )|| (this.camp.wilayaName.toString().length > 100)) {
+    if ((this.camp.wilayaName.toString().length <= 0) || (this.camp.wilayaName.toString().length > 100)) {
       this.minIwillaya = true;
     } else {
       this.minIwillaya = false;
@@ -97,7 +105,7 @@ selectValue(e:any){
   minIzipcode: boolean = false
 
   isBlur2() {
-    if ((this.camp.zipCode.toString().length <=0 )|| (this.camp.zipCode.toString().length > 11)) {
+    if ((this.camp.zipCode.toString().length <= 0) || (this.camp.zipCode.toString().length > 11)) {
       this.minIzipcode = true;
     } else {
       this.minIzipcode = false;
@@ -107,22 +115,25 @@ selectValue(e:any){
 
   emailIsvalid = false
 
-validationEmail() {
-  const emailRegex: RegExp =/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
-  console.log(this.camp.email)
-  if (emailRegex.test(this.camp.email)) {
-    this.emailIsvalid = false;
-  console.log(this.camp.email)
+  validationEmail() {
+    const emailRegex: RegExp = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+    console.log(this.camp.email)
+    if (emailRegex.test(this.camp.email)) {
+      this.emailIsvalid = false;
+      console.log(this.camp.email)
+      this.sharedService.setIsActive(true);
+
+    }
+    else {
+      this.emailIsvalid = true
+      this.sharedService.setIsActive(false);
+
+    }
 
   }
-  else {
-  this.emailIsvalid=true
-  }
-
-}
 
   isBlur3() {
-    if ((this.camp.number.toString().length <12 )|| (this.camp.number.toString().length > 13)) {
+    if ((this.camp.number.toString().length < 12) || (this.camp.number.toString().length > 13)) {
       this.minIphone = true;
     } else {
       this.minIphone = false;

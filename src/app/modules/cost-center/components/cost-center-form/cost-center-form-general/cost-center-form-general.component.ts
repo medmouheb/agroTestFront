@@ -32,7 +32,10 @@ export class CostCenterFormGeneralComponent implements OnInit {
       console.log("all")
       this.sharedService.setIsActive(true);
 
+    }else{
+      this.sharedService.setIsActive(false);
     }
+
     this.costserv.findAll().subscribe(data => {
       this.names = data.map(el => {
         return el.name

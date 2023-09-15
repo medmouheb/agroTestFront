@@ -1,5 +1,5 @@
 <div class="row" [formGroup]="addform">
-
+    <p> {{currency | json}} </p>
     <div class="form-group col-md-6">
         <label class="required" for="code">{{ "currencyCode" | translate }}</label>
         <input class="form-control" name="code" (blur)="isBlurDCisvalid();exist();blur1();validationCode()" [(ngModel)]="currency.code" formControlName="code" required 
