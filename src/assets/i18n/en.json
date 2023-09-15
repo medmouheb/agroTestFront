@@ -1,5 +1,6 @@
 {
   "menu": {
+    "Vehicules":"Vehicule",
     "Fieldproduct":"Field Product",
     "edit-Logistic-Unit":"Edit the Logistic Unit",
     "Vehicles":"Vehicles",
@@ -26,7 +27,7 @@
     "add-BeginningInventaire": "Add new Initial Inventaire",
     "edit-BeginningInventaire": "Edit the Initial Inventaire",
     "add-farms": "Add New Farm",
-    "add-Vehicles": "Add New Vehicles",
+    "add-Vehicles": "Add New Vehicule",
     "edit-Vehicles": "Edit the Vehicles",
     "growout": "Growout",
     "add-Logistic": "Add New Logistic Unit",
@@ -119,10 +120,10 @@
     "Produits de terrain": "Field Products",
     "Symptoms": "Symptoms",
     "Symptom": "Symptom",
-    "Vehicule": "Vehicle",
+    "Vehicule": "Vehicule",
     "Vehiculess": "Vehicule",
     "Vehicule-facility": "Vehicle facility",
-    "Vehicule-type": "Vehicle type",
+    "Vehiculetype": "Vehicule type",
     "Driver": "Driver",
     "Driver-Paye": "Driver-Paye",
     "Driver-Vehicule-type": "Driver Vehicle type",
@@ -920,5 +921,7 @@
 "typeCs":"Cost Center Type",
 "verifCodeName":"Please verify the code and the name",
 "nameField":"Field Product Name",
-"codeField":"Field Product Code"
+"codeField":"Field Product Code",
+"Write your Vehicule vehiculeType":"Write your Vehicule vehiculeType",
+"Vtype":"Vehicule type"
 }

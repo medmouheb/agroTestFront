@@ -1,5 +1,6 @@
 {
   "menu": {
+
     "Fieldproduct":"Produit de Terrain",
     "Feed formula-price":"Prix ​​de la Formule Alimentaire",
     "Field-Product": "Produit de terrain",
@@ -118,9 +119,9 @@
     "Symptoms": "Symptômes",
     "Symptom": "Symptôme",
     "Vehicule": "Véhicule",
-    "Vehicules": "Vehicule",
+    "Vehicules": "Véhicule",
     "Vehicule-facility": "Installation de véhicule",
-    "Vehicule-type": "Vehicule type",
+    "Vehiculetype": "Vehicule type",
     "Driver":"Conductrice",
     "Driver-Paye": "Chauffeur payant",
     "Driver-Vehicule-type": "Conducteur Type de véhicule",
@@ -900,7 +901,9 @@
 "typeCs":"Type Centre de coûts",
 "verifCodeName":"Veuillez vérifier le code et le nom",
 "nameField":"Nom Produit de Terrain",
-"codeField":"Code Produit de Terrain"
+"codeField":"Code Produit de Terrain",
+"Write your Vehicule vehiculeType":"Écrivez votre Type de Véhicule",
+"Vtype":"Type de véhicule"
 
   
 }

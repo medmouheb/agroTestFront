@@ -62,6 +62,10 @@ export class VehiculeFormsGeneralComponent implements OnInit {
         null,
         [Validators.required,],
       ],
+      vehiculeType: [
+        null
+      ],
+      
     });
 
   }
@@ -180,13 +184,29 @@ export class VehiculeFormsGeneralComponent implements OnInit {
     
 
     if (
-      this.dispotrueCode == false && this.dispotruename == false &&
+      
       this.camp.vehiculeCode != null &&
       this.camp.vehiculeCode != "" &&
       this.camp.vehiculeCode != null &&
       this.camp.vehiculeCode != "" &&
       this.camp.vehiculeCode.toString().length >= 1 &&
-      this.camp.vehiculeCode.toString().length >= 1
+      this.camp.vehiculeCode.toString().length <= 50 &&
+      this.camp.vehiculeName != null &&
+      this.camp.vehiculeName != "" &&
+      this.camp.vehiculeName != null &&
+      this.camp.vehiculeName != "" &&
+      this.camp.vehiculeName.toString().length >= 1 &&
+      this.camp.vehiculeName.toString().length <= 50 &&
+      this.camp.facilitytype != null &&
+      this.camp.facilitytype != "" &&
+      this.camp.facilitytype != null &&
+      this.camp.facilitytype != "" &&
+      this.camp.facilitytype.toString().length >= 1 &&
+      this.camp.measurementType != null &&
+      this.camp.measurementType != "" &&
+      this.camp.measurementType != null &&
+      this.camp.measurementType != "" &&
+      this.camp.measurementType.toString().length >= 1 
     ) {
       this.sharedService.setIsActive(true);
     } else {
@@ -214,7 +234,7 @@ export class VehiculeFormsGeneralComponent implements OnInit {
   minIphone: boolean = false
 
   isBlur3() {
-    if ((this.camp.facilitytype.toString().length <12 )|| (this.camp.facilitytype.toString().length > 13)) {
+    if ((this.camp.facilitytype.toString().length <1 )) {
       this.minIphone = true;
     } else {
       this.minIphone = false;
@@ -242,7 +262,7 @@ validationCode() {
   minMeasurementType: boolean = false
 
   isBlur4() {
-    if ((this.camp.measurementType.toString().length <12 )|| (this.camp.measurementType.toString().length > 13)) {
+    if (this.camp.measurementType.toString().length <1 ) {
       this.minMeasurementType = true;
     } else {
       this.minMeasurementType = false;
