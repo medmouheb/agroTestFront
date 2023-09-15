@@ -42,7 +42,7 @@
        
          <select  class="form-control"
          (click)="getValue($event)"
-         (blur)="setname()"
+         (change)="setname()"
           name="instructiuonCode"
           formControlName="instructiuonCode" (ngModelChange)="getValue($event)"
            required

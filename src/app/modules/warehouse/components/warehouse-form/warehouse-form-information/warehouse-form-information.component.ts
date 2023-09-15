@@ -14,55 +14,58 @@ export class WarehouseFormInformationComponent implements OnInit {
 
   @Input()
   warehouse: Warehouse = {}
-  wilayas:Array<Willaya>=[]
-  ok:boolean
+  wilayas: Array<Willaya> = []
+  ok: boolean
 
 
   constructor(private sharedService: SharedService,
-    private wilayaservice:WillayaService) {}
+    private wilayaservice: WillayaService) { }
 
   ngOnInit(): void {
-this.getAllWillaya()
-this.lengthPhone(false)
+    this.getAllWillaya()
+    this.lengthPhone(false)
   }
 
-getAllWillaya(){
-  this.wilayaservice.findAll().subscribe({
-    next: (result) => { this.wilayas = result; console.log("2==", result) },
-    error: (error) => console.error(error),
-  });
-}
-selectValue(e:any){
-  let wil=this.wilayas.filter(el=>{
-    return el.code==e.target.value
+  getAllWillaya() {
+    this.wilayaservice.findAll().subscribe({
+      next: (result) => { this.wilayas = result; console.log("2==", result) },
+      error: (error) => console.error(error),
+    });
+  }
+  selectValue(e: any) {
+    let wil = this.wilayas.filter(el => {
+      return el.code == e.target.value
 
-  })[0].name
-  this.warehouse.wilayaName=wil
-
-}
-emailIsvalid = false
-
-validationEmail() {
-  const emailRegex: RegExp =/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
-  console.log(this.warehouse.email)
-  if (emailRegex.test(this.warehouse.email)) {
-    this.emailIsvalid = false;
-  console.log(this.warehouse.email)
+    })[0].name
+    this.warehouse.wilayaName = wil
 
   }
-  else {
-  this.emailIsvalid=true
+  emailIsvalid = false
+
+  validationEmail() {
+    const emailRegex: RegExp = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+    console.log(this.warehouse.email)
+    if (emailRegex.test(this.warehouse.email)) {
+      this.emailIsvalid = false;
+      this.sharedService.setIsActive(true);
+
+      console.log(this.warehouse.email)
+
+    }
+    else {
+      this.emailIsvalid = true
+      this.sharedService.setIsActive(false);
+
+    }
+
+  }
+
+
+
+  lengthPhone(ok: boolean) {
+    if (this.warehouse.faxNumber.length == 12) {
+      ok == true
+    }
   }
 
 }
-
-
-
-lengthPhone(ok:boolean){
-  if(this.warehouse.faxNumber.length ==12) {
-       ok==true
-  }
-}
-
-}
-  

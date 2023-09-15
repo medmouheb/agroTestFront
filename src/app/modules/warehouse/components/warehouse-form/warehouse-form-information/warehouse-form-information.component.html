@@ -47,7 +47,7 @@
   </div>
   <div class="form-group col-md-6">
     <label for="wilayaName">{{ "wilayaName" | translate }}</label>
-    <input  class="form-control" name="wilayaName" #wilayaName="ngModel" ngModel [(ngModel)]="warehouse.wilayaName" 
+    <input readonly  class="form-control" name="wilayaName" #wilayaName="ngModel" ngModel [(ngModel)]="warehouse.wilayaName" 
      placeholder="{{'Write your wilaya name'|translate}} " />
     
 
@@ -104,3 +104,4 @@
   </div>
 
 </div>
+

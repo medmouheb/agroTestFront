@@ -896,6 +896,8 @@
 "Machine":"Machine",
 "typeEnregistrement":"type d'enregistrement",
 "Invalid code format":"format de code invalide",
-"typeCs":"Type Centre de coûts"
+"typeCs":"Type Centre de coûts",
+"verifCodeName":"Veuillez vérifier le code et le nom"
+
   
 }

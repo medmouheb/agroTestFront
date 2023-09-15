@@ -916,5 +916,6 @@
 "Attachments":"Attachments",
 "comments":"Comments",
 "other":"Other",
-"typeCs":"Cost Center Type"
+"typeCs":"Cost Center Type",
+"verifCodeName":"Please verify the code and the name"
 }

@@ -1,6 +1,6 @@
 
 <div class="row" [formGroup]="addForm">
-
+  <!-- <p> {{warehouse | json}} </p> -->
   <div class="form-group col-md-6">
     <label class="required" for="code">{{ "warehousescode" | translate }}</label>
     <input (blur)="existcode();isBlurDCisvalid();validationCode()" class="form-control" name="code" [(ngModel)]="warehouse.code" formControlName="code" required
@@ -34,14 +34,14 @@
   </div>
   <div class="form-group col-md-6">
     <label class="required" for="costCenterName">{{ "costCenterName" | translate }}</label>
-    <input (blur)="isBlurCCNisvalid()" class="form-control" name="costCenterName" ngModel [(ngModel)]="warehouse.costCenterName" 
+    <input readonly (blur)="isBlurCCNisvalid()" class="form-control" name="costCenterName" ngModel [(ngModel)]="warehouse.costCenterName" 
     placeholder=" {{'Write your cost center name'|translate}}"
       formControlName="costCenterName" required aria-invalid="true" (change)="geValues($event)">
       <div style="color: red;" *ngIf="CCNisvalid" >{{'name must be not null'|translate}}</div>
   </div>
       <div class="form-group col-md-6">
-        <label class=" required " for=" type ">{{'facilityType' | translate}} </label>
-        <select aria-placeholder="you must select"  class="form-control" name="type" [(ngModel)]="warehouse.type" formControlName="facilityType" required
+        <label class=" required " for=" facilityType ">{{'facilityType' | translate}} </label>
+        <select aria-placeholder="you must select"  class="form-control" name="facilityType" [(ngModel)]="warehouse.facilityType" formControlName="facilityType" required
           aria-invalid="true" aria-describedby="code-error" (click)="isfacilityTypeValid($event)">
           <option *ngFor=" let type of types " [value]="type">
             {{type}}

@@ -99,20 +99,20 @@ export class WarehouseListComponent implements OnInit {
     console.log('entred')
 
     this.warehouseService.uploadCSVTemplate(formData).subscribe(() => {
-        console.log('succes')
-        this.importModal.hide();
-        this.findPage();
-        this.file = null;
-        this.toastService.close("0");
-        this.toastService.success(
-          this.translateService.instant("success.imported", {
-            elem: this.translateService.instant("menu.products"),
-          })
-        );
-      },
+      console.log('succes')
+      this.importModal.hide();
+      this.findPage();
+      this.file = null;
+      this.toastService.close("0");
+      this.toastService.success(
+        this.translateService.instant("success.imported", {
+          elem: this.translateService.instant("menu.products"),
+        })
+      );
+    },
       (error) => {
-        console.log('error',error.status)
-        if(error.status=="200"){
+        console.log('error', error.status)
+        if (error.status == "200") {
           console.log('succes')
           this.importModal.hide();
           this.findPage();
@@ -123,14 +123,14 @@ export class WarehouseListComponent implements OnInit {
               elem: this.translateService.instant("menu.products"),
             })
           );
-        }else{
+        } else {
           this.toastService.close("0");
           this.toastService.error(this.translateService.instant(error.error));
         }
 
-        
+
       })
-    
+
   }
 
   findPage() {
@@ -184,53 +184,54 @@ export class WarehouseListComponent implements OnInit {
   emailIsvalid = false
 
   validationEmail() {
-    const emailRegex: RegExp =/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+    const emailRegex: RegExp = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
     console.log(this.warehouse.email)
     if (emailRegex.test(this.warehouse.email)) {
-     return false;
-    console.log(this.warehouse.email)
-  
+
+      return false;
+      console.log(this.warehouse.email)
+
     }
     else {
-   return true
+      return true
     }
-  
+
   }
-  
+
   onSave(id: string | null) {
     const emailRegex: RegExp = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
     console.log(this.warehouse.email)
-   
-      console.log(this.warehouse!)
-      this.toastService.loading(
-        this.translateService.instant("message.loading..."),
-        {
-          id: "0",
-        }
-      );
-      console.log(this.warehouse)
-      this.warehouseService.save(id, this.warehouse!).subscribe({
-        next: () => {
-          this.findPage();
-          this.formModal.hide();
-          this.onCancel();
-          this.toastService.close("0");
-          this.toastService.success(
-            this.translateService.instant("success.saved", {
-              elem: this.translateService.instant("warehouse"),
-            })
-          );
-        },
-        error: (error) => {
-          this.toastService.close("0");
-          this.toastService.error(
-            this.translateService.instant(error.error, {
-              elem: this.translateService.instant("warehouse"),
-            })
-          );
-        },
-      });
-    
+
+    console.log(this.warehouse!)
+    this.toastService.loading(
+      this.translateService.instant("message.loading..."),
+      {
+        id: "0",
+      }
+    );
+    console.log(this.warehouse)
+    this.warehouseService.save(id, this.warehouse!).subscribe({
+      next: () => {
+        this.findPage();
+        this.formModal.hide();
+        this.onCancel();
+        this.toastService.close("0");
+        this.toastService.success(
+          this.translateService.instant("success.saved", {
+            elem: this.translateService.instant("warehouse"),
+          })
+        );
+      },
+      error: (error) => {
+        this.toastService.close("0");
+        this.toastService.error(
+          this.translateService.instant(error.error, {
+            elem: this.translateService.instant("warehouse"),
+          })
+        );
+      },
+    });
+
 
 
   }
@@ -391,7 +392,7 @@ export class WarehouseListComponent implements OnInit {
     if (!fileList) {
       return;
     }
-    this.file = fileList[0];    
+    this.file = fileList[0];
   }
 
 
