@@ -911,7 +911,9 @@
 "Vtype":"Type de véhicule",
 
 "warehouseType":"Type d'Entrepot ",
-"Voidflag":"Drapeau vide"
+"Voidflag":"Drapeau vide",
+"price":"Prix"
+
 
   
 }
