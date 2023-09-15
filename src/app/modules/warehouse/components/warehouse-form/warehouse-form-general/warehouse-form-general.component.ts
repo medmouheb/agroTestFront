@@ -200,8 +200,8 @@ export class WarehouseFormGeneralComponent implements OnInit {
       this.warehouse.code != "" &&
       this.warehouse.name != null &&
       this.warehouse.name != "" &&
-      this.warehouse.type != null &&
-      this.warehouse.type != "" &&
+      this.warehouse.facilityType != null &&
+      this.warehouse.facilityType != "" &&
       this.warehouse.vendor != null &&
       this.warehouse.vendor != "" &&
       this.warehouse.code.toString().length >= 1 &&
@@ -245,8 +245,7 @@ export class WarehouseFormGeneralComponent implements OnInit {
 
   isfacilityTypeValid(event) {
 
-    console.log("snl", this.addForm.value.facilityType)
-    if (this.addForm.value.facilityType == "OWNED" || this.addForm.value.facilityType == "THIRD PARTY") {
+    if (this.addForm.value.costCenterType ) {
       this.facilityTypeisValid = false
     }
     this.geValues(event)
@@ -268,7 +267,7 @@ export class WarehouseFormGeneralComponent implements OnInit {
   }
 
   onTypeChange() {
-    if (this.warehouse.type !== "THIRD PARTY") {
+    if (this.warehouse.facilityType !== "THIRD PARTY") {
       this.warehouse.vendor = null;
     }
   }

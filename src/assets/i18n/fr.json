@@ -903,6 +903,7 @@
 "typeEnregistrement":"type d'enregistrement",
 "Invalid code format":"format de code invalide",
 "typeCs":"Type Centre de coûts",
+"verifCodeName":"Veuillez vérifier le code et le nom",
 "nameField":"Nom Produit de Terrain",
 "codeField":"Code Produit de Terrain",
 "warehouseType":"Type d'Entrepot "
