@@ -1,5 +1,6 @@
 {
   "menu": {
+    "Fieldproduct":"Field Product",
     "edit-Logistic-Unit":"Edit the Logistic Unit",
     "Vehicles":"Vehicles",
     "Drivers":"Drivers",
@@ -511,8 +512,8 @@
 "instructiuonName":"Instruction Name",
 "notes":"Notes",
 "write your notes":"Write your notes",
-"codeship":"Shipping method code",
-"nameship":"Shipping method name",
+"codeship":"Shipping method Code",
+"nameship":"Shipping method Name",
 
   "vehicleTypeCode": " Vehicle Type Code",
   "vehicleTypeName": "Vehicle type Name",
@@ -916,5 +917,7 @@
 "Attachments":"Attachments",
 "comments":"Comments",
 "other":"Other",
-"typeCs":"Cost Center Type"
+"typeCs":"Cost Center Type",
+"nameField":"Field Product Name",
+"codeField":"Field Product Code"
 }

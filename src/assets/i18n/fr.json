@@ -1,5 +1,6 @@
 {
   "menu": {
+    "Fieldproduct":"Produit de Terrain",
     "Feed formula-price":"Prix ​​de la Formule Alimentaire",
     "Field-Product": "Produit de terrain",
     "Vehiculess":"Vehicule",
@@ -896,6 +897,9 @@
 "Machine":"Machine",
 "typeEnregistrement":"type d'enregistrement",
 "Invalid code format":"format de code invalide",
-"typeCs":"Type Centre de coûts"
+"typeCs":"Type Centre de coûts",
+"nameField":"Nom Produit de Terrain",
+"codeField":"Code Produit de Terrain"
+
   
 }

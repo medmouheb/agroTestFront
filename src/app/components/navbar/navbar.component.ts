@@ -215,7 +215,7 @@ export class NavbarComponent implements OnInit {
         this.routes = ["menu.Business", "Agriculture", "menu.farms"];
         break;
       case "Field-product":
-        this.routes = ["menu.Business", "Agriculture", "menu.Warehouse", "menu.Field-product"];
+        this.routes = ["menu.Business", "Agriculture", "menu.Fieldproduct"];
         break;
       case "ProductUsage":
         this.routes = ["menu.Business", "Agriculture", "menu.Warehouse", "menu.ProductUsage"];
