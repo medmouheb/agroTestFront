@@ -31,7 +31,7 @@ export class BeginninginventoryTransactionsComponent implements OnInit {
       this.addform = new FormGroup({
         codeDeTransaction: new FormControl(this.camp.codeDeTransaction),
         dateDeEvenement: new FormControl(this.camp.dateDeEvenement),
-        Expiration: new FormControl(this.camp.Expiration),
+        dateExpiration: new FormControl(this.camp.dateExpiration),
         temps: new FormControl(this.camp.temps),
       });
     

@@ -15,10 +15,13 @@ export class ProductUsageFormsGeneralComponent implements OnInit {
 
   @ViewChild("addform")
   addform: FormGroup;
- 
+ codeunique:any
   constructor(private sharedService: SharedService, private fb: FormBuilder, private compaser: ProductUsageService) { }
   codes: Array<String> = [];
+
+  
   ngOnInit(): void {
+ 
     if (this.camp != null) {
       console.log("olll")
       this.sharedService.setIsActive(true);
@@ -57,6 +60,21 @@ export class ProductUsageFormsGeneralComponent implements OnInit {
     });
 
   }
+
+   generateUniqueNumericCode(){
+    const digits = '0123456789';
+    let code = '';
+    let length=6
+    for (let i = 0; i < length; i++) {
+      const randomIndex = Math.floor(Math.random() * digits.length);
+      code += digits.charAt(randomIndex);
+    }
+  this.codeunique=code
+    console.log(code) ;
+    this.camp.ndeReference=code
+  }
+  
+ 
 
   minIstrueCode: boolean = false
 

@@ -78,6 +78,8 @@ export class ProductUsageFormsDetailsComponent implements OnInit {
     quantite: new FormControl(this.camp.quantite),
     montant: new FormControl(this.camp.montant),
     commentaire: new FormControl(this.camp.commentaire),
+    location: new FormControl(this.camp.location),
+    void: new FormControl(this.camp.void)
     });
     
   }

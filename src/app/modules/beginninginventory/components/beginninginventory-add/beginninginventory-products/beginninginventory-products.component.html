@@ -1,25 +1,31 @@
 
 <div class="row">
     <div class="form-group col-md-6">
-      <label for="codeDeTransaction">{{ "codeDeTransaction" | translate }}</label>
-      <select class="form-control" name="codeDeTransaction" #codeDeTransaction="ngModel" ngModel [(ngModel)]="camp.codeDeTransaction">
+      <label for="typeDeProduit">{{ "typeDeProduit" | translate }}</label>
+      <select class="form-control" name="typeDeProduit" #typeDeProduit="ngModel" ngModel [(ngModel)]="camp.typeDeProduit">
         <option value="FieldsProducts">FieldsProducts</option>
         <option value="Medication">Medication</option>
         <option value="Semen">Semen</option>
         <option value="Vaccinations">Vaccinations</option>
     </select>
     </div>
+
+    <div class="form-group col-md-6">
+      <label for="price">{{ "price" | translate }}</label>
+      <input (blur)="totalunitprice()"  class="form-control" type="number" name="price" #price="ngModel" ngModel [(ngModel)]="camp.price"
+      placeholder="{{'Write your price'|translate}} "/>
+    </div>
   
     <div class="form-group col-md-6">
       <label for="uniteDinventaire">{{ "uniteDinventaire" | translate }}</label>
-      <input  class="form-control" name="uniteDinventaire" #uniteDinventaire="ngModel" ngModel [(ngModel)]="camp.uniteDinventaire"
+      <input (blur)="totalunitprice()" class="form-control"  type="number" name="uniteDinventaire" #uniteDinventaire="ngModel" ngModel [(ngModel)]="camp.uniteDinventaire"
       placeholder="{{'Write your uniteDinventaire'|translate}} "/>
     </div>
     
 
       <div class="form-group col-md-6">
         <label for="prixUnitaire">{{ "prixUnitaire" | translate }}</label>
-        <input type="number" class="form-control" name="prixUnitaire" #prixUnitaire="ngModel" ngModel [(ngModel)]="camp.prixUnitaire"
+        <input readonly   class="form-control" name="prixUnitaire" #prixUnitaire="ngModel" ngModel [(ngModel)]="camp.prixUnitaire"
           placeholder="{{'Write your prixUnitaire'|translate}} "/>
      
       </div>

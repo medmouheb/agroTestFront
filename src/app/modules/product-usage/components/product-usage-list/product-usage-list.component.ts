@@ -190,7 +190,7 @@ export class ProductUsageListComponent implements OnInit {
     setTimeout(() => {
       this.stepper.prevStep();
 
-    }, 100);
+    }, 500);
     setTimeout(() => {
       this.formModal.show({
         title: "menu.edit-ProductUsage",

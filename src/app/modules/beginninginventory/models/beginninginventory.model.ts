@@ -5,13 +5,14 @@ export type BeginningInventory = {
         typeDeProduit?: string;
         codeProduit?: string;
         nomDuProduit?: string;
-        uniteDinventaire?: string;
+        uniteDinventaire?: any;
         prixUnitaire?: any;
         codeDeLot?: any;
+        price?:any;
         codeDeLocalisation?: any;
         codeDeReference?: any;
         dateDeEvenement?: any;
-        Expiration?: any;
+        dateExpiration?: any;
         temps?: string;
         commentaire?: string;
         Vide?: any;
