@@ -36,19 +36,19 @@
   
     <div class="form-group col-md-6">
       <label for="division">{{ "dateDeEvenement" | translate }}</label>
-        <input class="form-control" type="date" name="dateDeEvenement" formControlName="dateDeEvenement" [(ngModel)]="camp.dateDeEvenement" 
+        <input class="form-control" type="date" name="dateDeEvenement"  #dateDeEvenement="ngModel" [(ngModel)]="camp.dateDeEvenement" 
         placeholder="{{'Write your dateDeEvenement'|translate}} "/>
     </div>
 
     <div class="form-group col-md-6">
-      <label for="Expiration">{{ "Expiration" | translate }}</label>
-        <input type="date" class="form-control" name="Expiration" #Expiration="ngModel" ngModel [(ngModel)]="camp.Expiration"
+      <label for="dateExpiration">{{ "Expiration" | translate }}</label>
+        <input type="date" class="form-control" name="dateExpiration" #dateExpiration="ngModel" ngModel [(ngModel)]="camp.dateExpiration"
             placeholder="{{'Write your Expiration'|translate}} "/>
     </div>
     
     <div class="form-group col-md-6">
         <label for="temps">{{ "temps" | translate }}</label>
-        <input  class="form-control" name="temps" #temps="ngModel" ngModel [(ngModel)]="camp.temps" value="12:00 am"
+        <input type="time"  class="form-control" name="temps" #temps="ngModel" ngModel [(ngModel)]="camp.temps" value="12:00 am"
             placeholder="{{'Write your temps'|translate}} "/>
     </div>
 

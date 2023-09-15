@@ -27,19 +27,20 @@ export class BeginninginventoryProductsComponent implements OnInit {
 
     ngOnInit(): void {
       this.initForm();
-
+  
 
     }
 
   initForm() {
     this.addform = new FormGroup({
-      typeDeProduit: new FormControl(this.camp. typeDeProduit),
-      uniteDinventaire: new FormControl(this.camp.uniteDinventaire),
+        typeDeProduit: new FormControl(this.camp.typeDeProduit),
+        uniteDinventaire: new FormControl(this.camp.uniteDinventaire),
         prixUnitaire: new FormControl(this.camp.prixUnitaire),
         codeDeLot: new FormControl(this.camp.codeDeLot),
         codeDeLocalisation: new FormControl(this.camp.codeDeLocalisation),
         codeDeReference: new FormControl(this.camp.codeDeReference),
         commentaire: new FormControl(this.camp.commentaire),
+        price: new FormControl(this.camp.price),
         Vide: new FormControl(false)
     });
   
@@ -50,8 +51,10 @@ export class BeginninginventoryProductsComponent implements OnInit {
   }
   
 //getAll Campany name from service findbycompany
-
-
+totalunitprice(){
+  console.log("zzz",this.camp.price ,this.camp.uniteDinventaire)
+  this.camp.prixUnitaire= this.camp.price / this.camp.uniteDinventaire; 
+}
 
 
   get f() {

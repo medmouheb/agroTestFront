@@ -40,7 +40,7 @@
       <div style="color: red;" *ngIf="CCNisvalid" >{{'name must be not null'|translate}}</div>
   </div>
       <div class="form-group col-md-6">
-        <label class=" required " for=" type ">{{'facilityType' | translate}} </label>
+        <label class=" required " for=" type ">{{'warehouseType' | translate}} </label>
         <select aria-placeholder="you must select"  class="form-control" name="type" [(ngModel)]="warehouse.type" formControlName="facilityType" required
           aria-invalid="true" aria-describedby="code-error" (click)="isfacilityTypeValid($event)">
           <option *ngFor=" let type of types " [value]="type">

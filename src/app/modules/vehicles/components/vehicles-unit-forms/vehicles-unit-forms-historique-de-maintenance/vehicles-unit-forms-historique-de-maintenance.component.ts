@@ -81,5 +81,20 @@ export class VehiclesUnitFormsHistoriqueDeMaintenanceComponent implements OnInit
     
     }
 
+    codeIsvalid1 = false
+
+    validationCode1() {
+      const codeRegex: RegExp =/^[a-zA-Z0-9]*$/;
+      console.log(this.camp.numerooperationmaintenance)
+      if (codeRegex.test(this.camp.numerooperationmaintenance)) {
+        this.codeIsvalid1 = false;
+      console.log(this.camp.numerooperationmaintenance)
+    
+      }
+      else {
+      this.codeIsvalid1=true
+      }
+    
+    }
 
 }

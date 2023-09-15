@@ -657,7 +657,9 @@
   "uniteDinventaire": "Unite d'Inventaire ",
   "prixUnitaire": " Prix Unitaire",
   "codeDeLocalisation": "Code de Localisation",
+
   "transactionCode": "Transaction Code",
+
   "dateDeEvenement": "Date de Evenement",
   "dateExpiration": "Date Expiration",
   "temps": "Temps",
@@ -724,7 +726,10 @@
   "nDeReference  must be not null": "N De Référence ne doit pas être vide",
   
 
-  "transCode": "Code de Transaction",
+  "transCode":"Code de Transaction",
+  "Medication":"Medicaments",
+  "Vaccinations":"Vaccinations",
+  "locationLot":"Emplacement",
 
   "quantite": "Quantité",
   "montant": "Montant",
@@ -899,7 +904,8 @@
 "Invalid code format":"format de code invalide",
 "typeCs":"Type Centre de coûts",
 "nameField":"Nom Produit de Terrain",
-"codeField":"Code Produit de Terrain"
+"codeField":"Code Produit de Terrain",
+"warehouseType":"Type d'Entrepot "
 
   
 }
