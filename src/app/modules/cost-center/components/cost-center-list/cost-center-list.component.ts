@@ -191,7 +191,7 @@ export class CostCenterListComponent implements OnInit {
       this.formModal.show({
         title: "menu.edit-costcenter",
         stepsCount: this.steps.length - 1,
-        confirm: () => this.onSave(id),
+        confirm: () => this.onWizardSave(id),
         cancel: () => this.onCancel(),
         prev: () => this.stepper.prevStep(),
       });
