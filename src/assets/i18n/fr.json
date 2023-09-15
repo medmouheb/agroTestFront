@@ -906,7 +906,8 @@
 "verifCodeName":"Veuillez vérifier le code et le nom",
 "nameField":"Nom Produit de Terrain",
 "codeField":"Code Produit de Terrain",
-"warehouseType":"Type d'Entrepot "
+"warehouseType":"Type d'Entrepot ",
+"Voidflag":"Drapeau vide"
 
   
 }

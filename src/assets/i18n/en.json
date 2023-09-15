@@ -923,5 +923,7 @@
 "typeCs":"Cost Center Type",
 "verifCodeName":"Please verify the code and the name",
 "nameField":"Field Product Name",
-"codeField":"Field Product Code"
+"codeField":"Field Product Code",
+"Voidflag":"Void Flag"
+
 }
