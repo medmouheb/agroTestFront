@@ -664,7 +664,7 @@
   "Code Employe": "Code Employe",
   "Nom Chauffeur": "Name Driver",
   "typeDeProduit": "product Type",
-  "codeProduit": "Code Product",
+  "codeProduit": "Product Code",
   "nomDuProduit": "Product Name",
   "uniteDinventaire": "Inventory Unit",
   "prixUnitaire": "UnitPrice",
@@ -928,5 +928,7 @@
 "Write your Vehicule vehiculeType":"Write your Vehicule vehiculeType",
 "Vtype":"Vehicule type",
 "Voidflag":"Void Flag",
-"price":"Price"
+"price":"Price",
+"ProductUsage": "Product Usage"
+
 }

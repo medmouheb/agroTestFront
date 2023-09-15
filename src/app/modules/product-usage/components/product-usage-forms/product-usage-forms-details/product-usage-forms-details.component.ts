@@ -83,6 +83,10 @@ export class ProductUsageFormsDetailsComponent implements OnInit {
     });
     
   }
+
+  setVoid(){
+    this.camp.void=!this.camp.void
+  }
   
 //getAll Campany name from service findbycompany
 

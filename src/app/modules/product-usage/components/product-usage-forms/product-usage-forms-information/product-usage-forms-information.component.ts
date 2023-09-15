@@ -39,6 +39,10 @@ export class ProductUsageFormsInformationComponent implements OnInit {
         this.listWh=data
       })
     }
+
+    setcode(e){
+      this.camp.codeEntrepot=e.target.value
+    }
   
 
     loadDivisionNames() {

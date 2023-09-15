@@ -912,7 +912,9 @@
 
 "warehouseType":"Type d'Entrepot ",
 "Voidflag":"Drapeau vide",
-"price":"Prix"
+"price":"Prix",
+"ProductUsage": "Utilisation du produit"
+
 
 
   
