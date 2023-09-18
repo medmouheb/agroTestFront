@@ -64,40 +64,40 @@ export type Farm = {
   warehousesecondry?: any
 
   //Visitors Logs
-  VisitDate?: any
-  FirstNameVisit?: any
-  LastNameVisit?: any
-  IDNumberVisit?: any
-  TimeinVisit?: any
-  TimeoutVisit?: any
-  Purposeofthevisit?: any
+  visitDate?: any
+  firstNameVisit?: any
+  lastNameVisit?: any
+  iDNumberVisit?: any
+  timeinVisit?: any
+  timeoutVisit?: any
+  purposeofthevisit?: any
 
   //cezrtiff
-  Certifications?: any
+  certifications?: any
 
   //Contract Farms
-  ContractNumber?: any
+  contractNumber?: any
   contratPay?: any
   startDateFarms?: any
   endDateFarms?: any
   renewalDateFarms?: any
 
   //Paiement information
-  PaymentType?: any//Checking, saving or paycheck 
-  AccountNumber?: any
-  BankName?: any
-  BankCode?: any
-  Bankaddress?: any
-  DirectDepositflag?: any
+  paymentType?: any//Checking, saving or paycheck 
+  accountNumber?: any
+  bankName?: any
+  bankCode?: any
+  bankaddress?: any
+  directDepositflag?: any
   typepayment?: any//auto or not
-  OperationDate?: any //satesystem
+  operationDate?: any //satesystem
   amounttransferred?: any
   //Resource Information
   ressourceInformation?: any
   statutInformation?: any
   adressInformation?: any
-  FirstNameInformation?: any
-  LastNameInformation?: any
+  firstNameInformation?: any
+  lastNameInformation?: any
   phoneInformation?: any
   startDateInformation?: any
   endDateInformation?: any

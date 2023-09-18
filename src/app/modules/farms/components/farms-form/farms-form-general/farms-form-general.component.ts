@@ -73,7 +73,7 @@ export class FarmsFormGeneralComponent implements OnInit {
     })[0]
 
     // this.farm.growout=wil
-    this.farm.cost_Center = wil.code
+    this.farm.cost_Center = wil
     console.log("44::", this.farm, wil, e.target.value)
 
 
@@ -184,13 +184,13 @@ export class FarmsFormGeneralComponent implements OnInit {
       this.farm.technician_Code != "" &&
       this.farm.technician_Name != null &&
       this.farm.technician_Name != "" &&
-      this.farm.code.toString().length >= 5 &&
-      this.farm.nom.toString().length >= 3 &&
-      this.farm.owner_Name.toString().length >= 3 &&
-      this.farm.manager_Code.toString().length >= 5 &&
-      this.farm.manager_name.toString().length >= 3 &&
-      this.farm.technician_Code.toString().length >= 5 &&
-      this.farm.technician_Name.toString().length >= 3
+      this.farm.code.toString().length >= 1 &&
+      this.farm.nom.toString().length >= 1 &&
+      this.farm.owner_Name.toString().length >= 1 &&
+      this.farm.manager_Code.toString().length >= 1 &&
+      this.farm.manager_name.toString().length >= 1 &&
+      this.farm.technician_Code.toString().length >= 1 &&
+      this.farm.technician_Name.toString().length >= 1
     )
     console.log("d:", this.farm)
     if (
@@ -208,13 +208,13 @@ export class FarmsFormGeneralComponent implements OnInit {
       this.farm.technician_Code != "" &&
       this.farm.technician_Name != null &&
       this.farm.technician_Name != "" &&
-      this.farm.code.toString().length >= 5 &&
-      this.farm.nom.toString().length >= 3 &&
-      this.farm.owner_Name.toString().length >= 3 &&
-      this.farm.manager_Code.toString().length >= 5 &&
-      this.farm.manager_name.toString().length >= 3 &&
-      this.farm.technician_Code.toString().length >= 5 &&
-      this.farm.technician_Name.toString().length >= 3
+      this.farm.code.toString().length >= 1 &&
+      this.farm.nom.toString().length >= 1 &&
+      this.farm.owner_Name.toString().length >= 1 &&
+      this.farm.manager_Code.toString().length >= 1 &&
+      this.farm.manager_name.toString().length >= 1 &&
+      this.farm.technician_Code.toString().length >= 1 &&
+      this.farm.technician_Name.toString().length >= 1
     ) {
       this.sharedService.setIsActive(true);
       //  console.log("bbbb", this.sharedService.setIsActive(true));

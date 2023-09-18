@@ -437,8 +437,8 @@
   "write your vendor SKU Code": "Ecrire Votre code de vente Sku",
   "write your vendor SKU Name": "Ecrire Votre nom de vente Sku",
   "Write your division species Type": "Ecrire votre espèce de division Type",
-  "Write your division Type": "Ecrire votre division Type",
-  "divisiontype": "Division Type",
+  "Write your division Type": "Ecrire votre Type de division",
+  "divisiontype": "Type de division",
   "Write your vendor name": "Ecrire votre nom de Fournisseur ",
   "Write your vendor code": "Ecrire votre code de Fournisseur ",
   "sailorCode": " Code de Vente",
@@ -525,7 +525,7 @@
   "Write your ship method name": "Ecrire le nom de méthodes d'expédition",
   "Write your ship name": "Ecrire le nom de méthodes d'expédition",
   "Write your freight terms name": "Ecrire le nom de vos conditions de fret",
-  "Réutiliser les informations de la Division": "Réutiliser les informations de la Entreprise",
+  "Réutiliser les informations de la Division": "Réutiliser les informations de l'Entreprise",
   "freighttermname": "Nom de fret",
   "freighttermcode": "Code de terme",
   "Search by vehiculeName": "Recherche par vehiculeNom",
@@ -701,6 +701,8 @@
   "tareWtRecord": "Enregistrement du poids à vide",
   "tareWtRecordRef": "Référence de l'enregistrement du poids à vide",
   "trailer": "Remorque",
+
+  "Select your Currency":"Sélectionnez votre devise",
   "facilityID": "ID de l'installation",
   "Write your facilityID": "Ecrire votre ID d'installation",
   "facilityName": "Nom de l'installation",
@@ -724,7 +726,7 @@
 
   "quantite": "Quantité",
   "montant": "Montant",
-  
+  "Aviculture":"Aviculture",
   "numeroDeLot": "Numéro de Lot",
   "Write your numeroDeLot": "Ecrire votre Numéro de Lot",
   "numeroDeLot must be unique": "Le Numéro de Lot doit être unique",
@@ -892,6 +894,18 @@
 "Semi-remorque":"Semi-remorque",
 "Machine":"Machine",
 "typeEnregistrement":"type d'enregistrement",
-"Invalid code format":"format de code invalide"
+"Invalid code format":"format de code invalide",
+"fattening cow farms":"Fermes d'engraissement",
+"Dairy farms":"Fermes laitières",
+"Agriculture maraîchère":"Agriculture maraîchère",
+ "Arboriculture":"Arboriculture",
+  "Agriculture biologique":"Agriculture biologique",
+   "Permaculture":"Permaculture",
+   "INTERN":"INTERNE",
+   "EXTERN":"EXTERNE",
+   "ADMIN":"ADMIN",
+   "OWNED":"PROPRIÉTÉ",
+   "THIRD PARTY":"TROISIÈME PARTIE"
+
   
 }
