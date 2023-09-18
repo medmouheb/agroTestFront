@@ -1,3 +1,4 @@
+import { SalesSKU } from "app/modules/sales-sku/models/salesSku"
 import { Fournisseur } from "../../fournisseurs/models/fournisseur.model"
 import { ProductUsage } from "./produit-usage.model"
 
@@ -8,17 +9,19 @@ export type Produit = {
   type?: string
   status?: boolean
   currency?: string
-  Inventaire?: string
-  Medicamenteux?: string
-  Fabricant?: string
+  inventaire?: string
+  medicamenteux?: Boolean
+  fabricant?: string
   couleur?: string
-  methodeutilisation?: ProductUsage
+  transactionDate?: string
+  farmCode?: string
+  houseCode?: string
   maxdepasse?: string
   prixUnitaireHt?: any
   tauxTva?: any
   prixUnitaireTtc?: any
   category?: any
   vendorSKU?: any
-  salesSKU?: any
+  salesSKU?: SalesSKU
   fournisseur?: Fournisseur
 }

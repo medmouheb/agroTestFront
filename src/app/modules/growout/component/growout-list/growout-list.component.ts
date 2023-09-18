@@ -72,6 +72,25 @@ export class GrowoutListComponent implements OnInit {
           console.log("z;",result)
           this.growouts = result.content;
           this.growoutPage = result;
+        },
+        error: (error) => {
+          this.loading = false;
+          console.error(error);
+        },
+        complete: () => (this.loading = false),
+      });
+  }
+
+  findArchivedPage() {
+    this.loading = true;
+    this.growoutService
+      .findArchivedPage(this.pageNumber, this.pageSize, this.filter)
+      .subscribe({
+        next: (result) => {
+          console.log(result.content)
+
+          this.growoutss = result.content;
+          console.log(this.growouts)
           this.growoutPages = result;
         },
         error: (error) => {
@@ -273,25 +292,7 @@ export class GrowoutListComponent implements OnInit {
       this.sortByAddressValid = true
     }
   }
-  findArchivedPage() {
-    this.loading = true;
-    this.growoutService
-      .findArchivedPage(this.pageNumber, this.pageSize, this.filter)
-      .subscribe({
-        next: (result) => {
-          console.log(result.content)
 
-          this.growoutss = result.content;
-          console.log(this.growouts)
-          this.growoutPages = result;
-        },
-        error: (error) => {
-          this.loading = false;
-          console.error(error);
-        },
-        complete: () => (this.loading = false),
-      });
-  }
   onClickdisArchive(id: string) {
     this.growoutService.disArchive(id).subscribe({
       next: () => {

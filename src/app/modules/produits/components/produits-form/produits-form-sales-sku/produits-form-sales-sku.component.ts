@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Produit } from '../../../models/produit.model';
+import { SalesSkuService } from 'app/modules/sales-sku/services/sales-sku.service';
+import { SalesSKU } from 'app/modules/sales-sku/models/salesSku';
 
 @Component({
   selector: 'app-produits-form-sales-sku',
@@ -9,18 +11,25 @@ import { Produit } from '../../../models/produit.model';
 export class ProduitsFormSalesSkuComponent implements OnInit {
   @Input() produit: Produit = {}
 
-  salesList = [
-    "Sales 1",
-    "Sales 2",
-    "Sales 3"
-  ]
+  salesList :Array<SalesSKU>=[]
 
-  constructor() { }
+  constructor( private salesSkuService: SalesSkuService) { }
 
   ngOnInit(): void {
     if(!this.produit.salesSKU){
       this.produit.salesSKU = {}
     }
+    this.salesSkuService.findAll().subscribe(data=>{
+      this.salesList=data
+      console.log("rrr;;;",data)
+    })
   }
+
+  setValue(e:any){
+     this.produit.salesSKU=  this.salesList.find(el=>{return el.id=e.target.value})
+
+  }
+
+
 
 }

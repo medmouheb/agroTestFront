@@ -20,13 +20,15 @@
   </div>
 
 </div> -->
-<div class="row"> 
+<div class="row">
 
   <div class="form-group col-md-6">
     <label for="code">{{'vendorSku' | translate}}</label>
-    <select (click)="selectVAlue($event)"  type="number" class="form-control"   >
-      <option  [value]="" >{{'select a Vendor Sku'| translate}}</option>
-      <option *ngFor="let dv of vendorsku" [value]="dv.id" >{{dv.vendorSKUName}}</option>
+    <select (click)="selectVAlue($event)" type="number" class="form-control">
+
+      <option [value]="">{{'select a Vendor Sku'| translate}}</option>
+      <option [selected]="produit.vendorSKU.id==dv.id" *ngFor="let dv of vendorsku" [value]="dv.id">{{dv.vendorSKUName}}
+      </option>
     </select>
     <!-- <input class="form-control" name="code" #code="ngModel" ngModel .vendorSKUCode"
     placeholder="{{'write your VendorSku code'|translate}} "> -->

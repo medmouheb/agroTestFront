@@ -7,6 +7,8 @@ import { StepperComponent } from 'app/shared/components/stepper/stepper.componen
 import { Page, initPage } from 'app/shared/models';
 import { DeliveryService } from '../../Services/delivery.service';
 import { Delivery } from '../../models/delivery';
+import { SharedService } from 'app/modules/company/services/shared.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-delivery-list',
@@ -42,7 +44,9 @@ export class DeliveryListComponent implements OnInit {
   constructor(
     private deliveryservice: DeliveryService,
     private translateService: TranslateService,
-    private toastService: HotToastService
+    private toastService: HotToastService,
+    private sharedService: SharedService,
+    private http: HttpClient
   ) {}
 
   ngOnInit(): void {
@@ -118,6 +122,18 @@ export class DeliveryListComponent implements OnInit {
       }
     );
     console.log(this.delivery)
+    if((this.delivery.productType==undefined) ||(this.delivery.instructiuonCode==undefined) || (this.delivery.instructiuonName==undefined) ){
+      this.toastService.close("0");
+      let lg=localStorage.getItem("locale")
+      this.http.get(  "../../../../../assets/i18n/" + lg + ".json").subscribe((data:any) => {
+       this.toastService.warning(data.verifCodeName)
+ 
+     });
+     //  this.toastService.warning("Verify your freightterm code"
+       
+     //  );
+      return;
+    }
    
     this.deliveryservice.save(id, this.delivery!).subscribe({
       next: () => {
@@ -148,6 +164,10 @@ export class DeliveryListComponent implements OnInit {
       confirm: () => this.onSave(null),
       cancel: () => this.onCancel(),
     });
+    setTimeout(() => {
+      this.sharedService.setIsActive(false)
+
+    }, 500);
   }
 
   onClickEdit(id: string) {

@@ -106,7 +106,7 @@ export class WarehouseListComponent implements OnInit {
       this.toastService.close("0");
       this.toastService.success(
         this.translateService.instant("success.imported", {
-          elem: this.translateService.instant("menu.products"),
+          elem: this.translateService.instant("menu.warehouse"),
         })
       );
     },
@@ -120,7 +120,7 @@ export class WarehouseListComponent implements OnInit {
           this.toastService.close("0");
           this.toastService.success(
             this.translateService.instant("success.imported", {
-              elem: this.translateService.instant("menu.products"),
+              elem: this.translateService.instant("menu.warehouse"),
             })
           );
         } else {

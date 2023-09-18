@@ -14,7 +14,7 @@
     <div class="form-group col-md-6">
         <label class="required" for="name">{{'sailorname' | translate}}</label>
         <input (blur)="existname();isBlurDNisvalid()" class="form-control" name="name" formControlName="name" 
-        placeholder="{{'Write your sailor name'|translate}}" [formControl]="fieldControl"
+        placeholder="{{'write your sales name'|translate}}" [formControl]="fieldControl"
             [(ngModel)]="sales.name" required aria-invalid="true" aria-describedby="name-error"
             (ngModelChange)="geValues($event)">
         <div style="color: red;" *ngIf="DNisvalid">{{'name must be not null'|translate}}</div>
@@ -29,8 +29,8 @@
         <select class="form-control" name="type" formControlName="type" ngModel [(ngModel)]="sales.type"
              required aria-invalid="true"
             (change)="geValues($event)">
-            <option value="INTERN">INTERN</option>
-            <option value="EXTERN">EXTERN</option> 
+            <option value="INTERN">{{'INTERN'|translate}}</option>
+            <option value="EXTERN">{{'EXTERN'|translate}}</option> 
         </select>
     </div>
 

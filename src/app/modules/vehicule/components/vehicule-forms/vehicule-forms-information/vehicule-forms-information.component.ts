@@ -37,7 +37,8 @@ export class VehiculeFormsInformationComponent implements OnInit {
       trailer: new FormControl(false),
       trailerSequence: new FormControl(0),
       capacity: new FormControl(0),
-      color: new FormControl("")
+      color: new FormControl(""),
+      notes: new FormControl("")
     });
     console.log("====================================");
     console.log(" add form :", this.addform);

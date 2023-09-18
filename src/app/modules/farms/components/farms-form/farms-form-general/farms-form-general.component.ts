@@ -12,6 +12,7 @@ import { WarehouseService } from "app/modules/warehouse/services/warehouse.servi
 import { Farm } from "../../../models/farm";
 import { log } from "console";
 import { FarmsService } from "app/modules/farms/services/farms.service";
+import { environment } from "environments/environment";
 
 @Component({
   selector: "app-farms-form-general",
@@ -110,6 +111,10 @@ export class FarmsFormGeneralComponent implements OnInit {
 
     console.log("44::", this.farm)
 
+  }
+
+  getFile(id:any){
+    window.open( `${environment.apiUrl}/files/download/${id}`,"_blank" )
   }
 
   initForm() {

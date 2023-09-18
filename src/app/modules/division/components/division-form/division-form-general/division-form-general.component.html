@@ -56,7 +56,7 @@
           [(ngModel)]="division.speciesType" 
           >
           <option value="" disabled selected>{{'Select your option'|translate}}</option>
-          <option *ngFor="let c of listA" [value]="c" > {{c}} </option>
+          <option *ngFor="let c of listA" [value]="c" > {{c |translate}} </option>
           <!-- <option  value="Chicken">
             {{'Chicken'|translate}}
           </option>
@@ -77,12 +77,8 @@
      
     </div>
 
-    <div class="form-group col-md-6">
-      <label class="required" for="currencyname">{{'currencyName' | translate}}</label>
-      <input readonly class="form-control" name="currencyname" formControlName="currencyname" [(ngModel)]="division.currencyname" (ngModelChange)="geValues($event)"
-        required aria-invalid="true" aria-describedby="code-error">
-    </div>
 
+   
     <div class="form-group col-md-6">
       <label class="required" for="currencyCode" >{{ "currencyCode" | translate }}</label>
       <select (blur)="isBlur4();selectValue($event)"  (ngModelChange)="geValues($event)" (click)="selectValue($event);"  type="number" class="form-control" name="currencycode" formControlName="currencycode" [(ngModel)]="division.currencycode">
@@ -91,6 +87,13 @@
       <div style="color: red;" *ngIf="currecnyinv">{{'you must chose'|translate}}</div>
 
   </div>
+    <div class="form-group col-md-6">
+      <label class="required" for="currencyname">{{'currencyName' | translate}}</label>
+      <input class="form-control" name="currencyname" formControlName="currencyname" [(ngModel)]="division.currencyname" (ngModelChange)="geValues($event)"
+        required aria-invalid="true" aria-describedby="code-error" readonly>
+    </div>
+
+
 
  
   <div class="form-group col-md-6">
