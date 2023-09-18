@@ -261,7 +261,13 @@ export class ProduitsListComponent implements OnInit {
   }
 
   onClickEdit(id: string) {
+    this.stepper.nextStep();
+    setTimeout(() => {
+      this.stepper.prevStep();
+
+    }, 100);
     this.findById(id);
+   
     this.formModal.show({
       title: "menu.edit-product",
       stepsCount: this.steps.length - 1,
