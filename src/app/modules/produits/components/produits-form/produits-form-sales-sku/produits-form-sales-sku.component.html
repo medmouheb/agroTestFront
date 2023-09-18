@@ -1,7 +1,7 @@
 <div class="row">
 
   <div class="form-group col-md-6">
-    <label for="sales">{{'sales' | translate}}</label>
+    <label for="sales">{{'salesPro' | translate}}</label>
     <select class="form-control" name="sales" #sales="ngModel" ngModel [(ngModel)]="produit.salesSKU.sales">
       <option *ngFor="let sales of salesList" [value]="sales">
         {{sales}}
