@@ -263,7 +263,7 @@
     "verifiervotrenomwillaya": "Verify your willaya name"
   },
   "salesku": "Vente Sku",
-  "vendorsku": "Fournisseur sku",
+  "vendorsku": "Fournisseur Sku",
   "Field-product": "Produit de terrain",
   "company": "Entreprise",
   "product": "Produit",
@@ -288,6 +288,7 @@
   "codecostCenter": "Code centre de coûts",
   "namecostCenter": "Nom centre de coûts",
   "type": "Type",
+  "category": "Catégorie",
   
   "currencyCode": "Code de devise",
   "currencyName": "Nom devise",
@@ -732,10 +733,10 @@
   
 
   "transCode":"Code de Transaction",
-  "Medication":"Medicaments",
+  "Medication":"Médicaments",
   "Vaccinations":"Vaccinations",
   "locationLot":"Emplacement",
-
+"Medicaments":"Médicaments",
   "quantite": "Quantité",
   "montant": "Montant",
   "Aviculture":"Aviculture",
@@ -927,6 +928,13 @@
 
 "warehouseType":"Type d'Entrepot ",
 "Voidflag":"Drapeau vide",
+"vendorSku":"Fournisseur Sku",
+"Search by FieldProductName":"Recherche par Produit de Terrain ",
+"select a Vendor Sku":"Choisir un Vendor Sku",
+"salesPro":"Ventes Sku",
+"Sales 1":"ventes 1",
+"Sales 2":"ventes 2",
+"Sales 3":"ventes 3",
 "price":"Prix",
 "ProductUsage": "Utilisation du produit",
 "Search by FieldProductName":"Recherche par Produit de Terrain ",
