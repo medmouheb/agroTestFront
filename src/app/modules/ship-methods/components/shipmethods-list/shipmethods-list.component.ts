@@ -129,21 +129,6 @@ export class ShipmethodsListComponent implements OnInit {
      );
      return;
    }
-   this.shipmethodsservice.findbycode(this.shipmethod.code).subscribe(data => {
-     console.log(data)
-     if (data != null) {
-       this.toastService.warning("Ship methode code must be unique");
-       this.toastService.close("0"); 
-       this.toastService.error(
-         this.translateService.instant("shipmethod"),
-     
-       )
-       return;
-   }
-   
-   return[];
-   
-   })
 
    this.shipmethodsservice.save(id, this.shipmethod!).subscribe({
      next: () => {

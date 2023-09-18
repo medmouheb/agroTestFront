@@ -20,6 +20,8 @@ export class DeliveryFormGeneralComponent implements OnInit {
     this.infiForm()
     this.sharedService.setIsActive(false)
 
+    
+
   }
   infiForm() {
     this.addform = new FormGroup({
@@ -35,6 +37,18 @@ export class DeliveryFormGeneralComponent implements OnInit {
     console.log(" add form :", this.addform);
 
 
+  }
+  getList(){
+    if(this.delivery.productType){
+      console.log("erere true")
+      this.setList()
+
+      return true
+    }else{
+      console.log("erere false")
+
+      return false
+    }
   }
   setname() {
     console.log("e:", this.delivery.instructiuonCode)

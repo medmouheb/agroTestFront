@@ -65,7 +65,6 @@ export class ProduitsFormGroupComponent implements OnInit {
   }
 
   onVendorChange(e:any){
-    alert(e.target.value)
     console.log(this.vendors.find(elem => elem.id === e.target.value))
     
       this.produit.fournisseur = this.vendors.find(elem => elem.id === e.target.value)

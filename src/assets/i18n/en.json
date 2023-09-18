@@ -57,7 +57,7 @@
     "edit-costcenter":"Edit a Cost Center",
     "add-costcenter":"Add New Cost Center",
     "add-delivery":"Add New Delivery Instruction",
-    "edit-delivery":"Edit a Delivery Instruction",
+    "edit-delivery":"Edit Delivery Instruction",
     
     "products-list": "Products list",
     "add-product": "Add New Product",
@@ -968,6 +968,15 @@
 "price":"Price",
 "ProductUsage": "Product Usage",
 "select a Vendor Sku":"Select Vendor Sku",
-"salesPro":"Sales Sku"
+"salesPro":"Sales Sku",
+"Received":"Received",
+"Usage":"Usage",
+"Physical":"Physical",
+"Eggs":"Eggs",
+"Animal":"Animal",
+"Vaccines":"Vaccines",
+"Other":"Other",
+"Ingredients":"Ingredients",
+"verifycodenamecountrycodecountrynamedigitalcode":"verify your code , name , countrycode , countryname and digitalcode"
 
 }

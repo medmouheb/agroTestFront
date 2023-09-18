@@ -1,5 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Produit } from '../../../models/produit.model';
+import { FarmsService } from 'app/modules/farms/services/farms.service';
+import { Farm } from 'app/modules/farms/models/farm';
+import { error } from 'console';
 
 @Component({
   selector: 'app-produits-form-usage',
@@ -9,10 +12,21 @@ import { Produit } from '../../../models/produit.model';
 export class ProduitsFormUsageComponent implements OnInit {
   @Input() produit: Produit = {}
 
-  constructor() { }
-
+  constructor(private farmsService:FarmsService) { }
+  farmList:Array<Farm>=[]
   ngOnInit(): void {
-    
+    console.log("dzdzd")
+    this.farmsService.findAll().subscribe(data=>{
+      this.farmList=data
+      console.log("dzdzd",data)
+    },error=>{
+      console.log("dzdzd",error)
+    })
+  }
+
+
+  selectVAlue(e:any){
+    this.produit.farmCode=e.target.value
   }
 
 }

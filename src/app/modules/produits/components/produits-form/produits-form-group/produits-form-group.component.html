@@ -25,9 +25,9 @@
 
     <div class="form-group col-md-4">
         <label for="vendor">{{'vendor' | translate}}</label>
-        <select class="form-control" name="vendor" 
-             (change)="onVendorChange($event)">
-            <option [selected]="produit.fournisseur.id==vendor.id"  *ngFor="let vendor of vendors" [value]="vendor.id">
+        <select class="form-control" name="vendor" (change)="onVendorChange($event)">
+            <option selected disabled [value]="">{{"il faut choisir"| translate}}</option>
+            <option [selected]="produit.fournisseur.id==vendor.id" *ngFor="let vendor of vendors" [value]="vendor.id">
                 {{vendor.name}}
             </option>
         </select>

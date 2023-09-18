@@ -1,6 +1,6 @@
 {
   "menu": {
-
+    "edit-delivery":"Modifier l'instruction de livraison",
     "Fieldproduct":"Produit de Terrain",
     "Feed formula-price":"Prix ​​de la Formule Alimentaire",
     "Field-Product": "Produit de terrain",
@@ -817,7 +817,7 @@
   "quantiteDeTransport": "Quantité de Transport",
   "valeurUnitaireTrans": "Valeur Unitaire de Transport",
   "valeurTrans": "Valeur de Transport",
-  "emplacementDeDestinationDuTransfertNon": "Emplacement de Destination de Transfert Non",
+  "emplacementDeDestinationDuTransfertNon": "Lieu de transfert hors destination",
   "numeroDeLotDeDestinationDuTransfert": "Numéro de Lot de Destination de Transfert",
   
   "nDuProduitDeDestinationDuTransfert": "Numéro de Produit de Destination de Transfert",
@@ -946,7 +946,16 @@
 "Warehouse": "Entrepôt",
 "Plant": "Usine",
 "Logistics": "Logistique",
-"Farm": "Ferme"
+"Farm": "Ferme",
+"Received":"Reçu",
+"Usage":"Usage",
+"Physical":"Physique",
+"Eggs":"Œufs",
+"Animal":"Animal",
+"Vaccines":"Vaccins",
+"Other":"Autre",
+"Ingredients":"Ingrédients",
+"verifycodenamecountrycodecountrynamedigitalcode":"vérifiez votre code, votre nom, votre code de pays, votre nom de pays et votre code numérique"
 
 
 

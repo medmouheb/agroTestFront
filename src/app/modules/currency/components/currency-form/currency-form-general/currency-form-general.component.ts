@@ -114,14 +114,14 @@ export class CurrencyFormGeneralComponent implements OnInit {
 
   geValues(event) {
 
-    console.log("rtrtr",!!(this.currency.countrycode && this.currency.countryname && this.currency.digitalcode) )
+    console.log("rtrtr",!!(this.currency.countrcode && this.currency.countryname && this.currency.digitalcode) )
     if (
-      !!(this.currency.countrycode && this.currency.countryname && this.currency.digitalcode) &&
+      !!(this.currency.countrcode && this.currency.countryname && this.currency.digitalcode) &&
       this.dispotrueCode == false && this.dispotruename == false &&
       this.currency.digitalcode != null &&
       this.currency.digitalcode != "" &&
-      this.currency.countrycode != null &&
-      this.currency.countrycode != "" &&
+      this.currency.countrcode != null &&
+      this.currency.countrcode != "" &&
       this.currency.countryname != null &&
       this.currency.countryname != "" &&
       this.currency.code != null &&
@@ -170,10 +170,11 @@ export class CurrencyFormGeneralComponent implements OnInit {
       }
   }
   isBlurDCjiisvalid() {
-    if (this.currency.countrycode == undefined) {
+    console.log("dede",this.currency)
+    if (this.currency.countrcode == undefined) {
       this.DCouisvalid = true
     } else
-      if (this.currency.countrycode.toString().length < 0) { this.DCouisvalid = true }
+      if (this.currency.countrcode.toString().length < 1) { this.DCouisvalid = true }
       else {
         this.DCouisvalid = false
       }

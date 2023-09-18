@@ -8,6 +8,7 @@ import { Page, initPage } from "app/shared/models";
 import { Currency } from "../../models/currency";
 import { CurrencyService } from "../../services/currency.service";
 import { SharedService } from "app/modules/company/services/shared.service";
+import { HttpClient } from "@angular/common/http";
 
 @Component({
   selector: "app-currency-list",
@@ -43,7 +44,9 @@ export class CurrencyListComponent implements OnInit {
     private sharedService: SharedService,
     private currencyService: CurrencyService,
     private translateService: TranslateService,
-    private toastService: HotToastService
+    private toastService: HotToastService,
+    private http: HttpClient
+
   ) {}
 
   ngOnInit(): void {
@@ -116,11 +119,13 @@ export class CurrencyListComponent implements OnInit {
       }
     );
     console.log(this.currency)
-    if((this.currency.code==undefined) ||(this.currency.name==undefined) || (this.currency.countrycode==undefined) || (this.currency.countryname==undefined) || (this.currency.digitalcode ==undefined) ){
+    if((this.currency.code==undefined) ||(this.currency.name==undefined) || (this.currency.countrcode==undefined) || (this.currency.countryname==undefined) || (this.currency.digitalcode ==undefined) ){
       this.toastService.close("0");
-      this.toastService.warning("verify your code , name , countrycode , countryname and digitalcode"
-       
-      );
+      let lg = localStorage.getItem("locale")
+      this.http.get("../../../../../assets/i18n/" + lg + ".json").subscribe((data: any) => {
+        this.toastService.warning(data.verifycodenamecountrycodecountrynamedigitalcode)
+      });
+      
       return;
     }
     this.currencyService.save(id, this.currency!).subscribe({

@@ -43,7 +43,7 @@ export class FarmsService {
   }
 
   findAll(): Observable<Array<Farm>> {
-    let url = this.baseUrl();
+    let url = `${this.baseUrl()}/ferme`;
     return this.http.get<Array<Farm>>(url);
   }
 

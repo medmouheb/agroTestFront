@@ -37,9 +37,9 @@ export class DeliveryListComponent implements OnInit {
 
   onPaginationChange: EventEmitter<string> = new EventEmitter<string>();
   isChecked: boolean = false;
-  affiche:boolean = false;
+  affiche: boolean = false;
   currentStep = 0;
-  steps: any = ["steps.general","steps.general"];
+  steps: any = ["steps.general", "steps.general"];
 
   constructor(
     private deliveryservice: DeliveryService,
@@ -47,7 +47,7 @@ export class DeliveryListComponent implements OnInit {
     private toastService: HotToastService,
     private sharedService: SharedService,
     private http: HttpClient
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.findPage();
@@ -57,12 +57,12 @@ export class DeliveryListComponent implements OnInit {
   }
   onCheckboxChange() {
     console.log("La valeur de la case à cocher est : ", this.isChecked);
-    if (this.isChecked==false){
+    if (this.isChecked == false) {
 
-      this.affiche=false
+      this.affiche = false
     }
-    else{
-      this.affiche=true
+    else {
+      this.affiche = true
     }
   }
   findPage() {
@@ -86,7 +86,8 @@ export class DeliveryListComponent implements OnInit {
     this.deliveryservice.findById(id).subscribe({
       next: (result) => {
         this.delivery = result
-      console.log(result,id)},
+        console.log(result, id)
+      },
       error: (error) => console.error(error),
     });
   }
@@ -122,23 +123,22 @@ export class DeliveryListComponent implements OnInit {
       }
     );
     console.log(this.delivery)
-    if((this.delivery.productType==undefined) ||(this.delivery.instructiuonCode==undefined) || (this.delivery.instructiuonName==undefined) ){
+    if ((this.delivery.productType == undefined) || (this.delivery.instructiuonCode == undefined) || (this.delivery.instructiuonName == undefined)) {
       this.toastService.close("0");
-      let lg=localStorage.getItem("locale")
-      this.http.get(  "../../../../../assets/i18n/" + lg + ".json").subscribe((data:any) => {
-       this.toastService.warning(data.verifCodeName)
- 
-     });
-     //  this.toastService.warning("Verify your freightterm code"
-       
-     //  );
+      let lg = localStorage.getItem("locale")
+      this.http.get("../../../../../assets/i18n/" + lg + ".json").subscribe((data: any) => {
+        this.toastService.warning(data.verifCodeName)
+      });
+      //  this.toastService.warning("Verify your freightterm code"
+
+      //  );
       return;
     }
-   
+
     this.deliveryservice.save(id, this.delivery!).subscribe({
       next: () => {
         this.findPage();
-        this.formModal.hide ();
+        this.formModal.hide();
         this.onCancel();
         this.toastService.close("0");
         this.toastService.success(
@@ -172,10 +172,10 @@ export class DeliveryListComponent implements OnInit {
 
   onClickEdit(id: string) {
     this.findById(id);
-    setTimeout(()=>{
-      console.log('ee:',this.delivery)
+    setTimeout(() => {
+      console.log('ee:', this.delivery)
 
-    },2000)
+    }, 2000)
     this.formModal.show({
       title: "menu.edit-delivery",
       confirm: () => this.onSave(id),
@@ -183,21 +183,21 @@ export class DeliveryListComponent implements OnInit {
     });
   }
 
- 
+
   onClickArchive(id: string) {
     this.archiveModal.show(() => {
       this.deliveryservice.archive(id).subscribe({
         next: () => {
-             this.findPage();
-        this.findArchivedPage();
+          this.findPage();
+          this.findArchivedPage();
 
           this.archiveModal.hide();
-            this.toastService.close("0");
-            this.toastService.success(
-              this.translateService.instant("success.deleted", {
-                elem: this.translateService.instant("delivery"),
-              })
-            );
+          this.toastService.close("0");
+          this.toastService.success(
+            this.translateService.instant("success.deleted", {
+              elem: this.translateService.instant("delivery"),
+            })
+          );
           console.log(id);
 
           //   console.log(id);
@@ -248,7 +248,7 @@ export class DeliveryListComponent implements OnInit {
   }
 
 
-  
+
 
 
   findArchivedPage() {
@@ -274,7 +274,7 @@ export class DeliveryListComponent implements OnInit {
     this.deliveryservice.disArchive(id).subscribe({
       next: () => {
         this.findArchivedPage();
-this.findPage()
+        this.findPage()
         this.toastService.success(
           this.translateService.instant("success.restore", {
             elem: this.translateService.instant("delivery"),

@@ -5,6 +5,6 @@ export type Currency = {
     code?: string
     name?: string
     countryname ?: string
-	 countrycode ?: string
+    countrcode ?: string
 	 digitalcode ?: string
 }
