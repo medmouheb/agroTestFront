@@ -14,11 +14,22 @@ export class FreighttermsFormGeneralComponent implements OnInit {
   addform: FormGroup;
   constructor(private sharedService: SharedService,private freighttermsservice:FreightTermsService) { }
 
+  freighttermcodeList=["CIF","CFR","FOB","FoB","DAT","CIP"]
+
   ngOnInit(): void {
     if (this.freightterm == undefined) this.freightterm = { freighttermcode: "", freighttermname : "" };
     this.initForm();
     this.getetat()
+    console.log("lkl::",this.freightterm.freighttermcode )
+    if(this.freighttermcodeList.indexOf(this.freightterm.freighttermcode )!=-1){
+      this.otherCondition=true
+    }
+    if(!this.freightterm.freighttermcode ){
+      this.sharedService.setIsActive(false)
+    }
   }
+
+  
   initForm() {
    
     this.addform = new FormGroup({
@@ -132,34 +143,57 @@ export class FreighttermsFormGeneralComponent implements OnInit {
     
     }
     console.log("le ship :", this.freightterm);
+    if(this.freighttermcodeList.indexOf(this.freightterm.freighttermcode )!=-1){
+      console.log("      this.otherCondition=true      ",this.freightterm.freighttermcode,(this.freighttermcodeList.indexOf(this.freightterm.freighttermcode )!=-1))
+    }else{
+      console.log("      this.otherCondition=false      ",this.freightterm.freighttermcode,(this.freighttermcodeList.indexOf(this.freightterm.freighttermcode )!=-1))
+      this.otherCondition=true
 
+    }
   }
 
   get f() {
     return this.addform.controls;
   }
+  otherCondition=false
   setList(){
     console.log(this.freightterm.freighttermcode)
     let ch=this.freightterm.freighttermcode
     switch(ch){
       case "CIF":
         this.freightterm.freighttermname ="Cost,Insurance,Freight";
+        this.otherCondition=false
+
         break; 
         case "CFR":
         this.freightterm.freighttermname ="Cost and Freight";
+        this.otherCondition=false
+
         break; 
         case "FOB":
         this.freightterm.freighttermname ="Free On Board";
+        this.otherCondition=false
+
         break; 
         case "FoB":
         this.freightterm.freighttermname ="Freight On Board";
+        this.otherCondition=false
+
         break; 
         case "DAT":
         this.freightterm.freighttermname ="Delivered at Terminal";
+        this.otherCondition=false
+
         break; 
         case "CIP":
         this.freightterm.freighttermname ="Carrier Insurance Paid";
+        this.otherCondition=false
+        
         break; 
+        default : this.otherCondition=true
+        this.freightterm.freighttermname=""
+        this.freightterm.freighttermcode=""
+        break;
       
     }
   }
@@ -181,8 +215,13 @@ export class FreighttermsFormGeneralComponent implements OnInit {
   isBlurDCisvalid() {
     if (this.freightterm.freighttermcode == undefined) {
       this.DCisvalid = true
+      console.log("asa::aa")
     }
-    else if (this.freightterm.freighttermcode.toString().length < 1) { this.DCisvalid = true }
+    else if (this.freightterm.freighttermcode.toString().length < 1) { 
+      this.DCisvalid = true 
+      console.log("asa::")
+
+    }
     else {
       this.DCisvalid = false
     }

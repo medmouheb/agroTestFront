@@ -47,7 +47,7 @@
      
     </div>
     <div class="form-group col-md-6">
-        <label class="required" for="speciesType">{{ "Species Type" | translate }}  {{division.speciesType}}   </label>
+        <label class="required" for="speciesType">{{ "Species Type" | translate }}   </label>
         <select class="form-control"
         (click)="geValues($event)"
          name="speciesType"
@@ -76,6 +76,14 @@
         </select>
      
     </div>
+
+
+    <div class="form-group col-md-6">
+      <label class="required" for="currencyname">{{'currencyName' | translate}}</label>
+      <input readonly class="form-control" name="currencyname" formControlName="currencyname" [(ngModel)]="division.currencyname" (ngModelChange)="geValues($event)"
+        required aria-invalid="true" aria-describedby="code-error">
+    </div>
+
     <div class="form-group col-md-6">
       <label class="required" for="currencyCode" >{{ "currencyCode" | translate }}</label>
       <select (blur)="isBlur4();selectValue($event)"  (ngModelChange)="geValues($event)" (click)="selectValue($event);"  type="number" class="form-control" name="currencycode" formControlName="currencycode" [(ngModel)]="division.currencycode">

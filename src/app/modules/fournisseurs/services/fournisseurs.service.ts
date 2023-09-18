@@ -80,7 +80,7 @@ export class FournisseursService {
   }
 
   downloadCSVTemplate(): Observable<any> {
-    let url = `${this.baseUrl()}/fournisseur/entityCSV`;
+    let url = `${this.baseUrl()}/fournisseur/csv-template`;
     return this.http.get(url, { responseType: "blob" });
   }
   uploadCSVTemplate(file:any): Observable<any> {

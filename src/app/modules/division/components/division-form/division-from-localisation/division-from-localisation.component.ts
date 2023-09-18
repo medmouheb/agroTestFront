@@ -26,31 +26,36 @@ export class DivisionFromLocalisationComponent implements OnInit {
     private wilayaservice: WillayaService) { }
 
   ngOnInit(): void {
-    if (localStorage.getItem("company")) {
-      this.isRemenber = false
-      // this.division.companyname=JSON.parse(  localStorage.getItem("company")).companyname
-      // this.division.companycode=JSON.parse(  localStorage.getItem("company")).codecompany
-    }
+    // if (localStorage.getItem("company")) {
+    //   this.isRemenber = true
+    //   // this.division.companyname=JSON.parse(  localStorage.getItem("company")).companyname
+    //   // this.division.companycode=JSON.parse(  localStorage.getItem("company")).codecompany
+    // }
     this.getAllWillaya()
     this.getAllCompany()
+    setTimeout(() => {
+    this.wil = {...this.companys.filter(el => {return el.name == this.division.companyname})[0]}
+    }, 500);
+    
 
     
-    setTimeout(()=>{
-      this.wil = {
-        ...this.companys.filter(el => {
-          //console.log(el)
-          return el.name == this.division.companyname
+    
+    // setTimeout(()=>{
+    //   this.wil = {
+    //     ...this.companys.filter(el => {
+    //       //console.log(el)
+    //       return el.name == this.division.companyname
   
-        })[0]
-      }
-      this.division = { ...this.wil, phone: this.wil.number, codeCity: this.wil.cityCode, nameCity: this.wil.cityName, companyname: this.wil.name }
-      this.isRemenber=true
+    //     })[0]
+    //   }
+    //   this.division = { ...this.wil, phone: this.wil.number, codeCity: this.wil.cityCode, nameCity: this.wil.cityName, companyname: this.wil.name }
+    //   this.isRemenber=true
 
-    },500)
+    // },500)
     
     
   }
-  isRemenber = false
+  isRemenber = true
   getAllWillaya() {
     this.wilayaservice.findAll().subscribe({
       next: (result) => { this.wilayas = result; console.log("2==", result) },
@@ -58,13 +63,28 @@ export class DivisionFromLocalisationComponent implements OnInit {
     });
   }
   setCompany() {
-    console.log("=>",this.wil)
     this.isRemenber = !this.isRemenber
+    console.log("rrr::",this.wil)
 
-    if (this.isRemenber == false) {
-      this.division = { companyname: this.wil.name }
+    if (this.isRemenber ) {
+
+      this.division.address=this.wil.address
+      this.division.codeCity=this.wil.cityCode
+      this.division.nameCity=this.wil.cityName
+      this.division.wilayaCode=this.wil.wilayaCode
+      this.division.wilayaName=this.wil.wilayaName
+      this.division.zipCode=this.wil.zipCode
+      this.division.email=this.wil.email
     } else {
-      this.division = { ...this.wil, phone: this.wil.number, codeCity: this.wil.cityCode, nameCity: this.wil.cityName, companyname: this.wil.name }
+
+      this.division.address=""
+      this.division.codeCity=""
+      this.division.nameCity=""
+      this.division.wilayaCode=""
+      this.division.wilayaName=""
+      this.division.zipCode=""
+      this.division.email=""
+      this.division.phone=""
 
     }
   }
@@ -113,31 +133,30 @@ export class DivisionFromLocalisationComponent implements OnInit {
   // }
   wil: any
   selectValue1(e: any) {
-    console.log("88::")
+    this.wil = {...this.companys.filter(el => {return el.name == e.target.value})[0]}
 
-    this.wil = {
-      ...this.companys.filter(el => {
-        //console.log(el)
-        return el.name == e.target.value
 
-      })[0]
-    }
 
-    console.log(this.companys.filter(el => {
-      //console.log(el)
-      return el.name == e.target.value
-
-    })[0])
-    console.log("88::", this.wil)
+    console.log("88::", this.division)
+    console.log("88::9", this.wil)
     if (this.isRemenber) {
-      this.division = { ...this.wil, phone: this.wil.number, codeCity: this.wil.cityCode, nameCity: this.wil.cityName }
       this.division.companyname = e.target.value
+      this.division.address=this.wil.address
+      this.division.codeCity=this.wil.cityCode
+      this.division.nameCity=this.wil.cityName
+      this.division.wilayaCode=this.wil.wilayaCode
+      this.division.wilayaName=this.wil.wilayaName
+      this.division.zipCode=this.wil.zipCode
+      this.division.email=this.wil.email
 
+
+      this.division.phone=this.wil.number
+
+    }else{
+
+      this.division.companyname = e.target.value
     }
-    // this.division.companycode=wil
-    // console.log(this.division.companyname)
-    // console.log(this.division.companycode)
-    // this.companyname=wil
+
 
 
 

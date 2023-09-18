@@ -31,6 +31,8 @@ export class VehiculeListComponent implements OnInit {
   companyss: Array<Vehicule> = [];
   loading = false;
   companyPage: Page<Vehicule> = initPage;
+  companyPages: Page<Vehicule> = initPage;
+
   isChecked: boolean = false;
   affiche:boolean = false;
   onPaginationChange: EventEmitter<string> = new EventEmitter<string>();
@@ -90,6 +92,22 @@ export class VehiculeListComponent implements OnInit {
         error: (error) => {
           this.loading = false;
           console.error("aze",error );
+        },
+        complete: () => (this.loading = false),
+      });
+  }
+  findArchivedPage() {
+    this.loading = true;
+    this.vehiculeService
+      .findArchivedPage(this.pageNumber, this.pageSize, this.filter)
+      .subscribe({
+        next: (result) => {
+          this.companyss = result.content;
+          this.companyPages = result;
+        },
+        error: (error) => {
+          this.loading = false;
+          console.error(error);
         },
         complete: () => (this.loading = false),
       });
@@ -312,21 +330,6 @@ this.findPage()
 
 
 
-  findArchivedPage() {
-    this.loading = true;
-    this.vehiculeService
-      .findArchivedPage(this.pageNumber, this.pageSize, this.filter)
-      .subscribe({
-        next: (result) => {
-          this.companyss = result.content;
-          this.companyPage = result;
-        },
-        error: (error) => {
-          this.loading = false;
-          console.error(error);
-        },
-        complete: () => (this.loading = false),
-      });
-  }
+  
 
 }

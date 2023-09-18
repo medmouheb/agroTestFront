@@ -167,43 +167,13 @@ if (data!=null){
       
       ]),
     });
-    console.log("====================================");
-    console.log(" add form :", this.addform);
-    console.log("====================================");
+
   }
 
   geValues(event) {
-    console.log("====================================");
-    console.log("event :", event);
-    console.log("====================================");
-
-    console.log("====================================");
-    console.log("le formulaire :", this.addform);
-    console.log("====================================");
-
-    console.log(this.growout.code);
-    console.log(this.growout.name);
-    console.log(this.growout.divisionName);
-    console.log(this.growout.divisionCode);
-    
-    console.log(
-      this.dispotrueCode==false&&this.dispotruename==false&&
-      this.growout.code != null &&
-      this.growout.code != "" &&
-      this.growout.name != null &&
-      this.growout.name != "" &&
-      this.growout.divisionCode != null &&
-      this.growout.divisionCode != "" &&
-      this.growout.divisionName != null &&
-      this.growout.divisionName != "" &&
-      this.growout.code.toString().length >= 1 &&
-      this.growout.name.toString().length >= 1 &&
-      this.growout.divisionCode.toString().length >=1 &&
-      this.growout.divisionName.toString().length >= 1
-    );
+   console.log("5555")
     if (
       this.dispotrueCode==false&&this.dispotruename==false&&
-      this.fieldControl.status !="INVALID"  &&
       this.growout.code != null &&
       this.growout.code != "" &&
       this.growout.name != null &&
@@ -217,8 +187,11 @@ if (data!=null){
       this.growout.divisionCode.toString().length >= 1 &&
       this.growout.divisionName.toString().length >= 1 
     ) {
+      console.log("8888")
       this.sharedService.setIsActive(true);
     } else {
+      console.log("9999")
+
       this.sharedService.setIsActive(false);
     }
   }

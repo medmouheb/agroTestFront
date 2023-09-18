@@ -146,7 +146,7 @@ export class ProductUsageListComponent implements OnInit {
         this.toastService.close("0");
         this.toastService.success(
           this.translateService.instant("success.saved", {
-            elem: this.translateService.instant("company"),
+            elem: this.translateService.instant("ProductUsage"),
           })
         );
       },
@@ -154,7 +154,7 @@ export class ProductUsageListComponent implements OnInit {
         this.toastService.close("0");
         this.toastService.error(
           this.translateService.instant(error.error, {
-            elem: this.translateService.instant("company"),
+            elem: this.translateService.instant("ProductUsage"),
           })
         );
       },
@@ -190,7 +190,7 @@ export class ProductUsageListComponent implements OnInit {
     setTimeout(() => {
       this.stepper.prevStep();
 
-    }, 100);
+    }, 500);
     setTimeout(() => {
       this.formModal.show({
         title: "menu.edit-ProductUsage",

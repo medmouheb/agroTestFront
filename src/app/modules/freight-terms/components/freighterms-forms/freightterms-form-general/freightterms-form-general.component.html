@@ -4,9 +4,8 @@
         <label class="required" for="freighttermcode">{{ "freighttermcode" | translate }}</label>
 
 
-        <select class="form-control" name="freighttermcode" (blur)="isBlurDCisvalid();geValues($event); exist();blur1()
-                        " (click)="setList() ;" [(ngModel)]="freightterm.freighttermcode" formControlName="freighttermcode" required
-            aria-invalid="true" type="number" aria-describedby="code-error" (ngModelChange)="geValues($event)">
+        <select  class="form-control" name="freighttermcode" (blur)="isBlurDCisvalid();geValues($event); exist();blur1()" (change)="setList() ;" [(ngModel)]="freightterm.freighttermcode" formControlName="freighttermcode" required
+            aria-invalid="true" aria-describedby="code-error" (ngModelChange)="geValues($event)">
 
             <option value="" disabled selected>
             </option>
@@ -41,6 +40,7 @@
 
 
         </select>
+        <input (blur)="isBlurDCisvalid();geValues($event); exist();blur1()" class="form-control" name="freighttermcode" *ngIf="otherCondition" type="text"  [(ngModel)]="freightterm.freighttermcode" formControlName="freighttermcode">
         <div style=" color : red;" *ngIf="dispotrueCode">{{'Code must be unique'|translate}}</div>
         <div style="color: red;" *ngIf="DCisvalid">{{'Code must be not null'|translate}}</div>
 
@@ -52,7 +52,7 @@
 
     <div class="form-group col-md-6 ">
         <label class="required" for="freighttermname">{{ "freighttermname" | translate }}</label>
-        <input class="form-control" (blur)="existname();isBlurDNisvalid();geValues($event);" name="freighttermname"
+        <input [readonly]="!otherCondition" class="form-control" (blur)="existname();isBlurDNisvalid();geValues($event);" name="freighttermname"
             formControlName="freighttermname" [(ngModel)]="freightterm.freighttermname" required
             placeholder="{{'Write your freight terms name'|translate}}" aria-invalid="true"
             aria-describedby="name-error" (ngModelChange)="geValues($event)">

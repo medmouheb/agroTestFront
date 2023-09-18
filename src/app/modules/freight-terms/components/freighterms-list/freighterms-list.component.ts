@@ -7,6 +7,7 @@ import { Page, initPage } from 'app/shared/models';
 import { HotToastService } from '@ngneat/hot-toast';
 import { TranslateService } from '@ngx-translate/core';
 import { FreightTermsService } from '../../Service/freight-terms.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-freighterms-list',
@@ -42,7 +43,8 @@ export class FreightermsListComponent implements OnInit {
     private freighttermsservice:FreightTermsService,
     private translateService: TranslateService,
 
-    private toastService: HotToastService
+    private toastService: HotToastService,
+    private http: HttpClient
 
   ) { }
 
@@ -134,9 +136,14 @@ export class FreightermsListComponent implements OnInit {
    console.log(this.freightterm)
    if((this.freightterm.freighttermcode==undefined) ||(this.freightterm.freighttermcode=='')  ){
      this.toastService.close("0");
-     this.toastService.warning("Verify your freightterm code"
+     let lg=localStorage.getItem("locale")
+     this.http.get(  "../../../../../assets/i18n/" + lg + ".json").subscribe((data:any) => {
+      this.toastService.warning(data.verifCodeName)
+
+    });
+    //  this.toastService.warning("Verify your freightterm code"
       
-     );
+    //  );
      return;
    }else  if((this.freightterm.freighttermname ==undefined) ||(this.freightterm.freighttermname =='')  ){
      this.toastService.close("0");

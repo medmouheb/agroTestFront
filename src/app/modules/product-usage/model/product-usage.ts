@@ -12,4 +12,6 @@ export type ProductUsage = {
     montant?:any
     ndeReference?:string
     commentaire?:string
+    location?:string
+    void?:any
 }

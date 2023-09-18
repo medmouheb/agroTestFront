@@ -42,9 +42,10 @@
 
   <div class="form-group col-md-6">
     <label class="required" for="divisionName">{{"divisionName" | translate }}</label>
-    <input  (blur)="isBlurMisvalid()"  class="form-control" name="divisionName" formControlName="divisionName" 
-    [(ngModel)]="growout.divisionName"
-      aria-describedby="code-error" required aria-invalid="true" (ngModelChange)="geValues($event)"  readonly/>
+
+    <input readonly  (blur)="isBlurMisvalid()"  class="form-control" name="divisionName" formControlName="divisionName" 
+    [(ngModel)]="growout.divisionName" placeholder=" {{'Write your Division name'|translate}}"
+      aria-describedby="code-error" required aria-invalid="true" (ngModelChange)="geValues($event)" />
       <!-- <div style="color: red;" *ngIf="Misvalid" >{{'the name must be between 3 and 8 characters'|translate}} </div> -->
 
     </div>

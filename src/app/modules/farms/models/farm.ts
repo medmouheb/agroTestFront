@@ -43,7 +43,7 @@ export type Farm = {
   warehousecode?: string;
   growout?: any
   product?: any
-  phonefix?: any
+  telephone?: any
   land?: any
   planning?: any
   logistic?: any

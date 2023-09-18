@@ -20,13 +20,13 @@
     </div>
   </div>
 
-  <div class="datatable">
+  <div *ngIf="affiche==false" class="datatable">
 
     <ng-container *ngIf="loading">
       <app-spinner></app-spinner>
     </ng-container>
 
-    <ng-container *ngIf="!loading && growoutPage.empty &&growoutPages.empty">
+    <ng-container *ngIf="!loading && growoutPage.empty ">
       <app-no-data></app-no-data>
     </ng-container>
 
@@ -121,7 +121,7 @@
 
         </tr>
       </thead>
-      <tbody class="text-sm" *ngIf="affiche==false">
+      <tbody class="text-sm" >
         <tr class="row-data" *ngFor="let div of growouts">
           <td>
             {{div.name}}
@@ -157,7 +157,112 @@
           </td>
         </tr>
       </tbody>
-      <tbody class="text-sm" *ngIf="affiche==true">
+      
+    </table>
+  </div>
+  <div  *ngIf="affiche==true" class="datatable">
+
+    <ng-container *ngIf="loading">
+      <app-spinner></app-spinner>
+    </ng-container>
+
+    <ng-container *ngIf="!loading &&  growoutPages.empty">
+      <app-no-data></app-no-data>
+    </ng-container>
+
+    <table  class="table" *ngIf="!loading && !growoutPages.empty">
+      <thead class="datatable-header">
+        <tr>
+          <th>
+            <strong  class="style-text">
+              {{'growoutname' | translate}}
+              <a href="javascript:void(0);">
+                <svg (click)="sortByName()" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                  fill="currentColor" class="bi bi-chevron-double-down custom-color" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd"
+                    d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z" />
+
+                </svg>
+              </a>
+            </strong>
+          </th>
+          <th>
+            <strong  class="style-text">
+              {{'growoutcode' | translate}}
+              <a href="javascript:void(0);">
+                <svg (click)="sortByCode()" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                  fill="currentColor" class="bi bi-chevron-double-down custom-color" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd"
+                    d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z" />
+
+                </svg>
+              </a>
+            </strong>
+          </th>
+    
+          <th>
+            <strong  class="style-text">
+              {{'divisionName' | translate}}
+              <a href="javascript:void(0);">
+                <svg (click)="sortBydivi()" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                  fill="currentColor" class="bi bi-chevron-double-down custom-color" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd"
+                    d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z" />
+
+                </svg>
+              </a>
+            </strong>
+          </th>
+         
+          <th>
+            <strong  class="style-text">
+              {{'nameCity' | translate}}
+              <a href="javascript:void(0);">
+                <svg (click)="sortByCityName()" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                  fill="currentColor" class="bi bi-chevron-double-down custom-color" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd"
+                    d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z" />
+
+                </svg>
+              </a>
+            </strong>
+          </th>
+          <th>
+            <strong  class="style-text">
+              {{'Willaya' | translate}}
+              <a href="javascript:void(0);">
+                <svg (click)="sortBywillaya()" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                  fill="currentColor" class="bi bi-chevron-double-down custom-color" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd"
+                    d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z" />
+
+                </svg>
+              </a>
+            </strong>
+          </th>
+          <th>
+            <strong  class="style-text">
+              {{'Address' | translate}}
+              <a href="javascript:void(0);">
+                <svg (click)="sortByAddress()" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                  fill="currentColor" class="bi bi-chevron-double-down custom-color" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd"
+                    d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z" />
+
+                </svg>
+              </a>
+            </strong>
+          </th>
+          <th>
+            <strong  class="style-text">
+              {{'actions' | translate}}
+            </strong>
+          </th>
+
+        </tr>
+      </thead>
+      
+      <tbody class="text-sm" >
         <tr class="row-data" *ngFor="let div of growoutss">
           <td>
             {{div.name}}

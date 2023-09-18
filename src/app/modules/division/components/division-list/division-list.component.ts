@@ -123,14 +123,16 @@ export class DivisionListComponent implements OnInit {
         id: "0",
       }
     );
-    console.log(this.division)
+    console.log("99::8",this.division)
     // if(!this.division.companycode){
     //     this.toastService.error("you must select a campany  ")
     //     return console.log("okk");
     // }
     
     this.divisionService.save(id, this.division!).subscribe({
-      next: () => {
+      next: (data) => {
+        console.log("99::9",this.division)
+        console.log("99::",data)
         this.findPage();
         this.formModal.hide();
         this.onCancel();

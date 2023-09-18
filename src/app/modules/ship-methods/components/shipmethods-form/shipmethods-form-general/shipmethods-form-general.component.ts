@@ -19,6 +19,10 @@ export class ShipmethodsFormGeneralComponent implements OnInit {
     this.initForm();
     this.getetat()
 
+    if(this.codeList.indexOf(this.shipmethod.code )!=-1){
+      this.otherCondition=true
+    }
+
   }
   initForm() {
    
@@ -134,6 +138,14 @@ export class ShipmethodsFormGeneralComponent implements OnInit {
       this.sharedService.setIsActive(false);
     
     }
+
+    if(this.codeList.indexOf(this.shipmethod.code )!=-1){
+      console.log("      this.otherCondition=true      ",this.shipmethod.code,(this.codeList.indexOf(this.shipmethod.code )!=-1))
+    }else{
+      console.log("      this.otherCondition=false      ",this.shipmethod.code,(this.codeList.indexOf(this.shipmethod.code )!=-1))
+      this.otherCondition=true
+
+    }
     console.log("le ship :", this.shipmethod);
 
   }
@@ -141,28 +153,50 @@ export class ShipmethodsFormGeneralComponent implements OnInit {
   get f() {
     return this.addform.controls;
   }
+
+  codeList=["AIR","DEL","Ground","SEA","RAIL","P/U"]
+
+  otherCondition=false
+
   setList(){
     console.log(this.shipmethod.code)
     let ch=this.shipmethod.code
     switch(ch){
       case "AIR":
         this.shipmethod.name="Air";
+        this.otherCondition=false
+
         break; 
         case "DEL":
         this.shipmethod.name="Delivery";
+        this.otherCondition=false
+
         break; 
         case "Ground":
         this.shipmethod.name="Ground";
+        this.otherCondition=false
+
         break; 
         case "SEA":
         this.shipmethod.name="Sea";
+        this.otherCondition=false
+
         break; 
         case "RAIL":
         this.shipmethod.name="Rail/Train";
+        this.otherCondition=false
+
         break; 
         case "P/U":
         this.shipmethod.name="Pick-up";
+        this.otherCondition=false
+
         break; 
+
+        default : this.otherCondition=true
+        this.shipmethod.name=""
+        this.shipmethod.code=""
+        break;
       
     }
   }

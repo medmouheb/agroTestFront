@@ -15,28 +15,33 @@ export class ProductUsageFormsGeneralComponent implements OnInit {
 
   @ViewChild("addform")
   addform: FormGroup;
- 
+  codeunique: any
   constructor(private sharedService: SharedService, private fb: FormBuilder, private compaser: ProductUsageService) { }
   codes: Array<String> = [];
+
+
   ngOnInit(): void {
+
     if (this.camp != null) {
       console.log("olll")
       this.sharedService.setIsActive(true);
       this.compaser.findAll().subscribe(data => {
-        console.log("777::",data.map(el => { return el.numeroDeLot }))
+        console.log("777::", data.map(el => { return el.numeroDeLot }))
         this.codes = data.map(el => { return el.ndeReference })
       })
-    }; 
+    };
 
     if (this.camp == undefined) { this.camp = { ndeReference: "", numeroDeLot: "" } };
     this.initForm();
     console.log(this.addform);
+
+    
   }
 
   initForm(
 
   ) {
-    
+
 
 
 
@@ -51,12 +56,33 @@ export class ProductUsageFormsGeneralComponent implements OnInit {
         ],
       ],
       ndeReference: [
-        null,
+        "fgegegeged",
         Validators.required,
       ],
     });
 
   }
+
+  generateUniqueNumericCode() {
+    const digits = '0123456789';
+    let code = '';
+    let length = 6
+    for (let i = 0; i < length; i++) {
+      const randomIndex = Math.floor(Math.random() * digits.length);
+      code += digits.charAt(randomIndex);
+    }
+    this.codeunique = code
+    console.log(code);
+    this.camp.ndeReference = code
+
+
+    let a =document.getElementById("ss") as HTMLInputElement
+    a.value   =code
+
+    
+  }
+
+
 
   minIstrueCode: boolean = false
 
@@ -104,19 +130,19 @@ export class ProductUsageFormsGeneralComponent implements OnInit {
 
   codeIsvalid = false
 
-validationCode() {
-  const codeRegex: RegExp =/^[a-zA-Z0-9]*$/;
-  console.log(this.camp.numeroDeLot)
-  if (codeRegex.test(this.camp.numeroDeLot)) {
-    this.codeIsvalid = false;
-  console.log(this.camp.numeroDeLot)
+  validationCode() {
+    const codeRegex: RegExp = /^[a-zA-Z0-9]*$/;
+    console.log(this.camp.numeroDeLot)
+    if (codeRegex.test(this.camp.numeroDeLot)) {
+      this.codeIsvalid = false;
+      console.log(this.camp.numeroDeLot)
+
+    }
+    else {
+      this.codeIsvalid = true
+    }
 
   }
-  else {
-  this.codeIsvalid=true
-  }
-
-}
 
   exist1() {
     console.log(this.camp.ndeReference);
@@ -137,32 +163,32 @@ validationCode() {
       }
     );
   }
-  
-  
 
- generateRandomCode() {
-  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-  let code = '';
-  for (let i = 0; i < 4; i++) {
-    const randomIndex = Math.floor(Math.random() * characters.length);
-    code += characters.charAt(randomIndex);
+
+
+  generateRandomCode() {
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let code = '';
+    for (let i = 0; i < 4; i++) {
+      const randomIndex = Math.floor(Math.random() * characters.length);
+      code += characters.charAt(randomIndex);
+    }
+    return code;
   }
-  return code;
-}
 
-  newSeggestions=""
+  newSeggestions = ""
 
   existname() {
-    console.log("aa::",this.codes)
+    console.log("aa::", this.codes)
     if (this.codes.indexOf(this.camp.ndeReference) != -1) {
       this.dispotruename = true
-     // this.newSeggestions= "chose "+this.camp.name+this.generateRandomCode()+" or "+this.camp.name+this.generateRandomCode()+" or "+this.camp.name+this.generateRandomCode()+" or "+this.camp.name+this.generateRandomCode()
+      // this.newSeggestions= "chose "+this.camp.name+this.generateRandomCode()+" or "+this.camp.name+this.generateRandomCode()+" or "+this.camp.name+this.generateRandomCode()+" or "+this.camp.name+this.generateRandomCode()
 
     } else {
       this.dispotruename = false
 
     }
-    
+
 
 
   }
@@ -200,18 +226,16 @@ validationCode() {
       this.minIstrueName = false;
     }
   }
-  
+
   geValues(event) {
-    
+
 
     if (
       this.dispotrueCode == false && this.dispotruename == false &&
       this.camp.numeroDeLot != null &&
       this.camp.numeroDeLot != "" &&
-      this.camp.ndeReference != null &&
-      this.camp.ndeReference != "" &&
-      this.camp.numeroDeLot.toString().length >= 1 &&
-      this.camp.ndeReference.toString().length >= 1
+
+      this.camp.numeroDeLot.toString().length >= 1 
     ) {
       this.sharedService.setIsActive(true);
     } else {

@@ -1,20 +1,23 @@
 <div class="row" [formGroup]="addform">
 
-
     <div class="form-group col-md-6">
         <label class="required" for="numeroDeLot">{{ "numeroDeLot" | translate }}</label>
-        <input (blur)="isBlur();exist();blur1();validationCode()" class="form-control" name="numeroDeLot" [(ngModel)]="camp.numeroDeLot" formControlName="numeroDeLot" placeholder="{{'Write your numeroDeLot'|translate}} "
-            required aria-invalid="true"  aria-describedby="code-error" (ngModelChange)="geValues($event)">
-            <div  style="color: red;" *ngIf="codeIsvalid">{{ "Invalid code format" |translate }}</div>
-            <div style=" color : red;" *ngIf="dispotrueCode">{{'numeroDeLot  must be unique'|translate}}</div>
-            <div style=" color : red;" *ngIf="minIstrueCode">{{'numeroDeLot  must be not null'|translate}}</div>
+        <input (blur)="isBlur();exist();blur1();validationCode() ;generateUniqueNumericCode()" class="form-control"
+            name="numeroDeLot" [(ngModel)]="camp.numeroDeLot" formControlName="numeroDeLot"
+            placeholder="{{'Write your numeroDeLot'|translate}} " required aria-invalid="true"
+            aria-describedby="code-error" (ngModelChange)="geValues($event)">
+        <div style="color: red;" *ngIf="codeIsvalid">{{ "Invalid code format" |translate }}</div>
+        <div style=" color : red;" *ngIf="dispotrueCode">{{'numeroDeLot must be unique'|translate}}</div>
+        <div style=" color : red;" *ngIf="minIstrueCode">{{'numeroDeLot must be not null'|translate}}</div>
     </div>
 
     <div class="form-group col-md-6">
         <label class="required" for="ndeReference">{{ "nDeReference" | translate }}</label>
-        <input (blur)="isBlur1();existname();exist1()"  class="form-control" name="ndeReference" formControlName="ndeReference" [(ngModel)]="camp.ndeReference"  placeholder="{{'Write your nDeReference'|translate}} "
-            required aria-invalid="true" aria-describedby="name-error" (ngModelChange)="geValues($event)">
+        <input id="ss"  class="form-control" name="ndeReference"
+            formControlName="ndeReference" [(ngModel)]="camp.ndeReference"
+            placeholder="{{'Write your nDeReference'|translate}}  " required aria-invalid="true"
+            aria-describedby="name-error" (ngModelChange)="geValues($event)" readonly>
 
-            <div style=" color : red;" *ngIf="dispotrueCode">{{'nDeReference  must be unique'|translate}}</div>
-            <div style=" color : red;" *ngIf="minIstrueCode">{{'nDeReference  must be not null'|translate}}</div>
+       
     </div>
+</div>
