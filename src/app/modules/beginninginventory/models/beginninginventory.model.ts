@@ -15,5 +15,5 @@ export type BeginningInventory = {
         dateExpiration?: any;
         temps?: string;
         commentaire?: string;
-        Vide?: any;
+        vide?: any;
 }

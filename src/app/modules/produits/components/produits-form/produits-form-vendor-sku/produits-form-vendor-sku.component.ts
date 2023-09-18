@@ -16,40 +16,41 @@ export class ProduitsFormVendorSkuComponent implements OnInit {
     "Vendor 2",
     "Vendor 3"
   ]
-  vendorsku:Array<VendorSKU>=[]
-  constructor(private sharedService: SharedService,private vendorskuservice:VendorskuService) { }
+  vendorsku: Array<VendorSKU> = []
+  constructor(private sharedService: SharedService, private vendorskuservice: VendorskuService) { }
 
 
   ngOnInit(): void {
-    if(!this.produit.vendorSKU){
+    if (!this.produit.vendorSKU) {
       this.produit.vendorSKU = {}
     }
     this.getAllvendor()
   }
-  getAllvendor(){
+  getAllvendor() {
     this.vendorskuservice.findAll().subscribe({
       next: (result) => { this.vendorsku = result; console.log("2==", result) },
       error: (error) => console.error(error),
     })
   }
-  fourn:any
-  selectVAlue(e:any){
-    console.log("3==",e.target.value)
+  fourn: any
+  selectVAlue(e: any) {
+    console.log("3==", e.target.value)
     this.vendorskuservice.findById(e.target.value).subscribe({
-      next: (result) => { this.fourn = result; console.log("2==", result)
-      this.produit.vendorSKU=this.fourn
-      console.log("5==",this.produit.vendorSKU) 
+      next: (result) => {
+        this.fourn = result; console.log("2==", result)
+        this.produit.vendorSKU = this.fourn
+        console.log("5==", this.produit.vendorSKU)
       },
-    error: (error) => console.error(error),
-    
-  })
-  //   let t=this.vendorsku.filter(el=>{return el.vendorSKUCode==e.target.value})[0]
-     this.produit.vendorSKU=this.fourn
-  //  console.log("3==",t)
-  //  e.target.value=t.vendorSKUName
-  
+      error: (error) => console.error(error),
 
-  //   console.log("4==",t)
+    })
+    //   let t=this.vendorsku.filter(el=>{return el.vendorSKUCode==e.target.value})[0]
+    this.produit.vendorSKU = this.fourn
+    //  console.log("3==",t)
+    //  e.target.value=t.vendorSKUName
+
+
+    //   console.log("4==",t)
 
   }
 

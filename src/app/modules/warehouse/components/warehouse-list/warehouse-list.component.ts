@@ -31,7 +31,7 @@ export class WarehouseListComponent implements OnInit {
   @ViewChild("importModal")
   importModal!: DialogComponent;
   currentStep = 0;
-  steps = ["General", "Projection"];
+  steps = ["steps.general", "steps.Projection"];
   isChecked: boolean = false;
   affiche: boolean = false;
   myForm: FormGroup;

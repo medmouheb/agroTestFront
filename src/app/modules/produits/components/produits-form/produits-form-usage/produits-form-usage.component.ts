@@ -12,9 +12,7 @@ export class ProduitsFormUsageComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    if(!this.produit.methodeutilisation){
-      this.produit.methodeutilisation = {}
-    }
+    
   }
 
 }

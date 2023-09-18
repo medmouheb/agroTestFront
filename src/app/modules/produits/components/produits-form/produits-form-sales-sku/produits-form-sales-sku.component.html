@@ -2,21 +2,26 @@
 
   <div class="form-group col-md-6">
     <label for="sales">{{'salesPro' | translate}}</label>
-    <select class="form-control" name="sales" #sales="ngModel" ngModel [(ngModel)]="produit.salesSKU.sales">
-      <option *ngFor="let sales of salesList" [value]="sales">
-        {{sales}}
+
+    <select (change)="setValue($event)" class="form-control" name="sales" >
+      <option selected disabled>
+        {{"il faut choisir"| translate}}
+      </option>
+      <option [selected]="produit.salesSKU.id==sales.id" *ngFor="let sales of salesList" [value]="sales.id">
+        {{sales.sailorCode}}
+
       </option>
     </select>
   </div>
 
   <div class="form-group col-md-6">
     <label for="code">{{'code' | translate}}</label>
-    <input class="form-control" name="code" #code="ngModel" ngModel [(ngModel)]="produit.salesSKU.code">
+    <input readonly class="form-control" name="code" #code="ngModel" ngModel [(ngModel)]="produit.salesSKU.sailorCodeSku">
   </div>
 
   <div class="form-group col-md-6">
     <label for="name">{{'name' | translate}}</label>
-    <input class="form-control" name="name" #name="ngModel" ngModel [(ngModel)]="produit.salesSKU.name">
+    <input readonly class="form-control" name="name" #name="ngModel" ngModel [(ngModel)]="produit.salesSKU.sailorNameSku">
   </div>
 
 </div>

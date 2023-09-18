@@ -45,10 +45,10 @@ export class ProduitsFormGroupComponent implements OnInit {
       tauxTva:[null],
       prixUnitaireHt:[null],
       maxdepasse:[null],
-      Fabricant:[null],
+      fabricant:[null],
       couleur:[null],
-      inventory:[null],
-      Medicamenteux:[null],
+      inventaire:[null],
+      medicamenteux:[null],
       status:[null],
       category:[null],
       currency:[null],
@@ -64,10 +64,11 @@ export class ProduitsFormGroupComponent implements OnInit {
     })
   }
 
-  onVendorChange(){
-    if(this.produit.fournisseur!.id){
-      this.produit.fournisseur = this.vendors.find(elem => elem.id === this.produit.fournisseur!.id)
-    }
+  onVendorChange(e:any){
+    alert(e.target.value)
+    console.log(this.vendors.find(elem => elem.id === e.target.value))
+    
+      this.produit.fournisseur = this.vendors.find(elem => elem.id === e.target.value)
   }
   minIstrueCode: boolean = false
   isBlur() {
