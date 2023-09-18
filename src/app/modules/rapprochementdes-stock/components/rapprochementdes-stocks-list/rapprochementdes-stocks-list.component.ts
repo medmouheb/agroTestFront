@@ -48,7 +48,7 @@ export class RapprochementdesStocksListComponent implements OnInit {
     "steps.details",
     "steps.pluss",
     "steps.localisations",
-    
+
     "steps.supplementairess"
   ];
 

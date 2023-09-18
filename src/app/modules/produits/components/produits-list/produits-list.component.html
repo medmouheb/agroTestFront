@@ -28,7 +28,8 @@
     <div class="form-group has-search">
       <span class="fa fa-search form-control-feedback"></span>
       <input #search (input)="onFilterChange(search.value)" type="text" class="form-control bg-white"
-        placeholder="Search">
+        placeholder="{{'Search by FieldProductName' | translate}}">
+
     </div>
   </div>
 

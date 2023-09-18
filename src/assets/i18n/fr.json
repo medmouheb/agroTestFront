@@ -209,10 +209,10 @@
   },
   "steps": {
     "supplementaires":"Suplémentaire",
-    "supplementairess":"optionnal n°3",
+    "supplementairess":"facultatif n°3",
 
     "plus":"Plus",
-    "pluss":"optionnal n°1",
+    "pluss":"facultatif n°1",
 
     "details": "Détails",
     "historique-de-maintenance": "Historique de maintenance",
@@ -223,7 +223,7 @@
     "general": "Géneral",
     "information": "Information",
     "localisation": "Localisation",
-    "localisations": "optionnal n°2",
+    "localisations": "facultatif n°2",
     "productAndLandUsed": "Produit et terrain utilisé",
     "planning": "Planification",
     "warehouse": "Entrepot",
@@ -261,7 +261,7 @@
     "verifiervotrenomwillaya": "Verify your willaya name"
   },
   "salesku": "Vente Sku",
-  "vendorsku": "Fournisseur sku",
+  "vendorsku": "Fournisseur Sku",
   "Field-product": "Produit de terrain",
   "company": "Entreprise",
   "product": "Produit",
@@ -286,7 +286,7 @@
   "codecostCenter": "Code centre de coûts",
   "namecostCenter": "Nom centre de coûts",
   "type": "Type",
-  "category": "Category",
+  "category": "Catégorie",
   "currencyCode": "Code de devise",
   "currencyName": "Nom devise",
   "currency": "Devise",
@@ -727,10 +727,10 @@
   
 
   "transCode":"Code de Transaction",
-  "Medication":"Medicaments",
+  "Medication":"Médicaments",
   "Vaccinations":"Vaccinations",
   "locationLot":"Emplacement",
-
+"Medicaments":"Médicaments",
   "quantite": "Quantité",
   "montant": "Montant",
   
@@ -907,7 +907,12 @@
 "nameField":"Nom Produit de Terrain",
 "codeField":"Code Produit de Terrain",
 "warehouseType":"Type d'Entrepot ",
-"Voidflag":"Drapeau vide"
-
-  
+"Voidflag":"Drapeau vide",
+"vendorSku":"Fournisseur Sku",
+"Search by FieldProductName":"Recherche par Produit de Terrain ",
+"select a Vendor Sku":"Choisir un Vendor Sku",
+"salesPro":"Ventes Sku",
+"Sales 1":"ventes 1",
+"Sales 2":"ventes 2",
+"Sales 3":"ventes 3"
 }
