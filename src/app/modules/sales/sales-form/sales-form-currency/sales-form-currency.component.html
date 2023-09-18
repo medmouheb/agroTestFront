@@ -4,7 +4,7 @@
         <label for="company">{{'currency' | translate}}</label>
         <select class="form-control" name="company"  #company="ngModel" ngModel [(ngModel)]="sales.currency.id"  aria-placeholder="--Select your Campany--"
             (ngModelChange)="onCompanyChange()">
-            <option value="" [selected]> --Select your Campany-- </option>
+            <option value="" [selected]> --{{'Select your Currency'|translate}} -- </option>
             <option *ngFor="let comp of currency" [value]="comp.id">
                 {{comp.name}}
             </option>

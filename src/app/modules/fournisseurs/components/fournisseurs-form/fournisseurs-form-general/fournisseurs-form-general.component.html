@@ -34,7 +34,7 @@
     <label class="required" for="currencyname">{{'currencyName' | translate}}</label>
     <input  class="form-control" name="currencyname" [(ngModel)]="fournisseur.currencyname" [value]="fournisseur.currencyname"  (ngModelChange)="geValues($event)"
       required aria-invalid="true" 
-        aria-describedby="code-error" >
+        aria-describedby="code-error" readonly >
   
 </div>
 
@@ -43,8 +43,8 @@
     <select class="form-control" name="type" ngModel [(ngModel)]="fournisseur.type" formControlName="paymentTerm"
          required aria-invalid="true"
         (ngModelChange)="geValues($event)">
-        <option value="INTERN">INTERN</option>
-        <option value="EXTERN">EXTERN</option> 
+        <option value="INTERN">{{'INTERN'|translate}}</option>
+        <option value="EXTERN">{{'EXTERN'|translate}}</option> 
     </select>
 </div>
     <div class="form-group col-md-6">

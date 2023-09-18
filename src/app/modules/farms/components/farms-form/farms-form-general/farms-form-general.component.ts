@@ -74,7 +74,7 @@ export class FarmsFormGeneralComponent implements OnInit {
     })[0]
 
     // this.farm.growout=wil
-    this.farm.cost_Center = wil.code
+    this.farm.cost_Center = wil
     console.log("44::", this.farm, wil, e.target.value)
 
 

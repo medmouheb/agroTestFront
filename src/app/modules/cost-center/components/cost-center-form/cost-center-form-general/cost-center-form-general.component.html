@@ -45,9 +45,11 @@
     <select class="form-control" name="type" ngModel [(ngModel)]="cost.typecost" formControlName="typecost"
          required aria-invalid="true"
         (ngModelChange)="geValuesCode($event)">
-        <option [selected]="cost.typecost=='INTERN'" value="INTERN">INTERN</option>
-        <option [selected]="cost.typecost=='EXTERN'" value="EXTERN">EXTERN</option> 
-        <option [selected]="cost.typecost=='ADMIN'" value="ADMIN">ADMIN</option> 
+
+        <option  [selected]="cost.typecost=='INTERN'"  value="INTERN">{{"INTERN"|translate}}</option>
+        <option [selected]="cost.typecost=='EXTERN'"  value="EXTERN">{{"EXTERN"|translate}}</option> 
+        <option [selected]="cost.typecost=='ADMIN'" value="ADMIN">{{"ADMIN"|translate}}</option> 
+
     </select>
 </div>
 </div>

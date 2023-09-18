@@ -44,7 +44,7 @@
         <select aria-placeholder="you must select"  class="form-control" name="facilityType" [(ngModel)]="warehouse.facilityType" formControlName="facilityType" required
           aria-invalid="true" aria-describedby="code-error" (click)="isfacilityTypeValid($event)">
           <option *ngFor=" let type of types " [value]="type">
-            {{type}}
+            {{type|translate}}
           </option>
         </select>
         <div style="color: red;" *ngIf="isprimarytype()" >{{'you must chose'|translate}}</div>

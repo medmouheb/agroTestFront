@@ -2,13 +2,14 @@
   <p> {{produit | json}} </p>
 
   <div class="form-group col-md-6">
-    <label for="sales">{{'sales' | translate}}</label>
+    <label for="sales">{{'salesPro' | translate}}</label>
     <select (change)="setValue($event)" class="form-control" name="sales" >
       <option selected disabled>
         {{"il faut choisir"| translate}}
       </option>
       <option [selected]="produit.salesSKU.id==sales.id" *ngFor="let sales of salesList" [value]="sales.id">
         {{sales.sailorCode}}
+
       </option>
     </select>
   </div>
