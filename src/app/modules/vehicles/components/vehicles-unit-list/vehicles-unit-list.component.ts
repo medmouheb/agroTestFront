@@ -148,7 +148,7 @@ export class VehiclesUnitListComponent implements OnInit {
         this.toastService.close("0");
         this.toastService.success(
           this.translateService.instant("success.saved", {
-            elem: this.translateService.instant("company"),
+            elem: this.translateService.instant("Vehicles"),
           })
         );
       },
@@ -156,7 +156,7 @@ export class VehiclesUnitListComponent implements OnInit {
         this.toastService.close("0");
         this.toastService.error(
           this.translateService.instant(error.error, {
-            elem: this.translateService.instant("company"),
+            elem: this.translateService.instant("Vehicles"),
           })
         );
       },
@@ -217,7 +217,7 @@ export class VehiclesUnitListComponent implements OnInit {
           this.toastService.close("0");
           this.toastService.success(
             this.translateService.instant("success.deleted", {
-              elem: this.translateService.instant("company"),
+              elem: this.translateService.instant("Vehicles"),
             })
           );
           //   console.log(id);
@@ -274,7 +274,7 @@ export class VehiclesUnitListComponent implements OnInit {
         this.findPage()
         this.toastService.success(
           this.translateService.instant("success.restore", {
-            elem: this.translateService.instant("company"),
+            elem: this.translateService.instant("Vehicles"),
           })
         );
         console.log(id);
@@ -291,7 +291,7 @@ export class VehiclesUnitListComponent implements OnInit {
         console.log("Success");
         this.toastService.success(
           this.translateService.instant("success.deleted", {
-            elem: this.translateService.instant("company"),
+            elem: this.translateService.instant("Vehicles"),
           })
         );
       },

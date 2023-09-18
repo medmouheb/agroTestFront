@@ -143,7 +143,7 @@ export class BeginninginventoryListComponent implements OnInit {
           this.toastService.close("0");
           this.toastService.success(
             this.translateService.instant("success.saved", {
-              elem: this.translateService.instant("company"),
+              elem: this.translateService.instant("BeginningInventaire"),
             })
           );
         },
@@ -151,7 +151,7 @@ export class BeginninginventoryListComponent implements OnInit {
           this.toastService.close("0");
           this.toastService.error(
             this.translateService.instant(error.error, {
-              elem: this.translateService.instant("company"),
+              elem: this.translateService.instant("BeginningInventaire"),
             })
           );
         },
@@ -212,7 +212,7 @@ export class BeginninginventoryListComponent implements OnInit {
             this.toastService.close("0");
             this.toastService.success(
               this.translateService.instant("success.deleted", {
-                elem: this.translateService.instant("company"),
+                elem: this.translateService.instant("BeginningInventaire"),
               })
             );
             //   console.log(id);
@@ -269,7 +269,7 @@ export class BeginninginventoryListComponent implements OnInit {
   this.findPage()
           this.toastService.success(
             this.translateService.instant("success.restore", {
-              elem: this.translateService.instant("company"),
+              elem: this.translateService.instant("BeginningInventaire"),
             })
           );
           console.log(id);
@@ -286,7 +286,7 @@ export class BeginninginventoryListComponent implements OnInit {
           console.log("Success");
           this.toastService.success(
             this.translateService.instant("success.deleted", {
-              elem: this.translateService.instant("company"),
+              elem: this.translateService.instant("BeginningInventaire"),
             })
           );
         },

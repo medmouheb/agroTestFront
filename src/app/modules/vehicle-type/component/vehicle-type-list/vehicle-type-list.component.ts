@@ -120,7 +120,7 @@ export class VehicleTypeListComponent implements OnInit {
         this.toastService.close("0");
         this.toastService.success(
           this.translateService.instant("success.saved", {
-            elem: this.translateService.instant("company"),
+            elem: this.translateService.instant("vehicleType"),
           })
         );
       },
@@ -128,7 +128,7 @@ export class VehicleTypeListComponent implements OnInit {
         this.toastService.close("0");
         this.toastService.error(
           this.translateService.instant(error.error, {
-            elem: this.translateService.instant("company"),
+            elem: this.translateService.instant("vehicleType"),
           })
         );
       },
@@ -275,7 +275,7 @@ export class VehicleTypeListComponent implements OnInit {
           this.toastService.close("0");
           this.toastService.success(
             this.translateService.instant("success.deleted", {
-              elem: this.translateService.instant("company"),
+              elem: this.translateService.instant("vehicleType"),
             })
           );
         },

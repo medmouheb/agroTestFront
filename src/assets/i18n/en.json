@@ -544,7 +544,13 @@
   "Search by FieldProductName":"Search by Field Product",
 
   "BankCode": "Bank Code",
-
+  "Hatchery": "Hatchery",
+  "Feed mill": "Feed mill",
+  "Warehouse": "Warehouse",
+  "Plant": "Plant",
+  "Logistics": "Logistics",
+  "Farm": "Farm",
+  "Vehicles":"Vehicles",
 
   "Write your ship method code": "Write your ship method code",
   "Write your ship method name": "Write your ship method name",

@@ -932,7 +932,13 @@
 "Search by FieldProductName":"Recherche par Produit de Terrain ",
 "select a Vendor Sku":"Choisir un Vendor Sku",
 "vendorSku":"Fournisseur Sku",
-"salesPro":"Ventes Sku"
+"salesPro":"Ventes Sku",
+"Hatchery": "Couvoir",
+"Feed mill": "Moulin à alimentation",
+"Warehouse": "Entrepôt",
+"Plant": "Usine",
+"Logistics": "Logistique",
+"Farm": "Ferme"
 
 
 

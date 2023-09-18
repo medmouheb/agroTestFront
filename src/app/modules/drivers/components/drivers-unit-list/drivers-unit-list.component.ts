@@ -145,7 +145,7 @@ export class DriversUnitListComponent implements OnInit {
         this.toastService.close("0");
         this.toastService.success(
           this.translateService.instant("success.saved", {
-            elem: this.translateService.instant("company"),
+            elem: this.translateService.instant("Drivers"),
           })
         );
       },
@@ -153,7 +153,7 @@ export class DriversUnitListComponent implements OnInit {
         this.toastService.close("0");
         this.toastService.error(
           this.translateService.instant(error.error, {
-            elem: this.translateService.instant("company"),
+            elem: this.translateService.instant("Drivers"),
           })
         );
       },
@@ -214,7 +214,7 @@ export class DriversUnitListComponent implements OnInit {
           this.toastService.close("0");
           this.toastService.success(
             this.translateService.instant("success.deleted", {
-              elem: this.translateService.instant("company"),
+              elem: this.translateService.instant("Drivers"),
             })
           );
           //   console.log(id);
@@ -271,7 +271,7 @@ export class DriversUnitListComponent implements OnInit {
 this.findPage()
         this.toastService.success(
           this.translateService.instant("success.restore", {
-            elem: this.translateService.instant("company"),
+            elem: this.translateService.instant("Drivers"),
           })
         );
         console.log(id);
@@ -288,7 +288,7 @@ this.findPage()
         console.log("Success");
         this.toastService.success(
           this.translateService.instant("success.deleted", {
-            elem: this.translateService.instant("company"),
+            elem: this.translateService.instant("Drivers"),
           })
         );
       },

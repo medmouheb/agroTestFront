@@ -93,12 +93,12 @@
       
        <!-- <div style="border: 1px solid red; color : red;" *ngIf="minIfacilityType">{{'farmType must be between 1 and 10 charactere'|translate}}</div> -->
        <select  (blur)="isBlur2();geValues($event) "  class="form-control" name="facilityType" #facilityType="ngModel" (ngModelChange)="geValues($event)" ngModel [(ngModel)]="cost.facilityType">
-        <option value="Hatchery" (blur)="geValues($event)" >Hatchery</option>
-        <option value="Feed mill"  (blur)="geValues($event)">Feed mill</option>
-        <option value="Warehouse"  (blur)="geValues($event)">Warehouse</option>
-        <option value="Plant"  (blur)="geValues($event)">Plant</option>
-        <option value="Logistics" (blur)="geValues($event)" >Logistics</option>
-        <option value="Farm" (blur)="geValues($event)" > Farm</option>
+        <option value="Hatchery" (blur)="geValues($event)" >{{'Hatchery'|translate}}</option>
+        <option value="Feed mill"  (blur)="geValues($event)">{{'Feed mill'|translate}}</option>
+        <option value="Warehouse"  (blur)="geValues($event)">{{'Warehouse'|translate}}</option>
+        <option value="Plant"  (blur)="geValues($event)">{{'Plant'|translate}}</option>
+        <option value="Logistics" (blur)="geValues($event)" >{{'Logistics'|translate}}</option>
+        <option value="Farm" (blur)="geValues($event)" > {{'Farm'|translate}}</option>
 
       </select>
     </div>
