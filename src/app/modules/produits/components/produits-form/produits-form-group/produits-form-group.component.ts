@@ -72,7 +72,7 @@ export class ProduitsFormGroupComponent implements OnInit {
   minIstrueCode: boolean = false
   isBlur() {
 
-    if (this.produit.code.toString().length < 5) { this.minIstrueCode = true }
+    if (this.produit.code.toString().length < 1) { this.minIstrueCode = true }
     else {
       this.minIstrueCode = false
     }
@@ -93,7 +93,7 @@ export class ProduitsFormGroupComponent implements OnInit {
       this.produit.code != "" &&
       this.produit.name != null &&
       this.produit.name != "" &&
-      this.produit.code.toString().length >= 5 &&
+      this.produit.code.toString().length >= 1 &&
       this.produit.name.toString().length >= 3
     ) {
       this.sharedService.setIsActive(true);

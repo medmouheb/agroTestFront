@@ -48,8 +48,8 @@
     
     <div class="form-group col-md-6">
         <label for="temps">{{ "temps" | translate }}</label>
-        <input type="time"  class="form-control" name="temps" #temps="ngModel" ngModel [(ngModel)]="camp.temps" value="12:00 am"
-            placeholder="{{'Write your temps'|translate}} "/>
+        <input  (click)="showvalue($event)" type="time"  class="form-control" name="temps" #temps="ngModel" ngModel [(ngModel)]="camp.temps" 
+            />
     </div>
 
 </div>

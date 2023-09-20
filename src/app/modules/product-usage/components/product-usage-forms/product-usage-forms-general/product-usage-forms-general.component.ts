@@ -231,7 +231,7 @@ export class ProductUsageFormsGeneralComponent implements OnInit {
 
 
     if (
-      this.dispotrueCode == false && this.dispotruename == false &&
+      !this.dispotrueCode == false && this.dispotruename == false &&
       this.camp.numeroDeLot != null &&
       this.camp.numeroDeLot != "" &&
 

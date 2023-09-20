@@ -735,7 +735,7 @@
   "transCode":"Code de Transaction",
   "Medication":"Médicaments",
   "Vaccinations":"Vaccinations",
-  "locationLot":"Emplacement",
+  "locationLot":"Emplacement No",
 "Medicaments":"Médicaments",
   "quantite": "Quantité",
   "montant": "Montant",
@@ -744,7 +744,7 @@
   "Write your numeroDeLot": "Ecrire votre Numéro de Lot",
   "numeroDeLot must be unique": "Le Numéro de Lot doit être unique",
   "numeroDeLot must be not null": "Le Numéro de Lot ne peut pas être vide",
-  "nDeReference": "Numéro de Référence",
+  "nDeReference": "Numéro de Réf",
   "nDeReference must be unique": "Le Numéro de Référence doit être unique",
   "nDeReference must be not null": "Le Numéro de Référence ne peut pas être vide",
   "Write your nDeReference": "Ecrire votre Numéro de Référence",
@@ -955,7 +955,15 @@
 "Vaccines":"Vaccins",
 "Other":"Autre",
 "Ingredients":"Ingrédients",
-"verifycodenamecountrycodecountrynamedigitalcode":"vérifiez votre code, votre nom, votre code de pays, votre nom de pays et votre code numérique"
+"verifycodenamecountrycodecountrynamedigitalcode":"vérifiez votre code, votre nom, votre code de pays, votre nom de pays et votre code numérique",
+
+
+
+
+"FieldsProducts":"Produit de terrain",
+"Semen":"Sperme",
+"Videss":"Vide"
+
 
 
 

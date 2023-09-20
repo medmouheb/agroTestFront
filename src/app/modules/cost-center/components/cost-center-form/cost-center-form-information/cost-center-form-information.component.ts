@@ -84,7 +84,7 @@ export class CostCenterFormInformationComponent implements OnInit {
     this.addform.value.division_Name = t.name
     this.cost.division_Name = t.name
     this.cost.division_Code = t.code
-    this.cost.speciesType = t.speciesType
+    this.cost.divisiontype = t.divisiontype
     this.addform.value['division_Name'] = t
     console.log("3==", this.addform.value)
     console.log("5==", this.cost)
@@ -98,7 +98,7 @@ export class CostCenterFormInformationComponent implements OnInit {
     this.addform.value.division_Code = t.code
     this.cost.division_Name = t.name
     this.cost.division_Code = t.code
-    this.cost.speciesType = t.speciesType
+    this.cost.divisiontype = t.divisiontype
     this.addform.value['division_Name'] = t
     console.log("3==", this.addform.value)
     console.log("5==", this.cost)
@@ -124,7 +124,7 @@ export class CostCenterFormInformationComponent implements OnInit {
 
       this.affichetype = true
       this.cost.farmType = this.div.divisiontype
-      this.cost.speciesType = this.div.speciesType
+      this.cost.divisiontype = this.div.divisiontype
     } else {
       this.affichetype = false
       this.cost.farmType = ""
@@ -133,8 +133,8 @@ export class CostCenterFormInformationComponent implements OnInit {
 
     if (this.cost.division_Code != "" && this.cost.division_Code != undefined &&
       this.cost.facilityType != null && this.cost.facilityType != '' &&
-      this.cost.speciesType != '' &&
-      this.cost.speciesType != null) {
+      this.cost.divisiontype != '' &&
+      this.cost.divisiontype != null) {
       this.sharedService.setIsActive(true);
     } else {
       this.sharedService.setIsActive(false);
@@ -185,13 +185,13 @@ export class CostCenterFormInformationComponent implements OnInit {
       this.minIfacilityType = false;
     }
   }
-  minIspeciesType: boolean = false;
+  minIdivisiontype: boolean = false;
 
   isBlur3() {
-    if (this.cost.speciesType.toString().length > 11) {
-      this.minIspeciesType = true;
+    if (this.cost.divisiontype.toString().length > 11) {
+      this.minIdivisiontype = true;
     } else {
-      this.minIspeciesType = false;
+      this.minIdivisiontype = false;
     }
   }
   minIdivision: boolean = false;

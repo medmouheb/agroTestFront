@@ -685,7 +685,7 @@
   "codeProduit": "Product Code",
   "nomDuProduit": "Product Name",
   "uniteDinventaire": "Inventory Unit",
-  "prixUnitaire": "UnitPrice",
+  "prixUnitaire": "Unit Price",
   "codeDeLocalisation": "Location Code",
   "transactionCode": "Transaction Code",
   "dateExpiration": "Date Expiration",
@@ -751,7 +751,7 @@
 
   "Medication":"Medication",
   "Vaccinations":"Vaccinations",
-  "locationLot":"Location",
+  "locationLot":"Location No",
 
   "transCode":"Trans Code",
 
@@ -761,7 +761,7 @@
 "Write your numeroDeLot":"Write Your Lot No",
 "numeroDeLot  must be unique":"Lot No must be unique",
 "numeroDeLot  must be not null":"Lot No must be not null",
-"nDeReference":"Reference Number",
+"nDeReference":"Ref No",
 "nDeReference  must be unique":"Reference Number must be unique",
 "nDeReference  must be not null":"Reference Number must be not null ",
 "Write your nDeReference":"Write your Reference Number",
@@ -977,6 +977,11 @@
 "Vaccines":"Vaccines",
 "Other":"Other",
 "Ingredients":"Ingredients",
-"verifycodenamecountrycodecountrynamedigitalcode":"verify your code , name , countrycode , countryname and digitalcode"
+"verifycodenamecountrycodecountrynamedigitalcode":"verify your code , name , countrycode , countryname and digitalcode",
+
+
+"FieldsProducts":"Field Product",
+"Semen":"Semen",
+"Videss":"Void"
 
 }

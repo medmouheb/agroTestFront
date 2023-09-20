@@ -64,7 +64,7 @@
   <div class="form-group col-md-6">
     <label for="company">{{'namecompany' | translate}}</label>
     <select (click)="selectValue1($event)" class="form-control" [(ngModel)]="division.companyname">
-      <option *ngFor="let dv of companys" [value]="dv.name"> {{dv.name}}</option>
+      <option [selected]="division.companyname==dv.name"  *ngFor="let dv of companys" [value]="dv.name"> {{dv.name}}</option>
     </select>
   </div>
 </div>
