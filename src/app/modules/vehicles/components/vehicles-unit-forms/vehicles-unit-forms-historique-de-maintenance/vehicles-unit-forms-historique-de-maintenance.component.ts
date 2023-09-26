@@ -13,7 +13,8 @@ import { environment } from 'environments/environment';
 })
 export class VehiclesUnitFormsHistoriqueDeMaintenanceComponent implements OnInit {
 
- 
+  uploadText1="upload"
+
  
   @Input()
   camp: Vehicles= {} 
@@ -43,6 +44,7 @@ export class VehiclesUnitFormsHistoriqueDeMaintenanceComponent implements OnInit
   
     handleFile(file: any) {
       let dataFile = new FormData();
+      this.uploadText1=file.target.files[0].name
       dataFile.append("file", file.target.files[0]);
       this.vehiclesService.uploadImage(dataFile).subscribe((res) => {
 

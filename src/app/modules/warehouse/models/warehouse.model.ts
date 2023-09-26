@@ -2,7 +2,7 @@ export type Warehouse = {
     id?: string
     code?: string
     name?: string
-    facilityType?: string
+    type?: string
     vendor?: any
     vendorname?: any
     costCenterCode?: string

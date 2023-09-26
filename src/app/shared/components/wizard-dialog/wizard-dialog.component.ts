@@ -78,6 +78,7 @@ export class WizardDialogComponent
       confirm,
       cancel: () => {
         this.content = null;
+        console.log(this.content)
         if (cancel) {
           cancel();
         }

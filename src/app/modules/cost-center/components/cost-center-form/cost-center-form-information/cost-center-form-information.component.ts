@@ -18,9 +18,20 @@ export class CostCenterFormInformationComponent implements OnInit {
   constructor(private sharedService: SharedService, private divisionService: DivisionService) { }
 
   ngOnInit(): void {
+        if (this.cost.division_Code == undefined || this.cost.division_Code == "") {
+      this.affiche = false
+    } else {
+      this.affiche = true
+    }
+    if (this.cost.facilityType == 'Farm') {
+
+      this.affichetype = true}
     this.initForm();
     this.getAlldivision()
     this.getetat()
+
+    console.log("1",this.cost)
+
   }
   getAlldivision() {
     this.divisionService.findAll().subscribe({
@@ -84,7 +95,7 @@ export class CostCenterFormInformationComponent implements OnInit {
     this.addform.value.division_Name = t.name
     this.cost.division_Name = t.name
     this.cost.division_Code = t.code
-    this.cost.speciesType = t.speciesType
+    this.cost.speciesType = t.divisiontype
     this.addform.value['division_Name'] = t
     console.log("3==", this.addform.value)
     console.log("5==", this.cost)
@@ -98,7 +109,7 @@ export class CostCenterFormInformationComponent implements OnInit {
     this.addform.value.division_Code = t.code
     this.cost.division_Name = t.name
     this.cost.division_Code = t.code
-    this.cost.speciesType = t.speciesType
+    this.cost.speciesType = t.divisiontype
     this.addform.value['division_Name'] = t
     console.log("3==", this.addform.value)
     console.log("5==", this.cost)
@@ -123,8 +134,8 @@ export class CostCenterFormInformationComponent implements OnInit {
     if (this.cost.facilityType == 'Farm') {
 
       this.affichetype = true
-      this.cost.farmType = this.div.divisiontype
-      this.cost.speciesType = this.div.speciesType
+      this.cost.farmType = this.div.speciesType
+      this.cost.speciesType = this.div.divisiontype
     } else {
       this.affichetype = false
       this.cost.farmType = ""

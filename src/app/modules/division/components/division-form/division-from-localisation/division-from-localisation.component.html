@@ -114,8 +114,8 @@
   </div>
   <div class="form-group col-md-6">
     <label for="wilayaName">{{ "wilayaName" | translate }}</label>
-    <input readonly class="form-control" name="wilayaName" #wilayaName="ngModel" ngModel [(ngModel)]="division.wilayaName"
-      placeholder="{{'Write your wilaya name'|translate}} " />
+    <input readonly class="form-control" name="wilayaName" #wilayaName="ngModel" ngModel
+      [(ngModel)]="division.wilayaName" placeholder="{{'Write your wilaya name'|translate}} " />
     <!-- <div style="border: 1px solid red; color : red;" *ngIf="minIwillaya">{{'wilaya Name  must be between 1 and 100 charactere'|translate}}</div> -->
 
   </div>
@@ -132,8 +132,17 @@
 
   <div class="form-group col-md-6">
     <label for="phone">{{'phoneNumber' | translate}}</label>
-    <input type="phone" class="form-control" name="phone" (blur)="isBlur3()" #email="ngModel" ngModel
-      [(ngModel)]="division.phone" placeholder="{{'Write your phone'|translate}} ">
+    <div style="display: flex;">
+      <select style="width: 50%;" class="form-control" (change)="selectContry($event)">
+        <option disabled selected>{{"selectyourcontry"| translate}}</option>
+        <option *ngFor="let c of countryPhoneCodes " [value]="c.code"> {{c.country}}
+        </option>
+      </select>
+      <img *ngIf="flag!=''" id="flag" style="width: 40px; height: 35px;margin-left: 1%;margin-right: 1%;"
+        [src]="getflage()">
+      <input (keyup)="phoneNumberinp($event)" type="phone" class="form-control" name="phone" (blur)="isBlur3()" #email="ngModel" ngModel
+        [(ngModel)]="division.phone" placeholder="{{'Write your phone'|translate}} ">
+    </div>
     <div style="border: 1px solid red; color : red;" *ngIf="minIphone">{{'phone number must be have 12
       charactere'|translate}}</div>
 

@@ -22,6 +22,10 @@ export class BeginninginventoryTransactionsComponent implements OnInit {
       ) {}
   
       ngOnInit(): void {
+        this.camp.codeDeTransaction="Beginning Inventory"
+        if(! this.camp.temps){
+          this.camp.temps= "00:00" 
+        }
         this.initForm();
       }
       

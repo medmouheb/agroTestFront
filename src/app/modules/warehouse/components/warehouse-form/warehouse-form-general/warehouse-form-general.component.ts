@@ -150,7 +150,7 @@ export class WarehouseFormGeneralComponent implements OnInit {
       code: ["", Validators.required],//5
       vendorname: ["", Validators.required],//5
       name: ["", Validators.required],//3
-      facilityType: ["", Validators.required],
+      type: ["", Validators.required],
       vendor: ["", Validators.required],
       costCenterCode: ["", Validators.required],
       costCenterName: ["", Validators.required],
@@ -200,8 +200,8 @@ export class WarehouseFormGeneralComponent implements OnInit {
       this.warehouse.code != "" &&
       this.warehouse.name != null &&
       this.warehouse.name != "" &&
-      this.warehouse.facilityType != null &&
-      this.warehouse.facilityType != "" &&
+      this.warehouse.type != null &&
+      this.warehouse.type != "" &&
       this.warehouse.vendor != null &&
       this.warehouse.vendor != "" &&
       this.warehouse.code.toString().length >= 1 &&
@@ -241,12 +241,12 @@ export class WarehouseFormGeneralComponent implements OnInit {
   }
 
 
-  facilityTypeisValid: boolean = true
+  typeisValid: boolean = true
 
-  isfacilityTypeValid(event) {
+  istypeValid(event) {
 
     if (this.addForm.value.costCenterType ) {
-      this.facilityTypeisValid = false
+      this.typeisValid = false
     }
     this.geValues(event)
   }
@@ -267,7 +267,7 @@ export class WarehouseFormGeneralComponent implements OnInit {
   }
 
   onTypeChange() {
-    if (this.warehouse.facilityType !== "THIRD PARTY") {
+    if (this.warehouse.type !== "THIRD PARTY") {
       this.warehouse.vendor = null;
     }
   }
@@ -402,9 +402,9 @@ export class WarehouseFormGeneralComponent implements OnInit {
   DCisvalid2: boolean = false
   maiLisvalid1: boolean = false
   isprimarytype() {
-    console.log("esese", typeof this.addForm.value.facilityType);
+    console.log("esese", typeof this.addForm.value.type);
 
-    return (this.CCCisvalid2 && this.CCNisvalid2 && this.DNisvalid2 && this.DCisvalid2 && (this.addForm.value.facilityType == undefined)
+    return (this.CCCisvalid2 && this.CCNisvalid2 && this.DNisvalid2 && this.DCisvalid2 && (this.addForm.value.type == undefined)
     )
   }
 

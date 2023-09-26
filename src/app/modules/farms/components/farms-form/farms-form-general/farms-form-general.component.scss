@@ -2,3 +2,24 @@
     content: "*";
     color: red;
 }
+
+.custom-file-input {
+    position: relative;
+    overflow: hidden;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+/* Style for the file input element */
+.custom-file-input input[type="file"] {
+    position: absolute;
+    font-size: 100px;
+    right: 0;
+    top: 0;
+    opacity: 0;
+    cursor: pointer;
+}

@@ -174,6 +174,7 @@ export class ProductUsageListComponent implements OnInit {
   }
 
   onClickAdd() {
+    
     this.formModal.show({
       title: "menu.add-ProductUsage",
       stepsCount: this.steps.length - 1,

@@ -52,9 +52,18 @@
 
   <div class="form-group col-md-6">
     <label for="phone">{{ "phoneNumber" | translate }}</label>
-    <input class="form-control" name="phone" #phone="ngModel" ngModel [(ngModel)]="fournisseur.phone"   
+    <div style="display: flex;">
+      <select style="width: 50%;" class="form-control" (change)="selectContry($event)">
+        <option disabled selected> select your
+          contry</option>
+        <option *ngFor="let c of countryPhoneCodes " [value]="c.code"> {{c.country}}
+        </option>
+      </select>
+      <img *ngIf="flag!=''" id="flag" style="width: 40px; height: 35px;margin-left: 1%;margin-right: 1%;"
+        [src]="getflage()">
+    <input (keyup)="phoneNumberinp($event)" class="form-control" name="phone" #phone="ngModel" ngModel [(ngModel)]="fournisseur.phone"   
      placeholder="{{'Write your phone'|translate}} "/>
-     
+    </div>
   </div>
 
 

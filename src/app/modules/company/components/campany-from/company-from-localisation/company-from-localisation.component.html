@@ -7,8 +7,8 @@
   <div class="form-group col-md-6">
     <label for="email">{{ "emailcontact" | translate }}</label>
     <input class="form-control" name="email" #email="ngModel" ngModel [(ngModel)]="camp.email"
-    placeholder="{{'Write your email'|translate}} " (blur)="validationEmail()" />
-      <div  style="color: red;" *ngIf="emailIsvalid">{{ "Invalid email format" | translate }}</div>
+      placeholder="{{'Write your email'|translate}} " (blur)="validationEmail()" />
+    <div style="color: red;" *ngIf="emailIsvalid">{{ "Invalid email format" | translate }}</div>
   </div>
 
   <div class="form-group col-md-6">
@@ -23,17 +23,17 @@
       placeholder="{{'Write your city name'|translate}} " />
   </div>
   <div class="form-group col-md-6">
-    <label for="wilayaCode">{{ "wilayaCode" | translate }}   </label>
-    <select (click)="selectValue($event)"  class="form-control" name="wilayaCode"
-       [(ngModel)]="camp.wilayaCode">
-      <option   [selected]="dv.code==camp.wilayaCode" *ngFor="let dv of wilayas" [value]="dv.code"> {{dv.code}}</option>
+    <label for="wilayaCode">{{ "wilayaCode" | translate }} </label>
+    <select (click)="selectValue($event)" class="form-control" name="wilayaCode" [(ngModel)]="camp.wilayaCode">
+      <option [selected]="dv.code==camp.wilayaCode" *ngFor="let dv of wilayas" [value]="dv.code"> {{dv.code}}</option>
     </select>
   </div>
   <div class="form-group col-md-6">
-    <label for="wilayaName">{{ "wilayaName" | translate }}  </label>
+    <label for="wilayaName">{{ "wilayaName" | translate }} </label>
     <input readonly (blur)="isBlur()" class="form-control" name="wilayaName" #wilayaName="ngModel" ngModel
       [(ngModel)]="camp.wilayaName" placeholder="{{'Write your wilaya name'|translate}} " />
-    <div style="border: 1px solid red; color : red;" *ngIf="minIwillaya">{{'wilaya Name must be between 1 and 100 charactere'|translate}}</div>
+    <div style="border: 1px solid red; color : red;" *ngIf="minIwillaya">{{'wilaya Name must be between 1 and 100
+      charactere'|translate}}</div>
 
   </div>
 
@@ -42,7 +42,8 @@
     <label for="zipCode">{{ "zipCode" | translate }}</label>
     <input (blur)="isBlur2()" class="form-control" name="zipCode" #zipCode="ngModel" ngModel [(ngModel)]="camp.zipCode"
       placeholder="{{'Write your zip code'|translate}} ">
-    <div style="border: 1px solid red; color : red;" *ngIf="minIzipcode">{{'Zip code must be between 1 and 10 charactere'|translate}}</div>
+    <div style="border: 1px solid red; color : red;" *ngIf="minIzipcode">{{'Zip code must be between 1 and 10
+      charactere'|translate}}</div>
 
   </div>
 
@@ -50,9 +51,19 @@
 
   <div class="form-group col-md-6">
     <label for="phone">{{ "phoneNumber" | translate }}</label>
-    <input (blur)="isBlur3()" class="form-control" name="phone" #phone="ngModel" ngModel [(ngModel)]="camp.number"
-      placeholder="{{'Write your phone'|translate}} " />
-    <div style="border: 1px solid red; color : red;" *ngIf="minIphone">{{'phone number must be have 12 charactere'|translate}}</div>
+    <div style="display: flex;">
+      <select style="width: 50%;" class="form-control" (change)="selectContry($event)">
+        <option disabled selected> {{"selectyourcontry"| translate}}</option>
+        <option *ngFor="let c of countryPhoneCodes " [value]="c.code"> {{c.country}}
+        </option>
+      </select>
+      <img *ngIf="flag!=''" id="flag" style="width: 40px; height: 35px;margin-left: 1%;margin-right: 1%;"
+        [src]="getflage()">
+      <input (keyup)="phoneNumberinp($event);" (blur)="isBlur3();" class="form-control" name="phone" #phone="ngModel" ngModel [(ngModel)]="camp.number"
+        placeholder="{{'Write your phone'|translate}} " />
+    </div>
+    <div style="border: 1px solid red; color : red;" *ngIf="minIphone">{{'phone number must be have 12
+      charactere'|translate}}</div>
 
   </div>
 

@@ -175,7 +175,7 @@
             {{produit.tauxTva}}%
           </td>
           <td>
-            {{produit.prixUnitaireTtc}}
+            {{ ((produit.prixUnitaireHt * produit.tauxTva)/100)+produit.prixUnitaireHt | number:'1.2-2' }}
           </td>
 
           <td class="d-flex gap-4">
@@ -329,7 +329,7 @@
             {{produit.tauxTva}}%
           </td>
           <td>
-            {{produit.prixUnitaireTtc}}
+            {{ ((produit.prixUnitaireHt * produit.tauxTva)/100)+produit.prixUnitaireHt | number:'1.2-2' }}
           </td>
 
           <td class="d-flex gap-4">

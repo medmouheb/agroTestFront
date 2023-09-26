@@ -123,8 +123,13 @@ export class LogisticUnitListComponent implements OnInit {
   }
 
   onCancel() {
+    this.findPage();
     this.camp = {};
     this.currentStep = 0;
+    this.camp.companyName=""
+    this.camp.divisionName=""
+    this.camp.logisticCode=""
+    this.camp.logisticName=""
   }
 
   onSave(id: string | null) {
@@ -171,6 +176,11 @@ export class LogisticUnitListComponent implements OnInit {
   }
 
   onClickAdd() {
+    this.stepper.nextStep();
+    setTimeout(() => {
+      this.stepper.prevStep();
+
+    }, 100);
     this.formModal.show({
       title: "menu.add-Logistic",
       stepsCount: this.steps.length - 1,

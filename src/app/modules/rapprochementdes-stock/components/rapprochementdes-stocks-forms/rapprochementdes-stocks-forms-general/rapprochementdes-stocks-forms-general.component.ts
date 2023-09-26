@@ -32,7 +32,25 @@ export class RapprochementdesStocksFormsGeneralComponent implements OnInit {
     this.initForm();
     console.log(this.addform);
   }
+  codeunique:any
+  generateUniqueNumericCode() {
+    const digits = '0123456789';
+    let code = '';
+    let length = 6
+    for (let i = 0; i < length; i++) {
+      const randomIndex = Math.floor(Math.random() * digits.length);
+      code += digits.charAt(randomIndex);
+    }
+    this.codeunique = code
+    console.log(code);
+    this.camp.ndeReference = code
 
+
+    let a =document.getElementById("ss") as HTMLInputElement
+    a.value   =code
+
+    
+  }
   initForm(
 
   ) {

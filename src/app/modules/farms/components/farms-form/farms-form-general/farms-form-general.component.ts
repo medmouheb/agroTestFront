@@ -63,7 +63,8 @@ export class FarmsFormGeneralComponent implements OnInit {
 
 
   }
-
+  uploadText1="upload"
+  uploadText2="upload"
 
   selectValuecostCenter(e: any) {
 
@@ -429,6 +430,8 @@ validationCode() {
   }
   handleAttachments(e:any){
     let dataFile = new FormData();
+    this.uploadText2=e.target.files[0].name
+
     dataFile.append("file", e.target.files[0]);
     this.farmsService.handleFileUpload(dataFile).subscribe(data=>{
       this.farm.attachments=data
@@ -440,6 +443,8 @@ validationCode() {
 
   handleComments(e:any){
     let dataFile = new FormData();
+    this.uploadText1=e.target.files[0].name
+    // console.log("frfr",e.target.files[0].name)
     dataFile.append("file", e.target.files[0]);
     this.farmsService.handleFileUpload(dataFile).subscribe(data=>{
       this.farm.comments=data

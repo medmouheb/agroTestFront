@@ -692,7 +692,7 @@
   "temps": "Time",
   "codeDeReference": "Reference Code",
   "commentaire": "Comment",
-  "Vide": "Empty",
+  "Vide": "Void",
   "Search by BeginningInventaire": "Search by Beginning Inventory",
   "Code Produit": "Product Code",
   "Nom du produit": "Product Name",
@@ -761,7 +761,7 @@
 "Write your numeroDeLot":"Write Your Lot No",
 "numeroDeLot  must be unique":"Lot No must be unique",
 "numeroDeLot  must be not null":"Lot No must be not null",
-"nDeReference":"Reference Number",
+"nDeReference":"Ref No",
 "nDeReference  must be unique":"Reference Number must be unique",
 "nDeReference  must be not null":"Reference Number must be not null ",
 "Write your nDeReference":"Write your Reference Number",
@@ -977,6 +977,8 @@
 "Vaccines":"Vaccines",
 "Other":"Other",
 "Ingredients":"Ingredients",
-"verifycodenamecountrycodecountrynamedigitalcode":"verify your code , name , countrycode , countryname and digitalcode"
+"verifycodenamecountrycodecountrynamedigitalcode":"verify your code , name , countrycode , countryname and digitalcode",
+"upload":"Upload file",
+"selectyourcontry":"Select Your Contry"
 
 }
