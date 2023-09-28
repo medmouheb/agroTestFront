@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { HotToastService } from '@ngneat/hot-toast';
+import { TranslateService } from '@ngx-translate/core';
 import { SharedService } from 'app/modules/company/services/shared.service';
 import { Farm } from 'app/modules/farms/models/farm';
 import { Produit } from 'app/modules/produits/models/produit.model';
@@ -25,7 +27,7 @@ export class FarmsFormProductComponent implements OnInit {
     }
   ];
 
-  constructor(private produitserv:ProduitsService, private sharedservice:SharedService) { }
+  constructor(private produitserv:ProduitsService, private sharedservice:SharedService,private translateService:TranslateService, private toastService: HotToastService) { }
 
   ngOnInit(): void {
     console.log(this.farm.properties)
@@ -64,7 +66,7 @@ setvalue(){
 
   add:boolean=false
   ajouterElement() {
-   
+    
     let landIs100 = false; 
     let landIs10 = false; 
   
@@ -90,6 +92,13 @@ setvalue(){
       this.add = true;
     } else {
       this.add = false;
+      console.log(sumLand)
+      let x=100-sumLand
+      this.toastService.success(
+        this.translateService.instant("success.rest", {
+          elem: (x),
+        })
+      );
       this.elements.push({ product: '', land: 0 });
       console.log(this.elements);
     }

@@ -245,6 +245,7 @@
   },
 
   "success": {
+    "rest":"Vous avez {{elem}} %  de terres disponibles",
     "restore": "{{elem}} Restauré avec succès",
     "saved": "{{elem}} Enregistré avec succès",
     "deleted": "{{elem}} Supprimé avec succès",
@@ -969,7 +970,7 @@
 "Semen":"Sperme",
 "Videss":"Vide",
 
-"Insufficient space":"Espace insuffisant"
+"Insufficient space":"Vous avez atteint la capacité maximale de votre Land"
 
 
 

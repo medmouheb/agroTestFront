@@ -239,6 +239,7 @@
   },
 
   "success": {
+    "rest":"You have {{elem}} %  of available land",
     "restore": "{{elem}} restore successfully",
     "saved": "{{elem}} saved successfully",
     "deleted": "{{elem}} deleted successfully",
@@ -982,7 +983,7 @@
 "upload":"Upload file",
 "selectyourcontry":"Select Your Contry",
 "addnew":"Add Other Product",
-"Insufficient space":"Insufficient space",
+"Insufficient space":"You have reached the maximum of your Land capacity",
 
 "FieldsProducts":"Field Product",
 "Semen":"Semen",
