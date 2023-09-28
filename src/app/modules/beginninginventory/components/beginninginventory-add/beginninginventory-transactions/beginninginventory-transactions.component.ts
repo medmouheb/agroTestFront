@@ -29,7 +29,9 @@ export class BeginninginventoryTransactionsComponent implements OnInit {
         this.initForm();
       }
       
-  
+      showvalue(e: any) {
+        console.log("rerer:", e.target.value)
+      }
   
     initForm() {
       this.addform = new FormGroup({
