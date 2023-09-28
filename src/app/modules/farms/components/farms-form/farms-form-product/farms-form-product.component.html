@@ -14,16 +14,28 @@
     </div>
     <div class="row">
       <div class="form-group col-md-6">
-        <label for="land">{{'land' | translate}}  %</label>
-        <input class="form-control" name="land" type="number" min="0" max="100"  [(ngModel)]="element.land">
+        <label for="land">{{'land' | translate}} {{element.land}} %</label>
+        <input class="form-control" (blur)="setvalue();" name="land" type="number" min="0" max="100"  [(ngModel)]="element.land">
       </div>
       <div class="form-group col-md-6" *ngIf="i>0">
-        <button class="btn btn-primary" (click)="supprimerLigne(i)">{{'delete'|translate}}</button>
+       
+        <button class="btn btn-add btn-outline-success btn-sm btn-action rounded-pill style-button"(click)="supprimerLigne(i)"
+      >
+        <i class="fa fa-trash style-icons2"></i>
+        <span class="style-title">  {{'delete'|translate}}</span>
+      </button>
       </div>
     </div>
   </div>
-
+<div class="row">
   <div class="form-group col-md-6">
-    <button class="btn btn-primary" (click)="ajouterElement()">{{'addnew'|translate}}</button>
+    <button class="btn btn-add btn-outline-success btn-sm btn-action rounded-pill style-button" (click)="ajouterElement()"
+    >
+    <i class="fa fa-plus style-icons"></i>
+    <span class="style-title">  {{'addnew'|translate}}</span>
+  </button>
     <div style="color: red;" *ngIf="add">{{"Insufficient space"|translate}}</div>
   </div>
+</div>
+ 
+ 

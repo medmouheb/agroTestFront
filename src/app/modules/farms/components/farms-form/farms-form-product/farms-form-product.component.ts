@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { SharedService } from 'app/modules/company/services/shared.service';
 import { Farm } from 'app/modules/farms/models/farm';
 import { Produit } from 'app/modules/produits/models/produit.model';
 import { ProduitsService } from 'app/modules/produits/services/produits.service';
@@ -24,7 +25,7 @@ export class FarmsFormProductComponent implements OnInit {
     }
   ];
 
-  constructor(private produitserv:ProduitsService) { }
+  constructor(private produitserv:ProduitsService, private sharedservice:SharedService) { }
 
   ngOnInit(): void {
     console.log(this.farm.properties)
@@ -47,10 +48,25 @@ export class FarmsFormProductComponent implements OnInit {
     
   }
  
+setvalue(){
+  let la=0
+  for (const element of this.elements) {
+    console.log(element.land) 
+    la += element.land;
+    if (la> 100){
+      this.sharedservice.setIsActive(false)
+    }else{
+      this.sharedservice.setIsActive(true)
+    }
+  }
+}
+
+
   add:boolean=false
   ajouterElement() {
    
     let landIs100 = false; 
+    let landIs10 = false; 
   
     let sumLand = 0
     for (const element of this.elements) {
@@ -58,13 +74,15 @@ export class FarmsFormProductComponent implements OnInit {
       
       sumLand += element.land;
       console.log(sumLand)
-      if (element.land >= 100) {
+      if( (element.land >= 100)||(sumLand >=100)) {
         landIs100 = true;
+       
         break; 
-      }else if (sumLand >=100) {
-        landIs100 = true;
+      }else if ((sumLand ==100)||(element.land == 0)) {
+        landIs10 = true;
         break; 
       }
+    
     }
   
     if (landIs100) {
