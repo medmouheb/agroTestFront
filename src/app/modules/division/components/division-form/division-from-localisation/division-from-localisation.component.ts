@@ -336,6 +336,8 @@ export class DivisionFromLocalisationComponent implements OnInit {
       this.division.wilayaName=this.wil.wilayaName
       this.division.zipCode=this.wil.zipCode
       this.division.email=this.wil.email
+      this.division.phone=this.wil.number
+
     } else {
 
       this.division.address=""

@@ -46,30 +46,29 @@ export class BeginninginventoryTransactionsComponent implements OnInit {
     }
     
   //getAll Campany name from service findbycompany
-  
-  
-  
-  
-    get f() {
-      return this.addform.controls;
-    }
-    //methode pour get tous les nom from company
-  
-  
-    isControlValid(controlName: string): boolean {
-      const control = this.addform.controls[controlName];
-      return control.invalid && (control.dirty || control.touched);
-    }
-  
-    isControlInValid(controlName: string): boolean {
-      const control = this.addform.controls[controlName];
-      return (
-        control.invalid && (control.dirty || control.touched || control.invalid)
-      );
-    }
-  
-    minIwillaya: boolean = false
-  
-  
+
+
+
+
+  get f() {
+    return this.addform.controls;
   }
-  
+  //methode pour get tous les nom from company
+
+
+  isControlValid(controlName: string): boolean {
+    const control = this.addform.controls[controlName];
+    return control.invalid && (control.dirty || control.touched);
+  }
+
+  isControlInValid(controlName: string): boolean {
+    const control = this.addform.controls[controlName];
+    return (
+      control.invalid && (control.dirty || control.touched || control.invalid)
+    );
+  }
+
+  minIwillaya: boolean = false
+
+
+}

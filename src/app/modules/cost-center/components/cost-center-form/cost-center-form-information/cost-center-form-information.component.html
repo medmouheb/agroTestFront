@@ -59,10 +59,10 @@
 
   </div>
   <div class="form-group col-md-6">
-    <label for="divisionspeciestype">{{ "divisionspeciestype" | translate }}</label>
-    <input (blur)="isBlur3()" class="form-control" name="speciesType" #speciesType="ngModel" ngModel [(ngModel)]="cost.speciesType" 
+    <label for="divisiondivisiontype">{{ "divisiondivisiontype" | translate }}</label>
+    <input (blur)="isBlur3()" class="form-control" name="divisiontype" #divisiontype="ngModel" ngModel [(ngModel)]="cost.divisiontype" 
      placeholder=" {{'Write your division species Type'|translate}}" />
-     <div style="border: 1px solid red; color : red;" *ngIf="minIspeciesType">{{'species type must be between 1 and 10 charactere'|translate}}</div>
+     <div style="border: 1px solid red; color : red;" *ngIf="minIdivisiontype">{{'species type must be between 1 and 10 charactere'|translate}}</div>
 
   </div> -->
   <div class="form-group col-md-6">
@@ -103,14 +103,12 @@
       </select>
     </div>
     <div class="form-group col-md-6" *ngIf="affiche==true">
-      <label class="required" for="divisionspeciestype">{{ "divisiontype" | translate }} </label> : {{cost.speciesType}}
+      <label class="required" for="divisiondivisiontype">{{ "divisiontype" | translate }} </label> : {{cost.divisiontype}}
       
-       <!-- <div style="border: 1px solid red; color : red;" *ngIf="minIspeciesType">{{'species type must be between 1 and 10 charactere'|translate}}</div> -->
+       <!-- <div style="border: 1px solid red; color : red;" *ngIf="minIdivisiontype">{{'species type must be between 1 and 10 charactere'|translate}}</div> -->
   
     </div>
     <div class="form-group col-md-6" *ngIf="affichetype==true">
       <label  for="farmType">{{ "Farmtype" | translate }} </label> :{{cost.farmType}}
-    
-    
     </div> 
 </div>
