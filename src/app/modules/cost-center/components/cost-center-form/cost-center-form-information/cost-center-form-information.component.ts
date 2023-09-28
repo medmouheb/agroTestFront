@@ -18,10 +18,12 @@ export class CostCenterFormInformationComponent implements OnInit {
   constructor(private sharedService: SharedService, private divisionService: DivisionService) { }
 
   ngOnInit(): void {
+    console.log(this.cost.division_Code)
         if (this.cost.division_Code == undefined || this.cost.division_Code == "") {
       this.affiche = false
     } else {
       this.affiche = true
+      console.log(this.cost.divisiontype)
     }
     if (this.cost.facilityType == 'Farm') {
 
@@ -97,7 +99,7 @@ export class CostCenterFormInformationComponent implements OnInit {
     this.cost.division_Code = t.code
     this.cost.speciesType = t.divisiontype
 
-   // this.cost.divisiontype = t.divisiontype
+   this.cost.divisiontype = t.divisiontype
     this.addform.value['division_Name'] = t
     console.log("3==", this.addform.value)
     console.log("5==", this.cost)
@@ -113,7 +115,7 @@ export class CostCenterFormInformationComponent implements OnInit {
     this.cost.division_Code = t.code
     this.cost.speciesType = t.divisiontype
 
-    //this.cost.divisiontype = t.divisiontype
+    this.cost.divisiontype = t.divisiontype
  
     this.addform.value['division_Name'] = t
     console.log("3==", this.addform.value)
