@@ -591,6 +591,7 @@
   "transactionBase": "Base de transaction",
   "commande": "Modalités de paiement",
   "Nom Aéroport": "Nom Aéroport",
+  "delete": "Supprimer",
   "Code Aéroport": "Code Aéroport",
   "Enter airport name": "Ecrire votre nom de l'aéroport",
   "Enter seaport name": "Ecrire votre nom du port maritime",
@@ -960,13 +961,15 @@
 "selectyourcontry":"Sélectionnez votre pays",
 
 
+"addnew":"Ajouter un autre produit",
 
 
 
 "FieldsProducts":"Produit de terrain",
 "Semen":"Sperme",
-"Videss":"Vide"
+"Videss":"Vide",
 
+"Insufficient space":"Espace insuffisant"
 
 
 

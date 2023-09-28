@@ -416,7 +416,7 @@
 "codeproduct":"Product Code",
 "nameproduct":"Product Name",
 "typeproduct":"Product Type",
-
+"delete": "Delete",
 "Inscrivez votre Inventaire":"Write your Inventaire",
 "Inscrivez votre Fabricant":"Write your Fabricant",
 "Inscrivez votre max sur":"Write your max over",
@@ -981,8 +981,8 @@
  
 "upload":"Upload file",
 "selectyourcontry":"Select Your Contry",
-
-
+"addnew":"Add Other Product",
+"Insufficient space":"Insufficient space",
 
 "FieldsProducts":"Field Product",
 "Semen":"Semen",

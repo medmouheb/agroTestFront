@@ -1,20 +1,29 @@
-<div class="row">
-    <div class="form-group col-md-6">
-      <label for="faxNumber">{{'nameproduct' | translate}}</label>
-      <select   class="form-control"name="product" #product="ngModel" ngModel [(ngModel)]="farm.product">
-        <option *ngFor="let dv of produits" [value]="dv.code" > {{dv.name}}</option>
-      </select>
-    </div>
-    <div class="form-group col-md-6">
-      
-      <label for="phonefix">{{'productssss' | translate}}</label>
-      <input class="form-control" readonly type="number"  [value]="farm.product">
-    </div>
 
-    <div class="form-group col-md-6">
-      
-      <label for="land">{{'land' | translate}}  {{farm.land}} %</label>
-      <input class="form-control" name="land" type="range" min="0" max="100" #land="ngModel" ngModel [(ngModel)]="farm.land">
+  <div *ngFor="let element of elements; let i = index">
+    <div class="row">
+      <div class="form-group col-md-6">
+        <label for="product">{{'nameproduct' | translate}}</label>
+        <select class="form-control" name="product" [(ngModel)]="element.product">
+          <option *ngFor="let dv of produits" [value]="dv.code">{{dv.name}}</option>
+        </select>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="phonefix">{{'productssss' | translate}}</label>
+        <input class="form-control" readonly type="number" [value]="element.product">
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group col-md-6">
+        <label for="land">{{'land' | translate}}  %</label>
+        <input class="form-control" name="land" type="number" min="0" max="100"  [(ngModel)]="element.land">
+      </div>
+      <div class="form-group col-md-6" *ngIf="i>0">
+        <button class="btn btn-primary" (click)="supprimerLigne(i)">{{'delete'|translate}}</button>
+      </div>
     </div>
   </div>
-  
+
+  <div class="form-group col-md-6">
+    <button class="btn btn-primary" (click)="ajouterElement()">{{'addnew'|translate}}</button>
+    <div style="color: red;" *ngIf="add">{{"Insufficient space"|translate}}</div>
+  </div>

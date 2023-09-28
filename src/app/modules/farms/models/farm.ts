@@ -101,6 +101,7 @@ export type Farm = {
   phoneInformation?: any
   startDateInformation?: any
   endDateInformation?: any
+  properties?:any
 };
 
 

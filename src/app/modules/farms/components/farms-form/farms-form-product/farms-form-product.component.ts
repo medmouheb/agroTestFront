@@ -12,9 +12,27 @@ export class FarmsFormProductComponent implements OnInit {
   @Input() farm!: Farm
   produits: Array<Produit> = [];
 
+  farms = {
+    product: '',
+    land: 0
+  };
+
+  elements: any[] = [
+    {
+      product: '',
+      land: 0
+    }
+  ];
+
   constructor(private produitserv:ProduitsService) { }
 
   ngOnInit(): void {
+    console.log(this.farm.properties)
+    if (this.farm.properties!=null){
+      this.elements=this.farm.properties
+
+    }
+  
     this.getallParoduct()
   }
 
@@ -26,11 +44,51 @@ export class FarmsFormProductComponent implements OnInit {
       error: (error) => console.error(error),
   
     })
+    
+  }
+ 
+  add:boolean=false
+  ajouterElement() {
+   
+    let landIs100 = false; 
+  
+    let sumLand = 0
+    for (const element of this.elements) {
+      console.log(element.land) 
+      
+      sumLand += element.land;
+      console.log(sumLand)
+      if (element.land >= 100) {
+        landIs100 = true;
+        break; 
+      }else if (sumLand >=100) {
+        landIs100 = true;
+        break; 
+      }
+    }
+  
+    if (landIs100) {
+     
+      this.add = true;
+    } else {
+      this.add = false;
+      this.elements.push({ product: '', land: 0 });
+      console.log(this.elements);
+    }
+    this.farm.properties=this.elements
+    console.log(this.farm.properties);
+
+  }
+
+  supprimerLigne(index: number) {
+   
+    this.elements.splice(index, 1); 
   }
 
 
   setProduct(e:any){
     console.log("aa::",this.produits)
     this.farm.land=e.target.value
+
   }
 }
