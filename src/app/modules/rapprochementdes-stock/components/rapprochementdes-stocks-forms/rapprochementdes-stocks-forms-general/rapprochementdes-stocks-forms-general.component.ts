@@ -51,6 +51,33 @@ export class RapprochementdesStocksFormsGeneralComponent implements OnInit {
 
     
   }
+  dispotruelot=false
+  exists() {
+    console.log(this.camp.numeroDeLot)
+    this.compaser.findbycode(this.camp.numeroDeLot).subscribe(data => {
+      console.log(data)
+      if (data != null) {
+        this.dispotruelot = true
+
+
+      } else {
+        this.dispotruelot = false
+
+      }
+
+    }, error => {
+      console.log(error.status)
+      if (error.status == 404) {
+        this.dispotrueCode = false
+
+      }
+    })
+
+  }
+  
+
+
+
   initForm(
 
   ) {

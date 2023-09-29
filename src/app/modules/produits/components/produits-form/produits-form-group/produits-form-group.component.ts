@@ -4,6 +4,7 @@ import { FournisseursService } from 'app/modules/fournisseurs/services/fournisse
 import { Produit } from '../../../models/produit.model';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SharedService } from 'app/modules/company/services/shared.service';
+import { ProduitsService } from 'app/modules/produits/services/produits.service';
 
 @Component({
   selector: 'app-produits-form-group',
@@ -16,7 +17,7 @@ export class ProduitsFormGroupComponent implements OnInit {
   @Input() produit: Produit = {}
   vendors: Array<Fournisseur> = []
 
-  constructor(
+  constructor(private produitser:ProduitsService,
     private fournisseursService: FournisseursService,private sharedService: SharedService, private fb: FormBuilder
   ) { }
 
@@ -77,6 +78,62 @@ export class ProduitsFormGroupComponent implements OnInit {
       this.minIstrueCode = false
     }
   }
+  dispotruename=false
+  existname() {
+    console.log(this.produit.code)
+    this.produitser.findbyName(this.produit.name).subscribe(data => {
+      console.log(data)
+      if (data != null) {
+        this.dispotruename = true
+
+
+      } else {
+        this.dispotruename = false
+
+      }
+
+    }, error => {
+      console.log(error.status)
+      if (error.status == 404) {
+        this.dispotrueCode = false
+
+      }
+    })
+
+  }
+  
+  dispotrueCode = false
+  exist() {
+    console.log(this.produit.code)
+    this.produitser.findbycode(this.produit.code).subscribe(data => {
+      console.log(data)
+      if (data != null) {
+        this.dispotrueCode = true
+
+
+      } else {
+        this.dispotrueCode = false
+
+      }
+
+    }, error => {
+      console.log(error.status)
+      if (error.status == 404) {
+        this.dispotrueCode = false
+
+      }
+    })
+
+  }
+  
+
+
+
+
+
+
+
+
 
   minIstrueName: boolean = false
   isBlur1() {

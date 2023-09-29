@@ -36,6 +36,11 @@ export class RapprochementdesStockService {
     let url = `${this.baseUrl()}/rapprochement-des-stocks/${id}`;
     return this.http.get<RapprochementDesStocks>(url);
   }
+  
+  findBynumlot(code: string): Observable<RapprochementDesStocks> {
+    let url = `${this.baseUrl()}/rapprochement-des-stocks/numlot/${code}`;
+    return this.http.get<RapprochementDesStocks>(url);
+  }
 
   findAll(): Observable<Array<RapprochementDesStocks>> {
     let url = this.baseUrl()+'/rapprochement-des-stocks';

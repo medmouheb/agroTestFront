@@ -97,4 +97,14 @@ export class ProduitsService {
     params = params.append("filter", filter);
     return this.http.get<Page<Produit>>(url, { params });
   }
+  findbycode(code:any): Observable<Produit>{
+    let url = `${this.baseUrl()}/produit/by-code/${code}`;
+    return this.http.get<Produit>(url);
+
+  }
+  findbyName(name:any): Observable<Produit>{
+    let url = `${this.baseUrl()}/produit/getbyname/${name}`;
+    return this.http.get<Produit>(url);
+
+  }
 }
