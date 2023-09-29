@@ -51,6 +51,7 @@ export class FarmsFormProductComponent implements OnInit {
   }
  
 setvalue(){
+  this.resultat=true
   let la=0
   for (const element of this.elements) {
     console.log(element.land) 
@@ -63,7 +64,11 @@ setvalue(){
   }
 }
 
-
+setvaleur(index:number){
+  console.log(index)
+}
+resultat=false
+ch:any
   add:boolean=false
   ajouterElement() {
     
@@ -94,11 +99,13 @@ setvalue(){
       this.add = false;
       console.log(sumLand)
       let x=100-sumLand
-      this.toastService.success(
-        this.translateService.instant("success.rest", {
-          elem: (x),
-        })
-      );
+this.ch=x
+this.resultat=true
+      // this.toastService.success(
+      //   this.translateService.instant("success.rest", {
+      //     elem: (x),
+      //   })
+      // );
       this.elements.push({ product: '', land: 0 });
       console.log(this.elements);
     }

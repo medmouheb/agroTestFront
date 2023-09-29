@@ -15,9 +15,10 @@
     <div class="row">
       <div class="form-group col-md-6">
         <label for="land">{{'land' | translate}} {{element.land}} %</label>
-        <input class="form-control" (blur)="setvalue();" name="land" type="number" min="0" max="100"  [(ngModel)]="element.land">
+        <input class="form-control" (blur)="setvalue(); ; setvaleur(i)" name="land" type="number" min="0" max="100"  [(ngModel)]="element.land">
       </div>
       <div class="form-group col-md-6" *ngIf="i>0">
+    <div class="mt-3" style="color: red;" *ngIf="i>0 && resultat">{{"You have"|translate}} {{ch}} % {{"of available land"|translate}} </div>
        
         <button class="btn btn-add btn-outline-success btn-sm btn-action rounded-pill style-button"(click)="supprimerLigne(i)"
       >
