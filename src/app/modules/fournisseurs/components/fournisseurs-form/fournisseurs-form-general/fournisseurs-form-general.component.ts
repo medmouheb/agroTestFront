@@ -48,6 +48,8 @@ export class FournisseursFormGeneralComponent implements OnInit {
   }
   exist() {
     console.log(this.fournisseur.code)
+    console.log(this.dispotrueCode)
+
     this.founriserv.findbycode(this.fournisseur.code).subscribe(data => {
       console.log(data)
       if (data != null) {

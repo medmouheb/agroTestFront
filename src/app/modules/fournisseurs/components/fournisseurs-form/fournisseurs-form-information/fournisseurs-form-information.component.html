@@ -61,9 +61,11 @@
       </select>
       <img *ngIf="flag!=''" id="flag" style="width: 40px; height: 35px;margin-left: 1%;margin-right: 1%;"
         [src]="getflage()">
-    <input (keyup)="phoneNumberinp($event)" class="form-control" name="phone" #phone="ngModel" ngModel [(ngModel)]="fournisseur.phone"   
+    <input (keyup)="phoneNumberinp($event);"(blur)="isBlur3();" class="form-control" name="phone" #phone="ngModel" ngModel [(ngModel)]="fournisseur.phone"   
      placeholder="{{'Write your phone'|translate}} "/>
     </div>
+    <div style="border: 1px solid red; color : red;" *ngIf="minIphone">{{'phone number must be have 12
+      charactere'|translate}}</div>
   </div>
 
 

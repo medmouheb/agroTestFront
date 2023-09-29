@@ -295,7 +295,7 @@ export class FournisseursFormInformationComponent implements OnInit {
     })[0]
     this.fournisseur.wilayaName = wil.name
     this.fournisseur.wilayaCode = wil.code
-    
+
   }
 
   emailIsvalid = false
@@ -306,12 +306,22 @@ export class FournisseursFormInformationComponent implements OnInit {
     if (emailRegex.test(this.fournisseur.email)) {
       this.emailIsvalid = false;
       console.log(this.fournisseur.email)
+      this.sharedService.setIsActive(true);
 
     }
     else {
       this.emailIsvalid = true
+      this.sharedService.setIsActive(false);
+
     }
 
   }
-
+  minIphone: boolean = false
+  isBlur3() {
+    if ((this.fournisseur.phone.toString().length < 12) || (this.fournisseur.phone.toString().length > 13)) {
+      this.minIphone = true;
+    } else {
+      this.minIphone = false;
+    }
+  }
 }

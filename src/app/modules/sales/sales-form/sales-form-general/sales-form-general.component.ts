@@ -65,7 +65,7 @@ if(this.sales.id!=null){
     if (
       this.addform.value.code != null &&
       this.addform.value.code != "" &&
-      this.addform.value.name != null &&
+      this.addform.value.name != null && this.existcodeIsvalid == false && this.dispotruename == false &&
       this.addform.value.name != "" &&this.fieldControl.status !="INVALID"
       
 
@@ -136,22 +136,43 @@ if(this.sales.id!=null){
   dispotruename = false
 
   existname() {
-    console.log(this.names.indexOf(this.sales.name) != -1,"aa::",this.sales.name)
-    if (this.names.indexOf(this.sales.name) != -1) {
-      this.dispotruename = true
-      this.newSeggestions = "chose " + this.sales.name + this.generateRandomCode() + " or " + this.sales.name + this.generateRandomCode() + " or " + this.sales.name + this.generateRandomCode() + " or " + this.sales.name + this.generateRandomCode()
-    } else {
-      this.dispotruename = false
-    }
+    this.salesService.findbyName(this.sales.name).subscribe(data => {
+      console.log(data)
+      if (data != null) {
+        this.dispotruename = true
+      //  this.newSeggestions = "chose " + this.fournisseur.name + this.generateRandomCode() + " or " + this.fournisseur.name + this.generateRandomCode() + " or " + this.fournisseur.name + this.generateRandomCode() + " or " + this.fournisseur.name + this.generateRandomCode()
+
+
+      } else {
+        this.dispotruename = false
+
+      }
+
+    }, error => console.log(error))
+
   }
+
   existcodeIsvalid = false
   existcode() {
 
-    if (this.codes.indexOf((this.sales.code+"")) != -1) {
+   this.salesService.findbycode(this.sales.code).subscribe(data => {
+    console.log(data)
+    if (data != null) {
       this.existcodeIsvalid = true
+
+
     } else {
       this.existcodeIsvalid = false
+
     }
+
+  }, error => {
+    console.log(error.status)
+    if (error.status == 404) {
+      this.existcodeIsvalid = false
+
+    }
+  })
   }
 
 

@@ -83,4 +83,14 @@ export class SalesService {
     params = params.append("filter", filter);
     return this.http.get<Page<Sales>>(url, { params });
   }
+  findbycode(code:any): Observable<Sales>{
+    let url = `${this.baseUrl()}/sales/by-code/${code}`;
+    return this.http.get<Sales>(url);
+
+  }
+  findbyName(name:any): Observable<Sales>{
+    let url = `${this.baseUrl()}/sales/getbyname/${name}`;
+    return this.http.get<Sales>(url);
+
+  }
 }

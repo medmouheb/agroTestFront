@@ -40,6 +40,7 @@ export class FarmsFormProductComponent implements OnInit {
     }
   
     this.getallParoduct()
+    this.setvaluer()
   }
 
   getallParoduct(){
@@ -52,7 +53,23 @@ export class FarmsFormProductComponent implements OnInit {
     })
     
   }
- 
+  affic:boolean=false
+  setvaluer(){
+    this.resultat=true
+    let la=0
+    for (const element of this.elements) {
+      console.log(element.land) 
+      la += element.land;
+      console.log(la) 
+
+       if (la== 0){
+        this.affic=true
+       }else{
+        this.affic=false
+
+       }
+    }
+  }
 setvalue(){
   this.resultat=true
   let la=0
