@@ -90,7 +90,7 @@ export class RapprochementdesStockService {
     return this.http.get<Page<RapprochementDesStocks>>(url, { params });
   }
   findbycode(code:any): Observable<RapprochementDesStocks>{
-    let url = `${this.baseUrl()}/rapprochement-des-stocks/by-code/${code}`;
+    let url = `${this.baseUrl()}/rapprochement-des-stocks/numlot/${code}`;
     return this.http.get<RapprochementDesStocks>(url);
 
   }

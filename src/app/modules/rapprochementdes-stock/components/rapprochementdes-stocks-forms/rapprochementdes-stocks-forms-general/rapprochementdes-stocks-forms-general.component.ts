@@ -51,13 +51,15 @@ export class RapprochementdesStocksFormsGeneralComponent implements OnInit {
 
     
   }
-  dispotruelot=false
+  dispotruelot:boolean=false
   exists() {
     console.log(this.camp.numeroDeLot)
     this.compaser.findbycode(this.camp.numeroDeLot).subscribe(data => {
       console.log(data)
       if (data != null) {
+      
         this.dispotruelot = true
+        console.log(this.dispotruelot)
 
 
       } else {
@@ -123,28 +125,30 @@ export class RapprochementdesStocksFormsGeneralComponent implements OnInit {
 
     }
   }
-  exist() {
-    console.log(this.camp.numeroDeLot)
-    this.compaser.findbycode(this.camp.numeroDeLot).subscribe(data => {
-      console.log(data)
-      if (data != null) {
-        this.dispotrueCode = true
+  // exist() {
+  //   console.log(this.camp.numeroDeLot)
+  //   this.compaser.findbycode(this.camp.numeroDeLot).subscribe(data => {
+  //     console.log(data)
+  //     if (data != null) {
+  //     console.log(this.dispotrueCode)
+
+  //       this.dispotruelot = true
 
 
-      } else {
-        this.dispotrueCode = false
+  //     } else {
+  //       this.dispotrueCode = false
 
-      }
+  //     }
 
-    }, error => {
-      console.log(error.status)
-      if (error.status == 404) {
-        this.dispotrueCode = false
+  //   }, error => {
+  //     console.log(error.status)
+  //     if (error.status == 404) {
+  //       this.dispotrueCode = false
 
-      }
-    })
+  //     }
+  //   })
 
-  }
+  // }
 
   exist1() {
     console.log(this.camp.ndeReference);
@@ -231,14 +235,20 @@ export class RapprochementdesStocksFormsGeneralComponent implements OnInit {
   
   geValues(event) {
     
-
+console.log(this.dispotruelot == false && this.dispotruename == false &&
+  this.camp.numeroDeLot != null &&
+  this.camp.numeroDeLot != "" &&
+  this.camp.ndeReference != null &&
+  this.camp.ndeReference != "" &&
+  this.camp.numeroDeLot.toString().length >= 1 && this.dispotruelot ==false &&
+  this.camp.ndeReference.toString().length >= 1)
     if (
-      this.dispotrueCode == false && this.dispotruename == false &&
+      this.dispotruelot == false && this.dispotruename == false &&
       this.camp.numeroDeLot != null &&
       this.camp.numeroDeLot != "" &&
       this.camp.ndeReference != null &&
       this.camp.ndeReference != "" &&
-      this.camp.numeroDeLot.toString().length >= 1 &&
+      this.camp.numeroDeLot.toString().length >= 1 && this.dispotruelot ==false &&
       this.camp.ndeReference.toString().length >= 1
     ) {
       this.sharedService.setIsActive(true);
