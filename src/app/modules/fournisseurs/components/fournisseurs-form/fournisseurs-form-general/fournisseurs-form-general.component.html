@@ -40,7 +40,7 @@
 
 <div class="form-group col-md-6">
     <label for="type">{{'type' | translate}}</label>
-    <select class="form-control" name="type" ngModel [(ngModel)]="fournisseur.type" formControlName="paymentTerm"
+    <select class="form-control" name="type" ngModel [(ngModel)]="fournisseur.type" formControlName="type"
          required aria-invalid="true"
         (ngModelChange)="geValues($event)">
         <option value="INTERN">{{'INTERN'|translate}}</option>
