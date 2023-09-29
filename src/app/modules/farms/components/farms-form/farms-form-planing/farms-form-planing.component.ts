@@ -46,7 +46,7 @@ export class FarmsFormPlaningComponent implements OnInit {
   }
 
   selectValue1(e:any){
-    alert("zzz")
+    
     this.farm.warehouseprimary=e.target.value
   }
   

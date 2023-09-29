@@ -135,7 +135,9 @@ export class SalesListComponent implements OnInit {
 
   findById(id: string) {
     this.salesservice.findById(id).subscribe({
-      next: (result) => (this.sales = result),
+      next: (result) => {this.sales = result 
+        console.log(this.sales)
+      },
       error: (error) => console.error(error),
     });
   }
@@ -225,6 +227,13 @@ export class SalesListComponent implements OnInit {
 
   onClickEdit(id: string) {
     this.findById(id);
+    console.log('nn',id)
+    this.stepper.nextStep();
+    setTimeout(() => {
+      this.stepper.prevStep();
+
+    }, 100);
+    console.log('aa',this.sales)
     this.formModal.show({
       title: "menu.edit-sales",
       stepsCount: this.steps.length - 1,

@@ -27,7 +27,10 @@ export class SalesFormGeneralComponent implements OnInit {
         return el.code
       })
     })
-
+    console.log("2a",this.sales)
+if(this.sales.id!=null){
+  this.sharedService.setIsActive(true);
+}
   }
   initForm() {
     this.fieldControl = new FormControl('', [
@@ -55,33 +58,10 @@ export class SalesFormGeneralComponent implements OnInit {
         // Validators.maxLength(8),
       ]),
     });
-    // console.log("====================================");
-    // console.log(" add form :", this.addform);
-    // console.log("====================================");
+   
   }
   geValues(event) {
-    // console.log("====================================");
-    // console.log("event :", event);
-    // console.log("====================================");
 
-    // console.log("====================================");
-    // console.log("le formulaire :", this.addform);
-    // console.log("====================================");
-
-    // console.log(this.sales.code);
-    // console.log(this.sales.name);
-    // console.log(
-    //   "this.sales.code.length",
-    //   this.sales.code.toString().length >= 5
-    // );
-    // console.log(
-    //   this.sales.code != null &&
-    //     this.sales.code != "" &&
-    //     this.division.name != null &&
-    //     this.division.name != "" &&
-    //     this.division.code.toString().length >= 5 &&
-    //     this.division.name.toString().length >= 3
-    // );
     if (
       this.addform.value.code != null &&
       this.addform.value.code != "" &&

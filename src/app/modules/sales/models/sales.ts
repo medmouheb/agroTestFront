@@ -1,4 +1,4 @@
-import { Currency } from "app/modules/currency/models/currency"
+
 
 export type Sales ={
 
@@ -7,8 +7,8 @@ export type Sales ={
     name?: string
     type?: string
     
-    currency?: Currency
+    currency?: any
     payment_Term?:any
-  
+    Payment_Type?:any
 
 }
