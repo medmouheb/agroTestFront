@@ -292,9 +292,10 @@ export class FournisseursFormInformationComponent implements OnInit {
     let wil = this.wilayas.filter(el => {
       return el.code == e.target.value
 
-    })[0].name
-    this.fournisseur.wilayaName = wil
-
+    })[0]
+    this.fournisseur.wilayaName = wil.name
+    this.fournisseur.wilayaCode = wil.code
+    
   }
 
   emailIsvalid = false

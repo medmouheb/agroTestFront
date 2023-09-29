@@ -20,13 +20,14 @@ export class FournisseursFormGeneralComponent implements OnInit {
     private currencyservice: CurrencyService, private founriserv: FournisseursService) { }
 
   ngOnInit(): void {
+    console.log(this.fournisseur)
     this.initForm();
     if (this.fournisseur.code != null) {
       console.log("all")
       this.sharedService.setIsActive(true);
 
     }
-    this.fournisseur.currencyname = ""
+  
     this.initForm();
     this.getAllCurrency()
 

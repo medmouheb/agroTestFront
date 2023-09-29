@@ -31,6 +31,9 @@ export class FarmsFormProductComponent implements OnInit {
 
   ngOnInit(): void {
     console.log(this.farm.properties)
+    if (this.farm.properties==undefined){
+      this.farm.properties=this.elements
+    }
     if (this.farm.properties!=null){
       this.elements=this.farm.properties
 
@@ -70,6 +73,7 @@ setvaleur(index:number){
 resultat=false
 ch:any
   add:boolean=false
+
   ajouterElement() {
     
     let landIs100 = false; 
@@ -111,6 +115,11 @@ this.resultat=true
     }
     this.farm.properties=this.elements
     console.log(this.farm.properties);
+
+  }
+  getvalue(){
+    
+    this.farm.properties=this.elements
 
   }
 
