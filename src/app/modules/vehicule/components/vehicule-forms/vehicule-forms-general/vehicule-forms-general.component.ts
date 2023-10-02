@@ -87,7 +87,7 @@ export class VehiculeFormsGeneralComponent implements OnInit {
   blur1() {
     if (this.camp.vehiculeCode == null) {
       this.dispotrueCode = false
-
+      this.sharedService.setIsActive(false);
     }
   }
   exist() {
@@ -96,18 +96,19 @@ export class VehiculeFormsGeneralComponent implements OnInit {
       console.log(data)
       if (data != null) {
         this.dispotrueCode = true
+        this.sharedService.setIsActive(false);
 
 
       } else {
         this.dispotrueCode = false
-
+        this.sharedService.setIsActive(true);
       }
 
     }, error => {
       console.log(error.status)
       if (error.status == 404) {
         this.dispotrueCode = false
-
+        this.sharedService.setIsActive(true);
       }
     })
 
@@ -131,10 +132,11 @@ export class VehiculeFormsGeneralComponent implements OnInit {
     if (this.codes.indexOf(this.camp.vehiculeCode) != -1) {
       this.dispotruename = true
      // this.newSeggestions= "chose "+this.camp.name+this.generateRandomCode()+" or "+this.camp.name+this.generateRandomCode()+" or "+this.camp.name+this.generateRandomCode()+" or "+this.camp.name+this.generateRandomCode()
+     this.sharedService.setIsActive(false);
 
     } else {
       this.dispotruename = false
-
+      this.sharedService.setIsActive(true);
     }
     
 

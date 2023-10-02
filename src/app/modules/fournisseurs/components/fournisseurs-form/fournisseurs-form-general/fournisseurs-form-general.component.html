@@ -12,7 +12,7 @@
 
     <div lass="required" class="form-group col-md-6">
         <label for="name">{{'namefournisseur' | translate}}</label>
-        <input (blur)="isBlurDNisvalid();geValues($event);existname()"  class="form-control" name="name" ngModel [(ngModel)]="fournisseur.name" [formControl]="fieldControl"
+        <input (blur)="isBlurDNisvalid();geValues($event)"  class="form-control" name="name" ngModel [(ngModel)]="fournisseur.name" [formControl]="fieldControl"
             required aria-invalid="true" formControlName="name"  placeholder="{{'Write your vendor name'|translate}} "
              (ngModelChange)="geValues($event)" />
              
@@ -25,7 +25,7 @@
 
     <div class="form-group col-md-6">
     <label class="required" for="currencyCode" >{{ "currencyCode" | translate }}</label>
-    <select (blur)="selectValue($event)"  (click)="selectValue($event);geValues($event)"  type="number" class="form-control" name="currencycode" formControlName="currencyCode" [(ngModel)]="fournisseur.currencycode">
+    <select (blur)="selectValue($event)"  (click)="selectValue($event);geValues($event) "  type="number" class="form-control" name="currencycode" formControlName="currencyCode" [(ngModel)]="fournisseur.currencycode">
       <option *ngFor="let dv of cuurencys" [value]="dv.code" > {{dv.code}}</option>
     </select>
     <!-- //<div style="color: red;" *ngIf="currecnyinv">{{'you must chose'|translate}}</div> -->

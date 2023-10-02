@@ -40,13 +40,13 @@ export class WarehouseFormGeneralComponent implements OnInit {
     private costcenterservice: CostCenterService,
     private fournisseurservice: FournisseursService, private warehouseService: WarehouseService) { }
   ngOnInit(): void {
-    if (this.warehouse=null){
-      this.sharedService.setIsActive(false);
+    // if (this.warehouse=null){
+    //   this.sharedService.setIsActive(false);
 
-    }else {
-      this.sharedService.setIsActive(true);
+    // }else {
+    //   this.sharedService.setIsActive(true);
 
-    }
+    // }
     this.initForm();
     this.getAllcostcenter();
     this.getallfourniss();

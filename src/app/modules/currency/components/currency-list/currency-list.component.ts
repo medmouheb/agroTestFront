@@ -110,7 +110,22 @@ export class CurrencyListComponent implements OnInit {
     this.currency = {};
     this.currentStep = 0;
   }
+  // validationCode() {
+  //   const codeRegex: RegExp = /^[a-zA-Z0-9]*$/;
+  //   console.log(this.currency.code)
+  //   if (codeRegex.test(this.currency.code)) {
+  //     this.codeIsvalid = false;
+  //     console.log(this.currency.code)
+  //     this.sharedService.setIsActive(false);
 
+  //   }
+  //   else {
+  //     this.codeIsvalid = true
+  //     this.sharedService.setIsActive(true);
+
+  //   }
+
+  // }
   onSave(id: string | null) {
     this.toastService.loading(
       this.translateService.instant("message.loading..."),
@@ -129,62 +144,81 @@ export class CurrencyListComponent implements OnInit {
       
       return;
     }
+    const codeRegex: RegExp = /^[a-zA-Z0-9]*$/;
+    if (codeRegex.test(this.currency.code)){
+      
+      this.toastService.close("0");
+      let lg = localStorage.getItem("locale")
+      this.http.get("../../../../../assets/i18n/" + lg + ".json").subscribe((data: any) => {
+        this.toastService.warning(data.formainvalid)
+      });
+      
+      return;
+    }
 
-    this.currencyService.findbycode(this.currency.code).subscribe((data)=>{
-      console.log(data)
-      if (data!=null){
-        this.toastService.close("0");
-        let lg = localStorage.getItem("locale")
-        this.http.get("../../../../../assets/i18n/" + lg + ".json").subscribe((data: any) => {
-          this.toastService.warning(data.verifycode)
-        });
+
+
+
+
+
+
+
+
+this.currencyService.findbycode(this.currency.code).subscribe((data)=>{
+  console.log(data)
+  if (data!=null){
+    this.toastService.close("0");
+    let lg = localStorage.getItem("locale")
+    this.http.get("../../../../../assets/i18n/" + lg + ".json").subscribe((data: any) => {
+      this.toastService.warning(data.verifycode)
+    });
 
         
-        return;
-      }
+    return;
+  }
 
 
       
       
-    },(error)=>{
+},(error)=>{
 
-      this.currencyService.findbyName(this.currency.name).subscribe((data)=>{
-        console.log(data)
-        if(data!=null){
-          this.toastService.close("0");
-          let lg = localStorage.getItem("locale")
-          this.http.get("../../../../../assets/i18n/" + lg + ".json").subscribe((data: any) => {
-            this.toastService.warning(data.verifyname)
-          });
+  this.currencyService.findbyName(this.currency.name).subscribe((data)=>{
+    console.log(data)
+    if(data!=null){
+      this.toastService.close("0");
+      let lg = localStorage.getItem("locale")
+      this.http.get("../../../../../assets/i18n/" + lg + ".json").subscribe((data: any) => {
+        this.toastService.warning(data.verifyname)
+      });
           
-          return;
-        }else {
-          this.currencyService.save(id, this.currency!).subscribe({
-            next: () => {
-              this.findPage();
-              this.formModal.hide ();
-              this.onCancel();
-              this.toastService.close("0");
-              this.toastService.success(
-                this.translateService.instant("success.saved", {
-                  elem: this.translateService.instant("currency"),
-                })
-              );
-            },
-            error: (error) => {
-              this.toastService.close("0");
-              this.toastService.error(
-                this.translateService.instant(error.error, {
-                  elem: this.translateService.instant("currency"),
-                })
-              );
-            },
-          });
-        }
+      return;
+    }else {
+      this.currencyService.save(id, this.currency!).subscribe({
+        next: () => {
+          this.findPage();
+          this.formModal.hide ();
+          this.onCancel();
+          this.toastService.close("0");
+          this.toastService.success(
+            this.translateService.instant("success.saved", {
+              elem: this.translateService.instant("currency"),
+            })
+          );
+        },
+        error: (error) => {
+          this.toastService.close("0");
+          this.toastService.error(
+            this.translateService.instant(error.error, {
+              elem: this.translateService.instant("currency"),
+            })
+          );
+        },
+      });
+    }
         
-      })
+  })
 
-    })
+})
    
   }
 
