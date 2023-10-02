@@ -34,11 +34,11 @@ export class CampanyListComponent implements OnInit {
   companyPages: Page<Company> = initPage;
 
   isChecked: boolean = false;
-  affiche:boolean = false;
+  affiche: boolean = false;
   onPaginationChange: EventEmitter<string> = new EventEmitter<string>();
   form: FormGroup;
 
-  fullDetail=false
+  fullDetail = false
 
   currentStep = 0;
   steps: any = ["steps.general", "steps.localisation"];
@@ -51,26 +51,26 @@ export class CampanyListComponent implements OnInit {
   ) { }
   onCheckboxChange() {
     console.log("La valeur de la case à cocher est : ", this.isChecked);
-    if (this.isChecked==false){
+    if (this.isChecked == false) {
 
-      this.affiche=false
+      this.affiche = false
     }
-    else{
-      this.affiche=true
+    else {
+      this.affiche = true
     }
   }
   onCheckboxFullChange() {
     console.log("La valeur de la case à cocher est : ", this.isCheckedFull);
-    if (this.isCheckedFull==false){
+    if (this.isCheckedFull == false) {
 
-      this.fullDetail=false
+      this.fullDetail = false
     }
-    else{
-      this.fullDetail=true
+    else {
+      this.fullDetail = true
     }
   }
 
-  isCheckedFull:false
+  isCheckedFull: false
   ngOnInit(): void {
     this.findPage();
     this.findArchivedPage()
@@ -83,7 +83,7 @@ export class CampanyListComponent implements OnInit {
       .findPage(this.pageNumber, this.pageSize, this.filter)
       .subscribe({
         next: (result) => {
-          console.log("true",result.content)
+          console.log("true", result.content)
           this.companys = result.content;
           this.companyPage = result;
         },
@@ -168,13 +168,21 @@ export class CampanyListComponent implements OnInit {
   }
 
   onClickAdd() {
-    this.formModal.show({
-      title: "menu.add-company",
-      stepsCount: this.steps.length - 1,
-      confirm: () => this.onWizardSave(null),
-      cancel: () => this.onCancel(),
-      prev: () => this.stepper.prevStep(),
-    });
+    this.camp = {}
+    this.stepper.nextStep();
+    setTimeout(() => {
+      this.stepper.prevStep();
+
+    }, 100);
+    setTimeout(() => {
+      this.formModal.show({
+        title: "menu.add-company",
+        stepsCount: this.steps.length - 1,
+        confirm: () => this.onWizardSave(null),
+        cancel: () => this.onCancel(),
+        prev: () => this.stepper.prevStep(),
+      });
+    },200)
   }
 
   onClickEdit(id: string) {
@@ -197,7 +205,7 @@ export class CampanyListComponent implements OnInit {
 
   }
 
- 
+
 
   onClickArchive(id: string) {
     this.archiveModal.show(() => {
@@ -315,7 +323,7 @@ export class CampanyListComponent implements OnInit {
     this.companyService.disArchive(id).subscribe({
       next: () => {
         this.findArchivedPage();
-this.findPage()
+        this.findPage()
         this.toastService.success(
           this.translateService.instant("success.restore", {
             elem: this.translateService.instant("company"),

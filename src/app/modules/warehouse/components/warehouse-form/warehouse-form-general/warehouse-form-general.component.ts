@@ -40,13 +40,6 @@ export class WarehouseFormGeneralComponent implements OnInit {
     private costcenterservice: CostCenterService,
     private fournisseurservice: FournisseursService, private warehouseService: WarehouseService) { }
   ngOnInit(): void {
-    if (this.warehouse=null){
-      this.sharedService.setIsActive(false);
-
-    }else {
-      this.sharedService.setIsActive(true);
-
-    }
     this.initForm();
     this.getAllcostcenter();
     this.getallfourniss();
@@ -77,13 +70,9 @@ export class WarehouseFormGeneralComponent implements OnInit {
 
     if (this.names.indexOf(this.warehouse.name) != -1) {
       this.dispotruename = true
-      this.sharedService.setIsActive(false);
-
     //  this.newSeggestions = "chose " + this.warehouse.name + this.generateRandomCode() + " or " + this.warehouse.name + this.generateRandomCode() + " or " + this.warehouse.name + this.generateRandomCode() + " or " + this.warehouse.name + this.generateRandomCode()
     } else {
       this.dispotruename = false
-      this.sharedService.setIsActive(true);
-
     }
   }
   existcodeIsvalid = false
@@ -91,13 +80,8 @@ export class WarehouseFormGeneralComponent implements OnInit {
 
     if (this.codes.indexOf((this.warehouse.code+"")) != -1) {
       this.existcodeIsvalid = true
-      console.log(this.existcodeIsvalid)
-      this.sharedService.setIsActive(false);
-
     } else {
       this.existcodeIsvalid = false
-      this.sharedService.setIsActive(true);
-
     }
   }
 
@@ -211,7 +195,6 @@ export class WarehouseFormGeneralComponent implements OnInit {
     //     this.warehouse.code.toString().length >= 5 &&
     //     this.warehouse.name.toString().length >= 3
     // );
- 
     if (
       this.warehouse.code != null &&
       this.warehouse.code != "" &&
@@ -224,7 +207,7 @@ export class WarehouseFormGeneralComponent implements OnInit {
       this.warehouse.code.toString().length >= 1 &&
       this.warehouse.name.toString().length >= 1 &&
       this.warehouse.costCenterCode.toString().length >= 1 &&
-      this.warehouse.costCenterName.toString().length >= 1
+      this.warehouse.costCenterName.toString().length >= 1 
     ) {
       this.sharedService.setIsActive(true);
     } else {

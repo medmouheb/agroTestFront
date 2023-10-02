@@ -13,11 +13,13 @@ import { GrowoutService } from "app/modules/growout/services/growout.service";
 })
 export class GrowoutFormGeneralComponent implements OnInit {
   @Input() growout!: Growout;
+  growoutReplica!: Growout;
+
   @ViewChild("myForm") myForm: NgForm;
   divisions: Array<Division> = [];
   fieldControl: FormControl;
-  
-  
+
+
   formData = {
     name: "",
     email: "",
@@ -28,12 +30,36 @@ export class GrowoutFormGeneralComponent implements OnInit {
 
   addform: FormGroup;
 
-  constructor(private sharedService: SharedService, private divisionService: DivisionService , private growoutserv:GrowoutService
+  constructor(private sharedService: SharedService, private divisionService: DivisionService, private growoutserv: GrowoutService
   ) { }
+
+  names: Array<String> = [];
+  codes: Array<String> = [];
 
   ngOnInit(): void {
     this.initForm();
     this.getAlldivision()
+    this.growoutserv.findAll().subscribe(data => {
+      this.names = data.map(el => {
+        return el.name
+      })
+      this.codes = data.map(el => {
+        return el.code
+      })
+    })
+    console.log("you::0",this.growout)
+
+    if (this.growout.id) {
+      console.log("you::1")
+
+      this.static = "update"
+      this.growoutReplica =  JSON.parse( JSON.stringify(  this.growout))
+    } else if (!this.growout.id) {
+      console.log("you::2")
+
+      this.static = "create"
+    }
+    
   }
   getAlldivision() {
     this.divisionService.findAll().subscribe({
@@ -44,30 +70,31 @@ export class GrowoutFormGeneralComponent implements OnInit {
 
   dispotrueCode: boolean = false
   dispotruename: boolean = false
-  blur1(){
-    if (this.growout.code==null){
-  this.dispotrueCode = false
+  blur1() {
+    if (this.growout.code == null) {
+      this.dispotrueCode = false
 
     }
   }
-  exist(){
-    console.log(this.growout.code)
-    this.growoutserv.findbycode(this.growout.code).subscribe(data=>{
-      console.log(data)
-if (data!=null){
-  this.dispotrueCode = true
+  static = ""
 
+  exist() {
+    console.log("eee:",this.static,(this.codes.indexOf((this.growout.code + "")) != -1),this.codes,(this.growout.code + ""))
+    if (this.codes.indexOf((this.growout.code + "")) != -1) {
+      if(this.static=="update" ){
 
-}else{
-  this.dispotrueCode = false
+        if(this.growout.code == this.growoutReplica.code){
+          this.dispotrueCode = false
+        }else{
+          this.dispotrueCode = true
+        }
+      }else{
+        this.dispotrueCode = true
+      }
 
-}
-
-    },error=>{console.log(error.status)
-    if (error.status==404){
-  this.dispotrueCode = false
-
-    }})
+    } else {
+      this.dispotrueCode = false
+    }
 
   }
   // generateRandomCode() {
@@ -81,99 +108,102 @@ if (data!=null){
   // }
 
   newSeggestions = ""
-  
-  existname(){
-this.growoutserv.findbyName(this.growout.name).subscribe(data=>{
-      console.log(data)
-if (data!=null){
-   this.dispotruename = true
-   //this.newSeggestions= "chose "+this.growout.name+this.generateRandomCode()+" or "+this.growout.name+this.generateRandomCode()+" or "+this.growout.name+this.generateRandomCode()+" or "+this.growout.name+this.generateRandomCode()
 
+  existname() {
+    if (this.names.indexOf((this.growout.name + "")) != -1) {
+      if(this.static=="update" ){
 
- }else{
-  this.dispotruename = false
+        if(this.growout.name == this.growoutReplica.name){
+          this.dispotruename = false
+        }else{
+          this.dispotruename = true
+        }
+      }else{
+        this.dispotruename = true
+      }
 
- }
-
-    },error=>console.log(error))
+    } else {
+      this.dispotruename = false
+    }
+   
 
   }
 
 
-  selectVAlue(e:any){
-    console.log("3==",e.target.value)
-    let t=this.divisions.filter(el=>{return el.code==e.target.value})[0].name
-    let a=this.divisions.filter(el=>{return el.code==e.target.value})[0].address
-    let em=this.divisions.filter(el=>{return el.code==e.target.value})[0].email
-    let c=this.divisions.filter(el=>{return el.code==e.target.value})[0].codeCity
-    let n=this.divisions.filter(el=>{return el.code==e.target.value})[0].nameCity
-    let wc=this.divisions.filter(el=>{return el.code==e.target.value})[0].wilayaCode
-    let wn=this.divisions.filter(el=>{return el.code==e.target.value})[0].wilayaName
-    let zc=this.divisions.filter(el=>{return el.code==e.target.value})[0].zipCode
-    let pn=this.divisions.filter(el=>{return el.code==e.target.value})[0].phone
+  selectVAlue(e: any) {
+    console.log("3==", e.target.value)
+    let t = this.divisions.filter(el => { return el.code == e.target.value })[0].name
+    let a = this.divisions.filter(el => { return el.code == e.target.value })[0].address
+    let em = this.divisions.filter(el => { return el.code == e.target.value })[0].email
+    let c = this.divisions.filter(el => { return el.code == e.target.value })[0].codeCity
+    let n = this.divisions.filter(el => { return el.code == e.target.value })[0].nameCity
+    let wc = this.divisions.filter(el => { return el.code == e.target.value })[0].wilayaCode
+    let wn = this.divisions.filter(el => { return el.code == e.target.value })[0].wilayaName
+    let zc = this.divisions.filter(el => { return el.code == e.target.value })[0].zipCode
+    let pn = this.divisions.filter(el => { return el.code == e.target.value })[0].phone
 
-    this.addform.value.divisionName=t
-    this.addform.value.divisionName=a
-    this.addform.value.divisionName=em
-    this.addform.value.divisionName=c
-    this.addform.value.divisionName=n
-    this.addform.value.divisionName=wc
-    this.addform.value.divisionName=zc
-    this.addform.value.divisionName=pn
+    this.addform.value.divisionName = t
+    this.addform.value.divisionName = a
+    this.addform.value.divisionName = em
+    this.addform.value.divisionName = c
+    this.addform.value.divisionName = n
+    this.addform.value.divisionName = wc
+    this.addform.value.divisionName = zc
+    this.addform.value.divisionName = pn
 
-    this.growout.divisionName=t
-    this.growout.address=a
-    this.growout.email=em
-    this.growout.codeCity=c
-    this.growout.nameCity=n
-    this.growout.wilayaCode=wc
-    this.growout.wilayaName=wn
-    this.growout.zipCode=zc
-    this.growout.phoneNumber=pn
+    this.growout.divisionName = t
+    this.growout.address = a
+    this.growout.email = em
+    this.growout.codeCity = c
+    this.growout.nameCity = n
+    this.growout.wilayaCode = wc
+    this.growout.wilayaName = wn
+    this.growout.zipCode = zc
+    this.growout.phoneNumber = pn
 
-    this.addform.value['divisionName']=t
-    this.addform.value['address']=a
-    this.addform.value['email']=em
-    this.addform.value['codeCity']=c
-    this.addform.value['nameCity']=n
-    this.addform.value['wilayaCode']=wc
-    this.addform.value['wilayaName']=wn
-    this.addform.value['zipCode']=zc
-    this.addform.value['phoneNumber']=pn
+    this.addform.value['divisionName'] = t
+    this.addform.value['address'] = a
+    this.addform.value['email'] = em
+    this.addform.value['codeCity'] = c
+    this.addform.value['nameCity'] = n
+    this.addform.value['wilayaCode'] = wc
+    this.addform.value['wilayaName'] = wn
+    this.addform.value['zipCode'] = zc
+    this.addform.value['phoneNumber'] = pn
 
-    console.log("3==",this.addform.value)
-    console.log("5==",this.growout)
+    console.log("3==", this.addform.value)
+    console.log("5==", this.growout)
 
-    console.log("4==",t)
+    console.log("4==", t)
 
   }
   initForm() {
-   
+
     this.addform = new FormGroup({
       code: new FormControl("", [
         Validators.required,
-     
+
       ]),
       name: new FormControl("", [
         Validators.required
-        
+
       ]),
       divisionCode: new FormControl("", [
         Validators.required,
-      
+
       ]),
       divisionName: new FormControl("", [
         Validators.required,
-      
+
       ]),
     });
 
   }
 
   geValues(event) {
-   console.log("5555")
+    console.log("5555")
     if (
-      this.dispotrueCode==false&&this.dispotruename==false&&
+      this.dispotrueCode == false && this.dispotruename == false &&
       this.growout.code != null &&
       this.growout.code != "" &&
       this.growout.name != null &&
@@ -185,7 +215,7 @@ if (data!=null){
       this.growout.code.toString().length >= 1 &&
       this.growout.name.toString().length >= 1 &&
       this.growout.divisionCode.toString().length >= 1 &&
-      this.growout.divisionName.toString().length >= 1 
+      this.growout.divisionName.toString().length >= 1
     ) {
       console.log("8888")
       this.sharedService.setIsActive(true);
@@ -199,33 +229,33 @@ if (data!=null){
   get f() {
     return this.addform.controls;
   }
-  divisinv:boolean=false
-  isBlur4(){
-    if((this.addform.value.divisionCode=="")||(this.growout.divisionCode==undefined)){
-      this.divisinv=true
-    }else {
-      this.divisinv=false
-  
+  divisinv: boolean = false
+  isBlur4() {
+    if ((this.addform.value.divisionCode == "") || (this.growout.divisionCode == undefined)) {
+      this.divisinv = true
+    } else {
+      this.divisinv = false
+
     }
   }
 
-  
+
   codeIsvalid = false
 
-validationCode() {
-  const codeRegex: RegExp =/^[a-zA-Z0-9]*$/;
-  console.log(this.growout.code)
-  if (codeRegex.test(this.growout.code)) {
-    this.codeIsvalid = false;
-  console.log(this.growout.code)
+  validationCode() {
+    const codeRegex: RegExp = /^[a-zA-Z0-9]*$/;
+    console.log(this.growout.code)
+    if (codeRegex.test(this.growout.code)) {
+      this.codeIsvalid = false;
+      console.log(this.growout.code)
+
+    }
+    else {
+      this.codeIsvalid = true
+    }
 
   }
-  else {
-  this.codeIsvalid=true
-  }
 
-}
- 
   isControlValid(controlCode: string): boolean {
     const control = this.addform.controls[controlCode];
     return control.invalid && (control.dirty || control.touched);
@@ -241,30 +271,30 @@ validationCode() {
   STisvali: boolean = false;
   Misvalid: boolean = false;
   minIstrueName2: boolean = false
- 
+
 
   isBlurDCisvalid() {
-    if ( this.growout.code==undefined){
-    
+    if (this.growout.code == undefined) {
+
       this.DCisvalid = true
 
-    }else if (this.growout.code.toString().length < 1) {
-       this.DCisvalid = true
-        
-    }else {
-        this.DCisvalid = false
-      }
-    
+    } else if (this.growout.code.toString().length < 1) {
+      this.DCisvalid = true
+
+    } else {
+      this.DCisvalid = false
+    }
+
     console.log(this.growout.code)
-    
-   
+
+
   }
 
   isBlurDNisvalid() {
-    if ((this.growout.name==undefined)||(this.growout.name.toString().length < 1)){
-      this.DNisvalid = true 
+    if ((this.growout.name == undefined) || (this.growout.name.toString().length < 1)) {
+      this.DNisvalid = true
     }
-    
+
     else {
       this.DNisvalid = false
     }

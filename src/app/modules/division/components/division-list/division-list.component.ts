@@ -242,12 +242,12 @@ export class DivisionListComponent implements OnInit {
     }
   }
   sortBycurreValid: boolean = true;
-  sortBycurre() {
+  sortBycurre() { 
     if (this.sortBycurreValid) {
-      this.divisions.sort((a, b) => a.currencyname.localecurreare(b.currencyname));
+      this.divisions.sort((a, b) => a.currencyname.localeCompare(b.currencyname));
       this.sortBycurreValid = false
     } else {
-      this.divisions.sort((a, b) => b.currencyname.localecurreare(a.currencyname));
+      this.divisions.sort((a, b) => b.currencyname.localeCompare(a.currencyname));
       this.sortBycurreValid = true
     }
   }

@@ -15,12 +15,16 @@ import { Division } from "../../../models/division";
 
 export class DivisionFormGeneralComponent implements OnInit {
   @Input() division!: Division;
+  divisionReplica!: Division;
   addform: FormGroup;
   fieldControl: FormControl;
   cuurencys: Array<Currency> = []
   constructor(private sharedService: SharedService, private currencyservice: CurrencyService, private divisionserv: DivisionService) { }
   names: Array<String> = [];
   codes: Array<String> = [];
+
+  static = ""
+
   ngOnInit(): void {
     this.divisionserv.findAll().subscribe(data => {
       this.names = data.map(el => {
@@ -46,6 +50,13 @@ export class DivisionFormGeneralComponent implements OnInit {
       case "Bovin": this.listA = ["fattening cow farms", "Dairy farms"]; break;
     }
 
+    if (this.division.id) {
+      this.static = "update"
+      this.divisionReplica =  JSON.parse( JSON.stringify(  this.division))
+    } else if (!this.division.id) {
+      this.static = "create"
+    }
+
   }
   affiche() {
     if (this.division.code != null &&
@@ -65,9 +76,16 @@ export class DivisionFormGeneralComponent implements OnInit {
   }
   exist() {
     if (this.codes.indexOf((this.division.code + "")) != -1) {
+      if(this.static=="update" ){
+        if(this.division.code == this.divisionReplica.code){
+          this.dispotrueCode = false
+        }else{
+          this.dispotrueCode = true
+        }
+      }else{
+        this.dispotrueCode = true
+      }
 
-      this.dispotrueCode = true
-      console.log(this.dispotrueCode)
     } else {
       this.dispotrueCode = false
     }
@@ -79,8 +97,15 @@ export class DivisionFormGeneralComponent implements OnInit {
 
   existname() {
     if (this.names.indexOf(this.division.name) != -1) {
-      this.dispotruename = true
-      //this.newSeggestions = "chose " + this.cost.name + this.generateRandomCode() + " or " + this.cost.name + this.generateRandomCode() + " or " + this.cost.name + this.generateRandomCode() + " or " + this.cost.name + this.generateRandomCode()
+      if(this.static=="update" ){
+        if(this.division.name == this.divisionReplica.name){
+          this.dispotruename = false
+        }else{
+          this.dispotruename = true
+        }
+      }else{
+        this.dispotruename = true
+      }
     } else {
       this.dispotruename = false
     }

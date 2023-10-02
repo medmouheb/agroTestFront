@@ -2,8 +2,8 @@
 
     <div class="form-group col-md-6">
         <label class="required" for="code">{{ "codecompany" | translate }}</label>
-        <input (blur)="isBlur();exist();blur1();validationCode()" class="form-control" name="code" [(ngModel)]="camp.code" formControlName="code" placeholder="{{'Write your company code'|translate}} "
-            required aria-invalid="true"  aria-describedby="code-error" (ngModelChange)="geValues($event)">
+        <input (keyup)="isBlur();exist();blur1();validationCode();geValues($event);" class="form-control" name="code" [(ngModel)]="camp.code" formControlName="code" placeholder="{{'Write your company code'|translate}} "
+            required aria-invalid="true"  aria-describedby="code-error" >
             <div  style="color: red;" *ngIf="codeIsvalid">{{ "Invalid code format" |translate }}</div>
             <div style=" color : red;" *ngIf="dispotrueCode">{{'Code must be unique'|translate}}</div>
             <div style=" color : red;" *ngIf="minIstrueCode">{{'Code must be not null'|translate}}</div>
@@ -11,8 +11,8 @@
 
     <div class="form-group col-md-6 ">
         <label class="required" for="name">{{ "namecompany" | translate }}</label>
-        <input (blur)="isBlur1();existname()"  class="form-control" name="name" formControlName="name" [(ngModel)]="camp.name"  placeholder="{{'Write your company name'|translate}} "
-            required aria-invalid="true" aria-describedby="name-error" (ngModelChange)="geValues($event)">
+        <input (keyup)="isBlur1();existname();geValues($event);"  class="form-control" name="name" formControlName="name" [(ngModel)]="camp.name"  placeholder="{{'Write your company name'|translate}} "
+            required aria-invalid="true" aria-describedby="name-error" >
         <div style=" color : red;" *ngIf="minIstrueName">{{'Name must be not null'|translate}} </div> 
 
         <div style=" color : red;" *ngIf="dispotruename">{{'name must be unique'|translate}}</div>

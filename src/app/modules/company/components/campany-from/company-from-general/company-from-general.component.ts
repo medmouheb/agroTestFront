@@ -15,32 +15,36 @@ import { Company } from "../../../models/comany";
 })
 export class CompanyFromGeneralComponent implements OnInit {
   @Input() camp!: Company;
+   campReplicat!: Company;
+
 
   @ViewChild("addform")
   addform: FormGroup;
- 
+
   constructor(private sharedService: SharedService, private fb: FormBuilder, private compaser: CompanyService) { }
   names: Array<String> = [];
+  static = ""
   ngOnInit(): void {
     if (this.camp != null) {
       console.log("olll")
       this.sharedService.setIsActive(true);
       this.compaser.findAll().subscribe(data => {
-        console.log("777::",data.map(el => { return el.name }))
+        console.log("777::", data.map(el => { return el.name }))
         this.names = data.map(el => { return el.name })
       })
-    }; 
+    };
 
     if (this.camp == undefined) { this.camp = { name: "", code: "" } };
     this.initForm();
-    console.log(this.addform);
+    if (this.camp.id) {
+      this.static = "update"
+      this.campReplicat =  JSON.parse( JSON.stringify(  this.camp))
+    } else if (!this.camp.id) {
+      this.static = "create"
+    }
   }
 
   initForm() {
-    
-
-
-
     this.addform = this.fb.group({
       code: [
         null,
@@ -80,17 +84,39 @@ export class CompanyFromGeneralComponent implements OnInit {
     }
   }
   exist() {
-    console.log(this.camp.code)
     this.compaser.findbycode(this.camp.code).subscribe(data => {
-      console.log(data)
-      if (data != null) {
-        this.dispotrueCode = true
+      if(this.static=="update" ){
+        console.log("you::",this.camp ,this.campReplicat)
 
+        try{
+          if(this.camp.code == this.campReplicat.code){
+            this.dispotrueCode = false
 
-      } else {
-        this.dispotrueCode = false
+          }else{
+            if (data != null) {
+              this.dispotrueCode = true
+      
+      
+            } else {
+              this.dispotrueCode = false
+      
+            }
+          }
+        }catch(e){}
+  
 
+      }else{
+        if (data != null) {
+          this.dispotrueCode = true
+  
+  
+        } else {
+          this.dispotrueCode = false
+  
+        }
       }
+      
+    
 
     }, error => {
       console.log(error.status)
@@ -101,58 +127,48 @@ export class CompanyFromGeneralComponent implements OnInit {
     })
 
   }
-  
 
 
- generateRandomCode() {
-  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-  let code = '';
-  for (let i = 0; i < 4; i++) {
-    const randomIndex = Math.floor(Math.random() * characters.length);
-    code += characters.charAt(randomIndex);
+
+  generateRandomCode() {
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let code = '';
+    for (let i = 0; i < 4; i++) {
+      const randomIndex = Math.floor(Math.random() * characters.length);
+      code += characters.charAt(randomIndex);
+    }
+    return code;
   }
-  return code;
-}
 
-  newSeggestions=""
+  newSeggestions = ""
 
   existname() {
-    console.log("aa::",this.names)
+    console.log("aa::", this.names)
     if (this.names.indexOf(this.camp.name) != -1) {
-      this.dispotruename = true
-     // this.newSeggestions= "chose "+this.camp.name+this.generateRandomCode()+" or "+this.camp.name+this.generateRandomCode()+" or "+this.camp.name+this.generateRandomCode()+" or "+this.camp.name+this.generateRandomCode()
+      if(this.static=="update" ){
+        console.log("you::",1)
+        if(this.camp.name == this.campReplicat.name){
+          this.dispotruename = false
+        }else{
+          console.log("you::",2)
+
+          this.dispotruename = true
+        }
+      }
+
 
     } else {
       this.dispotruename = false
 
     }
-    
+
 
 
   }
 
   minIstrueName: boolean = false
   minIstrueName2: boolean = false
-  // isBlur2() {
-  //   console.log(this.minIstrueName2)
-  //   console.log('===3:', this.fieldControl.value
-  //   )
 
-  //   if (this.fieldControl.status == "INVALID") {
-  //     this.minIstrueName2 = true
-
-  //   }
-  //   else if (this.fieldControl.status == "VALID") {
-  //     this.minIstrueName2 = false
-
-  //   }
-  // }
-  // isBlur3() {
-  //   if ((this.fieldControl.value == '') || (this.fieldControl.value == undefined)) {
-  //     this.minIstrueName2 = false
-
-  //   }
-  // }
   isBlur1() {
     console.log(this.minIstrueName2)
     if (this.camp.name == undefined) {
@@ -169,11 +185,12 @@ export class CompanyFromGeneralComponent implements OnInit {
 
     }
   }
+
   geValues(event) {
-    
-    console.log("ds::",!this.codeIsvalid    , this.dispotrueCode == false , this.dispotruename )
+
+    console.log("ds::", !this.codeIsvalid, this.dispotrueCode == false, this.dispotruename)
     if (
-      !this.codeIsvalid    && this.dispotrueCode == false && !this.dispotruename  &&
+      !this.codeIsvalid && this.dispotrueCode == false && !this.dispotruename &&
       this.camp.code != null &&
       this.camp.code != "" &&
       this.camp.name != null &&
@@ -208,17 +225,17 @@ export class CompanyFromGeneralComponent implements OnInit {
 
   codeIsvalid = false
 
-validationCode() {
-  const codeRegex: RegExp =/^[a-zA-Z0-9]*$/;
-  console.log(this.camp.code)
-  if (codeRegex.test(this.camp.code)) {
-    this.codeIsvalid = false;
-  console.log(this.camp.code)
+  validationCode() {
+    const codeRegex: RegExp = /^[a-zA-Z0-9]*$/;
+    console.log(this.camp.code)
+    if (codeRegex.test(this.camp.code)) {
+      this.codeIsvalid = false;
+      console.log(this.camp.code)
+
+    }
+    else {
+      this.codeIsvalid = true
+    }
 
   }
-  else {
-  this.codeIsvalid=true
-  }
-
-}
 }
