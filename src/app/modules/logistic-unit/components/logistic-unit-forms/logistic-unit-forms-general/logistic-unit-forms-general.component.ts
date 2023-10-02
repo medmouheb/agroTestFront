@@ -84,10 +84,13 @@ export class LogisticUnitFormsGeneralComponent implements OnInit {
       console.log(data)
       if (data != null) {
         this.dispotrueCode = true
+        this.sharedService.setIsActive(false);
+        console.log(data)
 
 
       } else {
         this.dispotrueCode = false
+        this.sharedService.setIsActive(true);
 
       }
 
@@ -95,6 +98,7 @@ export class LogisticUnitFormsGeneralComponent implements OnInit {
       console.log(error.status)
       if (error.status == 404) {
         this.dispotrueCode = false
+        this.sharedService.setIsActive(true);
 
       }
     })
@@ -122,15 +126,18 @@ validationCode() {
       (data) => {
         console.log(data);
         if (data != null) {
+          this.sharedService.setIsActive(false);
           this.dispotruename = true;
         } else {
           this.dispotruename = false;
+          this.sharedService.setIsActive(true);
         }
       },
       (error) => {
         console.log(error.status);
         if (error.status == 404) {
           this.dispotruename = false;
+          this.sharedService.setIsActive(true);
         }
       }
     );
@@ -155,9 +162,12 @@ validationCode() {
     if (this.codes.indexOf(this.camp.logisticName) != -1) {
       this.dispotruename = true
      // this.newSeggestions= "chose "+this.camp.name+this.generateRandomCode()+" or "+this.camp.name+this.generateRandomCode()+" or "+this.camp.name+this.generateRandomCode()+" or "+this.camp.name+this.generateRandomCode()
+     this.sharedService.setIsActive(false);
 
     } else {
       this.dispotruename = false
+      this.sharedService.setIsActive(true);
+
 
     }
     

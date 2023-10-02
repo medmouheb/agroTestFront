@@ -1,7 +1,7 @@
 <div class="row" [formGroup]="addform">
     <div class="form-group col-md-4">
         <label class="required" for="code">{{'codeproduct' | translate}}</label>
-        <input (blur)="isBlur();validationCode();exist()" class="form-control" name="code" [(ngModel)]="produit.code"
+        <input (blur)="isBlur();validationCode();exist();existname()" class="form-control" name="code" [(ngModel)]="produit.code"
             formControlName="code" placeholder="{{'write your code product'|translate}} " required aria-invalid="true"
             aria-describedby="code-error" (ngModelChange)="geValues($event)">
         <div style="color: red;" *ngIf="codeIsvalid">{{ "Invalid code format" |translate }}</div>
@@ -29,7 +29,7 @@
 
     <div class="form-group col-md-4">
         <label for="vendor">{{'vendor' | translate}}</label>
-        <select class="form-control" name="vendor" (change)="onVendorChange($event)">
+        <select class="form-control" name="vendor" (blur)="existname();exist()" (change)="onVendorChange($event)  ">
             <option selected disabled [value]="">{{"il faut choisir"| translate}}</option>
             <option [selected]="produit.fournisseur.id==vendor.id" *ngFor="let vendor of vendors" [value]="vendor.id">
                 {{vendor.name}}

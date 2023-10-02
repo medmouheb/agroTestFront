@@ -958,6 +958,9 @@
 "Other":"Autre",
 "Ingredients":"Ingrédients",
 "verifycodenamecountrycodecountrynamedigitalcode":"vérifiez votre code, votre nom, votre code de pays, votre nom de pays et votre code numérique",
+"verifycode":"Le code doit être unique",
+"verifyname":"Le Nom doit être unique",
+
 "upload":"Charger fichier",
 "selectyourcontry":"Sélectionnez votre pays",
 

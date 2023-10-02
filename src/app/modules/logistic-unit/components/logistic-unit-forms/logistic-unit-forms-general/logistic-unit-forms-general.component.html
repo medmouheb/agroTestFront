@@ -2,7 +2,7 @@
 
     <div class="form-group col-md-6">
         <label class="required" for="logisticCode">{{ "logisticCode" | translate }}</label>
-        <input (blur)="isBlur();exist();blur1();validationCode()" class="form-control" name="logisticCode" [(ngModel)]="camp.logisticCode" formControlName="logisticCode" placeholder="{{'Write your  logisticCode'|translate}} "
+        <input (blur)="isBlur();exist();blur1();validationCode() ;exist1()" class="form-control" name="logisticCode" [(ngModel)]="camp.logisticCode" formControlName="logisticCode" placeholder="{{'Write your  logisticCode'|translate}} "
             required aria-invalid="true"  aria-describedby="code-error" (ngModelChange)="geValues($event)">
             <div  style="color: red;" *ngIf="codeIsvalid">{{ "Invalid code format" |translate }}</div>
             <div style=" color : red;" *ngIf="dispotrueCode">{{'logistic Code must be unique'|translate}}</div>

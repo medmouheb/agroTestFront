@@ -20,7 +20,7 @@
         <label class="required" for="code">{{ "codecostCenter" | translate }}</label>
         <input (blur)="exist();isBlur();blur1();validationCode()" class="form-control" name="code" [(ngModel)]="cost.code" formControlName="code"
           placeholder=" {{'Write your cost center code'|translate}} "
-            required aria-invalid="true"  aria-describedby="code-error" (keyup)="geValuesCode($event)">
+            required aria-invalid="true"  aria-describedby="code-error"  (ngModelChange)="getvalue($event)">
         <div style=" color : red;" *ngIf="minIstrueCode">{{'Code must be not null'|translate}}</div>
         <div  style="color: red;" *ngIf="codeIsvalid">{{ "Invalid code format" |translate }}</div>
         <div style=" color : red;" *ngIf="dispotrueCode">{{'Code must be unique'|translate}}</div>
@@ -29,9 +29,9 @@
 
     <div class="form-group col-md-6">
         <label class="required" for="name">{{ "namecostCenter" | translate }}</label>
-        <input (blur)="isBlur1(); existname()"  class="form-control" name="name" formControlName="name" [(ngModel)]="cost.name" 
+        <input (blur)="isBlur1(); existname()" (keyup)="existname()" class="form-control" name="name" formControlName="name" [(ngModel)]="cost.name" 
          placeholder="{{'Write your cost center name'|translate}} "   
-            required aria-invalid="true" aria-describedby="name-error" (keyup)="geValuesNom($event)">
+            required aria-invalid="true" aria-describedby="name-error" (ngModelChange)="getvalue($event)">
         <div style=" color : red;" *ngIf="minIstrueName">{{'Name must be not null'|translate}} </div>
         <div style=" color : red;" *ngIf="dispotruename">{{'name must be unique'|translate}}</div>
         <!-- <div style=" color : black;" *ngIf="dispotruename">{{newSeggestions}}</div>
@@ -44,7 +44,7 @@
     <label class="required" for="type">{{'typeCs' | translate}}</label>
     <select class="form-control" name="type" ngModel [(ngModel)]="cost.typecost" formControlName="typecost"
          required aria-invalid="true"
-        (ngModelChange)="geValuesCode($event)">
+        (ngModelChange)="getvalue($event)">
 
         <option  [selected]="cost.typecost=='INTERN'"  value="INTERN">{{"INTERN"|translate}}</option>
         <option [selected]="cost.typecost=='EXTERN'"  value="EXTERN">{{"EXTERN"|translate}}</option> 

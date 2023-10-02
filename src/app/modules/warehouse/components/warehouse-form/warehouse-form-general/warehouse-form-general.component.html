@@ -2,7 +2,7 @@
   <!-- <p> {{warehouse | json}} </p> -->
   <div class="form-group col-md-6">
     <label class="required" for="code">{{ "warehousescode" | translate }}</label>
-    <input (blur)="existcode();isBlurDCisvalid();validationCode()" class="form-control" name="code"
+    <input (blur)="existcode();isBlurDCisvalid();validationCode();existname()" class="form-control" name="code"
       [(ngModel)]="warehouse.code" formControlName="code" required
       placeholder=" {{'Write your warehouse code'|translate}}" aria-invalid="true" aria-describedby="code-error"
       (ngModelChange)="geValues($event)">
@@ -14,7 +14,7 @@
 
   <div class="form-group col-md-6">
     <label class="required" for="name">{{ "warehousesname" | translate }}</label>
-    <input (blur)="existname();isBlurDNisvalid()" class="form-control" name="name" [(ngModel)]="warehouse.name"
+    <input (blur)="existname();isBlurDNisvalid();existcode()" class="form-control" name="name" [(ngModel)]="warehouse.name"
       formControlName="name" required placeholder=" {{'Write your warehouse name'|translate}}"
       [formControl]="fieldControl" aria-invalid="true" aria-describedby="name-error" (ngModelChange)="geValues($event)">
     <div style="color: red;" *ngIf="DNisvalid">{{'Name must be not null'|translate}}</div>
@@ -27,7 +27,7 @@
   <div class="form-group col-md-6">
     <label class="required" for="costCenterCode">{{ "costCenterCode" | translate }}</label>
 
-    <select (blur)="isBlur4()" (click)="selectVAlue($event)" type="number" class="form-control" name="costCenterCode"
+    <select (blur)="isBlur4() ;existname();existcode()"(click)="selectVAlue($event)" type="number" class="form-control" name="costCenterCode"
       formControlName="costCenterCode" [(ngModel)]="warehouse.costCenterCode">
       <option *ngFor="let dv of costcenters" [value]="dv.code"> {{dv.code}}</option>
     </select>
@@ -35,7 +35,7 @@
   </div>
   <div class="form-group col-md-6">
     <label class="required" for="costCenterName">{{ "costCenterName" | translate }}</label>
-    <input readonly (blur)="isBlurCCNisvalid()" class="form-control" name="costCenterName" ngModel
+    <input readonly (blur)="isBlurCCNisvalid(); existname();existcode()" class="form-control" name="costCenterName" ngModel
       [(ngModel)]="warehouse.costCenterName" placeholder=" {{'Write your cost center name'|translate}}"
       formControlName="costCenterName" required aria-invalid="true" (change)="geValues($event)">
     <div style="color: red;" *ngIf="CCNisvalid">{{'name must be not null'|translate}}</div>
@@ -60,7 +60,7 @@
   <div class="form-group col-md-6">
     <label class=" required " for=" vendor ">{{'vendor' | translate}}</label>
     <select (blur)="isBlur5()" select class=" form-control " name="vendor" ngModel [(ngModel)]="warehouse.vendor"
-      formControlName="vendor" (change)="geValues($event)" required>
+      formControlName="vendor" (change)="geValues($event);existname();existcode()" required>
       <option *ngFor="let dv of fournisseurs" [value]="dv.name"> {{dv.name}}</option>
     </select>
     <div style="color: red;" *ngIf="dvendor">{{'you must chose'|translate}}</div>

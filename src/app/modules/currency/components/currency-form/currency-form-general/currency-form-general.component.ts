@@ -37,10 +37,14 @@ export class CurrencyFormGeneralComponent implements OnInit {
       console.log(data)
       if (data != null) {
         this.dispotrueCode = true
+        this.sharedService.setIsActive(false)
+
 
 
       } else {
         this.dispotrueCode = false
+        this.sharedService.setIsActive(true)
+
 
       }
 

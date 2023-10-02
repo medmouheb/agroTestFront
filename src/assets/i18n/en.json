@@ -979,6 +979,8 @@
 "Other":"Other",
 "Ingredients":"Ingredients",
 "verifycodenamecountrycodecountrynamedigitalcode":"verify your code , name , countrycode , countryname and digitalcode",
+"verifycode":"Code must be unique",
+"verifyname":"Name must be unique",
  
 "upload":"Upload file",
 "selectyourcontry":"Select Your Contry",
