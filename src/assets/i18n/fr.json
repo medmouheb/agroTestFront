@@ -972,7 +972,9 @@
 
 "Insufficient space":"Vous avez atteint la capacité maximale de votre Land",
 "You have":"Vous avez",
-"of available land":"de terres disponibles"
+"of available land":"de terres disponibles",
+"code must be lesser or equal to 10":"le code doit être inférieur ou égal à 10"
+
 
 
 

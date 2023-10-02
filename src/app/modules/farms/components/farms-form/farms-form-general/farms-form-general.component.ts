@@ -27,6 +27,8 @@ export class FarmsFormGeneralComponent implements OnInit {
   vendors: Fournisseur[] = [];
   addform: FormGroup;
   fieldControl: FormControl;
+  names: Array<String> = [];
+  codes: Array<String> = [];
   constructor(
     private farmsService: FarmsService,
     private warehouseService: WarehouseService,
@@ -111,7 +113,37 @@ export class FarmsFormGeneralComponent implements OnInit {
     this.getAllVendors();
 
     console.log("44::", this.farm)
+    this.farmsService.findAll().subscribe(data => {
+      this.names = data.map(el => {
+        return el.nom
+      })
+      this.codes = data.map(el => {
+        return el.code
+      })
+    })
 
+  }
+  dispotruename = false
+
+  existname() {
+
+    if (this.names.indexOf(this.farm.nom) != -1) {
+      this.dispotruename = true
+    //  this.newSeggestions = "chose " + this.warehouse.name + this.generateRandomCode() + " or " + this.warehouse.name + this.generateRandomCode() + " or " + this.warehouse.name + this.generateRandomCode() + " or " + this.warehouse.name + this.generateRandomCode()
+    } else {
+      this.dispotruename = false
+    }
+  }
+
+  dispotruecode = false
+
+  existcode() {
+
+    if (this.codes.indexOf(this.farm.code) != -1) {
+      this.dispotruecode = true
+    } else {
+      this.dispotruecode = false
+    }
   }
 
   getFile(id:any){
@@ -200,6 +232,7 @@ export class FarmsFormGeneralComponent implements OnInit {
     )
     console.log("d:", this.farm)
     if (
+      !this.dispotruecode && !this.dispotruename &&
       this.farm.code != null &&
       this.farm.code != "" &&
       this.farm.nom != null &&
@@ -237,7 +270,7 @@ export class FarmsFormGeneralComponent implements OnInit {
 
   getAllWarehouses() {
     this.warehouseService.findAll().subscribe({
-      next: (result) => (this.warehouses = result),
+      next: (result) => {this.warehouses = result},
       error: (error) => console.error(error),
     });
   }

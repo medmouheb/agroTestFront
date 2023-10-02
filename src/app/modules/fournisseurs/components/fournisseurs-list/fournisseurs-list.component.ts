@@ -174,6 +174,7 @@ export class FournisseursListComponent implements OnInit {
       },
       error: (error) => {
         this.toastService.close("0");
+        console.log("zz:",error.error)
         this.toastService.error(
           this.translateService.instant(error.error, {
             elem: this.translateService.instant("vendor"),

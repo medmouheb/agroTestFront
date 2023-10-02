@@ -271,6 +271,17 @@ export class FournisseursFormInformationComponent implements OnInit {
       this.getflage()
   }
 
+  codeCityLengthvalidator=false
+  codeCityLength(e:any){
+    if( e.target.value.length>10){
+      this.sharedService.setIsActive(false)
+      this.codeCityLengthvalidator=true
+    }else{
+      this.sharedService.setIsActive(true)
+      this.codeCityLengthvalidator=false
+    }
+  }
+
   phoneNumberinp(e:any){
     e.target.value=e.target.value.replace(/[^0-9+\-\s]/g, '')
   }

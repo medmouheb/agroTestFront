@@ -35,7 +35,7 @@
 
   <div class="form-group col-md-6">
     <label for="coutHoraire">{{ "coutHoraire" | translate }}</label>
-    <input type="number" class="form-control" name="coutHoraire" #coutHoraire="ngModel" ngModel [(ngModel)]="camp.coutHoraire"
+    <input type="time" class="form-control" name="coutHoraire" #coutHoraire="ngModel" ngModel [(ngModel)]="camp.coutHoraire"
       placeholder="{{'Write your coutHoraire'|translate}} "/>
   </div>
 

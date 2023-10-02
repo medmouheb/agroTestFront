@@ -16,8 +16,12 @@
 
   <div class="form-group col-md-6">
     <label for="codeCity">{{ "codeCity" | translate }}</label>
-    <input class="form-control" name="codeCity" #wilayaName="ngModel" ngModel [(ngModel)]="fournisseur.codeCity"  
+    <input (keyup)="codeCityLength($event)" class="form-control" name="codeCity" #wilayaName="ngModel" ngModel [(ngModel)]="fournisseur.codeCity"  
     placeholder="{{'Write your city code'|translate}} " />
+
+    <div  style="color: red;" *ngIf="codeCityLengthvalidator">{{ "code must be lesser or equal to 10" | translate }}</div>
+
+
   </div>
 
   <div class="form-group col-md-6">
