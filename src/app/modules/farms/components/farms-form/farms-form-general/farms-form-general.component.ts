@@ -140,7 +140,10 @@ export class FarmsFormGeneralComponent implements OnInit {
   existcode() {
 
     if (this.codes.indexOf(this.farm.code) != -1) {
+      console.log("test",this.dispotruecode)
       this.dispotruecode = true
+      console.log("test",this.dispotruecode)
+
     } else {
       this.dispotruecode = false
     }

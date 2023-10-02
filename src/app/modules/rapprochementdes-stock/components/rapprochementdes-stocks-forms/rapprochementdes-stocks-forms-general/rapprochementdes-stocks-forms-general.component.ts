@@ -52,30 +52,7 @@ export class RapprochementdesStocksFormsGeneralComponent implements OnInit {
     
   }
   dispotruelot:boolean=false
-  exists() {
-    console.log(this.camp.numeroDeLot)
-    this.compaser.findbycode(this.camp.numeroDeLot).subscribe(data => {
-      console.log(data)
-      if (data != null) {
-      
-        this.dispotruelot = true
-        console.log(this.dispotruelot)
 
-
-      } else {
-        this.dispotruelot = false
-
-      }
-
-    }, error => {
-      console.log(error.status)
-      if (error.status == 404) {
-        this.dispotrueCode = false
-
-      }
-    })
-
-  }
   
 
 
@@ -111,10 +88,14 @@ export class RapprochementdesStocksFormsGeneralComponent implements OnInit {
 
     if (this.camp.numeroDeLot == undefined) {
       this.minIstrueCode = true
+      this.sharedService.setIsActive(false);
+
     }
     else if (this.camp.numeroDeLot.toString().length < 1) { this.minIstrueCode = true }
     else {
       this.minIstrueCode = false
+      this.sharedService.setIsActive(true);
+
     }
   }
   dispotrueCode: boolean = false
@@ -122,33 +103,40 @@ export class RapprochementdesStocksFormsGeneralComponent implements OnInit {
   blur1() {
     if (this.camp.numeroDeLot == null) {
       this.dispotrueCode = false
+      this.sharedService.setIsActive(false);
+
 
     }
   }
-  // exist() {
-  //   console.log(this.camp.numeroDeLot)
-  //   this.compaser.findbycode(this.camp.numeroDeLot).subscribe(data => {
-  //     console.log(data)
-  //     if (data != null) {
-  //     console.log(this.dispotrueCode)
+ exist() {
+   console.log(this.camp.numeroDeLot)
+   this.compaser.findbycode(this.camp.numeroDeLot).subscribe(data => {
+     console.log("result",data)
+     if (data != null) {
+     console.log("result",this.dispotruelot)
 
-  //       this.dispotruelot = true
+       this.dispotruelot = true
+       this.sharedService.setIsActive(false);
 
 
-  //     } else {
-  //       this.dispotrueCode = false
+     } else {
+       this.dispotruelot = false
+       this.sharedService.setIsActive(true);
 
-  //     }
 
-  //   }, error => {
-  //     console.log(error.status)
-  //     if (error.status == 404) {
-  //       this.dispotrueCode = false
+     }
 
-  //     }
-  //   })
+   }, error => {
+     console.log(error.status)
+     if (error.status == 404) {
+       this.dispotruelot = false
+       this.sharedService.setIsActive(true);
 
-  // }
+
+     }
+   })
+
+ }
 
   exist1() {
     console.log(this.camp.ndeReference);
@@ -201,26 +189,7 @@ export class RapprochementdesStocksFormsGeneralComponent implements OnInit {
 
   minIstrueName: boolean = false
   minIstrueName2: boolean = false
-  // isBlur2() {
-  //   console.log(this.minIstrueName2)
-  //   console.log('===3:', this.fieldControl.value
-  //   )
 
-  //   if (this.fieldControl.status == "INVALID") {
-  //     this.minIstrueName2 = true
-
-  //   }
-  //   else if (this.fieldControl.status == "VALID") {
-  //     this.minIstrueName2 = false
-
-  //   }
-  // }
-  // isBlur3() {
-  //   if ((this.fieldControl.value == '') || (this.fieldControl.value == undefined)) {
-  //     this.minIstrueName2 = false
-
-  //   }
-  // }
   isBlur1() {
     console.log(this.camp.ndeReference);
     if (
@@ -235,20 +204,14 @@ export class RapprochementdesStocksFormsGeneralComponent implements OnInit {
   
   geValues(event) {
     
-console.log(this.dispotruelot == false && this.dispotruename == false &&
-  this.camp.numeroDeLot != null &&
-  this.camp.numeroDeLot != "" &&
-  this.camp.ndeReference != null &&
-  this.camp.ndeReference != "" &&
-  this.camp.numeroDeLot.toString().length >= 1 && this.dispotruelot ==false &&
-  this.camp.ndeReference.toString().length >= 1)
+
     if (
-      this.dispotruelot == false && this.dispotruename == false &&
+     
       this.camp.numeroDeLot != null &&
       this.camp.numeroDeLot != "" &&
       this.camp.ndeReference != null &&
       this.camp.ndeReference != "" &&
-      this.camp.numeroDeLot.toString().length >= 1 && this.dispotruelot ==false &&
+      this.camp.numeroDeLot.toString().length >= 1 && 
       this.camp.ndeReference.toString().length >= 1
     ) {
       this.sharedService.setIsActive(true);

@@ -8,6 +8,7 @@ import { HotToastService } from '@ngneat/hot-toast';
 import { TranslateService } from '@ngx-translate/core';
 import { WillayaService } from '../../services/willaya.service';
 import { DialogComponent } from 'app/shared/components/dialog/dialog.component';
+import { HttpClient } from '@angular/common/http';
 
 
 @Component({
@@ -43,7 +44,8 @@ export class WillayaListComponent implements OnInit {
     private willayaservice:WillayaService,
     private translateService: TranslateService,
 
-    private toastService: HotToastService
+    private toastService: HotToastService,
+    private http: HttpClient
 
   ) { }
    onCheckboxChange() {
@@ -128,27 +130,57 @@ export class WillayaListComponent implements OnInit {
       );
       return;
     }
-    this.willayaservice.save(id, this.willaya!).subscribe({
-      next: () => {
-        this.findPage();
-        this.formModal.hide();-
-        this.onCancel();
+    this.willayaservice.findbycode(this.willaya.code).subscribe(data=>{
+      console.log(data)
+      if (data!=null){
         this.toastService.close("0");
-        this.toastService.success(
-          this.translateService.instant("success.saved", {
-            elem: this.translateService.instant("willaya"),
-          })
-        );
-      },
-      error: (error) => {
-        this.toastService.close("0");
-        this.toastService.error(
-          this.translateService.instant(error.error, {
-            elem: this.translateService.instant("willaya"),
-          })
-        );
-      },
-    });
+        let lg = localStorage.getItem("locale")
+        this.http.get("../../../../../assets/i18n/" + lg + ".json").subscribe((data: any) => {
+          this.toastService.warning(data.verifycode)
+        });
+
+        
+        return;
+      }
+
+    },
+    error=>{
+      this.willayaservice.findbyName(this.willaya.name).subscribe(data=>{
+        console.log(data)
+        if(data!=null){
+          this.toastService.close("0");
+          let lg = localStorage.getItem("locale")
+          this.http.get("../../../../../assets/i18n/" + lg + ".json").subscribe((data: any) => {
+            this.toastService.warning(data.verifyname)
+          });
+          
+          return;
+        }else {
+          this.willayaservice.save(id, this.willaya!).subscribe({
+            next: () => {
+              this.findPage();
+              this.formModal.hide();-
+              this.onCancel();
+              this.toastService.close("0");
+              this.toastService.success(
+                this.translateService.instant("success.saved", {
+                  elem: this.translateService.instant("willaya"),
+                })
+              );
+            },
+            error: (error) => {
+              this.toastService.close("0");
+              this.toastService.error(
+                this.translateService.instant(error.error, {
+                  elem: this.translateService.instant("willaya"),
+                })
+              );
+            },
+          });
+        }
+      })
+    })
+  
   }
 
   onClickAdd() {

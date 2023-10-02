@@ -111,9 +111,11 @@ export class ProductUsageFormsGeneralComponent implements OnInit {
       if (data != null) {
         this.dispotrueCode = true
 
+        this.sharedService.setIsActive(false);
 
       } else {
         this.dispotrueCode = false
+        this.sharedService.setIsActive(true);
 
       }
 
@@ -121,6 +123,8 @@ export class ProductUsageFormsGeneralComponent implements OnInit {
       console.log(error.status)
       if (error.status == 404) {
         this.dispotrueCode = false
+      this.sharedService.setIsActive(true);
+
 
       }
     })
