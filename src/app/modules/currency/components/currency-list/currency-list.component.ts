@@ -119,7 +119,8 @@ export class CurrencyListComponent implements OnInit {
       }
     );
     console.log(this.currency)
-    if((this.currency.code==undefined) ||(this.currency.name==undefined) || (this.currency.countrcode==undefined) || (this.currency.countryname==undefined) || (this.currency.digitalcode ==undefined) ){
+    if((this.currency.code==undefined) ||(this.currency.name==undefined) || 
+    (this.currency.countrcode==undefined) || (this.currency.countryname==undefined) || (this.currency.digitalcode ==undefined) ){
       this.toastService.close("0");
       let lg = localStorage.getItem("locale")
       this.http.get("../../../../../assets/i18n/" + lg + ".json").subscribe((data: any) => {
@@ -128,27 +129,63 @@ export class CurrencyListComponent implements OnInit {
       
       return;
     }
-    this.currencyService.save(id, this.currency!).subscribe({
-      next: () => {
-        this.findPage();
-        this.formModal.hide ();
-        this.onCancel();
+
+    this.currencyService.findbycode(this.currency.code).subscribe((data)=>{
+      console.log(data)
+      if (data!=null){
         this.toastService.close("0");
-        this.toastService.success(
-          this.translateService.instant("success.saved", {
-            elem: this.translateService.instant("currency"),
-          })
-        );
-      },
-      error: (error) => {
-        this.toastService.close("0");
-        this.toastService.error(
-          this.translateService.instant(error.error, {
-            elem: this.translateService.instant("currency"),
-          })
-        );
-      },
-    });
+        let lg = localStorage.getItem("locale")
+        this.http.get("../../../../../assets/i18n/" + lg + ".json").subscribe((data: any) => {
+          this.toastService.warning(data.verifycode)
+        });
+
+        
+        return;
+      }
+
+
+      
+      
+    },(error)=>{
+
+      this.currencyService.findbyName(this.currency.name).subscribe((data)=>{
+        console.log(data)
+        if(data!=null){
+          this.toastService.close("0");
+          let lg = localStorage.getItem("locale")
+          this.http.get("../../../../../assets/i18n/" + lg + ".json").subscribe((data: any) => {
+            this.toastService.warning(data.verifyname)
+          });
+          
+          return;
+        }else {
+          this.currencyService.save(id, this.currency!).subscribe({
+            next: () => {
+              this.findPage();
+              this.formModal.hide ();
+              this.onCancel();
+              this.toastService.close("0");
+              this.toastService.success(
+                this.translateService.instant("success.saved", {
+                  elem: this.translateService.instant("currency"),
+                })
+              );
+            },
+            error: (error) => {
+              this.toastService.close("0");
+              this.toastService.error(
+                this.translateService.instant(error.error, {
+                  elem: this.translateService.instant("currency"),
+                })
+              );
+            },
+          });
+        }
+        
+      })
+
+    })
+   
   }
 
   onClickAdd() {

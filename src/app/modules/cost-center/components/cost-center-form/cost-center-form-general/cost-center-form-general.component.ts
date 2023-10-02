@@ -55,15 +55,30 @@ export class CostCenterFormGeneralComponent implements OnInit {
     }
   }
   exist() {
-    if (this.codes.indexOf((this.cost.code+"")) != -1) {
+    this.costserv.findbycode(this.cost.code).subscribe(data=>{
+      console.log(data)
+      if (data!=null) {
       
-      this.dispotrueCode = true
-      console.log(this.dispotrueCode)
-    } else {
-      this.dispotrueCode = false
-    }
+        this.dispotrueCode = true
+        console.log(this.dispotrueCode)
+        this.sharedService.setIsActive(false)
+  
+      } else {
+        this.dispotrueCode = false
+        this.sharedService.setIsActive(true)
+  
+      }
+    },error=>{
+      console.log(error.status)
+      if (error.status == 404) {
+        this.dispotrueCode = false
+  
+      }
+    })
+    
 
   }
+
 
   generateRandomCode() {
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -76,14 +91,25 @@ export class CostCenterFormGeneralComponent implements OnInit {
   }
 
   newSeggestions = ""
-
+test=false
   existname() {
-    if (this.names.indexOf(this.cost.name) != -1) {
-      this.dispotruename = true
-      //this.newSeggestions = "chose " + this.cost.name + this.generateRandomCode() + " or " + this.cost.name + this.generateRandomCode() + " or " + this.cost.name + this.generateRandomCode() + " or " + this.cost.name + this.generateRandomCode()
-    } else {
-      this.dispotruename = false
-    }
+    this.costserv.findbyName(this.cost.name).subscribe(data=>{
+      
+      if (data!=null){
+        this.dispotruename = true
+        this.sharedService.setIsActive(false)
+        console.log("test",data)
+        console.log("test",this.dispotruename)
+
+      this.test=true
+      }
+      else {
+        this.dispotruename = false
+        this.sharedService.setIsActive(true)
+
+      }
+    })
+   
 
   }
 
@@ -131,8 +157,39 @@ export class CostCenterFormGeneralComponent implements OnInit {
   isCodeValid() {
     return this.nom.length > 5;
   }
+  getvalue(event){
+    this.existname()
+    console.log(this.cost.code != null)
+    console.log(this.cost.code != "")
+    console.log(this.cost.name != null )
+    console.log(this.cost.name != "")
+    
+    console.log(this.cost.code.toString().length >= 1)
+    console.log( this.dispotrueCode )
+    console.log( this.dispotruename )
+    console.log( this.test )
+    console.log(this.minIstrueCode)
+    console.log(this.cost.name.toString().length >= 1)
+
+    if (
+      this.cost.code != null &&
+      this.cost.code != "" &&
+      this.cost.name != null &&
+      this.cost.name != "" &&
+      this.cost.code.toString().length >= 1 &&
+      this.dispotrueCode == false && this.dispotruename == false && this.minIstrueCode==false &&
+      this.cost.name.toString().length >= 1
+
+    ) {
+      this.sharedService.setIsActive(true);
+    } else {
+      this.sharedService.setIsActive(false);
+    }
+  }
   geValuesCode(event) {
     this.cost.code = event.target.value;
+    console.log("test:", this.cost.name);
+
     console.log("====================================");
     console.log("eventcode :", event.target.value);
     console.log("eventcode :", event.target.value);
@@ -160,6 +217,9 @@ export class CostCenterFormGeneralComponent implements OnInit {
     }
   }
   geValuesNom(event) {
+    console.log("test:", this.cost.name);
+    console.log("test:", this.dispotruename);
+
     this.cost.name = event.target.value;
     console.log("====================================");
     console.log("eventname :", event.target.value);

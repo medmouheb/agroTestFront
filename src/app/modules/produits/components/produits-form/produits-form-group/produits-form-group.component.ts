@@ -85,10 +85,14 @@ export class ProduitsFormGroupComponent implements OnInit {
       console.log(data)
       if (data != null) {
         this.dispotruename = true
+        this.sharedService.setIsActive(false);
+
 
 
       } else {
         this.dispotruename = false
+        this.sharedService.setIsActive(true);
+
 
       }
 
@@ -96,6 +100,8 @@ export class ProduitsFormGroupComponent implements OnInit {
       console.log(error.status)
       if (error.status == 404) {
         this.dispotrueCode = false
+        this.sharedService.setIsActive(false);
+
 
       }
     })
@@ -109,10 +115,13 @@ export class ProduitsFormGroupComponent implements OnInit {
       console.log(data)
       if (data != null) {
         this.dispotrueCode = true
+        this.sharedService.setIsActive(false);
 
 
       } else {
         this.dispotrueCode = false
+        this.sharedService.setIsActive(true);
+
 
       }
 
@@ -120,6 +129,8 @@ export class ProduitsFormGroupComponent implements OnInit {
       console.log(error.status)
       if (error.status == 404) {
         this.dispotrueCode = false
+        this.sharedService.setIsActive(false);
+
 
       }
     })
@@ -150,7 +161,7 @@ export class ProduitsFormGroupComponent implements OnInit {
       this.produit.code != "" &&
       this.produit.name != null &&
       this.produit.name != "" &&
-      this.produit.code.toString().length >= 1 &&
+      this.produit.code.toString().length >= 1 &&this.dispotrueCode==false&& this.dispotruename==false&&
       this.produit.name.toString().length >= 3
     ) {
       this.sharedService.setIsActive(true);
