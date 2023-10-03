@@ -44,7 +44,7 @@ export class CostCenterListComponent implements OnInit {
 
   onPaginationChange: EventEmitter<string> = new EventEmitter<string>();
   isChecked: boolean = false;
-  affiche:boolean = false;
+  affiche: boolean = false;
   errormessage: string;
   CostcenterFormGroup!: FormGroup;
   currentStep = 0;
@@ -56,15 +56,15 @@ export class CostCenterListComponent implements OnInit {
     private toastService: HotToastService,
 
     private fb: FormBuilder
-  ) {}
+  ) { }
   onCheckboxChange() {
     console.log("La valeur de la case à cocher est : ", this.isChecked);
-    if (this.isChecked==false){
+    if (this.isChecked == false) {
 
-      this.affiche=false
+      this.affiche = false
     }
-    else{
-      this.affiche=true
+    else {
+      this.affiche = true
     }
   }
 
@@ -157,13 +157,22 @@ export class CostCenterListComponent implements OnInit {
   }
 
   onClickAdd() {
-    this.formModal.show({
-      title: "menu.add-costcenter",
-      stepsCount: this.steps.length - 1,
-      confirm: () => this.onWizardSave(null),
-      cancel: () => this.onCancel(),
-      prev: () => this.stepper.prevStep(),
-    });
+    this.costCenter = {}
+    this.stepper.nextStep();
+    setTimeout(() => {
+      this.stepper.prevStep();
+
+    }, 100);
+    setTimeout(() => {
+      this.formModal.show({
+        title: "menu.add-costcenter",
+        stepsCount: this.steps.length - 1,
+        confirm: () => this.onWizardSave(null),
+        cancel: () => this.onCancel(),
+        prev: () => this.stepper.prevStep(),
+      });
+    }, 200);
+
   }
   onClickEdit(id: string) {
     this.findById(id);
@@ -185,7 +194,7 @@ export class CostCenterListComponent implements OnInit {
 
   }
 
-  
+
 
   // onClickDelete(id: string) {
   //   this.deleteModal.show(() => {
@@ -233,8 +242,8 @@ export class CostCenterListComponent implements OnInit {
     this.archiveModal.show(() => {
       this.costcenterServive.archive(id).subscribe({
         next: () => {
-            this.findPage();
-            this.findArchivedPage()
+          this.findPage();
+          this.findArchivedPage()
           this.archiveModal.hide();
           this.toastService.success(
             this.translateService.instant("success.deleted", {
@@ -260,98 +269,164 @@ export class CostCenterListComponent implements OnInit {
 
   sortByCodeValid: boolean = true;
   sortByCode() {
-    if (this.sortByCodeValid) {
-      this.costCenters.sort((a, b) => a.code.localeCompare(b.code));
-      this.sortByCodeValid = false
-    } else {
-      this.costCenters.sort((a, b) => b.code.localeCompare(a.code));
-      this.sortByCodeValid = true
+    if(this.affiche==true){
+      if (this.sortByCodeValid) {
+        this.costCenterss.sort((a, b) => a.code.localeCompare(b.code));
+        this.sortByCodeValid = false
+      } else {
+        this.costCenterss.sort((a, b) => b.code.localeCompare(a.code));
+        this.sortByCodeValid = true
+      }
+    }else{
+      if (this.sortByCodeValid) {
+        this.costCenters.sort((a, b) => a.code.localeCompare(b.code));
+        this.sortByCodeValid = false
+      } else {
+        this.costCenters.sort((a, b) => b.code.localeCompare(a.code));
+        this.sortByCodeValid = true
+      }
     }
+    
+  }
+
+
+  sortBydiviValid: boolean = true;
+  sortBydivi() {
+    if(this.affiche==true){
+      if (this.sortBydiviValid) {
+        this.costCenterss.sort((a, b) => a.division_Name.localeCompare(b.division_Name+""));
+        this.sortBydiviValid = false
+      } else {
+        this.costCenterss.sort((a, b) => b.division_Name.localeCompare(a.division_Name+""));
+        this.sortBydiviValid = true
+      }
+    }else{
+      if (this.sortBydiviValid) {
+        this.costCenters.sort((a, b) => a.division_Name.localeCompare(b.division_Name+""));
+        this.sortBydiviValid = false
+      } else {
+        this.costCenters.sort((a, b) => b.division_Name.localeCompare(a.division_Name+""));
+        this.sortBydiviValid = true
+      }
+    }
+    
+  }
+  sortByfaciValid: boolean = true;
+  sortByfaci() {
+    if(this.affiche==true){
+      if (this.sortByfaciValid) {
+        this.costCenterss.sort((a, b) => a.facilityType.localeCompare(b.facilityType+""));
+        this.sortByfaciValid = false
+      } else {
+        this.costCenterss.sort((a, b) => b.facilityType.localeCompare(a.facilityType+""));
+        this.sortByfaciValid = true
+      }
+    }else{
+      if (this.sortByfaciValid) {
+        this.costCenters.sort((a, b) => a.facilityType.localeCompare(b.facilityType+""));
+        this.sortByfaciValid = false
+      } else {
+        this.costCenters.sort((a, b) => b.facilityType.localeCompare(a.facilityType+""));
+        this.sortByfaciValid = true
+      }
+    }
+    
   }
 
 
 
   sortByNameValid: boolean = true;
   sortByName() {
-    if (this.sortByNameValid) {
-      this.costCenters.sort((a, b) => a.name.localeCompare(b.name));
-      this.sortByNameValid = false
-    } else {
-      this.costCenters.sort((a, b) => b.name.localeCompare(a.name));
-      this.sortByNameValid = true
+    if(this.affiche==true){
+      if (this.sortByNameValid) {
+        this.costCenterss.sort((a, b) => a.name.localeCompare(b.name));
+        this.sortByNameValid = false
+      } else {
+        this.costCenterss.sort((a, b) => b.name.localeCompare(a.name));
+        this.sortByNameValid = true
+      }
+    }else{
+      if (this.sortByNameValid) {
+        this.costCenters.sort((a, b) => a.name.localeCompare(b.name));
+        this.sortByNameValid = false
+      } else {
+        this.costCenters.sort((a, b) => b.name.localeCompare(a.name));
+        this.sortByNameValid = true
+      }
     }
+    
   }
 
 
 
 
 
-//trash 
-findArchivedPage() {
-  this.loading = true;
-  this.costcenterServive
-    .findArchivedPage(this.pageNumber, this.pageSize, this.filter)
-    .subscribe({
-      next: (result) => {
-        this.costCenterss = result.content;
-        this.costCenterPages = result;
+  //trash 
+  findArchivedPage() {
+    this.loading = true;
+    this.costcenterServive
+      .findArchivedPage(this.pageNumber, this.pageSize, this.filter)
+      .subscribe({
+        next: (result) => {
+          this.costCenterss = result.content;
+          this.costCenterPages = result;
+        },
+        error: (error) => {
+          this.loading = false;
+          console.error(error);
+        },
+        complete: () => (this.loading = false),
+      });
+  }
+  findPage() {
+    this.loading = true;
+    this.costcenterServive
+      .findPage(this.pageNumber, this.pageSize, this.filter)
+      .subscribe({
+        next: (result) => {
+          this.costCenters = result.content;
+          this.costCenterPage = result;
+        },
+        error: (error) => {
+          this.loading = false;
+          console.error(error);
+        },
+        complete: () => (this.loading = false),
+      });
+  }
+
+
+
+
+
+  onClickdisArchive(id: string) {
+    this.costcenterServive.disArchive(id).subscribe({
+      next: () => {
+        this.findArchivedPage();
+        this.findPage()
+
+        this.toastService.success(
+          this.translateService.instant("success.restore", {
+            elem: this.translateService.instant("costCenter"),
+          })
+        );
+        console.log(id);
       },
-      error: (error) => {
-        this.loading = false;
-        console.error(error);
-      },
-      complete: () => (this.loading = false),
     });
-}
-findPage() {
-  this.loading = true;
-  this.costcenterServive
-    .findPage(this.pageNumber, this.pageSize, this.filter)
-    .subscribe({
-      next: (result) => {
-        this.costCenters = result.content;
-        this.costCenterPage = result;
+  }
+  onClickDelete(id: string) {
+    this.costcenterServive.delete(id).subscribe({
+      next: () => {
+        this.findArchivedPage();
+        console.log("Success");
+        this.toastService.success(
+          this.translateService.instant("success.deleted", {
+            elem: this.translateService.instant("costCenter"),
+          })
+        );
       },
-      error: (error) => {
-        this.loading = false;
-        console.error(error);
-      },
-      complete: () => (this.loading = false),
     });
-}
-
-
-
-
-
-onClickdisArchive(id: string) {
-  this.costcenterServive.disArchive(id).subscribe({
-    next: () => {
-      this.findArchivedPage();
-      this.findPage()
-
-      this.toastService.success(
-        this.translateService.instant("success.restore", {
-          elem: this.translateService.instant("costCenter"),
-        })
-      );
-      console.log(id);
-    },
-  });
-}
-onClickDelete(id: string) {
-  this.costcenterServive.delete(id).subscribe({
-    next: () => {
-      this.findArchivedPage();
-      console.log("Success");
-      this.toastService.success(
-        this.translateService.instant("success.deleted", {
-          elem: this.translateService.instant("costCenter"),
-        })
-      );
-    },
-  });
-}
+  }
 
 
 
@@ -361,5 +436,5 @@ onClickDelete(id: string) {
 
 
 
- 
+
 }

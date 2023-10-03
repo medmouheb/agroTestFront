@@ -364,8 +364,10 @@ export class DivisionFromLocalisationComponent implements OnInit {
   isBlur3() {
     if ((this.division.phone.toString().length < 12) || (this.division.phone.toString().length > 13)) {
       this.minIphone = true;
+      this.sharedService.setIsActive(false)
     } else {
       this.minIphone = false;
+      this.sharedService.setIsActive(true)
     }
   }
 

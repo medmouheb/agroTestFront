@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { SharedService } from "app/modules/company/services/shared.service";
 import { CurrencyService } from "app/modules/currency/services/currency.service";
 import { Currency } from "../../../models/currency";
+import { DialogComponent } from "app/shared/components/dialog/dialog.component";
 
 @Component({
   selector: "app-currency-form-general",
@@ -11,15 +12,49 @@ import { Currency } from "../../../models/currency";
 })
 export class CurrencyFormGeneralComponent implements OnInit {
   @Input() currency!: Currency;
+  currencyReplica!: Currency;
+
   addform: FormGroup;
   fieldControl: FormControl;
   fieldControl2: FormControl;
-  constructor(private sharedService: SharedService, private cuurencyserv: CurrencyService) { }
+  constructor(private sharedService: SharedService, private cuurencyserv: CurrencyService, private dialogComponent: DialogComponent) { }
+  static = ""
+  id = ""
+  getstatus() {
 
+    if (this.currency.id) {
+
+      this.static = "update"
+      if (this.id != this.currency.id) {
+        this.id = this.currency.id
+        this.currencyReplica = JSON.parse(JSON.stringify(this.currency))
+
+
+      }
+      this.dialogComponent.setsubmitstatus(true)
+
+      return "update"
+
+    } else if (!this.currency.id) {
+      this.static = "create"
+      this.geValues('z')
+      return "create"
+
+    }
+  }
+  names: Array<String> = [];
+  codes: Array<String> = [];
   ngOnInit(): void {
     if (this.currency == undefined) this.currency = { name: "", code: "" };
     this.initForm();
-
+    this.cuurencyserv.findAll().subscribe(data => {
+      this.names = data.map(el => {
+        return el.name
+      })
+      this.codes = data.map(el => {
+        return el.code
+      })
+    })
 
   }
   dispotrueCode: boolean = false
@@ -32,29 +67,21 @@ export class CurrencyFormGeneralComponent implements OnInit {
     }
   }
   exist() {
-    console.log(this.currency.code)
-    this.cuurencyserv.findbycode(this.currency.code).subscribe(data => {
-      console.log(data)
-      if (data != null) {
+    if (this.codes.indexOf((this.currency.code + "")) != -1) {
+      if(this.static=="update" ){
+        if(this.currency.code == this.currencyReplica.code){
+          this.dispotrueCode = false
+        }else{
+          this.dispotrueCode = true
+        }
+      }else{
         this.dispotrueCode = true
-        this.sharedService.setIsActive(false)
-
-
-
-      } else {
-        this.dispotrueCode = false
-        this.sharedService.setIsActive(true)
-
-
       }
 
-    }, error => {
-      console.log(error.status)
-      if (error.status == 404) {
-        this.dispotrueCode = false
-
-      }
-    })
+    } else {
+      this.dispotrueCode = false
+    }
+  
 
   }
 
@@ -71,19 +98,21 @@ export class CurrencyFormGeneralComponent implements OnInit {
   newSeggestions = ""
 
   existname() {
-    this.cuurencyserv.findbyName(this.currency.name).subscribe(data => {
-      console.log(data)
-      if (data != null) {
+    if (this.names.indexOf((this.currency.name + "")) != -1) {
+      if(this.static=="update" ){
+
+        if(this.currency.name == this.currencyReplica.name){
+          this.dispotruename = false
+        }else{
+          this.dispotruename = true
+        }
+      }else{
         this.dispotruename = true
-
-        //  this.newSeggestions = "chose " + this.currency.name + this.generateRandomCode() + " or " + this.currency.name + this.generateRandomCode() + " or " + this.currency.name + this.generateRandomCode() + " or " + this.currency.name + this.generateRandomCode()
-
-      } else {
-        this.dispotruename = false
-
       }
 
-    }, error => console.log(error))
+    } else {
+      this.dispotruename = false
+    }
 
   }
   initForm() {
@@ -111,14 +140,14 @@ export class CurrencyFormGeneralComponent implements OnInit {
       Digitalcode: new FormControl(null, [
         Validators.required,
 
-      ]),
+      ])
     });
 
   }
 
   geValues(event) {
 
-    console.log("rtrtr",!!(this.currency.countrcode && this.currency.countryname && this.currency.digitalcode) )
+    console.log("rtrtr", !!(this.currency.countrcode && this.currency.countryname && this.currency.digitalcode))
     if (
       !!(this.currency.countrcode && this.currency.countryname && this.currency.digitalcode) &&
       this.dispotrueCode == false && this.dispotruename == false &&
@@ -134,10 +163,10 @@ export class CurrencyFormGeneralComponent implements OnInit {
       this.currency.name != "" &&
       this.currency.code.toString().length >= 1 &&
       this.currency.name.toString().length >= 1) {
-      this.sharedService.setIsActive(true);
-    } else {
-      this.sharedService.setIsActive(false);
-    }
+        this.dialogComponent.setsubmitstatus(true)
+      } else {
+        this.dialogComponent.setsubmitstatus(false)
+      }
   }
 
   get f() {
@@ -174,7 +203,7 @@ export class CurrencyFormGeneralComponent implements OnInit {
       }
   }
   isBlurDCjiisvalid() {
-    console.log("dede",this.currency)
+    console.log("dede", this.currency)
     if (this.currency.countrcode == undefined) {
       this.DCouisvalid = true
     } else

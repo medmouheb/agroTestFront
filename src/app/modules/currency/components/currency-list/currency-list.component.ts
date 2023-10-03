@@ -36,7 +36,7 @@ export class CurrencyListComponent implements OnInit {
 
   onPaginationChange: EventEmitter<string> = new EventEmitter<string>();
   isChecked: boolean = false;
-  affiche:boolean = false;
+  affiche: boolean = false;
   currentStep = 0;
   steps: any = ["steps.general"];
 
@@ -47,7 +47,7 @@ export class CurrencyListComponent implements OnInit {
     private toastService: HotToastService,
     private http: HttpClient
 
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.findPage();
@@ -57,12 +57,12 @@ export class CurrencyListComponent implements OnInit {
   }
   onCheckboxChange() {
     console.log("La valeur de la case à cocher est : ", this.isChecked);
-    if (this.isChecked==false){
+    if (this.isChecked == false) {
 
-      this.affiche=false
+      this.affiche = false
     }
-    else{
-      this.affiche=true
+    else {
+      this.affiche = true
     }
   }
   findPage() {
@@ -134,92 +134,106 @@ export class CurrencyListComponent implements OnInit {
       }
     );
     console.log(this.currency)
-    if((this.currency.code==undefined) ||(this.currency.name==undefined) || 
-    (this.currency.countrcode==undefined) || (this.currency.countryname==undefined) || (this.currency.digitalcode ==undefined) ){
-      this.toastService.close("0");
-      let lg = localStorage.getItem("locale")
-      this.http.get("../../../../../assets/i18n/" + lg + ".json").subscribe((data: any) => {
-        this.toastService.warning(data.verifycodenamecountrycodecountrynamedigitalcode)
-      });
-      
-      return;
-    }
-    const codeRegex: RegExp = /^[a-zA-Z0-9]*$/;
-    if (codeRegex.test(this.currency.code)){
-      
-      this.toastService.close("0");
-      let lg = localStorage.getItem("locale")
-      this.http.get("../../../../../assets/i18n/" + lg + ".json").subscribe((data: any) => {
-        this.toastService.warning(data.formainvalid)
-      });
-      
-      return;
-    }
+    // if ((this.currency.code == undefined) || (this.currency.name == undefined) ||
+    //   (this.currency.countrcode == undefined) || (this.currency.countryname == undefined) || (this.currency.digitalcode == undefined)) {
+    //   this.toastService.close("0");
+    //   let lg = localStorage.getItem("locale")
+    //   this.http.get("../../../../../assets/i18n/" + lg + ".json").subscribe((data: any) => {
+    //     this.toastService.warning(data.verifycodenamecountrycodecountrynamedigitalcode)
+    //   });
+
+    //   return;
+    // }
+    // const codeRegex: RegExp = /^[a-zA-Z0-9]*$/;
+    // if (codeRegex.test(this.currency.code)) {
+
+    //   this.toastService.close("0");
+    //   let lg = localStorage.getItem("locale")
+    //   this.http.get("../../../../../assets/i18n/" + lg + ".json").subscribe((data: any) => {
+    //     this.toastService.warning(data.formainvalid)
+    //   });
+
+    //   return;
+    // }
+
+    // this.currencyService.findbycode(this.currency.code).subscribe((data) => {
+    //   console.log(data)
+    //   if (data != null) {
+    //     this.toastService.close("0");
+    //     let lg = localStorage.getItem("locale")
+    //     this.http.get("../../../../../assets/i18n/" + lg + ".json").subscribe((data: any) => {
+    //       this.toastService.warning(data.verifycode)
+    //     });
+
+
+    //     return;
+    //   }
 
 
 
 
+    // }, (error) => {
 
+    //   this.currencyService.findbyName(this.currency.name).subscribe((data) => {
+    //     console.log(data)
+    //     if (data != null) {
+    //       this.toastService.close("0");
+    //       let lg = localStorage.getItem("locale")
+    //       this.http.get("../../../../../assets/i18n/" + lg + ".json").subscribe((data: any) => {
+    //         this.toastService.warning(data.verifyname)
+    //       });
 
+    //       return;
+    //     } else {
+    //       this.currencyService.save(id, this.currency!).subscribe({
+    //         next: () => {
+    //           this.findPage();
+    //           this.formModal.hide();
+    //           this.onCancel();
+    //           this.toastService.close("0");
+    //           this.toastService.success(
+    //             this.translateService.instant("success.saved", {
+    //               elem: this.translateService.instant("currency"),
+    //             })
+    //           );
+    //         },
+    //         error: (error) => {
+    //           this.toastService.close("0");
+    //           this.toastService.error(
+    //             this.translateService.instant(error.error, {
+    //               elem: this.translateService.instant("currency"),
+    //             })
+    //           );
+    //         },
+    //       });
+    //     }
 
+    //   })
 
+    // })
 
-this.currencyService.findbycode(this.currency.code).subscribe((data)=>{
-  console.log(data)
-  if (data!=null){
-    this.toastService.close("0");
-    let lg = localStorage.getItem("locale")
-    this.http.get("../../../../../assets/i18n/" + lg + ".json").subscribe((data: any) => {
-      this.toastService.warning(data.verifycode)
+    this.currencyService.save(id, this.currency!).subscribe({
+      next: () => {
+        this.findPage();
+        this.formModal.hide ();
+        this.onCancel();
+        this.toastService.close("0");
+        this.toastService.success(
+          this.translateService.instant("success.saved", {
+            elem: this.translateService.instant("currency"),
+          })
+        );
+      },
+      error: (error) => {
+        this.toastService.close("0");
+        this.toastService.error(
+          this.translateService.instant(error.error, {
+            elem: this.translateService.instant("currency"),
+          })
+        );
+      },
     });
 
-        
-    return;
-  }
-
-
-      
-      
-},(error)=>{
-
-  this.currencyService.findbyName(this.currency.name).subscribe((data)=>{
-    console.log(data)
-    if(data!=null){
-      this.toastService.close("0");
-      let lg = localStorage.getItem("locale")
-      this.http.get("../../../../../assets/i18n/" + lg + ".json").subscribe((data: any) => {
-        this.toastService.warning(data.verifyname)
-      });
-          
-      return;
-    }else {
-      this.currencyService.save(id, this.currency!).subscribe({
-        next: () => {
-          this.findPage();
-          this.formModal.hide ();
-          this.onCancel();
-          this.toastService.close("0");
-          this.toastService.success(
-            this.translateService.instant("success.saved", {
-              elem: this.translateService.instant("currency"),
-            })
-          );
-        },
-        error: (error) => {
-          this.toastService.close("0");
-          this.toastService.error(
-            this.translateService.instant(error.error, {
-              elem: this.translateService.instant("currency"),
-            })
-          );
-        },
-      });
-    }
-        
-  })
-
-})
-   
   }
 
   onClickAdd() {
@@ -241,21 +255,21 @@ this.currencyService.findbycode(this.currency.code).subscribe((data)=>{
     });
   }
 
- 
+
   onClickArchive(id: string) {
     this.archiveModal.show(() => {
       this.currencyService.archive(id).subscribe({
         next: () => {
-             this.findPage();
-        this.findArchivedPage();
+          this.findPage();
+          this.findArchivedPage();
 
           this.archiveModal.hide();
-            this.toastService.close("0");
-            this.toastService.success(
-              this.translateService.instant("success.deleted", {
-                elem: this.translateService.instant("currency"),
-              })
-            );
+          this.toastService.close("0");
+          this.toastService.success(
+            this.translateService.instant("success.deleted", {
+              elem: this.translateService.instant("currency"),
+            })
+          );
           console.log(id);
 
           //   console.log(id);
@@ -275,46 +289,91 @@ this.currencyService.findbycode(this.currency.code).subscribe((data)=>{
 
   sortByCodeValid: boolean = true;
   sortByCode() {
-    if (this.sortByCodeValid) {
-      this.currencys.sort((a, b) => a.code.localeCompare(b.code));
-      this.sortByCodeValid = false
-    } else {
-      this.currencys.sort((a, b) => b.code.localeCompare(a.code));
-      this.sortByCodeValid = true
+    if(this.affiche==true){
+      if (this.sortByCodeValid) {
+        this.currencyss.sort((a, b) => a.code.localeCompare(b.code));
+        this.sortByCodeValid = false
+      } else {
+        this.currencyss.sort((a, b) => b.code.localeCompare(a.code));
+        this.sortByCodeValid = true
+      }
+    }else{
+      if (this.sortByCodeValid) {
+        this.currencys.sort((a, b) => a.code.localeCompare(b.code));
+        this.sortByCodeValid = false
+      } else {
+        this.currencys.sort((a, b) => b.code.localeCompare(a.code));
+        this.sortByCodeValid = true
+      }
     }
+
   }
 
   sortBydigitalValid: boolean = true;
   sortBydigital() {
-    if (this.sortBydigitalValid) {
-      this.currencys.sort((a, b) => a.digitalcode.localeCompare(b.digitalcode));
-      this.sortBydigitalValid = false
-    } else {
-      this.currencys.sort((a, b) => b.digitalcode.localeCompare(a.digitalcode));
-      this.sortBydigitalValid = true
+    if(this.affiche==true){
+      if (this.sortBydigitalValid) {
+        this.currencyss.sort((a, b) => a.digitalcode.localeCompare(b.digitalcode));
+        this.sortBydigitalValid = false
+      } else {
+        this.currencyss.sort((a, b) => b.digitalcode.localeCompare(a.digitalcode));
+        this.sortBydigitalValid = true
+      }
+    }else{
+      if (this.sortBydigitalValid) {
+        this.currencys.sort((a, b) => a.digitalcode.localeCompare(b.digitalcode));
+        this.sortBydigitalValid = false
+      } else {
+        this.currencys.sort((a, b) => b.digitalcode.localeCompare(a.digitalcode));
+        this.sortBydigitalValid = true
+      }
     }
+
   }
   sortBycountryValid: boolean = true;
   sortBycountry() {
-    if (this.sortBycountryValid) {
-      this.currencys.sort((a, b) => a.countryname.localeCompare(b.countryname));
-      this.sortBycountryValid = false
-    } else {
-      this.currencys.sort((a, b) => b.countryname.localeCompare(a.countryname));
-      this.sortBycountryValid = true
+    if(this.affiche==true){
+      if (this.sortBycountryValid) {
+        this.currencyss.sort((a, b) => a.countryname.localeCompare(b.countryname));
+        this.sortBycountryValid = false
+      } else {
+        this.currencyss.sort((a, b) => b.countryname.localeCompare(a.countryname));
+        this.sortBycountryValid = true
+      }
+    }else{
+      if (this.sortBycountryValid) {
+        this.currencys.sort((a, b) => a.countryname.localeCompare(b.countryname));
+        this.sortBycountryValid = false
+      } else {
+        this.currencys.sort((a, b) => b.countryname.localeCompare(a.countryname));
+        this.sortBycountryValid = true
+      }
     }
+
+
   }
 
 
   sortByNameValid: boolean = true;
   sortByName() {
-    if (this.sortByNameValid) {
-      this.currencys.sort((a, b) => a.name.localeCompare(b.name));
-      this.sortByNameValid = false
-    } else {
-      this.currencys.sort((a, b) => b.name.localeCompare(a.name));
-      this.sortByNameValid = true
+    if(this.affiche==true){
+      if (this.sortByNameValid) {
+        this.currencyss.sort((a, b) => a.name.localeCompare(b.name));
+        this.sortByNameValid = false
+      } else {
+        this.currencyss.sort((a, b) => b.name.localeCompare(a.name));
+        this.sortByNameValid = true
+      }
+    }else{
+      if (this.sortByNameValid) {
+        this.currencys.sort((a, b) => a.name.localeCompare(b.name));
+        this.sortByNameValid = false
+      } else {
+        this.currencys.sort((a, b) => b.name.localeCompare(a.name));
+        this.sortByNameValid = true
+      }
     }
+
   }
 
 

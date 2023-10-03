@@ -23,7 +23,7 @@ export class DivisionListComponent implements OnInit {
   @ViewChild("stepper")
   stepper!: StepperComponent;
   isChecked: boolean = false;
-  affiche:boolean = false;
+  affiche: boolean = false;
   filter = "";
   pageNumber = 0;
   pageSize = 10;
@@ -38,21 +38,21 @@ export class DivisionListComponent implements OnInit {
   onPaginationChange: EventEmitter<string> = new EventEmitter<string>();
 
   currentStep = 0;
-  steps: any = ["steps.general",  "steps.localisation"];
+  steps: any = ["steps.general", "steps.localisation"];
 
   constructor(
     private divisionService: DivisionService,
     private translateService: TranslateService,
     private toastService: HotToastService
-  ) {}
+  ) { }
   onCheckboxChange() {
     console.log("La valeur de la case à cocher est : ", this.isChecked);
-    if (this.isChecked==false){
+    if (this.isChecked == false) {
 
-      this.affiche=false
+      this.affiche = false
     }
-    else{
-      this.affiche=true
+    else {
+      this.affiche = true
     }
   }
   ngOnInit(): void {
@@ -83,8 +83,10 @@ export class DivisionListComponent implements OnInit {
 
   findById(id: string) {
     this.divisionService.findById(id).subscribe({
-      next: (result) =>  {this.division = result 
-      console.log(result)},
+      next: (result) => {
+        this.division = result
+        console.log(result)
+      },
       error: (error) => console.error(error),
     });
   }
@@ -94,7 +96,7 @@ export class DivisionListComponent implements OnInit {
     this.pageNumber = 0;
     this.onPaginationChange.emit("");
   }
-  
+
 
   onPageNumberChange(pageNumber: number) {
     this.pageNumber = pageNumber;
@@ -112,7 +114,7 @@ export class DivisionListComponent implements OnInit {
     this.division = {};
     this.currentStep = 0;
   }
-   estObjetVide(obj: object): boolean {
+  estObjetVide(obj: object): boolean {
     return Object.keys(obj).length === 0;
   }
   onSave(id: string | null) {
@@ -123,16 +125,16 @@ export class DivisionListComponent implements OnInit {
         id: "0",
       }
     );
-    console.log("99::8",this.division)
+    console.log("99::8", this.division)
     // if(!this.division.companycode){
     //     this.toastService.error("you must select a campany  ")
     //     return console.log("okk");
     // }
-    
+
     this.divisionService.save(id, this.division!).subscribe({
       next: (data) => {
-        console.log("99::9",this.division)
-        console.log("99::",data)
+        console.log("99::9", this.division)
+        console.log("99::", data)
         this.findPage();
         this.formModal.hide();
         this.onCancel();
@@ -183,13 +185,13 @@ export class DivisionListComponent implements OnInit {
 
     }, 100);
     this.findById(id);
-   
+
     this.formModal.show({
       title: "menu.edit-division",
       stepsCount: this.steps.length - 1,
       confirm: () => this.onWizardSave(id),
       cancel: () => this.onCancel(),
-      prev: () => this.stepper.prevStep(), 
+      prev: () => this.stepper.prevStep(),
     });
   }
 
@@ -223,80 +225,158 @@ export class DivisionListComponent implements OnInit {
   }
   sortBySpiecValid: boolean = true;
   sortBySpiec() {
-    if (this.sortBySpiecValid) {
-      this.divisions.sort((a, b) => a.speciesType.localeCompare(b.speciesType));
-      this.sortBySpiecValid = false
+    if (this.affiche == true) {
+      if (this.sortBySpiecValid) {
+        this.divisionss.sort((a, b) => a.speciesType.localeCompare(b.speciesType));
+        this.sortBySpiecValid = false
+      } else {
+        this.divisionss.sort((a, b) => b.speciesType.localeCompare(a.speciesType));
+        this.sortBySpiecValid = true
+      }
     } else {
-      this.divisions.sort((a, b) => b.speciesType.localeCompare(a.speciesType));
-      this.sortBySpiecValid = true
+      if (this.sortBySpiecValid) {
+        this.divisions.sort((a, b) => a.speciesType.localeCompare(b.speciesType));
+        this.sortBySpiecValid = false
+      } else {
+        this.divisions.sort((a, b) => b.speciesType.localeCompare(a.speciesType));
+        this.sortBySpiecValid = true
+      }
     }
+
   }
   sortBycompValid: boolean = true;
   sortBycomp() {
-    if (this.sortBycompValid) {
-      this.divisions.sort((a, b) => a.companyname.localeCompare(b.companyname));
-      this.sortBycompValid = false
+    if (this.affiche == true) {
+      if (this.sortBycompValid) {
+        this.divisionss.sort((a, b) => a.companyname.localeCompare(b.companyname));
+        this.sortBycompValid = false
+      } else {
+        this.divisionss.sort((a, b) => b.companyname.localeCompare(a.companyname));
+        this.sortBycompValid = true
+      }
     } else {
-      this.divisions.sort((a, b) => b.companyname.localeCompare(a.companyname));
-      this.sortBycompValid = true
+      if (this.sortBycompValid) {
+        this.divisions.sort((a, b) => a.companyname.localeCompare(b.companyname));
+        this.sortBycompValid = false
+      } else {
+        this.divisions.sort((a, b) => b.companyname.localeCompare(a.companyname));
+        this.sortBycompValid = true
+      }
     }
+
+
   }
   sortBycurreValid: boolean = true;
-  sortBycurre() { 
-    if (this.sortBycurreValid) {
-      this.divisions.sort((a, b) => a.currencyname.localeCompare(b.currencyname));
-      this.sortBycurreValid = false
+  sortBycurre() {
+    if (this.affiche == true) {
+      if (this.sortBycurreValid) {
+        this.divisionss.sort((a, b) => a.currencyname.localeCompare(b.currencyname));
+        this.sortBycurreValid = false
+      } else {
+        this.divisionss.sort((a, b) => b.currencyname.localeCompare(a.currencyname));
+        this.sortBycurreValid = true
+      }
     } else {
-      this.divisions.sort((a, b) => b.currencyname.localeCompare(a.currencyname));
-      this.sortBycurreValid = true
+      if (this.sortBycurreValid) {
+        this.divisions.sort((a, b) => a.currencyname.localeCompare(b.currencyname));
+        this.sortBycurreValid = false
+      } else {
+        this.divisions.sort((a, b) => b.currencyname.localeCompare(a.currencyname));
+        this.sortBycurreValid = true
+      }
     }
+
   }
   sortByCodeValid: boolean = true;
   sortByCode() {
-    if (this.sortByCodeValid) {
-      this.divisions.sort((a, b) => a.code.localeCompare(b.code));
-      this.sortByCodeValid = false
+    if (this.affiche == true) {
+      if (this.sortByCodeValid) {
+        this.divisionss.sort((a, b) => a.code.localeCompare(b.code));
+        this.sortByCodeValid = false
+      } else {
+        this.divisionss.sort((a, b) => b.code.localeCompare(a.code));
+        this.sortByCodeValid = true
+      }
     } else {
-      this.divisions.sort((a, b) => b.code.localeCompare(a.code));
-      this.sortByCodeValid = true
+      if (this.sortByCodeValid) {
+        this.divisions.sort((a, b) => a.code.localeCompare(b.code));
+        this.sortByCodeValid = false
+      } else {
+        this.divisions.sort((a, b) => b.code.localeCompare(a.code));
+        this.sortByCodeValid = true
+      }
     }
+
   }
 
 
 
   sortByNameValid: boolean = true;
   sortByName() {
-    if (this.sortByNameValid) {
-      this.divisions.sort((a, b) => a.name.localeCompare(b.name));
-      this.sortByNameValid = false
+    if (this.affiche == true) {
+      if (this.sortByNameValid) {
+        this.divisionss.sort((a, b) => a.name.localeCompare(b.name));
+        this.sortByNameValid = false
+      } else {
+        this.divisionss.sort((a, b) => b.name.localeCompare(a.name));
+        this.sortByNameValid = true
+      }
     } else {
-      this.divisions.sort((a, b) => b.name.localeCompare(a.name));
-      this.sortByNameValid = true
+      if (this.sortByNameValid) {
+        this.divisions.sort((a, b) => a.name.localeCompare(b.name));
+        this.sortByNameValid = false
+      } else {
+        this.divisions.sort((a, b) => b.name.localeCompare(a.name));
+        this.sortByNameValid = true
+      }
     }
+
   }
 
 
   sortByCityNameValid: boolean = true;
   sortByCityName() {
-    if (this.sortByCityNameValid) {
-      this.divisions.sort((a, b) => (a.nameCity || "").localeCompare((b.nameCity || "")));
-      this.sortByCityNameValid = false
+    if (this.affiche == true) {
+      if (this.sortByCityNameValid) {
+        this.divisionss.sort((a, b) => (a.nameCity || "").localeCompare((b.nameCity || "")));
+        this.sortByCityNameValid = false
+      } else {
+        this.divisionss.sort((a, b) => (b.nameCity || "").localeCompare((a.nameCity || "")));
+        this.sortByCityNameValid = true
+      }
     } else {
-      this.divisions.sort((a, b) => (b.nameCity || "").localeCompare((a.nameCity || "")));
-      this.sortByCityNameValid = true
+      if (this.sortByCityNameValid) {
+        this.divisions.sort((a, b) => (a.nameCity || "").localeCompare((b.nameCity || "")));
+        this.sortByCityNameValid = false
+      } else {
+        this.divisions.sort((a, b) => (b.nameCity || "").localeCompare((a.nameCity || "")));
+        this.sortByCityNameValid = true
+      }
     }
+
   }
 
 
   sortByAddressValid: boolean = true;
   sortByAddress() {
-    if (this.sortByAddressValid) {
-      this.divisions.sort((a, b) => (a.address || "").localeCompare((b.address || "")));
-      this.sortByAddressValid = false
+    if (this.affiche == true) {
+      if (this.sortByAddressValid) {
+        this.divisionss.sort((a, b) => (a.address || "").localeCompare((b.address || "")));
+        this.sortByAddressValid = false
+      } else {
+        this.divisionss.sort((a, b) => (b.address || "").localeCompare((a.address || "")));
+        this.sortByAddressValid = true
+      }
     } else {
-      this.divisions.sort((a, b) => (b.address || "").localeCompare((a.address || "")));
-      this.sortByAddressValid = true
+      if (this.sortByAddressValid) {
+        this.divisions.sort((a, b) => (a.address || "").localeCompare((b.address || "")));
+        this.sortByAddressValid = false
+      } else {
+        this.divisions.sort((a, b) => (b.address || "").localeCompare((a.address || "")));
+        this.sortByAddressValid = true
+      }
     }
+
   }
 
 

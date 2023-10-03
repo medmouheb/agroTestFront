@@ -1,21 +1,21 @@
 export const environment = {
   production: false,
 
-  
-    apiUrl: "https://agrotechsolutions.pro/api",
-    urlBack: "https://agrotechsolutions.pro",
-    auth: "https://agrotechsolutions.pro/auth/",
+
+  apiUrl: "https://agrotechsolutions.pro/api",
+  urlBack: "https://agrotechsolutions.pro",
+  auth: "https://agrotechsolutions.pro/auth/",
 
 
   // apiUrl: "http://localhost:8080",
-//  urlBack: "http://localhost:8081/agrotech-api",
- // auth: "http://localhost:8080/api/auth",
-  
+  // urlBack: "http://localhost:8081/agrotech-api",
+  // auth: "http://localhost:8080/api/auth",
+
   // apiUrl: "http://agrotechsolutions.pro:8080/agrotech",
   // urlBack: "http://agrotechsolutions.pro:8080/dashboard",
   // auth: "http://agrotechsolutions.pro:8080/auth",
   serviceDashboard: "/dashboard",
-  simulator : "/simulator",
+  simulator: "/simulator",
   titleChartOilOliveKg: "Exportation en T",
   titleChartOilOliveDt: "Exportation en DT",
   titleChartPrixOilOliveVrac: "Prix en vrac (prix sans inflation)",

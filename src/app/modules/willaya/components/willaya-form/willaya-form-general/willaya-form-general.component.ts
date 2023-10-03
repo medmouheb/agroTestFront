@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { SharedService } from 'app/modules/company/services/shared.service';
 import { Willaya } from 'app/modules/willaya/models/willaya';
 import { WillayaService } from 'app/modules/willaya/services/willaya.service';
+import { DialogComponent } from 'app/shared/components/dialog/dialog.component';
 
 @Component({
   selector: 'app-willaya-form-general',
@@ -11,14 +12,51 @@ import { WillayaService } from 'app/modules/willaya/services/willaya.service';
 })
 export class WillayaFormGeneralComponent implements OnInit {
   @Input() willaya!: Willaya;
+  willayareplica!: Willaya;
+
   addform: FormGroup;
 
-  constructor(private sharedService: SharedService, private willayaser: WillayaService) { }
+  constructor(private sharedService: SharedService, private willayaser: WillayaService ,private dialogComponent:DialogComponent) { }
+  names: Array<String> = [];
+  codes: Array<String> = [];
+  static = ""
+  id=""
+  getstatus(){
+    
+    if (this.willaya.id) {
+      
+      this.static = "update"
+      if(this.id!=this.willaya.id){
+        this.id=this.willaya.id
+        this.willayareplica =  JSON.parse( JSON.stringify(  this.willaya))
+
+      }
+      return "update"
+
+    } else if (!this.willaya.id) {
+      this.static = "create"
+      this.dialogComponent.setsubmitstatus(false)
+      return "create"
+
+    }
+  }
 
   ngOnInit(): void {
+
     if (this.willaya == undefined) this.willaya = { name: "", code: "" };
     this.initForm();
     this.getetat()
+
+    this.willayaser.findAll().subscribe(data => {
+      this.names = data.map(el => {
+        return el.name
+      })
+      this.codes = data.map(el => {
+        return el.code
+      })
+    })
+
+
   }
   initForm() {
    
@@ -52,25 +90,20 @@ export class WillayaFormGeneralComponent implements OnInit {
     }
   }
   exist() {
-    console.log(this.willaya.code)
-    this.willayaser.findbycode(this.willaya.code).subscribe(data => {
-      console.log(data)
-      if (data != null) {
+    if (this.codes.indexOf((this.willaya.code + "")) != -1) {
+      if(this.static=="update" ){
+        if(this.willaya.code == this.willayareplica.code){
+          this.dispotrueCode = false
+        }else{
+          this.dispotrueCode = true
+        }
+      }else{
         this.dispotrueCode = true
-
-
-      } else {
-        this.dispotrueCode = false
-
       }
 
-    }, error => {
-      console.log(error.status)
-      if (error.status == 404) {
-        this.dispotrueCode = false
-
-      }
-    })
+    } else {
+      this.dispotrueCode = false
+    }
 
   }
 
@@ -87,21 +120,22 @@ export class WillayaFormGeneralComponent implements OnInit {
   newSeggestions = ""
 
   existname() {
-    console.log("e::")
-    this.willayaser.findbyName(this.willaya.name).subscribe(data => {
-      console.log("e::", data)
-      if (data != null) {
+    if (this.names.indexOf((this.willaya.name + "")) != -1) {
+      if(this.static=="update" ){
+        console.log("iii",this.willaya.name,"    ",this.willayareplica.name)
+
+        if(this.willaya.name == this.willayareplica.name){
+          this.dispotruename = false
+        }else{
+          this.dispotruename = true
+        }
+      }else{
         this.dispotruename = true
-        //this.newSeggestions = "chose " + this.willaya.name + this.generateRandomCode() + " or " + this.willaya.name + this.generateRandomCode() + " or " + this.willaya.name + this.generateRandomCode() + " or " + this.willaya.name + this.generateRandomCode()
-
-
-      } else {
-        this.dispotruename = false
-
       }
 
-    }, error => console.log(error))
-
+    } else {
+      this.dispotruename = false
+    }
   }
 
 
@@ -138,9 +172,9 @@ export class WillayaFormGeneralComponent implements OnInit {
       this.willaya.code.toString().length >= 1 &&
       this.willaya.name.toString().length >= 1
     ) {
-      this.sharedService.setIsActive(true);
+      this.dialogComponent.setsubmitstatus(true)
     } else {
-      this.sharedService.setIsActive(false);
+      this.dialogComponent.setsubmitstatus(false)
     }
   }
 

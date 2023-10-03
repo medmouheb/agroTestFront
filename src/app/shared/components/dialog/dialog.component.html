@@ -27,7 +27,7 @@
           <button (click)="content.cancel()" class="btn btn-outline-secondary">
             {{'btns.cancel' | translate}}
           </button>
-          <button (click)="content.confirm()" class="btn btn-primary">
+          <button [disabled]="!submitstatus" (click)="content.confirm()" class="btn btn-primary">
             {{content.btnLabel | translate}}
           </button>
         </div>

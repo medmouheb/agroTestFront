@@ -47,16 +47,11 @@ export class GrowoutFormGeneralComponent implements OnInit {
         return el.code
       })
     })
-    console.log("you::0",this.growout)
 
     if (this.growout.id) {
-      console.log("you::1")
-
       this.static = "update"
       this.growoutReplica =  JSON.parse( JSON.stringify(  this.growout))
     } else if (!this.growout.id) {
-      console.log("you::2")
-
       this.static = "create"
     }
     
@@ -79,7 +74,6 @@ export class GrowoutFormGeneralComponent implements OnInit {
   static = ""
 
   exist() {
-    console.log("eee:",this.static,(this.codes.indexOf((this.growout.code + "")) != -1),this.codes,(this.growout.code + ""))
     if (this.codes.indexOf((this.growout.code + "")) != -1) {
       if(this.static=="update" ){
 

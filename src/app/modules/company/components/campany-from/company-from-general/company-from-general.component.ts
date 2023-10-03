@@ -26,10 +26,8 @@ export class CompanyFromGeneralComponent implements OnInit {
   static = ""
   ngOnInit(): void {
     if (this.camp != null) {
-      console.log("olll")
       this.sharedService.setIsActive(true);
       this.compaser.findAll().subscribe(data => {
-        console.log("777::", data.map(el => { return el.name }))
         this.names = data.map(el => { return el.name })
       })
     };
@@ -41,6 +39,7 @@ export class CompanyFromGeneralComponent implements OnInit {
       this.campReplicat =  JSON.parse( JSON.stringify(  this.camp))
     } else if (!this.camp.id) {
       this.static = "create"
+      this.sharedService.setIsActive(false)
     }
   }
 
@@ -86,7 +85,6 @@ export class CompanyFromGeneralComponent implements OnInit {
   exist() {
     this.compaser.findbycode(this.camp.code).subscribe(data => {
       if(this.static=="update" ){
-        console.log("you::",this.camp ,this.campReplicat)
 
         try{
           if(this.camp.code == this.campReplicat.code){
@@ -143,27 +141,19 @@ export class CompanyFromGeneralComponent implements OnInit {
   newSeggestions = ""
 
   existname() {
-    console.log("aa::", this.names)
     if (this.names.indexOf(this.camp.name) != -1) {
       if(this.static=="update" ){
-        console.log("you::",1)
         if(this.camp.name == this.campReplicat.name){
           this.dispotruename = false
         }else{
-          console.log("you::",2)
-
           this.dispotruename = true
         }
+      }else{
+        this.dispotruename = true
       }
-
-
     } else {
       this.dispotruename = false
-
     }
-
-
-
   }
 
   minIstrueName: boolean = false

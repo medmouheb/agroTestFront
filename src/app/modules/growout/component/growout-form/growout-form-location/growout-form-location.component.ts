@@ -14,7 +14,7 @@ export class GrowoutFormLocationComponent implements OnInit {
   @Input() growout!: Growout;
   @ViewChild("myForm") myForm: NgForm;
 
-  formData = { 
+  formData = {
     phone: "",
     email: "",
 
@@ -261,48 +261,48 @@ export class GrowoutFormLocationComponent implements OnInit {
     { "country": "Zambia", "code": "+260", "flag": "zm" },
     { "country": "Zimbabwe", "code": "+263", "flag": "zw" }
   ];
-  flag=""
-  getflage(){
-    return "https://flagcdn.com/w320/"+this.flag+".png"
+  flag = ""
+  getflage() {
+    return "https://flagcdn.com/w320/" + this.flag + ".png"
   }
 
-  selectContry(c:any){
+  selectContry(c: any) {
     // let nav = document.getElementById(`mobile`) as any;
     //   nav.value =c.target.value ;
-      this.growout.phoneNumber=c.target.value
-      // console.log("aaa::",this.countryPhoneCodes.filter(el=>{return el.code== c.target.value}))
-      this.flag=this.countryPhoneCodes.filter(el=>{return el.code== c.target.value})[0].flag
-      let f = document.getElementById(`flag`) as any;
-      f.src =this.flag ;
-      this.getflage()
+    this.growout.phoneNumber = c.target.value
+    // console.log("aaa::",this.countryPhoneCodes.filter(el=>{return el.code== c.target.value}))
+    this.flag = this.countryPhoneCodes.filter(el => { return el.code == c.target.value })[0].flag
+    let f = document.getElementById(`flag`) as any;
+    f.src = this.flag;
+    this.getflage()
   }
 
-  phoneNumberinp(e:any){
-    e.target.value=e.target.value.replace(/[^0-9+\-\s]/g, '')
+  phoneNumberinp(e: any) {
+    e.target.value = e.target.value.replace(/[^0-9+\-\s]/g, '')
   }
   currentStep = 2;
-  wilayas:Array<Willaya>=[]
+  wilayas: Array<Willaya> = []
 
   constructor(private sharedService: SharedService,
-    private wilayaservice:WillayaService) {}
+    private wilayaservice: WillayaService) { }
 
-    ngOnInit(): void {
-      this.getAllWillaya()
-        }
-      
-  getAllWillaya(){
+  ngOnInit(): void {
+    this.getAllWillaya()
+  }
+
+  getAllWillaya() {
     this.wilayaservice.findAll().subscribe({
       next: (result) => { this.wilayas = result; console.log("2==", result) },
       error: (error) => console.error(error),
     });
   }
-  selectValue(e:any){
-    let wil=this.wilayas.filter(el=>{
-      return el.code==e.target.value
-  
+  selectValue(e: any) {
+    let wil = this.wilayas.filter(el => {
+      return el.code == e.target.value
+
     })[0].name
-    this.growout.wilayaName=wil
-  
+    this.growout.wilayaName = wil
+
   }
   onNextStep() {
     // validation du formulaire pour l'étape actuelle
@@ -320,7 +320,7 @@ export class GrowoutFormLocationComponent implements OnInit {
   minIwillaya: boolean = false
 
   isBlur() {
-    if ((this.growout.wilayaName.toString().length <=0 )|| (this.growout.wilayaName.toString().length > 100)) {
+    if ((this.growout.wilayaName.toString().length <= 0) || (this.growout.wilayaName.toString().length > 100)) {
       this.minIwillaya = true;
     } else {
       this.minIwillaya = false;
@@ -329,7 +329,7 @@ export class GrowoutFormLocationComponent implements OnInit {
   minIwillayacode: boolean = false
 
   isBlur2() {
-    if ((this.growout.wilayaCode.toString().length <=0 )|| (this.growout.wilayaCode.toString().length > 3)) {
+    if ((this.growout.wilayaCode.toString().length <= 0) || (this.growout.wilayaCode.toString().length > 3)) {
       this.minIwillayacode = true;
     } else {
       this.minIwillayacode = false;
@@ -338,24 +338,24 @@ export class GrowoutFormLocationComponent implements OnInit {
 
   emailIsvalid = false
 
-validationEmail() {
-  const emailRegex: RegExp =/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
-  console.log(this.growout.email)
-  if (emailRegex.test(this.growout.email)) {
-    this.emailIsvalid = false;
-  console.log(this.growout.email)
+  validationEmail() {
+    const emailRegex: RegExp = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+    console.log(this.growout.email)
+    if (emailRegex.test(this.growout.email)) {
+      this.emailIsvalid = false;
+      console.log(this.growout.email)
+
+    }
+    else {
+      this.emailIsvalid = true
+    }
 
   }
-  else {
-  this.emailIsvalid=true
-  }
-
-}
 
 
 
   isBlur3() {
-    if ((this.growout.phoneNumber.toString().length <12 )|| (this.growout.phoneNumber.toString().length > 13)) {
+    if (this.growout.phoneNumber.toString().length != 12) {
       this.minIphone = true;
       this.sharedService.setIsActive(false);
 
@@ -364,5 +364,6 @@ validationEmail() {
 
       this.minIphone = false;
     }
-  }  minIphone: boolean = false
+  } 
+  minIphone: boolean = false
 }

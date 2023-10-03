@@ -236,81 +236,161 @@ export class CampanyListComponent implements OnInit {
   }
   sortByCodeValid: boolean = true;
   sortByCode() {
-    if (this.sortByCodeValid) {
-      this.companys.sort((a, b) => a.code.localeCompare(b.code));
-      this.sortByCodeValid = false
-    } else {
-      this.companys.sort((a, b) => b.code.localeCompare(a.code));
-      this.sortByCodeValid = true
+    if(this.affiche == true){
+      if (this.sortByCodeValid) {
+        this.companyss.sort((a, b) => a.code.localeCompare(b.code));
+        this.sortByCodeValid = false
+      } else {
+        this.companyss.sort((a, b) => b.code.localeCompare(a.code));
+        this.sortByCodeValid = true
+      }
+    }else{
+      if (this.sortByCodeValid) {
+        this.companys.sort((a, b) => a.code.localeCompare(b.code));
+        this.sortByCodeValid = false
+      } else {
+        this.companys.sort((a, b) => b.code.localeCompare(a.code));
+        this.sortByCodeValid = true
+      }
     }
+    
   }
 
 
 
   sortByNameValid: boolean = true;
   sortByName() {
-    if (this.sortByNameValid) {
-      this.companys.sort((a, b) => a.name.localeCompare(b.name));
-      this.sortByNameValid = false
-    } else {
-      this.companys.sort((a, b) => b.name.localeCompare(a.name));
-      this.sortByNameValid = true
+    if(this.affiche == true){
+      if (this.sortByNameValid) {
+        this.companyss.sort((a, b) => a.name.localeCompare(b.name));
+        this.sortByNameValid = false
+      } else {
+        this.companyss.sort((a, b) => b.name.localeCompare(a.name));
+        this.sortByNameValid = true
+      }
+    }else{
+      if (this.sortByNameValid) {
+        this.companys.sort((a, b) => a.name.localeCompare(b.name));
+        this.sortByNameValid = false
+      } else {
+        this.companys.sort((a, b) => b.name.localeCompare(a.name));
+        this.sortByNameValid = true
+      }
     }
+
+    
   }
 
 
   sortByCityNameValid: boolean = true;
   sortByCityName() {
-    if (this.sortByCityNameValid) {
-      this.companys.sort((a, b) => (a.cityName || "").localeCompare((b.cityName || "")));
-      this.sortByCityNameValid = false
-    } else {
-      this.companys.sort((a, b) => (b.cityName || "").localeCompare((a.cityName || "")));
-      this.sortByCityNameValid = true
+    if(this.affiche == true){
+      if (this.sortByCityNameValid) {
+        this.companyss.sort((a, b) => (a.cityName || "").localeCompare((b.cityName || "")));
+        this.sortByCityNameValid = false
+      } else {
+        this.companyss.sort((a, b) => (b.cityName || "").localeCompare((a.cityName || "")));
+        this.sortByCityNameValid = true
+      }
+    }else{
+      if (this.sortByCityNameValid) {
+        this.companys.sort((a, b) => (a.cityName || "").localeCompare((b.cityName || "")));
+        this.sortByCityNameValid = false
+      } else {
+        this.companys.sort((a, b) => (b.cityName || "").localeCompare((a.cityName || "")));
+        this.sortByCityNameValid = true
+      }
     }
+
+    
   }
   sortBywillayaValid: boolean = true;
   sortBywillaya() {
-    if (this.sortBywillayaValid) {
-      this.companys.sort((a, b) => (a.wilayaName || "").localeCompare((b.wilayaName || "")));
-      this.sortBywillayaValid = false
-    } else {
-      this.companys.sort((a, b) => (b.wilayaName || "").localeCompare((a.wilayaName || "")));
-      this.sortBywillayaValid = true
+    if(this.affiche == true){
+      if (this.sortBywillayaValid) {
+        this.companyss.sort((a, b) => (a.wilayaName || "").localeCompare((b.wilayaName || "")));
+        this.sortBywillayaValid = false
+      } else {
+        this.companyss.sort((a, b) => (b.wilayaName || "").localeCompare((a.wilayaName || "")));
+        this.sortBywillayaValid = true
+      }
+    }else{
+      if (this.sortBywillayaValid) {
+        this.companys.sort((a, b) => (a.wilayaName || "").localeCompare((b.wilayaName || "")));
+        this.sortBywillayaValid = false
+      } else {
+        this.companys.sort((a, b) => (b.wilayaName || "").localeCompare((a.wilayaName || "")));
+        this.sortBywillayaValid = true
+      }
     }
+    
   }
 
 
   sortByAddressValid: boolean = true;
   sortByAddress() {
-    if (this.sortByAddressValid) {
-      this.companys.sort((a, b) => (a.address || "").localeCompare((b.address || "")));
-      this.sortByAddressValid = false
-    } else {
-      this.companys.sort((a, b) => (b.address || "").localeCompare((a.address || "")));
-      this.sortByAddressValid = true
+
+    if(this.affiche == true){
+      if (this.sortByAddressValid) {
+        this.companyss.sort((a, b) => (a.address || "").localeCompare((b.address || "")));
+        this.sortByAddressValid = false
+      } else {
+        this.companyss.sort((a, b) => (b.address || "").localeCompare((a.address || "")));
+        this.sortByAddressValid = true
+      }
+    }else{
+      if (this.sortByAddressValid) {
+        this.companys.sort((a, b) => (a.address || "").localeCompare((b.address || "")));
+        this.sortByAddressValid = false
+      } else {
+        this.companys.sort((a, b) => (b.address || "").localeCompare((a.address || "")));
+        this.sortByAddressValid = true
+      }
     }
+    
   }
 
   sortByEmailValid: boolean = true;
   sortByEmail() {
-    if (this.sortByEmailValid) {
-      this.companys.sort((a, b) => (a.email || "").localeCompare((b.email || "")));
-      this.sortByEmailValid = false
-    } else {
-      this.companys.sort((a, b) => (b.email || "").localeCompare((a.email || "")));
-      this.sortByEmailValid = true
+    if(this.affiche == true){
+      if (this.sortByEmailValid) {
+        this.companyss.sort((a, b) => (a.email || "").localeCompare((b.email || "")));
+        this.sortByEmailValid = false
+      } else {
+        this.companyss.sort((a, b) => (b.email || "").localeCompare((a.email || "")));
+        this.sortByEmailValid = true
+      }
+    }else{
+      if (this.sortByEmailValid) {
+        this.companys.sort((a, b) => (a.email || "").localeCompare((b.email || "")));
+        this.sortByEmailValid = false
+      } else {
+        this.companys.sort((a, b) => (b.email || "").localeCompare((a.email || "")));
+        this.sortByEmailValid = true
+      }
     }
+    
   }
   sortByPhoneValid: boolean = true;
   sortByphone() {
-    if (this.sortByPhoneValid) {
-      this.companys.sort((a, b) => (a.number || "").localeCompare((b.number || "")));
-      this.sortByPhoneValid = false
-    } else {
-      this.companys.sort((a, b) => (b.number || "").localeCompare((a.number || "")));
-      this.sortByPhoneValid = true
+    if(this.affiche == true){
+      if (this.sortByPhoneValid) {
+        this.companyss.sort((a, b) => (a.number || "").localeCompare((b.number || "")));
+        this.sortByPhoneValid = false
+      } else {
+        this.companyss.sort((a, b) => (b.number || "").localeCompare((a.number || "")));
+        this.sortByPhoneValid = true
+      }
+    }else{
+      if (this.sortByPhoneValid) {
+        this.companys.sort((a, b) => (a.number || "").localeCompare((b.number || "")));
+        this.sortByPhoneValid = false
+      } else {
+        this.companys.sort((a, b) => (b.number || "").localeCompare((a.number || "")));
+        this.sortByPhoneValid = true
+      }
     }
+    
   }
 
 

@@ -116,70 +116,27 @@ export class WillayaListComponent implements OnInit {
         id: "0",
       }
     );
-    console.log(this.willaya)
-    if((this.willaya.code==undefined) ||(this.willaya.code=='')  ){
-      this.toastService.close("0");
-      this.toastService.warning("Verify your willaya code"
-       
-      );
-      return;
-    }else  if((this.willaya.name==undefined) ||(this.willaya.name=='')  ){
-      this.toastService.close("0");
-      this.toastService.warning("Verify your willaya name"
-       
-      );
-      return;
-    }
-    this.willayaservice.findbycode(this.willaya.code).subscribe(data=>{
-      console.log(data)
-      if (data!=null){
+    this.willayaservice.save(id, this.willaya!).subscribe({
+      next: () => {
+        this.findPage();
+        this.formModal.hide();-
+        this.onCancel();
         this.toastService.close("0");
-        let lg = localStorage.getItem("locale")
-        this.http.get("../../../../../assets/i18n/" + lg + ".json").subscribe((data: any) => {
-          this.toastService.warning(data.verifycode)
-        });
-
-        
-        return;
-      }
-
-    },
-    error=>{
-      this.willayaservice.findbyName(this.willaya.name).subscribe(data=>{
-        console.log(data)
-        if(data!=null){
-          this.toastService.close("0");
-          let lg = localStorage.getItem("locale")
-          this.http.get("../../../../../assets/i18n/" + lg + ".json").subscribe((data: any) => {
-            this.toastService.warning(data.verifyname)
-          });
-          
-          return;
-        }else {
-          this.willayaservice.save(id, this.willaya!).subscribe({
-            next: () => {
-              this.findPage();
-              this.formModal.hide();-
-              this.onCancel();
-              this.toastService.close("0");
-              this.toastService.success(
-                this.translateService.instant("success.saved", {
-                  elem: this.translateService.instant("willaya"),
-                })
-              );
-            },
-            error: (error) => {
-              this.toastService.close("0");
-              this.toastService.error(
-                this.translateService.instant(error.error, {
-                  elem: this.translateService.instant("willaya"),
-                })
-              );
-            },
-          });
-        }
-      })
-    })
+        this.toastService.success(
+          this.translateService.instant("success.saved", {
+            elem: this.translateService.instant("willaya"),
+          })
+        );
+      },
+      error: (error) => {
+        this.toastService.close("0");
+        this.toastService.error(
+          this.translateService.instant(error.error, {
+            elem: this.translateService.instant("willaya"),
+          })
+        );
+      },
+    });
   
   }
 
@@ -189,15 +146,18 @@ export class WillayaListComponent implements OnInit {
       confirm: () => this.onSave(null),
       cancel: () => this.onCancel(),
     });
+
   }
 
   onClickEdit(id: string) {
     this.findById(id);
+
     this.formModal.show({
       title: "menu.edit-willaya",
       confirm: () => this.onSave(id),
       cancel: () => this.onCancel(),
     });
+
   }
 
   
@@ -233,26 +193,49 @@ export class WillayaListComponent implements OnInit {
 
   sortByCodeValid: boolean = true;
   sortByCode() {
-    if (this.sortByCodeValid) {
-      this.willayas.sort((a, b) => a.code.localeCompare(b.code));
-      this.sortByCodeValid = false
-    } else {
-      this.willayas.sort((a, b) => b.code.localeCompare(a.code));
-      this.sortByCodeValid = true
+    if(this.affiche==true){
+      if (this.sortByCodeValid) {
+        this.willayass.sort((a, b) => a.code.localeCompare(b.code));
+        this.sortByCodeValid = false
+      } else {
+        this.willayass.sort((a, b) => b.code.localeCompare(a.code));
+        this.sortByCodeValid = true
+      }
+    }else{
+      if (this.sortByCodeValid) {
+        this.willayas.sort((a, b) => a.code.localeCompare(b.code));
+        this.sortByCodeValid = false
+      } else {
+        this.willayas.sort((a, b) => b.code.localeCompare(a.code));
+        this.sortByCodeValid = true
+      }
+
     }
+    
   }
 
 
 
   sortByNameValid: boolean = true;
   sortByName() {
-    if (this.sortByNameValid) {
-      this.willayas.sort((a, b) => a.name.localeCompare(b.name));
-      this.sortByNameValid = false
-    } else {
-      this.willayas.sort((a, b) => b.name.localeCompare(a.name));
-      this.sortByNameValid = true
+    if(this.affiche==true){
+      if (this.sortByNameValid) {
+        this.willayass.sort((a, b) => a.name.localeCompare(b.name));
+        this.sortByNameValid = false
+      } else {
+        this.willayass.sort((a, b) => b.name.localeCompare(a.name));
+        this.sortByNameValid = true
+      }
+    }else{
+      if (this.sortByNameValid) {
+        this.willayas.sort((a, b) => a.name.localeCompare(b.name));
+        this.sortByNameValid = false
+      } else {
+        this.willayas.sort((a, b) => b.name.localeCompare(a.name));
+        this.sortByNameValid = true
+      }
     }
+    
   }
 
 

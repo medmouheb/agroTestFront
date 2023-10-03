@@ -19,7 +19,7 @@
       </button>
 
     </div>
-    
+
 
 
     <div class="form-group has-search">
@@ -37,7 +37,7 @@
     <ng-container *ngIf="!loading && companyPage.empty">
       <app-no-data></app-no-data>
     </ng-container>
-    <div *ngIf="fullDetail==false" >
+    <div *ngIf="fullDetail==false">
       <table class="table" *ngIf="!loading && !companyPage.empty">
         <thead class="datatable-header">
           <tr>
@@ -67,7 +67,7 @@
                 </a>
               </strong>
             </th>
-        
+
             <th>
               <strong class="style-text">
                 {{ "City" | translate }}
@@ -138,12 +138,12 @@
             </th>
             <th>
               <strong class="style-text">
-                  {{'actions' | translate}}
+                {{'actions' | translate}}
               </strong>
-          </th>
+            </th>
           </tr>
         </thead>
-        <tbody class="text-sm" >
+        <tbody class="text-sm">
           <tr class="row-data" *ngFor="let comp of companys">
             <td>
               {{ comp.name }}
@@ -152,7 +152,7 @@
             <td>
               {{ comp.code }}
             </td>
-          <td>
+            <td>
               {{ comp.cityName }}
             </td>
             <td>
@@ -179,11 +179,11 @@
               </button>
             </td>
           </tr>
-  
+
         </tbody>
       </table>
     </div>
-    <div *ngIf="fullDetail==true" >
+    <div *ngIf="fullDetail==true">
       <table class="table" *ngIf="!loading && !companyPage.empty">
         <thead class="datatable-header">
           <tr>
@@ -213,7 +213,7 @@
                 </a>
               </strong>
             </th>
-         
+
             <th>
               <strong class="style-text">
                 {{ "City" | translate }}
@@ -302,14 +302,14 @@
             </th>
             <th>
               <strong class="style-text">
-                  {{'actions' | translate}}
+                {{'actions' | translate}}
               </strong>
-          </th>
+            </th>
           </tr>
         </thead>
         <tbody class="text-sm" *ngIf="affiche==false">
           <tr class="row-data" *ngFor="let comp of companys">
-            
+
             <td>
               {{ comp.name }}
 
@@ -353,15 +353,15 @@
               </button>
             </td>
           </tr>
-    
+
         </tbody>
-        
+
       </table>
     </div>
   </div>
 
 
-  <div *ngIf="affiche==true"  class="datatable">
+  <div *ngIf="affiche==true" class="datatable">
     <ng-container *ngIf="loading">
       <app-spinner></app-spinner>
     </ng-container>
@@ -369,7 +369,7 @@
     <ng-container *ngIf="!loading && companyPages.empty">
       <app-no-data></app-no-data>
     </ng-container>
-    <div *ngIf="fullDetail==false &&!loading && !companyPages.empty" >
+    <div *ngIf="fullDetail==false &&!loading && !companyPages.empty">
       <table class="table" *ngIf="!loading && !companyPages.empty">
         <thead class="datatable-header">
           <tr>
@@ -399,7 +399,7 @@
                 </a>
               </strong>
             </th>
- 
+
             <th>
               <strong class="style-text">
                 {{ "City" | translate }}
@@ -472,7 +472,7 @@
             <th>
               <strong class="style-text">
                 {{'actions' | translate}}
-            </strong>
+              </strong>
             </th>
           </tr>
         </thead>
@@ -501,8 +501,8 @@
               {{ comp.email }}
             </td>
             <th>
-         
-          </th>
+
+            </th>
             <td class="d-flex gap-4">
               <button class="text-primary datatable-action-btn" (click)="onClickEdit(comp.id!)"
                 [title]="'btns.edit' | translate">
@@ -552,12 +552,12 @@
               </button>
 
             </td>
-         
+
           </tr>
         </tbody>
       </table>
     </div>
-    <div *ngIf="fullDetail==true && !loading && !companyPages.empty" >
+    <div *ngIf="fullDetail==true && !loading && !companyPages.empty">
       <table class="table" *ngIf="!loading && !companyPage.empty">
         <thead class="datatable-header">
           <tr>
@@ -673,8 +673,13 @@
                   </svg>
                 </a>
               </strong>
-           
+
           </tr>
+          <th>
+            <strong class="style-text">
+              {{'actions' | translate}}
+            </strong>
+          </th>
         </thead>
         <tbody class="text-sm" *ngIf="affiche==false">
           <tr class="row-data" *ngFor="let comp of companys">
@@ -720,7 +725,7 @@
                 <i class="fa fa-trash"></i>
               </button>
             </td>
-            
+
           </tr>
 
         </tbody>
@@ -768,7 +773,7 @@
                 <i class="fa fa-trash"></i>
               </button>
 
-              
+
             </td>
           </tr>
         </tbody>

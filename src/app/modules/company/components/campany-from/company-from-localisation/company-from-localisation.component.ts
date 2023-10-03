@@ -392,7 +392,7 @@ export class CompanyFromLocalisationComponent implements OnInit {
   }
 
   isBlur3() {
-    if ((this.camp.number.toString().length < 12) || (this.camp.number.toString().length > 13)) {
+    if (this.camp.number.toString().length != 12)  {
       this.minIphone = true;
       this.sharedService.setIsActive(false)
     } else {

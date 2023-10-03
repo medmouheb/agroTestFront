@@ -26,7 +26,7 @@ export class GrowoutListComponent implements OnInit {
   @ViewChild("stepper")
   stepper!: StepperComponent;
   isChecked: boolean = false;
-  affiche:boolean = false;
+  affiche: boolean = false;
   filter = "";
   pageNumber = 0;
   pageSize = 10;
@@ -46,15 +46,15 @@ export class GrowoutListComponent implements OnInit {
     private growoutService: GrowoutService,
     private translateService: TranslateService,
     private toastService: HotToastService
-  ) {}
+  ) { }
   onCheckboxChange() {
     console.log("La valeur de la case à cocher est : ", this.isChecked);
-    if (this.isChecked==false){
+    if (this.isChecked == false) {
 
-      this.affiche=false
+      this.affiche = false
     }
-    else{
-      this.affiche=true
+    else {
+      this.affiche = true
     }
   }
   ngOnInit(): void {
@@ -69,7 +69,7 @@ export class GrowoutListComponent implements OnInit {
       .findPage(this.pageNumber, this.pageSize, this.filter)
       .subscribe({
         next: (result) => {
-          console.log("z;",result)
+          console.log("z;", result)
           this.growouts = result.content;
           this.growoutPage = result;
         },
@@ -198,7 +198,7 @@ export class GrowoutListComponent implements OnInit {
     });
   }
 
- 
+
 
   onClickArchive(id: string) {
     this.archiveModal.show(() => {
@@ -233,76 +233,142 @@ export class GrowoutListComponent implements OnInit {
 
   sortByCodeValid: boolean = true;
   sortByCode() {
-    if (this.sortByCodeValid) {
-      this.growouts.sort((a, b) => a.code.localeCompare(b.code));
-      this.sortByCodeValid = false
+    if (this.affiche == true) {
+      if (this.sortByCodeValid) {
+        this.growoutss.sort((a, b) => a.code.localeCompare(b.code));
+        this.sortByCodeValid = false
+      } else {
+        this.growoutss.sort((a, b) => b.code.localeCompare(a.code));
+        this.sortByCodeValid = true
+      }
     } else {
-      this.growouts.sort((a, b) => b.code.localeCompare(a.code));
-      this.sortByCodeValid = true
+      if (this.sortByCodeValid) {
+        this.growouts.sort((a, b) => a.code.localeCompare(b.code));
+        this.sortByCodeValid = false
+      } else {
+        this.growouts.sort((a, b) => b.code.localeCompare(a.code));
+        this.sortByCodeValid = true
+      }
     }
+
   }
 
 
 
   sortByNameValid: boolean = true;
   sortByName() {
-    if (this.sortByNameValid) {
-      this.growouts.sort((a, b) => a.name.localeCompare(b.name));
-      this.sortByNameValid = false
+    if (this.affiche == true) {
+      if (this.sortByNameValid) {
+        this.growoutss.sort((a, b) => a.name.localeCompare(b.name));
+        this.sortByNameValid = false
+      } else {
+        this.growoutss.sort((a, b) => b.name.localeCompare(a.name));
+        this.sortByNameValid = true
+      }
     } else {
-      this.growouts.sort((a, b) => b.name.localeCompare(a.name));
-      this.sortByNameValid = true
+      if (this.sortByNameValid) {
+        this.growouts.sort((a, b) => a.name.localeCompare(b.name));
+        this.sortByNameValid = false
+      } else {
+        this.growouts.sort((a, b) => b.name.localeCompare(a.name));
+        this.sortByNameValid = true
+      }
     }
+
   }
   sortBydiviValid: boolean = true;
   sortBydivi() {
-    if (this.sortBydiviValid) {
-      this.growouts.sort((a, b) => a.divisionName.localeCompare(b.divisionName));
-      this.sortBydiviValid = false
+    if (this.affiche == true) {
+      if (this.sortBydiviValid) {
+        this.growoutss.sort((a, b) => a.divisionName.localeCompare(b.divisionName));
+        this.sortBydiviValid = false
+      } else {
+        this.growoutss.sort((a, b) => b.divisionName.localeCompare(a.divisionName));
+        this.sortBydiviValid = true
+      }
     } else {
-      this.growouts.sort((a, b) => b.divisionName.localeCompare(a.divisionName));
-      this.sortBydiviValid = true
+      if (this.sortBydiviValid) {
+        this.growouts.sort((a, b) => a.divisionName.localeCompare(b.divisionName));
+        this.sortBydiviValid = false
+      } else {
+        this.growouts.sort((a, b) => b.divisionName.localeCompare(a.divisionName));
+        this.sortBydiviValid = true
+      }
     }
+
   }
 
   sortByCityNameValid: boolean = true;
   sortByCityName() {
-    if (this.sortByCityNameValid) {
-      this.growouts.sort((a, b) => (a.nameCity || "").localeCompare((b.nameCity || "")));
-      this.sortByCityNameValid = false
+    if (this.affiche == true) {
+      if (this.sortByCityNameValid) {
+        this.growoutss.sort((a, b) => (a.nameCity || "").localeCompare((b.nameCity || "")));
+        this.sortByCityNameValid = false
+      } else {
+        this.growoutss.sort((a, b) => (b.nameCity || "").localeCompare((a.nameCity || "")));
+        this.sortByCityNameValid = true
+      }
     } else {
-      this.growouts.sort((a, b) => (b.nameCity || "").localeCompare((a.nameCity || "")));
-      this.sortByCityNameValid = true
+      if (this.sortByCityNameValid) {
+        this.growouts.sort((a, b) => (a.nameCity || "").localeCompare((b.nameCity || "")));
+        this.sortByCityNameValid = false
+      } else {
+        this.growouts.sort((a, b) => (b.nameCity || "").localeCompare((a.nameCity || "")));
+        this.sortByCityNameValid = true
+      }
     }
+
   }
   sortBywillayaValid: boolean = true;
 
   sortBywillaya() {
-    if (this.sortBywillayaValid) {
-      this.growouts.sort((a, b) => (a.wilayaName || "").localeCompare((b.wilayaName || "")));
-      this.sortBywillayaValid = false
+    if (this.affiche == true) {
+      if (this.sortBywillayaValid) {
+        this.growoutss.sort((a, b) => (a.wilayaName || "").localeCompare((b.wilayaName || "")));
+        this.sortBywillayaValid = false
+      } else {
+        this.growoutss.sort((a, b) => (b.wilayaName || "").localeCompare((a.wilayaName || "")));
+        this.sortBywillayaValid = true
+      }
     } else {
-      this.growouts.sort((a, b) => (b.wilayaName || "").localeCompare((a.wilayaName || "")));
-      this.sortBywillayaValid = true
+      if (this.sortBywillayaValid) {
+        this.growouts.sort((a, b) => (a.wilayaName || "").localeCompare((b.wilayaName || "")));
+        this.sortBywillayaValid = false
+      } else {
+        this.growouts.sort((a, b) => (b.wilayaName || "").localeCompare((a.wilayaName || "")));
+        this.sortBywillayaValid = true
+      }
     }
+
   }
 
   sortByAddressValid: boolean = true;
   sortByAddress() {
-    if (this.sortByAddressValid) {
-      this.growouts.sort((a, b) => (a.address || "").localeCompare((b.address || "")));
-      this.sortByAddressValid = false
+    if (this.affiche == true) {
+      if (this.sortByAddressValid) {
+        this.growoutss.sort((a, b) => (a.address || "").localeCompare((b.address || "")));
+        this.sortByAddressValid = false
+      } else {
+        this.growoutss.sort((a, b) => (b.address || "").localeCompare((a.address || "")));
+        this.sortByAddressValid = true
+      }
     } else {
-      this.growouts.sort((a, b) => (b.address || "").localeCompare((a.address || "")));
-      this.sortByAddressValid = true
+      if (this.sortByAddressValid) {
+        this.growouts.sort((a, b) => (a.address || "").localeCompare((b.address || "")));
+        this.sortByAddressValid = false
+      } else {
+        this.growouts.sort((a, b) => (b.address || "").localeCompare((a.address || "")));
+        this.sortByAddressValid = true
+      }
     }
+
   }
 
   onClickdisArchive(id: string) {
     this.growoutService.disArchive(id).subscribe({
       next: () => {
         this.findArchivedPage();
-this.findPage()
+        this.findPage()
         this.toastService.success(
           this.translateService.instant("success.restore", {
             elem: this.translateService.instant("growout"),

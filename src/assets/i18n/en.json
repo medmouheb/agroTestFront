@@ -993,6 +993,8 @@
 "Videss":"Void",
 "You have":"You have",
 "of available land":"of available land",
-"code must be lesser or equal to 10":"code must be lesser or equal to 10"
+"code must be lesser or equal to 10":"code must be lesser or equal to 10",
+"Code must be not null": "Code must be not null"
+
 
 }

@@ -45,6 +45,11 @@ export class DialogComponent implements OnInit {
     this.hide()
   }
 
+  submitstatus = true
+  setsubmitstatus(b: boolean) {
+    this.submitstatus = b
+  }
+
   @HostListener('document:keydown.escape', ['$event']) onKeydownHandler(evt: KeyboardEvent) {
     this.hide()
   }

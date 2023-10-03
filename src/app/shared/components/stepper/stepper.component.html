@@ -1,7 +1,7 @@
 <div class="steps">
   <div class="divider"></div>
   <li class="step-container" *ngFor="let item of steps; let i = index">
-    <div class="step-item" (click)="selectStep(i)" [ngClass]="{
+    <div class="step-item" [ngClass]="{
       'active-step': activeStep(i),
       'done-step': doneStep(i)
     }" [attr.data-index]="i">

@@ -18,6 +18,8 @@ export class CostCenterFormGeneralComponent implements OnInit {
   CostcenterFormGroup!: FormGroup;
 
   @Input() cost!: CostCenter;
+  costreplica!: CostCenter;
+
   @ViewChild("addform")
   addform: FormGroup;
   fieldControl: FormControl;
@@ -25,6 +27,7 @@ export class CostCenterFormGeneralComponent implements OnInit {
   constructor(private sharedService: SharedService, private costserv: CostCenterService) { }
   names: Array<String> = [];
   codes: Array<String> = [];
+  static = ""
 
   ngOnInit(): void {
     this.initForm();
@@ -32,7 +35,7 @@ export class CostCenterFormGeneralComponent implements OnInit {
       console.log("all")
       this.sharedService.setIsActive(true);
 
-    }else{
+    } else {
       this.sharedService.setIsActive(false);
     }
 
@@ -44,6 +47,14 @@ export class CostCenterFormGeneralComponent implements OnInit {
         return el.code
       })
     })
+
+    if (this.cost.id) {
+      this.static = "update"
+      this.costreplica = JSON.parse(JSON.stringify(this.cost))
+    } else if (!this.cost.id) {
+      this.static = "create"
+      this.sharedService.setIsActive(false)
+    }
   }
   dispotrueCode: boolean = false
   dispotruename: boolean = false
@@ -55,27 +66,20 @@ export class CostCenterFormGeneralComponent implements OnInit {
     }
   }
   exist() {
-    this.costserv.findbycode(this.cost.code).subscribe(data=>{
-      console.log(data)
-      if (data!=null) {
-      
-        this.dispotrueCode = true
-        console.log(this.dispotrueCode)
-        this.sharedService.setIsActive(false)
-  
+    if (this.codes.indexOf(this.cost.code) != -1) {
+      if (this.static == "update") {
+        if (this.cost.code == this.costreplica.code) {
+          this.dispotrueCode = false
+        } else {
+          this.dispotrueCode = true
+        }
       } else {
-        this.dispotrueCode = false
-        this.sharedService.setIsActive(true)
-  
+        this.dispotrueCode = true
       }
-    },error=>{
-      console.log(error.status)
-      if (error.status == 404) {
-        this.dispotrueCode = false
-  
-      }
-    })
-    
+    } else {
+      this.dispotrueCode = false
+    }
+
 
   }
 
@@ -91,31 +95,26 @@ export class CostCenterFormGeneralComponent implements OnInit {
   }
 
   newSeggestions = ""
-test=false
+  test = false
   existname() {
-    this.costserv.findbyName(this.cost.name).subscribe(data=>{
-      
-      if (data!=null){
+    if (this.names.indexOf(this.cost.name) != -1) {
+      if (this.static == "update") {
+        if (this.cost.name == this.costreplica.name) {
+          this.dispotruename = false
+        } else {
+          this.dispotruename = true
+        }
+      } else {
         this.dispotruename = true
-        this.sharedService.setIsActive(false)
-        console.log("test",data)
-        console.log("test",this.dispotruename)
-
-      this.test=true
       }
-      else {
-        this.dispotruename = false
-        this.sharedService.setIsActive(true)
-
-      }
-    })
-   
-
+    } else {
+      this.dispotruename = false
+    }
   }
 
 
   initForm() {
-    
+
     this.addform = new FormGroup({
       code: new FormControl("", [
         Validators.required,
@@ -157,17 +156,17 @@ test=false
   isCodeValid() {
     return this.nom.length > 5;
   }
-  getvalue(event){
+  getvalue(event) {
     this.existname()
     console.log(this.cost.code != null)
     console.log(this.cost.code != "")
-    console.log(this.cost.name != null )
+    console.log(this.cost.name != null)
     console.log(this.cost.name != "")
-    
+
     console.log(this.cost.code.toString().length >= 1)
-    console.log( this.dispotrueCode )
-    console.log( this.dispotruename )
-    console.log( this.test )
+    console.log(this.dispotrueCode)
+    console.log(this.dispotruename)
+    console.log(this.test)
     console.log(this.minIstrueCode)
     console.log(this.cost.name.toString().length >= 1)
 
@@ -177,7 +176,7 @@ test=false
       this.cost.name != null &&
       this.cost.name != "" &&
       this.cost.code.toString().length >= 1 &&
-      this.dispotrueCode == false && this.dispotruename == false && this.minIstrueCode==false &&
+      this.dispotrueCode == false && this.dispotruename == false && this.minIstrueCode == false &&
       this.cost.name.toString().length >= 1
 
     ) {
@@ -194,12 +193,12 @@ test=false
     console.log("eventcode :", event.target.value);
     console.log("eventcode :", event.target.value);
     console.log("====================================");
-    console.log( "testt",this.cost.code != null &&
+    console.log("testt", this.cost.code != null &&
       this.cost.code != "" &&
       this.cost.name != null &&
       this.cost.name != "" &&
       this.cost.code.toString().length >= 1 &&
-      this.dispotrueCode == false && this.dispotruename == false && this.minIstrueCode==false &&
+      this.dispotrueCode == false && this.dispotruename == false && this.minIstrueCode == false &&
       this.cost.name.toString().length >= 1)
     if (
       this.cost.code != null &&
@@ -207,7 +206,7 @@ test=false
       this.cost.name != null &&
       this.cost.name != "" &&
       this.cost.code.toString().length >= 1 &&
-      this.dispotrueCode == false && this.dispotruename == false && this.minIstrueCode==false &&
+      this.dispotrueCode == false && this.dispotruename == false && this.minIstrueCode == false &&
       this.cost.name.toString().length >= 1
 
     ) {
@@ -234,7 +233,7 @@ test=false
       this.cost.name != null &&
       this.cost.name != "" &&
       this.cost.code.toString().length >= 1 &&
-      this.dispotrueCode == false && this.dispotruename == false && this.minIstrueCode==false &&
+      this.dispotrueCode == false && this.dispotruename == false && this.minIstrueCode == false &&
       this.cost.name.toString().length >= 1
     ) {
       this.sharedService.setIsActive(true);
@@ -293,16 +292,16 @@ test=false
   codeIsvalid = false
 
   validationCode() {
-    const codeRegex: RegExp =/^[a-zA-Z0-9]*$/;
+    const codeRegex: RegExp = /^[a-zA-Z0-9]*$/;
     console.log(this.cost.code)
     if (codeRegex.test(this.cost.code)) {
       this.codeIsvalid = false;
-    console.log(this.cost.code)
-  
+      console.log(this.cost.code)
+
     }
     else {
-    this.codeIsvalid=true
+      this.codeIsvalid = true
     }
-  
+
   }
 }
