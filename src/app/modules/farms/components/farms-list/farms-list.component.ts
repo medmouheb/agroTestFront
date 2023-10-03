@@ -228,8 +228,17 @@ export class FarmsListComponent implements OnInit {
 
   onClickAdd() {
     this.sharedService.setIsActive(false);
+    this.farm ={}
+
     this.farm.status=true
     this.farm.land=100
+    this.stepper.nextStep();
+    setTimeout(() => {
+      this.stepper.prevStep();      
+
+    }, 100)
+    setTimeout(() => {
+
     this.formModal.show({
       title: "menu.add-farm",
       stepsCount: this.steps.length - 1,
@@ -237,6 +246,8 @@ export class FarmsListComponent implements OnInit {
       cancel: () => this.onCancel(),
       prev: () => this.stepper.prevStep(),
     });
+  }, 200)
+
 
   }
 
@@ -262,47 +273,92 @@ export class FarmsListComponent implements OnInit {
 
   sortByNameValid: boolean = true;
   sortByName() {
-    if (this.sortByNameValid) {
-      this.farms.sort((a, b) => a.nom.localeCompare(b.nom));
-      this.sortByNameValid = false
-    } else {
-      this.farms.sort((a, b) => b.nom.localeCompare(a.nom));
-      this.sortByNameValid = true
+    if(this.affiche==true){
+      if (this.sortByNameValid) {
+        this.farmss.sort((a, b) => a.nom.localeCompare(b.nom));
+        this.sortByNameValid = false
+      } else {
+        this.farmss.sort((a, b) => b.nom.localeCompare(a.nom));
+        this.sortByNameValid = true
+      }
+    }else{
+      if (this.sortByNameValid) {
+        this.farms.sort((a, b) => a.nom.localeCompare(b.nom));
+        this.sortByNameValid = false
+      } else {
+        this.farms.sort((a, b) => b.nom.localeCompare(a.nom));
+        this.sortByNameValid = true
+      }
     }
+
   }
 
 
   sortByCityNameValid: boolean = true;
   sortByCode() {
-    if (this.sortByCityNameValid) {
-      this.farms.sort((a, b) => (a.code || "").localeCompare((b.code || "")));
-      this.sortByCityNameValid = false
-    } else {
-      this.farms.sort((a, b) => (b.code || "").localeCompare((a.code || "")));
-      this.sortByCityNameValid = true
+    if(this.affiche==true){
+      if (this.sortByCityNameValid) {
+        this.farmss.sort((a, b) => (a.code || "").localeCompare((b.code || "")));
+        this.sortByCityNameValid = false
+      } else {
+        this.farmss.sort((a, b) => (b.code || "").localeCompare((a.code || "")));
+        this.sortByCityNameValid = true
+      }
+    }else{
+      if (this.sortByCityNameValid) {
+        this.farms.sort((a, b) => (a.code || "").localeCompare((b.code || "")));
+        this.sortByCityNameValid = false
+      } else {
+        this.farms.sort((a, b) => (b.code || "").localeCompare((a.code || "")));
+        this.sortByCityNameValid = true
+      }
     }
+
   }
   sortBywillayaValid: boolean = true;
   sortByType() {
-    if (this.sortBywillayaValid) {
-      this.farms.sort((a, b) => (a.type || "").localeCompare((b.type || "")));
-      this.sortBywillayaValid = false
-    } else {
-      this.farms.sort((a, b) => (b.type || "").localeCompare((a.type || "")));
-      this.sortBywillayaValid = true
+    if(this.affiche==true){
+      if (this.sortBywillayaValid) {
+        this.farmss.sort((a, b) => (a.type || "").localeCompare((b.type || "")));
+        this.sortBywillayaValid = false
+      } else {
+        this.farmss.sort((a, b) => (b.type || "").localeCompare((a.type || "")));
+        this.sortBywillayaValid = true
+      }
+    }else{
+      if (this.sortBywillayaValid) {
+        this.farms.sort((a, b) => (a.type || "").localeCompare((b.type || "")));
+        this.sortBywillayaValid = false
+      } else {
+        this.farms.sort((a, b) => (b.type || "").localeCompare((a.type || "")));
+        this.sortBywillayaValid = true
+      }
     }
+
   }
 
 
   sortByAddressValid: boolean = true;
   sortByOwner() {
-    if (this.sortByAddressValid) {
-      this.farms.sort((a, b) => (a.owner_Name || "").localeCompare((b.owner_Name || "")));
-      this.sortByAddressValid = false
-    } else {
-      this.farms.sort((a, b) => (b.owner_Name || "").localeCompare((a.owner_Name || "")));
-      this.sortByAddressValid = true
+    if(this.affiche==true){
+      if (this.sortByAddressValid) {
+        this.farmss.sort((a, b) => (a.owner_Name || "").localeCompare((b.owner_Name || "")));
+        this.sortByAddressValid = false
+      } else {
+        this.farmss.sort((a, b) => (b.owner_Name || "").localeCompare((a.owner_Name || "")));
+        this.sortByAddressValid = true
+      }
+    }else{
+      if (this.sortByAddressValid) {
+        this.farms.sort((a, b) => (a.owner_Name || "").localeCompare((b.owner_Name || "")));
+        this.sortByAddressValid = false
+      } else {
+        this.farms.sort((a, b) => (b.owner_Name || "").localeCompare((a.owner_Name || "")));
+        this.sortByAddressValid = true
+      }
+
     }
+
   }
 
   // onClickDelete(id: string) {

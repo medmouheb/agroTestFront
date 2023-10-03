@@ -41,6 +41,8 @@ export class CompanyFromGeneralComponent implements OnInit {
       this.static = "create"
       this.sharedService.setIsActive(false)
     }
+
+    this.geValues("")
   }
 
   initForm() {

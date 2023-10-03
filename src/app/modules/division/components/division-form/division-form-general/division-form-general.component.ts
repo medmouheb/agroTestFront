@@ -230,6 +230,8 @@ export class DivisionFormGeneralComponent implements OnInit {
 
       this.division.code != null &&
       this.division.code != "" &&
+      this.division.measurement != null &&
+      this.division.measurement != "" &&
       this.division.name != null &&
 
       this.division.name != "" && !(!this.division.speciesType)
@@ -258,6 +260,8 @@ export class DivisionFormGeneralComponent implements OnInit {
 
 
   DCisvalid: boolean = false;
+  MSisvalid: boolean = false;
+
   DNisvalid: boolean = false;
   STisvali: boolean = false;
   Misvalid: boolean = false;
@@ -278,6 +282,17 @@ export class DivisionFormGeneralComponent implements OnInit {
       this.DCisvalid = true;
     } else {
       this.DCisvalid = false;
+    }
+  }
+
+  isBlurMSisvalid() {
+    if (this.division.code == undefined) {
+      this.MSisvalid = true;
+    }
+    else if (this.division.code.toString().length < 1) {
+      this.MSisvalid = true;
+    } else {
+      this.MSisvalid = false;
     }
   }
 

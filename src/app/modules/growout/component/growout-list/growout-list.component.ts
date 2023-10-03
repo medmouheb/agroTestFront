@@ -186,9 +186,11 @@ export class GrowoutListComponent implements OnInit {
     this.findById(id);
     this.stepper.nextStep();
     setTimeout(() => {
-      this.stepper.prevStep();
+      this.stepper.prevStep();      
 
     }, 100);
+    setTimeout(() => {
+
     this.formModal.show({
       title: "menu.edit-growout",
       stepsCount: this.steps.length - 1,
@@ -196,6 +198,8 @@ export class GrowoutListComponent implements OnInit {
       cancel: () => this.onCancel(),
       prev: () => this.stepper.prevStep(),
     });
+  }, 200);
+
   }
 
 

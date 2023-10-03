@@ -97,9 +97,11 @@
 
  
   <div class="form-group col-md-6">
-    <label for="measurement">{{'Measurement' | translate}}    </label>
-    <input (blur)="geValues($event)" (ngModelChange)="geValues($event)" class="form-control" name="measurement" formControlName="measurement" placeholder=" {{'Write your measurement'|translate}}"
+    <label class="required"  for="measurement">{{'Measurement' | translate}}    </label>
+    <input (blur)="geValues($event);isBlurMSisvalid()" (ngModelChange)="geValues($event)" class="form-control " name="measurement" formControlName="measurement" placeholder=" {{'Write your measurement'|translate}}"
         [(ngModel)]="division.measurement" required aria-invalid="true" aria-describedby="measurement-error">
+        <div style="color: red;" *ngIf="MSisvalid">{{'Measurement must be not null'|translate}}</div>
+
   </div>
 
 </div>

@@ -10,7 +10,6 @@ import { GrowoutService } from "app/modules/growout/services/growout.service";
 import { Warehouse } from "app/modules/warehouse/models/warehouse.model";
 import { WarehouseService } from "app/modules/warehouse/services/warehouse.service";
 import { Farm } from "../../../models/farm";
-import { log } from "console";
 import { FarmsService } from "app/modules/farms/services/farms.service";
 import { environment } from "environments/environment";
 
@@ -21,6 +20,8 @@ import { environment } from "environments/environment";
 })
 export class FarmsFormGeneralComponent implements OnInit {
   @Input() farm!: Farm;
+  farmReplica!: Farm;
+
   growouts: Array<Growout> = [];
   costcenters: Array<CostCenter> = [];
   warehouses: Warehouse[] = [];
@@ -87,6 +88,8 @@ export class FarmsFormGeneralComponent implements OnInit {
   setActif() {
     this.farm.status = !this.farm.status
   }
+  static = ""
+
   ngOnInit(): void {
     console.log("rr::", this.farm)
     if (this.farm == undefined) {
@@ -112,7 +115,6 @@ export class FarmsFormGeneralComponent implements OnInit {
     this.getAllWarehouses();
     this.getAllVendors();
 
-    console.log("44::", this.farm)
     this.farmsService.findAll().subscribe(data => {
       this.names = data.map(el => {
         return el.nom
@@ -122,27 +124,66 @@ export class FarmsFormGeneralComponent implements OnInit {
       })
     })
 
+
   }
+  id=""
+  getstatus(){
+    
+    if (this.farm.id) {
+      
+      this.static = "update"
+      if(this.id!=this.farm.id){
+        this.id=this.farm.id
+        this.farmReplica =  JSON.parse( JSON.stringify(  this.farm))
+      }
+      this.sharedService.setIsActive(true)
+      return "update"
+    } else if (!this.farm.id) {
+      this.static = "create"
+      this.geValues("")
+      return "create"
+    }
+  }
+
   dispotruename = false
 
   existname() {
+    if (this.names.indexOf((this.farm.nom + "")) != -1) {
 
-    if (this.names.indexOf(this.farm.nom) != -1) {
-      this.dispotruename = true
-    //  this.newSeggestions = "chose " + this.warehouse.name + this.generateRandomCode() + " or " + this.warehouse.name + this.generateRandomCode() + " or " + this.warehouse.name + this.generateRandomCode() + " or " + this.warehouse.name + this.generateRandomCode()
+      if(this.static=="update" ){
+
+        if(this.farm.nom == this.farmReplica.nom){
+
+          this.dispotruename = false
+        }else{
+
+          this.dispotruename = true
+        }
+      }else{
+        this.dispotruename = true
+      }
+
     } else {
       this.dispotruename = false
     }
+   
   }
 
   dispotruecode = false
 
   existcode() {
 
-    if (this.codes.indexOf(this.farm.code) != -1) {
-      console.log("test",this.dispotruecode)
-      this.dispotruecode = true
-      console.log("test",this.dispotruecode)
+    if (this.codes.indexOf((this.farm.code + "")) != -1) {
+      if(this.static=="update" ){
+
+        if(this.farm.code == this.farmReplica.code){
+          this.dispotruecode = false
+        }else{
+          this.dispotruecode = true
+        }
+      }else{
+        this.dispotruecode = true
+      }
 
     } else {
       this.dispotruecode = false
