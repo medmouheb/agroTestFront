@@ -53,7 +53,7 @@ export class DeliveryListComponent implements OnInit {
     this.findPage();
     this.findArchivedPage();
 
-    this.onPaginationChange.subscribe(() => this.findPage());
+    this.onPaginationChange.subscribe(() => {this.findPage();this.findArchivedPage()});
   }
   onCheckboxChange() {
     console.log("La valeur de la case à cocher est : ", this.isChecked);
