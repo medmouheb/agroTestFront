@@ -53,7 +53,7 @@ export class CurrencyListComponent implements OnInit {
     this.findPage();
     this.findArchivedPage();
 
-    this.onPaginationChange.subscribe(() => this.findPage());
+    this.onPaginationChange.subscribe(() => {this.findPage();this.findArchivedPage()});
   }
   onCheckboxChange() {
     console.log("La valeur de la case à cocher est : ", this.isChecked);
@@ -215,7 +215,7 @@ export class CurrencyListComponent implements OnInit {
     this.currencyService.save(id, this.currency!).subscribe({
       next: () => {
         this.findPage();
-        this.formModal.hide ();
+        this.formModal.hide();
         this.onCancel();
         this.toastService.close("0");
         this.toastService.success(
@@ -289,7 +289,7 @@ export class CurrencyListComponent implements OnInit {
 
   sortByCodeValid: boolean = true;
   sortByCode() {
-    if(this.affiche==true){
+    if (this.affiche == true) {
       if (this.sortByCodeValid) {
         this.currencyss.sort((a, b) => a.code.localeCompare(b.code));
         this.sortByCodeValid = false
@@ -297,7 +297,7 @@ export class CurrencyListComponent implements OnInit {
         this.currencyss.sort((a, b) => b.code.localeCompare(a.code));
         this.sortByCodeValid = true
       }
-    }else{
+    } else {
       if (this.sortByCodeValid) {
         this.currencys.sort((a, b) => a.code.localeCompare(b.code));
         this.sortByCodeValid = false
@@ -311,7 +311,7 @@ export class CurrencyListComponent implements OnInit {
 
   sortBydigitalValid: boolean = true;
   sortBydigital() {
-    if(this.affiche==true){
+    if (this.affiche == true) {
       if (this.sortBydigitalValid) {
         this.currencyss.sort((a, b) => a.digitalcode.localeCompare(b.digitalcode));
         this.sortBydigitalValid = false
@@ -319,7 +319,7 @@ export class CurrencyListComponent implements OnInit {
         this.currencyss.sort((a, b) => b.digitalcode.localeCompare(a.digitalcode));
         this.sortBydigitalValid = true
       }
-    }else{
+    } else {
       if (this.sortBydigitalValid) {
         this.currencys.sort((a, b) => a.digitalcode.localeCompare(b.digitalcode));
         this.sortBydigitalValid = false
@@ -332,7 +332,7 @@ export class CurrencyListComponent implements OnInit {
   }
   sortBycountryValid: boolean = true;
   sortBycountry() {
-    if(this.affiche==true){
+    if (this.affiche == true) {
       if (this.sortBycountryValid) {
         this.currencyss.sort((a, b) => a.countryname.localeCompare(b.countryname));
         this.sortBycountryValid = false
@@ -340,7 +340,7 @@ export class CurrencyListComponent implements OnInit {
         this.currencyss.sort((a, b) => b.countryname.localeCompare(a.countryname));
         this.sortBycountryValid = true
       }
-    }else{
+    } else {
       if (this.sortBycountryValid) {
         this.currencys.sort((a, b) => a.countryname.localeCompare(b.countryname));
         this.sortBycountryValid = false
@@ -356,7 +356,7 @@ export class CurrencyListComponent implements OnInit {
 
   sortByNameValid: boolean = true;
   sortByName() {
-    if(this.affiche==true){
+    if (this.affiche == true) {
       if (this.sortByNameValid) {
         this.currencyss.sort((a, b) => a.name.localeCompare(b.name));
         this.sortByNameValid = false
@@ -364,7 +364,7 @@ export class CurrencyListComponent implements OnInit {
         this.currencyss.sort((a, b) => b.name.localeCompare(a.name));
         this.sortByNameValid = true
       }
-    }else{
+    } else {
       if (this.sortByNameValid) {
         this.currencys.sort((a, b) => a.name.localeCompare(b.name));
         this.sortByNameValid = false

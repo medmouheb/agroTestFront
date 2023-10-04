@@ -159,6 +159,7 @@ export class DeliveryListComponent implements OnInit {
   }
 
   onClickAdd() {
+    this.delivery={}
     this.formModal.show({
       title: "menu.add-delivery",
       confirm: () => this.onSave(null),
@@ -217,34 +218,67 @@ export class DeliveryListComponent implements OnInit {
 
   sortByCodeValid: boolean = true;
   sortByCode() {
-    if (this.sortByCodeValid) {
-      this.deliverys.sort((a, b) => a.instructiuonCode.localeCompare(b.instructiuonCode));
-      this.sortByCodeValid = false
-    } else {
-      this.deliverys.sort((a, b) => b.instructiuonCode.localeCompare(a.instructiuonCode));
-      this.sortByCodeValid = true
+    if(this.affiche){
+      if (this.sortByCodeValid) {
+        this.deliveryss.sort((a, b) => a.instructiuonCode.localeCompare(b.instructiuonCode));
+        this.sortByCodeValid = false
+      } else {
+        this.deliveryss.sort((a, b) => b.instructiuonCode.localeCompare(a.instructiuonCode));
+        this.sortByCodeValid = true
+      }
+    }else{
+      if (this.sortByCodeValid) {
+        this.deliverys.sort((a, b) => a.instructiuonCode.localeCompare(b.instructiuonCode));
+        this.sortByCodeValid = false
+      } else {
+        this.deliverys.sort((a, b) => b.instructiuonCode.localeCompare(a.instructiuonCode));
+        this.sortByCodeValid = true
+      }
     }
+
   }
 
   sortBydigitalValid: boolean = true;
   sortBydigital() {
-    if (this.sortBydigitalValid) {
-      this.deliverys.sort((a, b) => a.instructiuonName.localeCompare(b.instructiuonName));
-      this.sortBydigitalValid = false
-    } else {
-      this.deliverys.sort((a, b) => b.instructiuonName.localeCompare(a.instructiuonName));
-      this.sortBydigitalValid = true
+    if(this.affiche){
+      if (this.sortBydigitalValid) {
+        this.deliveryss.sort((a, b) => a.productType.localeCompare(b.productType));
+        this.sortBydigitalValid = false
+      } else {
+        this.deliveryss.sort((a, b) => b.productType.localeCompare(a.productType));
+        this.sortBydigitalValid = true
+      }
+    }else{
+      if (this.sortBydigitalValid) {
+        this.deliverys.sort((a, b) => a.productType.localeCompare(b.productType));
+        this.sortBydigitalValid = false
+      } else {
+        this.deliverys.sort((a, b) => b.productType.localeCompare(a.productType));
+        this.sortBydigitalValid = true
+      }
     }
+
   }
   sortBycountryValid: boolean = true;
   sortBycountry() {
-    if (this.sortBycountryValid) {
-      this.deliverys.sort((a, b) => a.productType.localeCompare(b.productType));
-      this.sortBycountryValid = false
-    } else {
-      this.deliverys.sort((a, b) => b.productType.localeCompare(a.productType));
-      this.sortBycountryValid = true
+    if(this.affiche){
+      if (this.sortBycountryValid) {
+        this.deliveryss.sort((a, b) => a.instructiuonName.localeCompare(b.instructiuonName));
+        this.sortBycountryValid = false
+      } else {
+        this.deliveryss.sort((a, b) => b.instructiuonName.localeCompare(a.instructiuonName));
+        this.sortBycountryValid = true
+      }
+    }else{
+      if (this.sortBycountryValid) {
+        this.deliverys.sort((a, b) => a.instructiuonName.localeCompare(b.instructiuonName));
+        this.sortBycountryValid = false
+      } else {
+        this.deliverys.sort((a, b) => b.instructiuonName.localeCompare(a.instructiuonName));
+        this.sortBycountryValid = true
+      }
     }
+
   }
 
 

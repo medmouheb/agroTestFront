@@ -1,7 +1,7 @@
 <div class="steps">
-  <div class="divider"></div>
+  <div class="divider"> {{getClickstipper()}} </div>
   <li class="step-container" *ngFor="let item of steps; let i = index">
-    <div class="step-item" [ngClass]="{
+    <div class="step-item" [ngStyle]="{'pointer-events': clickStipper ? 'auto' : 'none'}"  (click)="selectStep(i)" [ngClass]="{
       'active-step': activeStep(i),
       'done-step': doneStep(i)
     }" [attr.data-index]="i">

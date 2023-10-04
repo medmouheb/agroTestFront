@@ -61,7 +61,7 @@ export class DivisionListComponent implements OnInit {
     });
     this.findPage();
     this.findArchivedPage();
-    this.onPaginationChange.subscribe(() => this.findPage());
+    this.onPaginationChange.subscribe(() => {this.findPage();this.findArchivedPage()});
   }
 
   findPage() {

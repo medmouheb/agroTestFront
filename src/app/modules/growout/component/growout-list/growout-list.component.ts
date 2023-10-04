@@ -60,7 +60,7 @@ export class GrowoutListComponent implements OnInit {
   ngOnInit(): void {
     this.findPage();
     this.findArchivedPage();
-    this.onPaginationChange.subscribe(() => this.findPage());
+    this.onPaginationChange.subscribe(() => {this.findPage();this.findArchivedPage();});
   }
 
   findPage() {

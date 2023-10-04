@@ -12,6 +12,7 @@ import { WarehouseService } from "app/modules/warehouse/services/warehouse.servi
 import { Farm } from "../../../models/farm";
 import { FarmsService } from "app/modules/farms/services/farms.service";
 import { environment } from "environments/environment";
+import { HotToastService } from "@ngneat/hot-toast";
 
 @Component({
   selector: "app-farms-form-general",
@@ -36,7 +37,8 @@ export class FarmsFormGeneralComponent implements OnInit {
     private fournisseurService: FournisseursService,
     private sharedService: SharedService,
     private growoutservice: GrowoutService,
-    private costcenterservice: CostCenterService
+    private costcenterservice: CostCenterService,
+    private toastService: HotToastService
   ) { }
   getAllgrowout() {
     this.growoutservice.findAll().subscribe({
@@ -520,14 +522,19 @@ validationCode() {
 
   handleComments(e:any){
     let dataFile = new FormData();
-    this.uploadText1=e.target.files[0].name
+    if(e.target.files[0].type=="application/vnd.openxmlformats-officedocument.wordprocessingml.document"){
+      this.uploadText1=e.target.files[0].name
+      dataFile.append("file", e.target.files[0]);
+      this.farmsService.handleFileUpload(dataFile).subscribe(data=>{
+        this.farm.comments=data
+        console.log("oui",data)
+      },(err)=>{
+        this.farm.comments=err.error.text
+      })
+    }else{
+      this.toastService.error('accest only file.doc');
+    }
     // console.log("frfr",e.target.files[0].name)
-    dataFile.append("file", e.target.files[0]);
-    this.farmsService.handleFileUpload(dataFile).subscribe(data=>{
-      this.farm.comments=data
-      console.log("oui",data)
-    },(err)=>{
-      this.farm.comments=err.error.text
-    })
+   
   }
 }

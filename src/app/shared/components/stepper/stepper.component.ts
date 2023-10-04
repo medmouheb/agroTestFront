@@ -20,6 +20,18 @@ export class StepperComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  getClickstipper(){
+
+    this.clickStipper= JSON.parse( localStorage.getItem("st"))
+
+  }
+
+  clickStipper=false
+
+  setclickStipper(b:boolean){
+    this.clickStipper=b
+  }
+
   selectStep(step: number){
     this.currentStep = step
     this.onStepChange.emit(step)

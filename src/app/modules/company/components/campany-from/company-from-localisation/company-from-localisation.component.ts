@@ -398,7 +398,6 @@ export class CompanyFromLocalisationComponent implements OnInit {
     } else {
       this.minIphone = false;
       this.sharedService.setIsActive(true)
-
     }
   }
 }

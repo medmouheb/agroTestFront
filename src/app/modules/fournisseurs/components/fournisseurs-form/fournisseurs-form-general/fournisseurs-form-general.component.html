@@ -2,7 +2,7 @@
 
     <div class="form-group col-md-6">
         <label class="required" for="codefournisseur">{{'codefournisseur' | translate}}</label>
-        <input  (blur)="isBlurDCisvalid();exist();blur1();validationCode()"  class="form-control"  name="code" ngModel [(ngModel)]="fournisseur.code"
+        <input  (blur)="exist();isBlurDCisvalid();blur1();validationCode()"  class="form-control"  name="code" ngModel [(ngModel)]="fournisseur.code"
             formControlName="code" required aria-invalid="true" (ngModelChange)="geValues($event)"
             placeholder="{{'Write your vendor code'|translate}} "    />
             <div  style="color: red;" *ngIf="codeIsvalid">{{ "Invalid code format" |translate }}</div>
@@ -12,7 +12,7 @@
 
     <div  class="form-group col-md-6">
         <label class="required" for="name">{{'namefournisseur' | translate}}</label>
-        <input (blur)="isBlurDNisvalid();geValues($event);existname()"  class="form-control" name="name" ngModel [(ngModel)]="fournisseur.name" [formControl]="fieldControl"
+        <input (keyup)="existname();isBlurDNisvalid();geValues($event);"  class="form-control" name="name" ngModel [(ngModel)]="fournisseur.name" [formControl]="fieldControl"
             required aria-invalid="true" formControlName="name"  placeholder="{{'Write your vendor name'|translate}} "
              (ngModelChange)="geValues($event)" />
              

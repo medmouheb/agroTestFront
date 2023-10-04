@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Farm } from '../../../models/farm';
+import { SharedService } from 'app/modules/company/services/shared.service';
 
 @Component({
   selector: 'app-farms-form-localisation',
@@ -9,7 +10,7 @@ import { Farm } from '../../../models/farm';
 export class FarmsFormLocalisationComponent implements OnInit {
   @Input() farm!: Farm
 
-  constructor() { }
+  constructor(private sharedService: SharedService) { }
 
   countryPhoneCodes = [
     { "country": "Afghanistan", "code": "+93", "flag": "af" },
@@ -252,45 +253,53 @@ export class FarmsFormLocalisationComponent implements OnInit {
     { "country": "Zambia", "code": "+260", "flag": "zm" },
     { "country": "Zimbabwe", "code": "+263", "flag": "zw" }
   ];
-  flag=""
-  getflage(){
-    return "https://flagcdn.com/w320/"+this.flag+".png"
+  flag = ""
+  getflage() {
+    return "https://flagcdn.com/w320/" + this.flag + ".png"
   }
 
-  selectContry(c:any){
+  selectContry(c: any) {
     // let nav = document.getElementById(`mobile`) as any;
     //   nav.value =c.target.value ;
-      this.farm.phoneNumber=c.target.value
-      // console.log("aaa::",this.countryPhoneCodes.filter(el=>{return el.code== c.target.value}))
-      this.flag=this.countryPhoneCodes.filter(el=>{return el.code== c.target.value})[0].flag
-      let f = document.getElementById(`flag`) as any;
-      f.src =this.flag ;
-      this.getflage()
+    this.farm.phoneNumber = c.target.value
+    // console.log("aaa::",this.countryPhoneCodes.filter(el=>{return el.code== c.target.value}))
+    this.flag = this.countryPhoneCodes.filter(el => { return el.code == c.target.value })[0].flag
+    let f = document.getElementById(`flag`) as any;
+    f.src = this.flag;
+    this.getflage()
   }
+  minIphone: boolean = false
 
-  phoneNumberinp(e:any){
-    e.target.value=e.target.value.replace(/[^0-9+\-\s]/g, '')
+  phoneNumberinp(e: any) {
+    e.target.value = e.target.value.replace(/[^0-9+\-\s]/g, '')
+    if (this.farm.phoneNumber.toString().length != 12)  {
+      this.minIphone = true;
+      this.sharedService.setIsActive(false)
+    } else {
+      this.minIphone = false;
+      this.sharedService.setIsActive(true)
+    }
   }
 
   ngOnInit(): void {
-    console.log("44::",this.farm)
+    console.log("44::", this.farm)
   }
 
   emailIsvalid = false
 
-validationEmail() {
-  const emailRegex: RegExp =/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
-  console.log(this.farm.email)
-  if (emailRegex.test(this.farm.email)) {
-    this.emailIsvalid = false;
-  console.log(this.farm.email)
+  validationEmail() {
+    const emailRegex: RegExp = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+    console.log(this.farm.email)
+    if (emailRegex.test(this.farm.email)) {
+      this.emailIsvalid = false;
+      console.log(this.farm.email)
+
+    }
+    else {
+      this.emailIsvalid = true
+    }
 
   }
-  else {
-  this.emailIsvalid=true
-  }
-
-}
 
 
 }

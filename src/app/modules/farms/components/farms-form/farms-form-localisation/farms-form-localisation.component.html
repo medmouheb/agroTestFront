@@ -56,6 +56,8 @@
         [src]="getflage()">
       <input (keyup)="phoneNumberinp($event)" class="form-control" name="phoneNumber" #phoneNumber="ngModel" ngModel [(ngModel)]="farm.phoneNumber">
     </div>
+    <div style="border: 1px solid red; color : red;" *ngIf="minIphone">{{'phone number must be have 12
+      charactere'|translate}}</div>
   </div>
 
   <div class="form-group col-md-6">

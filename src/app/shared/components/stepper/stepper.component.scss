@@ -3,6 +3,8 @@
   align-items: center;
   justify-content: space-between;
   position: relative;
+  align-items: baseline;
+
 }
 
 .step-container{
@@ -48,6 +50,8 @@
   border-radius: 50% !important;
   width: 1.5rem !important;
   height: 1.5rem !important;
+  display: flex;
+  justify-content: center;
 }
 
 .divider {
@@ -62,3 +66,7 @@
 // .step-title{
 //   font-size: .75rem!important;
 // }
+
+.step-title{
+  text-align: center;
+}

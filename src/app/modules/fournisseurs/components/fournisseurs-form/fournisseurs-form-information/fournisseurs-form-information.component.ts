@@ -331,8 +331,12 @@ export class FournisseursFormInformationComponent implements OnInit {
   isBlur3() {
     if ((this.fournisseur.phone.toString().length < 12) || (this.fournisseur.phone.toString().length > 13)) {
       this.minIphone = true;
+      this.sharedService.setIsActive(false)
+
     } else {
       this.minIphone = false;
+      this.sharedService.setIsActive(true)
+
     }
   }
 }

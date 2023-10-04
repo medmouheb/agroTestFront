@@ -61,7 +61,7 @@ export class WillayaListComponent implements OnInit {
   ngOnInit(): void {
     this.findArchivedPage();
     this.findPage();
-    this.onPaginationChange.subscribe(() => this.findPage());
+    this.onPaginationChange.subscribe(() => {this.findPage();this.findArchivedPage()});
   }
   findPage() {
     this.loading = true;

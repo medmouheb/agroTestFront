@@ -71,7 +71,7 @@ export class CostCenterListComponent implements OnInit {
   ngOnInit(): void {
     this.findPage();
     this.findArchivedPage()
-    this.onPaginationChange.subscribe(() => this.findPage());
+    this.onPaginationChange.subscribe(() => {this.findPage();this.findArchivedPage()});
     // this.CostcenterFormGroup = this.fb.group({
     // code: ["", Validators.required],
     // name: ["", Validators.required],

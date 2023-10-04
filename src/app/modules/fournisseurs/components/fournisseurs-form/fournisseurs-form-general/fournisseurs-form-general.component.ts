@@ -13,23 +13,42 @@ import { Fournisseur } from "../../../models/fournisseur.model";
 })
 export class FournisseursFormGeneralComponent implements OnInit {
   @Input() fournisseur!: Fournisseur;
+  fournisseurReplica!: Fournisseur;
+
   fieldControl: FormControl;
   addform: FormGroup;
   cuurencys: Array<Currency> = []
   constructor(private sharedService: SharedService,
     private currencyservice: CurrencyService, private founriserv: FournisseursService) { }
+    names: Array<String> = [];
+    codes: Array<String> = [];
+    static = ""
 
   ngOnInit(): void {
-    console.log(this.fournisseur)
     this.initForm();
     if (this.fournisseur.code != null) {
-      console.log("all")
       this.sharedService.setIsActive(true);
 
     }
   
     this.initForm();
     this.getAllCurrency()
+
+    this.founriserv.findAll().subscribe(data => {
+      this.names = data.map(el => {
+        return el.name
+      })
+      this.codes = data.map(el => {
+        return el.code
+      })
+    })
+
+    if (this.fournisseur.id) {
+      this.static = "update"
+      this.fournisseurReplica =  JSON.parse( JSON.stringify(  this.fournisseur))
+    } else if (!this.fournisseur.id) {
+      this.static = "create"
+    }
 
   }
   getAllCurrency() {
@@ -47,27 +66,21 @@ export class FournisseursFormGeneralComponent implements OnInit {
     }
   }
   exist() {
-    console.log(this.fournisseur.code)
-    console.log(this.dispotrueCode)
+    if (this.codes.indexOf((this.fournisseur.code + "")) != -1) {
+      if(this.static=="update" ){
 
-    this.founriserv.findbycode(this.fournisseur.code).subscribe(data => {
-      console.log(data)
-      if (data != null) {
+        if(this.fournisseur.code == this.fournisseurReplica.code){
+          this.dispotrueCode = false
+        }else{
+          this.dispotrueCode = true
+        }
+      }else{
         this.dispotrueCode = true
-
-
-      } else {
-        this.dispotrueCode = false
-
       }
 
-    }, error => {
-      console.log(error.status)
-      if (error.status == 404) {
-        this.dispotrueCode = false
-
-      }
-    })
+    } else {
+      this.dispotrueCode = false
+    }
 
   }
 
@@ -75,19 +88,21 @@ export class FournisseursFormGeneralComponent implements OnInit {
 
   newSeggestions = ""
   existname() {
-    this.founriserv.findbyName(this.fournisseur.name).subscribe(data => {
-      console.log(data)
-      if (data != null) {
+    if (this.names.indexOf((this.fournisseur.name + "")) != -1) {
+      if(this.static=="update" ){
+
+        if(this.fournisseur.name == this.fournisseurReplica.name){
+          this.dispotruename = false
+        }else{
+          this.dispotruename = true
+        }
+      }else{
         this.dispotruename = true
-      //  this.newSeggestions = "chose " + this.fournisseur.name + this.generateRandomCode() + " or " + this.fournisseur.name + this.generateRandomCode() + " or " + this.fournisseur.name + this.generateRandomCode() + " or " + this.fournisseur.name + this.generateRandomCode()
-
-
-      } else {
-        this.dispotruename = false
-
       }
 
-    }, error => console.log(error))
+    } else {
+      this.dispotruename = false
+    }
 
   }
 
@@ -133,15 +148,15 @@ export class FournisseursFormGeneralComponent implements OnInit {
 
       ]),
     });
-    console.log("====================================");
-    console.log(" add form :", this.addform.value);
-    console.log("====================================");
+
   }
 
   geValues(event) {
-    console.log(event);
-    console.log(" add form :", this.addform.value);
-    console.log("====================================");
+
+    console.log("dsss:",this.fournisseur.code != null , this.fournisseur.code != "" , this.fournisseur.name != null , this.dispotrueCode == false , this.dispotruename == false ,
+    this.fournisseur.name != "" , this.fournisseur.paymentTerm != null , this.fournisseur.paymentTerm != ""
+    , this.fournisseur.currencycode != null , this.fournisseur.currencycode != "")
+
     if (this.fournisseur.code != null && this.fournisseur.code != "" && this.fournisseur.name != null && this.dispotrueCode == false && this.dispotruename == false &&
       this.fournisseur.name != "" && this.fournisseur.paymentTerm != null && this.fournisseur.paymentTerm != ""
       && this.fournisseur.currencycode != null && this.fournisseur.currencycode != "") {
