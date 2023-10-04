@@ -12,26 +12,40 @@ import { BeginninginventoryService } from 'app/modules/beginninginventory/servic
 export class BeginninginventoryDetailsComponent implements OnInit {
 
   
-    @Input() camp!: BeginningInventory;
+  @Input() camp!: BeginningInventory;
+  campReplica!: BeginningInventory;
 
     @ViewChild("addform")
     addform: FormGroup;
    
     constructor(private sharedService: SharedService, private fb: FormBuilder, private compaser: BeginninginventoryService) { }
     codes: Array<String> = [];
+    names: Array<String> = [];
+    static = ""
+
     ngOnInit(): void {
       if (this.camp != null) {
         console.log("olll")
         this.sharedService.setIsActive(true);
         this.compaser.findAll().subscribe(data => {
-          console.log("777::",data.map(el => { return el.codeProduit }))
-          this.codes = data.map(el => { return el.nomDuProduit })
+          this.codes = data.map(el => { return el.codeProduit }
+            )
+            this.names = data.map(el => {
+              return el.nomDuProduit
+            })
         })
       }; 
   
       if (this.camp == undefined) { this.camp = { nomDuProduit: "", codeProduit: "" } };
       this.initForm();
       console.log(this.addform);
+
+      if (this.camp.id) {
+        this.static = "update"
+        this.campReplica =  JSON.parse( JSON.stringify(  this.camp))
+      } else if (!this.camp.id) {
+        this.static = "create"
+      }
     }
   
     initForm(
@@ -80,46 +94,37 @@ export class BeginninginventoryDetailsComponent implements OnInit {
       }
     }
     exist() {
-      console.log(this.camp.codeProduit)
-      this.compaser.findbycode(this.camp.codeProduit).subscribe(data => {
-        console.log(data)
-        if (data != null) {
+      if (this.codes.indexOf((this.camp.codeProduit + "")) != -1) {
+        if(this.static=="update" ){
+          if(this.camp.codeProduit == this.campReplica.codeProduit){
+            this.dispotrueCode = false
+          }else{
+            this.dispotrueCode = true
+          }
+        }else{
           this.dispotrueCode = true
-  
-  
-        } else {
-          this.dispotrueCode = false
-  
         }
   
-      }, error => {
-        console.log(error.status)
-        if (error.status == 404) {
-          this.dispotrueCode = false
-  
-        }
-      })
+      } else {
+        this.dispotrueCode = false
+      }
   
     }
   
     exist1() {
-      console.log(this.camp.codeProduit);
-      this.compaser.findbyName(this.camp.codeProduit).subscribe(
-        (data) => {
-          console.log(data);
-          if (data != null) {
-            this.dispotruename = true;
-          } else {
-            this.dispotruename = false;
+      if (this.names.indexOf(this.camp.nomDuProduit) != -1) {
+        if(this.static=="update" ){
+          if(this.camp.nomDuProduit == this.campReplica.nomDuProduit){
+            this.dispotruename = false
+          }else{
+            this.dispotruename = true
           }
-        },
-        (error) => {
-          console.log(error.status);
-          if (error.status == 404) {
-            this.dispotruename = false;
-          }
+        }else{
+          this.dispotruename = true
         }
-      );
+      } else {
+        this.dispotruename = false
+      }
     }
     
     

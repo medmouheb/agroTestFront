@@ -8,6 +8,7 @@ import { initPage, Page } from "app/shared/models";
 import { BeginningInventory } from "../../models/beginninginventory.model";
 import { BeginninginventoryService } from "../../services/beginninginventory.service";
 import { FormBuilder, FormGroup } from "@angular/forms";
+import { SharedService } from "app/modules/company/services/shared.service";
 @Component({
   selector: 'app-beginninginventory-list',
   templateUrl: './beginninginventory-list.component.html',
@@ -49,7 +50,8 @@ export class BeginninginventoryListComponent implements OnInit {
       private beginningInventaireService: BeginninginventoryService,
       private translateService: TranslateService,
       private toastService: HotToastService,
-      private formBuilder: FormBuilder
+      private formBuilder: FormBuilder,
+      private sharedService: SharedService
     ) { }
     onCheckboxChange() {
       console.log("La valeur de la case à cocher est : ", this.isChecked);
@@ -171,6 +173,13 @@ export class BeginninginventoryListComponent implements OnInit {
     }
   
     onClickAdd() {
+  
+      this.stepper.nextStep();
+      setTimeout(() => {
+        this.stepper.prevStep();
+  
+      }, 100);
+      setTimeout(() => {
       this.formModal.show({
         title: "menu.add-BeginningInventaire",
         stepsCount: this.steps.length - 1,
@@ -178,6 +187,10 @@ export class BeginninginventoryListComponent implements OnInit {
         cancel: () => this.onCancel(),
         prev: () => this.stepper.prevStep(),
       });
+      this.sharedService.setIsActive(false);
+
+    }, 200);
+
     }
   
     onClickEdit(id: string) {
@@ -196,6 +209,8 @@ export class BeginninginventoryListComponent implements OnInit {
           cancel: () => this.onCancel(),
           prev: () => this.stepper.prevStep(),
         });
+        this.sharedService.setIsActive(true);
+
       }, 200);
   
     }
