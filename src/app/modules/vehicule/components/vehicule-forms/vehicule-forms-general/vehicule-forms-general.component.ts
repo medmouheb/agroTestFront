@@ -12,34 +12,42 @@ import { Vehicule } from 'app/modules/vehicule/models/vehicule';
 export class VehiculeFormsGeneralComponent implements OnInit {
 
   @Input() camp!: Vehicule;
+  campReplica!: Vehicule;
+
 
   @ViewChild("addform")
   addform: FormGroup;
- 
+
   constructor(private sharedService: SharedService, private fb: FormBuilder, private compaser: VehiculeService) { }
   codes: Array<String> = [];
+  names: Array<String> = [];
+
   ngOnInit(): void {
     if (this.camp != null) {
       console.log("olll")
       this.sharedService.setIsActive(true);
       this.compaser.findAll().subscribe(data => {
-        console.log("777::",data.map(el => { return el.vehiculeCode }))
         this.codes = data.map(el => { return el.vehiculeCode })
+        this.names = data.map(el => {
+          return el.vehiculeName
+        })
       })
-    }; 
+    };
 
-    if (this.camp == undefined) { this.camp = { vehiculeName: "", vehiculeCode: "" } };
+    if (this.camp == undefined) { 
+      this.camp = { vehiculeName: "", vehiculeCode: "" } 
+    };
     this.initForm();
     console.log(this.addform);
+    if (this.camp.id) {
+      this.static = "update"
+      this.campReplica =  JSON.parse( JSON.stringify(  this.camp))
+    } else if (!this.camp.id) {
+      this.static = "create"
+    }
   }
-
-  initForm(
-
-  ) {
-    
-
-
-
+  static=""
+  initForm() {
     this.addform = this.fb.group({
       vehiculeCode: [
         null,
@@ -65,7 +73,7 @@ export class VehiculeFormsGeneralComponent implements OnInit {
       vehiculeType: [
         null
       ],
-      
+
     });
 
   }
@@ -91,59 +99,52 @@ export class VehiculeFormsGeneralComponent implements OnInit {
     }
   }
   exist() {
-    console.log(this.camp.vehiculeCode)
-    this.compaser.findbycode(this.camp.vehiculeCode).subscribe(data => {
-      console.log(data)
-      if (data != null) {
+    if (this.codes.indexOf((this.camp.vehiculeCode + "")) != -1) {
+      if(this.static=="update" ){
+        if(this.camp.vehiculeCode == this.campReplica.vehiculeCode){
+          this.dispotrueCode = false
+        }else{
+          this.dispotrueCode = true
+        }
+      }else{
         this.dispotrueCode = true
-        this.sharedService.setIsActive(false);
-
-
-      } else {
-        this.dispotrueCode = false
-        this.sharedService.setIsActive(true);
       }
-
-    }, error => {
-      console.log(error.status)
-      if (error.status == 404) {
-        this.dispotrueCode = false
-        this.sharedService.setIsActive(true);
-      }
-    })
-
-  }
-  
-
- generateRandomCode() {
-  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-  let code = '';
-  for (let i = 0; i < 4; i++) {
-    const randomIndex = Math.floor(Math.random() * characters.length);
-    code += characters.charAt(randomIndex);
-  }
-  return code;
-}
-
-  newSeggestions=""
-
-  existname() {
-    console.log("aa::",this.codes)
-    if (this.codes.indexOf(this.camp.vehiculeCode) != -1) {
-      this.dispotruename = true
-     // this.newSeggestions= "chose "+this.camp.name+this.generateRandomCode()+" or "+this.camp.name+this.generateRandomCode()+" or "+this.camp.name+this.generateRandomCode()+" or "+this.camp.name+this.generateRandomCode()
-     this.sharedService.setIsActive(false);
 
     } else {
-      this.dispotruename = false
-      this.sharedService.setIsActive(true);
+      this.dispotrueCode = false
     }
-    
-
-
   }
 
-  
+
+  generateRandomCode() {
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let code = '';
+    for (let i = 0; i < 4; i++) {
+      const randomIndex = Math.floor(Math.random() * characters.length);
+      code += characters.charAt(randomIndex);
+    }
+    return code;
+  }
+
+  newSeggestions = ""
+
+  existname() {
+    if (this.names.indexOf(this.camp.vehiculeName) != -1) {
+      if(this.static=="update" ){
+        if(this.camp.vehiculeName == this.campReplica.vehiculeName){
+          this.dispotruename = false
+        }else{
+          this.dispotruename = true
+        }
+      }else{
+        this.dispotruename = true
+      }
+    } else {
+      this.dispotruename = false
+    }
+  }
+
+
   minIstrueName: boolean = false
   minIstrueName2: boolean = false
   // isBlur2() {
@@ -183,10 +184,10 @@ export class VehiculeFormsGeneralComponent implements OnInit {
     }
   }
   geValues(event) {
-    
 
+    console.log("erty::", !this.codeIsvalid , !this.dispotrueCode , !this.minIstrueCode , !this.minIstrueName  , !this.dispotruename  , !this.minIphone   , !this.minMeasurementType)
     if (
-      
+
       this.camp.vehiculeCode != null &&
       this.camp.vehiculeCode != "" &&
       this.camp.vehiculeCode != null &&
@@ -208,7 +209,8 @@ export class VehiculeFormsGeneralComponent implements OnInit {
       this.camp.measurementType != "" &&
       this.camp.measurementType != null &&
       this.camp.measurementType != "" &&
-      this.camp.measurementType.toString().length >= 1 
+      this.camp.measurementType.toString().length >= 1 &&
+      !this.codeIsvalid && !this.dispotrueCode && !this.minIstrueCode && !this.minIstrueName  && !this.dispotruename  && !this.minIphone   && !this.minMeasurementType
     ) {
       this.sharedService.setIsActive(true);
     } else {
@@ -236,7 +238,7 @@ export class VehiculeFormsGeneralComponent implements OnInit {
   minIphone: boolean = false
 
   isBlur3() {
-    if ((this.camp.facilitytype.toString().length <1 )) {
+    if ((this.camp.facilitytype.toString().length < 1)) {
       this.minIphone = true;
     } else {
       this.minIphone = false;
@@ -246,25 +248,25 @@ export class VehiculeFormsGeneralComponent implements OnInit {
 
   codeIsvalid = false
 
-validationCode() {
-  const codeRegex: RegExp =/^[a-zA-Z0-9]*$/;
-  console.log(this.camp.vehiculeCode)
-  if (codeRegex.test(this.camp.vehiculeCode)) {
-    this.codeIsvalid = false;
-  console.log(this.camp.vehiculeCode)
+  validationCode() {
+    const codeRegex: RegExp = /^[a-zA-Z0-9]*$/;
+    console.log(this.camp.vehiculeCode)
+    if (codeRegex.test(this.camp.vehiculeCode)) {
+      this.codeIsvalid = false;
+      console.log(this.camp.vehiculeCode)
+
+    }
+    else {
+      this.codeIsvalid = true
+    }
 
   }
-  else {
-  this.codeIsvalid=true
-  }
-
-}
 
 
   minMeasurementType: boolean = false
 
   isBlur4() {
-    if (this.camp.measurementType.toString().length <1 ) {
+    if (this.camp.measurementType.toString().length < 1) {
       this.minMeasurementType = true;
     } else {
       this.minMeasurementType = false;

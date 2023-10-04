@@ -33,7 +33,7 @@ export class VehiculeFormsInformationComponent implements OnInit {
       tareWeight: new FormControl(0),
       tareWtRecord: new FormControl(null),
       tareWtRecordRef: new FormControl(""),
-      Bins: new FormControl(0),
+      bins: new FormControl(0),
       trailer: new FormControl(false),
       trailerSequence: new FormControl(0),
       capacity: new FormControl(0),

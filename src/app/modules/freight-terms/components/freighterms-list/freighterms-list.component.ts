@@ -197,6 +197,7 @@ export class FreightermsListComponent implements OnInit {
      confirm: () => this.onSave(null),
      cancel: () => this.onCancel(),
    });
+   this.formModal.setsubmitstatus(false)
  }
 
  onClickEdit(id: string) {
@@ -206,6 +207,8 @@ export class FreightermsListComponent implements OnInit {
      confirm: () => this.onSave(id),
      cancel: () => this.onCancel(),
    });
+   this.formModal.setsubmitstatus(true)
+
  }
 
  

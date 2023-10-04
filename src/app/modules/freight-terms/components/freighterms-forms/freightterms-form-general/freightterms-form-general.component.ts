@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { SharedService } from 'app/modules/company/services/shared.service';
 import { FreightTermsService } from 'app/modules/freight-terms/Service/freight-terms.service';
 import { FreightTerms } from 'app/modules/freight-terms/models/freightterms';
+import { DialogComponent } from 'app/shared/components/dialog/dialog.component';
 
 @Component({
   selector: 'app-freightterms-form-general',
@@ -11,24 +12,44 @@ import { FreightTerms } from 'app/modules/freight-terms/models/freightterms';
 })
 export class FreighttermsFormGeneralComponent implements OnInit {
   @Input() freightterm!:FreightTerms
+  freighttermReplica  !:FreightTerms
+
   addform: FormGroup;
-  constructor(private sharedService: SharedService,private freighttermsservice:FreightTermsService) { }
+  constructor(private sharedService: SharedService,private freighttermsservice:FreightTermsService,private dialogComponent:DialogComponent) { }
 
   freighttermcodeList=["CIF","CFR","FOB","FoB","DAT","CIP"]
 
   ngOnInit(): void {
     if (this.freightterm == undefined) this.freightterm = { freighttermcode: "", freighttermname : "" };
     this.initForm();
-    this.getetat()
-    console.log("lkl::",this.freightterm.freighttermcode )
     if(this.freighttermcodeList.indexOf(this.freightterm.freighttermcode )!=-1){
       this.otherCondition=true
     }
     if(!this.freightterm.freighttermcode ){
       this.sharedService.setIsActive(false)
     }
-  }
 
+  }
+  static=""
+  id=""
+  getstatus(){
+    
+    if (this.freightterm.id) {
+      
+      this.static = "update"
+      if(this.id!=this.freightterm.id){
+        this.id=this.freightterm.id
+        this.freighttermReplica =  JSON.parse( JSON.stringify(  this.freightterm))
+      }
+      return "update"
+
+    } else if (!this.freightterm.id) {
+      this.static = "create"
+
+      return "create"
+
+    }
+  }
   
   initForm() {
    
@@ -137,9 +158,9 @@ export class FreighttermsFormGeneralComponent implements OnInit {
       this.freightterm.freighttermcode.toString().length >= 1 &&
       this.freightterm.freighttermname .toString().length >= 1
     ) {
-      this.sharedService.setIsActive(true);
+      this.dialogComponent.setsubmitstatus(true)
     } else {
-      this.sharedService.setIsActive(false);
+      this.dialogComponent.setsubmitstatus(false)
     
     }
     console.log("le ship :", this.freightterm);

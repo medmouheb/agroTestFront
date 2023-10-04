@@ -18,8 +18,9 @@ import { Warehouse } from "../../../models/warehouse.model";
   styleUrls: ["./warehouse-form-general.component.scss"],
 })
 export class WarehouseFormGeneralComponent implements OnInit {
-  @Input()
-  warehouse: Warehouse = {};
+  @Input() warehouse: Warehouse = {};
+  warehouseReplica: Warehouse = {};
+
   costcenters: Array<CostCenter> = [];
   fournisseurs: Array<Fournisseur> = [];
   fieldControl: FormControl;
@@ -31,6 +32,7 @@ export class WarehouseFormGeneralComponent implements OnInit {
   types = ["OWNED", "THIRD PARTY"];
 
   vendors = ["Vendor 1", "Vendor 2", "Vendor 3"];
+  static = ""
 
   myForm!: FormGroup;
   addForm!: FormGroup;
@@ -51,6 +53,23 @@ export class WarehouseFormGeneralComponent implements OnInit {
         return el.code
       })
     })
+    this.geValues("")
+
+
+  }
+  id=""
+  fetstatic(){
+    if (this.warehouse.id) {
+      this.static = "update"
+      if (this.id != this.warehouse.id) {
+        this.warehouseReplica =  JSON.parse( JSON.stringify(  this.warehouse))
+        this.id = this.warehouse.id
+
+      }
+
+    } else if (!this.warehouse.id) {
+      this.static = "create"
+    }
   }
 
   // generateRandomCode() {
@@ -68,21 +87,38 @@ export class WarehouseFormGeneralComponent implements OnInit {
 
   existname() {
 
-    if (this.names.indexOf(this.warehouse.name) != -1) {
-      this.dispotruename = true
-    //  this.newSeggestions = "chose " + this.warehouse.name + this.generateRandomCode() + " or " + this.warehouse.name + this.generateRandomCode() + " or " + this.warehouse.name + this.generateRandomCode() + " or " + this.warehouse.name + this.generateRandomCode()
+    if (this.names.indexOf((this.warehouse.name + "")) != -1) {
+      if(this.static=="update" ){
+        if(this.warehouse.name == this.warehouseReplica.name){
+          this.dispotruename = false
+        }else{
+          this.dispotruename = true
+        }
+      }else{
+        this.dispotruename = true
+      }
     } else {
       this.dispotruename = false
     }
   }
   existcodeIsvalid = false
   existcode() {
+    if (this.codes.indexOf((this.warehouse.code + "")) != -1) {
+      if(this.static=="update" ){
+        if(this.warehouse.code == this.warehouseReplica.code){
+          this.existcodeIsvalid = false
+        }else{
+          this.existcodeIsvalid = true
+        }
+      }else{
+        this.existcodeIsvalid = true
+      }
 
-    if (this.codes.indexOf((this.warehouse.code+"")) != -1) {
-      this.existcodeIsvalid = true
     } else {
       this.existcodeIsvalid = false
     }
+
+
   }
 
   getallfourniss() {
@@ -128,7 +164,7 @@ export class WarehouseFormGeneralComponent implements OnInit {
 
 
   initForm() {
-   
+
 
     this.myForm = new FormGroup({
       code: new FormControl("", [
@@ -196,6 +232,7 @@ export class WarehouseFormGeneralComponent implements OnInit {
     //     this.warehouse.name.toString().length >= 3
     // );
     if (
+      !this.existcodeIsvalid && !this.dispotruename &&
       this.warehouse.code != null &&
       this.warehouse.code != "" &&
       this.warehouse.name != null &&
@@ -207,7 +244,7 @@ export class WarehouseFormGeneralComponent implements OnInit {
       this.warehouse.code.toString().length >= 1 &&
       this.warehouse.name.toString().length >= 1 &&
       this.warehouse.costCenterCode.toString().length >= 1 &&
-      this.warehouse.costCenterName.toString().length >= 1 
+      this.warehouse.costCenterName.toString().length >= 1
     ) {
       this.sharedService.setIsActive(true);
     } else {
@@ -245,7 +282,7 @@ export class WarehouseFormGeneralComponent implements OnInit {
 
   istypeValid(event) {
 
-    if (this.addForm.value.costCenterType ) {
+    if (this.addForm.value.costCenterType) {
       this.typeisValid = false
     }
     this.geValues(event)
@@ -275,17 +312,17 @@ export class WarehouseFormGeneralComponent implements OnInit {
   codeIsvalid = false
 
   validationCode() {
-    const codeRegex: RegExp =/^[a-zA-Z0-9]*$/;
+    const codeRegex: RegExp = /^[a-zA-Z0-9]*$/;
     console.log(this.warehouse.code)
     if (codeRegex.test(this.warehouse.code)) {
       this.codeIsvalid = false;
-    console.log(this.warehouse.code)
-  
+      console.log(this.warehouse.code)
+
     }
     else {
-    this.codeIsvalid=true
+      this.codeIsvalid = true
     }
-  
+
   }
 
   DCisvalid: boolean = false;

@@ -68,7 +68,7 @@
     </div>
 
     <div class="form-group col-md-6 ">
-        <label class="required" for="name">{{ "notes" | translate }}</label>
+        <label  for="name">{{ "notes" | translate }}</label>
         <input class="form-control" name="name" formControlName="notes" [(ngModel)]="shipmethod.notes" required
             placeholder="{{'write your notes'|translate}}" aria-invalid="true" aria-describedby="name-error"
             (ngModelChange)="geValues($event)">

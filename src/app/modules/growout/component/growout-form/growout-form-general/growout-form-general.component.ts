@@ -76,7 +76,6 @@ export class GrowoutFormGeneralComponent implements OnInit {
   exist() {
     if (this.codes.indexOf((this.growout.code + "")) != -1) {
       if(this.static=="update" ){
-
         if(this.growout.code == this.growoutReplica.code){
           this.dispotrueCode = false
         }else{
@@ -106,7 +105,6 @@ export class GrowoutFormGeneralComponent implements OnInit {
   existname() {
     if (this.names.indexOf((this.growout.name + "")) != -1) {
       if(this.static=="update" ){
-
         if(this.growout.name == this.growoutReplica.name){
           this.dispotruename = false
         }else{
@@ -115,7 +113,6 @@ export class GrowoutFormGeneralComponent implements OnInit {
       }else{
         this.dispotruename = true
       }
-
     } else {
       this.dispotruename = false
     }

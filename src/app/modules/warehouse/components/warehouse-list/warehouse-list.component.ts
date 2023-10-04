@@ -70,7 +70,7 @@ export class WarehouseListComponent implements OnInit {
   ngOnInit(): void {
     this.findArchivedPage();
     this.findPage();
-    this.onPaginationChange.subscribe(() => this.findPage());
+    this.onPaginationChange.subscribe(() => {this.findPage();this.findArchivedPage()});
   }
 
   onDownloadCSVTempalte() {
@@ -355,10 +355,10 @@ export class WarehouseListComponent implements OnInit {
   sortBycityNameValid: boolean = true;
   sortBycityName() {
     if (this.sortBycityNameValid) {
-      this.warehouses.sort((a, b) => a.cityName.localeCompare(b.cityName));
+      this.warehouses.sort((a, b) => (a.cityName+"").localeCompare((b.cityName+"")));
       this.sortBycityNameValid = false
     } else {
-      this.warehouses.sort((a, b) => b.cityName.localeCompare(a.cityName));
+      this.warehouses.sort((a, b) => (b.cityName+"").localeCompare((a.cityName+"")));
       this.sortBycityNameValid = true
     }
   }
@@ -376,10 +376,10 @@ export class WarehouseListComponent implements OnInit {
   sortByphoneNumberValid: boolean = true;
   sortByphoneNumber() {
     if (this.sortByphoneNumberValid) {
-      this.warehouses.sort((a, b) => a.phoneNumber.localeCompare(b.phoneNumber));
+      this.warehouses.sort((a, b) => (a.isPrimary+"").localeCompare((b.isPrimary+"")));
       this.sortByphoneNumberValid = false
     } else {
-      this.warehouses.sort((a, b) => b.phoneNumber.localeCompare(a.phoneNumber));
+      this.warehouses.sort((a, b) => (b.isPrimary+"").localeCompare((a.isPrimary+"")));
       this.sortByphoneNumberValid = true
     }
   }

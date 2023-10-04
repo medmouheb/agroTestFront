@@ -15,18 +15,47 @@ export class ProduitsFormGroupComponent implements OnInit {
   @ViewChild("addform")
   addform: FormGroup;
   @Input() produit: Produit = {}
+  produitReplica: Produit = {}
   vendors: Array<Fournisseur> = []
+  static=""
+  id=""
+  getstatus(){
+
+    if (this.produit.id) {
+      
+      this.static = "update"
+      if(this.id!=this.produit.id){
+        this.id=this.produit.id
+        this.produitReplica =  JSON.parse( JSON.stringify(  this.produit))
+      }
+      this.geValues("")
+      return "update"
+    } else if (!this.produit.id) {
+      this.static = "create"
+      this.geValues("")
+      return "create"
+    }
+  }
 
   constructor(private produitser:ProduitsService,
     private fournisseursService: FournisseursService,private sharedService: SharedService, private fb: FormBuilder
   ) { }
-
+  names: Array<String> = [];
+  codes: Array<String> = [];
   ngOnInit(): void {
     this.initForm();
     if(!this.produit.fournisseur){
       this.produit.fournisseur = {}
     }
     this.getAllVendors()
+    this.produitser.findAll().subscribe(data => {
+      this.names = data.map(el => {
+        return el.name
+      })
+      this.codes = data.map(el => {
+        return el.code
+      })
+    })
   }
   initForm() {
     this.addform = this.fb.group({
@@ -80,61 +109,45 @@ export class ProduitsFormGroupComponent implements OnInit {
   }
   dispotruename=false
   existname() {
-    console.log(this.produit.code)
-    this.produitser.findbyName(this.produit.name).subscribe(data => {
-      console.log(data)
-      if (data != null) {
+    console.log("lklk::",this.names.indexOf((this.produit.name + "")) != -1,)
+    if (this.names.indexOf((this.produit.name + "")) != -1) {
+
+      if(this.static=="update" ){
+
+        if(this.produit.name == this.produitReplica.name){
+
+          this.dispotruename = false
+        }else{
+
+          this.dispotruename = true
+        }
+      }else{
         this.dispotruename = true
-        this.sharedService.setIsActive(false);
-
-
-
-      } else {
-        this.dispotruename = false
-        this.sharedService.setIsActive(true);
-
-
       }
 
-    }, error => {
-      console.log(error.status)
-      if (error.status == 404) {
-        this.dispotrueCode = false
-        this.sharedService.setIsActive(false);
-
-
-      }
-    })
+    } else {
+      this.dispotruename = false
+    }
 
   }
   
   dispotrueCode = false
   exist() {
-    console.log(this.produit.code)
-    this.produitser.findbycode(this.produit.code).subscribe(data => {
-      console.log(data)
-      if (data != null) {
+    if (this.codes.indexOf((this.produit.code + "")) != -1) {
+      if(this.static=="update" ){
+
+        if(this.produit.code == this.produitReplica.code){
+          this.dispotrueCode = false
+        }else{
+          this.dispotrueCode = true
+        }
+      }else{
         this.dispotrueCode = true
-        this.sharedService.setIsActive(false);
-
-
-      } else {
-        this.dispotrueCode = false
-        this.sharedService.setIsActive(true);
-
-
       }
 
-    }, error => {
-      console.log(error.status)
-      if (error.status == 404) {
-        this.dispotrueCode = false
-        this.sharedService.setIsActive(false);
-
-
-      }
-    })
-
+    } else {
+      this.dispotrueCode = false
+    }
   }
   
 

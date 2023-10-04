@@ -8,6 +8,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { VehiculeService } from '../../Services/vehicule.service';
 import { TranslateService } from '@ngx-translate/core';
 import { HotToastService } from '@ngneat/hot-toast';
+import { SharedService } from 'app/modules/company/services/shared.service';
 
 @Component({
   selector: 'app-vehicule-list',
@@ -49,7 +50,8 @@ export class VehiculeListComponent implements OnInit {
     private vehiculeService: VehiculeService,
     private translateService: TranslateService,
     private toastService: HotToastService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private sharedService: SharedService,
   ) { }
   onCheckboxChange() {
     console.log("La valeur de la case à cocher est : ", this.isChecked);
@@ -187,6 +189,12 @@ export class VehiculeListComponent implements OnInit {
   }
 
   onClickAdd() {
+    this.stepper.nextStep();
+    setTimeout(() => {
+      this.stepper.prevStep();
+
+    }, 100);
+    setTimeout(() => {
     this.formModal.show({
       title: "menu.add-Vehicles",
       stepsCount: this.steps.length - 1,
@@ -194,6 +202,11 @@ export class VehiculeListComponent implements OnInit {
       cancel: () => this.onCancel(),
       prev: () => this.stepper.prevStep(),
     });
+    this.sharedService.setIsActive(false);
+
+  }, 200);
+  
+
   }
 
   onClickEdit(id: string) {
@@ -212,6 +225,8 @@ export class VehiculeListComponent implements OnInit {
         cancel: () => this.onCancel(),
         prev: () => this.stepper.prevStep(),
       });
+      this.sharedService.setIsActive(true);
+
     }, 200);
 
   }

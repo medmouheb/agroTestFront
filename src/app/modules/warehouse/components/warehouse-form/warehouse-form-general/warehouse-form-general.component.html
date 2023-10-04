@@ -1,11 +1,11 @@
 <div class="row" [formGroup]="addForm">
-  <!-- <p> {{warehouse | json}} </p> -->
+  <p style="display: none;"> {{fetstatic() }} </p>
   <div class="form-group col-md-6">
     <label class="required" for="code">{{ "warehousescode" | translate }}</label>
-    <input (blur)="existcode();isBlurDCisvalid();validationCode()" class="form-control" name="code"
+    <input (blur)="existcode();isBlurDCisvalid();validationCode();geValues($event)" class="form-control" name="code"
       [(ngModel)]="warehouse.code" formControlName="code" required
       placeholder=" {{'Write your warehouse code'|translate}}" aria-invalid="true" aria-describedby="code-error"
-      (ngModelChange)="geValues($event)">
+      >
     <div style="color: red;" *ngIf="DCisvalid">{{'Code must be not null'|translate}}</div>
     <div style="color: red;" *ngIf="existcodeIsvalid">{{'Code must be unique'|translate}}</div>
     <div style="color: red;" *ngIf="codeIsvalid">{{ "Invalid code format" |translate }}</div>
@@ -14,9 +14,9 @@
 
   <div class="form-group col-md-6">
     <label class="required" for="name">{{ "warehousesname" | translate }}</label>
-    <input (blur)="existname();isBlurDNisvalid()" class="form-control" name="name" [(ngModel)]="warehouse.name"
+    <input (blur)="existname();isBlurDNisvalid();geValues($event)" class="form-control" name="name" [(ngModel)]="warehouse.name"
       formControlName="name" required placeholder=" {{'Write your warehouse name'|translate}}"
-      [formControl]="fieldControl" aria-invalid="true" aria-describedby="name-error" (ngModelChange)="geValues($event)">
+      [formControl]="fieldControl" aria-invalid="true" aria-describedby="name-error" >
     <div style="color: red;" *ngIf="DNisvalid">{{'Name must be not null'|translate}}</div>
 
     <div style="color: red;" *ngIf="dispotruename">{{'name must be unique'|translate}}</div>

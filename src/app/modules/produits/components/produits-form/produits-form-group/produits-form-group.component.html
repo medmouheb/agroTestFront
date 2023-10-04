@@ -1,9 +1,11 @@
 <div class="row" [formGroup]="addform">
+    <div style="display: none;" > {{getstatus()}} </div>
+
     <div class="form-group col-md-4">
         <label class="required" for="code">{{'codeproduct' | translate}}</label>
-        <input (blur)="isBlur();validationCode();exist();existname()" class="form-control" name="code" [(ngModel)]="produit.code"
-            formControlName="code" placeholder="{{'write your code product'|translate}} " required aria-invalid="true"
-            aria-describedby="code-error" (ngModelChange)="geValues($event)">
+        <input (blur)="isBlur();validationCode();exist();existname()" class="form-control" name="code"
+            [(ngModel)]="produit.code" formControlName="code" placeholder="{{'write your code product'|translate}} "
+            required aria-invalid="true" aria-describedby="code-error" (ngModelChange)="geValues($event)">
         <div style="color: red;" *ngIf="codeIsvalid">{{ "Invalid code format" |translate }}</div>
         <div style=" color : red;" *ngIf="minIstrueCode">{{'code must be not null'|translate}}</div>
         <div style=" color : red;" *ngIf="dispotrueCode">{{'Code must be unique'|translate}}</div>
@@ -12,12 +14,12 @@
 
     <div class="form-group col-md-4">
         <label class="required" for="name">{{'nameproduct' | translate}}</label>
-        <input (blur)="isBlur1();existname()" class="form-control" name="name" formControlName="name" [(ngModel)]="produit.name"
-            placeholder="{{'write your name product'|translate}} " required aria-invalid="true"
-            aria-describedby="name-error" (ngModelChange)="geValues($event)">
-            <div style=" color : red;" *ngIf="dispotruename">{{'name must be unique'|translate}}</div>
-        
-            <div style=" color : red;" *ngIf="minIstrueName">{{'the name must be between 3 and 8 characters'|translate}}
+        <input (blur)="isBlur1();existname()" class="form-control" name="name" formControlName="name"
+            [(ngModel)]="produit.name" placeholder="{{'write your name product'|translate}} " required
+            aria-invalid="true" aria-describedby="name-error" (ngModelChange)="geValues($event)">
+        <div style=" color : red;" *ngIf="dispotruename">{{'name must be unique'|translate}}</div>
+
+        <div style=" color : red;" *ngIf="minIstrueName">{{'the name must be between 3 and 8 characters'|translate}}
         </div>
     </div>
 

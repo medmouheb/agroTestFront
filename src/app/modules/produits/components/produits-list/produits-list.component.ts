@@ -251,6 +251,13 @@ export class ProduitsListComponent implements OnInit {
   }
 
   onClickAdd() {
+    this.stepper.nextStep();
+    setTimeout(() => {
+      this.stepper.prevStep();
+
+    }, 100);
+    setTimeout(() => {
+
     this.formModal.show({
       title: "menu.add-product",
       stepsCount: this.steps.length - 1,
@@ -258,6 +265,8 @@ export class ProduitsListComponent implements OnInit {
       cancel: () => this.onCancel(),
       prev: () => this.stepper.prevStep(),
     });
+  }, 200);
+
   }
 
   onClickEdit(id: string) {
@@ -267,7 +276,8 @@ export class ProduitsListComponent implements OnInit {
 
     }, 100);
     this.findById(id);
-   
+    setTimeout(() => {
+
     this.formModal.show({
       title: "menu.edit-product",
       stepsCount: this.steps.length - 1,
@@ -275,6 +285,8 @@ export class ProduitsListComponent implements OnInit {
       cancel: () => this.onCancel(),
       prev: () => this.stepper.prevStep(),
     });
+  }, 200);
+
   }
 
   onClickDelete(id: string) {

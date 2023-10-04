@@ -2,6 +2,8 @@
 
 
 <div class="row">
+  <p> {{camp | json}} </p>
+
     <div class="form-group col-md-6">
       <label for="active">{{ "active" | translate }}</label>
       <select class="form-control" name="active" #active="ngModel" ngModel [(ngModel)]="camp.active">
@@ -51,8 +53,8 @@
           placeholder="{{'Write your tareWtRecordRef'|translate}} "/>
       </div>
       <div class="form-group col-md-6">
-        <label for="Bins">{{ "Bins" | translate }}</label>
-        <input type="number" class="form-control" name="Bins" #Bins="ngModel" ngModel [(ngModel)]="camp.Bins"
+        <label for="bins">{{ "bins" | translate }}</label>
+        <input type="number" class="form-control" name="bins" #bins="ngModel" ngModel [(ngModel)]="camp.bins"
           placeholder="{{'Write your Bins'|translate}} "/>
       </div>
       <div class="form-group col-md-6">

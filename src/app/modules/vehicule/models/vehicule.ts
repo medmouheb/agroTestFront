@@ -13,7 +13,7 @@ export type Vehicule ={
     tareWeight?:any
     tareWtRecord?:any
     tareWtRecordRef?:any
-    Bins?:any
+    bins?:any
     trailer?:any
     trailerSequence?:any
     capacity?:any
