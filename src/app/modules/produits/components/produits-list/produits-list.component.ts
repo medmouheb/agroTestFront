@@ -69,7 +69,7 @@ export class ProduitsListComponent implements OnInit {
   ngOnInit(): void {
     this.findPage();
     this.findArchivedPage()
-    this.onPaginationChange.subscribe(() => this.findPage());
+    this.onPaginationChange.subscribe(() => {this.findPage();this.findArchivedPage()});
   }
 
   onCheckboxChange() {
@@ -451,13 +451,24 @@ export class ProduitsListComponent implements OnInit {
 
   sortByAddressValid: boolean = true;
   sortByAddress() {
-    if (this.sortByAddressValid) {
-      this.produits.sort((a, b) => (a.tauxTva + "").localeCompare((b.tauxTva + "")));
-      this.sortByAddressValid = false
-    } else {
-      this.produits.sort((a, b) => (b.tauxTva + "").localeCompare((a.tauxTva + "")));
-      this.sortByAddressValid = true
+    if(this.affiche){
+      if (this.sortByAddressValid) {
+        this.produitss.sort((a, b) => (a.tauxTva + "").localeCompare((b.tauxTva + "")));
+        this.sortByAddressValid = false
+      } else {
+        this.produitss.sort((a, b) => (b.tauxTva + "").localeCompare((a.tauxTva + "")));
+        this.sortByAddressValid = true
+      }
+    }else{
+      if (this.sortByAddressValid) {
+        this.produits.sort((a, b) => (a.tauxTva + "").localeCompare((b.tauxTva + "")));
+        this.sortByAddressValid = false
+      } else {
+        this.produits.sort((a, b) => (b.tauxTva + "").localeCompare((a.tauxTva + "")));
+        this.sortByAddressValid = true
+      }
     }
+
   }
 
   sortByEmailValid: boolean = true;

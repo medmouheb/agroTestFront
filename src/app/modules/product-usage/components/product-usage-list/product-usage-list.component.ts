@@ -11,13 +11,13 @@ import { HotToastService } from '@ngneat/hot-toast';
 
 @Component({
   selector: 'app-product-usage-list',
-  
+
   templateUrl: './product-usage-list.component.html',
   styleUrls: ['./product-usage-list.component.scss']
 })
 export class ProductUsageListComponent implements OnInit {
 
- 
+
   @ViewChild("deleteModal")
   deleteModal!: ConfirmDialogComponent;
   @ViewChild("archiveModal")
@@ -37,15 +37,15 @@ export class ProductUsageListComponent implements OnInit {
   companyPages: Page<ProductUsage> = initPage;
 
   isChecked: boolean = false;
-  affiche:boolean = false;
+  affiche: boolean = false;
   onPaginationChange: EventEmitter<string> = new EventEmitter<string>();
   form: FormGroup;
 
-  fullDetail=false
+  fullDetail = false
 
   currentStep = 0;
   steps: any = ["steps.general", "steps.localisation",
-  "steps.details"];
+    "steps.details"];
 
   constructor(
     private productUsageService: ProductUsageService,
@@ -55,12 +55,12 @@ export class ProductUsageListComponent implements OnInit {
   ) { }
   onCheckboxChange() {
     console.log("La valeur de la case à cocher est : ", this.isChecked);
-    if (this.isChecked==false){
+    if (this.isChecked == false) {
 
-      this.affiche=false
+      this.affiche = false
     }
-    else{
-      this.affiche=true
+    else {
+      this.affiche = true
     }
   }
   // onCheckboxFullChange() {
@@ -78,7 +78,7 @@ export class ProductUsageListComponent implements OnInit {
   ngOnInit(): void {
     this.findPage();
     this.findArchivedPage()
-    this.onPaginationChange.subscribe(() => this.findPage());
+    this.onPaginationChange.subscribe(() => { this.findPage(); this.findArchivedPage() });
   }
 
   findPage() {
@@ -87,14 +87,13 @@ export class ProductUsageListComponent implements OnInit {
       .findPage(this.pageNumber, this.pageSize, this.filter)
       .subscribe({
         next: (result) => {
-          console.log("aze",result.content)
           this.companys = result.content;
           this.companyPage = result;
 
         },
         error: (error) => {
           this.loading = false;
-          console.error("aze",error );
+          console.error("aze", error);
         },
         complete: () => (this.loading = false),
       });
@@ -174,14 +173,21 @@ export class ProductUsageListComponent implements OnInit {
   }
 
   onClickAdd() {
-    
-    this.formModal.show({
-      title: "menu.add-ProductUsage",
-      stepsCount: this.steps.length - 1,
-      confirm: () => this.onWizardSave(null),
-      cancel: () => this.onCancel(),
-      prev: () => this.stepper.prevStep(),
-    });
+    this.stepper.nextStep();
+    setTimeout(() => {
+      this.stepper.prevStep();
+
+    }, 100);
+    setTimeout(() => {
+      this.formModal.show({
+        title: "menu.add-ProductUsage",
+        stepsCount: this.steps.length - 1,
+        confirm: () => this.onWizardSave(null),
+        cancel: () => this.onCancel(),
+        prev: () => this.stepper.prevStep(),
+      });
+    }, 200);
+
   }
 
   onClickEdit(id: string) {
@@ -191,7 +197,7 @@ export class ProductUsageListComponent implements OnInit {
     setTimeout(() => {
       this.stepper.prevStep();
 
-    }, 500);
+    }, 100);
     setTimeout(() => {
       this.formModal.show({
         title: "menu.edit-ProductUsage",
@@ -204,7 +210,7 @@ export class ProductUsageListComponent implements OnInit {
 
   }
 
- 
+
 
   onClickArchive(id: string) {
     this.archiveModal.show(() => {
@@ -216,7 +222,7 @@ export class ProductUsageListComponent implements OnInit {
           this.toastService.close("0");
           this.toastService.success(
             this.translateService.instant("success.deleted", {
-              elem: this.translateService.instant("company"),
+              elem: this.translateService.instant("ProductUsage"),
             })
           );
           //   console.log(id);
@@ -235,30 +241,97 @@ export class ProductUsageListComponent implements OnInit {
   }
   sortByCodeValid: boolean = true;
   sortByCode() {
-    if (this.sortByCodeValid) {
-      this.companys.sort((a, b) => a.codeProduit.localeCompare(b.codeProduit));
-      this.sortByCodeValid = false
+    if (this.affiche) {
+      if (this.sortByCodeValid) {
+        this.companyss.sort((a, b) => a.codeProduit.localeCompare(b.codeProduit));
+        this.sortByCodeValid = false
+      } else {
+        this.companyss.sort((a, b) => b.codeProduit.localeCompare(a.codeProduit));
+        this.sortByCodeValid = true
+      }
     } else {
-      this.companys.sort((a, b) => b.codeProduit.localeCompare(a.codeProduit));
-      this.sortByCodeValid = true
+      if (this.sortByCodeValid) {
+        this.companys.sort((a, b) => a.codeProduit.localeCompare(b.codeProduit));
+        this.sortByCodeValid = false
+      } else {
+        this.companys.sort((a, b) => b.codeProduit.localeCompare(a.codeProduit));
+        this.sortByCodeValid = true
+      }
     }
+
   }
 
 
 
   sortByNameValid: boolean = true;
   sortByName() {
-    if (this.sortByNameValid) {
-      this.companys.sort((a, b) => a.nomDuProduit.localeCompare(b.nomDuProduit));
-      this.sortByNameValid = false
+    if (this.affiche) {
+      if (this.sortByNameValid) {
+        this.companyss.sort((a, b) => a.nomDuProduit.localeCompare(b.nomDuProduit));
+        this.sortByNameValid = false
+      } else {
+        this.companyss.sort((a, b) => b.nomDuProduit.localeCompare(a.nomDuProduit));
+        this.sortByNameValid = true
+      }
     } else {
-      this.companys.sort((a, b) => b.nomDuProduit.localeCompare(a.nomDuProduit));
-      this.sortByNameValid = true
+      if (this.sortByNameValid) {
+        this.companys.sort((a, b) => a.nomDuProduit.localeCompare(b.nomDuProduit));
+        this.sortByNameValid = false
+      } else {
+        this.companys.sort((a, b) => b.nomDuProduit.localeCompare(a.nomDuProduit));
+        this.sortByNameValid = true
+      }
     }
+
   }
 
 
 
+  sortBynumeroDeLotValid: boolean = true;
+  sortBsortBynumeroDeLotValid() {
+    if (this.affiche) {
+      if (this.sortBynumeroDeLotValid) {
+        this.companyss.sort((a, b) => a.numeroDeLot.localeCompare(b.numeroDeLot));
+        this.sortBynumeroDeLotValid = false
+      } else {
+        this.companyss.sort((a, b) => b.numeroDeLot.localeCompare(a.numeroDeLot));
+        this.sortBynumeroDeLotValid = true
+      }
+    } else {
+      if (this.sortBynumeroDeLotValid) {
+        this.companys.sort((a, b) => a.numeroDeLot.localeCompare(b.numeroDeLot));
+        this.sortBynumeroDeLotValid = false
+      } else {
+        this.companys.sort((a, b) => b.numeroDeLot.localeCompare(a.numeroDeLot));
+        this.sortBynumeroDeLotValid = true
+      }
+    }
+
+  }
+
+
+
+  sortByndeReferenceValid: boolean = true;
+  sortByndeReference() {
+    if (this.affiche) {
+      if (this.sortByndeReferenceValid) {
+        this.companyss.sort((a, b) => a.ndeReference.localeCompare(b.ndeReference));
+        this.sortByndeReferenceValid = false
+      } else {
+        this.companyss.sort((a, b) => b.ndeReference.localeCompare(a.ndeReference));
+        this.sortByndeReferenceValid = true
+      }
+    } else {
+      if (this.sortByndeReferenceValid) {
+        this.companys.sort((a, b) => a.ndeReference.localeCompare(b.ndeReference));
+        this.sortByndeReferenceValid = false
+      } else {
+        this.companys.sort((a, b) => b.ndeReference.localeCompare(a.ndeReference));
+        this.sortByndeReferenceValid = true
+      }
+    }
+
+  }
 
 
 
@@ -270,10 +343,10 @@ export class ProductUsageListComponent implements OnInit {
     this.productUsageService.disArchive(id).subscribe({
       next: () => {
         this.findArchivedPage();
-this.findPage()
+        this.findPage()
         this.toastService.success(
           this.translateService.instant("success.restore", {
-            elem: this.translateService.instant("company"),
+            elem: this.translateService.instant("ProductUsage"),
           })
         );
         console.log(id);
@@ -290,7 +363,7 @@ this.findPage()
         console.log("Success");
         this.toastService.success(
           this.translateService.instant("success.deleted", {
-            elem: this.translateService.instant("company"),
+            elem: this.translateService.instant("ProductUsage"),
           })
         );
       },

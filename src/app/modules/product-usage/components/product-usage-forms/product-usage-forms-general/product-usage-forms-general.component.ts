@@ -12,6 +12,8 @@ import { ProductUsageService } from 'app/modules/product-usage/service/product-u
 export class ProductUsageFormsGeneralComponent implements OnInit {
 
   @Input() camp!: ProductUsage;
+  campReplica!: ProductUsage;
+
 
   @ViewChild("addform")
   addform: FormGroup;
@@ -26,8 +28,7 @@ export class ProductUsageFormsGeneralComponent implements OnInit {
       console.log("olll")
       this.sharedService.setIsActive(true);
       this.compaser.findAll().subscribe(data => {
-        console.log("777::", data.map(el => { return el.numeroDeLot }))
-        this.codes = data.map(el => { return el.ndeReference })
+        this.codes = data.map(el => { return el.numeroDeLot })
       })
     };
 
@@ -35,12 +36,34 @@ export class ProductUsageFormsGeneralComponent implements OnInit {
     this.initForm();
     console.log(this.addform);
 
-    
+    if (this.camp.id) {
+      this.static = "update"
+      this.campReplica =  JSON.parse( JSON.stringify(  this.camp))
+    } else if (!this.camp.id) {
+      this.static = "create"
+    }
+  }
+  id = ""
+
+  gettat() {
+    if (this.camp.id) {
+      console.log('====::::1',this.camp.id!=this.id,this.camp.id,this.id)
+      if(this.camp.id!=this.id ||this.id=="" ){
+        console.log('====::::2',this.camp.id!=this.id,this.camp.id,this.id)
+        this.id=this.camp.id
+
+      }else{
+        this.campReplica = JSON.parse(JSON.stringify(this.camp))
+
+      }
+      this.static = "update"
+
+    } else if (!this.camp.id) {
+      this.static = "create"
+    }
   }
 
-  initForm(
-
-  ) {
+  initForm() {
 
 
 
@@ -76,10 +99,10 @@ export class ProductUsageFormsGeneralComponent implements OnInit {
     this.camp.ndeReference = code
 
 
-    let a =document.getElementById("ss") as HTMLInputElement
-    a.value   =code
+    let a = document.getElementById("ss") as HTMLInputElement
+    a.value = code
 
-    
+
   }
 
 
@@ -104,30 +127,22 @@ export class ProductUsageFormsGeneralComponent implements OnInit {
 
     }
   }
+  static = ""
   exist() {
-    console.log(this.camp.numeroDeLot)
-    this.compaser.findbycode(this.camp.numeroDeLot).subscribe(data => {
-      console.log(data)
-      if (data != null) {
-        this.dispotrueCode = true
-
-        this.sharedService.setIsActive(false);
-
+    if (this.codes.indexOf((this.camp.numeroDeLot + "")) != -1) {
+      if (this.static == "update") {
+        if (this.camp.numeroDeLot == this.campReplica.numeroDeLot) {
+          this.dispotrueCode = false
+        } else {
+          this.dispotrueCode = true
+        }
       } else {
-        this.dispotrueCode = false
-        this.sharedService.setIsActive(true);
-
+        this.dispotrueCode = true
       }
 
-    }, error => {
-      console.log(error.status)
-      if (error.status == 404) {
-        this.dispotrueCode = false
-      this.sharedService.setIsActive(true);
-
-
-      }
-    })
+    } else {
+      this.dispotrueCode = false
+    }
 
   }
 
@@ -239,7 +254,7 @@ export class ProductUsageFormsGeneralComponent implements OnInit {
       this.camp.numeroDeLot != null &&
       this.camp.numeroDeLot != "" &&
 
-      this.camp.numeroDeLot.toString().length >= 1 
+      this.camp.numeroDeLot.toString().length >= 1
     ) {
       this.sharedService.setIsActive(true);
     } else {

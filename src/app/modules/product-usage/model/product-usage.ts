@@ -1,5 +1,5 @@
 export type ProductUsage = {
-    id?: number
+    id?: string
     dateDeTransposition?:any
     codeEntrepot?:string
     unitesSaisies?:any

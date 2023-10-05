@@ -12,17 +12,17 @@ import { DialogComponent } from 'app/shared/components/dialog/dialog.component';
 })
 export class ShipmethodsFormGeneralComponent implements OnInit {
   @Input() shipmethod!: ShipMethods
-   shipmethodReplica!: ShipMethods
+  shipmethodReplica!: ShipMethods
   addform: FormGroup;
-  constructor(private sharedService: SharedService,private shipmethodservice:ShipmethodsService,private dialogComponent:DialogComponent) {}
+  constructor(private sharedService: SharedService, private shipmethodservice: ShipmethodsService, private dialogComponent: DialogComponent) { }
   codes: Array<String> = [];
   names: Array<String> = [];
   ngOnInit(): void {
     if (this.shipmethod == undefined) this.shipmethod = { name: "", code: "" };
     this.initForm();
 
-    if(this.codeList.indexOf(this.shipmethod.code )!=-1){
-      this.otherCondition=true
+    if (this.codeList.indexOf(this.shipmethod.code) != -1) {
+      this.otherCondition = true
     }
 
     this.shipmethodservice.findAll().subscribe(data => {
@@ -33,14 +33,14 @@ export class ShipmethodsFormGeneralComponent implements OnInit {
 
   }
   initForm() {
-   
+
     this.addform = new FormGroup({
       code: new FormControl(null, [
-        Validators.required, 
+        Validators.required,
 
       ]),
       name: new FormControl(null, [
-        Validators.required 
+        Validators.required
 
       ]),
       notes: new FormControl(null),
@@ -62,16 +62,16 @@ export class ShipmethodsFormGeneralComponent implements OnInit {
 
     }
   }
-  static=""
+  static = ""
   exist() {
     if (this.codes.indexOf((this.shipmethod.code + "")) != -1) {
-      if(this.static=="update" ){
-        if(this.shipmethod.code == this.shipmethod.code){
+      if (this.static == "update") {
+        if (this.shipmethod.code == this.shipmethod.code) {
           this.dispotrueCode = false
-        }else{
+        } else {
           this.dispotrueCode = true
         }
-      }else{
+      } else {
         this.dispotrueCode = true
       }
 
@@ -84,13 +84,13 @@ export class ShipmethodsFormGeneralComponent implements OnInit {
 
   existname() {
     if (this.names.indexOf(this.shipmethod.name) != -1) {
-      if(this.static=="update" ){
-        if(this.shipmethod.name == this.shipmethodReplica.name){
+      if (this.static == "update") {
+        if (this.shipmethod.name == this.shipmethodReplica.name) {
           this.dispotruename = false
-        }else{
+        } else {
           this.dispotruename = true
         }
-      }else{
+      } else {
         this.dispotruename = true
       }
     } else {
@@ -99,17 +99,17 @@ export class ShipmethodsFormGeneralComponent implements OnInit {
 
   }
   geValues(event) {
-    console.log("rtr::",      this.dispotrueCode == false , this.dispotruename == false ,
-      
-    this.shipmethod.code != null ,
-    this.shipmethod.code != "" ,
-    this.shipmethod.name != null ,
-    this.shipmethod.name != "" ,
-    this.shipmethod.code.toString().length >= 1 ,
-    this.shipmethod.name.toString().length >= 1)
+    console.log("rtr::", this.dispotrueCode == false, this.dispotruename == false,
+
+      this.shipmethod.code != null,
+      this.shipmethod.code != "",
+      this.shipmethod.name != null,
+      this.shipmethod.name != "",
+      this.shipmethod.code.toString().length >= 1,
+      this.shipmethod.name.toString().length >= 1)
     if (
       this.dispotrueCode == false && this.dispotruename == false &&
-      
+
       this.shipmethod.code != null &&
       this.shipmethod.code != "" &&
       this.shipmethod.name != null &&
@@ -120,7 +120,7 @@ export class ShipmethodsFormGeneralComponent implements OnInit {
       this.dialogComponent.setsubmitstatus(true);
     } else {
       this.dialogComponent.setsubmitstatus(false);
-    
+
     }
 
 
@@ -131,50 +131,50 @@ export class ShipmethodsFormGeneralComponent implements OnInit {
     return this.addform.controls;
   }
 
-  codeList=["AIR","DEL","Ground","SEA","RAIL","P/U"]
+  codeList = ["AIR", "DEL", "Ground", "SEA", "RAIL", "P/U"]
 
-  otherCondition=false
+  otherCondition = false
 
-  setList(){
+  setList() {
     console.log(this.shipmethod.code)
-    let ch=this.shipmethod.code
-    switch(ch){
+    let ch = this.shipmethod.code
+    switch (ch) {
       case "AIR":
-        this.shipmethod.name="Air";
-        this.otherCondition=false
+        this.shipmethod.name = "Air";
+        this.otherCondition = false
 
-        break; 
-        case "DEL":
-        this.shipmethod.name="Delivery";
-        this.otherCondition=false
-
-        break; 
-        case "Ground":
-        this.shipmethod.name="Ground";
-        this.otherCondition=false
-
-        break; 
-        case "SEA":
-        this.shipmethod.name="Sea";
-        this.otherCondition=false
-
-        break; 
-        case "RAIL":
-        this.shipmethod.name="Rail/Train";
-        this.otherCondition=false
-
-        break; 
-        case "P/U":
-        this.shipmethod.name="Pick-up";
-        this.otherCondition=false
-
-        break; 
-
-        default : this.otherCondition=true
-        this.shipmethod.name=""
-        this.shipmethod.code=""
         break;
-      
+      case "DEL":
+        this.shipmethod.name = "Delivery";
+        this.otherCondition = false
+
+        break;
+      case "Ground":
+        this.shipmethod.name = "Ground";
+        this.otherCondition = false
+
+        break;
+      case "SEA":
+        this.shipmethod.name = "Sea";
+        this.otherCondition = false
+
+        break;
+      case "RAIL":
+        this.shipmethod.name = "Rail/Train";
+        this.otherCondition = false
+
+        break;
+      case "P/U":
+        this.shipmethod.name = "Pick-up";
+        this.otherCondition = false
+
+        break;
+
+      default: this.otherCondition = true
+        this.shipmethod.name = ""
+        this.shipmethod.code = ""
+        break;
+
     }
   }
 

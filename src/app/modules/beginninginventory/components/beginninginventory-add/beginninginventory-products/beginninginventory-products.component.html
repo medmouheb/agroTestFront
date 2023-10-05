@@ -54,13 +54,12 @@
           placeholder="{{'Write your commentaire'|translate}} "/>
       </div>
 
-      <div class="form-group ">
+      <div class="form-group col-md-6 ">
         <label for="vide">{{ "Videss" | translate }}</label>
         <input type="checkbox"
-               class="form-control custom-checkbox"
+               class=" custom-checkbox"
                name="vide"
                #Vide="ngModel"
-               ngModel [(ngModel)]="camp.vide"
-               placeholder="{{ 'Write your Vide' | translate }}"/>
+               ngModel [(ngModel)]="camp.vide"/>
       </div>
   </div>
