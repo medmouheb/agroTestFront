@@ -996,7 +996,9 @@
 "code must be lesser or equal to 10":"code must be lesser or equal to 10",
 "Code must be not null": "Code must be not null",
 
-"Measurement must be not null":"Measurement must be not null"
+"Measurement must be not null":"Measurement must be not null",
+"type must be unique": "type must be unique"
+
 
 
 }

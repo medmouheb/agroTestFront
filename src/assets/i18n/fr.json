@@ -979,7 +979,9 @@
 "You have":"Vous avez",
 "of available land":"de terres disponibles",
 "code must be lesser or equal to 10":"le code doit être inférieur ou égal à 10",
-"Measurement must be not null":"La mesure ne doit pas être nulle"
+"Measurement must be not null":"La mesure ne doit pas être nulle",
+"type must be unique": "le type  doit  être unique"
+
 
 
 

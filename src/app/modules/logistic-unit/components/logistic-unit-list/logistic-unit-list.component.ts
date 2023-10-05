@@ -181,6 +181,8 @@ export class LogisticUnitListComponent implements OnInit {
       this.stepper.prevStep();
 
     }, 100);
+    setTimeout(() => {
+
     this.formModal.show({
       title: "menu.add-Logistic",
       stepsCount: this.steps.length - 1,
@@ -188,6 +190,8 @@ export class LogisticUnitListComponent implements OnInit {
       cancel: () => this.onCancel(),
       prev: () => this.stepper.prevStep(),
     });
+  }, 200);
+
   }
 
   onClickEdit(id: string) {

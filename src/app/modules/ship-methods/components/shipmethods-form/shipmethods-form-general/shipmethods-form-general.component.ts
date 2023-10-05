@@ -66,7 +66,7 @@ export class ShipmethodsFormGeneralComponent implements OnInit {
   exist() {
     if (this.codes.indexOf((this.shipmethod.code + "")) != -1) {
       if (this.static == "update") {
-        if (this.shipmethod.code == this.shipmethod.code) {
+        if (this.shipmethod.code == this.shipmethodReplica.code) {
           this.dispotrueCode = false
         } else {
           this.dispotrueCode = true
