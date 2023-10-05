@@ -83,7 +83,7 @@ export class RapprochementdesStocksListComponent implements OnInit {
   ngOnInit(): void {
     this.findPage();
     this.findArchivedPage()
-    this.onPaginationChange.subscribe(() => this.findPage());
+    this.onPaginationChange.subscribe(() => {this.findPage();this.findArchivedPage()});
   }
 
   findPage() {
@@ -179,6 +179,12 @@ export class RapprochementdesStocksListComponent implements OnInit {
   }
 
   onClickAdd() {
+    this.stepper.nextStep();
+    setTimeout(() => {
+      this.stepper.prevStep();
+
+    }, 100);
+    setTimeout(() => {
     this.formModal.show({
       title: "menu.add-Rapprochement-des-stocks",
       stepsCount: this.steps.length - 1,
@@ -186,6 +192,8 @@ export class RapprochementdesStocksListComponent implements OnInit {
       cancel: () => this.onCancel(),
       prev: () => this.stepper.prevStep(),
     });
+  }, 200);
+
   }
 
   onClickEdit(id: string) {

@@ -4,7 +4,7 @@
     <div class="form-group col-md-6">
         <label class="required" for="numeroDeLot">{{ "numeroDeLot" | translate }}</label>
         <input class="form-control" name="numeroDeLot" [(ngModel)]="camp.numeroDeLot" formControlName="numeroDeLot" placeholder="{{'Write your numeroDeLot'|translate}} "
-            required aria-invalid="true" type="number" aria-describedby="code-error"(keyup)="exist()" (ngModelChange)="geValues($event)" (blur)="generateUniqueNumericCode();geValues($event);exist()">
+            required aria-invalid="true" type="number" aria-describedby="code-error" (ngModelChange)="geValues($event)" (keyup)="exist();generateUniqueNumericCode();geValues($event);">
     
             <div style=" color : red;" *ngIf="dispotruelot">{{'numeroDeLot  must be unique'|translate}}</div>
             <div style=" color : red;" *ngIf="minIstrueCode">{{'numeroDeLot  must be not null'|translate}}</div>

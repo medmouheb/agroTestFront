@@ -12,6 +12,7 @@ import { RapprochementdesStockService } from 'app/modules/rapprochementdes-stock
 export class RapprochementdesStocksFormsGeneralComponent implements OnInit {
 
   @Input() camp!: RapprochementDesStocks;
+   campReplica!: RapprochementDesStocks;
 
   @ViewChild("addform")
   addform: FormGroup;
@@ -23,14 +24,19 @@ export class RapprochementdesStocksFormsGeneralComponent implements OnInit {
       console.log("olll")
       this.sharedService.setIsActive(true);
       this.compaser.findAll().subscribe(data => {
-        console.log("777::",data.map(el => { return el.numeroDeLot }))
-        this.codes = data.map(el => { return el.ndeReference })
+        this.codes = data.map(el => { return el.numeroDeLot })
       })
     }; 
 
     if (this.camp == undefined) { this.camp = { ndeReference: "", numeroDeLot: "" } };
     this.initForm();
     console.log(this.addform);
+    if (this.camp.id) {
+      this.static = "update"
+      this.campReplica =  JSON.parse( JSON.stringify(  this.camp))
+    } else if (!this.camp.id) {
+      this.static = "create"
+    }
   }
   codeunique:any
   generateUniqueNumericCode() {
@@ -108,33 +114,22 @@ export class RapprochementdesStocksFormsGeneralComponent implements OnInit {
 
     }
   }
+  static=""
  exist() {
-   console.log(this.camp.numeroDeLot)
-   this.compaser.findbycode(this.camp.numeroDeLot).subscribe(data => {
-     console.log("result",data)
-     if (data != null) {
-     console.log("result",this.dispotruelot)
+  if (this.codes.indexOf((this.camp.numeroDeLot + "")) != -1) {
+    if (this.static == "update") {
+      if (this.campReplica.numeroDeLot == this.camp.numeroDeLot) {
+        this.dispotruelot = false
+      } else {
+        this.dispotruelot = true
+      }
+    } else {
+      this.dispotruelot = true
+    }
 
-       this.dispotruelot = true
-       this.sharedService.setIsActive(false);
-
-
-     } else {
-       this.dispotruelot = false
-       this.sharedService.setIsActive(true);
-
-
-     }
-
-   }, error => {
-     console.log(error.status)
-     if (error.status == 404) {
-       this.dispotruelot = false
-       this.sharedService.setIsActive(true);
-
-
-     }
-   })
+  } else {
+    this.dispotruelot = false
+  }
 
  }
 
@@ -206,7 +201,7 @@ export class RapprochementdesStocksFormsGeneralComponent implements OnInit {
     
 
     if (
-     
+     !this.dispotruelot &&
       this.camp.numeroDeLot != null &&
       this.camp.numeroDeLot != "" &&
       this.camp.ndeReference != null &&
