@@ -35,12 +35,12 @@ export class VehiclesUnitListComponent implements OnInit {
   companyPage: Page<Vehicles> = initPage;
   companyPages: Page<Vehicles> = initPage;
   isChecked: boolean = false;
-  affiche:boolean = false;
-  existe:string ;
+  affiche: boolean = false;
+  existe: string;
   onPaginationChange: EventEmitter<string> = new EventEmitter<string>();
   form: FormGroup;
 
-  fullDetail=false
+  fullDetail = false
 
   currentStep = 0;
   steps: any = [
@@ -57,12 +57,12 @@ export class VehiclesUnitListComponent implements OnInit {
   ) { }
   onCheckboxChange() {
     console.log("La valeur de la case à cocher est : ", this.isChecked);
-    if (this.isChecked==false){
+    if (this.isChecked == false) {
 
-      this.affiche=false
+      this.affiche = false
     }
-    else{
-      this.affiche=true
+    else {
+      this.affiche = true
     }
   }
   // onCheckboxFullChange() {
@@ -80,7 +80,7 @@ export class VehiclesUnitListComponent implements OnInit {
   ngOnInit(): void {
     this.findPage();
     this.findArchivedPage()
-    this.onPaginationChange.subscribe(() => this.findPage());
+    this.onPaginationChange.subscribe(() => { this.findPage(); this.findArchivedPage() });
   }
 
   findPage() {
@@ -89,13 +89,11 @@ export class VehiclesUnitListComponent implements OnInit {
       .findPage(this.pageNumber, this.pageSize, this.filter)
       .subscribe({
         next: (result) => {
-          console.log("aze",result.content)
           this.companys = result.content;
           this.companyPage = result;
         },
         error: (error) => {
           this.loading = false;
-          console.error("aze",error );
         },
         complete: () => (this.loading = false),
       });
@@ -176,13 +174,21 @@ export class VehiclesUnitListComponent implements OnInit {
   }
 
   onClickAdd() {
-    this.formModal.show({
-      title: "menu.add-Vehicles",
-      stepsCount: this.steps.length - 1,
-      confirm: () => this.onWizardSave(null),
-      cancel: () => this.onCancel(),
-      prev: () => this.stepper.prevStep(),
-    });
+    this.stepper.nextStep();
+    setTimeout(() => {
+      this.stepper.prevStep();
+
+    }, 100);
+    setTimeout(() => {
+      this.formModal.show({
+        title: "menu.add-Vehicles",
+        stepsCount: this.steps.length - 1,
+        confirm: () => this.onWizardSave(null),
+        cancel: () => this.onCancel(),
+        prev: () => this.stepper.prevStep(),
+      });
+    }, 200);
+
   }
 
   onClickEdit(id: string) {
@@ -205,7 +211,7 @@ export class VehiclesUnitListComponent implements OnInit {
 
   }
 
- 
+
 
   onClickArchive(id: string) {
     this.archiveModal.show(() => {
@@ -236,26 +242,49 @@ export class VehiclesUnitListComponent implements OnInit {
   }
   sortByCodeValid: boolean = true;
   sortByCode() {
-    if (this.sortByCodeValid) {
-      this.companys.sort((a, b) => a.codeVehicule.localeCompare(b.codeVehicule));
-      this.sortByCodeValid = false
+    if (this.affiche) {
+      if (this.sortByCodeValid) {
+        this.companyss.sort((a, b) => a.codeVehicule.localeCompare(b.codeVehicule));
+        this.sortByCodeValid = false
+      } else {
+        this.companyss.sort((a, b) => b.codeVehicule.localeCompare(a.codeVehicule));
+        this.sortByCodeValid = true
+      }
     } else {
-      this.companys.sort((a, b) => b.codeVehicule.localeCompare(a.codeVehicule));
-      this.sortByCodeValid = true
+      if (this.sortByCodeValid) {
+        this.companys.sort((a, b) => a.codeVehicule.localeCompare(b.codeVehicule));
+        this.sortByCodeValid = false
+      } else {
+        this.companys.sort((a, b) => b.codeVehicule.localeCompare(a.codeVehicule));
+        this.sortByCodeValid = true
+      }
     }
+
+
   }
 
 
 
   sortByNameValid: boolean = true;
   sortByName() {
-    if (this.sortByNameValid) {
-      this.companys.sort((a, b) => a.nomDuVehicule.localeCompare(b.nomDuVehicule));
-      this.sortByNameValid = false
+    if (this.affiche) {
+      if (this.sortByNameValid) {
+        this.companyss.sort((a, b) => a.nomDuVehicule.localeCompare(b.nomDuVehicule));
+        this.sortByNameValid = false
+      } else {
+        this.companyss.sort((a, b) => b.nomDuVehicule.localeCompare(a.nomDuVehicule));
+        this.sortByNameValid = true
+      }
     } else {
-      this.companys.sort((a, b) => b.nomDuVehicule.localeCompare(a.nomDuVehicule));
-      this.sortByNameValid = true
+      if (this.sortByNameValid) {
+        this.companys.sort((a, b) => a.nomDuVehicule.localeCompare(b.nomDuVehicule));
+        this.sortByNameValid = false
+      } else {
+        this.companys.sort((a, b) => b.nomDuVehicule.localeCompare(a.nomDuVehicule));
+        this.sortByNameValid = true
+      }
     }
+
   }
 
 
@@ -298,8 +327,8 @@ export class VehiclesUnitListComponent implements OnInit {
     });
   }
 
-  getImage(id:any){
-    window.open( `${environment.apiUrl}/images/${id}`,"_blank" )
+  getImage(id: any) {
+    window.open(`${environment.apiUrl}/images/${id}`, "_blank")
   }
 
 
@@ -311,7 +340,7 @@ export class VehiclesUnitListComponent implements OnInit {
       .subscribe({
         next: (result) => {
           this.companyss = result.content;
-          this.companyPages=result;
+          this.companyPages = result;
         },
         error: (error) => {
           this.loading = false;

@@ -211,7 +211,7 @@ export class BeginninginventoryDetailsComponent implements OnInit {
       
   
       if (
-        this.dispotrueCode == false && this.dispotruename == false &&
+         !this.codeIsvalid&&  this.dispotrueCode == false && this.dispotruename == false &&
         this.camp.codeProduit != null &&
         this.camp.codeProduit != "" &&
         this.camp.nomDuProduit != null &&

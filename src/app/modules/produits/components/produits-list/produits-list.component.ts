@@ -298,7 +298,7 @@ export class ProduitsListComponent implements OnInit {
         console.log("Success");
         this.toastService.success(
           this.translateService.instant("success.deleted", {
-            elem: this.translateService.instant("company"),
+            elem: this.translateService.instant("product"),
           })
         );
       },
@@ -329,7 +329,7 @@ export class ProduitsListComponent implements OnInit {
         this.findPage()
         this.toastService.success(
           this.translateService.instant("success.restore", {
-            elem: this.translateService.instant("menu.vendors"),
+            elem: this.translateService.instant("product"),
           })
         );
         console.log(id);

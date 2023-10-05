@@ -2,8 +2,8 @@
 
     <div class="form-group col-md-6">
         <label class="required" for="codeVehicule">{{ "codeVehicule" | translate }}</label>
-        <input (blur)="isBlur();exist();blur1();validationCode()" class="form-control" name="codeVehicule" [(ngModel)]="camp.codeVehicule" formControlName="codeVehicule" placeholder="{{'Write your  codeVehicule'|translate}} "
-            required aria-invalid="true"  aria-describedby="code-error" (ngModelChange)="geValues($event)">
+        <input (keyup)="isBlur();exist();blur1();validationCode();geValues($event)" class="form-control" name="codeVehicule" [(ngModel)]="camp.codeVehicule" formControlName="codeVehicule" placeholder="{{'Write your  codeVehicule'|translate}} "
+            required aria-invalid="true"  aria-describedby="code-error" >
             <div  style="color: red;" *ngIf="codeIsvalid">{{ "Invalid code format" |translate }}</div>
             <div style=" color : red;" *ngIf="dispotrueCode">{{'codeVehicule Code must be unique'|translate}}</div>
             <div style=" color : red;" *ngIf="minIstrueCode">{{'codeVehicule Code must be not null'|translate}}</div>
@@ -11,8 +11,8 @@
 
     <div class="form-group col-md-6 ">
         <label class="required" for="nomDuVehicule"> {{ "nomDuVehicule" | translate }} </label>
-        <input (blur)="isBlur1();existname();exist1()"  class="form-control" name="nomDuVehicule" formControlName="nomDuVehicule" [(ngModel)]="camp.nomDuVehicule"  placeholder="{{'Write your nomDuVehicule'|translate}} "
-            required aria-invalid="true" aria-describedby="name-error" (ngModelChange)="geValues($event)">
+        <input (keyup)="isBlur1();existname();geValues($event)"  class="form-control" name="nomDuVehicule" formControlName="nomDuVehicule" [(ngModel)]="camp.nomDuVehicule"  placeholder="{{'Write your nomDuVehicule'|translate}} "
+            required aria-invalid="true" aria-describedby="name-error" >
         <div style=" color : red;" *ngIf="minIstrueName">{{'nomDuVehicule must be not null'|translate}} </div> 
 
         <div style=" color : red;" *ngIf="dispotruename">{{'nomDuVehicule must be unique'|translate}}</div>

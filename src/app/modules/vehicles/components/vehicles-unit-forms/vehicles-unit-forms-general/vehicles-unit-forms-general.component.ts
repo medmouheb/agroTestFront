@@ -12,27 +12,36 @@ import { VehiclesService } from 'app/modules/vehicles/services/vehicles.service'
 export class VehiclesUnitFormsGeneralComponent implements OnInit {
 
   @Input() camp!: Vehicles;
+  campReplica!: Vehicles;
+
 
   @ViewChild("addform")
   addform: FormGroup;
  
   constructor(private sharedService: SharedService, private fb: FormBuilder, private compaser: VehiclesService) { }
   codes: Array<String> = [];
+  names: Array<String> = [];
   ngOnInit(): void {
     if (this.camp != null) {
-      console.log("olll")
       this.sharedService.setIsActive(true);
       this.compaser.findAll().subscribe(data => {
-        console.log("777::",data.map(el => { return el.codeVehicule }))
         this.codes = data.map(el => { return el.codeVehicule })
+        this.names = data.map(el => { return el.nomDuVehicule })
       })
     }; 
 
     if (this.camp == undefined) { this.camp = { nomDuVehicule: "", codeVehicule: "" } };
     this.initForm();
     console.log(this.addform);
+    if (this.camp.id) {
+      this.static = "update"
+      this.campReplica =  JSON.parse( JSON.stringify(  this.camp))
+    } else if (!this.camp.id) {
+      this.static = "create"
+      this.sharedService.setIsActive(false)
+    }
   }
-
+  static=""
   initForm(
 
   ) {
@@ -97,25 +106,19 @@ validationCode() {
 
 }
   exist() {
-    console.log(this.camp.codeVehicule)
-    this.compaser.findbycode(this.camp.codeVehicule).subscribe(data => {
-      console.log(data)
-      if (data != null) {
+    if (this.codes.indexOf(this.camp.codeVehicule) != -1) {
+      if(this.static=="update" ){
+        if(this.camp.codeVehicule == this.campReplica.codeVehicule){
+          this.dispotrueCode = false
+        }else{
+          this.dispotrueCode = true
+        }
+      }else{
         this.dispotrueCode = true
-
-
-      } else {
-        this.dispotrueCode = false
-
       }
-
-    }, error => {
-      console.log(error.status)
-      if (error.status == 404) {
-        this.dispotrueCode = false
-
-      }
-    })
+    } else {
+      this.dispotrueCode = false
+    }
 
   }
 
@@ -154,14 +157,18 @@ validationCode() {
   newSeggestions=""
 
   existname() {
-    console.log("aa::",this.codes)
-    if (this.codes.indexOf(this.camp.nomDuVehicule) != -1) {
-      this.dispotruename = true
-     // this.newSeggestions= "chose "+this.camp.name+this.generateRandomCode()+" or "+this.camp.name+this.generateRandomCode()+" or "+this.camp.name+this.generateRandomCode()+" or "+this.camp.name+this.generateRandomCode()
-
+    if (this.names.indexOf(this.camp.nomDuVehicule) != -1) {
+      if(this.static=="update" ){
+        if(this.camp.nomDuVehicule == this.campReplica.nomDuVehicule){
+          this.dispotruename = false
+        }else{
+          this.dispotruename = true
+        }
+      }else{
+        this.dispotruename = true
+      }
     } else {
       this.dispotruename = false
-
     }
     
 
@@ -206,7 +213,7 @@ validationCode() {
     
 
     if (
-      this.dispotrueCode == false && this.dispotruename == false &&
+      !this.codeIsvalid &&  this.dispotrueCode == false && this.dispotruename == false &&
       this.camp.codeVehicule != null &&
       this.camp.codeVehicule != "" &&
       this.camp.nomDuVehicule != null &&

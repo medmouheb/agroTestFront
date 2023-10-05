@@ -83,13 +83,14 @@ export class SalesFormGeneralComponent implements OnInit {
 
   }
   geValues(event) {
-    console.log("tyu::", this.sales.type,
-      this.sales.code != null,
-      this.sales.code != "",
-      this.sales.name != null, this.existcodeIsvalid == false, this.dispotruename == false,
-      this.sales.name != "")
+    // console.log("tyu::", this.sales.type,
+    //   this.sales.code != null,
+    //   this.sales.code != "",
+    //   this.sales.name != null, this.existcodeIsvalid == false, this.dispotruename == false,
+    //   this.sales.name != "")
 
     if (
+      !this.codeIsvalid &&
       this.sales.type &&
       this.sales.code != null &&
       this.sales.code != "" &&
@@ -182,6 +183,7 @@ export class SalesFormGeneralComponent implements OnInit {
   static=""
   existcodeIsvalid = false
   existcode() {
+    console.log("lm::",this.static,this.sales.code , this.salesReplica)
 
     if (this.codes.indexOf((this.sales.code + "")) != -1) {
       if(this.static=="update" ){
