@@ -60,7 +60,7 @@ export class ShipmethodsListComponent implements OnInit {
  ngOnInit(): void {
    this.findArchivedPage();
    this.findPage();
-   this.onPaginationChange.subscribe(() => this.findPage());
+   this.onPaginationChange.subscribe(() => {this.findPage();this.findArchivedPage()});
  }
  findPage() {
    this.loading = true;
@@ -207,26 +207,48 @@ export class ShipmethodsListComponent implements OnInit {
 
  sortByCodeValid: boolean = true;
  sortByCode() {
-   if (this.sortByCodeValid) {
-     this.shipmethods.sort((a, b) => a.code.localeCompare(b.code));
-     this.sortByCodeValid = false
-   } else {
-     this.shipmethods.sort((a, b) => b.code.localeCompare(a.code));
-     this.sortByCodeValid = true
-   }
+  if(this.affiche){
+    if (this.sortByCodeValid) {
+      this.shipmethodss.sort((a, b) => a.code.localeCompare(b.code));
+      this.sortByCodeValid = false
+    } else {
+      this.shipmethodss.sort((a, b) => b.code.localeCompare(a.code));
+      this.sortByCodeValid = true
+    }
+  }else{
+    if (this.sortByCodeValid) {
+      this.shipmethods.sort((a, b) => a.code.localeCompare(b.code));
+      this.sortByCodeValid = false
+    } else {
+      this.shipmethods.sort((a, b) => b.code.localeCompare(a.code));
+      this.sortByCodeValid = true
+    }
+  }
+  
  }
 
 
 
  sortByNameValid: boolean = true;
  sortByName() {
-   if (this.sortByNameValid) {
-     this.shipmethods.sort((a, b) => a.name .localeCompare(b.name ));
-     this.sortByNameValid = false
-   } else {
-     this.shipmethods.sort((a, b) => b.name .localeCompare(a.name ));
-     this.sortByNameValid = true
-   }
+  if(this.affiche){
+    if (this.sortByNameValid) {
+      this.shipmethodss.sort((a, b) => a.name .localeCompare(b.name ));
+      this.sortByNameValid = false
+    } else {
+      this.shipmethodss.sort((a, b) => b.name .localeCompare(a.name ));
+      this.sortByNameValid = true
+    }
+  }else{
+    if (this.sortByNameValid) {
+      this.shipmethods.sort((a, b) => a.name .localeCompare(b.name ));
+      this.sortByNameValid = false
+    } else {
+      this.shipmethods.sort((a, b) => b.name .localeCompare(a.name ));
+      this.sortByNameValid = true
+    }
+  }
+  
  }
 
 

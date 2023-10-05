@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { SharedService } from 'app/modules/company/services/shared.service';
 import { ShipmethodsService } from 'app/modules/ship-methods/Services/shipmethods.service';
 import { ShipMethods } from 'app/modules/ship-methods/models/shipsmethods';
+import { DialogComponent } from 'app/shared/components/dialog/dialog.component';
 
 @Component({
   selector: 'app-shipmethods-form-general',
@@ -11,17 +12,24 @@ import { ShipMethods } from 'app/modules/ship-methods/models/shipsmethods';
 })
 export class ShipmethodsFormGeneralComponent implements OnInit {
   @Input() shipmethod!: ShipMethods
+   shipmethodReplica!: ShipMethods
   addform: FormGroup;
-  constructor(private sharedService: SharedService,private shipmethodservice:ShipmethodsService) {}
-
+  constructor(private sharedService: SharedService,private shipmethodservice:ShipmethodsService,private dialogComponent:DialogComponent) {}
+  codes: Array<String> = [];
+  names: Array<String> = [];
   ngOnInit(): void {
     if (this.shipmethod == undefined) this.shipmethod = { name: "", code: "" };
     this.initForm();
-    this.getetat()
 
     if(this.codeList.indexOf(this.shipmethod.code )!=-1){
       this.otherCondition=true
     }
+
+    this.shipmethodservice.findAll().subscribe(data => {
+      this.codes = data.map(el => { return el.code })
+      this.names = data.map(el => { return el.name })
+
+    })
 
   }
   initForm() {
@@ -44,12 +52,7 @@ export class ShipmethodsFormGeneralComponent implements OnInit {
     console.log("====================================");
   }
 
-  getetat() {
-    if ((this.addform.status == "INVALID") || (this.shipmethod.code == undefined) || (this.shipmethod.name == undefined)) {
-      this.sharedService.setIsActive(false);
 
-    }
-  }
 
   dispotrueCode: boolean = false
   dispotruename: boolean = false
@@ -59,70 +62,51 @@ export class ShipmethodsFormGeneralComponent implements OnInit {
 
     }
   }
+  static=""
   exist() {
-    console.log(this.shipmethod.code)
-    this.shipmethodservice.findbycode(this.shipmethod.code).subscribe(data => {
-      console.log(data)
-      if (data != null) {
+    if (this.codes.indexOf((this.shipmethod.code + "")) != -1) {
+      if(this.static=="update" ){
+        if(this.shipmethod.code == this.shipmethod.code){
+          this.dispotrueCode = false
+        }else{
+          this.dispotrueCode = true
+        }
+      }else{
         this.dispotrueCode = true
-
-
-      } else {
-        this.dispotrueCode = false
-
       }
 
-    }, error => {
-      console.log(error.status)
-      if (error.status == 404) {
-        this.dispotrueCode = false
-
-      }
-    })
+    } else {
+      this.dispotrueCode = false
+    }
 
   }
   newSeggestions = ""
 
   existname() {
-    console.log("e::")
-    this.shipmethodservice.findbyName(this.shipmethod.name).subscribe(data => {
-      console.log("e::", data)
-      if (data != null) {
+    if (this.names.indexOf(this.shipmethod.name) != -1) {
+      if(this.static=="update" ){
+        if(this.shipmethod.name == this.shipmethodReplica.name){
+          this.dispotruename = false
+        }else{
+          this.dispotruename = true
+        }
+      }else{
         this.dispotruename = true
-        //this.newSeggestions = "chose " + this.shipmethods.name + this.generateRandomCode() + " or " + this.shipmethods.name + this.generateRandomCode() + " or " + this.shipmethods.name + this.generateRandomCode() + " or " + this.shipmethods.name + this.generateRandomCode()
-
-
-      } else {
-        this.dispotruename = false
-
       }
-
-    }, error => console.log(error))
+    } else {
+      this.dispotruename = false
+    }
 
   }
   geValues(event) {
-    console.log("====================================");
-    console.log("event :", event);
-    console.log("====================================");
-
-    console.log("====================================");
-    console.log("le formulaire :", this.addform.value);
-    console.log("====================================");
-
-    console.log(this.shipmethod.code);
-    console.log(this.shipmethod.name);
-    console.log(
-      "this.shipmethods.code.length",
-      this.shipmethod.code.toString().length >= 5
-    );
-    console.log(
-      this.shipmethod.code != null &&
-      this.shipmethod.code != "" &&
-      this.shipmethod.name != null &&
-      this.shipmethod.name != "" &&
-      this.shipmethod.code.toString().length >= 1 &&
-      this.shipmethod.name.toString().length >=1
-    );
+    console.log("rtr::",      this.dispotrueCode == false , this.dispotruename == false ,
+      
+    this.shipmethod.code != null ,
+    this.shipmethod.code != "" ,
+    this.shipmethod.name != null ,
+    this.shipmethod.name != "" ,
+    this.shipmethod.code.toString().length >= 1 ,
+    this.shipmethod.name.toString().length >= 1)
     if (
       this.dispotrueCode == false && this.dispotruename == false &&
       
@@ -133,20 +117,13 @@ export class ShipmethodsFormGeneralComponent implements OnInit {
       this.shipmethod.code.toString().length >= 1 &&
       this.shipmethod.name.toString().length >= 1
     ) {
-      this.sharedService.setIsActive(true);
+      this.dialogComponent.setsubmitstatus(true);
     } else {
-      this.sharedService.setIsActive(false);
+      this.dialogComponent.setsubmitstatus(false);
     
     }
 
-    if(this.codeList.indexOf(this.shipmethod.code )!=-1){
-      console.log("      this.otherCondition=true      ",this.shipmethod.code,(this.codeList.indexOf(this.shipmethod.code )!=-1))
-    }else{
-      console.log("      this.otherCondition=false      ",this.shipmethod.code,(this.codeList.indexOf(this.shipmethod.code )!=-1))
-      this.otherCondition=true
 
-    }
-    console.log("le ship :", this.shipmethod);
 
   }
 

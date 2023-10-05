@@ -1,5 +1,5 @@
 export type LogisticUnit = {
-    id?: number
+    id?: string
     logisticCode?: string
     logisticName?: string
     companyName?:string

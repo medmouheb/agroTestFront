@@ -1,10 +1,9 @@
 <div class="row" [formGroup]="addform">
-
     <div class="form-group col-md-6">
         <label class="required" for="code">{{ "codeship" | translate }}</label>
 
 
-        <select class="form-control" name="code" (blur)="isBlurDCisvalid();geValues($event); exist();blur1()"
+        <select class="form-control" name="code" (blur)="isBlurDCisvalid();geValues($event); blur1()"
             [(ngModel)]="shipmethod.code" (change)="setList() ;" formControlName="code" required aria-invalid="true" type="number"
             aria-describedby="code-error" (ngModelChange)="geValues($event)">
 
@@ -76,7 +75,7 @@
     </div>
     <div class="form-group col-md-6 align-self-end">
         <label for="active">
-            <input type="checkbox" id="active" name="active" #active="ngModel" ngModel [(ngModel)]="shipmethod.active"
+            <input [checked]="shipmethod.active" type="checkbox" id="active" name="active" #active="ngModel" ngModel [(ngModel)]="shipmethod.active"
                 (ngModelChange)="geValues($event)" />
             {{ "active" | translate }}
         </label>

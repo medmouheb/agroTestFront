@@ -262,26 +262,48 @@ export class VehiculeListComponent implements OnInit {
   }
   sortByCodeValid: boolean = true;
   sortByCode() {
-    if (this.sortByCodeValid) {
-      this.companys.sort((a, b) => a.vehiculeCode.localeCompare(b.vehiculeCode));
-      this.sortByCodeValid = false
-    } else {
-      this.companys.sort((a, b) => b.vehiculeCode.localeCompare(a.vehiculeCode));
-      this.sortByCodeValid = true
+    if(this.affiche){
+      if (this.sortByCodeValid) {
+        this.companyss.sort((a, b) => a.vehiculeCode.localeCompare(b.vehiculeCode));
+        this.sortByCodeValid = false
+      } else {
+        this.companyss.sort((a, b) => b.vehiculeCode.localeCompare(a.vehiculeCode));
+        this.sortByCodeValid = true
+      }
+    }else{
+      if (this.sortByCodeValid) {
+        this.companys.sort((a, b) => a.vehiculeCode.localeCompare(b.vehiculeCode));
+        this.sortByCodeValid = false
+      } else {
+        this.companys.sort((a, b) => b.vehiculeCode.localeCompare(a.vehiculeCode));
+        this.sortByCodeValid = true
+      }
     }
+   
   }
 
 
 
   sortByNameValid: boolean = true;
   sortByName() {
-    if (this.sortByNameValid) {
-      this.companys.sort((a, b) => a.vehiculeName.localeCompare(b.vehiculeName));
-      this.sortByNameValid = false
-    } else {
-      this.companys.sort((a, b) => b.vehiculeName.localeCompare(a.vehiculeName));
-      this.sortByNameValid = true
+    if(this.affiche){
+      if (this.sortByNameValid) {
+        this.companyss.sort((a, b) => a.vehiculeName.localeCompare(b.vehiculeName));
+        this.sortByNameValid = false
+      } else {
+        this.companyss.sort((a, b) => b.vehiculeName.localeCompare(a.vehiculeName));
+        this.sortByNameValid = true
+      }
+    }else{
+      if (this.sortByNameValid) {
+        this.companys.sort((a, b) => a.vehiculeName.localeCompare(b.vehiculeName));
+        this.sortByNameValid = false
+      } else {
+        this.companys.sort((a, b) => b.vehiculeName.localeCompare(a.vehiculeName));
+        this.sortByNameValid = true
+      }
     }
+    
   }
 
 

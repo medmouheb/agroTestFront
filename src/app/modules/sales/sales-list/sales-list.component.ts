@@ -61,7 +61,7 @@ export class SalesListComponent implements OnInit {
     // });
     this.findPage();
     this.findArchivedPage();
-    this.onPaginationChange.subscribe(() => this.findPage());
+    this.onPaginationChange.subscribe(() => {this.findPage();    this.findArchivedPage();    });
   }
 
   findPage() {
@@ -305,50 +305,95 @@ export class SalesListComponent implements OnInit {
 
   sortByCodeValid: boolean = true;
   sortByCode() {
-    if (this.sortByCodeValid) {
-      this.saless.sort((a, b) => a.code.localeCompare(b.code));
-      this.sortByCodeValid = false
-    } else {
-      this.saless.sort((a, b) => b.code.localeCompare(a.code));
-      this.sortByCodeValid = true
+    if(this.affiche){
+      if (this.sortByCodeValid) {
+        this.salesss.sort((a, b) => a.code.localeCompare(b.code));
+        this.sortByCodeValid = false
+      } else {
+        this.salesss.sort((a, b) => b.code.localeCompare(a.code));
+        this.sortByCodeValid = true
+      }
+    }else{
+      if (this.sortByCodeValid) {
+        this.saless.sort((a, b) => a.code.localeCompare(b.code));
+        this.sortByCodeValid = false
+      } else {
+        this.saless.sort((a, b) => b.code.localeCompare(a.code));
+        this.sortByCodeValid = true
+      }
     }
+    
   }
 
 
 
   sortByNameValid: boolean = true;
   sortByName() {
-    if (this.sortByNameValid) {
-      this.saless.sort((a, b) => a.name.localeCompare(b.name));
-      this.sortByNameValid = false
-    } else {
-      this.saless.sort((a, b) => b.name.localeCompare(a.name));
-      this.sortByNameValid = true
+    if(this.affiche){
+      if (this.sortByNameValid) {
+        this.salesss.sort((a, b) => a.name.localeCompare(b.name));
+        this.sortByNameValid = false
+      } else {
+        this.salesss.sort((a, b) => b.name.localeCompare(a.name));
+        this.sortByNameValid = true
+      }
+    }else{
+      if (this.sortByNameValid) {
+        this.saless.sort((a, b) => a.name.localeCompare(b.name));
+        this.sortByNameValid = false
+      } else {
+        this.saless.sort((a, b) => b.name.localeCompare(a.name));
+        this.sortByNameValid = true
+      }
     }
+
   }
 
 
   sortByCityNameValid: boolean = true;
-  sortByCityName() {
-    if (this.sortByCityNameValid) {
-      this.saless.sort((a, b) => (a.payment_Term || "").localeCompare((b.payment_Term || "")));
-      this.sortByCityNameValid = false
-    } else {
-      this.saless.sort((a, b) => (b.payment_Term || "").localeCompare((a.payment_Term || "")));
-      this.sortByCityNameValid = true
-    }
+  sortByCityName() {  
+       if(this.affiche){
+        if (this.sortByCityNameValid) {
+          this.salesss.sort((a, b) => (a.payment_Term || "").localeCompare((b.payment_Term || "")));
+          this.sortByCityNameValid = false
+        } else {
+          this.salesss.sort((a, b) => (b.payment_Term || "").localeCompare((a.payment_Term || "")));
+          this.sortByCityNameValid = true
+        }
+       }else{
+        if (this.sortByCityNameValid) {
+          this.saless.sort((a, b) => (a.payment_Term || "").localeCompare((b.payment_Term || "")));
+          this.sortByCityNameValid = false
+        } else {
+          this.saless.sort((a, b) => (b.payment_Term || "").localeCompare((a.payment_Term || "")));
+          this.sortByCityNameValid = true
+        }
+       }
+
+    
   }
 
 
   sortByAddressValid: boolean = true;
   sortByAddress() {
-    if (this.sortByAddressValid) {
-      this.saless.sort((a, b) => (a.type || "").localeCompare((b.type || "")));
-      this.sortByAddressValid = false
-    } else {
-      this.saless.sort((a, b) => (b.type || "").localeCompare((a.type || "")));
-      this.sortByAddressValid = true
+    if(this.affiche){
+      if (this.sortByAddressValid) {
+        this.salesss.sort((a, b) => (a.type || "").localeCompare((b.type || "")));
+        this.sortByAddressValid = false
+      } else {
+        this.salesss.sort((a, b) => (b.type || "").localeCompare((a.type || "")));
+        this.sortByAddressValid = true
+      }
+    }else{
+      if (this.sortByAddressValid) {
+        this.saless.sort((a, b) => (a.type || "").localeCompare((b.type || "")));
+        this.sortByAddressValid = false
+      } else {
+        this.saless.sort((a, b) => (b.type || "").localeCompare((a.type || "")));
+        this.sortByAddressValid = true
+      }
     }
+
   }
 
 }

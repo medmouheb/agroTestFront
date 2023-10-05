@@ -12,21 +12,47 @@ import { LogisticUnitService } from 'app/modules/logistic-unit/services/logistic
 export class LogisticUnitFormsGeneralComponent implements OnInit {
 
   @Input() camp!: LogisticUnit;
+   campReplica!: LogisticUnit;
 
   @ViewChild("addform")
   addform: FormGroup;
- 
+
   constructor(private sharedService: SharedService, private fb: FormBuilder, private compaser: LogisticUnitService) { }
   codes: Array<String> = [];
+  names: Array<String> = [];
+  id=""
+  getstatus() {
+
+    if (this.camp.id) {
+
+      this.static = "update"
+      if (this.id != this.camp.id) {
+        this.id = this.camp.id
+        this.campReplica = JSON.parse(JSON.stringify(this.camp))
+
+
+      }
+
+      return "update"
+
+    } else if (!this.camp.id) {
+      this.static = "create"
+      this.geValues('z')
+      return "create"
+
+    }
+  }
   ngOnInit(): void {
     if (this.camp != null) {
       console.log("olll")
       this.sharedService.setIsActive(true);
       this.compaser.findAll().subscribe(data => {
-        console.log("777::",data.map(el => { return el.logisticCode }))
         this.codes = data.map(el => { return el.logisticCode })
+        this.names = data.map(el => { return el.logisticName })
+
       })
-    }; 
+
+    };
 
     if (this.camp == undefined) { this.camp = { logisticName: "", logisticCode: "" } };
     this.initForm();
@@ -36,7 +62,7 @@ export class LogisticUnitFormsGeneralComponent implements OnInit {
   initForm(
 
   ) {
-    
+
 
 
 
@@ -62,7 +88,7 @@ export class LogisticUnitFormsGeneralComponent implements OnInit {
 
   isBlur() {
 
-    if (this.camp.logisticCode == undefined) {
+    if (this.camp.logisticCode == undefined || this.camp.logisticCode == null) {
       this.minIstrueCode = true
     }
     else if (this.camp.logisticCode.toString().length < 1) { this.minIstrueCode = true }
@@ -72,107 +98,91 @@ export class LogisticUnitFormsGeneralComponent implements OnInit {
   }
   dispotrueCode: boolean = false
   dispotruename: boolean = false
-  blur1() {
-    if (this.camp.logisticCode == null) {
-      this.dispotrueCode = false
-
-    }
-  }
+  static=""
   exist() {
-    console.log(this.camp.logisticCode)
-    this.compaser.findbycode(this.camp.logisticCode).subscribe(data => {
-      console.log(data)
-      if (data != null) {
+    if (this.codes.indexOf((this.camp.logisticCode + "")) != -1) {
+      if(this.static=="update" ){
+        if(this.camp.logisticCode == this.campReplica.logisticCode){
+          this.dispotrueCode = false
+        }else{
+          this.dispotrueCode = true
+        }
+      }else{
         this.dispotrueCode = true
-        this.sharedService.setIsActive(false);
-        console.log(data)
-
-
-      } else {
-        this.dispotrueCode = false
-        this.sharedService.setIsActive(true);
-
       }
 
-    }, error => {
-      console.log(error.status)
-      if (error.status == 404) {
-        this.dispotrueCode = false
-        this.sharedService.setIsActive(true);
-
-      }
-    })
+    } else {
+      this.dispotrueCode = false
+    }
 
   }
 
   codeIsvalid = false
 
-validationCode() {
-  const codeRegex: RegExp =/^[a-zA-Z0-9]*$/;
-  console.log(this.camp.logisticCode)
-  if (codeRegex.test(this.camp.logisticCode)) {
-    this.codeIsvalid = false;
-  console.log(this.camp.logisticCode)
-
-  }
-  else {
-  this.codeIsvalid=true
-  }
-
-}
-  exist1() {
-    console.log(this.camp.logisticName);
-    this.compaser.findbyName(this.camp.logisticName).subscribe(
-      (data) => {
-        console.log(data);
-        if (data != null) {
-          this.sharedService.setIsActive(false);
-          this.dispotruename = true;
-        } else {
-          this.dispotruename = false;
-          this.sharedService.setIsActive(true);
-        }
-      },
-      (error) => {
-        console.log(error.status);
-        if (error.status == 404) {
-          this.dispotruename = false;
-          this.sharedService.setIsActive(true);
-        }
-      }
-    );
-  }
-  
-  
-
- generateRandomCode() {
-  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-  let code = '';
-  for (let i = 0; i < 4; i++) {
-    const randomIndex = Math.floor(Math.random() * characters.length);
-    code += characters.charAt(randomIndex);
-  }
-  return code;
-}
-
-  newSeggestions=""
-
-  existname() {
-    console.log("aa::",this.codes)
-    if (this.codes.indexOf(this.camp.logisticName) != -1) {
-      this.dispotruename = true
-     // this.newSeggestions= "chose "+this.camp.name+this.generateRandomCode()+" or "+this.camp.name+this.generateRandomCode()+" or "+this.camp.name+this.generateRandomCode()+" or "+this.camp.name+this.generateRandomCode()
-     this.sharedService.setIsActive(false);
-
-    } else {
-      this.dispotruename = false
-      this.sharedService.setIsActive(true);
-
+  validationCode() {
+    const codeRegex: RegExp = /^[a-zA-Z0-9]*$/;
+    console.log(this.camp.logisticCode)
+    if (codeRegex.test(this.camp.logisticCode)) {
+      this.codeIsvalid = false;
+      console.log(this.camp.logisticCode)
 
     }
-    
+    else {
+      this.codeIsvalid = true
+    }
+
+  }
+  exist1() {
+    // console.log(this.camp.logisticName);
+    // this.compaser.findbyName(this.camp.logisticName).subscribe(
+    //   (data) => {
+    //     console.log(data);
+    //     if (data != null) {
+    //       this.sharedService.setIsActive(false);
+    //       this.dispotruename = true;
+    //     } else {
+    //       this.dispotruename = false;
+    //       this.sharedService.setIsActive(true);
+    //     }
+    //   },
+    //   (error) => {
+    //     console.log(error.status);
+    //     if (error.status == 404) {
+    //       this.dispotruename = false;
+    //       this.sharedService.setIsActive(true);
+    //     }
+    //   }
+    // );
+  }
 
 
+
+  generateRandomCode() {
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let code = '';
+    for (let i = 0; i < 4; i++) {
+      const randomIndex = Math.floor(Math.random() * characters.length);
+      code += characters.charAt(randomIndex);
+    }
+    return code;
+  }
+
+  newSeggestions = ""
+
+  existname() {
+    if (this.names.indexOf(this.camp.logisticName) != -1) {
+      if(this.static=="update" ){
+        if(this.camp.logisticName == this.campReplica.logisticName){
+          this.dispotruename = false
+        }else{
+          this.dispotruename = true
+        }
+      }else{
+        this.dispotruename = true
+      }
+    } else {
+      this.dispotruename = false
+    }
   }
 
   minIstrueName: boolean = false
@@ -208,12 +218,12 @@ validationCode() {
       this.minIstrueName = false;
     }
   }
-  
+
   geValues(event) {
-    
+    console.log("kkk::", !this.dispotrueCode, !this.dispotruename && !this.codeIsvalid, !this.minIstrueCode, !this.minIstrueName, !this.dispotruename)
 
     if (
-      this.dispotrueCode == false && this.dispotruename == false &&
+      !this.dispotrueCode && !this.dispotruename && !this.codeIsvalid && !this.minIstrueCode && !this.minIstrueName &&
       this.camp.logisticCode != null &&
       this.camp.logisticCode != "" &&
       this.camp.logisticName != null &&

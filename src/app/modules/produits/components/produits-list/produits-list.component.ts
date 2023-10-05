@@ -340,58 +340,122 @@ export class ProduitsListComponent implements OnInit {
 
   sortByCodeValid: boolean = true;
   sortByCode() {
-    if (this.sortByCodeValid) {
-      this.produits.sort((a, b) => a.code.localeCompare(b.code));
-      this.sortByCodeValid = false
-    } else {
-      this.produits.sort((a, b) => b.code.localeCompare(a.code));
-      this.sortByCodeValid = true
+    if(this.affiche){
+      if (this.sortByCodeValid) {
+        this.produitss.sort((a, b) => a.code.localeCompare(b.code));
+        this.sortByCodeValid = false
+      } else {
+        this.produitss.sort((a, b) => b.code.localeCompare(a.code));
+        this.sortByCodeValid = true
+      }
+    }else{
+      if (this.sortByCodeValid) {
+        this.produits.sort((a, b) => a.code.localeCompare(b.code));
+        this.sortByCodeValid = false
+      } else {
+        this.produits.sort((a, b) => b.code.localeCompare(a.code));
+        this.sortByCodeValid = true
+      }
     }
+    
   }
 
 
 
   sortByNameValid: boolean = true;
   sortByName() {
-    if (this.sortByNameValid) {
-      this.produits.sort((a, b) => a.name.localeCompare(b.name));
-      this.sortByNameValid = false
-    } else {
-      this.produits.sort((a, b) => b.name.localeCompare(a.name));
-      this.sortByNameValid = true
+    if(this.affiche){
+      if (this.sortByNameValid) {
+        this.produitss.sort((a, b) => a.name.localeCompare(b.name));
+        this.sortByNameValid = false
+      } else {
+        this.produitss.sort((a, b) => b.name.localeCompare(a.name));
+        this.sortByNameValid = true
+      }
+    }else{
+      if (this.sortByNameValid) {
+        this.produits.sort((a, b) => a.name.localeCompare(b.name));
+        this.sortByNameValid = false
+      } else {
+        this.produits.sort((a, b) => b.name.localeCompare(a.name));
+        this.sortByNameValid = true
+      }
     }
+    
   }
 
 
   sortByCityNameValid: boolean = true;
   sortByCategorie() {
-    if (this.sortByCityNameValid) {
-      this.produits.sort((a, b) => (a.category?.id || "").localeCompare((b.category?.id || "")));
-      this.sortByCityNameValid = false
-    } else {
-      this.produits.sort((a, b) => (b.category?.id || "").localeCompare((a.category?.id || "")));
-      this.sortByCityNameValid = true
+    if(this.affiche){
+      if (this.sortByCityNameValid) {
+        this.produitss.sort((a, b) => (a.category || "").localeCompare((b.category|| "")));
+        this.sortByCityNameValid = false
+      } else {
+        this.produitss.sort((a, b) => (b.category|| "").localeCompare((a.category|| "")));
+        this.sortByCityNameValid = true
+      }
+    }else{
+      if (this.sortByCityNameValid) {
+        this.produits.sort((a, b) => (a.category || "").localeCompare((b.category|| "")));
+        this.sortByCityNameValid = false
+      } else {
+        this.produits.sort((a, b) => (b.category|| "").localeCompare((a.category|| "")));
+        this.sortByCityNameValid = true
+      }
     }
   }
   sortBywillayaValid: boolean = true;
   sortByprixUnitaireHt() {
-    if (this.sortBywillayaValid) {
-      this.produits.sort((a, b) => (a.prixUnitaireHt || "").localeCompare((b.prixUnitaireHt || "")));
-      this.sortBywillayaValid = false
-    } else {
-      this.produits.sort((a, b) => (b.prixUnitaireHt || "").localeCompare((a.prixUnitaireHt || "")));
-      this.sortBywillayaValid = true
+    if(this.affiche){
+      if (this.sortBywillayaValid) {
+        this.produitss.sort((a, b) => (a.status + "").localeCompare((b.status + "")));
+        this.sortBywillayaValid = false
+      } else {
+        this.produitss.sort((a, b) => (b.status + "").localeCompare((a.status + "")));
+        this.sortBywillayaValid = true
+      }
+    }else{
+      if (this.sortBywillayaValid) {
+        this.produits.sort((a, b) => (a.status + "").localeCompare((b.status + "")));
+        this.sortBywillayaValid = false
+      } else {
+        this.produits.sort((a, b) => (b.status + "").localeCompare((a.status + "")));
+        this.sortBywillayaValid = true
+      }
     }
+    
+  }
+  sortBywillayaValida: boolean = true;
+  sortByprixUnitaireHta() {
+    if(this.affiche){
+      if (this.sortBywillayaValida) {
+        this.produitss.sort((a, b) => (a.prixUnitaireHt +"" ).localeCompare((b.prixUnitaireHt +"" )));
+        this.sortBywillayaValida = false
+      } else {
+        this.produitss.sort((a, b) => (b.prixUnitaireHt +"" ).localeCompare((a.prixUnitaireHt +"" )));
+        this.sortBywillayaValida = true
+      }
+    }else{
+      if (this.sortBywillayaValida) {
+        this.produits.sort((a, b) => (a.prixUnitaireHt +"" ).localeCompare((b.prixUnitaireHt +"" )));
+        this.sortBywillayaValida = false
+      } else {
+        this.produits.sort((a, b) => (b.prixUnitaireHt  +"").localeCompare((a.prixUnitaireHt  +"")));
+        this.sortBywillayaValida = true
+      }
+    }
+    
   }
 
 
   sortByAddressValid: boolean = true;
   sortByAddress() {
     if (this.sortByAddressValid) {
-      this.produits.sort((a, b) => (a.tauxTva || "").localeCompare((b.tauxTva || "")));
+      this.produits.sort((a, b) => (a.tauxTva + "").localeCompare((b.tauxTva + "")));
       this.sortByAddressValid = false
     } else {
-      this.produits.sort((a, b) => (b.tauxTva || "").localeCompare((a.tauxTva || "")));
+      this.produits.sort((a, b) => (b.tauxTva + "").localeCompare((a.tauxTva + "")));
       this.sortByAddressValid = true
     }
   }

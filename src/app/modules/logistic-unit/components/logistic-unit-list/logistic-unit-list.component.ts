@@ -241,26 +241,92 @@ export class LogisticUnitListComponent implements OnInit {
   }
   sortByCodeValid: boolean = true;
   sortByCode() {
-    if (this.sortByCodeValid) {
-      this.companys.sort((a, b) => a.logisticCode.localeCompare(b.logisticCode));
-      this.sortByCodeValid = false
-    } else {
-      this.companys.sort((a, b) => b.logisticCode.localeCompare(a.logisticCode));
-      this.sortByCodeValid = true
+    if(this.affiche){
+      if (this.sortByCodeValid) {
+        this.companyss.sort((a, b) => a.logisticCode.localeCompare(b.logisticCode));
+        this.sortByCodeValid = false
+      } else {
+        this.companyss.sort((a, b) => b.logisticCode.localeCompare(a.logisticCode));
+        this.sortByCodeValid = true
+      }
+    }else{
+      if (this.sortByCodeValid) {
+        this.companys.sort((a, b) => a.logisticCode.localeCompare(b.logisticCode));
+        this.sortByCodeValid = false
+      } else {
+        this.companys.sort((a, b) => b.logisticCode.localeCompare(a.logisticCode));
+        this.sortByCodeValid = true
+      }
     }
+
   }
 
 
 
   sortByNameValid: boolean = true;
   sortByName() {
-    if (this.sortByNameValid) {
-      this.companys.sort((a, b) => a.logisticName.localeCompare(b.logisticName));
-      this.sortByNameValid = false
-    } else {
-      this.companys.sort((a, b) => b.logisticName.localeCompare(a.logisticName));
-      this.sortByNameValid = true
+    if(this.affiche){
+      if (this.sortByNameValid) {
+        this.companyss.sort((a, b) => a.logisticName.localeCompare(b.logisticName));
+        this.sortByNameValid = false
+      } else {
+        this.companyss.sort((a, b) => b.logisticName.localeCompare(a.logisticName));
+        this.sortByNameValid = true
+      }
+    }else{
+      if (this.sortByNameValid) {
+        this.companys.sort((a, b) => a.logisticName.localeCompare(b.logisticName));
+        this.sortByNameValid = false
+      } else {
+        this.companys.sort((a, b) => b.logisticName.localeCompare(a.logisticName));
+        this.sortByNameValid = true
+      }
     }
+
+  }
+
+  sortByCompanyNameValid: boolean = true;
+  sortByCompanyName() {
+    if(this.affiche){
+      if (this.sortByCompanyNameValid) {
+        this.companyss.sort((a, b) => a.companyName.localeCompare(b.companyName));
+        this.sortByCompanyNameValid = false
+      } else {
+        this.companyss.sort((a, b) => b.companyName.localeCompare(a.companyName));
+        this.sortByCompanyNameValid = true
+      }
+    }else{
+      if (this.sortByCompanyNameValid) {
+        this.companys.sort((a, b) => a.companyName.localeCompare(b.companyName));
+        this.sortByCompanyNameValid = false
+      } else {
+        this.companys.sort((a, b) => b.companyName.localeCompare(a.companyName));
+        this.sortByCompanyNameValid = true
+      }
+    }
+
+  }
+
+  sortByDivisionNameValid: boolean = true;
+  sortByDivisionName() {
+    if(this.affiche){
+      if (this.sortByDivisionNameValid) {
+        this.companyss.sort((a, b) => a.divisionName.localeCompare(b.divisionName));
+        this.sortByDivisionNameValid = false
+      } else {
+        this.companyss.sort((a, b) => b.divisionName.localeCompare(a.divisionName));
+        this.sortByDivisionNameValid = true
+      }
+    }else{
+      if (this.sortByDivisionNameValid) {
+        this.companys.sort((a, b) => a.divisionName.localeCompare(b.divisionName));
+        this.sortByDivisionNameValid = false
+      } else {
+        this.companys.sort((a, b) => b.divisionName.localeCompare(a.divisionName));
+        this.sortByDivisionNameValid = true
+      }
+    }
+
   }
 
 

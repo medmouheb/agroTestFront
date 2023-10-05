@@ -11,15 +11,16 @@ import { SalesService } from '../../service/sales.service';
 })
 export class SalesFormGeneralComponent implements OnInit {
   @Input() sales!: Sales;
+  salesReplica!: Sales;
   addform: FormGroup;
   fieldControl: FormControl;
-  constructor(private sharedService: SharedService, private salesService:SalesService) {}
+  constructor(private sharedService: SharedService, private salesService: SalesService) { }
 
   names: Array<String> = [];
   codes: Array<String> = [];
   ngOnInit(): void {
     this.initForm();
-    this.salesService.findAll().subscribe(data=>{
+    this.salesService.findAll().subscribe(data => {
       this.names = data.map(el => {
         return el.name
       })
@@ -27,25 +28,46 @@ export class SalesFormGeneralComponent implements OnInit {
         return el.code
       })
     })
-    console.log("2a",this.sales)
-if(this.sales.id!=null){
-  this.sharedService.setIsActive(true);
-}
+    if (this.sales.id != null) {
+      this.sharedService.setIsActive(true);
+    }
+  }
+  id=""
+  getstatus() {
+
+    if (this.sales.id) {
+
+      this.static = "update"
+      if (this.id != this.sales.id) {
+        this.id = this.sales.id
+        this.salesReplica = JSON.parse(JSON.stringify(this.sales))
+
+
+      }
+
+      return "update"
+
+    } else if (!this.sales.id) {
+      this.static = "create"
+      this.geValues('z')
+      return "create"
+
+    }
   }
   initForm() {
     this.fieldControl = new FormControl('', [
       Validators.required,
-     
+
       Validators.pattern(/^[a-zA-Z]+$/)
     ]);
     this.addform = new FormGroup({
       code: new FormControl("", [
         Validators.required,
-      
+
       ]),
       name: new FormControl("", [
         Validators.required,
-      
+
       ]),
       Payment_Term: new FormControl("", [
         // Validators.required,
@@ -58,16 +80,22 @@ if(this.sales.id!=null){
         // Validators.maxLength(8),
       ]),
     });
-   
+
   }
   geValues(event) {
+    console.log("tyu::", this.sales.type,
+      this.sales.code != null,
+      this.sales.code != "",
+      this.sales.name != null, this.existcodeIsvalid == false, this.dispotruename == false,
+      this.sales.name != "")
 
     if (
-      this.addform.value.code != null &&
-      this.addform.value.code != "" &&
-      this.addform.value.name != null && this.existcodeIsvalid == false && this.dispotruename == false &&
-      this.addform.value.name != "" &&this.fieldControl.status !="INVALID"
-      
+      this.sales.type &&
+      this.sales.code != null &&
+      this.sales.code != "" &&
+      this.sales.name != null && this.existcodeIsvalid == false && this.dispotruename == false &&
+      this.sales.name != ""
+
 
     ) {
       this.sharedService.setIsActive(true);
@@ -81,7 +109,7 @@ if(this.sales.id!=null){
   Misvalid: boolean = false;
 
   isBlurDCisvalid() {
-    if(this.sales.code==undefined){
+    if (this.sales.code == undefined) {
       this.DCisvalid = true;
     }
     else if (this.sales.code.toString().length < 1) {
@@ -92,20 +120,20 @@ if(this.sales.id!=null){
   }
 
   isBlurDNisvalid() {
-    if ((this.sales.name==undefined)||(this.fieldControl.status =="INVALID")){
+    if (this.sales.name == undefined) {
       console.log("ok")
       this.DNisvalid = true;
     }
-   else if (this.sales.name.toString().length < 1) {
+    else if (this.sales.name.toString().length < 1) {
       this.DNisvalid = true;
     } else {
       this.DNisvalid = false;
     }
   }
 
- 
 
-  
+
+
 
   get f() {
     return this.addform.controls;
@@ -136,60 +164,56 @@ if(this.sales.id!=null){
   dispotruename = false
 
   existname() {
-    this.salesService.findbyName(this.sales.name).subscribe(data => {
-      console.log(data)
-      if (data != null) {
+    if (this.names.indexOf(this.sales.name) != -1) {
+      if(this.static=="update" ){
+        if(this.sales.name == this.salesReplica.name){
+          this.dispotruename = false
+        }else{
+          this.dispotruename = true
+        }
+      }else{
         this.dispotruename = true
-      //  this.newSeggestions = "chose " + this.fournisseur.name + this.generateRandomCode() + " or " + this.fournisseur.name + this.generateRandomCode() + " or " + this.fournisseur.name + this.generateRandomCode() + " or " + this.fournisseur.name + this.generateRandomCode()
-
-
-      } else {
-        this.dispotruename = false
-
       }
-
-    }, error => console.log(error))
+    } else {
+      this.dispotruename = false
+    }
 
   }
-
+  static=""
   existcodeIsvalid = false
   existcode() {
 
-   this.salesService.findbycode(this.sales.code).subscribe(data => {
-    console.log(data)
-    if (data != null) {
-      this.existcodeIsvalid = true
-
+    if (this.codes.indexOf((this.sales.code + "")) != -1) {
+      if(this.static=="update" ){
+        if(this.sales.code == this.salesReplica.code){
+          this.existcodeIsvalid = false
+        }else{
+          this.existcodeIsvalid = true
+        }
+      }else{
+        this.existcodeIsvalid = true
+      }
 
     } else {
       this.existcodeIsvalid = false
-
     }
-
-  }, error => {
-    console.log(error.status)
-    if (error.status == 404) {
-      this.existcodeIsvalid = false
-
-    }
-  })
   }
 
 
   codeIsvalid = false
 
   validationCode() {
-    const codeRegex: RegExp =/^[a-zA-Z0-9]*$/;
+    const codeRegex: RegExp = /^[a-zA-Z0-9]*$/;
     console.log(this.sales.code)
     if (codeRegex.test(this.sales.code)) {
       this.codeIsvalid = false;
-    console.log(this.sales.code)
-  
+      console.log(this.sales.code)
+
     }
     else {
-    this.codeIsvalid=true
+      this.codeIsvalid = true
     }
-  
+
   }
 
 }

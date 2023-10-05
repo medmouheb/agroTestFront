@@ -1,5 +1,4 @@
 <div class="row" [formGroup]="addform">
-    <p> {{camp | json}} </p>
     <div class="form-group col-md-6">
         <label class="required" for="vehiculeCode">{{ "vehiculeCodev" | translate }}</label>
         <input (keyup)="isBlur();exist();blur1();validationCode();geValues($event)" class="form-control" name="vehiculeCode" [(ngModel)]="camp.vehiculeCode" formControlName="vehiculeCode" placeholder="{{'Write your Vehicule code'|translate}} "

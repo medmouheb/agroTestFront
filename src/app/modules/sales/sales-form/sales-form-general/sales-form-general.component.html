@@ -1,10 +1,11 @@
 <div class="row" [formGroup]="addform">
+<!-- <p style="display: none;" > {{getstatus() }} </p> -->
 
     <div class="form-group col-md-6">
         <label class="required" for="code">{{'sailorCode' | translate}}</label>
-        <input (blur)="existcode();isBlurDCisvalid();validationCode()" class="form-control" name="code" [(ngModel)]="sales.code" 
+        <input (keyup)="existcode();isBlurDCisvalid();validationCode();geValues($event)" class="form-control" name="code" [(ngModel)]="sales.code" 
             formControlName="code" required placeholder="{{'write your sales code'|translate}} " aria-invalid="true"
-            aria-describedby="code-error" (ngModelChange)="geValues($event)">
+            aria-describedby="code-error" >
             <div  style="color: red;" *ngIf="codeIsvalid">{{ "Invalid code format" |translate }}</div>
         <div style="color: red;" *ngIf="DCisvalid">{{'code must be not null'|translate}}</div>
         <div style="color: red;" *ngIf="existcodeIsvalid" >{{'Code must be unique'|translate}}</div>
@@ -13,10 +14,9 @@
  
     <div class="form-group col-md-6">
         <label class="required" for="name">{{'sailorname' | translate}}</label>
-        <input (blur)="existname();isBlurDNisvalid()" class="form-control" name="name" formControlName="name" 
+        <input (keyup)="existname();isBlurDNisvalid();geValues($event)" class="form-control" name="name" formControlName="name" 
         placeholder="{{'write your sales name'|translate}}" [formControl]="fieldControl"
-            [(ngModel)]="sales.name" required aria-invalid="true" aria-describedby="name-error"
-            (ngModelChange)="geValues($event)">
+            [(ngModel)]="sales.name" required aria-invalid="true" aria-describedby="name-error">
         <div style="color: red;" *ngIf="DNisvalid">{{'name must be not null'|translate}}</div>
         <!-- <div style=" color : red;" *ngIf="fieldControl.errors.pattern">{{"Format is invalid"|translate}}</div> -->
        
@@ -25,7 +25,7 @@
     </div> 
 
     <div class="form-group col-md-6">
-        <label for="type">{{'Salestype' | translate}}</label>
+        <label class="required" for="type">{{'Salestype' | translate}}</label>
         <select class="form-control" name="type" formControlName="type" ngModel [(ngModel)]="sales.type"
              required aria-invalid="true"
             (change)="geValues($event)">

@@ -244,26 +244,48 @@ export class FreightermsListComponent implements OnInit {
 
  sortByCodeValid: boolean = true;
  sortByCode() {
-   if (this.sortByCodeValid) {
-     this.freightterms.sort((a, b) => a.freighttermcode.localeCompare(b.freighttermcode));
-     this.sortByCodeValid = false
-   } else {
-     this.freightterms.sort((a, b) => b.freighttermcode.localeCompare(a.freighttermcode));
-     this.sortByCodeValid = true
-   }
+  if(this.affiche){
+    if (this.sortByCodeValid) {
+      this.freighttermss.sort((a, b) => a.freighttermcode.localeCompare(b.freighttermcode));
+      this.sortByCodeValid = false
+    } else {
+      this.freighttermss.sort((a, b) => b.freighttermcode.localeCompare(a.freighttermcode));
+      this.sortByCodeValid = true
+    }
+  }else{
+    if (this.sortByCodeValid) {
+      this.freightterms.sort((a, b) => a.freighttermcode.localeCompare(b.freighttermcode));
+      this.sortByCodeValid = false
+    } else {
+      this.freightterms.sort((a, b) => b.freighttermcode.localeCompare(a.freighttermcode));
+      this.sortByCodeValid = true
+    }
+  }
+
  }
 
 
 
  sortByNameValid: boolean = true;
  sortByName() {
-   if (this.sortByNameValid) {
-     this.freightterms.sort((a, b) => a.freighttermname .localeCompare(b.freighttermname ));
-     this.sortByNameValid = false
-   } else {
-     this.freightterms.sort((a, b) => b.freighttermname .localeCompare(a.freighttermname ));
-     this.sortByNameValid = true
-   }
+  if(this.affiche){
+    if (this.sortByNameValid) {
+      this.freighttermss.sort((a, b) => a.freighttermname .localeCompare(b.freighttermname ));
+      this.sortByNameValid = false
+    } else {
+      this.freighttermss.sort((a, b) => b.freighttermname .localeCompare(a.freighttermname ));
+      this.sortByNameValid = true
+    }
+  }else{
+    if (this.sortByNameValid) {
+      this.freightterms.sort((a, b) => a.freighttermname .localeCompare(b.freighttermname ));
+      this.sortByNameValid = false
+    } else {
+      this.freightterms.sort((a, b) => b.freighttermname .localeCompare(a.freighttermname ));
+      this.sortByNameValid = true
+    }
+  }
+
  }
 
 

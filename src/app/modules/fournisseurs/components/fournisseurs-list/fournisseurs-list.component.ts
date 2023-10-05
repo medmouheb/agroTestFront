@@ -411,18 +411,18 @@ export class FournisseursListComponent implements OnInit {
   sortByemail() {
     if (this.affiche == true) {
       if (this.sortByemailValid) {
-        this.fournisseurss.sort((a, b) => a.email.localeCompare(b.email));
+        this.fournisseurss.sort((a, b) => (a.email+"").localeCompare((b.email+"")));
         this.sortByemailValid = false
       } else {
-        this.fournisseurss.sort((a, b) => b.email.localeCompare(a.email));
+        this.fournisseurss.sort((a, b) => (b.email+"").localeCompare((a.email+"")));
         this.sortByemailValid = true
       }
     }else{
       if (this.sortByemailValid) {
-        this.fournisseurs.sort((a, b) => a.email.localeCompare(b.email));
+        this.fournisseurs.sort((a, b) => (a.email+"").localeCompare((b.email+"")));
         this.sortByemailValid = false
       } else {
-        this.fournisseurs.sort((a, b) => b.email.localeCompare(a.email));
+        this.fournisseurs.sort((a, b) => (b.email+"").localeCompare((a.email+"")));
         this.sortByemailValid = true
       }
     }

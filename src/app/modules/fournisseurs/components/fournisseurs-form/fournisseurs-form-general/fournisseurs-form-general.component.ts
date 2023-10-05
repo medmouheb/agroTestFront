@@ -157,7 +157,7 @@ export class FournisseursFormGeneralComponent implements OnInit {
     this.fournisseur.name != "" , this.fournisseur.paymentTerm != null , this.fournisseur.paymentTerm != ""
     , this.fournisseur.currencycode != null , this.fournisseur.currencycode != "")
 
-    if (this.fournisseur.code != null && this.fournisseur.code != "" && this.fournisseur.name != null && this.dispotrueCode == false && this.dispotruename == false &&
+    if ( this.fournisseur.type && this.fournisseur.code != null && this.fournisseur.code != "" && this.fournisseur.name != null && this.dispotrueCode == false && this.dispotruename == false &&
       this.fournisseur.name != "" && this.fournisseur.paymentTerm != null && this.fournisseur.paymentTerm != ""
       && this.fournisseur.currencycode != null && this.fournisseur.currencycode != "") {
 
