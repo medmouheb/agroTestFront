@@ -59,6 +59,7 @@ export class WarehouseFormGeneralComponent implements OnInit {
   }
   id=""
   fetstatic(){
+    this.geValues("")
     if (this.warehouse.id) {
       this.static = "update"
       if (this.id != this.warehouse.id) {

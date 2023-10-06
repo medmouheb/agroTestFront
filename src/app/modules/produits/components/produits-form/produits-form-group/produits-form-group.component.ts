@@ -79,7 +79,7 @@ export class ProduitsFormGroupComponent implements OnInit {
       couleur:[null],
       inventaire:[null],
       medicamenteux:[null],
-      status:[null],
+      statuss:[null],
       category:[null],
       currency:[null],
       vendor:[null],

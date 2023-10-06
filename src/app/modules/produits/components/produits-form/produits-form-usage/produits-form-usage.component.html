@@ -1,5 +1,4 @@
 <div class="row" >
-
   <div class="form-group col-md-6">
     <label for="transactionDate">{{'transactionDate' | translate}}</label>
     <input type="date" class="form-control" name="transactionDate" #transactionDate="ngModel" ngModel
@@ -9,9 +8,9 @@
     <label for="farmCode">{{'farmCode' | translate}}</label>
     <!-- <input class="form-control" name="farmCode" #farmCode="ngModel" ngModel
       [(ngModel)]="produit.farmCode"> -->
-      <select (change)="selectVAlue($event)" type="number" class="form-control">
+      <select (change)="selectVAlue($event)" class="form-control">
 
-        <option disabled [value]="">{{"il faut choisir"| translate}}</option>
+        <option disabled selected>{{"il faut choisir"| translate}}</option>
         <option [selected]="produit.farmCode==dv.code" *ngFor="let dv of farmList" [value]="dv.code">{{dv.code}}
         </option>
       </select>

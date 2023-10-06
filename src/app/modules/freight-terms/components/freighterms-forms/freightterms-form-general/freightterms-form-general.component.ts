@@ -18,7 +18,8 @@ export class FreighttermsFormGeneralComponent implements OnInit {
   constructor(private sharedService: SharedService,private freighttermsservice:FreightTermsService,private dialogComponent:DialogComponent) { }
 
   freighttermcodeList=["CIF","CFR","FOB","FoB","DAT","CIP"]
-
+  codes: Array<String> = [];
+  names: Array<String> = [];
   ngOnInit(): void {
     if (this.freightterm == undefined) this.freightterm = { freighttermcode: "", freighttermname : "" };
     this.initForm();
@@ -28,26 +29,27 @@ export class FreighttermsFormGeneralComponent implements OnInit {
     if(!this.freightterm.freighttermcode ){
       this.sharedService.setIsActive(false)
     }
+    this.freighttermsservice.findAll().subscribe(data => {
+      this.codes = data.map(el => { return el.freighttermcode })
+      this.names = data.map(el => { return el.freighttermname })
+
+
+    })
 
   }
   static=""
   id=""
   getstatus(){
-    
     if (this.freightterm.id) {
-      
       this.static = "update"
       if(this.id!=this.freightterm.id){
         this.id=this.freightterm.id
         this.freighttermReplica =  JSON.parse( JSON.stringify(  this.freightterm))
       }
       return "update"
-
     } else if (!this.freightterm.id) {
       this.static = "create"
-
       return "create"
-
     }
   }
   
@@ -85,44 +87,38 @@ export class FreighttermsFormGeneralComponent implements OnInit {
     }
   }
   exist() {
-    console.log(this.freightterm.freighttermcode)
-    this.freighttermsservice.findbycode(this.freightterm.freighttermcode).subscribe(data => {
-      console.log(data)
-      if (data != null) {
-        this.dispotrueCode = true
-
-
+    if (this.codes.indexOf((this.freightterm.freighttermcode + "")) != -1) {
+      if (this.static == "update") {
+        if (this.freighttermReplica.freighttermcode == this.freightterm.freighttermcode) {
+          this.dispotrueCode = false
+        } else {
+          this.dispotrueCode = true
+        }
       } else {
-        this.dispotrueCode = false
-
+        this.dispotrueCode = true
       }
 
-    }, error => {
-      console.log(error.status)
-      if (error.status == 404) {
-        this.dispotrueCode = false
-
-      }
-    })
+    } else {
+      this.dispotrueCode = false
+    }
 
   }
   newSeggestions = ""
 
   existname() {
-    console.log("e::")
-    this.freighttermsservice.findbyName(this.freightterm.freighttermname ).subscribe(data => {
-      console.log("e::", data)
-      if (data != null) {
-        this.dispotruename = true
-        //this.newSeggestions = "chose " + this.freightterms.name + this.generateRandomCode() + " or " + this.freightterms.name + this.generateRandomCode() + " or " + this.freightterms.name + this.generateRandomCode() + " or " + this.freightterms.name + this.generateRandomCode()
-
-
+    if (this.names.indexOf(this.freightterm.freighttermname) != -1) {
+      if (this.static == "update") {
+        if (this.freightterm.freighttermname == this.freighttermReplica.freighttermname) {
+          this.dispotruename = false
+        } else {
+          this.dispotruename = true
+        }
       } else {
-        this.dispotruename = false
-
+        this.dispotruename = true
       }
-
-    }, error => console.log(error))
+    } else {
+      this.dispotruename = false
+    }
 
   }
   geValues(event) {

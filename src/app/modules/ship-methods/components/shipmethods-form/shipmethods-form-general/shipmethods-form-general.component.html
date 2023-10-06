@@ -40,7 +40,7 @@
 
 
         </select>
-        <input *ngIf="otherCondition"  class="form-control" name="code" (blur)="isBlurDCisvalid();geValues($event); exist();blur1()"
+        <input *ngIf="otherCondition"  class="form-control" name="code" (keyup)="isBlurDCisvalid(); exist();blur1();geValues($event);"
         [(ngModel)]="shipmethod.code" formControlName="code" required aria-invalid="true" 
         aria-describedby="code-error" (ngModelChange)="geValues($event)">
 
@@ -55,7 +55,7 @@
 
     <div class="form-group col-md-6 ">
         <label class="required" for="name">{{ "nameship" | translate }}</label>
-        <input [readonly]="!otherCondition" class="form-control" (blur)="existname();isBlurDNisvalid();geValues($event);" name="name"
+        <input [readonly]="!otherCondition" class="form-control" (keyup)="existname();isBlurDNisvalid();geValues($event);" name="name"
             formControlName="name" [(ngModel)]="shipmethod.name" required
             placeholder="{{'Write your ship name'|translate}}" aria-invalid="true" aria-describedby="name-error"
             (ngModelChange)="geValues($event)">

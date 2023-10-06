@@ -7,7 +7,7 @@ export type Produit = {
   code?: string
   name?: string
   type?: string
-  status?: boolean
+  statuss?: boolean
   currency?: string
   inventaire?: string
   medicamenteux?: Boolean

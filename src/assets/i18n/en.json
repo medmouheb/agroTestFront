@@ -32,7 +32,7 @@
     "growout": "Growout",
     "add-Logistic": "Add New Logistic Unit",
     "logistic-Unit": "Logistic Unit",
-    "add-LogisticUnity": "add New Logistic Unit",
+    "add-LogisticUnity": "Add New Logistic Unit",
     "add-airports": "Add New Airport",
     "FreightTerms":"Freight terms",
     "transport":"Transport",
@@ -997,7 +997,8 @@
 "Code must be not null": "Code must be not null",
 
 "Measurement must be not null":"Measurement must be not null",
-"type must be unique": "type must be unique"
+"type must be unique": "type must be unique",
+"Write your price":"Write your price"
 
 
 

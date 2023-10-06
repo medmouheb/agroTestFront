@@ -409,18 +409,18 @@ export class ProduitsListComponent implements OnInit {
   sortByprixUnitaireHt() {
     if(this.affiche){
       if (this.sortBywillayaValid) {
-        this.produitss.sort((a, b) => (a.status + "").localeCompare((b.status + "")));
+        this.produitss.sort((a, b) => (a.statuss + "").localeCompare((b.statuss + "")));
         this.sortBywillayaValid = false
       } else {
-        this.produitss.sort((a, b) => (b.status + "").localeCompare((a.status + "")));
+        this.produitss.sort((a, b) => (b.statuss + "").localeCompare((a.statuss + "")));
         this.sortBywillayaValid = true
       }
     }else{
       if (this.sortBywillayaValid) {
-        this.produits.sort((a, b) => (a.status + "").localeCompare((b.status + "")));
+        this.produits.sort((a, b) => (a.statuss + "").localeCompare((b.statuss + "")));
         this.sortBywillayaValid = false
       } else {
-        this.produits.sort((a, b) => (b.status + "").localeCompare((a.status + "")));
+        this.produits.sort((a, b) => (b.statuss + "").localeCompare((a.statuss + "")));
         this.sortBywillayaValid = true
       }
     }
