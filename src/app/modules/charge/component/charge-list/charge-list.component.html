@@ -30,10 +30,10 @@
         <app-no-data></app-no-data>
       </ng-container>
   
-      <table class="table" *ngIf="!loading && !chargesPage.empty">
+      <table aria-label=""class="table" *ngIf="!loading && !chargesPage.empty">
         <thead class="datatable-header">
           <tr>
-            <th>
+            <th  scope="">
               <strong>
                 {{'suppNo' | translate}}
                 <a href="javascript:void(0);">
@@ -46,7 +46,7 @@
                 </a>
               </strong>
             </th>
-            <th>
+            <th  scope="">
               <strong>
                 {{'suppName' | translate}}
                 <a href="javascript:void(0);">
@@ -59,7 +59,7 @@
                 </a>
               </strong>
             </th>
-            <th>
+            <th  scope="">
               <strong>
                 {{'suppChargeType' | translate}}
                 <a href="javascript:void(0);">
@@ -72,7 +72,7 @@
                 </a>
               </strong>
             </th>
-            <th>
+            <th  scope="">
               <strong>
                 {{'suppType' | translate}}
                 <a href="javascript:void(0);">
@@ -85,7 +85,7 @@
                 </a>
               </strong>
             </th>
-                <th>
+                <th  scope="">
               <strong>
                 {{'actions' | translate}}
               </strong>

@@ -31,10 +31,10 @@
             <app-no-data></app-no-data>
         </ng-container>
 
-        <table class="table" *ngIf="!loading && !freighttermPage.empty">
+        <table aria-label=""class="table" *ngIf="!loading && !freighttermPage.empty">
             <thead class="datatable-header">
                 <tr>
-                    <th>
+                    <th  scope="">
                         <strong class="style-text">
                             {{'freighttermname' | translate}}
                             <a href="javascript:void(0);">
@@ -49,7 +49,7 @@
                         </strong>
                     </th>
 
-                    <th>
+                    <th  scope="">
                         <strong class="style-text">
                             {{'freighttermcode' | translate}}
                             <a href="javascript:void(0);">
@@ -63,7 +63,7 @@
                             </a>
                         </strong>
                     </th>
-                    <th>
+                    <th  scope="">
                         <strong class="style-text">
                             {{'actions' | translate}}
                         </strong>
@@ -130,10 +130,10 @@
             <app-no-data></app-no-data>
         </ng-container>
 
-        <table class="table" *ngIf="!loading && !freighttermPages.empty">
+        <table aria-label=""class="table" *ngIf="!loading && !freighttermPages.empty">
             <thead class="datatable-header">
                 <tr>
-                    <th>
+                    <th  scope="">
                         <strong class="style-text">
                             {{'freighttermname' | translate}}
                             <a href="javascript:void(0);">
@@ -147,7 +147,7 @@
                             </a>
                         </strong>
                     </th>
-                    <th>
+                    <th  scope="">
                         <strong class="style-text">
                             {{'freighttermcode' | translate}}
                             <a href="javascript:void(0);">
@@ -161,7 +161,7 @@
                             </a>
                         </strong>
                     </th>
-                    <th>
+                    <th  scope="">
                         <strong class="style-text">
                             {{'actions' | translate}}
                         </strong>

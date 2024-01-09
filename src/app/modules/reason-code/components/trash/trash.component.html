@@ -27,10 +27,10 @@
         </ng-container>
 
 
-        <table class="table" *ngIf="!loading && reasons.length!=0">
+        <table aria-label=""class="table" *ngIf="!loading && reasons.length!=0">
             <thead class="datatable-header">
                 <tr>
-                    <th>
+                    <th  scope="">
                         <strong>
                             {{'Reason code' | translate}}
                             <a href="javascript:void(0);">
@@ -43,7 +43,7 @@
                             </a>
                         </strong>
                     </th>
-                    <th>
+                    <th  scope="">
                         <strong>
                             {{'Reason name' | translate }}
                             <a href="javascript:void(0);">
@@ -57,7 +57,7 @@
                             </a>
                         </strong>
                     </th>
-                    <th>
+                    <th  scope="">
                         <strong>
                             {{'notes' | translate}}
                             <a href="javascript:void(0);">
@@ -70,7 +70,7 @@
                             </a>
                         </strong>
                     </th>
-                    <th>
+                    <th  scope="">
                         <strong>
                             {{'Actions'}}
                         </strong>

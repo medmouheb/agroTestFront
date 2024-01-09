@@ -35,10 +35,10 @@
       <app-no-data></app-no-data>
     </ng-container>
 
-    <table class="table" *ngIf="!loading && !warehousesPage.empty">
+    <table aria-label=""class="table" *ngIf="!loading && !warehousesPage.empty">
       <thead class="datatable-header">
         <tr>
-          <th>
+          <th  scope="">
             <strong  class="style-text" >
               {{'wname' | translate}}
               <a href="javascript:void(0);">
@@ -50,7 +50,7 @@
               </a>
             </strong>
           </th>
-          <th>
+          <th  scope="">
             <strong  class="style-text" >
               {{'wcode' | translate}}
               <a href="javascript:void(0);">
@@ -62,7 +62,7 @@
               </a>
             </strong>
           </th>
-          <th>
+          <th  scope="">
             <strong  class="style-text" >
               {{'costCenter' | translate}}
               <a href="javascript:void(0);">
@@ -75,7 +75,7 @@
             </strong>
           </th>
           
-          <th>
+          <th  scope="">
             <strong  class="style-text" >
               {{'primary' | translate}}
               <a href="javascript:void(0);">
@@ -86,7 +86,7 @@
               </a>
             </strong>
           </th>
-          <th>
+          <th  scope="">
             <strong  class="style-text" >
               {{'City' | translate}}
               <a href="javascript:void(0);">
@@ -98,7 +98,7 @@
             </strong>
           </th>
 
-          <th>
+          <th  scope="">
             <strong  class="style-text">
               {{'actions' | translate}}
 
@@ -152,10 +152,10 @@
       <app-no-data></app-no-data>
     </ng-container>
 
-    <table class="table" *ngIf="!loading && !Pagewarehouses.empty">
+    <table aria-label=""class="table" *ngIf="!loading && !Pagewarehouses.empty">
       <thead class="datatable-header">
         <tr>
-          <th>
+          <th  scope="">
             <strong  class="style-text" >
               {{'wname' | translate}}
               <a href="javascript:void(0);">
@@ -167,7 +167,7 @@
               </a>
             </strong>
           </th>
-          <th>
+          <th  scope="">
             <strong  class="style-text" >
               {{'wcode' | translate}}
               <a href="javascript:void(0);">
@@ -180,7 +180,7 @@
             </strong>
           </th>
   
-          <th>
+          <th  scope="">
             <strong  class="style-text" >
               {{'costCenter' | translate}}
               <a href="javascript:void(0);">
@@ -193,7 +193,7 @@
             </strong>
           </th>
           
-          <th>
+          <th  scope="">
             <strong  class="style-text" >
               {{'primary' | translate}}
               <a href="javascript:void(0);">
@@ -204,7 +204,7 @@
               </a>
             </strong>
           </th>
-          <th>
+          <th  scope="">
             <strong  class="style-text" >
               {{'City' | translate}}
               <a href="javascript:void(0);">
@@ -215,7 +215,7 @@
               </a>
             </strong>
           </th>
-          <th>
+          <th  scope="">
             <strong  class="style-text">
               {{'actions' | translate}}
 

@@ -35,10 +35,10 @@
             <app-no-data></app-no-data>
         </ng-container>
 
-        <table class="table" *ngIf="!loading && !farmsPage.empty">
+        <table aria-label=""class="table" *ngIf="!loading && !farmsPage.empty">
             <thead class="datatable-header">
                 <tr>
-                    <th>
+                    <th  scope="">
                         <strong class="style-text">
                             {{'name de la Ferme' | translate}}
                             <a href="javascript:void(0);">
@@ -52,7 +52,7 @@
                             </a>
                         </strong>
                     </th>
-                    <th>
+                    <th  scope="">
                         <strong class="style-text">
                             {{'code de la Ferme' | translate}}
                             <a href="javascript:void(0);">
@@ -67,7 +67,7 @@
                         </strong>
                     </th>
 
-                    <th>
+                    <th  scope="">
                         <strong class="style-text">
                             {{'type de la Ferme' | translate}}
                             <a href="javascript:void(0);">
@@ -81,7 +81,7 @@
                             </a>
                         </strong>
                     </th>
-                    <th>
+                    <th  scope="">
                         <strong class="style-text">
                             {{'owner' | translate}}
                             <a href="javascript:void(0);">
@@ -95,7 +95,7 @@
                             </a>
                         </strong>
                     </th>
-                    <th>
+                    <th  scope="">
                         <strong class="style-text">
                             {{'actions' | translate}}
                         </strong>
@@ -141,10 +141,10 @@
             <app-no-data></app-no-data>
         </ng-container>
 
-        <table class="table" *ngIf="!loading && !farmsPages.empty">
+        <table aria-label=""class="table" *ngIf="!loading && !farmsPages.empty">
             <thead class="datatable-header">
                 <tr>
-                    <th>
+                    <th  scope="">
                         <strong class="style-text">
                             {{'name de la Ferme' | translate}}
                             <a href="javascript:void(0);">
@@ -158,7 +158,7 @@
                             </a>
                         </strong>
                     </th>
-                    <th>
+                    <th  scope="">
                         <strong class="style-text">
                             {{'code de la Ferme' | translate}}
                             <a href="javascript:void(0);">
@@ -173,7 +173,7 @@
                         </strong>
                     </th>
 
-                    <th>
+                    <th  scope="">
                         <strong class="style-text">
                             {{'type de la Ferme' | translate}}
                             <a href="javascript:void(0);">
@@ -187,7 +187,7 @@
                             </a>
                         </strong>
                     </th>
-                    <th>
+                    <th  scope="">
                         <strong class="style-text">
                             {{'owner' | translate}}
                             <a href="javascript:void(0);">
@@ -201,7 +201,7 @@
                             </a>
                         </strong>
                     </th>
-                    <th>
+                    <th  scope="">
                         <strong class="style-text">
                             {{'actions' | translate}}
                         </strong>

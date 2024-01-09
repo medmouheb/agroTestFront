@@ -29,11 +29,11 @@
       <app-no-data></app-no-data>
     </ng-container>
 
-    <table class="table" *ngIf="!loading && seaports.length!==0">
+    <table aria-label=""class="table" *ngIf="!loading && seaports.length!==0">
 
       <thead class="datatable-header">
         <tr>
-          <th>
+          <th  scope="">
             <strong>
               {{'Code port maritime' | translate}}
               <a href="javascript:void(0);">
@@ -46,7 +46,7 @@
               </a>
             </strong>
           </th>
-          <th>
+          <th  scope="">
             <strong>
               {{'Nom port maritime' | translate }}
               <a href="javascript:void(0);">
@@ -59,7 +59,7 @@
               </a>
             </strong>
           </th>
-          <th>
+          <th  scope="">
             <strong>
               {{'notes' | translate}}
               <a href="javascript:void(0);">
@@ -72,7 +72,7 @@
               </a>
             </strong>
           </th>
-          <th>
+          <th  scope="">
             <strong>
               {{'Actions'}}
             </strong>

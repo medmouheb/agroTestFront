@@ -35,10 +35,10 @@
       </ng-container>
 
 
-        <table class="table" *ngIf="!loading && !companyPage.empty">
+        <table aria-label=""class="table" *ngIf="!loading && !companyPage.empty">
           <thead class="datatable-header">
             <tr>
-              <th>
+              <th  scope="">
                 <strong class="style-text">
                   {{ "vehiculeNamev" | translate }}
                   <a href="javascript:void(0);">
@@ -51,7 +51,7 @@
                   </a>
                 </strong>
               </th>
-              <th>
+              <th  scope="">
                 <strong class="style-text">
                   {{ "vehiculeCodev" | translate }}
                   <a href="javascript:void(0);">
@@ -65,7 +65,7 @@
                 </strong>
               </th>
       
-              <th>
+              <th  scope="">
                 <strong class="style-text">
                     {{'actions' | translate}}
                 </strong>
@@ -108,10 +108,10 @@
       </ng-container>
 
 
-        <table class="table" *ngIf="!loading && !companyPages.empty">
+        <table aria-label=""class="table" *ngIf="!loading && !companyPages.empty">
           <thead class="datatable-header">
             <tr>
-              <th>
+              <th  scope="">
                 <strong class="style-text">
                   {{ "vehiculeNamev" | translate }}
                   <a href="javascript:void(0);">
@@ -124,7 +124,7 @@
                   </a>
                 </strong>
               </th>
-              <th>
+              <th  scope="">
                 <strong class="style-text">
                   {{ "vehiculeCodev" | translate }}
                   <a href="javascript:void(0);">
@@ -138,7 +138,7 @@
                 </strong>
               </th>
       
-              <th>
+              <th  scope="">
                 <strong class="style-text">
                     {{'actions' | translate}}
                 </strong>

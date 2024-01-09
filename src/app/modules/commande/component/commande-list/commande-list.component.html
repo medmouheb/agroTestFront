@@ -30,10 +30,10 @@
       <app-no-data></app-no-data>
     </ng-container>
 
-    <table class="table" *ngIf="!loading && !commandesPage.empty">
+    <table aria-label=""class="table" *ngIf="!loading && !commandesPage.empty">
       <thead class="datatable-header">
         <tr>
-          <th>
+          <th  scope="">
             <strong>
               {{'paymentTermCode' | translate}}
               <a href="javascript:void(0);">
@@ -46,7 +46,7 @@
               </a>
             </strong>
           </th>
-          <th>
+          <th  scope="">
             <strong>
               {{'paymentTermName' | translate}}
               <a href="javascript:void(0);">
@@ -59,7 +59,7 @@
               </a>
             </strong>
           </th>
-          <th>
+          <th  scope="">
             <strong>
               {{'dateSold' | translate}}
               <a href="javascript:void(0);">
@@ -72,7 +72,7 @@
               </a>
             </strong>
           </th>
-          <th>
+          <th  scope="">
             <strong>
               {{'deliveryDate' | translate}}
               <a href="javascript:void(0);">
@@ -85,7 +85,7 @@
               </a>
             </strong>
           </th>
-          <th>
+          <th  scope="">
             <strong>
               {{'invoiceDate' | translate}}
               <a href="javascript:void(0);">
@@ -98,7 +98,7 @@
               </a>
             </strong>
           </th>
-          <th>
+          <th  scope="">
             <strong>
               {{'actions' | translate}}
             </strong>

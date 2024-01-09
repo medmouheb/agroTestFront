@@ -29,10 +29,10 @@
       <app-no-data></app-no-data>
     </ng-container>
 
-    <table class="table" *ngIf="!loading && !costCenterPage.empty">
+    <table aria-label=""class="table" *ngIf="!loading && !costCenterPage.empty">
       <thead class="datatable-header">
         <tr>
-          <th>
+          <th  scope="">
             <strong class="style-text">
               {{'namecostCenter' | translate}}
               <a href="javascript:void(0);">
@@ -45,7 +45,7 @@
               </a>
             </strong>
           </th>
-          <th>
+          <th  scope="">
             <strong class="style-text">
               {{'codecostCenter' | translate}}
               <a href="javascript:void(0);">
@@ -59,7 +59,7 @@
             </strong>
           </th>
    
-          <th>
+          <th  scope="">
             <strong class="style-text">
               {{'divisionName' | translate}}
               <a href="javascript:void(0);">
@@ -72,7 +72,7 @@
               </a>
             </strong>
           </th>
-          <th>
+          <th  scope="">
             <strong class="style-text">
               {{'facilityType' | translate}}
               <a href="javascript:void(0);">
@@ -85,7 +85,7 @@
               </a>
             </strong>
           </th>
-          <th>
+          <th  scope="">
             <strong  class="style-text">
               {{'actions' | translate}}
             </strong>
@@ -134,10 +134,10 @@
       <app-no-data></app-no-data>
     </ng-container>
 
-    <table class="table" *ngIf="!loading && !costCenterPages.empty">
+    <table aria-label=""class="table" *ngIf="!loading && !costCenterPages.empty">
       <thead class="datatable-header">
         <tr>
-          <th>
+          <th  scope="">
             <strong class="style-text">
               {{'namecostCenter' | translate}}
               <a href="javascript:void(0);">
@@ -150,7 +150,7 @@
               </a>
             </strong>
           </th>
-          <th>
+          <th  scope="">
             <strong class="style-text">
               {{'codecostCenter' | translate}}
               <a href="javascript:void(0);">
@@ -164,7 +164,7 @@
             </strong>
           </th>
    
-          <th>
+          <th  scope="">
             <strong class="style-text">
               {{'divisionName' | translate}}
               <a href="javascript:void(0);">
@@ -177,7 +177,7 @@
               </a>
             </strong>
           </th>
-          <th>
+          <th  scope="">
             <strong class="style-text">
               {{'facilityType' | translate}}
               <a href="javascript:void(0);">
@@ -190,7 +190,7 @@
               </a>
             </strong>
           </th>
-          <th>
+          <th  scope="">
             <strong  class="style-text">
               {{'actions' | translate}}
             </strong>

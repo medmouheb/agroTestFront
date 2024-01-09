@@ -23,10 +23,10 @@
         </ng-container>
 
 
-        <table class="table" *ngIf="!loading && !Page.empty">
+        <table aria-label=""class="table" *ngIf="!loading && !Page.empty">
             <thead class="datatable-header">
                 <tr>
-                    <th>
+                    <th  scope="">
                       <strong>
                         {{ "codecompany" | translate }}
                         <a href="javascript:void(0);">
@@ -38,7 +38,7 @@
                         </a>
                       </strong>
                     </th>
-                    <th>
+                    <th  scope="">
                       <strong>
                         {{ "namecompany" | translate }}
                         <a href="javascript:void(0);">
@@ -50,7 +50,7 @@
                         </a>
                       </strong>
                     </th>
-                    <th>
+                    <th  scope="">
                       <strong>
                         {{ "City" | translate }}
                         <a href="javascript:void(0);">
@@ -62,7 +62,7 @@
                         </a>
                       </strong>
                     </th>
-                    <th>
+                    <th  scope="">
                       <strong>
                         {{ "Willaya" | translate }}
                         <a href="javascript:void(0);">
@@ -74,7 +74,7 @@
                         </a>
                       </strong>
                     </th>
-                    <th>
+                    <th  scope="">
                       <strong>
                         {{ 'Address' | translate }}
           
@@ -87,7 +87,7 @@
                         </a>
                       </strong>
                     </th>
-                    <th>
+                    <th  scope="">
                       <strong>
                         {{ "phone" | translate }}
           
@@ -100,7 +100,7 @@
                         </a>
                       </strong>
                     </th>
-                    <th>
+                    <th  scope="">
                       <strong>
                         {{ "Email" | translate }}
           

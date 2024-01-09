@@ -32,11 +32,11 @@
   
   
   
-          <table class="table" *ngIf="!loading && !willayaPage.empty">
+          <table aria-label=""class="table" *ngIf="!loading && !willayaPage.empty">
             <thead class="datatable-header">
               <tr>
 
-                <th>
+                <th  scope="">
                   <strong class="style-text">
                     {{ "willaya name" | translate }}
                     <a href="javascript:void(0);">
@@ -49,7 +49,7 @@
                     </a>
                   </strong>
                 </th>
-                <th>
+                <th  scope="">
                   <strong class="style-text">
                     {{ "willaya code" | translate }}
                     <a href="javascript:void(0);">
@@ -63,7 +63,7 @@
                   </strong>
                 </th>
             
-                <th>
+                <th  scope="">
                   <strong class="style-text">
                       {{'actions' | translate}}
                   </strong>
@@ -109,10 +109,10 @@
   
   
   
-          <table class="table" *ngIf="!loading && !willayaPages.empty">
+          <table aria-label=""class="table" *ngIf="!loading && !willayaPages.empty">
             <thead class="datatable-header">
               <tr>
-                <th>
+                <th  scope="">
                   <strong class="style-text">
                     {{ "willaya name" | translate }}
                     <a href="javascript:void(0);">
@@ -125,7 +125,7 @@
                     </a>
                   </strong>
                 </th>
-                <th>
+                <th  scope="">
                   <strong class="style-text">
                     {{ "willaya code" | translate }}
                     <a href="javascript:void(0);">
@@ -139,7 +139,7 @@
                   </strong>
                 </th>
            
-                <th>
+                <th  scope="">
                   <strong class="style-text">
                       {{'actions' | translate}}
                   </strong>

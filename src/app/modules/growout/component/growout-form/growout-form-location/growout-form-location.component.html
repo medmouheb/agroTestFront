@@ -58,7 +58,7 @@
         <option *ngFor="let c of countryPhoneCodes " [value]="c.code"> {{c.country}}
         </option>
       </select>
-      <img *ngIf="flag!=''" id="flag" style="width: 40px; height: 35px;margin-left: 1%;margin-right: 1%;"
+      <img alt=""  *ngIf="flag!=''" id="flag" style="width: 40px; height: 35px;margin-left: 1%;margin-right: 1%;"
         [src]="getflage()">
       <input  (keyup)="phoneNumberinp($event);isBlur3()" type="phone" class="form-control" name="phone" #email="ngModel" ngModel [(ngModel)]="growout.phoneNumber"
          placeholder="{{'Write your phone'|translate}} ">

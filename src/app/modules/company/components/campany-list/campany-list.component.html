@@ -38,10 +38,10 @@
       <app-no-data></app-no-data>
     </ng-container>
     <div *ngIf="fullDetail==false">
-      <table class="table" *ngIf="!loading && !companyPage.empty">
+      <table aria-label=""class="table" *ngIf="!loading && !companyPage.empty">
         <thead class="datatable-header">
           <tr>
-            <th>
+            <th  scope="">
               <strong class="style-text">
                 {{ "namecompany" | translate }}
                 <a href="javascript:void(0);">
@@ -54,7 +54,7 @@
                 </a>
               </strong>
             </th>
-            <th>
+            <th  scope="">
               <strong class="style-text">
                 {{ "codecompany" | translate }}
                 <a href="javascript:void(0);">
@@ -68,7 +68,7 @@
               </strong>
             </th>
 
-            <th>
+            <th  scope="">
               <strong class="style-text">
                 {{ "City" | translate }}
                 <a href="javascript:void(0);">
@@ -81,7 +81,7 @@
                 </a>
               </strong>
             </th>
-            <th>
+            <th  scope="">
               <strong class="style-text">
                 {{ "Willaya" | translate }}
                 <a href="javascript:void(0);">
@@ -94,7 +94,7 @@
                 </a>
               </strong>
             </th>
-            <th>
+            <th  scope="">
               <strong class="style-text">
                 {{ 'Address' | translate }}
 
@@ -108,7 +108,7 @@
                 </a>
               </strong>
             </th>
-            <th>
+            <th  scope="">
               <strong class="style-text">
                 {{ "phone" | translate }}
 
@@ -122,7 +122,7 @@
                 </a>
               </strong>
             </th>
-            <th>
+            <th  scope="">
               <strong class="style-text">
                 {{ "Email" | translate }}
 
@@ -136,7 +136,7 @@
                 </a>
               </strong>
             </th>
-            <th>
+            <th  scope="">
               <strong class="style-text">
                 {{'actions' | translate}}
               </strong>
@@ -184,10 +184,10 @@
       </table>
     </div>
     <div *ngIf="fullDetail==true">
-      <table class="table" *ngIf="!loading && !companyPage.empty">
+      <table aria-label=""class="table" *ngIf="!loading && !companyPage.empty">
         <thead class="datatable-header">
           <tr>
-            <th>
+            <th  scope="">
               <strong class="style-text">
                 {{ "namecompany" | translate }}
                 <a href="javascript:void(0);">
@@ -200,7 +200,7 @@
                 </a>
               </strong>
             </th>
-            <th>
+            <th  scope="">
               <strong class="style-text">
                 {{ "codecompany" | translate }}
                 <a href="javascript:void(0);">
@@ -214,7 +214,7 @@
               </strong>
             </th>
 
-            <th>
+            <th  scope="">
               <strong class="style-text">
                 {{ "City" | translate }}
                 <a href="javascript:void(0);">
@@ -227,13 +227,13 @@
                 </a>
               </strong>
             </th>
-            <th>
+            <th  scope="">
               <strong class="style-text">
                 {{ "City code" | translate }}
 
               </strong>
             </th>
-            <th>
+            <th  scope="">
               <strong class="style-text">
                 {{ "Willaya" | translate }}
                 <a href="javascript:void(0);">
@@ -246,13 +246,13 @@
                 </a>
               </strong>
             </th>
-            <th>
+            <th  scope="">
               <strong class="style-text">
                 {{ "Wilaya code" | translate }}
 
               </strong>
             </th>
-            <th>
+            <th  scope="">
               <strong class="style-text">
                 {{ 'Address' | translate }}
 
@@ -266,13 +266,13 @@
                 </a>
               </strong>
             </th>
-            <th>
+            <th  scope="">
               <strong class="style-text">
                 {{ "Zip code" | translate }}
 
               </strong>
             </th>
-            <th>
+            <th  scope="">
               <strong class="style-text">
                 {{ "phone" | translate }}
 
@@ -286,7 +286,7 @@
                 </a>
               </strong>
             </th>
-            <th>
+            <th  scope="">
               <strong class="style-text">
                 {{ "Email" | translate }}
 
@@ -300,7 +300,7 @@
                 </a>
               </strong>
             </th>
-            <th>
+            <th  scope="">
               <strong class="style-text">
                 {{'actions' | translate}}
               </strong>
@@ -370,10 +370,10 @@
       <app-no-data></app-no-data>
     </ng-container>
     <div *ngIf="fullDetail==false &&!loading && !companyPages.empty">
-      <table class="table" *ngIf="!loading && !companyPages.empty">
+      <table aria-label=""class="table" *ngIf="!loading && !companyPages.empty">
         <thead class="datatable-header">
           <tr>
-            <th>
+            <th  scope="">
               <strong class="style-text">
                 {{ "namecompany" | translate }}
                 <a href="javascript:void(0);">
@@ -386,7 +386,7 @@
                 </a>
               </strong>
             </th>
-            <th>
+            <th  scope="">
               <strong class="style-text">
                 {{ "codecompany" | translate }}
                 <a href="javascript:void(0);">
@@ -400,7 +400,7 @@
               </strong>
             </th>
 
-            <th>
+            <th  scope="">
               <strong class="style-text">
                 {{ "City" | translate }}
                 <a href="javascript:void(0);">
@@ -413,7 +413,7 @@
                 </a>
               </strong>
             </th>
-            <th>
+            <th  scope="">
               <strong class="style-text">
                 {{ "Willaya" | translate }}
                 <a href="javascript:void(0);">
@@ -426,7 +426,7 @@
                 </a>
               </strong>
             </th>
-            <th>
+            <th  scope="">
               <strong class="style-text">
                 {{ 'Address' | translate }}
 
@@ -440,7 +440,7 @@
                 </a>
               </strong>
             </th>
-            <th>
+            <th  scope="">
               <strong class="style-text">
                 {{ "phone" | translate }}
 
@@ -454,7 +454,7 @@
                 </a>
               </strong>
             </th>
-            <th>
+            <th  scope="">
               <strong class="style-text">
                 {{ "Email" | translate }}
 
@@ -469,7 +469,7 @@
               </strong>
             </th>
 
-            <th>
+            <th  scope="">
               <strong class="style-text">
                 {{'actions' | translate}}
               </strong>
@@ -500,7 +500,7 @@
             <td>
               {{ comp.email }}
             </td>
-            <th>
+            <th  scope="">
 
             </th>
             <td class="d-flex gap-4">
@@ -558,10 +558,10 @@
       </table>
     </div>
     <div *ngIf="fullDetail==true && !loading && !companyPages.empty">
-      <table class="table" *ngIf="!loading && !companyPage.empty">
+      <table aria-label=""class="table" *ngIf="!loading && !companyPage.empty">
         <thead class="datatable-header">
           <tr>
-            <th>
+            <th  scope="">
               <strong class="style-text">
                 {{ "namecompany" | translate }}
                 <a href="javascript:void(0);">
@@ -574,7 +574,7 @@
                 </a>
               </strong>
             </th>
-            <th>
+            <th  scope="">
               <strong class="style-text">
                 {{ "codecompany" | translate }}
                 <a href="javascript:void(0);">
@@ -588,7 +588,7 @@
               </strong>
             </th>
 
-            <th>
+            <th  scope="">
               <strong class="style-text">
                 {{ "City" | translate }}
                 <a href="javascript:void(0);">
@@ -601,13 +601,13 @@
                 </a>
               </strong>
             </th>
-            <th>
+            <th  scope="">
               <strong class="style-text">
                 {{ "City code" | translate }}
 
               </strong>
             </th>
-            <th>
+            <th  scope="">
               <strong class="style-text">
                 {{ "Willaya" | translate }}
                 <a href="javascript:void(0);">
@@ -620,13 +620,13 @@
                 </a>
               </strong>
             </th>
-            <th>
+            <th  scope="">
               <strong class="style-text">
                 {{ "Wilaya code" | translate }}
 
               </strong>
             </th>
-            <th>
+            <th  scope="">
               <strong class="style-text">
                 {{ 'Address' | translate }}
 
@@ -640,13 +640,13 @@
                 </a>
               </strong>
             </th>
-            <th>
+            <th  scope="">
               <strong class="style-text">
                 {{ "Zip code" | translate }}
 
               </strong>
             </th>
-            <th>
+            <th  scope="">
               <strong class="style-text">
                 {{ "phone" | translate }}
 
@@ -660,7 +660,7 @@
                 </a>
               </strong>
             </th>
-            <th>
+            <th  scope="">
               <strong class="style-text">
                 {{ "Email" | translate }}
 
@@ -675,7 +675,7 @@
               </strong>
 
           </tr>
-          <th>
+          <th  scope="">
             <strong class="style-text">
               {{'actions' | translate}}
             </strong>

@@ -31,10 +31,10 @@
             <app-no-data></app-no-data>
         </ng-container>
 
-        <table class="table" *ngIf="!loading && !deliveryPage.empty">
+        <table aria-label=""class="table" *ngIf="!loading && !deliveryPage.empty">
             <thead class="datatable-header">
                 <tr>
-                    <th>
+                    <th  scope="">
                         <strong  class="style-text">
                             {{'instructiuonName' | translate}}
                             <a href="javascript:void(0);">
@@ -47,7 +47,7 @@
                             </a>
                         </strong>
                     </th>
-                    <th>
+                    <th  scope="">
                         <strong  class="style-text">
                             {{'instructiuonCode' | translate}}
                             <a href="javascript:void(0);">
@@ -60,7 +60,7 @@
                             </a>
                         </strong>
                     </th>
-                    <th>
+                    <th  scope="">
                         <strong  class="style-text">
                             {{'productType' | translate}}
                             <a href="javascript:void(0);">
@@ -74,7 +74,7 @@
                         </strong>
                     </th>
              
-                    <th>
+                    <th  scope="">
                         <strong class="style-text">
                             {{'actions' | translate}}
                         </strong>
@@ -123,10 +123,10 @@
             <app-no-data></app-no-data>
         </ng-container>
 
-        <table class="table" *ngIf="!loading && !deliveryPages.empty">
+        <table aria-label=""class="table" *ngIf="!loading && !deliveryPages.empty">
             <thead class="datatable-header">
                 <tr>
-                    <th>
+                    <th  scope="">
                         <strong  class="style-text">
                             {{'instructiuonName' | translate}}
                             <a href="javascript:void(0);">
@@ -139,7 +139,7 @@
                             </a>
                         </strong>
                     </th>
-                    <th>
+                    <th  scope="">
                         <strong  class="style-text">
                             {{'instructiuonCode' | translate}}
                             <a href="javascript:void(0);">
@@ -152,7 +152,7 @@
                             </a>
                         </strong>
                     </th>
-                    <th>
+                    <th  scope="">
                         <strong  class="style-text">
                             {{'productType' | translate}}
                             <a href="javascript:void(0);">
@@ -166,7 +166,7 @@
                         </strong>
                     </th>
              
-                    <th>
+                    <th  scope="">
                         <strong class="style-text">
                             {{'actions' | translate}}
                         </strong>

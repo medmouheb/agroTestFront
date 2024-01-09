@@ -30,10 +30,10 @@
             <app-no-data></app-no-data>
         </ng-container>
 
-        <table class="table" *ngIf="!loading && !vehicleTypePage.empty ">
+        <table aria-label=""class="table" *ngIf="!loading && !vehicleTypePage.empty ">
             <thead class="datatable-header">
                 <tr>
-                    <th>
+                    <th  scope="">
                         <strong class="style-text">
                             {{'vehiclecode' | translate}}
                             <a href="javascript:void(0);">
@@ -47,7 +47,7 @@
                             </a>
                         </strong>
                     </th>
-                    <th>
+                    <th  scope="">
                         <strong class="style-text">
                             {{'vehiclename' | translate}}
                             <a href="javascript:void(0);">
@@ -64,7 +64,7 @@
 
 
 
-                    <th>
+                    <th  scope="">
                         <strong class="style-text">
                             {{'actions' | translate}}
                         </strong>

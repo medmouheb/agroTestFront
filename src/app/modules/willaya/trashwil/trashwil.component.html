@@ -24,10 +24,10 @@
         </ng-container>
 
 
-        <table class="table" *ngIf="!loading && !willayaPage.empty">
+        <table aria-label=""class="table" *ngIf="!loading && !willayaPage.empty">
               <thead class="datatable-header">
                 <tr>
-                    <th>
+                    <th  scope="">
                         <strong>
                             {{'code' | translate}}
                             <a href="javascript:void(0);">
@@ -40,7 +40,7 @@
                             </a>
                         </strong>
                     </th>
-                    <th>
+                    <th  scope="">
                         <strong>
                             {{'namewillaya' | translate}}
                             <a href="javascript:void(0);">

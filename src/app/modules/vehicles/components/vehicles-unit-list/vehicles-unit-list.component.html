@@ -35,10 +35,10 @@
     </ng-container>
 
     <div *ngIf="fullDetail==false">
-      <table class="table" *ngIf="!loading && !companyPage.empty">
+      <table aria-label=""class="table" *ngIf="!loading && !companyPage.empty">
         <thead class="datatable-header">
           <tr>
-            <th>
+            <th  scope="">
               <strong class="style-text">
                 {{ "Nom Veshicle" | translate }}
                 <a href="javascript:void(0);">
@@ -51,7 +51,7 @@
                 </a>
               </strong>
             </th>
-            <th>
+            <th  scope="">
               <strong class="style-text">
                 {{ "Code Vehicles" | translate }}
                 <a href="javascript:void(0);">
@@ -65,13 +65,13 @@
               </strong>
             </th>
 
-            <th>
+            <th  scope="">
               <strong class="style-text">
                 {{ "papiersDuVehicule" | translate }}
 
               </strong>
             </th>
-            <th>
+            <th  scope="">
               <strong class="style-text">
                 {{'actions' | translate}}
               </strong>
@@ -126,10 +126,10 @@
       <app-no-data></app-no-data>
     </ng-container>
 
-    <table class="table" *ngIf="!loading && !companyPages.empty">
+    <table aria-label=""class="table" *ngIf="!loading && !companyPages.empty">
       <thead class="datatable-header">
         <tr>
-          <th>
+          <th  scope="">
             <strong class="style-text">
               {{ "Nom Veshicle" | translate }}
               <a href="javascript:void(0);">
@@ -142,7 +142,7 @@
               </a>
             </strong>
           </th>
-          <th>
+          <th  scope="">
             <strong class="style-text">
               {{ "Code Vehicles" | translate }}
               <a href="javascript:void(0);">
@@ -155,13 +155,13 @@
               </a>
             </strong>
           </th>
-          <th>
+          <th  scope="">
             <strong class="style-text">
               {{ "papiersDuVehicule" | translate }}
 
             </strong>
           </th>
-          <th>
+          <th  scope="">
             <strong class="style-text">
               {{'actions' | translate}}
             </strong>

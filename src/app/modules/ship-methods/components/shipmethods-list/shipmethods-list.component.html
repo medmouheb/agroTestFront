@@ -31,10 +31,10 @@
             <app-no-data></app-no-data>
         </ng-container>
 
-        <table class="table" *ngIf="!loading && !shipmethodPage.empty">
+        <table aria-label=""class="table" *ngIf="!loading && !shipmethodPage.empty">
             <thead class="datatable-header">
                 <tr>
-                    <th>
+                    <th  scope="">
                         <strong class="style-text">
                             {{'nameship' | translate}}
                             <a href="javascript:void(0);">
@@ -48,7 +48,7 @@
                             </a>
                         </strong>
                     </th>
-                    <th>
+                    <th  scope="">
                         <strong class="style-text">
                             {{'codeship' | translate}}
                             <a href="javascript:void(0);">
@@ -62,7 +62,7 @@
                             </a>
                         </strong>
                     </th>
-                    <th>
+                    <th  scope="">
                         <strong class="style-text">
                             {{'actions' | translate}}
                         </strong>
@@ -107,10 +107,10 @@
             <app-no-data></app-no-data>
         </ng-container>
 
-        <table class="table" *ngIf="!loading && !shipmethodPages.empty">
+        <table aria-label=""class="table" *ngIf="!loading && !shipmethodPages.empty">
             <thead class="datatable-header">
                 <tr>
-                    <th>
+                    <th  scope="">
                         <strong class="style-text">
                             {{'nameship' | translate}}
                             <a href="javascript:void(0);">
@@ -124,7 +124,7 @@
                             </a>
                         </strong>
                     </th>
-                    <th>
+                    <th  scope="">
                         <strong class="style-text">
                             {{'codeship' | translate}}
                             <a href="javascript:void(0);">
@@ -138,7 +138,7 @@
                             </a>
                         </strong>
                     </th>
-                    <th>
+                    <th  scope="">
                         <strong class="style-text">
                             {{'actions' | translate}}
                         </strong>

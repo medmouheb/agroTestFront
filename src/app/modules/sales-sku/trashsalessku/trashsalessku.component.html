@@ -23,10 +23,10 @@
         </ng-container>
 
 
-        <table class="table" *ngIf="!loading && !Page.empty">
+        <table aria-label=""class="table" *ngIf="!loading && !Page.empty">
             <thead class="datatable-header">
                 <tr>
-                    <th>
+                    <th  scope="">
                         <strong>
                             {{'sailorCodeSku' | translate}}
                             <a href="javascript:void(0);">
@@ -39,7 +39,7 @@
                             </a>
                         </strong>
                     </th>
-                    <th>
+                    <th  scope="">
                         <strong>
                             {{'sailorNameSku' | translate}}
                             <a href="javascript:void(0);">

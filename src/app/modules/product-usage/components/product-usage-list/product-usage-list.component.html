@@ -36,10 +36,10 @@
 
 
 
-        <table class="table" *ngIf="!loading && !companyPage.empty">
+        <table aria-label=""class="table" *ngIf="!loading && !companyPage.empty">
           <thead class="datatable-header">
             <tr>
-              <th>
+              <th  scope="">
                 <strong class="style-text">
                   {{ "nomDuProduit" | translate }}
                   <a href="javascript:void(0);">
@@ -52,7 +52,7 @@
                   </a>
                 </strong>
               </th>
-              <th>
+              <th  scope="">
                 <strong class="style-text">
                   {{ "Code Produit" | translate }}
                   <a href="javascript:void(0);">
@@ -65,7 +65,7 @@
                   </a>
                 </strong>
               </th>
-              <th>
+              <th  scope="">
                 <strong class="style-text">
                   {{ "numeroDeLot" | translate }}
                   <a href="javascript:void(0);">
@@ -78,7 +78,7 @@
                   </a>
                 </strong>
               </th>
-              <th>
+              <th  scope="">
                 <strong class="style-text">
                   {{ "nDeReference" | translate }}
                   <a href="javascript:void(0);">
@@ -91,7 +91,7 @@
                   </a>
                 </strong>
               </th>
-              <th>
+              <th  scope="">
                 <strong class="style-text">
                     {{'actions' | translate}}
                 </strong>
@@ -144,10 +144,10 @@
 
 
 
-        <table class="table" *ngIf="!loading && !companyPages.empty">
+        <table aria-label=""class="table" *ngIf="!loading && !companyPages.empty">
           <thead class="datatable-header">
             <tr>
-              <th>
+              <th  scope="">
                 <strong class="style-text">
                   {{ "nomDuProduit" | translate }}
                   <a href="javascript:void(0);">
@@ -160,7 +160,7 @@
                   </a>
                 </strong>
               </th>
-              <th>
+              <th  scope="">
                 <strong class="style-text">
                   {{ "codeProduit" | translate }}
                   <a href="javascript:void(0);">
@@ -173,7 +173,7 @@
                   </a>
                 </strong>
               </th>
-              <th>
+              <th  scope="">
                 <strong class="style-text">
                   {{ "numeroDeLot" | translate }}
                   <a href="javascript:void(0);">
@@ -186,7 +186,7 @@
                   </a>
                 </strong>
               </th>
-              <th>
+              <th  scope="">
                 <strong class="style-text">
                   {{ "nDeReference" | translate }}
                   <a href="javascript:void(0);">
@@ -199,7 +199,7 @@
                   </a>
                 </strong>
               </th>
-              <th>
+              <th  scope="">
                 <strong class="style-text">
                     {{'actions' | translate}}
                 </strong>

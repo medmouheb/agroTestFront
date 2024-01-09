@@ -31,10 +31,10 @@
             <app-no-data></app-no-data>
         </ng-container>
 
-        <table class="table" *ngIf="!loading && !currencyPage.empty">
+        <table aria-label=""class="table" *ngIf="!loading && !currencyPage.empty">
             <thead class="datatable-header">
                 <tr>
-                    <th>
+                    <th  scope="">
                         <strong  class="style-text">
                             {{'currencyName' | translate}}
                             <a href="javascript:void(0);">
@@ -47,7 +47,7 @@
                             </a>
                         </strong>
                     </th>
-                    <th>
+                    <th  scope="">
                         <strong  class="style-text">
                             {{'currencyCode' | translate}}
                             <a href="javascript:void(0);">
@@ -61,7 +61,7 @@
                         </strong>
                     </th>
                  
-                    <th>
+                    <th  scope="">
                         <strong  class="style-text">
                             {{'countryName' | translate}}
                             <a href="javascript:void(0);">
@@ -74,7 +74,7 @@
                             </a>
                         </strong>
                     </th>
-                    <th>
+                    <th  scope="">
                         <strong  class="style-text">
                             {{'Digitalcode' | translate}}
                             <a href="javascript:void(0);">
@@ -87,7 +87,7 @@
                             </a>
                         </strong>
                     </th>
-                    <th>
+                    <th  scope="">
                         <strong  class="style-text">
                           {{'actions' | translate}}
                         </strong>
@@ -137,10 +137,10 @@
             <app-no-data></app-no-data>
         </ng-container>
 
-        <table class="table" *ngIf="!loading && !currencyPages.empty">
+        <table aria-label=""class="table" *ngIf="!loading && !currencyPages.empty">
             <thead class="datatable-header">
                 <tr>
-                    <th>
+                    <th  scope="">
                         <strong  class="style-text">
                             {{'currencyName' | translate}}
                             <a href="javascript:void(0);">
@@ -153,7 +153,7 @@
                             </a>
                         </strong>
                     </th>
-                    <th>
+                    <th  scope="">
                         <strong  class="style-text">
                             {{'currencyCode' | translate}}
                             <a href="javascript:void(0);">
@@ -167,7 +167,7 @@
                         </strong>
                     </th>
                  
-                    <th>
+                    <th  scope="">
                         <strong  class="style-text">
                             {{'countryName' | translate}}
                             <a href="javascript:void(0);">
@@ -180,7 +180,7 @@
                             </a>
                         </strong>
                     </th>
-                    <th>
+                    <th  scope="">
                         <strong  class="style-text">
                             {{'Digitalcode' | translate}}
                             <a href="javascript:void(0);">
@@ -193,7 +193,7 @@
                             </a>
                         </strong>
                     </th>
-                    <th>
+                    <th  scope="">
                         <strong  class="style-text">
                           {{'actions' | translate}}
                         </strong>

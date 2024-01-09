@@ -272,7 +272,7 @@ export class ChargeListComponent implements OnInit {
           next: () => {
            this.findPage()
             this.archiveModal.hide();
-            this.toastService.success;
+            this.toastService.success();
             
           },
         });

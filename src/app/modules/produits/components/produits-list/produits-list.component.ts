@@ -312,7 +312,7 @@ export class ProduitsListComponent implements OnInit {
           this.findPage();
           this.findArchivedPage()
           this.archiveModal.hide();
-          this.toastService.success;
+          this.toastService.success();
 
           
         },

@@ -43,10 +43,10 @@
       <app-no-data></app-no-data>
     </ng-container>
 
-    <table class="table" *ngIf="!loading && !produitsPage.empty">
+    <table aria-label=""class="table" *ngIf="!loading && !produitsPage.empty">
       <thead class="datatable-header">
         <tr>
-          <th>
+          <th  scope="">
             <strong class="style-text">
               {{'nameField' | translate}}
               <a href="javascript:void(0);">
@@ -59,7 +59,7 @@
               </a>
             </strong >
           </th>
-          <th>
+          <th  scope="">
             <strong class="style-text">
               {{'codeField' | translate}}
               <a href="javascript:void(0);">
@@ -73,7 +73,7 @@
             </strong>
           </th>
    
-          <th>
+          <th  scope="">
             <strong class="style-text">
               {{'category' | translate}}
               <a href="javascript:void(0);">
@@ -86,7 +86,7 @@
               </a>
             </strong>
           </th>
-          <th>
+          <th  scope="">
             <strong class="style-text">
               {{'status' | translate}}
               <a href="javascript:void(0);">
@@ -99,7 +99,7 @@
               </a>
             </strong>
           </th>
-          <th>
+          <th  scope="">
             <strong class="style-text">
               {{'prixUnitaireHt' | translate}}
               <a href="javascript:void(0);">
@@ -112,7 +112,7 @@
               </a>
             </strong>
           </th>
-          <th>
+          <th  scope="">
             <strong class="style-text">
               {{'tauxTva' | translate}}
               <a href="javascript:void(0);">
@@ -125,13 +125,13 @@
               </a>
             </strong>
           </th>
-          <th>
+          <th  scope="">
             <strong class="style-text">
               {{'prixTTC' | translate}}
 
             </strong>
           </th>
-          <th>
+          <th  scope="">
             <strong class="style-text">
               {{'actions' | translate}}
         
@@ -196,10 +196,10 @@
       <app-no-data></app-no-data>
     </ng-container>
 
-    <table class="table" *ngIf="!loading && !produitsPages.empty">
+    <table aria-label=""class="table" *ngIf="!loading && !produitsPages.empty">
       <thead class="datatable-header">
         <tr>
-          <th>
+          <th  scope="">
             <strong class="style-text">
               {{'nameField' | translate}}
               <a href="javascript:void(0);">
@@ -212,7 +212,7 @@
               </a>
             </strong >
           </th>
-          <th>
+          <th  scope="">
             <strong class="style-text">
               {{'codeField' | translate}}
               <a href="javascript:void(0);">
@@ -226,7 +226,7 @@
             </strong>
           </th>
    
-          <th>
+          <th  scope="">
             <strong class="style-text">
               {{'category' | translate}}
               <a href="javascript:void(0);">
@@ -239,7 +239,7 @@
               </a>
             </strong>
           </th>
-          <th>
+          <th  scope="">
             <strong class="style-text">
               {{'status' | translate}}
               <a href="javascript:void(0);">
@@ -252,7 +252,7 @@
               </a>
             </strong>
           </th>
-          <th>
+          <th  scope="">
             <strong class="style-text">
               {{'prixUnitaireHt' | translate}}
               <a href="javascript:void(0);">
@@ -265,7 +265,7 @@
               </a>
             </strong>
           </th>
-          <th>
+          <th  scope="">
             <strong class="style-text">
               {{'tauxTva' | translate}}
               <a href="javascript:void(0);">
@@ -278,12 +278,12 @@
               </a>
             </strong>
           </th>
-          <th>
+          <th  scope="">
             <strong class="style-text">
               {{'prixTTC' | translate}}
             </strong>
           </th>
-          <th>
+          <th  scope="">
             <strong class="style-text">
               {{'actions' | translate}}
         
