@@ -46,7 +46,7 @@ export class TrashFouComponent implements OnInit {
 
   ngOnInit(): void {
     this.findArchivedPage();
-    console.log(this.findArchivedPage.length);
+    
     this.onPaginationChange.subscribe(() => this.findArchivedPage());
   }
 
@@ -101,7 +101,7 @@ export class TrashFouComponent implements OnInit {
             elem: this.translateService.instant("vendor"),
           })
         );
-        console.log(id);
+        
       },
     });
   }
@@ -110,7 +110,7 @@ export class TrashFouComponent implements OnInit {
     this.fournisseursService.delete(id).subscribe({
       next: () => {
         this.findArchivedPage();
-        console.log("Success");
+        
         this.toastService.success(
           this.translateService.instant("success.deleted", {
             elem: this.translateService.instant("vendor"),

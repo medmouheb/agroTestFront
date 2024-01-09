@@ -19,7 +19,7 @@ export class VendorSKUFormGeneralComponent implements OnInit {
   codes: Array<String> = [];
   ngOnInit(): void {
     if (this.Vendorsku.vendorCode == undefined) {
-      console.log(this.Vendorsku)
+      
     }
     this.initForm();
     this.getallfourniss()
@@ -54,9 +54,9 @@ export class VendorSKUFormGeneralComponent implements OnInit {
 
       ]),
     });
-    console.log("====================================");
-    console.log(" add form :", this.addform);
-    console.log("====================================");
+    
+    
+    
   }
   minIstrueName2: boolean = false
   isBlur2() {
@@ -70,16 +70,16 @@ export class VendorSKUFormGeneralComponent implements OnInit {
     }
   }
   geValues(event) {
-    console.log("====================================");
-    console.log("event :", event);
-    console.log("====================================");
+    
+    
+    
 
-    console.log("====================================");
-    console.log("le formulaire :", this.addform);
-    console.log("====================================");
+    
+    
+    
 
-    console.log(this.Vendorsku.vendorSKUCode);
-    console.log(this.Vendorsku.vendorSKUName);
+    
+    
     console.log(
       "this.currency.code.length",
 
@@ -175,7 +175,7 @@ export class VendorSKUFormGeneralComponent implements OnInit {
   fournisseurs: any
   getallfourniss() {
     this.fournisseurservice.findAll().subscribe({
-      next: (result) => { this.fournisseurs = result; console.log("8==", this.fournisseurs) },
+      next: (result) => { this.fournisseurs = result;  },
       error: (error) => console.error(error),
     });
   }

@@ -34,8 +34,8 @@ export class TrashComponent implements OnInit {
   reasons: Array<reason> = [];
   reasonName: string = '';
 
-  // Page: Page<Fournisseur> = initPage;
-  // onPaginationChange: EventEmitter<string> = new EventEmitter<string>();
+
+
 
   constructor(
     private translateService: TranslateService,
@@ -52,7 +52,7 @@ export class TrashComponent implements OnInit {
     this.service.getArchivedReasons().subscribe({
       next: (result) => {
         this.reasons = result;
-        console.log(this.reasons);
+        
       },
       error: (error) => {
         this.loading = false;
@@ -62,22 +62,22 @@ export class TrashComponent implements OnInit {
     });
   }
 
-  // findArchivedPage() {
-  //   this.loading = true;
-  //   this.fournisseursService
-  //     .findArchivedPage(this.pageNumber, this.pageSize, this.filter)
-  //     .subscribe({
-  //       next: (result) => {
-  //         this.fournisseurs = result.content;
-  //         this.Page = result;
-  //       },
-  //       error: (error) => {
-  //         this.loading = false;
-  //         console.error(error);
-  //       },
-  //       complete: () => (this.loading = false),
-  //     });
-  // }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   findById(id: string) {
     this.service.findReasonById(id).subscribe({
@@ -86,22 +86,22 @@ export class TrashComponent implements OnInit {
     });
   }
 
-  // onFilterChange(filter: string) {
-  //   this.filter = filter;
-  //   this.pageNumber = 0;
-  //   this.onPaginationChange.emit("");
-  // }
 
-  // onPageNumberChange(pageNumber: number) {
-  //   this.pageNumber = pageNumber;
-  //   this.onPaginationChange.emit("");
-  // }
 
-  // onPageSizeChange(pageSize: number) {
-  //   this.pageSize = pageSize;
-  //   this.pageNumber = 0;
-  //   this.onPaginationChange.emit("");
-  // }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -181,7 +181,7 @@ export class TrashComponent implements OnInit {
             elem: this.translateService.instant("reason"),
           })
         );
-        console.log(id);
+        
       },
     });
   }
@@ -190,7 +190,7 @@ export class TrashComponent implements OnInit {
     this.service.delete(id).subscribe({
       next: () => {
         this.getArchivedReasons()
-        console.log("Success");
+        
         this.toastService.success(
           this.translateService.instant("success.permadeleted", {
             elem: this.translateService.instant("reason"),
@@ -203,7 +203,7 @@ export class TrashComponent implements OnInit {
     this.service.searchReasonByNameArchived(this.reasonName).subscribe({
       next: (result) => {
         this.reasons = result;
-        console.log(this.reasons);
+        
       },
       error: (error) => console.error(error),
     });

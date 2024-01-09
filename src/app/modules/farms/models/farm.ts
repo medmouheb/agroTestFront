@@ -52,18 +52,18 @@ export type Farm = {
   liveProductday?: any
   maxturckcapacity?: any
   payee?: any
-  //projection
+
   projectwarehouse?: any
   projectligistic?: any
 
-  //distance
+
   distnfarmlogi?: any
   distnfarmMarket?: any
 
   warehouseprimary?: any
   warehousesecondry?: any
 
-  //Visitors Logs
+
   visitDate?: any
   firstNameVisit?: any
   lastNameVisit?: any
@@ -72,17 +72,17 @@ export type Farm = {
   timeoutVisit?: any
   purposeofthevisit?: any
 
-  //cezrtiff
+
   certifications?: any
 
-  //Contract Farms
+
   contractNumber?: any
   contratPay?: any
   startDateFarms?: any
   endDateFarms?: any
   renewalDateFarms?: any
 
-  //Paiement information
+
   paymentType?: any//Checking, saving or paycheck 
   accountNumber?: any
   bankName?: any
@@ -92,7 +92,7 @@ export type Farm = {
   typepayment?: any//auto or not
   operationDate?: any //satesystem
   amounttransferred?: any
-  //Resource Information
+
   ressourceInformation?: any
   statutInformation?: any
   adressInformation?: any

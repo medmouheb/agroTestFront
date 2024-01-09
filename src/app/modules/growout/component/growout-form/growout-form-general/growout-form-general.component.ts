@@ -58,7 +58,7 @@ export class GrowoutFormGeneralComponent implements OnInit {
   }
   getAlldivision() {
     this.divisionService.findAll().subscribe({
-      next: (result) => { this.divisions = result; console.log("2==", result) },
+      next: (result) => { this.divisions = result;  },
       error: (error) => console.error(error),
     });
   }
@@ -90,15 +90,15 @@ export class GrowoutFormGeneralComponent implements OnInit {
     }
 
   }
-  // generateRandomCode() {
-  //   const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-  //   let code = '';
-  //   for (let i = 0; i < 4; i++) {
-  //     const randomIndex = Math.floor(Math.random() * characters.length);
-  //     code += characters.charAt(randomIndex);
-  //   }
-  //   return code;
-  // }
+
+
+
+
+
+
+
+
+
 
   newSeggestions = ""
 
@@ -122,7 +122,7 @@ export class GrowoutFormGeneralComponent implements OnInit {
 
 
   selectVAlue(e: any) {
-    console.log("3==", e.target.value)
+    
     let t = this.divisions.filter(el => { return el.code == e.target.value })[0].name
     let a = this.divisions.filter(el => { return el.code == e.target.value })[0].address
     let em = this.divisions.filter(el => { return el.code == e.target.value })[0].email
@@ -162,10 +162,10 @@ export class GrowoutFormGeneralComponent implements OnInit {
     this.addform.value['zipCode'] = zc
     this.addform.value['phoneNumber'] = pn
 
-    console.log("3==", this.addform.value)
-    console.log("5==", this.growout)
+    
+    
 
-    console.log("4==", t)
+    
 
   }
   initForm() {
@@ -192,7 +192,7 @@ export class GrowoutFormGeneralComponent implements OnInit {
   }
 
   geValues(event) {
-    console.log("5555")
+    
     if (
       this.dispotrueCode == false && this.dispotruename == false &&
       this.growout.code != null &&
@@ -208,10 +208,10 @@ export class GrowoutFormGeneralComponent implements OnInit {
       this.growout.divisionCode.toString().length >= 1 &&
       this.growout.divisionName.toString().length >= 1
     ) {
-      console.log("8888")
+      
       this.sharedService.setIsActive(true);
     } else {
-      console.log("9999")
+      
 
       this.sharedService.setIsActive(false);
     }
@@ -235,10 +235,10 @@ export class GrowoutFormGeneralComponent implements OnInit {
 
   validationCode() {
     const codeRegex: RegExp = /^[a-zA-Z0-9]*$/;
-    console.log(this.growout.code)
+    
     if (codeRegex.test(this.growout.code)) {
       this.codeIsvalid = false;
-      console.log(this.growout.code)
+      
 
     }
     else {
@@ -276,7 +276,7 @@ export class GrowoutFormGeneralComponent implements OnInit {
       this.DCisvalid = false
     }
 
-    console.log(this.growout.code)
+    
 
 
   }

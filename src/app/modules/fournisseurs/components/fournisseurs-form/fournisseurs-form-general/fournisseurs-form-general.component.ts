@@ -110,14 +110,14 @@ export class FournisseursFormGeneralComponent implements OnInit {
   selectValue(e: any) {
 
     let wil = this.cuurencys.filter(el => {
-      console.log(el)
+      
       return el.code == e.target.value
 
     })[0].name
-    //this.addform.value['currencyname']=wil
+
     this.fournisseur.currencyname = wil
-    console.log(this.fournisseur.currencycode)
-    console.log(this.fournisseur.currencyname)
+    
+    
 
 
   }
@@ -174,10 +174,10 @@ export class FournisseursFormGeneralComponent implements OnInit {
 
 validationCode() {
   const codeRegex: RegExp =/^[a-zA-Z0-9]*$/;
-  console.log(this.fournisseur.code)
+  
   if (codeRegex.test(this.fournisseur.code)) {
     this.codeIsvalid = false;
-  console.log(this.fournisseur.code)
+  
 
   }
   else {
@@ -191,15 +191,15 @@ validationCode() {
     return this.addform.controls;
   }
 
-  // isControlValid(controlCode: string): boolean {
-  //   const control = this.addform.controls[controlCode];
-  //   return control.invalid && (control.dirty || control.touched);
-  // }
 
-  // isControlInValid(controlName: string): boolean {
-  //   const control = this.addform.controls[controlName];
-  //   return control.invalid && (control.dirty || control.touched);
-  // }
+
+
+
+
+
+
+
+
 
 
 

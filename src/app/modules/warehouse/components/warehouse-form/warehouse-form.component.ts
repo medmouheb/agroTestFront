@@ -47,21 +47,21 @@ export class WarehouseFormComponent implements OnInit {
 
   constructor() { }
 
-  // onCostCenterChange(event: any){
-  //   const costCenter = this.costCenters.find(item => item.code == event)
-  //   this.warehouse.costCenterCode = costCenter?.code
-  //   this.warehouse.costCenterName = costCenter?.name
-  //   this.warehouse.costCenterType = costCenter?.type
-  // }
 
-  // onDivisionChange(event: any){
-  //   const division = this.divisions.find(item => item.code == event)
-  //   this.warehouse.divisionCode = division?.code
-  //   this.warehouse.divisionName = division?.name
-  // }
+
+
+
+
+
+
+
+
+
+
+
 
   onStepChange(step: number){
-    console.log(step)
+    
     this.currentStep = step
   }
 

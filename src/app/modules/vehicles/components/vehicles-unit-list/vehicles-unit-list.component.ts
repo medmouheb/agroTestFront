@@ -56,7 +56,7 @@ export class VehiclesUnitListComponent implements OnInit {
     private formBuilder: FormBuilder
   ) { }
   onCheckboxChange() {
-    console.log("La valeur de la case à cocher est : ", this.isChecked);
+    
     if (this.isChecked == false) {
 
       this.affiche = false
@@ -65,18 +65,18 @@ export class VehiclesUnitListComponent implements OnInit {
       this.affiche = true
     }
   }
-  // onCheckboxFullChange() {
-  //   console.log("La valeur de la case à cocher est : ", this.isCheckedFull);
-  //   if (this.isCheckedFull==false){
 
-  //     this.fullDetail=false
-  //   }
-  //   else{
-  //     this.fullDetail=true
-  //   }
-  // }
 
-  // isCheckedFull:false
+
+
+
+
+
+
+
+
+
+
   ngOnInit(): void {
     this.findPage();
     this.findArchivedPage()
@@ -130,7 +130,7 @@ export class VehiclesUnitListComponent implements OnInit {
   }
 
   onSave(id: string | null) {
-    console.log(this.camp)
+    
     this.toastService.loading(
       this.translateService.instant("message.loading..."),
       {
@@ -226,17 +226,17 @@ export class VehiclesUnitListComponent implements OnInit {
               elem: this.translateService.instant("Vehicles"),
             })
           );
-          //   console.log(id);
+
         },
-        // error: (error) => {
-        //   this.archiveModal.hide();
-        //   this.toastService.close("0");
-        //   this.toastService.error(
-        //     this.translateService.instant(error.error, {
-        //       elem: this.translateService.instant("growout"),
-        //     })
-        //   );
-        // },
+
+
+
+
+
+
+
+
+
       });
     });
   }
@@ -295,7 +295,7 @@ export class VehiclesUnitListComponent implements OnInit {
 
 
   onClickdisArchive(id: string) {
-    console.log(id);
+    
 
     this.vehiclesService.disArchive(id).subscribe({
       next: () => {
@@ -306,18 +306,18 @@ export class VehiclesUnitListComponent implements OnInit {
             elem: this.translateService.instant("Vehicles"),
           })
         );
-        console.log(id);
+        
       },
     });
   }
 
   onClickDelete(id: string) {
-    console.log("id: " + id);
+    
     this.vehiclesService.delete(id).subscribe({
       next: () => {
         this.findArchivedPage();
         this.findPage()
-        console.log("Success");
+        
         this.toastService.success(
           this.translateService.instant("success.deleted", {
             elem: this.translateService.instant("Vehicles"),

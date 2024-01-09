@@ -65,13 +65,13 @@ export const ROUTES: Categries[] = [
             icon: "corporate_fare",
             class: "",
           },
-          // {
-          //   label: "Beginning inventories",
-          //   path: "/beginninginventory",
-          //   title: "menu.beginninginventories",
-          //   icon: "inventory_2",
-          //   class: "",
-          // },
+
+
+
+
+
+
+
           {
             label: "division",
             path: "/division",
@@ -392,13 +392,13 @@ export const ROUTES: Categries[] = [
                 path: "/vehicule",
 
               },
-              //  {
-              //   label: "menu.vehicleType",
-              //   title: "menu.vehicleType",
-              //   icon: "corporate_fare",
-              //   class: "",
-              //   path: "/vehicleType"
-              // },
+
+
+
+
+
+
+
 
 
             ],
@@ -421,13 +421,13 @@ export const ROUTES: Categries[] = [
             icon: "person",
 
           },
-          // {
-          //   label: "steps.vendorSKU",
-          //   path: "/vendorsku",
-          //   title: "vendorSKU",
-          //   icon: "corporate_fare",
 
-          // },
+
+
+
+
+
+
           {
             label: "menu.sales",
             path: "/sales",
@@ -516,13 +516,13 @@ export const ROUTES: Categries[] = [
               },
             ],
           },
-          // {
-          //   label: "menu.Drivers",
-          //   title: "Drivers",
-          //   icon: "corporate_fare",
-          //   path: "/drivers",
-          //   class: "",
-          // },
+
+
+
+
+
+
+
           {
             label: "menu.Driver",
             title: "Driver",
@@ -785,7 +785,7 @@ export class SidebarComponent implements OnInit {
   }
 
   redirect() {
-    console.log("ooo");
+    
     this.router.navigate(["/start"]);
   }
 
@@ -824,14 +824,14 @@ export class SidebarComponent implements OnInit {
     this.selectedIndex4 = -1
   }
 
-  // isThisvalidTitle1(index:number){
-  //   if(this.selectedType=="title1" &&
-  //   this.selectedIndex==index){
-  //     return true
-  //   }else{
-  //     return false
-  //   }
-  // }
+
+
+
+
+
+
+
+
 
   handleClickTitle2(index: number, id) {
 
@@ -873,12 +873,12 @@ export class SidebarComponent implements OnInit {
     if (menu != "18") {
       document.getElementById("18").classList.remove("show");
     }
-    console.log("aaa:::", menu)
+    
     if (menu === "Dashboard") {
       this.router.navigate(["/dashboard"]);
     }
     let result = target.hasAttribute("id");
-    console.log(menu)
+    
     if (result) {
       $(`#${menu}`).toggleClass("show");
       $(`#${menu}`).toggleClass("collapsed");
@@ -888,12 +888,12 @@ export class SidebarComponent implements OnInit {
   public clickMenu(menu: string, target: any) {
 
     let result = target.hasAttribute("name");
-    // if(menu!="15"){
-    //   $(`#15`).classList.remove("show");
-    // }
-    // if(menu!="18"){
-    //   $(`#18`).classList.remove("show");
-    // }
+
+
+
+
+
+
     if (result) {
       $(`#${menu}`).toggleClass("show");
       $(`#${menu}`).toggleClass("collapsed");
@@ -902,7 +902,7 @@ export class SidebarComponent implements OnInit {
 
   public clicksub(menu: string, target: any) {
     let result = target.hasAttribute("subcat");
-    console.log(`#${menu}-dropdown`, "a::::", menu)
+    
     if (result) {
       $(`#${menu}-dropdown`).toggleClass("show");
       $(`#${menu}`).toggleClass("collapsed");

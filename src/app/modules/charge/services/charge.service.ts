@@ -13,7 +13,7 @@ export class ChargeService {
 
   baseUrl() {
     return `${environment.apiUrl}`;
-    // return "http://localhost:8080"
+
   }
 
   save(id: string | null, charge: Charge): Observable<Charge> {

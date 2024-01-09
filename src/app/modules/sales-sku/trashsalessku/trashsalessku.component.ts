@@ -51,7 +51,7 @@ export class TrashsalesskuComponent implements OnInit {
 
   ngOnInit(): void {
     this.findArchivedPage();
-    console.log(this.findArchivedPage.length);
+    
     this.onPaginationChange.subscribe(() => this.findArchivedPage());
   }
   goto(){
@@ -109,53 +109,53 @@ export class TrashsalesskuComponent implements OnInit {
             elem: this.translateService.instant("salessku"),
           })
         );
-        console.log(id);
+        
       },
     });
   }
 
-  // onClickdisArchive(id: string) {
-  //   console.log("====================================");
-  //   console.log("ji");
-  //   console.log("====================================");
-  //   this.disarchiveModal.show(() => {
-  //     console.log("====================================");
-  //     console.log("yep");
-  //     console.log("====================================");
-  //     this.toastService.loading(
-  //       this.translateService.instant("message.loading..."),
-  //       {
-  //         id: "0",
-  //       }
-  //     );
-  //     this.salesskuservice.disArchive(id).subscribe({
-  //       next: () => {
-  //         this.disarchiveModal.hide();
-  //         this.toastService.close("0");
-  //         this.toastService.success(
-  //           this.translateService.instant("success.deleted", {
-  //             elem: this.translateService.instant("item"),
-  //           })
-  //         );
-  //       },
-  //       // error: (error) => {
-  //       //   this.disarchiveModal.hide();
-  //       //   this.toastService.close("0");
-  //       //   this.toastService.error(
-  //       //     this.translateService.instant(error.error, {
-  //       //       elem: this.translateService.instant("item"),
-  //       //     })
-  //       //   );
-  //       // },
-  //     });
-  //   });
-  // }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   onClickDelete(id: string) {
     this.salesskuservice.delete(id).subscribe({
       next: () => {
         this.findArchivedPage();
-        console.log("Success");
+        
         this.toastService.success(
           this.translateService.instant("success.deleted", {
             elem: this.translateService.instant("salessku"),

@@ -70,24 +70,24 @@ export class SalesFormGeneralComponent implements OnInit {
 
       ]),
       Payment_Term: new FormControl("", [
-        // Validators.required,
-        // Validators.minLength(3),
-        // Validators.maxLength(8),
+
+
+
       ]),
       type: new FormControl("", [
-        // Validators.required,
-        // Validators.minLength(3),
-        // Validators.maxLength(8),
+
+
+
       ]),
     });
 
   }
   geValues(event) {
-    // console.log("tyu::", this.sales.type,
-    //   this.sales.code != null,
-    //   this.sales.code != "",
-    //   this.sales.name != null, this.existcodeIsvalid == false, this.dispotruename == false,
-    //   this.sales.name != "")
+
+
+
+
+
 
     if (
       !this.codeIsvalid &&
@@ -122,7 +122,7 @@ export class SalesFormGeneralComponent implements OnInit {
 
   isBlurDNisvalid() {
     if (this.sales.name == undefined) {
-      console.log("ok")
+      
       this.DNisvalid = true;
     }
     else if (this.sales.name.toString().length < 1) {
@@ -183,7 +183,7 @@ export class SalesFormGeneralComponent implements OnInit {
   static=""
   existcodeIsvalid = false
   existcode() {
-    console.log("lm::",this.static,this.sales.code , this.salesReplica)
+    
 
     if (this.codes.indexOf((this.sales.code + "")) != -1) {
       if(this.static=="update" ){
@@ -206,10 +206,10 @@ export class SalesFormGeneralComponent implements OnInit {
 
   validationCode() {
     const codeRegex: RegExp = /^[a-zA-Z0-9]*$/;
-    console.log(this.sales.code)
+    
     if (codeRegex.test(this.sales.code)) {
       this.codeIsvalid = false;
-      console.log(this.sales.code)
+      
 
     }
     else {

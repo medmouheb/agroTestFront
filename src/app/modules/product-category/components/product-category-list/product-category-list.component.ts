@@ -39,7 +39,7 @@ export class ProductCategoryListComponent implements OnInit {
 
   loading = false;
   productCategory: productCategory = {};
-  // fournisseursPage: Page<Fournisseur> = initPage;
+
   pageNumber = 0;
   pageSize = 10;
   filter = "";
@@ -155,7 +155,7 @@ export class ProductCategoryListComponent implements OnInit {
     this.service.searchProductCategoryByNameActive(this.productCategoryName).subscribe({
       next: (result) => {
         this.productCategories = result;
-        console.log(this.productCategories);
+        
       },
       error: (error) => console.error(error),
     });
@@ -170,7 +170,7 @@ export class ProductCategoryListComponent implements OnInit {
     this.service.getActiveProductCategories().subscribe({
       next: (result) => {
         this.productCategories = result;
-        console.log(this.productCategories);
+        
       },
       error: (error) => {
         this.loading = false;

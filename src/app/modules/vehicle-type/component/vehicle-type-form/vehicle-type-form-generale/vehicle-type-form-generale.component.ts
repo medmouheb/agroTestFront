@@ -24,7 +24,7 @@ export class VehicleTypeFormGeneraleComponent implements OnInit {
   constructor(private sharedService: SharedService, private fb: FormBuilder, private vehicleTypeService: VehicleTypeService) { }
   codes: Array<String> = [];
   ngOnInit(): void {
-    console.log("this.camp ::", this.camp)
+    
 
     if (this.camp != null) {
       this.sharedService.setIsActive(false);
@@ -107,7 +107,7 @@ export class VehicleTypeFormGeneraleComponent implements OnInit {
   geValues(event) {
     this.exist()
     this.isBlur()
-    // console.log("ar:",this.codetouched)
+
 
     if (
       !(this.codes.indexOf(this.camp.vehicleTypeCode.toString()) != -1) && !(this.camp.vehicleTypeName.toString().length < 3) && !(this.camp.vehicleTypeCode.toString().length < 3)
@@ -121,7 +121,7 @@ export class VehicleTypeFormGeneraleComponent implements OnInit {
 
   geValues1(event) {
     this.isBlur1()
-    // console.log("ar:",this.codetouched)
+
 
     if (
       !(this.codes.indexOf(this.camp.vehicleTypeCode.toString()) != -1) && !(this.camp.vehicleTypeName.toString().length < 3) && !(this.camp.vehicleTypeCode.toString().length < 3)

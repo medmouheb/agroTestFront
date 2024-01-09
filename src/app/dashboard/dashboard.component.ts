@@ -152,15 +152,15 @@ export class DashboardComponent implements OnInit {
   }
 
   transformText(text: string): string {
-    // Replace underscores with spaces
+
     const words = text.split("_").map((word) => word.toLowerCase());
 
-    // Capitalize the first letter of each word
+
     const capitalizedWords = words.map(
       (word) => word.charAt(0).toUpperCase() + word.slice(1)
     );
 
-    // Join the words with spaces
+
     const transformedText = capitalizedWords.join(" ");
 
     return transformedText;
@@ -190,7 +190,7 @@ export class DashboardComponent implements OnInit {
             return item.productionAverage;
           });
 
-          // Assign transformed data to public data property
+
           this.data = transformedData;
           this.categories = categories;
           this.productionAverages = productionAverages;

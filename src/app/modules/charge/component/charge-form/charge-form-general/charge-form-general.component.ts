@@ -55,18 +55,18 @@ export class ChargeFormGeneralComponent implements OnInit {
         Validators.maxLength(8),
       ])
     });
-    console.log("====================================");
-    console.log(" add form :", this.addform.value);
-    console.log("====================================");
+    
+    
+    
   }
   geValues(event) {
-    console.log("====================================");
-    console.log("event :", event);
-    console.log("====================================");
+    
+    
+    
 
-    console.log("====================================");
-    console.log("le formulaire :", this.addform);
-    console.log("====================================");
+    
+    
+    
 
     this.sharedService.setIsActive(true);
   }

@@ -35,7 +35,7 @@
   -webkit-justify-content: $ct-text-justify;
   -ms-flex-pack: $ct-text-justify;
   justify-content: $ct-text-justify;
-  // Fallback to text-align for non-flex browsers
+
   @if($ct-text-justify == 'flex-start') {
     text-align: left;
   } @else if ($ct-text-justify == 'flex-end') {
@@ -46,7 +46,7 @@
 }
 
 @mixin ct-flex() {
-  // Fallback to block
+
   display: block;
   display: -webkit-box;
   display: -moz-box;
@@ -128,62 +128,62 @@
 
   .#{$ct-class-label}.#{$ct-class-horizontal}.#{$ct-class-start} {
     @include ct-align-justify(flex-end, flex-start);
-    // Fallback for browsers that don't support foreignObjects
+
     text-anchor: start;
   }
 
   .#{$ct-class-label}.#{$ct-class-horizontal}.#{$ct-class-end} {
     @include ct-align-justify(flex-start, flex-start);
-    // Fallback for browsers that don't support foreignObjects
+
     text-anchor: start;
   }
 
   .#{$ct-class-label}.#{$ct-class-vertical}.#{$ct-class-start} {
     @include ct-align-justify(flex-end, flex-end);
-    // Fallback for browsers that don't support foreignObjects
+
     text-anchor: end;
   }
 
   .#{$ct-class-label}.#{$ct-class-vertical}.#{$ct-class-end} {
     @include ct-align-justify(flex-end, flex-start);
-    // Fallback for browsers that don't support foreignObjects
+
     text-anchor: start;
   }
 
   .#{$ct-class-chart-bar} .#{$ct-class-label}.#{$ct-class-horizontal}.#{$ct-class-start} {
     @include ct-align-justify(flex-end, center);
-    // Fallback for browsers that don't support foreignObjects
+
     text-anchor: start;
   }
 
   .#{$ct-class-chart-bar} .#{$ct-class-label}.#{$ct-class-horizontal}.#{$ct-class-end} {
     @include ct-align-justify(flex-start, center);
-    // Fallback for browsers that don't support foreignObjects
+
     text-anchor: start;
   }
 
   .#{$ct-class-chart-bar}.#{$ct-class-horizontal-bars} .#{$ct-class-label}.#{$ct-class-horizontal}.#{$ct-class-start} {
     @include ct-align-justify(flex-end, flex-start);
-    // Fallback for browsers that don't support foreignObjects
+
     text-anchor: start;
   }
 
   .#{$ct-class-chart-bar}.#{$ct-class-horizontal-bars} .#{$ct-class-label}.#{$ct-class-horizontal}.#{$ct-class-end} {
     @include ct-align-justify(flex-start, flex-start);
-    // Fallback for browsers that don't support foreignObjects
+
     text-anchor: start;
   }
 
   .#{$ct-class-chart-bar}.#{$ct-class-horizontal-bars} .#{$ct-class-label}.#{$ct-class-vertical}.#{$ct-class-start} {
-    //@include ct-chart-label($ct-text-color, $ct-text-size, center, $ct-vertical-text-justify);
+
     @include ct-align-justify(center, flex-end);
-    // Fallback for browsers that don't support foreignObjects
+
     text-anchor: end;
   }
 
   .#{$ct-class-chart-bar}.#{$ct-class-horizontal-bars} .#{$ct-class-label}.#{$ct-class-vertical}.#{$ct-class-end} {
     @include ct-align-justify(center, flex-start);
-    // Fallback for browsers that don't support foreignObjects
+
     text-anchor: end;
   }
 
@@ -225,18 +225,18 @@
     }
   }
 }
-//
-// @if $ct-include-classes {
-//   @include ct-chart();
-//
-//   @if $ct-include-alternative-responsive-containers {
-//     @for $i from 0 to length($ct-scales-names) {
-//       .#{nth($ct-scales-names, $i + 1)} {
-//         @include ct-responsive-svg-container($ratio: nth($ct-scales, $i + 1));
-//       }
-//     }
-//   }
-// }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 .ct-chart{

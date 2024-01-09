@@ -34,9 +34,9 @@ export class DivisionFormGeneralComponent implements OnInit {
         return el.code
       })
     })
-    console.log("==>",this.division)
+    
     if (this.division != null) {
-      console.log("olll")
+      
       this.sharedService.setIsActive(true);
     };
     this.affiche()
@@ -124,33 +124,33 @@ export class DivisionFormGeneralComponent implements OnInit {
       ]),
       speciesType: new FormControl("", [
         Validators.required,
-        // Validators.minLength(3),
-        // Validators.maxLength(8),
+
+
       ]),
       measurement: new FormControl("", [
-        // Validators.required,
-        // Validators.minLength(3),
-        // Validators.maxLength(8),
+
+
+
       ]),
       currencycode: new FormControl("", [
         Validators.required,
-        // Validators.minLength(3),
-        // Validators.maxLength(8),
+
+
       ]),
       currencyname: new FormControl("", [
-        // Validators.required,
-        // Validators.minLength(3),
-        // Validators.maxLength(8),
+
+
+
       ]),
       divisiontype: new FormControl("", [
-        // Validators.required,
-        // Validators.minLength(3),
-        // Validators.maxLength(8),
+
+
+
       ]),
     });
-    // console.log("====================================");
-    // console.log(" add form :", this.addform);
-    // console.log("====================================");
+
+
+
   }
   getAllCurrency() {
     this.currencyservice.findAll().subscribe({
@@ -162,21 +162,21 @@ export class DivisionFormGeneralComponent implements OnInit {
   selectValue(e: any) {
 
     let wil = this.cuurencys.filter(el => {
-      console.log(el)
+      
       return el.code == e.target.value
 
     })[0].name
-    //this.addform.value['currencyname']=wil
+
     this.division.currencyname = wil
-    console.log(this.division.currencycode)
-    console.log(this.division.currencyname)
+    
+    
 
 
   }
 
   listA: String[] = []
   setList() {
-    console.log("ll::", this.division.divisiontype)
+    
     switch (this.division.divisiontype) {
       case "Agriculture": this.listA = ["Agriculture maraîchère", "Arboriculture", "Agriculture biologique", "Permaculture"]; break;
       case "Aviculture": this.listA = ["Chicken", "Layer", "Turkey", "Duck"]; break;
@@ -188,36 +188,36 @@ export class DivisionFormGeneralComponent implements OnInit {
   geValues(event) {
 
 
-    console.log(this.division.speciesType!="","123::", this.division )
-    console.log(this.addform.value.speciesType);
-    console.log(this.division.speciesType);
-     console.log("event :", event);
-    // console.log("====================================");
+    
+    
+    
+     
 
-    // console.log("====================================");
-    // console.log("le formulaire :", this.addform.value);
-    // console.log("====================================");
 
-    // console.log(this.division)
-    // console.log(this.division.name);
-    // console.log(
-    //   "this.division.code.length",
-    //   this.division.code.toString().length >= 5
-    // );
-    // console.log(
-    //   this.division.code != null &&
-    //     this.division.code != "" &&
-    //     this.division.name != null &&
-    //     this.division.name != "" &&
-    //     this.division.code.toString().length >= 5 &&
-    //     this.division.name.toString().length >= 3
-    // );
 
-    console.log(this.division.code )
-    console.log( this.division.name )
-    console.log( this.division.speciesType )
-    console.log( this.division.currencycode )
-    console.log( this.division.name )
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+    
+    
     console.log(this.division.code != null &&
       this.division.code != "" &&
       this.division.name != null &&
@@ -239,16 +239,16 @@ export class DivisionFormGeneralComponent implements OnInit {
       && this.division.speciesType!=undefined
     ) {
 
-      console.log("aa1::", this.dispotrueCode == false)
-      console.log("aa2::", this.dispotruename == false)
-      console.log("aa3::", this.division.code != null)
-      console.log("aa4::", this.division.code != "" )
-      console.log("aa5::", this.division.name != null)
-      console.log("aa6::", this.division.name != "")
-      console.log("aa7::", this.division.currencycode != null)
-      console.log("aa8::", this.division.currencycode != "")
-      console.log("aa10::", this.division.speciesType != "" )
-      console.log("aa9::", this.division.currencycode != undefined)
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
 
 
       this.sharedService.setIsActive(true);
@@ -299,7 +299,7 @@ export class DivisionFormGeneralComponent implements OnInit {
   isBlurDNisvalid() {
 
     if (this.division.name == undefined) {
-      console.log("ok")
+      
       this.DNisvalid = true;
     }
     else if (this.division.name.toString().length < 1) {
@@ -310,8 +310,8 @@ export class DivisionFormGeneralComponent implements OnInit {
   }
 
   isBlurSTisvali() {
-    console.log(this.addform.value.speciesType)
-    console.log(this.division.speciesType)
+    
+    
     if ((this.division.speciesType.toString().length < 1) || (this.division.speciesType.toString().length > 20)
       || (this.addform.value.speciesType == "")) {
       this.STisvali = true;
@@ -324,10 +324,10 @@ export class DivisionFormGeneralComponent implements OnInit {
 
 validationCode() {
   const codeRegex: RegExp =/^[a-zA-Z0-9]*$/;
-  console.log(this.division.code)
+  
   if (codeRegex.test(this.division.code)) {
     this.codeIsvalid = false;
-  console.log(this.division.code)
+  
 
   }
   else {

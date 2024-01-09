@@ -24,7 +24,7 @@ export class VehiculeFormsGeneralComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.camp != null) {
-      console.log("olll")
+      
       this.sharedService.setIsActive(true);
       this.compaser.findAll().subscribe(data => {
         this.codes = data.map(el => { return el.vehiculeCode })
@@ -38,7 +38,7 @@ export class VehiculeFormsGeneralComponent implements OnInit {
       this.camp = { vehiculeName: "", vehiculeCode: "" } 
     };
     this.initForm();
-    console.log(this.addform);
+    
     if (this.camp.id) {
       this.static = "update"
       this.campReplica =  JSON.parse( JSON.stringify(  this.camp))
@@ -147,28 +147,28 @@ export class VehiculeFormsGeneralComponent implements OnInit {
 
   minIstrueName: boolean = false
   minIstrueName2: boolean = false
-  // isBlur2() {
-  //   console.log(this.minIstrueName2)
-  //   console.log('===3:', this.fieldControl.value
-  //   )
 
-  //   if (this.fieldControl.status == "INVALID") {
-  //     this.minIstrueName2 = true
 
-  //   }
-  //   else if (this.fieldControl.status == "VALID") {
-  //     this.minIstrueName2 = false
 
-  //   }
-  // }
-  // isBlur3() {
-  //   if ((this.fieldControl.value == '') || (this.fieldControl.value == undefined)) {
-  //     this.minIstrueName2 = false
 
-  //   }
-  // }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   isBlur1() {
-    console.log(this.minIstrueName2)
+    
     if (this.camp.vehiculeCode == undefined) {
       this.minIstrueName = true
 
@@ -185,7 +185,7 @@ export class VehiculeFormsGeneralComponent implements OnInit {
   }
   geValues(event) {
 
-    console.log("erty::", !this.codeIsvalid , !this.dispotrueCode , !this.minIstrueCode , !this.minIstrueName  , !this.dispotruename  , !this.minIphone   , !this.minMeasurementType)
+    
     if (
 
       this.camp.vehiculeCode != null &&
@@ -250,10 +250,10 @@ export class VehiculeFormsGeneralComponent implements OnInit {
 
   validationCode() {
     const codeRegex: RegExp = /^[a-zA-Z0-9]*$/;
-    console.log(this.camp.vehiculeCode)
+    
     if (codeRegex.test(this.camp.vehiculeCode)) {
       this.codeIsvalid = false;
-      console.log(this.camp.vehiculeCode)
+      
 
     }
     else {

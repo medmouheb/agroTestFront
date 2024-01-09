@@ -85,15 +85,15 @@ export class CurrencyFormGeneralComponent implements OnInit {
 
   }
 
-  // generateRandomCode() {
-  //   const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-  //   let code = '';
-  //   for (let i = 0; i < 4; i++) {
-  //     const randomIndex = Math.floor(Math.random() * characters.length);
-  //     code += characters.charAt(randomIndex);
-  //   }
-  //   return code;
-  // }
+
+
+
+
+
+
+
+
+
 
   newSeggestions = ""
 
@@ -147,7 +147,6 @@ export class CurrencyFormGeneralComponent implements OnInit {
 
   geValues(event) {
 
-    console.log("rtrtr", !!(this.currency.countrcode && this.currency.countryname && this.currency.digitalcode))
     if (
       !!(this.currency.countrcode && this.currency.countryname && this.currency.digitalcode) &&
       this.dispotrueCode == false && this.dispotruename == false &&
@@ -203,7 +202,7 @@ export class CurrencyFormGeneralComponent implements OnInit {
       }
   }
   isBlurDCjiisvalid() {
-    console.log("dede", this.currency)
+    
     if (this.currency.countrcode == undefined) {
       this.DCouisvalid = true
     } else
@@ -246,10 +245,10 @@ export class CurrencyFormGeneralComponent implements OnInit {
 
   validationCode() {
     const codeRegex: RegExp = /^[a-zA-Z0-9]*$/;
-    console.log(this.currency.code)
+    
     if (codeRegex.test(this.currency.code)) {
       this.codeIsvalid = false;
-      console.log(this.currency.code)
+      
       this.sharedService.setIsActive(false);
 
     }

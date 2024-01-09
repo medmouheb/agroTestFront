@@ -43,7 +43,7 @@ export class VendorSKUListComponent implements OnInit {
     private toastService: HotToastService
   ) {}
   onCheckboxChange() {
-    console.log("La valeur de la case à cocher est : ", this.isChecked);
+    
     if (this.isChecked==false){
 
       this.affiche=false
@@ -63,7 +63,7 @@ export class VendorSKUListComponent implements OnInit {
       .findPage(this.pageNumber, this.pageSize, this.filter)
       .subscribe({
         next: (result) => {
-          console.log(result.content)
+          
           this.vendorskus = result.content;
           this.vendorskuPage = result;
         },
@@ -112,7 +112,7 @@ export class VendorSKUListComponent implements OnInit {
         id: "0",
       }
     );
-    console.log(this.vendorsku)
+    
     if((this.vendorsku.vendorCode==undefined) ||(this.vendorsku.vendorSKUCode==undefined)||(this.vendorsku.vendorSKUName==undefined)  ){
       this.toastService.close("0");
       this.toastService.warning("verify your code and name"
@@ -204,19 +204,19 @@ export class VendorSKUListComponent implements OnInit {
                 elem: this.translateService.instant("vendorsku"),
               })
             );
-          console.log(id);
+          
 
-          //   console.log(id);
+
         },
-        // error: (error) => {
-        //   this.archiveModal.hide();
-        //   this.toastService.close("0");
-        //   this.toastService.error(
-        //     this.translateService.instant(error.error, {
-        //       elem: this.translateService.instant("growout"),
-        //     })
-        //   );
-        // },
+
+
+
+
+
+
+
+
+
       });
     });
   }

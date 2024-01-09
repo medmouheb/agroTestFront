@@ -25,7 +25,7 @@ export class ProductUsageFormsGeneralComponent implements OnInit {
   ngOnInit(): void {
 
     if (this.camp != null) {
-      console.log("olll")
+      
       this.sharedService.setIsActive(true);
       this.compaser.findAll().subscribe(data => {
         this.codes = data.map(el => { return el.numeroDeLot })
@@ -34,7 +34,7 @@ export class ProductUsageFormsGeneralComponent implements OnInit {
 
     if (this.camp == undefined) { this.camp = { ndeReference: "", numeroDeLot: "" } };
     this.initForm();
-    console.log(this.addform);
+    
 
     if (this.camp.id) {
       this.static = "update"
@@ -47,9 +47,9 @@ export class ProductUsageFormsGeneralComponent implements OnInit {
 
   gettat() {
     if (this.camp.id) {
-      console.log('====::::1',this.camp.id!=this.id,this.camp.id,this.id)
+      
       if(this.camp.id!=this.id ||this.id=="" ){
-        console.log('====::::2',this.camp.id!=this.id,this.camp.id,this.id)
+        
         this.id=this.camp.id
 
       }else{
@@ -95,7 +95,7 @@ export class ProductUsageFormsGeneralComponent implements OnInit {
       code += digits.charAt(randomIndex);
     }
     this.codeunique = code
-    console.log(code);
+    
     this.camp.ndeReference = code
 
 
@@ -151,10 +151,10 @@ export class ProductUsageFormsGeneralComponent implements OnInit {
 
   validationCode() {
     const codeRegex: RegExp = /^[a-zA-Z0-9]*$/;
-    console.log(this.camp.numeroDeLot)
+    
     if (codeRegex.test(this.camp.numeroDeLot)) {
       this.codeIsvalid = false;
-      console.log(this.camp.numeroDeLot)
+      
 
     }
     else {
@@ -164,10 +164,10 @@ export class ProductUsageFormsGeneralComponent implements OnInit {
   }
 
   exist1() {
-    console.log(this.camp.ndeReference);
+    
     this.compaser.findbyName(this.camp.ndeReference).subscribe(
       (data) => {
-        console.log(data);
+        
         if (data != null) {
           this.dispotruename = true;
         } else {
@@ -175,7 +175,7 @@ export class ProductUsageFormsGeneralComponent implements OnInit {
         }
       },
       (error) => {
-        console.log(error.status);
+        
         if (error.status == 404) {
           this.dispotruename = false;
         }
@@ -198,10 +198,10 @@ export class ProductUsageFormsGeneralComponent implements OnInit {
   newSeggestions = ""
 
   existname() {
-    console.log("aa::", this.codes)
+    
     if (this.codes.indexOf(this.camp.ndeReference) != -1) {
       this.dispotruename = true
-      // this.newSeggestions= "chose "+this.camp.name+this.generateRandomCode()+" or "+this.camp.name+this.generateRandomCode()+" or "+this.camp.name+this.generateRandomCode()+" or "+this.camp.name+this.generateRandomCode()
+
 
     } else {
       this.dispotruename = false
@@ -214,28 +214,28 @@ export class ProductUsageFormsGeneralComponent implements OnInit {
 
   minIstrueName: boolean = false
   minIstrueName2: boolean = false
-  // isBlur2() {
-  //   console.log(this.minIstrueName2)
-  //   console.log('===3:', this.fieldControl.value
-  //   )
 
-  //   if (this.fieldControl.status == "INVALID") {
-  //     this.minIstrueName2 = true
 
-  //   }
-  //   else if (this.fieldControl.status == "VALID") {
-  //     this.minIstrueName2 = false
 
-  //   }
-  // }
-  // isBlur3() {
-  //   if ((this.fieldControl.value == '') || (this.fieldControl.value == undefined)) {
-  //     this.minIstrueName2 = false
 
-  //   }
-  // }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   isBlur1() {
-    console.log(this.camp.ndeReference);
+    
     if (
       this.camp.ndeReference === undefined ||
       this.camp.ndeReference.trim() === ""

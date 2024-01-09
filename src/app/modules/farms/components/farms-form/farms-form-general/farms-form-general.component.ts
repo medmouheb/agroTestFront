@@ -56,14 +56,14 @@ export class FarmsFormGeneralComponent implements OnInit {
   selectValue(e: any) {
 
     let wil = this.growouts.filter(el => {
-      // console.log(el)
+
       return el.code == e.target.value
 
     })[0]
 
     this.farm.growout = wil
     this.farm.growoutcode = wil.code
-    console.log("44::", this.farm, wil, e.target.value)
+    
 
 
 
@@ -74,14 +74,14 @@ export class FarmsFormGeneralComponent implements OnInit {
   selectValuecostCenter(e: any) {
 
     let wil = this.costcenters.filter(el => {
-      // console.log(el)
+
       return el.code == e.target.value
 
     })[0]
 
-    // this.farm.growout=wil
+
     this.farm.cost_Center = wil
-    console.log("44::", this.farm, wil, e.target.value)
+    
 
 
 
@@ -93,7 +93,7 @@ export class FarmsFormGeneralComponent implements OnInit {
   static = ""
 
   ngOnInit(): void {
-    console.log("rr::", this.farm)
+    
     if (this.farm == undefined) {
       this.farm = { nom: "", code: "", status: true }
 
@@ -246,13 +246,13 @@ export class FarmsFormGeneralComponent implements OnInit {
       latitude: new FormControl(""),
       longitude: new FormControl(""),
     });
-    console.log("====================================");
-    console.log(" add form :", this.addform);
-    console.log("====================================");
+    
+    
+    
   }
 
   geValues(event) {
-    console.log("aaaa", this.addform);
+    
     console.log(
       this.farm.code != null &&
       this.farm.code != "" &&
@@ -276,7 +276,7 @@ export class FarmsFormGeneralComponent implements OnInit {
       this.farm.technician_Code.toString().length >= 1 &&
       this.farm.technician_Name.toString().length >= 1
     )
-    console.log("d:", this.farm)
+    
     if (
       !this.dispotruecode && !this.dispotruename &&
       this.farm.code != null &&
@@ -302,16 +302,16 @@ export class FarmsFormGeneralComponent implements OnInit {
       this.farm.technician_Name.toString().length >= 1
     ) {
       this.sharedService.setIsActive(true);
-      //  console.log("bbbb", this.sharedService.setIsActive(true));
+
     } else {
       this.sharedService.setIsActive(false);
-      //  console.log("cccc", this.sharedService.setIsActive(false));
+
     }
   }
 
   onWarehouseChange(e: any) {
     this.farm.warehouse = this.warehouses.filter(el => { return el.id == e.target.value })[0];
-    console.log('44::', this.warehouses.filter(el => { return el.id == e.target.value }))
+    
   }
 
   getAllWarehouses() {
@@ -365,7 +365,7 @@ export class FarmsFormGeneralComponent implements OnInit {
     }
   }
   isBlur4() {
-    console.log(this.fieldControl.value)
+    
     if ((this.fieldControl.value == '') || (this.fieldControl.value == undefined)) {
       this.minIstrueName = false
 
@@ -394,10 +394,10 @@ export class FarmsFormGeneralComponent implements OnInit {
 
 validationCode() {
   const codeRegex: RegExp =/^[a-zA-Z0-9]*$/;
-  console.log(this.farm.code)
+  
   if (codeRegex.test(this.farm.code)) {
     this.codeIsvalid = false;
-  console.log(this.farm.code)
+  
 
   }
   else {
@@ -514,7 +514,7 @@ validationCode() {
     dataFile.append("file", e.target.files[0]);
     this.farmsService.handleFileUpload(dataFile).subscribe(data=>{
       this.farm.attachments=data
-      console.log("oui",data)
+      
     },(err)=>{
       this.farm.attachments=err.error.text
     })
@@ -527,14 +527,14 @@ validationCode() {
       dataFile.append("file", e.target.files[0]);
       this.farmsService.handleFileUpload(dataFile).subscribe(data=>{
         this.farm.comments=data
-        console.log("oui",data)
+        
       },(err)=>{
         this.farm.comments=err.error.text
       })
     }else{
       this.toastService.error('accest only file.doc');
     }
-    // console.log("frfr",e.target.files[0].name)
+
    
   }
 }

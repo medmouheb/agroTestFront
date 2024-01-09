@@ -259,10 +259,10 @@ export class FarmsFormLocalisationComponent implements OnInit {
   }
 
   selectContry(c: any) {
-    // let nav = document.getElementById(`mobile`) as any;
-    //   nav.value =c.target.value ;
+
+
     this.farm.phoneNumber = c.target.value
-    // console.log("aaa::",this.countryPhoneCodes.filter(el=>{return el.code== c.target.value}))
+
     this.flag = this.countryPhoneCodes.filter(el => { return el.code == c.target.value })[0].flag
     let f = document.getElementById(`flag`) as any;
     f.src = this.flag;
@@ -282,17 +282,17 @@ export class FarmsFormLocalisationComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log("44::", this.farm)
+    
   }
 
   emailIsvalid = false
 
   validationEmail() {
     const emailRegex: RegExp = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
-    console.log(this.farm.email)
+    
     if (emailRegex.test(this.farm.email)) {
       this.emailIsvalid = false;
-      console.log(this.farm.email)
+      
 
     }
     else {

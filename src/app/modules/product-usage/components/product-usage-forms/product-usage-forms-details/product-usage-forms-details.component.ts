@@ -20,7 +20,7 @@ export class ProductUsageFormsDetailsComponent implements OnInit {
   selectedDivisionName: string = '';
   productName: string;
 
-  // Array to hold the list of companies
+
 
 
   constructor(private sharedService: SharedService,
@@ -46,11 +46,11 @@ export class ProductUsageFormsDetailsComponent implements OnInit {
     }
     onCodeSelect() {
       const selectedCode = this.addform.get('codeProduit').value;
-      console.log('Selected Code:', this.camp.codeProduit); // Check if the code is correctly selected
+
       if (this.camp.codeProduit) {
         this.productUsageService.findProduitName(this.camp.codeProduit).subscribe(
           (productName: any) => {
-            console.log('Fetched Product Name:', productName); // Check if the product name is fetched
+
             this.productName = productName; // Display the product name in the input field
             this.addform.get('nomDuProduit').setValue(productName);
           },
@@ -88,7 +88,7 @@ export class ProductUsageFormsDetailsComponent implements OnInit {
     this.camp.void=!this.camp.void
   }
   
-//getAll Campany name from service findbycompany
+
 
 
 
@@ -96,7 +96,7 @@ export class ProductUsageFormsDetailsComponent implements OnInit {
   get f() {
     return this.addform.controls;
   }
-  //methode pour get tous les nom from company
+
 
 
   isControlValid(controlName: string): boolean {

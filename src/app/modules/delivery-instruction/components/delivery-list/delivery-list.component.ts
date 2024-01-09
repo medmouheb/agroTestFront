@@ -56,7 +56,7 @@ export class DeliveryListComponent implements OnInit {
     this.onPaginationChange.subscribe(() => {this.findPage();this.findArchivedPage()});
   }
   onCheckboxChange() {
-    console.log("La valeur de la case à cocher est : ", this.isChecked);
+    
     if (this.isChecked == false) {
 
       this.affiche = false
@@ -86,7 +86,7 @@ export class DeliveryListComponent implements OnInit {
     this.deliveryservice.findById(id).subscribe({
       next: (result) => {
         this.delivery = result
-        console.log(result, id)
+        
       },
       error: (error) => console.error(error),
     });
@@ -122,16 +122,16 @@ export class DeliveryListComponent implements OnInit {
         id: "0",
       }
     );
-    console.log(this.delivery)
+    
     if ((this.delivery.productType == undefined) || (this.delivery.instructiuonCode == undefined) || (this.delivery.instructiuonName == undefined)) {
       this.toastService.close("0");
       let lg = localStorage.getItem("locale")
       this.http.get("../../../../../assets/i18n/" + lg + ".json").subscribe((data: any) => {
         this.toastService.warning(data.verifCodeName)
       });
-      //  this.toastService.warning("Verify your freightterm code"
 
-      //  );
+
+
       return;
     }
 
@@ -174,7 +174,7 @@ export class DeliveryListComponent implements OnInit {
   onClickEdit(id: string) {
     this.findById(id);
     setTimeout(() => {
-      console.log('ee:', this.delivery)
+      
 
     }, 2000)
     this.formModal.show({
@@ -199,19 +199,19 @@ export class DeliveryListComponent implements OnInit {
               elem: this.translateService.instant("delivery"),
             })
           );
-          console.log(id);
+          
 
-          //   console.log(id);
+
         },
-        // error: (error) => {
-        //   this.archiveModal.hide();
-        //   this.toastService.close("0");
-        //   this.toastService.error(
-        //     this.translateService.instant(error.error, {
-        //       elem: this.translateService.instant("growout"),
-        //     })
-        //   );
-        // },
+
+
+
+
+
+
+
+
+
       });
     });
   }
@@ -314,7 +314,7 @@ export class DeliveryListComponent implements OnInit {
             elem: this.translateService.instant("delivery"),
           })
         );
-        console.log(id);
+        
       },
     });
   }
@@ -326,7 +326,7 @@ export class DeliveryListComponent implements OnInit {
       next: () => {
         this.findArchivedPage();
         this.findPage()
-        console.log("Success");
+        
         this.toastService.success(
           this.translateService.instant("success.deleted", {
             elem: this.translateService.instant("delivery"),

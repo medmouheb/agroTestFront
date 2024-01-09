@@ -49,7 +49,7 @@ export class WillayaListComponent implements OnInit {
 
   ) { }
    onCheckboxChange() {
-     console.log("La valeur de la case à cocher est : ", this.isChecked);
+     
      if (this.isChecked==false){
 
        this.affiche=false
@@ -69,7 +69,7 @@ export class WillayaListComponent implements OnInit {
       .findPage(this.pageNumber, this.pageSize, this.filter)
       .subscribe({
         next: (result) => {
-          console.log(result.content)
+          
           this.willayas = result.content;
           this.willayaPage = result;
         },
@@ -174,19 +174,19 @@ export class WillayaListComponent implements OnInit {
                 elem: this.translateService.instant("willaya"),
               })
             );
-          console.log(id);
+          
 
-          //   console.log(id);
+
         },
-        // error: (error) => {
-        //   this.archiveModal.hide();
-        //   this.toastService.close("0");
-        //   this.toastService.error(
-        //     this.translateService.instant(error.error, {
-        //       elem: this.translateService.instant("growout"),
-        //     })
-        //   );
-        // },
+
+
+
+
+
+
+
+
+
       });
     });
   }
@@ -262,11 +262,11 @@ export class WillayaListComponent implements OnInit {
 
   lm(){
     alert("aaaa")
-    console.log("kkkkk")
+    
   }
   
   onClickdisArchive(id: string) {
-    console.log('aaa')
+    
     this.willayaservice.disArchive(id).subscribe({
       next: () => {
         this.findArchivedPage();
@@ -276,20 +276,20 @@ export class WillayaListComponent implements OnInit {
             elem: this.translateService.instant("willaya"),
           })
         );
-        console.log(id);
+        
       },
     });
   }
 
   
   onClickDelete(id: string) {
-    console.log(id)
+    
     this.willayaservice.delete(id).subscribe({
       next: () => {
         this.findArchivedPage();
         this.findPage();
 
-        console.log("Success");
+        
         this.toastService.success(
           this.translateService.instant("success.deleted", {
             elem: this.translateService.instant("willaya"),

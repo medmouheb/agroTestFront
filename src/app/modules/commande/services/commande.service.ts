@@ -13,7 +13,7 @@ export class CommandeService {
 
   baseUrl() {
     return `${environment.apiUrl}`;
-    // return "http://localhost:8080"
+
   }
 
   save(id: string | null, commande: Commande): Observable<Commande> {

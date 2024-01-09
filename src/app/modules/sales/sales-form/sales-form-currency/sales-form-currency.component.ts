@@ -42,19 +42,19 @@ getAllcurrency(){
 }
 getAlldivision(){
   this.salesservice.findAll().subscribe({
-    next: (result) => {this.saless = result;console.log("2==",result)},
+    next: (result) => {this.saless = result;},
     error: (error) => console.error(error),
   });
 }
 onCompanyChange() {
-  console.log(this.sales.currency)
+  
 
-  // if (this.sales.currency) {
-  //   this.sales.currency = this.currency.find(
-  //     (elem) => elem.id === this.sales.currency
 
-  //   );
-  //   console.log(this.sales.currency)
-  // }
+
+
+
+
+
+
 }
 }

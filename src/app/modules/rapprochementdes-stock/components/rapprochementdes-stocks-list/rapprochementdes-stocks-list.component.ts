@@ -59,7 +59,7 @@ export class RapprochementdesStocksListComponent implements OnInit {
     private formBuilder: FormBuilder
   ) { }
   onCheckboxChange() {
-    console.log("La valeur de la case à cocher est : ", this.isChecked);
+    
     if (this.isChecked==false){
 
       this.affiche=false
@@ -68,18 +68,18 @@ export class RapprochementdesStocksListComponent implements OnInit {
       this.affiche=true
     }
   }
-  // onCheckboxFullChange() {
-  //   console.log("La valeur de la case à cocher est : ", this.isCheckedFull);
-  //   if (this.isCheckedFull==false){
 
-  //     this.fullDetail=false
-  //   }
-  //   else{
-  //     this.fullDetail=true
-  //   }
-  // }
 
-  // isCheckedFull:false
+
+
+
+
+
+
+
+
+
+
   ngOnInit(): void {
     this.findPage();
     this.findArchivedPage()
@@ -92,7 +92,7 @@ export class RapprochementdesStocksListComponent implements OnInit {
       .findPage(this.pageNumber, this.pageSize, this.filter)
       .subscribe({
         next: (result) => {
-          console.log("aze",result.content)
+          
           this.companys = result.content;
           this.companyPage = result;
 
@@ -231,17 +231,17 @@ export class RapprochementdesStocksListComponent implements OnInit {
               elem: this.translateService.instant("menu.Rapprochement-des-stocks"),
             })
           );
-          //   console.log(id);
+
         },
-        // error: (error) => {
-        //   this.archiveModal.hide();
-        //   this.toastService.close("0");
-        //   this.toastService.error(
-        //     this.translateService.instant(error.error, {
-        //       elem: this.translateService.instant("growout"),
-        //     })
-        //   );
-        // },
+
+
+
+
+
+
+
+
+
       });
     });
   }
@@ -277,7 +277,7 @@ export class RapprochementdesStocksListComponent implements OnInit {
 
 
   onClickdisArchive(id: string) {
-    console.log(id);
+    
 
     this.rapprochementdesstocksService.disArchive(id).subscribe({
       next: () => {
@@ -288,18 +288,18 @@ this.findPage()
             elem: this.translateService.instant("menu.Rapprochement-des-stocks"),
           })
         );
-        console.log(id);
+        
       },
     });
   }
 
   onClickDelete(id: string) {
-    console.log("id: " + id);
+    
     this.rapprochementdesstocksService.delete(id).subscribe({
       next: () => {
         this.findArchivedPage();
         this.findPage()
-        console.log("Success");
+        
         this.toastService.success(
           this.translateService.instant("success.deleted", {
             elem: this.translateService.instant("menu.Rapprochement-des-stocks"),

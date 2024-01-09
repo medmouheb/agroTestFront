@@ -40,9 +40,9 @@ export class VehiculeFormsInformationComponent implements OnInit {
       color: new FormControl(""),
       notes: new FormControl("")
     });
-    console.log("====================================");
-    console.log(" add form :", this.addform);
-    console.log("====================================");
+    
+    
+    
   }
 
   get f() {

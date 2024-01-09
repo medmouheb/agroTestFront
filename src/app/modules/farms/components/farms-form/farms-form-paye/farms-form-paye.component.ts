@@ -258,10 +258,10 @@ export class FarmsFormPayeComponent implements OnInit {
   }
 
   selectContry(c: any) {
-    // let nav = document.getElementById(`mobile`) as any;
-    //   nav.value =c.target.value ;
+
+
     this.farm.phoneInformation = c.target.value
-    // console.log("aaa::",this.countryPhoneCodes.filter(el=>{return el.code== c.target.value}))
+
     this.flag = this.countryPhoneCodes.filter(el => { return el.code == c.target.value })[0].flag
     let f = document.getElementById(`flag`) as any;
     f.src = this.flag;

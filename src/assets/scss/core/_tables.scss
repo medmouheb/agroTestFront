@@ -125,29 +125,29 @@
 
 
 
-// BS4 has not yet converted the following to variables - keep an eye on it and move to variables when possible.
+
 .thead-inverse {
   th {
-    //color: $bmd-inverse; // #fff;
-    //background-color: $gray-dark;
+
+
   }
 }
 .thead-default {
   th {
-    //color: $gray;
-    //background-color: $bmd-inverse-lighter; //$gray-lighter;
+
+
   }
 }
 
 .table-inverse {
   color: $bmd-inverse-light; //$gray-lighter;
-  //background-color: $gray-dark;
 
-  //th,
-  //td,
-  //thead th {
-  //  border-color: $gray;
-  //}
+
+
+
+
+
+
 }
 
 .table {
@@ -161,7 +161,7 @@
 }
 
 thead.thead-inverse,
-// needs specificity
+
 .table-inverse thead {
   th {
     color: $bmd-inverse-lighter;

@@ -17,7 +17,7 @@ export class BeginninginventoryProductsComponent implements OnInit {
   divisionCompanyNames: string[] = [];
   selectedDivisionCompanyName: string = '';
 
-  // Array to hold the list of companies
+
 
 
   constructor(private sharedService: SharedService,
@@ -44,15 +44,15 @@ export class BeginninginventoryProductsComponent implements OnInit {
         Vide: new FormControl(false)
     });
   
-    console.log("====================================");
-    console.log(" add form :", this.addform);
-    console.log("====================================");
+    
+    
+    
     
   }
   
-//getAll Campany name from service findbycompany
+
 totalunitprice(){
-  console.log("zzz",this.camp.price ,this.camp.uniteDinventaire)
+  
   this.camp.prixUnitaire= this.camp.price / this.camp.uniteDinventaire; 
 }
 
@@ -60,7 +60,7 @@ totalunitprice(){
   get f() {
     return this.addform.controls;
   }
-  //methode pour get tous les nom from company
+
 
 
   isControlValid(controlName: string): boolean {

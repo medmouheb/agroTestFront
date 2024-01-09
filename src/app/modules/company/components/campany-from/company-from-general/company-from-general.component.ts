@@ -119,7 +119,7 @@ export class CompanyFromGeneralComponent implements OnInit {
     
 
     }, error => {
-      console.log(error.status)
+      
       if (error.status == 404) {
         this.dispotrueCode = false
 
@@ -162,7 +162,7 @@ export class CompanyFromGeneralComponent implements OnInit {
   minIstrueName2: boolean = false
 
   isBlur1() {
-    console.log(this.minIstrueName2)
+    
     if (this.camp.name == undefined) {
       this.minIstrueName = true
 
@@ -180,7 +180,7 @@ export class CompanyFromGeneralComponent implements OnInit {
 
   geValues(event) {
 
-    console.log("ds::", !this.codeIsvalid, this.dispotrueCode == false, this.dispotruename)
+    
     if (
       !this.codeIsvalid && this.dispotrueCode == false && !this.dispotruename &&
       this.camp.code != null &&
@@ -219,10 +219,10 @@ export class CompanyFromGeneralComponent implements OnInit {
 
   validationCode() {
     const codeRegex: RegExp = /^[a-zA-Z0-9]*$/;
-    console.log(this.camp.code)
+    
     if (codeRegex.test(this.camp.code)) {
       this.codeIsvalid = false;
-      console.log(this.camp.code)
+      
 
     }
     else {

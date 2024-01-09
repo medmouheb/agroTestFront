@@ -50,7 +50,7 @@
     border-bottom: $bmd-nav-tabs-border-size solid transparent;
   }
 
-  // colors
+
   @include bmd-tabs-color($bmd-nav-tabs-color, $bmd-nav-tabs-active-color, $bmd-nav-tabs-active-border-color, $bmd-nav-tabs-disabled-link-color, $bmd-nav-tabs-disabled-link-color-hover);
 
   &.header-primary {

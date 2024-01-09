@@ -9,7 +9,7 @@ export type Commande = {
     receiveDate?: Date
     shipDate?: Date
 
-//optionel
+
 termDays?:number
 termMonth?:number
 discountRate?:number

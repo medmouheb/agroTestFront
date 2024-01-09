@@ -1,4 +1,4 @@
-// from bs mixins/buttons button-variant
+
 @mixin bmd-button-variant($color, $background, $focus-background, $active-background, $border, $focus-border, $active-border) {
   color: $color;
   background-color: $background;
@@ -36,12 +36,12 @@
     }
   }
 
-  // when it is an icon, kill the active bg on open dropdown, but stabilize on hover
+
   .open > &.dropdown-toggle.bmd-btn-icon {
     color: inherit;
     background-color: $background;
 
-    // leave hover on with the lighter focus color
+
     &:hover {
       background-color: $focus-background;
     }
@@ -79,7 +79,7 @@
     $focus-border,
     $active-border);
 
-  // inverse color scheme
+
   .bg-inverse & {
     $focus-background: $bmd-inverse-btn-focus-bg;
     $focus-border: $bmd-inverse-btn-focus-bg;
@@ -96,7 +96,7 @@
       $active-border);
   }
 
-  // reverse the above for links
+
   &.btn-link {
     background-color: transparent;
   }
@@ -105,7 +105,7 @@
 @mixin bmd-flat-button-color() {
   @include bmd-flat-button-variant($bmd-btn-color);
 
-  // flat bg with text color variations
+
   &.btn-primary {
     @include bmd-flat-button-variant($btn-primary-bg);
   }
@@ -139,7 +139,7 @@
     border-width: 1px;
   }
 
-  // flat bg with text and border color variations
+
   &.btn-outline {
     @include bmd-flat-button-variant($bmd-btn-color, $bmd-btn-color, $bmd-btn-color, $bmd-btn-color);
   }
@@ -164,17 +164,17 @@
 }
 
 @mixin bmd-raised-button-variant($color, $background, $border) {
-  // FIXME: SPEC - this should be the 600 color, how can we get that programmatically if at all? Or are we limited to the color palette only?
+
   $focus-background: contrast-color(
     $background,
     darken($background, 3%),
     lighten($background, 3%)
   );
-  //$focus-background: darken($background, 10%);  // default bootstrap
+
   $focus-border: darken($border, 12%);
 
   $active-background: $focus-background;
-  //$active-background: darken($background, 17%);
+
   $active-border: darken($border, 25%);
 
   @include bmd-button-variant($color,
@@ -190,7 +190,7 @@
     &:focus,
     &:active,
     &:hover{
-      // remove this line if you want black shadows
+
       @include button-shadow-color($background);
     }
 
@@ -277,13 +277,13 @@
 }
 
 @mixin undo-bs-tab-focus() {
-  // clear out the tab-focus() from BS
+
   &,
   &:active,
   &.active {
     &:focus,
     &.focus {
-      //@include tab-focus();
+
       outline: 0;
     }
   }
@@ -317,7 +317,7 @@ $opacity-2:                  rgba(255,255,255, .2) !default;
 }
 
 @mixin shadow-big-color($color){
-    // new box shadow optimized for Tablets and Phones
+
     box-shadow: 0 4px 20px 0px rgba(0, 0, 0, .14),
                 0 7px 10px -5px rgba($color, 0.4)
 }
@@ -329,7 +329,7 @@ $opacity-2:                  rgba(255,255,255, .2) !default;
 
 @mixin btn-styles($btn-color) {
 
-    // remove this line if you want black shadows
+
     @include shadow-2dp-color($btn-color);
 
     &,
@@ -351,7 +351,7 @@ $opacity-2:                  rgba(255,255,255, .2) !default;
     &:focus,
     &:active,
     &:hover{
-      // remove this line if you want black shadows
+
       @include button-shadow-color($btn-color);
     }
 

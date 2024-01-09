@@ -56,7 +56,7 @@ export class CurrencyListComponent implements OnInit {
     this.onPaginationChange.subscribe(() => {this.findPage();this.findArchivedPage()});
   }
   onCheckboxChange() {
-    console.log("La valeur de la case à cocher est : ", this.isChecked);
+    
     if (this.isChecked == false) {
 
       this.affiche = false
@@ -110,22 +110,22 @@ export class CurrencyListComponent implements OnInit {
     this.currency = {};
     this.currentStep = 0;
   }
-  // validationCode() {
-  //   const codeRegex: RegExp = /^[a-zA-Z0-9]*$/;
-  //   console.log(this.currency.code)
-  //   if (codeRegex.test(this.currency.code)) {
-  //     this.codeIsvalid = false;
-  //     console.log(this.currency.code)
-  //     this.sharedService.setIsActive(false);
 
-  //   }
-  //   else {
-  //     this.codeIsvalid = true
-  //     this.sharedService.setIsActive(true);
 
-  //   }
 
-  // }
+
+
+
+
+
+
+
+
+
+
+
+
+
   onSave(id: string | null) {
     this.toastService.loading(
       this.translateService.instant("message.loading..."),
@@ -133,84 +133,84 @@ export class CurrencyListComponent implements OnInit {
         id: "0",
       }
     );
-    console.log(this.currency)
-    // if ((this.currency.code == undefined) || (this.currency.name == undefined) ||
-    //   (this.currency.countrcode == undefined) || (this.currency.countryname == undefined) || (this.currency.digitalcode == undefined)) {
-    //   this.toastService.close("0");
-    //   let lg = localStorage.getItem("locale")
-    //   this.http.get("../../../../../assets/i18n/" + lg + ".json").subscribe((data: any) => {
-    //     this.toastService.warning(data.verifycodenamecountrycodecountrynamedigitalcode)
-    //   });
-
-    //   return;
-    // }
-    // const codeRegex: RegExp = /^[a-zA-Z0-9]*$/;
-    // if (codeRegex.test(this.currency.code)) {
-
-    //   this.toastService.close("0");
-    //   let lg = localStorage.getItem("locale")
-    //   this.http.get("../../../../../assets/i18n/" + lg + ".json").subscribe((data: any) => {
-    //     this.toastService.warning(data.formainvalid)
-    //   });
-
-    //   return;
-    // }
-
-    // this.currencyService.findbycode(this.currency.code).subscribe((data) => {
-    //   console.log(data)
-    //   if (data != null) {
-    //     this.toastService.close("0");
-    //     let lg = localStorage.getItem("locale")
-    //     this.http.get("../../../../../assets/i18n/" + lg + ".json").subscribe((data: any) => {
-    //       this.toastService.warning(data.verifycode)
-    //     });
-
-
-    //     return;
-    //   }
+    
 
 
 
 
-    // }, (error) => {
 
-    //   this.currencyService.findbyName(this.currency.name).subscribe((data) => {
-    //     console.log(data)
-    //     if (data != null) {
-    //       this.toastService.close("0");
-    //       let lg = localStorage.getItem("locale")
-    //       this.http.get("../../../../../assets/i18n/" + lg + ".json").subscribe((data: any) => {
-    //         this.toastService.warning(data.verifyname)
-    //       });
 
-    //       return;
-    //     } else {
-    //       this.currencyService.save(id, this.currency!).subscribe({
-    //         next: () => {
-    //           this.findPage();
-    //           this.formModal.hide();
-    //           this.onCancel();
-    //           this.toastService.close("0");
-    //           this.toastService.success(
-    //             this.translateService.instant("success.saved", {
-    //               elem: this.translateService.instant("currency"),
-    //             })
-    //           );
-    //         },
-    //         error: (error) => {
-    //           this.toastService.close("0");
-    //           this.toastService.error(
-    //             this.translateService.instant(error.error, {
-    //               elem: this.translateService.instant("currency"),
-    //             })
-    //           );
-    //         },
-    //       });
-    //     }
 
-    //   })
 
-    // })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     this.currencyService.save(id, this.currency!).subscribe({
       next: () => {
@@ -270,19 +270,19 @@ export class CurrencyListComponent implements OnInit {
               elem: this.translateService.instant("currency"),
             })
           );
-          console.log(id);
+          
 
-          //   console.log(id);
+
         },
-        // error: (error) => {
-        //   this.archiveModal.hide();
-        //   this.toastService.close("0");
-        //   this.toastService.error(
-        //     this.translateService.instant(error.error, {
-        //       elem: this.translateService.instant("growout"),
-        //     })
-        //   );
-        // },
+
+
+
+
+
+
+
+
+
       });
     });
   }
@@ -407,7 +407,7 @@ export class CurrencyListComponent implements OnInit {
             elem: this.translateService.instant("currency"),
           })
         );
-        console.log(id);
+        
       },
     });
   }
@@ -418,7 +418,7 @@ export class CurrencyListComponent implements OnInit {
     this.currencyService.delete(id).subscribe({
       next: () => {
         this.findArchivedPage();
-        console.log("Success");
+        
         this.toastService.success(
           this.translateService.instant("success.deleted", {
             elem: this.translateService.instant("currency"),

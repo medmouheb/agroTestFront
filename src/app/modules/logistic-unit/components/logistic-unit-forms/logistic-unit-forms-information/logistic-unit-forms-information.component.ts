@@ -21,7 +21,7 @@ export class LogisticUnitFormsInformationComponent implements OnInit {
   divisionNames: string[] = [];
   selectedDivisionName: string = '';
 
-  // Array to hold the list of companies
+
 
 
   constructor(private sharedService: SharedService,
@@ -66,7 +66,7 @@ export class LogisticUnitFormsInformationComponent implements OnInit {
 
   
   
-//getAll Campany name from service findbycompany
+
 
 
 

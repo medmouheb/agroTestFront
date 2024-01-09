@@ -14,7 +14,7 @@ export class VehicleTypeFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.wizardStep = 1;
-    console.log("aq::",this.camp)
+    
 
   }
 

@@ -26,7 +26,7 @@ export class VehicleTypeService {
     return this.create(comp);
   }
 
-  //basic crud start
+
   create(vehicleType: VihicleType): Observable<VihicleType> {
     let url = this.baseUrl() + '/vehicleType/create';
     return this.http.post<VihicleType>(url, vehicleType);
@@ -46,10 +46,10 @@ export class VehicleTypeService {
     let url = `${this.baseUrl()}/vehicleType/delete/${id}`;
     return this.http.delete<boolean>(url);
   }
-  //basic crud end
 
 
-  //search and finders start
+
+
   findbycode(code: any): Observable<VihicleType> {
     let url = `${this.baseUrl()}/vehicleType/by-code/${code}`;
     return this.http.get<VihicleType>(url);
@@ -80,10 +80,10 @@ export class VehicleTypeService {
     params = params.append("filter", filter);
     return this.http.get<Page<VihicleType>>(url, { params });
   }
-  //search and finders end
 
 
-  //trash api's start
+
+
   archive(id: string): Observable<void> {
     let url = `${this.baseUrl()}/vehicleType/archiver/${id}`;
     return this.http.get<void>(url);
@@ -93,7 +93,7 @@ export class VehicleTypeService {
     let url = `${this.baseUrl()}/vehicleType/desarchiver/${id}`;
     return this.http.get<void>(url);
   }
-  //trash api's end
+
 
 
   findAll(): Observable<Array<VihicleType>> {

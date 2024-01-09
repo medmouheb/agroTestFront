@@ -30,7 +30,7 @@ export class FarmsFormProductComponent implements OnInit {
   constructor(private produitserv:ProduitsService, private sharedservice:SharedService,private translateService:TranslateService, private toastService: HotToastService) { }
 
   ngOnInit(): void {
-    console.log(this.farm.properties)
+    
     if (this.farm.properties==undefined){
       this.farm.properties=this.elements
     }
@@ -45,7 +45,7 @@ export class FarmsFormProductComponent implements OnInit {
 
   getallParoduct(){
     this.produitserv.findAll().subscribe({
-      next:(res)=>(console.log(res),this.produits=res
+      next:(res)=>(this.produits=res
          
         ),
       error: (error) => console.error(error),
@@ -58,9 +58,9 @@ export class FarmsFormProductComponent implements OnInit {
     this.resultat=true
     let la=0
     for (const element of this.elements) {
-      console.log(element.land) 
+       
       la += element.land;
-      console.log(la) 
+       
 
        if (la== 0){
         this.affic=true
@@ -74,7 +74,7 @@ setvalue(){
   this.resultat=true
   let la=0
   for (const element of this.elements) {
-    console.log(element.land) 
+     
     la += element.land;
     if (la> 100){
       this.sharedservice.setIsActive(false)
@@ -85,7 +85,7 @@ setvalue(){
 }
 
 setvaleur(index:number){
-  console.log(index)
+  
 }
 resultat=false
 ch:any
@@ -98,10 +98,10 @@ ch:any
   
     let sumLand = 0
     for (const element of this.elements) {
-      console.log(element.land) 
+       
       
       sumLand += element.land;
-      console.log(sumLand)
+      
       if( (element.land >= 100)||(sumLand >=100)) {
         landIs100 = true;
        
@@ -118,20 +118,20 @@ ch:any
       this.add = true;
     } else {
       this.add = false;
-      console.log(sumLand)
+      
       let x=100-sumLand
 this.ch=x
 this.resultat=true
-      // this.toastService.success(
-      //   this.translateService.instant("success.rest", {
-      //     elem: (x),
-      //   })
-      // );
+
+
+
+
+
       this.elements.push({ product: '', land: 0 });
-      console.log(this.elements);
+      
     }
     this.farm.properties=this.elements
-    console.log(this.farm.properties);
+    
 
   }
   getvalue(){
@@ -147,7 +147,7 @@ this.resultat=true
 
 
   setProduct(e:any){
-    console.log("aa::",this.produits)
+    
     this.farm.land=e.target.value
 
   }

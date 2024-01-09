@@ -58,7 +58,7 @@ export class CostCenterListComponent implements OnInit {
     private fb: FormBuilder
   ) { }
   onCheckboxChange() {
-    console.log("La valeur de la case à cocher est : ", this.isChecked);
+    
     if (this.isChecked == false) {
 
       this.affiche = false
@@ -72,28 +72,28 @@ export class CostCenterListComponent implements OnInit {
     this.findPage();
     this.findArchivedPage()
     this.onPaginationChange.subscribe(() => {this.findPage();this.findArchivedPage()});
-    // this.CostcenterFormGroup = this.fb.group({
-    // code: ["", Validators.required],
-    // name: ["", Validators.required],
-    // });
+
+
+
+
   }
 
   onStepChange(step: number) {
     this.currentStep = step;
   }
 
-  // onSubmit() {
-  //   let costcenter: CostCenter = this.CostcenterFormGroup.value;
-  //   console.log(costcenter);
-  //   this.costcenterServive.create(costcenter).subscribe({
-  //     next: (data) => {
-  //       alert("costcenter saved");
-  //     },
-  //     error: (err) => {
-  //       this.errormessage = err.error.message;
-  //     },
-  //   });
-  // }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -196,39 +196,39 @@ export class CostCenterListComponent implements OnInit {
 
 
 
-  // onClickDelete(id: string) {
-  //   this.deleteModal.show(() => {
-  //     this.toastService.loading(
-  //       this.translateService.instant("message.loading..."),
-  //       {
-  //         id: "0",
-  //       }
-  //     );
-  //     this.costcenterServive.delete(id).subscribe({
-  //       next: () => {
-  //         this.findPage();
-  //         this.deleteModal.hide();
-  //         this.toastService.close("0");
-  //         this.toastService.success(
-  //           this.translateService.instant("success.deleted", {
 
-  //             elem: this.translateService.instant("costCenter"),
-  //           })
-  //         );
-  //       },
-  //       error: (error) => {
-  //         this.findPage();
-  //         this.deleteModal.hide();
-  //         this.toastService.close("0");
-  //         this.toastService.error(
-  //           this.translateService.instant(error.error, {
-  //             elem: this.translateService.instant("costCenter"),
-  //           })
-  //         );
-  //       },
-  //     });
-  //   });
-  // }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   onWizardSave(id: string | null) {
     if (this.stepper.lastStep()) {
@@ -252,17 +252,17 @@ export class CostCenterListComponent implements OnInit {
             })
           );
 
-          //   console.log(id);
+
         },
-        // error: (error) => {
-        //   this.archiveModal.hide();
-        //   this.toastService.close("0");
-        //   this.toastService.error(
-        //     this.translateService.instant(error.error, {
-        //       elem: this.translateService.instant("growout"),
-        //     })
-        //   );
-        // },
+
+
+
+
+
+
+
+
+
       });
     });
   }
@@ -361,7 +361,7 @@ export class CostCenterListComponent implements OnInit {
 
 
 
-  //trash 
+
   findArchivedPage() {
     this.loading = true;
     this.costcenterServive
@@ -410,7 +410,7 @@ export class CostCenterListComponent implements OnInit {
             elem: this.translateService.instant("costCenter"),
           })
         );
-        console.log(id);
+        
       },
     });
   }
@@ -418,7 +418,7 @@ export class CostCenterListComponent implements OnInit {
     this.costcenterServive.delete(id).subscribe({
       next: () => {
         this.findArchivedPage();
-        console.log("Success");
+        
         this.toastService.success(
           this.translateService.instant("success.deleted", {
             elem: this.translateService.instant("costCenter"),

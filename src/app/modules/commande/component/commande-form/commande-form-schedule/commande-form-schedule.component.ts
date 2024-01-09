@@ -14,12 +14,12 @@ export class CommandeFormScheduleComponent implements OnInit {
   constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit(): void {
-    // Create the form group and initialize it with default values
+
     this.formGroup = this.formBuilder.group({
       participant: this.formBuilder.array([]),
     });
 
-    // Initialize the paymentTerm object when it's not present
+
     if (!this.commande.paymentTerm) {
       this.commande.paymentTerm = {
         paymentCount: 0,
@@ -31,6 +31,6 @@ export class CommandeFormScheduleComponent implements OnInit {
 
   onAdd() {
     const control = this.formGroup.controls['participant'] as FormArray;
-    // Implement logic for adding participants if needed
+
   }
 }

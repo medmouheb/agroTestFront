@@ -34,9 +34,9 @@ export class DivisionFormCompanyComponent implements OnInit {
       idcamp:['',Validators.required]
       
     })
-    // if (!this.division.campany) {
-    //   this.division.campany = {};
-    // }
+
+
+
     this.getAllCompany();
   }
 
@@ -51,7 +51,7 @@ export class DivisionFormCompanyComponent implements OnInit {
 
   getAlldivision(){
     this.divisionService.findAll().subscribe({
-      next: (result) => {this.divisions = result;console.log("2==",result)},
+      next: (result) => {this.divisions = result;},
       error: (error) => console.error(error),
     });
     this.getAllCompany();
@@ -64,29 +64,29 @@ export class DivisionFormCompanyComponent implements OnInit {
     });
   }
 
-  // onCompanyChange() {
-  //   console.log(this.division.campany!.id)
 
-  //   if (this.division.campany!.id) {
-  //     this.division.companyname = this.companys.find(
-  //       (elem) => elem.id === this.division.companyname
 
-  //     );
-  //     console.log(this.division.campany)
-  //   }
-  // }
+
+
+
+
+
+
+
+
+
   selectValue(e:any){
 
     let wil=this.companys.filter(el=>{
-      //console.log(el)
+
       return el.name==e.target.value
   
     })[0].code
-    console.log(wil)
+    
 
     this.division.companycode=wil
-    console.log(this.division.companyname)
-    console.log(this.division.companycode)
+    
+    
     this.companyname=wil
 
     

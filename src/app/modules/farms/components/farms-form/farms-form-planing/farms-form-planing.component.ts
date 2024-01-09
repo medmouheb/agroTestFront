@@ -28,17 +28,17 @@ export class FarmsFormPlaningComponent implements OnInit {
   getallwearhouse() {
     this.warehouseservice.findAll().subscribe(data => {
       this.warehouses = data
-      console.log(data)
+      
 
-    }, error => console.log(error))
+    } )
   }
 
   getalllogistics() {
     this.logisticsService.findAll().subscribe(data => {
       this.logistics = data
-      console.log(data)
+      
 
-    }, error => console.log(error))
+    } )
   }
 
   selectValue(e:any){

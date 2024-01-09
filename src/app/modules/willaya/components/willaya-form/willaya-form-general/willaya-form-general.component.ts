@@ -71,9 +71,9 @@ export class WillayaFormGeneralComponent implements OnInit {
       ]),
     });
 
-    console.log("====================================");
-    console.log(" add form :", this.addform);
-    console.log("====================================");
+    
+    
+    
   }
   getetat() {
     if ((this.addform.status == "INVALID") || (this.willaya.code == undefined) || (this.willaya.name == undefined)) {
@@ -107,22 +107,22 @@ export class WillayaFormGeneralComponent implements OnInit {
 
   }
 
-  // generateRandomCode() {
-  //   const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-  //   let code = '';
-  //   for (let i = 0; i < 4; i++) {
-  //     const randomIndex = Math.floor(Math.random() * characters.length);
-  //     code += characters.charAt(randomIndex);
-  //   }
-  //   return code;
-  // }
+
+
+
+
+
+
+
+
+
 
   newSeggestions = ""
 
   existname() {
     if (this.names.indexOf((this.willaya.name + "")) != -1) {
       if(this.static=="update" ){
-        console.log("iii",this.willaya.name,"    ",this.willayareplica.name)
+        
 
         if(this.willaya.name == this.willayareplica.name){
           this.dispotruename = false
@@ -140,16 +140,16 @@ export class WillayaFormGeneralComponent implements OnInit {
 
 
   geValues(event) {
-    console.log("====================================");
-    console.log("event :", event);
-    console.log("====================================");
+    
+    
+    
 
-    console.log("====================================");
-    console.log("le formulaire :", this.addform);
-    console.log("====================================");
+    
+    
+    
 
-    console.log(this.willaya.code);
-    console.log(this.willaya.name);
+    
+    
     console.log(
       "this.willaya.code.length",
       this.willaya.code.toString().length >= 5
@@ -221,10 +221,10 @@ export class WillayaFormGeneralComponent implements OnInit {
 
 validationCode() {
   const codeRegex: RegExp =/^[a-zA-Z0-9]*$/;
-  console.log(this.willaya.code)
+  
   if (codeRegex.test(this.willaya.code)) {
     this.codeIsvalid = false;
-  console.log(this.willaya.code)
+  
 
   }
   else {
@@ -235,20 +235,20 @@ validationCode() {
 
 
   minIstrueName2: boolean = false
-  // isBlur2() {
-  //   if (this.fieldControl.status == "INVALID") {
-  //     this.minIstrueName2 = true
 
-  //   }
-  //   else if (this.fieldControl.status == "VALID") {
-  //     this.minIstrueName2 = false
 
-  //   }
-  // }
-  // isBlur3() {
-  //   if ((this.fieldControl.value == '') || (this.fieldControl.value == undefined)) {
-  //     this.minIstrueName2 = false
 
-  //   }
-  // }
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

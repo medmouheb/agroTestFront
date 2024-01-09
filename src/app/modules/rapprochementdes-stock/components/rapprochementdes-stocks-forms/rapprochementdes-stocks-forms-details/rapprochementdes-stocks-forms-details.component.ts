@@ -18,7 +18,7 @@ export class RapprochementdesStocksFormsDetailsComponent implements OnInit {
   divisionNames: string[] = [];
   selectedDivisionName: string = '';
 
-  // Array to hold the list of companies
+
 
 
   constructor(private sharedService: SharedService,
@@ -51,7 +51,7 @@ export class RapprochementdesStocksFormsDetailsComponent implements OnInit {
   })
   }
   
-//getAll Campany name from service findbycompany
+
 
 
 
@@ -59,7 +59,7 @@ export class RapprochementdesStocksFormsDetailsComponent implements OnInit {
   get f() {
     return this.addform.controls;
   }
-  //methode pour get tous les nom from company
+
 
 
   isControlValid(controlName: string): boolean {

@@ -38,7 +38,7 @@ export class AirportListComponent implements OnInit {
 
   loading = false;
   airport: airport = {};
-  // fournisseursPage: Page<Fournisseur> = initPage;
+
   pageNumber = 0;
   pageSize = 10;
   filter = "";
@@ -67,16 +67,16 @@ export class AirportListComponent implements OnInit {
       this.translateService.instant("message.loading..."),
       { id: "0" }
     );
-    //control required fiels
-    // if (this.airport.airportCode == null || this.airport.airportCode == "" || this.airport.airportName == null || this.airport.airportName == "") {
-    //   this.toastService.close("0");
-    //   this.toastService.error(
-    //     this.translateService.instant("errors.required", {
-    //       elem: this.translateService.instant("airport"),
-    //     })
-    //   );
-    //   return;
-    // }
+
+
+
+
+
+
+
+
+
+
     this.service.save(id, this.airport!).subscribe({
       next: () => {
         this.getActiveAirports();
@@ -202,7 +202,7 @@ export class AirportListComponent implements OnInit {
     this.service.searchAirportByNameActive(this.airportName).subscribe({
       next: (result) => {
         this.airports = result;
-        console.log(this.airports);
+        
       },
       error: (error) => console.error(error),
     });
@@ -217,7 +217,7 @@ export class AirportListComponent implements OnInit {
     this.service.getActiveAirports().subscribe({
       next: (result) => {
         this.airports = result;
-        console.log(this.airports);
+        
       },
       error: (error) => {
         this.loading = false;

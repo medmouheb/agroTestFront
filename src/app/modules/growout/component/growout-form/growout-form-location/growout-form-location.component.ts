@@ -18,7 +18,7 @@ export class GrowoutFormLocationComponent implements OnInit {
     phone: "",
     email: "",
 
-    // autres champs de formulaire
+
   };
   countryPhoneCodes = [
     { "country": "Afghanistan", "code": "+93", "flag": "af" },
@@ -267,10 +267,10 @@ export class GrowoutFormLocationComponent implements OnInit {
   }
 
   selectContry(c: any) {
-    // let nav = document.getElementById(`mobile`) as any;
-    //   nav.value =c.target.value ;
+
+
     this.growout.phoneNumber = c.target.value
-    // console.log("aaa::",this.countryPhoneCodes.filter(el=>{return el.code== c.target.value}))
+
     this.flag = this.countryPhoneCodes.filter(el => { return el.code == c.target.value })[0].flag
     let f = document.getElementById(`flag`) as any;
     f.src = this.flag;
@@ -292,7 +292,7 @@ export class GrowoutFormLocationComponent implements OnInit {
 
   getAllWillaya() {
     this.wilayaservice.findAll().subscribe({
-      next: (result) => { this.wilayas = result; console.log("2==", result) },
+      next: (result) => { this.wilayas = result;  },
       error: (error) => console.error(error),
     });
   }
@@ -305,12 +305,12 @@ export class GrowoutFormLocationComponent implements OnInit {
 
   }
   onNextStep() {
-    // validation du formulaire pour l'étape actuelle
+
     if (this.myForm.valid) {
       this.currentStep++;
     } else {
-      // afficher des messages d'erreur ou autre traitement
-      console.log("Veuillez remplir tous les champs obligatoires.");
+
+      
     }
   }
 
@@ -340,10 +340,10 @@ export class GrowoutFormLocationComponent implements OnInit {
 
   validationEmail() {
     const emailRegex: RegExp = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
-    console.log(this.growout.email)
+    
     if (emailRegex.test(this.growout.email)) {
       this.emailIsvalid = false;
-      console.log(this.growout.email)
+      
 
     }
     else {

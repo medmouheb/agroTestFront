@@ -34,9 +34,9 @@ export class DeliveryFormGeneralComponent implements OnInit {
 
     })
 
-    // if(["ExpD","MCT","SW","MPC","RRC","CH"].indexOf(this.delivery.productType)!=-1 && this.delivery.id){
-    //   this.afficheother=true
-    // }
+
+
+
     if (this.delivery.id) {
       this.static = "update"
       this.deliveryReplica =  JSON.parse( JSON.stringify(  this.delivery))
@@ -80,8 +80,8 @@ export class DeliveryFormGeneralComponent implements OnInit {
 
     })
 
-    console.log("====================================");
-    console.log(" add form :", this.addform);
+    
+    
 
 
   }
@@ -90,20 +90,20 @@ export class DeliveryFormGeneralComponent implements OnInit {
 
       return true
     }else{
-      console.log("erere false")
+      
 
       return false
     }
   }
   setname() {
-    console.log("e:", this.delivery.instructiuonCode)
-    console.log("e:", this.delivery.instructiuonName)
+    
+    
 
     switch (this.delivery.instructiuonCode) {
       case "CH":
         this.delivery.instructiuonName = "Check Chick Health";
         this.addform.patchValue({ instructiuonName: "Check Chick Health" })
-        // this.addform.value.instructiuonName= "Check Chick Health";
+
         break;
       case "RRC":
         this.delivery.instructiuonName = "Remove and replace Culls";
@@ -151,11 +151,11 @@ export class DeliveryFormGeneralComponent implements OnInit {
   }
   getValue(event) {
 
-    console.log("event :", event);
-    console.log("le deleverhy :", this.delivery);
+    
+    
 
-    console.log("====================================");
-    console.log("le formulaire :", this.addform.value);
+    
+    
     if (
       !this.dispotrueType && !this.dispotrueCode && !this.dispotruename &&
       this.delivery.productType != null && this.delivery.productType != "null" && this.delivery.productType.length > 0 &&

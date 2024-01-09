@@ -26,11 +26,11 @@ export class DivisionFromLocalisationComponent implements OnInit {
     private wilayaservice: WillayaService) { }
 
   ngOnInit(): void {
-    // if (localStorage.getItem("company")) {
-    //   this.isRemenber = true
-    //   // this.division.companyname=JSON.parse(  localStorage.getItem("company")).companyname
-    //   // this.division.companycode=JSON.parse(  localStorage.getItem("company")).codecompany
-    // }
+
+
+
+
+
     this.getAllWillaya()
     this.getAllCompany()
     setTimeout(() => {
@@ -40,18 +40,18 @@ export class DivisionFromLocalisationComponent implements OnInit {
 
     
     
-    // setTimeout(()=>{
-    //   this.wil = {
-    //     ...this.companys.filter(el => {
-    //       //console.log(el)
-    //       return el.name == this.division.companyname
-  
-    //     })[0]
-    //   }
-    //   this.division = { ...this.wil, phone: this.wil.number, codeCity: this.wil.cityCode, nameCity: this.wil.cityName, companyname: this.wil.name }
-    //   this.isRemenber=true
 
-    // },500)
+
+
+
+
+  
+
+
+
+
+
+
     
     
   }
@@ -303,10 +303,10 @@ export class DivisionFromLocalisationComponent implements OnInit {
   }
 
   selectContry(c:any){
-    // let nav = document.getElementById(`mobile`) as any;
-    //   nav.value =c.target.value ;
+
+
       this.division.phone=c.target.value
-      // console.log("aaa::",this.countryPhoneCodes.filter(el=>{return el.code== c.target.value}))
+
       this.flag=this.countryPhoneCodes.filter(el=>{return el.code== c.target.value})[0].flag
       let f = document.getElementById(`flag`) as any;
       f.src =this.flag ;
@@ -319,13 +319,13 @@ export class DivisionFromLocalisationComponent implements OnInit {
   isRemenber = true
   getAllWillaya() {
     this.wilayaservice.findAll().subscribe({
-      next: (result) => { this.wilayas = result; console.log("2==", result) },
+      next: (result) => { this.wilayas = result;  },
       error: (error) => console.error(error),
     });
   }
   setCompany() {
     this.isRemenber = !this.isRemenber
-    console.log("rrr::",this.wil)
+    
 
     if (this.isRemenber ) {
 
@@ -373,7 +373,7 @@ export class DivisionFromLocalisationComponent implements OnInit {
 
   getAlldivision() {
     this.divisionService.findAll().subscribe({
-      next: (result) => { this.divisions = result; console.log("2==", result) },
+      next: (result) => { this.divisions = result;  },
       error: (error) => console.error(error),
     });
   }
@@ -385,25 +385,25 @@ export class DivisionFromLocalisationComponent implements OnInit {
     });
   }
 
-  // onCompanyChange() {
-  //   console.log(this.division.campany!.id)
 
-  //   if (this.division.campany!.id) {
-  //     this.division.companyname = this.companys.find(
-  //       (elem) => elem.id === this.division.companyname
 
-  //     );
-  //     console.log(this.division.campany)
-  //   }
-  // }
+
+
+
+
+
+
+
+
+
   wil: any
   selectValue1(e: any) {
     this.wil = {...this.companys.filter(el => {return el.name == e.target.value})[0]}
 
 
 
-    console.log("88::", this.division)
-    console.log("88::9", this.wil)
+    
+    
     if (this.isRemenber) {
       this.division.companyname = e.target.value
       this.division.address=this.wil.address
@@ -430,10 +430,10 @@ export class DivisionFromLocalisationComponent implements OnInit {
 
 validationEmail() {
   const emailRegex: RegExp =/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
-  console.log(this.division.email)
+  
   if (emailRegex.test(this.division.email)) {
     this.emailIsvalid = false;
-  console.log(this.division.email)
+  
 
   }
   else {

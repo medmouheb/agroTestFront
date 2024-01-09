@@ -47,7 +47,7 @@ export class FarmsService {
     return this.http.get<Array<Farm>>(url);
   }
 
-  //list of frame no deleted
+
   findAllNoDeleted(): Observable<Array<Farm>> {
     let url = `${this.baseUrl()}/ferme/list`;
     return this.http.get<Array<Farm>>(url);

@@ -21,7 +21,7 @@ export class RapprochementdesStocksFormsGeneralComponent implements OnInit {
   codes: Array<String> = [];
   ngOnInit(): void {
     if (this.camp != null) {
-      console.log("olll")
+      
       this.sharedService.setIsActive(true);
       this.compaser.findAll().subscribe(data => {
         this.codes = data.map(el => { return el.numeroDeLot })
@@ -30,7 +30,7 @@ export class RapprochementdesStocksFormsGeneralComponent implements OnInit {
 
     if (this.camp == undefined) { this.camp = { ndeReference: "", numeroDeLot: "" } };
     this.initForm();
-    console.log(this.addform);
+    
     if (this.camp.id) {
       this.static = "update"
       this.campReplica =  JSON.parse( JSON.stringify(  this.camp))
@@ -48,7 +48,7 @@ export class RapprochementdesStocksFormsGeneralComponent implements OnInit {
       code += digits.charAt(randomIndex);
     }
     this.codeunique = code
-    console.log(code);
+    
     this.camp.ndeReference = code
 
 
@@ -134,10 +134,10 @@ export class RapprochementdesStocksFormsGeneralComponent implements OnInit {
  }
 
   exist1() {
-    console.log(this.camp.ndeReference);
+    
     this.compaser.findbyName(this.camp.ndeReference).subscribe(
       (data) => {
-        console.log(data);
+        
         if (data != null) {
           this.dispotruename = true;
         } else {
@@ -145,7 +145,7 @@ export class RapprochementdesStocksFormsGeneralComponent implements OnInit {
         }
       },
       (error) => {
-        console.log(error.status);
+        
         if (error.status == 404) {
           this.dispotruename = false;
         }
@@ -168,10 +168,10 @@ export class RapprochementdesStocksFormsGeneralComponent implements OnInit {
   newSeggestions=""
 
   existname() {
-    console.log("aa::",this.codes)
+    
     if (this.codes.indexOf(this.camp.ndeReference) != -1) {
       this.dispotruename = true
-     // this.newSeggestions= "chose "+this.camp.name+this.generateRandomCode()+" or "+this.camp.name+this.generateRandomCode()+" or "+this.camp.name+this.generateRandomCode()+" or "+this.camp.name+this.generateRandomCode()
+
 
     } else {
       this.dispotruename = false
@@ -186,7 +186,7 @@ export class RapprochementdesStocksFormsGeneralComponent implements OnInit {
   minIstrueName2: boolean = false
 
   isBlur1() {
-    console.log(this.camp.ndeReference);
+    
     if (
       this.camp.ndeReference === undefined ||
       this.camp.ndeReference.trim() === ""

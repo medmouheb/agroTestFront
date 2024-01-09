@@ -118,7 +118,7 @@ export class MapsComponent implements OnInit {
         title: "Hello World!"
     });
 
-    // To add the marker to the map, call setMap();
+
     marker.setMap(map);
   }
 

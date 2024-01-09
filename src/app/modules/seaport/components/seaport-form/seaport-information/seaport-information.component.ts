@@ -31,22 +31,22 @@ export class SeaportInformationComponent implements OnInit {
 
       ]),
     });
-    console.log("====================================");
-    console.log(" add form :", this.addform);
-    console.log("====================================");
+    
+    
+    
   }
   get notes() { return this.addform.get('notes') }
 
 
   geValues(event) {
     this.sharedService.setIsActive(false);
-    console.log("====================================");
-    console.log("event :", event);
-    console.log("====================================");
+    
+    
+    
 
-    console.log("====================================");
-    console.log("le formulaire :", this.addform);
-    console.log("====================================");
+    
+    
+    
     if (this.addform.valid) {
       this.sharedService.setIsActive(true);
     }

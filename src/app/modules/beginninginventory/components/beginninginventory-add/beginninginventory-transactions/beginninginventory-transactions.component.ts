@@ -14,7 +14,7 @@ export class BeginninginventoryTransactionsComponent implements OnInit {
     @Input() camp!: BeginningInventory;
     addform: FormGroup;
   
-    // Array to hold the list of companies
+
   
     constructor(private sharedService: SharedService,
   
@@ -30,7 +30,7 @@ export class BeginninginventoryTransactionsComponent implements OnInit {
       }
       
       showvalue(e: any) {
-        console.log("rerer:", e.target.value)
+        
       }
   
     initForm() {
@@ -41,13 +41,13 @@ export class BeginninginventoryTransactionsComponent implements OnInit {
         temps: new FormControl(this.camp.temps),
       });
     
-      console.log("====================================");
-      console.log(" add form :", this.addform);
-      console.log("====================================");
+      
+      
+      
       
     }
     
-  //getAll Campany name from service findbycompany
+
 
 
 
@@ -55,7 +55,7 @@ export class BeginninginventoryTransactionsComponent implements OnInit {
   get f() {
     return this.addform.controls;
   }
-  //methode pour get tous les nom from company
+
 
 
   isControlValid(controlName: string): boolean {

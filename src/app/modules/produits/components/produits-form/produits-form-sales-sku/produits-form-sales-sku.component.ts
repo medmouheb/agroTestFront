@@ -21,7 +21,7 @@ export class ProduitsFormSalesSkuComponent implements OnInit {
     }
     this.salesSkuService.findAll().subscribe(data=>{
       this.salesList=data
-      console.log("rrr;;;",data)
+      
     })
   }
 

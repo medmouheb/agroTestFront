@@ -48,7 +48,7 @@ export class GrowoutListComponent implements OnInit {
     private toastService: HotToastService
   ) { }
   onCheckboxChange() {
-    console.log("La valeur de la case à cocher est : ", this.isChecked);
+    
     if (this.isChecked == false) {
 
       this.affiche = false
@@ -69,7 +69,7 @@ export class GrowoutListComponent implements OnInit {
       .findPage(this.pageNumber, this.pageSize, this.filter)
       .subscribe({
         next: (result) => {
-          console.log("z;", result)
+          
           this.growouts = result.content;
           this.growoutPage = result;
         },
@@ -87,10 +87,10 @@ export class GrowoutListComponent implements OnInit {
       .findArchivedPage(this.pageNumber, this.pageSize, this.filter)
       .subscribe({
         next: (result) => {
-          console.log(result.content)
+          
 
           this.growoutss = result.content;
-          console.log(this.growouts)
+          
           this.growoutPages = result;
         },
         error: (error) => {
@@ -217,20 +217,20 @@ export class GrowoutListComponent implements OnInit {
               elem: this.translateService.instant("growout"),
             })
           );
-          // this.toastService.success;
-          console.log(id);
 
-          //   console.log(id);
+          
+
+
         },
-        // error: (error) => {
-        //   this.archiveModal.hide();
-        //   this.toastService.close("0");
-        //   this.toastService.error(
-        //     this.translateService.instant(error.error, {
-        //       elem: this.translateService.instant("growout"),
-        //     })
-        //   );
-        // },
+
+
+
+
+
+
+
+
+
       });
     });
   }
@@ -378,7 +378,7 @@ export class GrowoutListComponent implements OnInit {
             elem: this.translateService.instant("growout"),
           })
         );
-        console.log(id);
+        
       },
     });
   }
@@ -387,7 +387,7 @@ export class GrowoutListComponent implements OnInit {
       next: () => {
         this.findArchivedPage();
         this.findPage();
-        console.log("Success");
+        
         this.toastService.success(
           this.translateService.instant("success.deleted", {
             elem: this.translateService.instant("growout"),

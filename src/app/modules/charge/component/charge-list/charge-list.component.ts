@@ -67,7 +67,7 @@ export class ChargeListComponent implements OnInit {
         .findPage(this.pageNumber, this.pageSize, this.filter)
         .subscribe({
           next: (result) => {
-            console.log(result.content)
+            
             this.charges = result.content;
             this.chargesPage = result;
           },
@@ -265,7 +265,7 @@ export class ChargeListComponent implements OnInit {
   
   
     onClickArchive(id: string) {
-      console.log(id)
+      
       this.archiveModal.show(() => {
         
         this.chargesService.archive(id).subscribe({
@@ -273,7 +273,7 @@ export class ChargeListComponent implements OnInit {
            this.findPage()
             this.archiveModal.hide();
             this.toastService.success;
-            console.log(id);
+            
           },
         });
       });

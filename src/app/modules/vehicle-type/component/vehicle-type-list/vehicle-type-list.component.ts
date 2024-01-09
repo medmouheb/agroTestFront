@@ -71,9 +71,9 @@ export class VehicleTypeListComponent implements OnInit {
   findById(id: string) {
     this.vehicleTypeService.findById(id).subscribe({
       next: (result) => {
-        console.log("as::",result)
+        
         this.vehicleType = result
-        console.log("ass::",this.vehicleType)
+        
 
       },
       error: (error) => console.error(error),
@@ -144,7 +144,7 @@ export class VehicleTypeListComponent implements OnInit {
   }
 
   onCheckboxChange() {
-    console.log("La valeur de la case à cocher est : ", this.isChecked);
+    
     if (this.isChecked==false){
 
       this.affiche=false
@@ -167,7 +167,7 @@ export class VehicleTypeListComponent implements OnInit {
       .findPage(this.pageNumber, this.pageSize, this.filter)
       .subscribe({
         next: (result) => {
-          console.log("dd::",result.content)
+          
           this.vehicleTypeList = result.content;
           this.vehicleTypePage = result;
 
@@ -186,10 +186,10 @@ export class VehicleTypeListComponent implements OnInit {
       .findArchivedPage(this.pageNumber, this.pageSize, this.filter)
       .subscribe({
         next: (result) => {
-          console.log("n:",result.content)
+          
 
           this.vehicleTypeListArchived = result.content;
-          console.log(this.vehicleTypeListArchived)
+          
           this.vehicleTypePageArchived = result;
         },
         error: (error) => {
@@ -240,7 +240,7 @@ export class VehicleTypeListComponent implements OnInit {
       next: () => {
         this.findArchivedPage();
         this.findPage();
-        console.log("Success");
+        
         this.toastService.success(
           this.translateService.instant("success.deleted", {
             elem: this.translateService.instant("vehicleType"),
@@ -260,7 +260,7 @@ export class VehicleTypeListComponent implements OnInit {
             elem: this.translateService.instant("vehicleType"),
           })
         );
-        console.log(id);
+        
       },
     });
   }

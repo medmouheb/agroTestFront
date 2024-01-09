@@ -31,7 +31,7 @@ export class CardComponent implements OnInit {
     const decimalPart = parts[1];
   
     return `${integerPart}${decimalSeparator}${decimalPart}`;
-    console.log(this.averageArea)
+    
   }
 
 }

@@ -43,42 +43,42 @@ export class WizardDialogComponent
     this.wizardStep = 1;
     this.sharedServ.setIsActive(true);
     this.sharedServ.isActive$.subscribe((data) => {
-      console.log("====================================");
-      console.log("shared next button :", data);
-      console.log("====================================");
+      
+      
+      
     });
 
-    // this.sharedServ.isTrue$.subscribe((data) => {
-    //   console.log("====================================");
-    //   console.log("shared next button :", data);
-    //   console.log("====================================");
-    // });
+
+
+
+
+
 
     this.subscription = this.sharedServ.isActive$.subscribe((response) => {
       this.isNext = response;
-      console.log("====================================");
-      console.log("is next 2 :", response);
-      console.log("====================================");
+      
+      
+      
     });
 
-    // this.subscription = this.sharedServ.isTrue$.subscribe((response) => {
-    //   this.isSave = response;
-    //   console.log("====================================");
-    //   console.log("is save 2 :", response);
-    //   console.log("====================================");
-    // });
+
+
+
+
+
+
   }
 
   show({ title, confirm, cancel, prev, stepsCount }: any) {
-    console.log("====================================");
-    console.log("nxt");
-    console.log("====================================");
+    
+    
+    
     this.content = {
       title,
       confirm,
       cancel: () => {
         this.content = null;
-        console.log(this.content)
+        
         if (cancel) {
           cancel();
         }
@@ -116,46 +116,46 @@ export class WizardDialogComponent
     this.hide();
   }
 
-  // blockPr(event: Event) {
-  //   console.log(this.entity);
 
-  //   if (this.type == EntityTypeEnum.COMPANY) {
-  //     if (this.isfirstStep()) {
-  //       if (
-  //         this.entity == null ||
-  //         (this.entity != null &&
-  //           (this.entity.code == undefined || this.entity.name == undefined))
-  //       ) {
-  //         event.stopPropagation();
-  //         event.preventDefault();
-  //         return false;
-  //       } else {
-  //         this.content.confirm();
-  //       }
-  //     } else {
-  //       this.content.confirm();
-  //     }
-  //     //repeated for the other one
-  //   } else if (this.type == EntityTypeEnum.FARM) {
-  //     if (this.isfirstStep()) {
-  //       if (
-  //         this.entity == null ||
-  //         (this.entity != null &&
-  //           (this.entity.code == undefined || this.entity.name == undefined))
-  //       ) {
-  //         event.stopPropagation();
-  //         event.preventDefault();
-  //         return false;
-  //       } else {
-  //         this.content.confirm();
-  //       }
-  //     } else {
-  //       this.content.confirm();
-  //     }
-  //   } else {
-  //     if (this.content) this.content.confirm();
-  //   }
-  // }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   goTo(step: number) {
     this.wizardStep = step;
@@ -164,33 +164,33 @@ export class WizardDialogComponent
   ngOnChanges() {
 
     this.subscription = this.sharedServ.isActive$.subscribe((response) => {
-      console.log("====================================");
-      console.log("is next 3 :", response);
-      console.log("====================================");
+      
+      
+      
     });
 
-    //   this.subscription = this.sharedServ.isTrue$.subscribe((response) => {
-    //     this.isSave = !response;
-    //     console.log("====================================");
-    //     console.log("is save 3 :", response);
-    //     console.log("====================================");
-    //   });
+
+
+
+
+
+
   }
 
-  // ngAfterViewInit(): void {
-  //   let a = document.getElementById("treu") as HTMLElement;
-  //   a.classList.add("diabled");
-  // }
+
+
+
+
 
   ngAfterViewChecked(): void {
     this.cdRef.detectChanges();
   }
 }
-// enum EntityTypeEnum {
-//   COMPANY = "company",
-//   CROWOUT = "growout",
-//   CURRENCIE = "currencie",
-//   DIVISION = "division",
-//   Cost = "cost",
-//   FARM = "farm",
-// }
+
+
+
+
+
+
+
+

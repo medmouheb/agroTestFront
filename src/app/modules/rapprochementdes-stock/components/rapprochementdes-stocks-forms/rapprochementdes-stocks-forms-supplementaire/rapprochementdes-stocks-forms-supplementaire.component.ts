@@ -17,7 +17,7 @@ export class RapprochementdesStocksFormsSupplementaireComponent implements OnIni
   divisionNames: string[] = [];
   selectedDivisionName: string = '';
 
-  // Array to hold the list of companies
+
 
 
   constructor(private sharedService: SharedService,
@@ -59,7 +59,7 @@ export class RapprochementdesStocksFormsSupplementaireComponent implements OnIni
   })
   }
   
-//getAll Campany name from service findbycompany
+
 
 
 
@@ -67,7 +67,7 @@ export class RapprochementdesStocksFormsSupplementaireComponent implements OnIni
   get f() {
     return this.addform.controls;
   }
-  //methode pour get tous les nom from company
+
 
 
   isControlValid(controlName: string): boolean {

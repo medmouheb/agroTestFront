@@ -47,9 +47,9 @@ export class ShipmethodsFormGeneralComponent implements OnInit {
       active: new FormControl(null),
     });
 
-    console.log("====================================");
-    console.log(" add form :", this.addform.value);
-    console.log("====================================");
+    
+    
+    
   }
 
 
@@ -136,7 +136,7 @@ export class ShipmethodsFormGeneralComponent implements OnInit {
   otherCondition = false
 
   setList() {
-    console.log(this.shipmethod.code)
+    
     let ch = this.shipmethod.code
     switch (ch) {
       case "AIR":

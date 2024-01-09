@@ -15,12 +15,12 @@ export class ProduitsFormUsageComponent implements OnInit {
   constructor(private farmsService:FarmsService) { }
   farmList:Array<Farm>=[]
   ngOnInit(): void {
-    console.log("dzdzd")
+    
     this.farmsService.findAll().subscribe(data=>{
       this.farmList=data
-      console.log("dzdzd",data)
+      
     },error=>{
-      console.log("dzdzd",error)
+      
     })
   }
 

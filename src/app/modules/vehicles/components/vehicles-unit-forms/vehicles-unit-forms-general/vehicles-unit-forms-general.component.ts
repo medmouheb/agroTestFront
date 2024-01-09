@@ -32,7 +32,7 @@ export class VehiclesUnitFormsGeneralComponent implements OnInit {
 
     if (this.camp == undefined) { this.camp = { nomDuVehicule: "", codeVehicule: "" } };
     this.initForm();
-    console.log(this.addform);
+    
     if (this.camp.id) {
       this.static = "update"
       this.campReplica =  JSON.parse( JSON.stringify(  this.camp))
@@ -94,10 +94,10 @@ export class VehiclesUnitFormsGeneralComponent implements OnInit {
 
 validationCode() {
   const codeRegex: RegExp =/^[a-zA-Z0-9]*$/;
-  console.log(this.camp.codeVehicule)
+  
   if (codeRegex.test(this.camp.codeVehicule)) {
     this.codeIsvalid = false;
-  console.log(this.camp.codeVehicule)
+  
 
   }
   else {
@@ -123,10 +123,10 @@ validationCode() {
   }
 
   exist1() {
-    console.log(this.camp.nomDuVehicule);
+    
     this.compaser.findbyName(this.camp.nomDuVehicule).subscribe(
       (data) => {
-        console.log(data);
+        
         if (data != null) {
           this.dispotruename = true;
         } else {
@@ -134,7 +134,7 @@ validationCode() {
         }
       },
       (error) => {
-        console.log(error.status);
+        
         if (error.status == 404) {
           this.dispotruename = false;
         }
@@ -177,28 +177,28 @@ validationCode() {
 
   minIstrueName: boolean = false
   minIstrueName2: boolean = false
-  // isBlur2() {
-  //   console.log(this.minIstrueName2)
-  //   console.log('===3:', this.fieldControl.value
-  //   )
 
-  //   if (this.fieldControl.status == "INVALID") {
-  //     this.minIstrueName2 = true
 
-  //   }
-  //   else if (this.fieldControl.status == "VALID") {
-  //     this.minIstrueName2 = false
 
-  //   }
-  // }
-  // isBlur3() {
-  //   if ((this.fieldControl.value == '') || (this.fieldControl.value == undefined)) {
-  //     this.minIstrueName2 = false
 
-  //   }
-  // }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   isBlur1() {
-    console.log(this.camp.nomDuVehicule);
+    
     if (
       this.camp.nomDuVehicule === undefined ||
       this.camp.nomDuVehicule.trim() === ""

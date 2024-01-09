@@ -48,7 +48,7 @@ export class ShipmethodsListComponent implements OnInit {
   ) { }
 
   onCheckboxChange() {
-    console.log("La valeur de la case à cocher est : ", this.isChecked);
+    
     if (this.isChecked==false){
 
       this.affiche=false
@@ -68,7 +68,7 @@ export class ShipmethodsListComponent implements OnInit {
      .findPage(this.pageNumber, this.pageSize, this.filter)
      .subscribe({
        next: (result) => {
-         console.log(result.content)
+         
          this.shipmethods = result.content;
          this.shipmethodPage = result;
        },
@@ -115,7 +115,7 @@ export class ShipmethodsListComponent implements OnInit {
        id: "0",
      }
    );
-   console.log(this.shipmethod)
+   
    if((this.shipmethod.code==undefined) ||(this.shipmethod.code=='')  ){
      this.toastService.close("0");
      this.toastService.warning("Verify your shipmethod code"
@@ -188,19 +188,19 @@ export class ShipmethodsListComponent implements OnInit {
                elem: this.translateService.instant("shipmethod"),
              })
            );
-         console.log(id);
+         
 
-         //   console.log(id);
+
        },
-       // error: (error) => {
-       //   this.archiveModal.hide();
-       //   this.toastService.close("0");
-       //   this.toastService.error(
-       //     this.translateService.instant(error.error, {
-       //       elem: this.translateService.instant("growout"),
-       //     })
-       //   );
-       // },
+
+
+
+
+
+
+
+
+
      });
    });
  }
@@ -286,20 +286,20 @@ export class ShipmethodsListComponent implements OnInit {
            elem: this.translateService.instant("shipmethod"),
          })
        );
-       console.log(id);
+       
      },
    });
  }
 
  
  onClickDelete(id: string) {
-   console.log(id)
+   
    this.shipmethodsservice.delete(id).subscribe({
      next: () => {
        this.findArchivedPage();
        this.findPage();
 
-       console.log("Success");
+       
        this.toastService.success(
          this.translateService.instant("success.deleted", {
            elem: this.translateService.instant("shipmethod"),

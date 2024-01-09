@@ -73,7 +73,7 @@ export class ProduitsListComponent implements OnInit {
   }
 
   onCheckboxChange() {
-    console.log("La valeur de la case à cocher est : ", this.isChecked);
+    
     if (this.isChecked==false){
 
       this.affiche=false
@@ -290,12 +290,12 @@ export class ProduitsListComponent implements OnInit {
   }
 
   onClickDelete(id: string) {
-    console.log("id: " + id);
+    
     this.produitsService.delete(id).subscribe({
       next: () => {
         this.findArchivedPage();
         this.findPage()
-        console.log("Success");
+        
         this.toastService.success(
           this.translateService.instant("success.deleted", {
             elem: this.translateService.instant("product"),
@@ -314,7 +314,7 @@ export class ProduitsListComponent implements OnInit {
           this.archiveModal.hide();
           this.toastService.success;
 
-          console.log(id);
+          
         },
       });
     });
@@ -332,7 +332,7 @@ export class ProduitsListComponent implements OnInit {
             elem: this.translateService.instant("product"),
           })
         );
-        console.log(id);
+        
       },
     });
   }

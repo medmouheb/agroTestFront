@@ -25,7 +25,7 @@ export class BeginninginventoryDetailsComponent implements OnInit {
 
     ngOnInit(): void {
       if (this.camp != null) {
-        console.log("olll")
+        
         this.sharedService.setIsActive(true);
         this.compaser.findAll().subscribe(data => {
           this.codes = data.map(el => { return el.codeProduit }
@@ -38,7 +38,7 @@ export class BeginninginventoryDetailsComponent implements OnInit {
   
       if (this.camp == undefined) { this.camp = { nomDuProduit: "", codeProduit: "" } };
       this.initForm();
-      console.log(this.addform);
+      
 
       if (this.camp.id) {
         this.static = "update"
@@ -142,10 +142,10 @@ export class BeginninginventoryDetailsComponent implements OnInit {
     newSeggestions=""
   
     existname() {
-      console.log("aa::",this.codes)
+      
       if (this.codes.indexOf(this.camp.nomDuProduit) != -1) {
         this.dispotruename = true
-       // this.newSeggestions= "chose "+this.camp.name+this.generateRandomCode()+" or "+this.camp.name+this.generateRandomCode()+" or "+this.camp.name+this.generateRandomCode()+" or "+this.camp.name+this.generateRandomCode()
+
   
       } else {
         this.dispotruename = false
@@ -161,10 +161,10 @@ export class BeginninginventoryDetailsComponent implements OnInit {
 
     validationCode() {
       const codeRegex: RegExp =/^[a-zA-Z0-9]*$/;
-      console.log(this.camp.codeProduit)
+      
       if (codeRegex.test(this.camp.codeProduit)) {
         this.codeIsvalid = false;
-      console.log(this.camp.codeProduit)
+      
     
       }
       else {
@@ -175,28 +175,28 @@ export class BeginninginventoryDetailsComponent implements OnInit {
 
     minIstrueName: boolean = false
     minIstrueName2: boolean = false
-    // isBlur2() {
-    //   console.log(this.minIstrueName2)
-    //   console.log('===3:', this.fieldControl.value
-    //   )
+
+
+
+
   
-    //   if (this.fieldControl.status == "INVALID") {
-    //     this.minIstrueName2 = true
+
+
   
-    //   }
-    //   else if (this.fieldControl.status == "VALID") {
-    //     this.minIstrueName2 = false
+
+
+
   
-    //   }
-    // }
-    // isBlur3() {
-    //   if ((this.fieldControl.value == '') || (this.fieldControl.value == undefined)) {
-    //     this.minIstrueName2 = false
+
+
+
+
+
   
-    //   }
-    // }
+
+
     isBlur1() {
-      console.log(this.camp.nomDuProduit);
+      
       if (
         this.camp.nomDuProduit === undefined ||
         this.camp.nomDuProduit.trim() === ""

@@ -261,10 +261,10 @@ export class FournisseursFormInformationComponent implements OnInit {
   }
 
   selectContry(c:any){
-    // let nav = document.getElementById(`mobile`) as any;
-    //   nav.value =c.target.value ;
+
+
       this.fournisseur.phone=c.target.value
-      // console.log("aaa::",this.countryPhoneCodes.filter(el=>{return el.code== c.target.value}))
+
       this.flag=this.countryPhoneCodes.filter(el=>{return el.code== c.target.value})[0].flag
       let f = document.getElementById(`flag`) as any;
       f.src =this.flag ;
@@ -295,7 +295,7 @@ export class FournisseursFormInformationComponent implements OnInit {
 
   getAllWillaya() {
     this.wilayaservice.findAll().subscribe({
-      next: (result) => { this.wilayas = result; console.log("2==", result) },
+      next: (result) => { this.wilayas = result;  },
       error: (error) => console.error(error),
     });
   }
@@ -313,10 +313,10 @@ export class FournisseursFormInformationComponent implements OnInit {
 
   validationEmail() {
     const emailRegex: RegExp = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
-    console.log(this.fournisseur.email)
+    
     if (emailRegex.test(this.fournisseur.email)) {
       this.emailIsvalid = false;
-      console.log(this.fournisseur.email)
+      
       this.sharedService.setIsActive(true);
 
     }

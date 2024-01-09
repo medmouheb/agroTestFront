@@ -35,8 +35,8 @@ export class TrashComponent implements OnInit {
   seaports: Array<seaport> = [];
   seaportName: string = '';
 
-  // Page: Page<Fournisseur> = initPage;
-  // onPaginationChange: EventEmitter<string> = new EventEmitter<string>();
+
+
 
   constructor(
     private translateService: TranslateService,
@@ -53,7 +53,7 @@ export class TrashComponent implements OnInit {
     this.service.getArchivedSeaports().subscribe({
       next: (result) => {
         this.seaports = result;
-        console.log(this.seaports);
+        
       },
       error: (error) => {
         this.loading = false;
@@ -63,22 +63,22 @@ export class TrashComponent implements OnInit {
     });
   }
 
-  // findArchivedPage() {
-  //   this.loading = true;
-  //   this.fournisseursService
-  //     .findArchivedPage(this.pageNumber, this.pageSize, this.filter)
-  //     .subscribe({
-  //       next: (result) => {
-  //         this.fournisseurs = result.content;
-  //         this.Page = result;
-  //       },
-  //       error: (error) => {
-  //         this.loading = false;
-  //         console.error(error);
-  //       },
-  //       complete: () => (this.loading = false),
-  //     });
-  // }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   findById(id: string) {
     this.service.findSeaportById(id).subscribe({
@@ -87,22 +87,22 @@ export class TrashComponent implements OnInit {
     });
   }
 
-  // onFilterChange(filter: string) {
-  //   this.filter = filter;
-  //   this.pageNumber = 0;
-  //   this.onPaginationChange.emit("");
-  // }
 
-  // onPageNumberChange(pageNumber: number) {
-  //   this.pageNumber = pageNumber;
-  //   this.onPaginationChange.emit("");
-  // }
 
-  // onPageSizeChange(pageSize: number) {
-  //   this.pageSize = pageSize;
-  //   this.pageNumber = 0;
-  //   this.onPaginationChange.emit("");
-  // }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
   onclickActivateModal(id: string) {
@@ -181,7 +181,7 @@ export class TrashComponent implements OnInit {
             elem: this.translateService.instant("seaport"),
           })
         );
-        console.log(id);
+        
       },
     });
   }
@@ -190,7 +190,7 @@ export class TrashComponent implements OnInit {
     this.service.delete(id).subscribe({
       next: () => {
         this.getArchivedSeaports()
-        console.log("Success");
+        
         this.toastService.success(
           this.translateService.instant("success.permadeleted", {
             elem: this.translateService.instant("seaport"),
@@ -204,7 +204,7 @@ export class TrashComponent implements OnInit {
     this.service.searchSeaportByNameArchived(this.seaportName).subscribe({
       next: (result) => {
         this.seaports = result;
-        console.log(this.seaports);
+        
       },
       error: (error) => console.error(error),
     });

@@ -44,7 +44,7 @@ export class LogisticUnitFormsGeneralComponent implements OnInit {
   }
   ngOnInit(): void {
     if (this.camp != null) {
-      console.log("olll")
+      
       this.sharedService.setIsActive(true);
       this.compaser.findAll().subscribe(data => {
         this.codes = data.map(el => { return el.logisticCode })
@@ -56,7 +56,7 @@ export class LogisticUnitFormsGeneralComponent implements OnInit {
 
     if (this.camp == undefined) { this.camp = { logisticName: "", logisticCode: "" } };
     this.initForm();
-    console.log(this.addform);
+    
   }
 
   initForm(
@@ -121,10 +121,10 @@ export class LogisticUnitFormsGeneralComponent implements OnInit {
 
   validationCode() {
     const codeRegex: RegExp = /^[a-zA-Z0-9]*$/;
-    console.log(this.camp.logisticCode)
+    
     if (codeRegex.test(this.camp.logisticCode)) {
       this.codeIsvalid = false;
-      console.log(this.camp.logisticCode)
+      
 
     }
     else {
@@ -133,26 +133,26 @@ export class LogisticUnitFormsGeneralComponent implements OnInit {
 
   }
   exist1() {
-    // console.log(this.camp.logisticName);
-    // this.compaser.findbyName(this.camp.logisticName).subscribe(
-    //   (data) => {
-    //     console.log(data);
-    //     if (data != null) {
-    //       this.sharedService.setIsActive(false);
-    //       this.dispotruename = true;
-    //     } else {
-    //       this.dispotruename = false;
-    //       this.sharedService.setIsActive(true);
-    //     }
-    //   },
-    //   (error) => {
-    //     console.log(error.status);
-    //     if (error.status == 404) {
-    //       this.dispotruename = false;
-    //       this.sharedService.setIsActive(true);
-    //     }
-    //   }
-    // );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   }
 
 
@@ -187,28 +187,28 @@ export class LogisticUnitFormsGeneralComponent implements OnInit {
 
   minIstrueName: boolean = false
   minIstrueName2: boolean = false
-  // isBlur2() {
-  //   console.log(this.minIstrueName2)
-  //   console.log('===3:', this.fieldControl.value
-  //   )
 
-  //   if (this.fieldControl.status == "INVALID") {
-  //     this.minIstrueName2 = true
 
-  //   }
-  //   else if (this.fieldControl.status == "VALID") {
-  //     this.minIstrueName2 = false
 
-  //   }
-  // }
-  // isBlur3() {
-  //   if ((this.fieldControl.value == '') || (this.fieldControl.value == undefined)) {
-  //     this.minIstrueName2 = false
 
-  //   }
-  // }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   isBlur1() {
-    console.log(this.camp.logisticName);
+    
     if (
       this.camp.logisticName === undefined ||
       this.camp.logisticName.trim() === ""
@@ -220,7 +220,7 @@ export class LogisticUnitFormsGeneralComponent implements OnInit {
   }
 
   geValues(event) {
-    console.log("kkk::", !this.dispotrueCode, !this.dispotruename && !this.codeIsvalid, !this.minIstrueCode, !this.minIstrueName, !this.dispotruename)
+    
 
     if (
       !this.dispotrueCode && !this.dispotruename && !this.codeIsvalid && !this.minIstrueCode && !this.minIstrueName &&

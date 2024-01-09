@@ -72,8 +72,8 @@ export class NavbarComponent implements OnInit {
     body.classList.remove("nav-open");
   }
   sidebarToggle() {
-    // const toggleButton = this.toggleButton;
-    // const body = document.getElementsByTagName('body')[0];
+
+
     var $toggle = document.getElementsByClassName("navbar-toggler")[0];
 
     if (this.sidebarVisible === false) {
@@ -84,7 +84,7 @@ export class NavbarComponent implements OnInit {
     const body = document.getElementsByTagName("body")[0];
 
     if (this.mobile_menu_visible == 1) {
-      // $('html').removeClass('nav-open');
+
       body.classList.remove("nav-open");
       if ($layer) {
         $layer.remove();
@@ -115,7 +115,7 @@ export class NavbarComponent implements OnInit {
       }, 100);
 
       $layer.onclick = function () {
-        //asign a function
+
         body.classList.remove("nav-open");
         this.mobile_menu_visible = 0;
         $layer.classList.remove("visible");
@@ -133,12 +133,12 @@ export class NavbarComponent implements OnInit {
   getTitle() {
     var titlee = this.location.prepareExternalUrl(this.location.path());
     var title = this.location.prepareExternalUrl;
-    console.log("aa::", this.listTitles)
-    // console.log(title)
-    //     console.log(titlee);
+    
+
+
     if (titlee.charAt(0) === "#") {
       titlee = titlee.slice(2);
-      // console.log(titlee);
+
     }
 
     for (var item = 0; item < this.listTitles.length; item++) {

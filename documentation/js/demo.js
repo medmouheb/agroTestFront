@@ -102,7 +102,7 @@ demo = {
 
         var completedTasksChart = new Chartist.Line('#completedTasksChart', dataCompletedTasksChart, optionsCompletedTasksChart);
 
-        // start animation for the Completed Tasks Chart - Line Chart
+
         md.startAnimationForLineChart(completedTasksChart);
 
 
@@ -136,7 +136,7 @@ demo = {
         ];
         var emailsSubscriptionChart = Chartist.Bar('#emailsSubscriptionChart', dataEmailsSubscriptionChart, optionsEmailsSubscriptionChart, responsiveOptions);
 
-        //start animation for the Emails Subscription Chart
+
         md.startAnimationForBarChart(emailsSubscriptionChart);
 
     },
@@ -157,7 +157,7 @@ demo = {
             title:"Hello World!"
         });
 
-        // To add the marker to the map, call setMap();
+
         marker.setMap(map);
     },
 

@@ -82,7 +82,7 @@ export class FarmsListComponent implements OnInit {
       .findPage(this.pageNumber, this.pageSize, this.filter)
       .subscribe({
         next: (result) => {
-          console.log("a::", result)
+          
           this.farms = result.content;
           this.farmsPage = result;
         },
@@ -95,7 +95,7 @@ export class FarmsListComponent implements OnInit {
   }
 
   onClickdisArchive(id: string) {
-    console.log(id);
+    
 
     this.farmsService.disArchive(id).subscribe({
       next: () => {
@@ -106,18 +106,18 @@ export class FarmsListComponent implements OnInit {
             elem: this.translateService.instant("farms"),
           })
         );
-        console.log(id);
+        
       },
     });
   }
 
   onClickDelete(id: string) {
-    console.log("id: " + id);
+    
     this.farmsService.delete(id).subscribe({
       next: () => {
         this.findArchivedPage();
         this.findPage()
-        console.log("Success");
+        
         this.toastService.success(
           this.translateService.instant("success.deleted", {
             elem: this.translateService.instant("farms"),
@@ -128,7 +128,7 @@ export class FarmsListComponent implements OnInit {
   }
 
   onCheckboxChange() {
-    console.log("La valeur de la case à cocher est : ", this.isChecked);
+    
     if (this.isChecked == false) {
 
       this.affiche = false
@@ -168,7 +168,7 @@ export class FarmsListComponent implements OnInit {
   }
 
   onSave(id: string | null) {
-    console.log("eee::", this.farm)
+    
 
     if (this.farm.warehouse == undefined) {
       this.farm.warehouse = null;
@@ -361,38 +361,38 @@ export class FarmsListComponent implements OnInit {
 
   }
 
-  // onClickDelete(id: string) {
-  //   this.deleteModal.show(() => {
-  //     this.toastService.loading(
-  //       this.translateService.instant("message.loading..."),
-  //       {
-  //         id: "0",
-  //       }
-  //     );
-  //     this.farmsService.delete(id).subscribe({
-  //       next: () => {
-  //         this.findPage();
-  //         this.deleteModal.hide();
-  //         this.toastService.close("0");
-  //         this.onFilterChange("");
-  //         this.toastService.success(
-  //           this.translateService.instant("success.deleted", {
-  //             elem: this.translateService.instant("farm"),
-  //           })
-  //         );
-  //       },
-  //       error: (error) => {
-  //         this.deleteModal.hide();
-  //         this.toastService.close("0");
-  //         this.toastService.error(
-  //           this.translateService.instant(error.error, {
-  //             elem: this.translateService.instant("farm"),
-  //           })
-  //         );
-  //       },
-  //     });
-  //   });
-  // }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
   findArchivedPage() {
@@ -401,7 +401,7 @@ export class FarmsListComponent implements OnInit {
       .findArchivedPage(this.pageNumber, this.pageSize, this.filter)
       .subscribe({
         next: (result) => {
-          console.log("b::", result)
+          
           this.farmss = result.content;
           this.farmsPages = result;
           this.companyss = result.content;
@@ -427,43 +427,43 @@ export class FarmsListComponent implements OnInit {
               elem: this.translateService.instant("farms"),
             })
           );
-          //   console.log(id);
+
         },
-        // error: (error) => {
-        //   this.archiveModal.hide();
-        //   this.toastService.close("0");
-        //   this.toastService.error(
-        //     this.translateService.instant(error.error, {
-        //       elem: this.translateService.instant("growout"),
-        //     })
-        //   );
-        // },
+
+
+
+
+
+
+
+
+
       });
     });
   }
 
-  // onClickArchive(id: string) {
-  //   this.archiveModal.show(() => {
-  //     this.farmsService.archive(id).subscribe({
-  //       next: () => {
-  //         //   this.findPage();
-  //         this.archiveModal.hide();
-  //         //   this.toastService.close("0");
-  //         this.toastService.success;
-  //         console.log(id);
 
-  //         //   console.log(id);
-  //       },
-  //       // error: (error) => {
-  //       //   this.archiveModal.hide();
-  //       //   this.toastService.close("0");
-  //       //   this.toastService.error(
-  //       //     this.translateService.instant(error.error, {
-  //       //       elem: this.translateService.instant("growout"),
-  //       //     })
-  //       //   );
-  //       // },
-  //     });
-  //   });
-  // }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

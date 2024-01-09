@@ -68,9 +68,9 @@ export class FreighttermsFormGeneralComponent implements OnInit {
       active: new FormControl(null),
     });
 
-    console.log("====================================");
-    console.log(" add form :", this.addform.value);
-    console.log("====================================");
+    
+    
+    
   }
   getetat() {
     if ((this.addform.status == "INVALID") || (this.freightterm.freighttermcode == undefined) || (this.freightterm.freighttermname  == undefined)) {
@@ -122,16 +122,16 @@ export class FreighttermsFormGeneralComponent implements OnInit {
 
   }
   geValues(event) {
-    console.log("====================================");
-    console.log("event :", event);
-    console.log("====================================");
+    
+    
+    
 
-    console.log("====================================");
-    console.log("le formulaire :", this.addform.value);
-    console.log("====================================");
+    
+    
+    
 
-    console.log(this.freightterm.freighttermcode);
-    console.log(this.freightterm.freighttermname );
+    
+    
     console.log(
       "this.freightterms.code.length",
       this.freightterm.freighttermcode.toString().length >= 5
@@ -159,14 +159,8 @@ export class FreighttermsFormGeneralComponent implements OnInit {
       this.dialogComponent.setsubmitstatus(false)
     
     }
-    console.log("le ship :", this.freightterm);
-    if(this.freighttermcodeList.indexOf(this.freightterm.freighttermcode )!=-1){
-      console.log("      this.otherCondition=true      ",this.freightterm.freighttermcode,(this.freighttermcodeList.indexOf(this.freightterm.freighttermcode )!=-1))
-    }else{
-      console.log("      this.otherCondition=false      ",this.freightterm.freighttermcode,(this.freighttermcodeList.indexOf(this.freightterm.freighttermcode )!=-1))
-      this.otherCondition=true
-
-    }
+    
+    
   }
 
   get f() {
@@ -174,7 +168,7 @@ export class FreighttermsFormGeneralComponent implements OnInit {
   }
   otherCondition=false
   setList(){
-    console.log(this.freightterm.freighttermcode)
+    
     let ch=this.freightterm.freighttermcode
     switch(ch){
       case "CIF":
@@ -232,11 +226,11 @@ export class FreighttermsFormGeneralComponent implements OnInit {
   isBlurDCisvalid() {
     if (this.freightterm.freighttermcode == undefined) {
       this.DCisvalid = true
-      console.log("asa::aa")
+      
     }
     else if (this.freightterm.freighttermcode.toString().length < 1) { 
       this.DCisvalid = true 
-      console.log("asa::")
+      
 
     }
     else {

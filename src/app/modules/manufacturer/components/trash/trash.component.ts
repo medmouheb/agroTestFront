@@ -35,8 +35,8 @@ export class TrashComponent implements OnInit {
   manufacturers: Array<manufacturer> = [];
   manufacturerName: string = "";
 
-  // Page: Page<Fournisseur> = initPage;
-  // onPaginationChange: EventEmitter<string> = new EventEmitter<string>();
+
+
 
   constructor(
     private translateService: TranslateService,
@@ -53,7 +53,7 @@ export class TrashComponent implements OnInit {
     this.service.getArchivedManufacturers().subscribe({
       next: (result) => {
         this.manufacturers = result;
-        console.log(this.manufacturers);
+        
       },
       error: (error) => {
         this.loading = false;
@@ -63,22 +63,22 @@ export class TrashComponent implements OnInit {
     });
   }
 
-  // findArchivedPage() {
-  //   this.loading = true;
-  //   this.fournisseursService
-  //     .findArchivedPage(this.pageNumber, this.pageSize, this.filter)
-  //     .subscribe({
-  //       next: (result) => {
-  //         this.fournisseurs = result.content;
-  //         this.Page = result;
-  //       },
-  //       error: (error) => {
-  //         this.loading = false;
-  //         console.error(error);
-  //       },
-  //       complete: () => (this.loading = false),
-  //     });
-  // }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   findById(id: string) {
     this.service.findManufacturerById(id).subscribe({
@@ -87,22 +87,22 @@ export class TrashComponent implements OnInit {
     });
   }
 
-  // onFilterChange(filter: string) {
-  //   this.filter = filter;
-  //   this.pageNumber = 0;
-  //   this.onPaginationChange.emit("");
-  // }
 
-  // onPageNumberChange(pageNumber: number) {
-  //   this.pageNumber = pageNumber;
-  //   this.onPaginationChange.emit("");
-  // }
 
-  // onPageSizeChange(pageSize: number) {
-  //   this.pageSize = pageSize;
-  //   this.pageNumber = 0;
-  //   this.onPaginationChange.emit("");
-  // }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -177,7 +177,7 @@ export class TrashComponent implements OnInit {
     this.service.searchManufacturerByNameArchived(this.manufacturerName).subscribe({
       next: (result) => {
         this.manufacturers = result;
-        console.log(this.manufacturers);
+        
       },
       error: (error) => console.error(error),
     });

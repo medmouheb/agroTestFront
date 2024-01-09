@@ -46,7 +46,7 @@ export class DivisionListComponent implements OnInit {
     private toastService: HotToastService
   ) { }
   onCheckboxChange() {
-    console.log("La valeur de la case à cocher est : ", this.isChecked);
+    
     if (this.isChecked == false) {
 
       this.affiche = false
@@ -85,7 +85,7 @@ export class DivisionListComponent implements OnInit {
     this.divisionService.findById(id).subscribe({
       next: (result) => {
         this.division = result
-        console.log(result)
+        
       },
       error: (error) => console.error(error),
     });
@@ -105,7 +105,7 @@ export class DivisionListComponent implements OnInit {
 
   onPageSizeChange(pageSize: number) {
     this.pageSize = pageSize;
-    console.log(pageSize)
+    
     this.pageNumber = 0;
     this.onPaginationChange.emit("");
   }
@@ -125,16 +125,16 @@ export class DivisionListComponent implements OnInit {
         id: "0",
       }
     );
-    console.log("99::8", this.division)
-    // if(!this.division.companycode){
-    //     this.toastService.error("you must select a campany  ")
-    //     return console.log("okk");
-    // }
+    
+
+
+
+
 
     this.divisionService.save(id, this.division!).subscribe({
       next: (data) => {
-        console.log("99::9", this.division)
-        console.log("99::", data)
+        
+        
         this.findPage();
         this.formModal.hide();
         this.onCancel();
@@ -209,17 +209,17 @@ export class DivisionListComponent implements OnInit {
               elem: this.translateService.instant("division"),
             })
           );
-          //   console.log(id);
+
         },
-        // error: (error) => {
-        //   this.archiveModal.hide();
-        //   this.toastService.close("0");
-        //   this.toastService.error(
-        //     this.translateService.instant(error.error, {
-        //       elem: this.translateService.instant("growout"),
-        //     })
-        //   );
-        // },
+
+
+
+
+
+
+
+
+
       });
     });
   }
@@ -410,7 +410,7 @@ export class DivisionListComponent implements OnInit {
             elem: this.translateService.instant("division"),
           })
         );
-        console.log(id);
+        
       },
     });
   }
@@ -420,7 +420,7 @@ export class DivisionListComponent implements OnInit {
       next: () => {
         this.findArchivedPage();
         this.findPage()
-        console.log("Success");
+        
         this.toastService.success(
           this.translateService.instant("success.deleted", {
             elem: this.translateService.instant("division"),

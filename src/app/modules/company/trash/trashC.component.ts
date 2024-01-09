@@ -47,7 +47,7 @@ export class TrashCComponent implements OnInit {
 
   ngOnInit(): void {
     this.findArchivedPage();
-    console.log(this.findArchivedPage.length);
+    
     this.onPaginationChange.subscribe(() => this.findArchivedPage());
   }
 
@@ -96,7 +96,7 @@ export class TrashCComponent implements OnInit {
   }
 
   onClickdisArchive(id: string) {
-    console.log(id);
+    
 
     this.companyService.disArchive(id).subscribe({
       next: () => {
@@ -107,17 +107,17 @@ export class TrashCComponent implements OnInit {
             elem: this.translateService.instant("company"),
           })
         );
-        console.log(id);
+        
       },
     });
   }
 
   onClickDelete(id: string) {
-    console.log("id: " + id);
+    
     this.companyService.delete(id).subscribe({
       next: () => {
         this.findArchivedPage();
-        console.log("Success");
+        
         this.toastService.success(
           this.translateService.instant("success.deleted", {
             elem: this.translateService.instant("company"),

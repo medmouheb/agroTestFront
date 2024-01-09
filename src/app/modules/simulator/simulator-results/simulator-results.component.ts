@@ -17,7 +17,7 @@ export class SimulatorResultsComponent implements OnInit {
 
   cards = [];
   ngOnInit(): void {
-    console.log("lllllllllllll")
+    
     this.simulatorService.simulate(
     localStorage.getItem("simulator-country") , 
     localStorage.getItem("simulator-area") , 

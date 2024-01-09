@@ -14,7 +14,7 @@ export class VerifyEmailComponent implements OnInit {
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
       this.loginService.verify(params['code']).subscribe(res => {
-        console.log(res)
+        
       })
     });
     

@@ -235,7 +235,7 @@ onDownloadCSVTempalte() {
     });
   }
    onClickDelete(id: string) {
-    console.log(id)
+    
     this.deleteModal.show(() => {
       this.toastService.loading(
         this.translateService.instant("message.loading..."),
@@ -277,7 +277,7 @@ onDownloadCSVTempalte() {
           this.findPage()
           this.archiveModal.hide();
           this.toastService.success;
-          console.log(id);
+          
         },
       });
     });

@@ -24,7 +24,7 @@ export class SalesSkuFormGeneralComponent implements OnInit {
     this.initForm();
     this.getallsales()
     this.salesSkuService.findAll().subscribe(data => {
-      console.log("aa::",data)
+      
       this.names = data.map(el => {
         return el.sailorNameSku
       })
@@ -44,7 +44,7 @@ export class SalesSkuFormGeneralComponent implements OnInit {
   }
   getallsales() {
     this.salesservice.findAll().subscribe({
-      next: (result) => { this.saless = result; console.log("8==", this.saless) },
+      next: (result) => { this.saless = result;  },
       error: (error) => console.error(error),
     });
   }
@@ -68,21 +68,21 @@ export class SalesSkuFormGeneralComponent implements OnInit {
 
       ]),
     });
-    console.log("====================================");
-    console.log(" add form :", this.addform);
-    console.log("====================================");
+    
+    
+    
   }
   geValues(event) {
-    console.log("====================================");
-    console.log("event :", event);
-    console.log("====================================");
+    
+    
+    
 
-    console.log("====================================");
-    console.log("le formulaire :", this.addform);
-    console.log("====================================");
+    
+    
+    
 
-    console.log(this.salessku.sailorCode);
-    console.log(this.salessku.sailorNameSku);
+    
+    
     console.log(
 
     );
@@ -174,7 +174,7 @@ export class SalesSkuFormGeneralComponent implements OnInit {
   dispotruename = false
 
   existname() {
-    console.log(this.names,"aa::",this.salessku.sailorNameSku)
+    
     if (this.names.indexOf(this.salessku.sailorNameSku) != -1) {
       this.dispotruename = true
       this.newSeggestions = "chose " + this.salessku.sailorNameSku + this.generateRandomCode() + " or " + this.salessku.sailorNameSku + this.generateRandomCode() + " or " + this.salessku.sailorNameSku + this.generateRandomCode() + " or " + this.salessku.sailorNameSku + this.generateRandomCode()

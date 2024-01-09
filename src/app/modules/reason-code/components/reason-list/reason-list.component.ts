@@ -37,9 +37,9 @@ export class ReasonListComponent implements OnInit {
   ];
 
   loading = false;
-  // fournisseurs: Array<Fournisseur> = [];
+
   reason: reason = {};
-  // fournisseursPage: Page<Fournisseur> = initPage;
+
   pageNumber = 0;
   pageSize = 10;
   filter = "";
@@ -157,7 +157,7 @@ export class ReasonListComponent implements OnInit {
     this.service.searchReasonByNameActive(this.reasonName).subscribe({
       next: (result) => {
         this.reasons = result;
-        console.log(this.reasons);
+        
       },
       error: (error) => console.error(error),
     });
@@ -173,7 +173,7 @@ export class ReasonListComponent implements OnInit {
       .subscribe({
         next: (result) => {
           this.reasons = result;
-          console.log(this.reasons)
+          
         },
         error: (error) => {
           this.loading = false;

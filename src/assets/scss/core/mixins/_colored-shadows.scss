@@ -5,7 +5,7 @@
 }
 
 @mixin shadow-big-image(){
-    // new box shadow optimized for Tables and Phones
+
     box-shadow: 0 5px 15px -8px rgba(0, 0, 0, $bmd-shadow-ambient-opacity * 2),
     0  8px 10px -5px rgba(0, 0, 0, $bmd-shadow-umbra-opacity);
 }
@@ -16,20 +16,20 @@
     0  8px 10px -5px rgba(0, 0, 0, $bmd-shadow-umbra-opacity);
 }
 
-// @mixin shadow-big-color($color){
-//     // new box shadow optimized for Tables and Phones
-//     box-shadow: 0 5px 20px 0px rgba(0, 0, 0, 0.2),
-//     0 13px 24px -11px rgba($color, 0.60);
-// }
+
+
+
+
+
 
 @mixin shadow-small-color($color){
-    // new box shadow optimized for Tablets and Phones
+
     box-shadow: 0 4px 20px 0px rgba(0, 0, 0, .14),
     0 7px 10px -5px rgba($color, 0.4)
 }
 
 @mixin shadow-navbar-color($color){
-    // new box shadow optimized for Tablets and Phones
+
 
     @if($color == $white-color) {
         box-shadow: 0 4px 18px 0px rgba(0, 0, 0, .12),

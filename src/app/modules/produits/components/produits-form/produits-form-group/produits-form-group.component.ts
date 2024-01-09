@@ -95,7 +95,6 @@ export class ProduitsFormGroupComponent implements OnInit {
   }
 
   onVendorChange(e:any){
-    console.log(this.vendors.find(elem => elem.id === e.target.value))
     
       this.produit.fournisseur = this.vendors.find(elem => elem.id === e.target.value)
   }
@@ -109,7 +108,6 @@ export class ProduitsFormGroupComponent implements OnInit {
   }
   dispotruename=false
   existname() {
-    console.log("lklk::",this.names.indexOf((this.produit.name + "")) != -1,)
     if (this.names.indexOf((this.produit.name + "")) != -1) {
 
       if(this.static=="update" ){
@@ -202,10 +200,10 @@ export class ProduitsFormGroupComponent implements OnInit {
 
 validationCode() {
   const codeRegex: RegExp =/^[a-zA-Z0-9]*$/;
-  console.log(this.produit.code)
+  
   if (codeRegex.test(this.produit.code)) {
     this.codeIsvalid = false;
-  console.log(this.produit.code)
+  
 
   }
   else {

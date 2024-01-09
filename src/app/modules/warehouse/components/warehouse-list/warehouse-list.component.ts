@@ -57,7 +57,7 @@ export class WarehouseListComponent implements OnInit {
     private fb: FormBuilder
   ) { }
   onCheckboxChange() {
-    console.log("La valeur de la case à cocher est : ", this.isChecked);
+    
     if (this.isChecked == false) {
 
       this.affiche = false
@@ -96,10 +96,10 @@ export class WarehouseListComponent implements OnInit {
     );
     let formData: FormData = new FormData();
     formData.append("file", this.file);
-    console.log('entred')
+    
 
     this.warehouseService.uploadCSVTemplate(formData).subscribe(() => {
-      console.log('succes')
+      
       this.importModal.hide();
       this.findPage();
       this.file = null;
@@ -111,9 +111,9 @@ export class WarehouseListComponent implements OnInit {
       );
     },
       (error) => {
-        console.log('error', error.status)
+        
         if (error.status == "200") {
-          console.log('succes')
+          
           this.importModal.hide();
           this.findPage();
           this.file = null;
@@ -141,7 +141,7 @@ export class WarehouseListComponent implements OnInit {
         next: (result) => {
           this.warehouses = result.content;
           this.warehousesPage = result;
-          console.log('findPage', result)
+          
         },
 
         error: (error) => {
@@ -185,11 +185,11 @@ export class WarehouseListComponent implements OnInit {
 
   validationEmail() {
     const emailRegex: RegExp = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
-    console.log(this.warehouse.email)
+    
     if (emailRegex.test(this.warehouse.email)) {
 
       return false;
-      console.log(this.warehouse.email)
+      
 
     }
     else {
@@ -200,16 +200,16 @@ export class WarehouseListComponent implements OnInit {
 
   onSave(id: string | null) {
     const emailRegex: RegExp = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
-    console.log(this.warehouse.email)
+    
 
-    console.log(this.warehouse!)
+    
     this.toastService.loading(
       this.translateService.instant("message.loading..."),
       {
         id: "0",
       }
     );
-    console.log(this.warehouse)
+    
     this.warehouseService.save(id, this.warehouse!).subscribe({
       next: () => {
         this.findPage();
@@ -269,7 +269,6 @@ export class WarehouseListComponent implements OnInit {
   onClickEdit(id: string) {
 
     this.findById(id);
-    console.log(this.findById(id))
     this.formModal.show({
       title: "menu.edit-warehouse",
       stepsCount: this.steps.length - 1,
@@ -293,17 +292,17 @@ export class WarehouseListComponent implements OnInit {
               elem: this.translateService.instant("warehouse"),
             })
           );
-          //   console.log(id);
+
         },
-        // error: (error) => {
-        //   this.archiveModal.hide();
-        //   this.toastService.close("0");
-        //   this.toastService.error(
-        //     this.translateService.instant(error.error, {
-        //       elem: this.translateService.instant("growout"),
-        //     })
-        //   );
-        // },
+
+
+
+
+
+
+
+
+
       });
     });
   }
@@ -342,13 +341,13 @@ export class WarehouseListComponent implements OnInit {
 
   sortBydivisionNameValid: boolean = true;
   sortBydivisionName() {
-    // if(this.sortBydivisionNameValid){
-    //   this.warehouses.sort((a, b) => a.divisionName.localeCompare(b.divisionName));
-    //   this.sortBydivisionNameValid=false
-    // }else{
-    //   this.warehouses.sort((a, b) => b.divisionName.localeCompare(a.divisionName));
-    //   this.sortBydivisionNameValid=true
-    // }
+
+
+
+
+
+
+
   }
 
 
@@ -404,7 +403,7 @@ export class WarehouseListComponent implements OnInit {
         next: (result) => {
           this.warehousess = result.content;
           this.Pagewarehouses = result;
-          console.log('findArchivedPage', result)
+          
 
         },
         error: (error) => {
@@ -420,7 +419,7 @@ export class WarehouseListComponent implements OnInit {
       next: () => {
         this.findArchivedPage();
         this.findPage()
-        console.log("Success");
+        
         this.toastService.success(
           this.translateService.instant("success.deleted", {
             elem: this.translateService.instant("warehouse"),
@@ -439,7 +438,7 @@ export class WarehouseListComponent implements OnInit {
             elem: this.translateService.instant("warehouse"),
           })
         );
-        console.log(id);
+        
       },
     });
   }

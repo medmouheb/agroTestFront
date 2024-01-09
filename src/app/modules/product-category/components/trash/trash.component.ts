@@ -37,8 +37,8 @@ export class TrashComponent implements OnInit {
   productCategories: Array<productCategory> = [];
   productCategoryName: string = "";
 
-  // Page: Page<Fournisseur> = initPage;
-  // onPaginationChange: EventEmitter<string> = new EventEmitter<string>();
+
+
 
   constructor(
     private translateService: TranslateService,
@@ -55,7 +55,7 @@ export class TrashComponent implements OnInit {
     this.service.getArchivedProductCategories().subscribe({
       next: (result) => {
         this.productCategories = result;
-        console.log(this.productCategories);
+        
       },
       error: (error) => {
         this.loading = false;
@@ -65,22 +65,22 @@ export class TrashComponent implements OnInit {
     });
   }
 
-  // findArchivedPage() {
-  //   this.loading = true;
-  //   this.fournisseursService
-  //     .findArchivedPage(this.pageNumber, this.pageSize, this.filter)
-  //     .subscribe({
-  //       next: (result) => {
-  //         this.fournisseurs = result.content;
-  //         this.Page = result;
-  //       },
-  //       error: (error) => {
-  //         this.loading = false;
-  //         console.error(error);
-  //       },
-  //       complete: () => (this.loading = false),
-  //     });
-  // }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   findById(id: string) {
     this.service.findProductCategoryById(id).subscribe({
@@ -89,22 +89,22 @@ export class TrashComponent implements OnInit {
     });
   }
 
-  // onFilterChange(filter: string) {
-  //   this.filter = filter;
-  //   this.pageNumber = 0;
-  //   this.onPaginationChange.emit("");
-  // }
 
-  // onPageNumberChange(pageNumber: number) {
-  //   this.pageNumber = pageNumber;
-  //   this.onPaginationChange.emit("");
-  // }
 
-  // onPageSizeChange(pageSize: number) {
-  //   this.pageSize = pageSize;
-  //   this.pageNumber = 0;
-  //   this.onPaginationChange.emit("");
-  // }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
   onclickActivateModal(id: string) {
@@ -178,7 +178,7 @@ export class TrashComponent implements OnInit {
     this.service.searchProductCategoryByNameArchived(this.productCategoryName).subscribe({
       next: (result) => {
         this.productCategories = result;
-        console.log(this.productCategories);
+        
       },
       error: (error) => console.error(error),
     });

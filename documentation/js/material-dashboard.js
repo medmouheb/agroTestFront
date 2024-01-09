@@ -31,8 +31,8 @@ $(document).ready(function(){
     $.material.init();
 
     window_width = $(window).width();
-    // check if there is an image set for the sidebar's background
-    //  Activate the tooltips
+
+
     $('[rel="tooltip"]').tooltip();
 
 
@@ -44,9 +44,9 @@ $(document).ready(function(){
 
 });
 
-// activate collapse right menu when the windows is resized
+
 $(window).resize(function(){
-    // reset the seq for charts drawing animations
+
     seq = seq2 = 0;
 
 });
@@ -127,10 +127,10 @@ md = {
 }
 
 
-// Returns a function, that, as long as it continues to be invoked, will not
-// be triggered. The function will be called after it stops being called for
-// N milliseconds. If `immediate` is passed, trigger the function on the
-// leading edge, instead of the trailing.
+
+
+
+
 
 function debounce(func, wait, immediate) {
 	var timeout;

@@ -25,7 +25,7 @@ export class CompanyFromLocalisationComponent implements OnInit {
 
   getAllWillaya() {
     this.wilayaservice.findAll().subscribe({
-      next: (result) => { this.wilayas = result; console.log("2==", result) },
+      next: (result) => { this.wilayas = result;  },
       error: (error) => console.error(error),
     });
   }
@@ -41,7 +41,7 @@ export class CompanyFromLocalisationComponent implements OnInit {
     })[0].code
     this.camp.wilayaName = wil
 
-    console.log("ee===zz", this.camp)
+    
 
 
   }
@@ -293,10 +293,10 @@ export class CompanyFromLocalisationComponent implements OnInit {
   }
 
   selectContry(c:any){
-    // let nav = document.getElementById(`mobile`) as any;
-    //   nav.value =c.target.value ;
+
+
       this.camp.number=c.target.value
-      // console.log("aaa::",this.countryPhoneCodes.filter(el=>{return el.code== c.target.value}))
+
       this.flag=this.countryPhoneCodes.filter(el=>{return el.code== c.target.value})[0].flag
       let f = document.getElementById(`flag`) as any;
       f.src =this.flag ;
@@ -319,19 +319,19 @@ export class CompanyFromLocalisationComponent implements OnInit {
 
       ]),
     });
-    console.log("====================================");
-    console.log(" add form :", this.addform);
-    console.log("====================================");
+    
+    
+    
   }
 
   geValues(event) {
-    console.log("====================================");
-    console.log("event :", event);
-    console.log("====================================");
+    
+    
+    
 
-    console.log("====================================");
-    console.log("le formulaire :", this.addform);
-    console.log("====================================");
+    
+    
+    
 
     this.sharedService.setIsActive(true);
   }
@@ -376,10 +376,10 @@ export class CompanyFromLocalisationComponent implements OnInit {
 
   validationEmail() {
     const emailRegex: RegExp = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
-    console.log(this.camp.email)
+    
     if (emailRegex.test(this.camp.email)) {
       this.emailIsvalid = false;
-      console.log(this.camp.email)
+      
       this.sharedService.setIsActive(true);
 
     }

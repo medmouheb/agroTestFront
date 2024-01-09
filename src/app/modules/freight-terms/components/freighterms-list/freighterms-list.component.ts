@@ -49,7 +49,7 @@ export class FreightermsListComponent implements OnInit {
   ) { }
 
   onCheckboxChange() {
-    console.log("La valeur de la case à cocher est : ", this.isChecked);
+    
     if (this.isChecked==false){
 
       this.affiche=false
@@ -69,7 +69,7 @@ export class FreightermsListComponent implements OnInit {
      .findPage(this.pageNumber, this.pageSize, this.filter)
      .subscribe({
        next: (result) => {
-         console.log(result.content)
+         
          this.freightterms = result.content;
          this.freighttermPage = result;
        },
@@ -133,7 +133,7 @@ export class FreightermsListComponent implements OnInit {
        id: "0",
      }
    );
-   console.log(this.freightterm)
+   
    if((this.freightterm.freighttermcode==undefined) ||(this.freightterm.freighttermcode=='')  ){
      this.toastService.close("0");
      let lg=localStorage.getItem("locale")
@@ -141,9 +141,9 @@ export class FreightermsListComponent implements OnInit {
       this.toastService.warning(data.verifCodeName)
 
     });
-    //  this.toastService.warning("Verify your freightterm code"
+
       
-    //  );
+
      return;
    }else  if((this.freightterm.freighttermname ==undefined) ||(this.freightterm.freighttermname =='')  ){
      this.toastService.close("0");
@@ -153,7 +153,7 @@ export class FreightermsListComponent implements OnInit {
      return;
    }
    this.freighttermsservice.findbycode(this.freightterm.freighttermcode).subscribe(data => {
-     console.log(data)
+     
      if (data != null) {
        this.toastService.warning("Ship methode code must be unique");
        this.toastService.close("0"); 
@@ -225,19 +225,19 @@ export class FreightermsListComponent implements OnInit {
                elem: this.translateService.instant("freightterm"),
              })
            );
-         console.log(id);
+         
 
-         //   console.log(id);
+
        },
-       // error: (error) => {
-       //   this.archiveModal.hide();
-       //   this.toastService.close("0");
-       //   this.toastService.error(
-       //     this.translateService.instant(error.error, {
-       //       elem: this.translateService.instant("growout"),
-       //     })
-       //   );
-       // },
+
+
+
+
+
+
+
+
+
      });
    });
  }
@@ -306,20 +306,20 @@ export class FreightermsListComponent implements OnInit {
            elem: this.translateService.instant("freightterm"),
          })
        );
-       console.log(id);
+       
      },
    });
  }
 
  
  onClickDelete(id: string) {
-   console.log(id)
+   
    this.freighttermsservice.delete(id).subscribe({
      next: () => {
        this.findArchivedPage();
        this.findPage();
 
-       console.log("Success");
+       
        this.toastService.success(
          this.translateService.instant("success.deleted", {
            elem: this.translateService.instant("freightterm"),

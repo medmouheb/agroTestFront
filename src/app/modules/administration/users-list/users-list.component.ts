@@ -29,7 +29,7 @@ export class UsersListComponent implements OnInit {
 
     }
     this.loginService.signUp(user).subscribe(res => {
-      console.log(res)
+      
     })
 
   }

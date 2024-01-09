@@ -45,17 +45,17 @@ export class SimulatorMainPageComponent implements OnInit {
     const productValue = checkbox.value;
   
     if (checkbox.checked) {
-      // Add the selected product to the array
+
       this.selectedProducts.push(productValue);
     } else {
-      // Remove the product from the array if unchecked
+
       const index = this.selectedProducts.indexOf(productValue);
       if (index !== -1) {
         this.selectedProducts.splice(index, 1);
       }
     }
   
-    console.log('Selected products:', this.selectedProducts);
+    
   }
   
   

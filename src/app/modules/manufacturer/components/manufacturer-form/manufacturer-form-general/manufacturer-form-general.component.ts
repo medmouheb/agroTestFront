@@ -33,22 +33,22 @@ export class ManufacturerFormGeneralComponent implements OnInit {
         Validators.maxLength(50),
       ])
     });
-    console.log("====================================");
-    console.log(" add form :", this.addform);
-    console.log("====================================");
+    
+    
+    
   }
   get code() { return this.addform.get('code') }
   get name() { return this.addform.get('name') }
 
   geValues(event) {
     this.sharedService.setIsActive(false);
-    console.log("====================================");
-    console.log("event :", event);
-    console.log("====================================");
+    
+    
+    
 
-    console.log("====================================");
-    console.log("le formulaire :", this.addform);
-    console.log("====================================");
+    
+    
+    
     if (this.addform.valid) {
       this.sharedService.setIsActive(true);
     }

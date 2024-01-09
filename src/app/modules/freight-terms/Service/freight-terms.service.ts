@@ -12,7 +12,7 @@ export class FreightTermsService {
   constructor(private http: HttpClient) { }
   baseUrl() {
    return `${environment.apiUrl}`;
-  //  return "http://localhost:8080" 
+
 
   }
   save(id: string | null, freightterms: FreightTerms): Observable<FreightTerms> {

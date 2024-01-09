@@ -30,9 +30,9 @@ export class VehiculeFormsBinDetailsComponent implements OnInit {
       bin: new FormControl(0), 
       capacity2: new FormControl(0),
     });
-    console.log("====================================");
-    console.log(" add form :", this.addform);
-    console.log("====================================");
+    
+    
+    
   }
 
   get f() {

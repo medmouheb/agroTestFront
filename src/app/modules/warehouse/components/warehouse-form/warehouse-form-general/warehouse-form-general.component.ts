@@ -37,7 +37,7 @@ export class WarehouseFormGeneralComponent implements OnInit {
   myForm!: FormGroup;
   addForm!: FormGroup;
 
-  // initialisation du formulaire
+
   constructor(private fb: FormBuilder, private sharedService: SharedService,
     private costcenterservice: CostCenterService,
     private fournisseurservice: FournisseursService, private warehouseService: WarehouseService) { }
@@ -73,15 +73,15 @@ export class WarehouseFormGeneralComponent implements OnInit {
     }
   }
 
-  // generateRandomCode() {
-  //   const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-  //   let code = '';
-  //   for (let i = 0; i < 4; i++) {
-  //     const randomIndex = Math.floor(Math.random() * characters.length);
-  //     code += characters.charAt(randomIndex);
-  //   }
-  //   return code;
-  // }
+
+
+
+
+
+
+
+
+
 
   newSeggestions = ""
   dispotruename = false
@@ -124,42 +124,42 @@ export class WarehouseFormGeneralComponent implements OnInit {
 
   getallfourniss() {
     this.fournisseurservice.findAll().subscribe({
-      next: (result) => { this.fournisseurs = result; console.log("8==", this.costcenters) },
+      next: (result) => { this.fournisseurs = result;  },
       error: (error) => console.error(error),
     });
   }
   getAllcostcenter() {
     this.costcenterservice.findAll().subscribe({
-      next: (result) => { this.costcenters = result; console.log("4==", this.costcenters) },
+      next: (result) => { this.costcenters = result;  },
       error: (error) => console.error(error),
     });
   }
 
   selectVAlue(e: any) {
-    console.log("5==", this.warehouse)
+    
 
-    console.log("3==", e.target.value)
+    
     let t = this.costcenters.filter(el => { return el.code == e.target.value })[0].name
     this.myForm.value.costCenterName = t
     this.warehouse.costCenterName = t
     this.myForm.value['costCenterName'] = t
-    console.log("3==", this.myForm.value)
-    console.log("5==", this.warehouse)
+    
+    
 
-    console.log("4==", t)
+    
 
   }
   selectVAlue2(e: any) {
-    console.log("3==", e.target.value)
+    
     let t = this.fournisseurs.filter(el => { return el.code == e.target.value })[0]
-    // this.myForm.value.costCenterName=t
+
     this.warehouse.vendorname = t.name
     this.addForm.value['vendorname'] = t.name
-    // console.log("3==",this.myForm.value)
-    console.log("5==", this.warehouse)
+
+    
     this.warehouse.vendor = t.name
     this.warehouse.vendorname = t.name
-    console.log("4==", t)
+    
 
   }
 
@@ -200,38 +200,38 @@ export class WarehouseFormGeneralComponent implements OnInit {
       email: ["", Validators.required],
     });
 
-    // console.log("====================================");
-    // console.log(" add form :", this.myForm);
-    // console.log("====================================");
+
+
+
   }
 
   geValues(event) {
-    console.log("5==", this.warehouse)
+    
 
-    // console.log("====================================");
-    // console.log("event :", event);
-    // console.log("====================================");
 
-    // console.log("====================================");
-    // console.log("le formulaire :", this.myForm);
-    // console.log("====================================");
 
-    // console.log(this.warehouse.code);
-    // console.log(this.warehouse.name);
-    // console.log(
-    //   "this.warehouse.code.length",
-    //   this.warehouse.code.toString().length >= 5
-    // );
-    // console.log(
-    //   this.warehouse.code != null &&
-    //     this.warehouse.code != "" &&
-    //     this.warehouse.name != null &&
-    //     this.warehouse.name != "" &&
-    //     this.warehouse.type != null &&
-    //     this.warehouse.type != "" &&
-    //     this.warehouse.code.toString().length >= 5 &&
-    //     this.warehouse.name.toString().length >= 3
-    // );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     if (
       !this.existcodeIsvalid && !this.dispotruename &&
       this.warehouse.code != null &&
@@ -314,10 +314,10 @@ export class WarehouseFormGeneralComponent implements OnInit {
 
   validationCode() {
     const codeRegex: RegExp = /^[a-zA-Z0-9]*$/;
-    console.log(this.warehouse.code)
+    
     if (codeRegex.test(this.warehouse.code)) {
       this.codeIsvalid = false;
-      console.log(this.warehouse.code)
+      
 
     }
     else {
@@ -329,39 +329,39 @@ export class WarehouseFormGeneralComponent implements OnInit {
   DCisvalid: boolean = false;
   DNisvalid: boolean = false;
   minIstrueName2: boolean = false
-  // isBlur2() {
-  //   if (this.fieldControl.status == "INVALID") {
-  //     this.minIstrueName2 = true
 
-  //   }
-  //   else if (this.fieldControl.status == "VALID") {
-  //     this.minIstrueName2 = false
 
-  //   }
-  // }
-  // isBlur6() {
-  //   console.log(this.fieldControl.value)
-  //   if ((this.fieldControl.value == '') || (this.fieldControl.value == undefined)) {
-  //     this.minIstrueName2 = false
 
-  //   }
-  // }
-  // isBlurDCisvalid() {
-  //   console.log(this.DCisvalid)
-  //   console.log(this.myForm.value.code)
-  //   console.log(this.warehouse.code)
-  //   this.DCisvalid1=true
-  //   this.DCisvalid2=true
-  //   if ((this.warehouse.code.toString().length < 1)||()) { this.DCisvalid = true }
-  //   else {
-  //     this.DCisvalid = false
-  //   }
-  // }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   isBlurDCisvalid() {
     if (this.warehouse.code == undefined) {
       this.DCisvalid = true
-      console.log(this.DCisvalid)
+      
 
     } else if (this.warehouse.code.toString().length < 1) {
       this.DCisvalid = true
@@ -380,16 +380,16 @@ export class WarehouseFormGeneralComponent implements OnInit {
         this.DNisvalid = false
       }
   }
-  // isBlurDNisvalid() {
-  //   console.log(this.DNisvalid)
 
-  //   this.DNisvalid1 = true
-  //   this.DNisvalid2 = true
-  //   if( (this.warehouse.name.toString().length < 1)||(this.warehouse.name==undefined)||(this.fieldControl.status =="INVALID")) { this.DNisvalid = true }
-  //   else {
-  //     this.DNisvalid = false
-  //   }
-  // }
+
+
+
+
+
+
+
+
+
 
 
   CCCisvalid: boolean = false;
@@ -415,9 +415,6 @@ export class WarehouseFormGeneralComponent implements OnInit {
 
   maiLisvalid: boolean = false;
   isMaiLisvalid() {
-    console.log("1111", this.warehouse.email.toString().length < 3)
-    console.log("222", this.warehouse.email.toString().includes("@"))
-    console.log("222", this.warehouse.email.toString().includes("."))
     this.maiLisvalid1 = true
 
     if (this.warehouse.email.toString().length < 3 || !this.warehouse.email.toString().includes("@") || !this.warehouse.email.toString().includes(".")) { this.maiLisvalid = true }
@@ -440,7 +437,7 @@ export class WarehouseFormGeneralComponent implements OnInit {
   DCisvalid2: boolean = false
   maiLisvalid1: boolean = false
   isprimarytype() {
-    console.log("esese", typeof this.addForm.value.type);
+    
 
     return (this.CCCisvalid2 && this.CCNisvalid2 && this.DNisvalid2 && this.DCisvalid2 && (this.addForm.value.type == undefined)
     )

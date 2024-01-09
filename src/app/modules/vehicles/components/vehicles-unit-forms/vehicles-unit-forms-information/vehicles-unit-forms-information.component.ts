@@ -19,7 +19,7 @@ export class VehiclesUnitFormsInformationComponent implements OnInit {
   addform: FormGroup;
   divisionNames: string[] = [];
   selectedDivisionName: string = '';
-  // Array to hold the list of companies
+
 
 
   constructor(private sharedService: SharedService,
@@ -36,7 +36,7 @@ export class VehiclesUnitFormsInformationComponent implements OnInit {
   
     loadDivisionNames() {
       this.vehiclesService.findbydivision().subscribe(data=>{
-        console.log("aq::",data)
+        
         this.divisionNames=data
       })
       

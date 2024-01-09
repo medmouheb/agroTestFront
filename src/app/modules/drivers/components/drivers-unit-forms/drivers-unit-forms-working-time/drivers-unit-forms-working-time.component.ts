@@ -14,7 +14,7 @@ export class DriversUnitFormsWorkingTimeComponent implements OnInit {
   @Input() camp!: Drivers;
   addform: FormGroup;
 
-  // Array to hold the list of companies
+
 
   constructor(private sharedService: SharedService,
 
@@ -34,13 +34,13 @@ export class DriversUnitFormsWorkingTimeComponent implements OnInit {
       heureFin: new FormControl(this.camp.heureFin),
     });
   
-    console.log("====================================");
-    console.log(" add form :", this.addform);
-    console.log("====================================");
+    
+    
+    
     
   }
   
-//getAll Campany name from service findbycompany
+
 
 
 
@@ -48,7 +48,7 @@ export class DriversUnitFormsWorkingTimeComponent implements OnInit {
   get f() {
     return this.addform.controls;
   }
-  //methode pour get tous les nom from company
+
 
 
   isControlValid(controlName: string): boolean {

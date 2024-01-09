@@ -23,28 +23,28 @@ vendors
   }
   getAllvendor(){
     this.vendorskuservice.findAll().subscribe({
-      next: (result) => { this.vendorsku = result; console.log("2==", result) },
+      next: (result) => { this.vendorsku = result;  },
       error: (error) => console.error(error),
     })
   }
   selectVAlue(e:any){
-    console.log("3==",e.target.value)
+    
     let t=this.vendorsku.filter(el=>{
-      console.log(el)
+      
       return el.vendorSKUCode==e.target.value})[0]
     this.fournisseur.vendorSKU=t
     this.fournisseur.vendorSKUcode=t.vendorSKUCode
     this.fournisseur.vendorSKUname=t.vendorSKUName
-   console.log("3==",t)
-    console.log("5==",this.fournisseur.vendorSKU)
+   
+    
       this.vendors=t.vendorSKUName
-    console.log("4==",t)
+    
 
   }
   fourn:VendorSKU;
-//   selectfou(id:any){
-// this.fourn=this.vendorsku.filter(el=>{
-//   return el.
-// })
-//   }
+
+
+
+
+
 }

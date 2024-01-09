@@ -24,7 +24,7 @@ export class VehicleTypeFormDetailComponent implements OnInit {
   constructor(private sharedService: SharedService, private fb: FormBuilder, private vehicleTypeService: VehicleTypeService) { }
   codes: Array<String> = [];
   ngOnInit(): void {
-    console.log("this.camp ::",this.camp )
+    
 
 
 

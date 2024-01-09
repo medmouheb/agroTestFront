@@ -18,12 +18,12 @@ export class CostCenterFormInformationComponent implements OnInit {
   constructor(private sharedService: SharedService, private divisionService: DivisionService) { }
 
   ngOnInit(): void {
-    console.log(this.cost.division_Code)
+    
         if (this.cost.division_Code == undefined || this.cost.division_Code == "") {
       this.affiche = false
     } else {
       this.affiche = true
-      console.log(this.cost.divisiontype)
+      
     }
     if (this.cost.facilityType == 'Farm') {
 
@@ -32,12 +32,12 @@ export class CostCenterFormInformationComponent implements OnInit {
     this.getAlldivision()
     this.getetat()
 
-    console.log("1",this.cost)
+    
 
   }
   getAlldivision() {
     this.divisionService.findAll().subscribe({
-      next: (result) => { this.divisions = result; console.log("2==", result) },
+      next: (result) => { this.divisions = result;  },
       error: (error) => console.error(error),
     });
   }
@@ -76,9 +76,9 @@ export class CostCenterFormInformationComponent implements OnInit {
         Validators.maxLength(8),
       ]),
     });
-    console.log("====================================");
-    console.log(" add form :", this.addform);
-    console.log("====================================");
+    
+    
+    
   }
   div: any
   affiche: boolean = false
@@ -92,7 +92,7 @@ export class CostCenterFormInformationComponent implements OnInit {
   }
 
   selectVAlue(e: any) {
-    console.log("3==", e.target.value)
+    
     let t = this.divisions.filter(el => { return el.code == e.target.value })[0]
     this.addform.value.division_Name = t.name
     this.cost.division_Name = t.name
@@ -101,14 +101,14 @@ export class CostCenterFormInformationComponent implements OnInit {
 
    this.cost.divisiontype = t.divisiontype
     this.addform.value['division_Name'] = t
-    console.log("3==", this.addform.value)
-    console.log("5==", this.cost)
+    
+    
     this.div = t
-    console.log("4==", t)
+    
     this.affiche = true
   }
   selectVAlue2(e: any) {
-    console.log("3==", e.target.value)
+    
     let t = this.divisions.filter(el => { return el.name == e.target.value })[0]
     this.addform.value.division_Code = t.code
     this.cost.division_Name = t.name
@@ -118,10 +118,10 @@ export class CostCenterFormInformationComponent implements OnInit {
     this.cost.divisiontype = t.divisiontype
  
     this.addform.value['division_Name'] = t
-    console.log("3==", this.addform.value)
-    console.log("5==", this.cost)
+    
+    
     this.div = t
-    console.log("4==", t)
+    
   }
   getetat() {
     if(this.cost.division_Code){

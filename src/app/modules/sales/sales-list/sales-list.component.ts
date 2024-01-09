@@ -45,7 +45,7 @@ export class SalesListComponent implements OnInit {
     private toastService: HotToastService
   ) { }
   onCheckboxChange() {
-    console.log("La valeur de la case à cocher est : ", this.isChecked);
+    
     if (this.isChecked == false) {
 
       this.affiche = false
@@ -55,10 +55,10 @@ export class SalesListComponent implements OnInit {
     }
   }
   ngOnInit(): void {
-    // this.salesservice.findAll().subscribe((saless) => {
-    //   this.saless = saless;
-    //   console.log("saless",saless)
-    // });
+
+
+
+
     this.findPage();
     this.findArchivedPage();
     this.onPaginationChange.subscribe(() => {this.findPage();    this.findArchivedPage();    });
@@ -70,7 +70,7 @@ export class SalesListComponent implements OnInit {
       .findPage(this.pageNumber, this.pageSize, this.filter)
       .subscribe({
         next: (result) => {
-          console.log("findPage", result)
+          
 
           this.saless = result.content;
           this.salesPage = result;
@@ -93,7 +93,7 @@ export class SalesListComponent implements OnInit {
             elem: this.translateService.instant("sales"),
           })
         );
-        console.log(id);
+        
       },
     });
   }
@@ -103,7 +103,7 @@ export class SalesListComponent implements OnInit {
       next: () => {
         this.findPage();
         this.findArchivedPage();
-        console.log("Success");
+        
         this.toastService.success(
           this.translateService.instant("success.deleted", {
             elem: this.translateService.instant("sales"),
@@ -120,7 +120,7 @@ export class SalesListComponent implements OnInit {
       .subscribe({
         next: (result) => {
 
-          console.log("findArchivedPage", result)
+          
 
           this.salesss = result.content;
           this.salesPages = result;
@@ -136,7 +136,7 @@ export class SalesListComponent implements OnInit {
   findById(id: string) {
     this.salesservice.findById(id).subscribe({
       next: (result) => {this.sales = result 
-        console.log(this.sales)
+        
       },
       error: (error) => console.error(error),
     });
@@ -155,7 +155,7 @@ export class SalesListComponent implements OnInit {
 
   onPageSizeChange(pageSize: number) {
     this.pageSize = pageSize;
-    console.log(pageSize)
+    
     this.pageNumber = 0;
     this.onPaginationChange.emit("");
   }
@@ -175,10 +175,10 @@ export class SalesListComponent implements OnInit {
         id: "0",
       }
     );
-    console.log(this.sales.currency)
+    
     if (this.estObjetVide(this.sales.currency)) {
       this.toastService.error("you must select a currency ")
-      return console.log("okk");
+      return 
     }
     this.salesservice.save(id, this.sales!).subscribe({
       next: () => {
@@ -227,13 +227,13 @@ export class SalesListComponent implements OnInit {
 
   onClickEdit(id: string) {
     this.findById(id);
-    console.log('nn',id)
+    
     this.stepper.nextStep();
     setTimeout(() => {
       this.stepper.prevStep();
 
     }, 100);
-    console.log('aa',this.sales)
+    
     this.formModal.show({
       title: "menu.edit-sales",
       stepsCount: this.steps.length - 1,
@@ -243,37 +243,37 @@ export class SalesListComponent implements OnInit {
     });
   }
 
-  // onClickDelete(id: string) {
-  //   this.deleteModal.show(() => {
-  //     this.toastService.loading(
-  //       this.translateService.instant("message.loading..."),
-  //       {
-  //         id: "0",
-  //       }
-  //     );
-  //     this.salesservice.delete(id).subscribe({
-  //       next: () => {
-  //         this.findPage();
-  //         this.deleteModal.hide();
-  //         this.toastService.close("0");
-  //         this.toastService.success(
-  //           this.translateService.instant("success.deleted", {
-  //             elem: this.translateService.instant("sales"),
-  //           })
-  //         );
-  //       },
-  //       error: (error) => {
-  //         this.deleteModal.hide();
-  //         this.toastService.close("0");
-  //         this.toastService.error(
-  //           this.translateService.instant(error.error, {
-  //             elem: this.translateService.instant("sales"),
-  //           })
-  //         );
-  //       },
-  //     });
-  //   });
-  // }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   onClickArchive(id: string) {
     this.archiveModal.show(() => {
@@ -288,17 +288,17 @@ export class SalesListComponent implements OnInit {
               elem: this.translateService.instant("sales"),
             })
           );
-          //   console.log(id);
+
         },
-        // error: (error) => {
-        //   this.archiveModal.hide();
-        //   this.toastService.close("0");
-        //   this.toastService.error(
-        //     this.translateService.instant(error.error, {
-        //       elem: this.translateService.instant("growout"),
-        //     })
-        //   );
-        // },
+
+
+
+
+
+
+
+
+
       });
     });
   }

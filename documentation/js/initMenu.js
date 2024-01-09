@@ -46,7 +46,7 @@ mda = {
 
             $sidebar_nav = $sidebar_wrapper.find('.nav-container');
 
-            // insert the navbar form before the sidebar list
+
             $nav_content = $(nav_content);
             $nav_content.insertBefore($sidebar_nav);
             $navbar_form.insertBefore($nav_content);
@@ -60,7 +60,7 @@ mda = {
 
         } else {
             if($(window).width() > 991){
-                // reset all the additions that we made for the sidebar wrapper only if the screen is bigger than 991px
+
                 $sidebar_wrapper.find('.navbar-form').remove();
                 $sidebar_wrapper.find('.nav-mobile-menu').remove();
                 mobile_menu_initialized = false;
@@ -122,7 +122,7 @@ mda = {
 
             nav_content = '';
             mobile_menu_content = '';
-            //add the content from the regular header to the mobile menu
+
             $navbar.children('ul').each(function(){
                 content_buff = $(this).html();
                 nav_content = nav_content + content_buff;
@@ -132,7 +132,7 @@ mda = {
             $navbar.html(nav_content);
             $navbar.addClass('bootstrap-navbar');
 
-            // append it to the body, so it will come from the right side of the screen
+
             $('body').append($navbar);
             $toggle = $('.navbar-toggle');
             $navbar.find('a').removeClass('btn btn-round btn-default');
@@ -184,10 +184,10 @@ mda = {
 
 
 
-// Returns a function, that, as long as it continues to be invoked, will not
-// be triggered. The function will be called after it stops being called for
-// N milliseconds. If `immediate` is passed, trigger the function on the
-// leading edge, instead of the trailing.
+
+
+
+
 
 function debounce(func, wait, immediate) {
 	var timeout;

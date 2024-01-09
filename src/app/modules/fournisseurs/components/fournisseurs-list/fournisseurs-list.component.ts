@@ -82,7 +82,7 @@ export class FournisseursListComponent implements OnInit {
     }
   }
   onCheckboxChange() {
-    console.log("La valeur de la case à cocher est : ", this.isChecked);
+    
     if (this.isChecked == false) {
 
       this.affiche = false
@@ -123,7 +123,7 @@ export class FournisseursListComponent implements OnInit {
         next: (result) => {
           this.fournisseurss = result.content;
           this.fournisseursPages = result;
-          console.log("7:", result)
+          
         },
         error: (error) => {
           this.loading = false;
@@ -163,12 +163,12 @@ export class FournisseursListComponent implements OnInit {
   }
 
   onSave(id: string | null) {
-    console.log(this.fournisseur)
+    
     this.toastService.loading(
       this.translateService.instant("message.loading..."),
       { id: "0" }
     );
-    console.log("this.fournisseur", this.fournisseur)
+    
     this.fournisseursService.save(id, { ...this.fournisseur, vendorSKU: this.fournisseur.vendorSKU.id }).subscribe({
       next: () => {
         this.findPage();
@@ -183,7 +183,7 @@ export class FournisseursListComponent implements OnInit {
       },
       error: (error) => {
         this.toastService.close("0");
-        console.log("zz:", error.error)
+        
         this.toastService.error(
           this.translateService.instant(error.error, {
             elem: this.translateService.instant("vendor"),
@@ -238,9 +238,9 @@ export class FournisseursListComponent implements OnInit {
         );
       },
       (error) => {
-        console.log('error', error.status)
+        
         if (error.status == "200") {
-          console.log('succes')
+          
           this.importModal.hide();
           this.findPage();
           this.file = null;
@@ -321,20 +321,20 @@ export class FournisseursListComponent implements OnInit {
             elem: this.translateService.instant("menu.vendors"),
           })
         );
-        console.log(id);
+        
       },
     });
   }
 
 
   onClickDelete(id: string) {
-    console.log("88888", id)
+    
     this.fournisseursService.delete(id).subscribe({
       next: () => {
         this.findArchivedPage();
         this.findPage();
 
-        console.log("Success");
+        
         this.toastService.success(
           this.translateService.instant("success.deleted", {
             elem: this.translateService.instant("menu.vendors"),
@@ -348,7 +348,7 @@ export class FournisseursListComponent implements OnInit {
 
 
   onClickArchive(id: string) {
-    console.log(id)
+    
     this.archiveModal.show(() => {
       this.fournisseursService.archive(id).subscribe({
         next: () => {
@@ -362,17 +362,17 @@ export class FournisseursListComponent implements OnInit {
               elem: this.translateService.instant("vendor"),
             })
           );
-          //   console.log(id);
+
         },
-        // error: (error) => {
-        //   this.archiveModal.hide();
-        //   this.toastService.close("0");
-        //   this.toastService.error(
-        //     this.translateService.instant(error.error, {
-        //       elem: this.translateService.instant("growout"),
-        //     })
-        //   );
-        // },
+
+
+
+
+
+
+
+
+
       });
     });
   }

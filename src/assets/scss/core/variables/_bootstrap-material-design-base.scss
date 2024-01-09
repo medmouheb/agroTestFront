@@ -6,7 +6,7 @@ $gray-dark: rgba($black, 0.87) !default; // used for text color - others use gre
 
 $bmd-font-weight-base: 400;
 
-// wondering if any of these could still be refactored out, but are definitely in use.
+
 $bmd-inverse: rgba($white, 1) !default;
 $bmd-inverse-light: rgba($white, 0.84) !default;
 $bmd-inverse-lighter: rgba($white, 0.54) !default;
@@ -21,7 +21,7 @@ $border-radius-huge: 10px !default;
 $border-radius-label: 12px !default;
 $border-radius-extreme: 30px !default;
 
-// Typography elements
+
 $mdb-font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif !default;
 $mdb-text-color-light:  $white !default;
 $mdb-text-color-light-hex: $white !default; // for contrast function in inverse

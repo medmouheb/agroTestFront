@@ -94,10 +94,10 @@ export class BeginninginventoryService {
     }
   
   
-    // findbycompanyname(): Observable<string[]>{
-    //   let url = `${this.baseUrl()}/InventaireInitial/getbydivision`;
-    //   return this.http.get<string[]>(url);
-    // }
+
+
+
+
   
   }
   

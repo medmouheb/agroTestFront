@@ -50,7 +50,7 @@ export class TrasSAComponent implements OnInit {
 
   ngOnInit(): void {
     this.findArchivedPage();
-    console.log(this.findArchivedPage.length);
+    
     this.onPaginationChange.subscribe(() => this.findArchivedPage());
   }
 
@@ -60,7 +60,7 @@ export class TrasSAComponent implements OnInit {
       .findArchivedPage(this.pageNumber, this.pageSize, this.filter)
       .subscribe({
         next: (result) => {
-          console.log(result)
+          
           this.test=result.content
           this.saless = result.content;
           this.Page = result;
@@ -111,7 +111,7 @@ export class TrasSAComponent implements OnInit {
             elem: this.translateService.instant("sales"),
           })
         );
-        console.log(id);
+        
       },
     });
   }
@@ -120,7 +120,7 @@ export class TrasSAComponent implements OnInit {
     this.salesservice.delete(id).subscribe({
       next: () => {
         this.findArchivedPage();
-        console.log("Success");
+        
         this.toastService.success(
           this.translateService.instant("success.deleted", {
             elem: this.translateService.instant("sales"),

@@ -38,7 +38,7 @@ export class ManufacturerListComponent implements OnInit {
 
   loading = false;
   manufacturer: manufacturer = {};
-  // fournisseursPage: Page<Fournisseur> = initPage;
+
   pageNumber = 0;
   pageSize = 10;
   filter = "";
@@ -154,7 +154,7 @@ export class ManufacturerListComponent implements OnInit {
     this.service.searchManufacturerByNameActive(this.manufacturerName).subscribe({
       next: (result) => {
         this.manufacturers = result;
-        console.log(this.manufacturers);
+        
       },
       error: (error) => console.error(error),
     });
@@ -169,7 +169,7 @@ export class ManufacturerListComponent implements OnInit {
     this.service.getActiveManufacturers().subscribe({
       next: (result) => {
         this.manufacturers = result;
-        console.log(this.manufacturers);
+        
       },
       error: (error) => {
         this.loading = false;

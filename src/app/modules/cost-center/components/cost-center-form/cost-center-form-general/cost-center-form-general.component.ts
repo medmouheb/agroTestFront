@@ -32,7 +32,7 @@ export class CostCenterFormGeneralComponent implements OnInit {
   ngOnInit(): void {
     this.initForm();
     if (this.cost.code != null) {
-      console.log("all")
+      
       this.sharedService.setIsActive(true);
 
     } else {
@@ -122,7 +122,7 @@ export class CostCenterFormGeneralComponent implements OnInit {
       ]),
       name: new FormControl("", [
         Validators.required,
-        //Validators.pattern(/^[a-zA-Z ]*$/),
+
 
       ]),
       typecost: new FormControl("", [
@@ -131,10 +131,10 @@ export class CostCenterFormGeneralComponent implements OnInit {
       ]),
 
     });
-    console.log("====================================");
-    console.log(" add form :", this.addform.value);
-    console.log(" add form :", this.cost);
-    console.log("====================================");
+    
+    
+    
+    
   }
 
   nom: string = "";
@@ -143,32 +143,21 @@ export class CostCenterFormGeneralComponent implements OnInit {
     return this.nom.length > 5;
   }
   minIstrueName2: boolean = false
-  // isBlur2() {
-  //   if (this.fieldControl.status == "INVALID") {
-  //     this.minIstrueName2 = true
 
-  //   }
-  //   else if (this.fieldControl.status == "VALID") {
-  //     this.minIstrueName2 = false
 
-  //   }
-  // }
+
+
+
+
+
+
+
+
   isCodeValid() {
     return this.nom.length > 5;
   }
   getvalue(event) {
     this.existname()
-    console.log(this.cost.code != null)
-    console.log(this.cost.code != "")
-    console.log(this.cost.name != null)
-    console.log(this.cost.name != "")
-
-    console.log(this.cost.code.toString().length >= 1)
-    console.log(this.dispotrueCode)
-    console.log(this.dispotruename)
-    console.log(this.test)
-    console.log(this.minIstrueCode)
-    console.log(this.cost.name.toString().length >= 1)
 
     if (
       this.cost.code != null &&
@@ -187,12 +176,12 @@ export class CostCenterFormGeneralComponent implements OnInit {
   }
   geValuesCode(event) {
     this.cost.code = event.target.value;
-    console.log("test:", this.cost.name);
+    
 
-    console.log("====================================");
-    console.log("eventcode :", event.target.value);
-    console.log("eventcode :", event.target.value);
-    console.log("====================================");
+    
+    
+    
+    
     console.log("testt", this.cost.code != null &&
       this.cost.code != "" &&
       this.cost.name != null &&
@@ -216,17 +205,17 @@ export class CostCenterFormGeneralComponent implements OnInit {
     }
   }
   geValuesNom(event) {
-    console.log("test:", this.cost.name);
-    console.log("test:", this.dispotruename);
+    
+    
 
     this.cost.name = event.target.value;
-    console.log("====================================");
-    console.log("eventname :", event.target.value);
-    console.log("====================================");
+    
+    
+    
 
-    console.log("====================================");
-    console.log("le formulaire :", this.addform);
-    console.log("====================================");
+    
+    
+    
 
     if (
       this.cost.code != "" &&
@@ -244,12 +233,12 @@ export class CostCenterFormGeneralComponent implements OnInit {
   get f() {
     return this.addform.controls;
   }
-  // isBlur3() {
-  //   if ((this.fieldControl.value == '') || (this.fieldControl.value == undefined)) {
-  //     this.minIstrueName2 = false
 
-  //   }
-  // }
+
+
+
+
+
   isControlValid(controlName: string): boolean {
     const control = this.addform.controls[controlName];
     return control.invalid && (control.dirty || control.touched);
@@ -293,10 +282,10 @@ export class CostCenterFormGeneralComponent implements OnInit {
 
   validationCode() {
     const codeRegex: RegExp = /^[a-zA-Z0-9]*$/;
-    console.log(this.cost.code)
+    
     if (codeRegex.test(this.cost.code)) {
       this.codeIsvalid = false;
-      console.log(this.cost.code)
+      
 
     }
     else {

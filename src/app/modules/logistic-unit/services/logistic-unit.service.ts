@@ -91,7 +91,7 @@ export class LogisticUnitService {
 
   }
   findbyName(name:any): Observable<LogisticUnit>{
-    console.log('nom',name)
+    
     let url = `${this.baseUrl()}/logisticunit/getbyname/${name}`;
     return this.http.get<LogisticUnit>(url);
   }

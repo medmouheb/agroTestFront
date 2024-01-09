@@ -5,11 +5,11 @@
     .form-check-label {
         cursor: pointer;
         padding-left: 0; // Reset for Bootstrap rule
-        // color: $mdb-checkbox-label-color;
+
         @include mdb-label-color-toggle-focus();
     }
 
-  // Hide native checkbox
+
     .form-check-input {
         opacity: 0;
         position: absolute;
@@ -107,7 +107,7 @@
             }
 
             & + .form-check-sign .check:after {
-            //background-color: $brand-success; // FIXME: seems like tho wrong color, test and make sure it can be removed
+
             @include animation(rippleOn $mdb-checkbox-animation-ripple forwards);
             }
         }
@@ -133,7 +133,7 @@
   }
 }
 
-  // Style for disabled inputs
+
   fieldset[disabled] &,
   fieldset[disabled] & .form-check-input,
   .form-check-input[disabled] ~ .form-check-sign .check,

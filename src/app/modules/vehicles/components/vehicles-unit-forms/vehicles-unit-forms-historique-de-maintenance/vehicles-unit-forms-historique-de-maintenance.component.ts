@@ -21,7 +21,7 @@ export class VehiclesUnitFormsHistoriqueDeMaintenanceComponent implements OnInit
   addform: FormGroup;
 
   listStrings=[]
-  // Array to hold the list of companies
+
 
 
   constructor(private sharedService: SharedService,
@@ -30,7 +30,7 @@ export class VehiclesUnitFormsHistoriqueDeMaintenanceComponent implements OnInit
 
     ngOnInit(): void {
       this.vehiclesService.findAll().subscribe(data=>{
-        console.log("ee;;",data)
+        
         this.listStrings=data.map(el=>{return el.listeDesOperationsEffectuees})
       })
     }
@@ -53,7 +53,7 @@ export class VehiclesUnitFormsHistoriqueDeMaintenanceComponent implements OnInit
         
         
         localStorage.setItem("avatar", res);
-        // console.log("uploadImage success");
+
         
       },(error)=>{
         this.camp.papiersDuVehicule= error.error.text
@@ -71,10 +71,10 @@ export class VehiclesUnitFormsHistoriqueDeMaintenanceComponent implements OnInit
 
     validationCode() {
       const codeRegex: RegExp =/^[a-zA-Z0-9]*$/;
-      console.log(this.camp.nomOperationmaintenance)
+      
       if (codeRegex.test(this.camp.nomOperationmaintenance)) {
         this.codeIsvalid = false;
-      console.log(this.camp.nomOperationmaintenance)
+      
     
       }
       else {
@@ -87,10 +87,10 @@ export class VehiclesUnitFormsHistoriqueDeMaintenanceComponent implements OnInit
 
     validationCode1() {
       const codeRegex: RegExp =/^[a-zA-Z0-9]*$/;
-      console.log(this.camp.numerooperationmaintenance)
+      
       if (codeRegex.test(this.camp.numerooperationmaintenance)) {
         this.codeIsvalid1 = false;
-      console.log(this.camp.numerooperationmaintenance)
+      
     
       }
       else {
