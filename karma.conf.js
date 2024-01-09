@@ -24,16 +24,20 @@ module.exports = function (config) {
     mime: {
       'text/x-typescript': ['ts','tsx']
     },
-    coverageIstanbulReporter: {
-      dir: require('path').join(__dirname, 'coverage'), reports: [ 'html', 'lcovonly' ],
-      fixWebpackSourcePaths: true
+    coverageReporter: {
+      dir: require('path').join(__dirname, './coverage/<your-project-name>'),
+      subdir: '.',
+      reports: [
+        { type: 'html' },
+        { type: 'lcovonly' },
+        { type: 'text-summary' }
+      ]
     },
     angularCli: {
       environment: 'dev'
     },
-    reporters: config.angularCli && config.angularCli.codeCoverage
-              ? ['progress', 'coverage-istanbul']
-              : ['progress', 'kjhtml'],
+    reporters: ['progress', 'coverage'],
+
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,
