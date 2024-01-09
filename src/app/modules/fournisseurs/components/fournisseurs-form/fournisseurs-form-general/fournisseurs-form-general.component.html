@@ -16,7 +16,6 @@
             required aria-invalid="true" formControlName="name"  placeholder="{{'Write your vendor name'|translate}} "
              (ngModelChange)="geValues($event)" />
              
-<!-- <div style=" color : red;" *ngIf="fieldControl.errors.pattern">{{"Format is invalid"|translate}}</div> -->
             <div style="color: red;" *ngIf="DNisvalid" >{{'Name must be not null'|translate}}</div>
         <div style=" color : red;" *ngIf="dispotruename">{{'name must be unique'|translate}}</div>
            
@@ -28,7 +27,6 @@
     <select (blur)="selectValue($event)"  (click)="selectValue($event);geValues($event) "  type="number" class="form-control" name="currencycode" formControlName="currencyCode" [(ngModel)]="fournisseur.currencycode">
       <option *ngFor="let dv of cuurencys" [value]="dv.code" > {{dv.code}}</option>
     </select>
-    <!-- //<div style="color: red;" *ngIf="currecnyinv">{{'you must chose'|translate}}</div> -->
 
   </div>
   <div class="form-group col-md-6">

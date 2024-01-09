@@ -1,5 +1,4 @@
 <div class="row" [formGroup]="addform">
-<!-- <p style="display: none;" > {{gettat()}} </p> -->
     <div class="form-group col-md-6">
         <label class="required" for="numeroDeLot">{{ "numeroDeLot" | translate }}</label>
         <input (keyup)="exist();isBlur();validationCode() ;generateUniqueNumericCode();geValues($event)" class="form-control"

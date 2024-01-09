@@ -110,33 +110,7 @@
                     </td>
                 </tr>
             </tbody>
-            <!-- <tbody class="text-sm"  *ngIf="affiche==true">
-                <tr class="row-data" *ngFor="let delivery of deliveryss">
-                    <td>
-                        {{delivery.code}}
-                    </td>
-                    <td>
-                        {{delivery.name}}
-                    </td>
-                    <td>
-                        {{delivery.countryname}}
-                    </td>
-                   
-
-                    <td class="d-flex gap-4">
-                        
-                        <button class="text-primary datatable-action-btn" (click)="onClickdisArchive(delivery.id!)"
-                        [title]="'Restore line' | translate">
-                        <i class="fa fa-reply-all"></i>
-                    </button>
-                    <button class="text-danger datatable-action-btn" (click)="onClickDelete(delivery.id!)"
-                        [title]="'Delete permanently' | translate">
-                        <i class="fa fa-trash"></i>
-                    </button>
-                  
-                </td>
-                </tr>
-            </tbody> -->
+          
         </table>
     </div>
     <div class="datatable" *ngIf="affiche==true">
@@ -201,30 +175,7 @@
 
                 </tr>
             </thead>
-            <!-- <tbody class="text-sm" *ngIf="affiche==false">
-                <tr class="row-data" *ngFor="let delivery of deliverys">
-                    <td>
-                        {{delivery.productType}}
-                    </td>
-                    <td>
-                        {{delivery.instructiuonCode}}
-                    </td>
-                    <td>
-                        {{delivery.instructiuonName}}
-                    </td>
-                  
-                    <td class="d-flex gap-4">
-                        <button class="text-primary datatable-action-btn" (click)="onClickEdit(delivery.id!)"
-                            [title]="'btns.edit' | translate">
-                            <i class="fa fa-pencil custom-color"></i>
-                        </button>
-                        <button class="text-danger datatable-action-btn" (click)="onClickArchive(delivery.id!)"
-                            [title]="'btns.delete' | translate">
-                            <i class="fa fa-trash"></i>
-                        </button>
-                    </td>
-                </tr>
-            </tbody> -->
+           
             <tbody class="text-sm" >
                 <tr class="row-data" *ngFor="let delivery of deliveryss">
                     <td>

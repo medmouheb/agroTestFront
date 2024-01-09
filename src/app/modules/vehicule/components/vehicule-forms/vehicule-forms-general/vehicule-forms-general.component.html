@@ -15,7 +15,6 @@
         <div style=" color : red;" *ngIf="minIstrueName">{{'vehiculeNamev must be not null'|translate}} </div> 
 
         <div style=" color : red;" *ngIf="dispotruename">{{'vehiculeNamev must be unique'|translate}}</div>
-        <!-- <div style=" color : black;" *ngIf="dispotruename">{{newSeggestions}}</div> -->
 
 
 
@@ -25,7 +24,6 @@
         <input    class="form-control" name="vehiculeType" formControlName="vehiculeType" [(ngModel)]="camp.vehiculeType"  placeholder="{{'Write your Vehicule vehiculeType'|translate}} "
             required aria-invalid="true" aria-describedby="name-error" (keyup)="geValues($event)">
 
-        <!-- <div style=" color : black;" *ngIf="dispotruename">{{newSeggestions}}</div> -->
 
     </div>
 
@@ -38,7 +36,6 @@
             required aria-invalid="true" aria-describedby="name-error" >
         <div style=" color : red;" *ngIf="minIphone">{{'facilitytypev must be not null'|translate}} </div> 
 
-        <!-- <div style=" color : black;" *ngIf="dispotruename">{{newSeggestions}}</div> -->
 
 
 
@@ -49,7 +46,6 @@
             required aria-invalid="true" aria-describedby="name-error" >
         <div style=" color : red;" *ngIf="minMeasurementType">{{'measurementTypev must be not null'|translate}} </div> 
 
-        <!-- <div style=" color : black;" *ngIf="dispotruename">{{newSeggestions}}</div> -->
 
     </div>
 

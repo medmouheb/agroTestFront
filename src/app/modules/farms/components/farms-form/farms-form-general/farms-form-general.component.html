@@ -1,6 +1,5 @@
 <div class="row" [formGroup]="addform">
   <div style="display: none;" > {{getstatus()}} </div>
-  <!-- <span> {{static}} </span> -->
   <div class="form-group col-md-6">
     <label class="required" for="code">{{ "codefarms" | translate }}</label>
     <input (keyup)="existcode()" (blur)="codeBlur();validationCode()" class="form-control" name="code" [(ngModel)]="farm.code"
@@ -213,28 +212,6 @@
       </label>
     </div>
   </div>
-
-
-
-
-
-
-
-  <!-- 
-  <div class="form-group col-md-6">
-    <label for="customerName">{{ "customerName" | translate }}</label>
-    <input class="form-control" name="customerName" #customerName="ngModel" ngModel [(ngModel)]="farm.customerName" />
-  </div>
-
- 
-
-  
-
-  <div class="form-group col-md-6">
-    <label for="areaType">{{ "areaType" | translate }}</label>
-    <input class="form-control" name="areaType" #areaType="ngModel" ngModel [(ngModel)]="farm.area_type" />
-  </div> -->
-
 
 
 </div>

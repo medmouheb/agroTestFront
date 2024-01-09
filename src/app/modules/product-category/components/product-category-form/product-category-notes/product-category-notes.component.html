@@ -5,7 +5,6 @@
 
     <div class="form-group col-md-6">
         <label for="email">{{'notes' | translate}}</label>
-        <!-- <textarea class="form-control" name="email" #email="ngModel" ngModel [(ngModel)]="airport.notes" formControlName="notes"></textarea> -->
         <textarea class="form-control" (ngModelChange)="geValues($event)" name="notes" ngModel
             [(ngModel)]="productCategory.notes" formControlName="notes"></textarea>
         <div *ngIf="notes?.invalid">

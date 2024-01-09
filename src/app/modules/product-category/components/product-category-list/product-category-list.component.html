@@ -121,9 +121,6 @@
             </tbody>
         </table>
     </div>
-    <!-- <app-pagination [pageNumber]="pageNumber" [pageSize]="pageSize" [page]="fournisseursPage"
-        (onPageNumberChange)="onPageNumberChange($event)" (onPageSizeChange)="onPageSizeChange($event)">
-      </app-pagination> -->
 
     <app-wizard-dialog [currentStep]="currentStep" #formModal>
         <app-product-category-form [currentStep]="currentStep" [productCategory]="productCategory">
@@ -132,25 +129,7 @@
         </app-product-category-form>
     </app-wizard-dialog>
 
-    <!-- <app-dialog #importModal>
-        <div class="d-flex align-items-center justify-content-around my-2">
-          <button class="btn btn-add btn-outline-success" (click)="onDownloadCSVTempalte()"
-            [title]="'btns.download' | translate">
-            <i class="fa fa-download"></i>
-            {{'message.download-csv-template' | translate}}
-          </button>
-          <button class="btn btn-add btn-outline-success" (click)="fileInput.click()" [title]="'btns.import' | translate">
-            <i class="fa fa-upload"></i>
-            {{'btns.select-file' | translate}}
-          </button>
-        </div>
     
-        <div *ngIf="file" class="d-flex align-items-center gap-2 justify-content-center">
-          <i class="fa fa-file"></i>
-          <strong>{{file.name}}</strong>
-        </div>
-        <input (change)="onCSVChange($event)" hidden type="file" accept=".csv" #fileInput>
-      </app-dialog> -->
 
     <app-confirm-dialog #deleteModal></app-confirm-dialog>
 </div>

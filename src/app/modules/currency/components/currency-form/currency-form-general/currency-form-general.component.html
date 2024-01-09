@@ -1,6 +1,5 @@
 <div class="row" [formGroup]="addform">
     <div style="display: none;" > {{getstatus()}} </div>
-    <!-- <p> {{id}} {{static}}  {{id==this.currency.id}} </p> -->
     <div class="form-group col-md-6">
         <label class="required" for="code">{{ "currencyCode" | translate }}</label>
         <input class="form-control" name="code" (blur)="isBlurDCisvalid();exist();blur1();validationCode()"
@@ -28,11 +27,6 @@
     </div>
     <div class="form-group col-md-6">
         <label class="required" for="code">{{ "countryCode" | translate }}</label>
-        <!-- <input class="form-control" name="countrcode" (blur)="isBlurDCjiisvalid()" [(ngModel)]="currency.countrcode"
-            formControlName="countrcode" required placeholder=" {{'write your country code'|translate}}"
-            aria-invalid="true" type="number" aria-describedby="code-error" (ngModelChange)="geValues($event)">
-
-        <div style="color: red;" *ngIf="DCouisvalid">{{'Code must be not null'|translate}}</div> -->
 
         <input class="form-control" [formControl]="fieldControl" (blur)="isBlurDCjiisvalid() " name="countrcode"
             formControlName="Countrcode" [(ngModel)]="currency.countrcode" required

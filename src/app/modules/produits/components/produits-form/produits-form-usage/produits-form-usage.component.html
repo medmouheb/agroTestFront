@@ -6,8 +6,6 @@
   </div>
   <div class="form-group col-md-6">
     <label for="farmCode">{{'farmCode' | translate}}</label>
-    <!-- <input class="form-control" name="farmCode" #farmCode="ngModel" ngModel
-      [(ngModel)]="produit.farmCode"> -->
       <select (change)="selectVAlue($event)" class="form-control">
 
         <option disabled selected>{{"il faut choisir"| translate}}</option>

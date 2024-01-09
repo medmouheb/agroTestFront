@@ -18,7 +18,6 @@
         placeholder="{{'write your sales name'|translate}}" [formControl]="fieldControl"
             [(ngModel)]="sales.name" required aria-invalid="true" aria-describedby="name-error">
         <div style="color: red;" *ngIf="DNisvalid">{{'name must be not null'|translate}}</div>
-        <!-- <div style=" color : red;" *ngIf="fieldControl.errors.pattern">{{"Format is invalid"|translate}}</div> -->
        
         <div style="color: red;" *ngIf="dispotruename" >{{'name must be unique'|translate}}</div>
         <div style="color: black;" *ngIf="dispotruename" >{{newSeggestions}}</div>
