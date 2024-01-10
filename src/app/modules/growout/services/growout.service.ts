@@ -23,18 +23,16 @@ export class GrowoutService {
     return this.create(growout);
   }
 
-  findbycode(code:any): Observable<Growout>{
+  findbycode(code: any): Observable<Growout> {
     let url = `${this.baseUrl()}/growout/by-code/${code}`;
     return this.http.get<Growout>(url);
-
   }
-  findbyName(name:any): Observable<Growout>{
+  findbyName(name: any): Observable<Growout> {
     let url = `${this.baseUrl()}/growout/getbyname/${name}`;
     return this.http.get<Growout>(url);
-
   }
   create(growout: Growout): Observable<Growout> {
-    let url = this.baseUrl()+'/growout';
+    let url = this.baseUrl() + "/growout";
     return this.http.post<Growout>(url, growout);
   }
 
@@ -49,7 +47,7 @@ export class GrowoutService {
   }
 
   findAll(): Observable<Array<Growout>> {
-    let url = this.baseUrl()+'/growout';
+    let url = this.baseUrl() + "/growout";
     return this.http.get<Array<Growout>>(url);
   }
 
@@ -61,7 +59,7 @@ export class GrowoutService {
   findPage(
     pageNumber: number,
     pageSize: number,
-    filter: string
+    filter: string,
   ): Observable<Page<Growout>> {
     let url = this.baseUrl() + "/growout/page";
     let params = new HttpParams();
@@ -89,7 +87,7 @@ export class GrowoutService {
   findArchivedPage(
     pageNumber: number,
     pageSize: number,
-    filter: string
+    filter: string,
   ): Observable<Page<Growout>> {
     let url = this.baseUrl() + "/growout/archived/page";
     let params = new HttpParams();

@@ -41,7 +41,6 @@ declare interface RouteInfo {
   id?: string;
   class?: string;
   subCategories?: Categry[];
-
 }
 export const ROUTES: Categries[] = [
   {
@@ -65,12 +64,6 @@ export const ROUTES: Categries[] = [
             icon: "corporate_fare",
             class: "",
           },
-
-
-
-
-
-
 
           {
             label: "division",
@@ -121,7 +114,6 @@ export const ROUTES: Categries[] = [
             icon: "paid",
             class: "",
           },
-
         ],
       },
       {
@@ -131,30 +123,29 @@ export const ROUTES: Categries[] = [
         title: "menu.products",
         id: "Products-dropdown",
         subCategories: [
-
           {
             id: "dropdown-definitions",
             label: "definitions",
             title: "menu.definitions",
             icon: "note_alt",
             class: "",
-            SubC: [{
-              label: "Manufacturers",
-              path: "/manufacturers",
-              title: "menu.manufacturer",
-              icon: "manufacturer",
-              class: "",
-            }, {
-              label: "productCat",
-              path: "/productcategories",
-              title: "menu.productCat",
-              icon: "category",
-              class: "",
-            }
-
-            ]
+            SubC: [
+              {
+                label: "Manufacturers",
+                path: "/manufacturers",
+                title: "menu.manufacturer",
+                icon: "manufacturer",
+                class: "",
+              },
+              {
+                label: "productCat",
+                path: "/productcategories",
+                title: "menu.productCat",
+                icon: "category",
+                class: "",
+              },
+            ],
           },
-
         ],
       },
       {
@@ -182,7 +173,6 @@ export const ROUTES: Categries[] = [
                 icon: "corporate_fare",
                 class: "",
                 path: "/start",
-
               },
               {
                 title: "menu.Hatcher-capacity",
@@ -222,14 +212,12 @@ export const ROUTES: Categries[] = [
                 icon: "corporate_fare",
                 class: "",
                 path: "/start",
-
               },
               {
                 title: "menu.Weight-scale-using-IOT",
                 icon: "warehouse",
                 class: "",
                 path: "/start",
-
               },
             ],
           },
@@ -254,7 +242,6 @@ export const ROUTES: Categries[] = [
                 icon: "corporate_fare",
                 class: "",
                 path: "/start",
-
               },
               {
                 label: "menu.Age-assignment",
@@ -332,7 +319,6 @@ export const ROUTES: Categries[] = [
                 class: "",
                 path: "/start",
               },
-
             ],
           },
         ],
@@ -356,7 +342,6 @@ export const ROUTES: Categries[] = [
                 icon: "corporate_fare",
                 class: "",
                 path: "/Delivery",
-
               },
               {
                 label: "menu.FreightTerms",
@@ -364,9 +349,7 @@ export const ROUTES: Categries[] = [
                 icon: "corporate_fare",
                 class: "",
                 path: "/freightterms",
-
               },
-
             ],
           },
           {
@@ -382,7 +365,6 @@ export const ROUTES: Categries[] = [
                 icon: "corporate_fare",
                 class: "",
                 path: "/shipmethode",
-
               },
               {
                 label: "menu.Vehiculess",
@@ -390,22 +372,9 @@ export const ROUTES: Categries[] = [
                 icon: "corporate_fare",
                 class: "",
                 path: "/vehicule",
-
               },
-
-
-
-
-
-
-
-
-
             ],
-          }
-
-
-
+          },
         ],
       },
       {
@@ -419,14 +388,7 @@ export const ROUTES: Categries[] = [
             path: "/fournisseurs",
             title: "menu.vendors",
             icon: "person",
-
           },
-
-
-
-
-
-
 
           {
             label: "menu.sales",
@@ -501,7 +463,6 @@ export const ROUTES: Categries[] = [
             class: "",
             SubC: [
               {
-
                 path: "/start",
                 title: "menu.Vehicule-facility",
                 icon: "corporate_fare",
@@ -516,12 +477,6 @@ export const ROUTES: Categries[] = [
               },
             ],
           },
-
-
-
-
-
-
 
           {
             label: "menu.Driver",
@@ -542,7 +497,6 @@ export const ROUTES: Categries[] = [
                 class: "",
                 path: "/start",
               },
-           
             ],
           },
         ],
@@ -560,8 +514,7 @@ export const ROUTES: Categries[] = [
             icon: "inventory_2",
             id: "Veterinarians-dropdown",
             class: "",
-            SubC: []
-
+            SubC: [],
           },
           {
             label: "menu.Field-and-Feed-products",
@@ -592,11 +545,7 @@ export const ROUTES: Categries[] = [
             id: "Symptoms-dropdown",
             icon: "stream",
             class: "",
-            SubC: [
-
-
-            ],
-
+            SubC: [],
           },
 
           {
@@ -613,17 +562,12 @@ export const ROUTES: Categries[] = [
                 path: "/start",
                 class: "",
               },
-
-
             ],
-
           },
-
         ],
       },
     ],
   },
-
 
   {
     label: "menu.Business",
@@ -671,8 +615,8 @@ export const ROUTES: Categries[] = [
                 title: "menu.Initialinventory",
                 icon: "warehouse",
                 class: "",
-              }
-              , {
+              },
+              {
                 label: "Product Usage",
                 path: "/ProductUsage",
                 title: "menu.ProductUsage",
@@ -745,7 +689,6 @@ export const ROUTES: Categries[] = [
         id: "8",
         class: "",
       },
-
     ],
   },
   {
@@ -768,8 +711,6 @@ export const ROUTES: Categries[] = [
   },
 ];
 
-
-
 @Component({
   selector: "app-sidebar",
   templateUrl: "./sidebar.component.html",
@@ -778,14 +719,13 @@ export const ROUTES: Categries[] = [
 export class SidebarComponent implements OnInit {
   menuItems: any[];
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) {}
 
   ngOnInit() {
     this.menuItems = ROUTES.filter((menuItem) => menuItem);
   }
 
   redirect() {
-    
     this.router.navigate(["/start"]);
   }
 
@@ -796,55 +736,44 @@ export class SidebarComponent implements OnInit {
     return true;
   }
 
-  indexBig: any
+  indexBig: any;
   setBigIndex(i: any) {
-    this.indexBig = i
+    this.indexBig = i;
   }
 
-  selectedType1: string = ""
-  selectedIndex1: number = -1
-  selectedType2: string = ""
-  selectedIndex2: number = -1
-  selectedType3: string = ""
-  selectedIndex3: number = -1
-  selectedType4: string = ""
-  selectedIndex4: number = -1
-  selectedType5: string = ""
-  selectedIndex5: number = -1
+  selectedType1: string = "";
+  selectedIndex1: number = -1;
+  selectedType2: string = "";
+  selectedIndex2: number = -1;
+  selectedType3: string = "";
+  selectedIndex3: number = -1;
+  selectedType4: string = "";
+  selectedIndex4: number = -1;
+  selectedType5: string = "";
+  selectedIndex5: number = -1;
 
   handleClickTitle1(index: number) {
-
-    this.selectedType1 = "title1"
-    this.selectedIndex1 = index
-    this.selectedType2 = ""
-    this.selectedIndex2 = -1
-    this.selectedType3 = ""
-    this.selectedIndex3 = -1
-    this.selectedType4 = ""
-    this.selectedIndex4 = -1
+    this.selectedType1 = "title1";
+    this.selectedIndex1 = index;
+    this.selectedType2 = "";
+    this.selectedIndex2 = -1;
+    this.selectedType3 = "";
+    this.selectedIndex3 = -1;
+    this.selectedType4 = "";
+    this.selectedIndex4 = -1;
   }
 
-
-
-
-
-
-
-
-
-
   handleClickTitle2(index: number, id) {
-
-    this.selectedType1 = ""
-    this.selectedIndex1 = -1
-    this.selectedType2 = "title2"
-    this.selectedIndex2 = index
-    this.selectedType3 = ""
-    this.selectedIndex3 = -1
-    this.selectedType4 = ""
-    this.selectedIndex4 = -1
-    this.selectedType5 = ""
-    this.selectedIndex5 = -1
+    this.selectedType1 = "";
+    this.selectedIndex1 = -1;
+    this.selectedType2 = "title2";
+    this.selectedIndex2 = index;
+    this.selectedType3 = "";
+    this.selectedIndex3 = -1;
+    this.selectedType4 = "";
+    this.selectedIndex4 = -1;
+    this.selectedType5 = "";
+    this.selectedIndex5 = -1;
 
     if (id === "users_list") {
       this.router.navigate(["/admin/users"]);
@@ -852,18 +781,18 @@ export class SidebarComponent implements OnInit {
   }
 
   handleClickTitle3(index: number) {
-    this.selectedType1 = ""
-    this.selectedIndex1 = -1
-    this.selectedType3 = "title3"
-    this.selectedIndex3 = index
-    this.selectedType4 = ""
-    this.selectedIndex4 = -1
+    this.selectedType1 = "";
+    this.selectedIndex1 = -1;
+    this.selectedType3 = "title3";
+    this.selectedIndex3 = index;
+    this.selectedType4 = "";
+    this.selectedIndex4 = -1;
   }
   handleClickTitle4(index: number) {
-    this.selectedType1 = ""
-    this.selectedIndex1 = -1
-    this.selectedType4 = "title4"
-    this.selectedIndex4 = index
+    this.selectedType1 = "";
+    this.selectedIndex1 = -1;
+    this.selectedType4 = "title4";
+    this.selectedIndex4 = index;
   }
 
   public clickSubMenu(menu: string, target: any) {
@@ -873,12 +802,12 @@ export class SidebarComponent implements OnInit {
     if (menu != "18") {
       document.getElementById("18").classList.remove("show");
     }
-    
+
     if (menu === "Dashboard") {
       this.router.navigate(["/dashboard"]);
     }
     let result = target.hasAttribute("id");
-    
+
     if (result) {
       $(`#${menu}`).toggleClass("show");
       $(`#${menu}`).toggleClass("collapsed");
@@ -886,13 +815,7 @@ export class SidebarComponent implements OnInit {
   }
 
   public clickMenu(menu: string, target: any) {
-
     let result = target.hasAttribute("name");
-
-
-
-
-
 
     if (result) {
       $(`#${menu}`).toggleClass("show");
@@ -902,7 +825,7 @@ export class SidebarComponent implements OnInit {
 
   public clicksub(menu: string, target: any) {
     let result = target.hasAttribute("subcat");
-    
+
     if (result) {
       $(`#${menu}-dropdown`).toggleClass("show");
       $(`#${menu}`).toggleClass("collapsed");

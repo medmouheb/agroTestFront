@@ -1,15 +1,9 @@
-
-
-
-
 @mixin input-group-button-variation($vertical-padding) {
   .input-group-btn {
     .btn {
-
     }
   }
 }
-
 
 @include input-group-button-variation(input-padding-y);
 
@@ -22,8 +16,6 @@
 }
 
 .input-group {
-
-
   .input-group-text {
     display: flex;
     justify-content: center;
@@ -32,5 +24,4 @@
     background-color: transparent;
     border-color: transparent;
   }
-
 }

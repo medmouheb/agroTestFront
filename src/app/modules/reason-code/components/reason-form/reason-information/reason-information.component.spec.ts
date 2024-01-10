@@ -1,23 +1,22 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { ReasonInformationComponent } from './reason-information.component';
+import { ReasonInformationComponent } from "./reason-information.component";
 
-describe('ReasonInformationComponent', () => {
+describe("ReasonInformationComponent", () => {
   let component: ReasonInformationComponent;
   let fixture: ComponentFixture<ReasonInformationComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ReasonInformationComponent ]
-    })
-    .compileComponents();
+      declarations: [ReasonInformationComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(ReasonInformationComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

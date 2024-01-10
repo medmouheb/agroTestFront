@@ -1,44 +1,92 @@
 <div class="row">
-    <div class="form-group col-md-6">
-      <label for="startDateInformation">{{'StartDate' | translate}}</label>
-      <input type="date" class="form-control" name="startDateInformation" #startDateInformation="ngModel" ngModel [(ngModel)]="farm.startDateInformation">
-    </div>
-  
-    <div class="form-group col-md-6">
-      <label for="endDateInformation">{{'EndDate' | translate}} </label>
-      <input type="date" class="form-control" name="endDateInformation" #endDateInformation="ngModel" ngModel [(ngModel)]="farm.endDateInformation">
-    </div>
-  
-    <div class="form-group col-md-6">
-      <label for="ressourceInformation">{{'RessourceInfor' | translate}}</label>
-      <input class="form-control" name="ressourceInformation" #ressourceInformation="ngModel" ngModel [(ngModel)]="farm.ressourceInformation">
-    </div>
-    <div class="form-group col-md-6 align-self-end">
-        <label for="statutInformation">
-          <input type="checkbox" id="active" name="active" #statutInformation="ngModel" ngModel [(ngModel)]="farm.statutInformation" />
-          {{ "active" | translate }}
-        </label>
-      </div>
-    <div class="form-group col-md-6">
-      <label for="FirstNameInformation">{{'Firstname' | translate}}</label>
-      <input class="form-control" name="firstNameInformation" #firstNameInformation="ngModel" ngModel [(ngModel)]="farm.firstNameInformation">
-    </div>
-  
-    <div class="form-group col-md-6">
-      <label for="lastNameInformation">{{'Lastname' | translate}}</label>
-      <input class="form-control" name="lastNameInformation" #lastNameInformation="ngModel" ngModel [(ngModel)]="farm.lastNameInformation">
-    </div>
-  
-    <div class="form-group col-md-6">
-      <label for="adressInformation">{{'Address' | translate}}</label>
-      <input class="form-control" name="adressInformation" #adressInformation="ngModel" ngModel [(ngModel)]="farm.adressInformation">
-    </div>
-  
-    <div class="form-group col-md-6">
-      <label for="phoneInformation">{{'phoneMobile' | translate}}</label>
-      <input class="form-control" name="phoneInformation" #phoneInformation="ngModel" ngModel [(ngModel)]="farm.phoneInformation">
-    </div>
-  
-  
+  <div class="form-group col-md-6">
+    <label for="startDateInformation">{{ "StartDate" | translate }}</label>
+    <input
+      type="date"
+      class="form-control"
+      name="startDateInformation"
+      #startDateInformation="ngModel"
+      ngModel
+      [(ngModel)]="farm.startDateInformation"
+    />
   </div>
-  
+
+  <div class="form-group col-md-6">
+    <label for="endDateInformation">{{ "EndDate" | translate }} </label>
+    <input
+      type="date"
+      class="form-control"
+      name="endDateInformation"
+      #endDateInformation="ngModel"
+      ngModel
+      [(ngModel)]="farm.endDateInformation"
+    />
+  </div>
+
+  <div class="form-group col-md-6">
+    <label for="ressourceInformation">{{ "RessourceInfor" | translate }}</label>
+    <input
+      class="form-control"
+      name="ressourceInformation"
+      #ressourceInformation="ngModel"
+      ngModel
+      [(ngModel)]="farm.ressourceInformation"
+    />
+  </div>
+  <div class="form-group col-md-6 align-self-end">
+    <label for="statutInformation">
+      <input
+        type="checkbox"
+        id="active"
+        name="active"
+        #statutInformation="ngModel"
+        ngModel
+        [(ngModel)]="farm.statutInformation"
+      />
+      {{ "active" | translate }}
+    </label>
+  </div>
+  <div class="form-group col-md-6">
+    <label for="FirstNameInformation">{{ "Firstname" | translate }}</label>
+    <input
+      class="form-control"
+      name="firstNameInformation"
+      #firstNameInformation="ngModel"
+      ngModel
+      [(ngModel)]="farm.firstNameInformation"
+    />
+  </div>
+
+  <div class="form-group col-md-6">
+    <label for="lastNameInformation">{{ "Lastname" | translate }}</label>
+    <input
+      class="form-control"
+      name="lastNameInformation"
+      #lastNameInformation="ngModel"
+      ngModel
+      [(ngModel)]="farm.lastNameInformation"
+    />
+  </div>
+
+  <div class="form-group col-md-6">
+    <label for="adressInformation">{{ "Address" | translate }}</label>
+    <input
+      class="form-control"
+      name="adressInformation"
+      #adressInformation="ngModel"
+      ngModel
+      [(ngModel)]="farm.adressInformation"
+    />
+  </div>
+
+  <div class="form-group col-md-6">
+    <label for="phoneInformation">{{ "phoneMobile" | translate }}</label>
+    <input
+      class="form-control"
+      name="phoneInformation"
+      #phoneInformation="ngModel"
+      ngModel
+      [(ngModel)]="farm.phoneInformation"
+    />
+  </div>
+</div>

@@ -1,20 +1,52 @@
 <div class="row" [formGroup]="addform">
+  <div class="form-group col-md-6">
+    <label class="required" for="codeEmploye">{{
+      "codeEmploye" | translate
+    }}</label>
+    <input
+      (blur)="isBlur(); exist(); blur1()"
+      class="form-control"
+      name="codeEmploye"
+      [(ngModel)]="camp.codeEmploye"
+      formControlName="codeEmploye"
+      placeholder="{{ 'Write your  codeEmploye' | translate }} "
+      required
+      aria-invalid="true"
+      type="number"
+      aria-describedby="code-error"
+      (ngModelChange)="geValues($event)"
+    />
 
-    <div class="form-group col-md-6">
-        <label class="required" for="codeEmploye">{{ "codeEmploye" | translate }}</label>
-        <input (blur)="isBlur();exist();blur1()" class="form-control" name="codeEmploye" [(ngModel)]="camp.codeEmploye"formControlName="codeEmploye" placeholder="{{'Write your  codeEmploye'|translate}} "
-            required aria-invalid="true" type="number" aria-describedby="code-error" (ngModelChange)="geValues($event)">
+    <div style="color: red" *ngIf="dispotrueCode">
+      {{ "codeEmploye must be unique" | translate }}
+    </div>
+    <div style="color: red" *ngIf="minIstrueCode">
+      {{ "codeEmploye must be not null" | translate }}
+    </div>
+  </div>
 
-            <div style=" color : red;" *ngIf="dispotrueCode">{{'codeEmploye must be unique'|translate}}</div>
-            <div style=" color : red;" *ngIf="minIstrueCode">{{'codeEmploye must be not null'|translate}}</div>
+  <div class="form-group col-md-6">
+    <label class="required" for="nomDuChauffeur">{{
+      "nomDuChauffeur" | translate
+    }}</label>
+    <input
+      (blur)="isBlur1(); existname(); exist1()"
+      class="form-control"
+      name="nomDuChauffeur"
+      formControlName="nomDuChauffeur"
+      [(ngModel)]="camp.nomDuChauffeur"
+      placeholder="{{ 'Write your nomDuChauffeur' | translate }} "
+      required
+      aria-invalid="true"
+      aria-describedby="name-error"
+      (ngModelChange)="geValues($event)"
+    />
+    <div style="color: red" *ngIf="minIstrueName">
+      {{ "nomDuChauffeur Name must be not null" | translate }}
     </div>
 
-    <div class="form-group col-md-6 ">
-        <label class="required" for="nomDuChauffeur">{{ "nomDuChauffeur" | translate }}</label>
-        <input (blur)="isBlur1();existname();exist1()"  class="form-control" name="nomDuChauffeur" formControlName="nomDuChauffeur" [(ngModel)]="camp.nomDuChauffeur" placeholder="{{'Write your nomDuChauffeur'|translate}} "
-            required aria-invalid="true" aria-describedby="name-error" (ngModelChange)="geValues($event)">
-        <div style=" color : red;" *ngIf="minIstrueName">{{'nomDuChauffeur Name must be not null'|translate}} </div> 
-
-        <div style=" color : red;" *ngIf="dispotruename">{{'nomDuChauffeur Name must be unique'|translate}}</div>
-
+    <div style="color: red" *ngIf="dispotruename">
+      {{ "nomDuChauffeur Name must be unique" | translate }}
+    </div>
+  </div>
 </div>

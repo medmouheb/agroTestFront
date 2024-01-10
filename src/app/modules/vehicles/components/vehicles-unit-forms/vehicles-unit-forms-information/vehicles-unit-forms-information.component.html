@@ -1,42 +1,69 @@
-
-
-
 <div class="row">
   <div class="form-group col-md-6">
     <label for="typeDeVehicule">{{ "typeDeVehicule" | translate }}</label>
-    <select class="form-control"  name="typeDeVehicule" #typeDeVehicule="ngModel"  ngModel [(ngModel)]="camp.typeDeVehicule">
-      <option value="Véhicule léger" >{{"Véhicule léger" | translate}}</option>
-      <option value="Poids lourd" >{{"Poids lourd" | translate}}</option>
-      <option value="Semi-remorque" >{{"Semi-remorque" | translate}}</option>
-      <option value="Machine" >{{"Machine" | translate}}</option>
-  </select>
+    <select
+      class="form-control"
+      name="typeDeVehicule"
+      #typeDeVehicule="ngModel"
+      ngModel
+      [(ngModel)]="camp.typeDeVehicule"
+    >
+      <option value="Véhicule léger">{{ "Véhicule léger" | translate }}</option>
+      <option value="Poids lourd">{{ "Poids lourd" | translate }}</option>
+      <option value="Semi-remorque">{{ "Semi-remorque" | translate }}</option>
+      <option value="Machine">{{ "Machine" | translate }}</option>
+    </select>
   </div>
 
   <div class="form-group col-md-6">
     <label for=" logisticCode">{{ "logisticCode" | translate }}</label>
-    <select class="form-control" name="logisticCode" #logisticCode="ngModel" [(ngModel)]="camp.logisticCode">
-      <option *ngFor="let name of divisionNames" [value]="name">{{ name }}</option>
+    <select
+      class="form-control"
+      name="logisticCode"
+      #logisticCode="ngModel"
+      [(ngModel)]="camp.logisticCode"
+    >
+      <option *ngFor="let name of divisionNames" [value]="name">
+        {{ name }}
+      </option>
     </select>
-    
   </div>
   <div class="form-group col-md-6">
     <label for="weightCapacity">{{ "weightCapacity" | translate }}</label>
-    <input type="number" class="form-control" name="weightCapacity" #weightCapacity="ngModel" ngModel [(ngModel)]="camp.weightCapacity"
-      placeholder="{{'Write your weightCapacity'|translate}} "/>
+    <input
+      type="number"
+      class="form-control"
+      name="weightCapacity"
+      #weightCapacity="ngModel"
+      ngModel
+      [(ngModel)]="camp.weightCapacity"
+      placeholder="{{ 'Write your weightCapacity' | translate }} "
+    />
   </div>
   <div class="form-group col-md-6">
     <label for="utilisation">{{ "utilisation" | translate }}</label>
-    <select class="form-control" name="utilisation" #utilisation="ngModel" ngModel [(ngModel)]="camp.utilisation">
-      <option value="true" >{{'True'|translate}}</option>
-      <option value="false" >{{'False'|translate}}</option>
- 
-  </select>
+    <select
+      class="form-control"
+      name="utilisation"
+      #utilisation="ngModel"
+      ngModel
+      [(ngModel)]="camp.utilisation"
+    >
+      <option value="true">{{ "True" | translate }}</option>
+      <option value="false">{{ "False" | translate }}</option>
+    </select>
   </div>
 
   <div class="form-group col-md-6">
     <label for="coutHoraire">{{ "coutHoraire" | translate }}</label>
-    <input type="time" class="form-control" name="coutHoraire" #coutHoraire="ngModel" ngModel [(ngModel)]="camp.coutHoraire"
-      placeholder="{{'Write your coutHoraire'|translate}} "/>
+    <input
+      type="time"
+      class="form-control"
+      name="coutHoraire"
+      #coutHoraire="ngModel"
+      ngModel
+      [(ngModel)]="camp.coutHoraire"
+      placeholder="{{ 'Write your coutHoraire' | translate }} "
+    />
   </div>
-
 </div>

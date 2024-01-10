@@ -36,49 +36,26 @@ export class WizardDialogComponent
 
   constructor(
     private sharedServ: SharedService,
-    private cdRef: ChangeDetectorRef
+    private cdRef: ChangeDetectorRef,
   ) {}
 
   ngOnInit(): any {
     this.wizardStep = 1;
     this.sharedServ.setIsActive(true);
-    this.sharedServ.isActive$.subscribe((data) => {
-      
-      
-      
-    });
-
-
-
-
-
-
+    this.sharedServ.isActive$.subscribe((data) => {});
 
     this.subscription = this.sharedServ.isActive$.subscribe((response) => {
       this.isNext = response;
-      
-      
-      
     });
-
-
-
-
-
-
-
   }
 
   show({ title, confirm, cancel, prev, stepsCount }: any) {
-    
-    
-    
     this.content = {
       title,
       confirm,
       cancel: () => {
         this.content = null;
-        
+
         if (cancel) {
           cancel();
         }
@@ -111,86 +88,20 @@ export class WizardDialogComponent
   }
 
   @HostListener("document:keydown.escape", ["$event"]) onKeydownHandler(
-    evt: KeyboardEvent
+    evt: KeyboardEvent,
   ) {
     this.hide();
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   goTo(step: number) {
     this.wizardStep = step;
   }
 
   ngOnChanges() {
-
-    this.subscription = this.sharedServ.isActive$.subscribe((response) => {
-      
-      
-      
-    });
-
-
-
-
-
-
-
+    this.subscription = this.sharedServ.isActive$.subscribe((response) => {});
   }
-
-
-
-
-
 
   ngAfterViewChecked(): void {
     this.cdRef.detectChanges();
   }
 }
-
-
-
-
-
-
-
-

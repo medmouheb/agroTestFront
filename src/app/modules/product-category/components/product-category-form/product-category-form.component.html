@@ -1,13 +1,15 @@
 <ng-content></ng-content>
 
 <form class="form-card">
+  <div *ngIf="currentStep == 0">
+    <app-product-category-form-general
+      [productCategory]="productCategory"
+    ></app-product-category-form-general>
+  </div>
 
-    <div *ngIf="currentStep == 0">
-        <app-product-category-form-general [productCategory]="productCategory"></app-product-category-form-general>
-    </div>
-
-    <div *ngIf="currentStep == 1">
-        <app-product-category-notes [productCategory]="productCategory"></app-product-category-notes>
-    </div>
-
+  <div *ngIf="currentStep == 1">
+    <app-product-category-notes
+      [productCategory]="productCategory"
+    ></app-product-category-notes>
+  </div>
 </form>

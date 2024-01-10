@@ -1,12 +1,12 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { environment } from 'environments/environment';
-import { Observable } from 'rxjs';
-import { ProductUsage } from '../model/product-usage';
-import { Page } from 'app/shared/models';
+import { HttpClient, HttpParams } from "@angular/common/http";
+import { Injectable } from "@angular/core";
+import { environment } from "environments/environment";
+import { Observable } from "rxjs";
+import { ProductUsage } from "../model/product-usage";
+import { Page } from "app/shared/models";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class ProductUsageService {
   constructor(private http: HttpClient) {}
@@ -23,7 +23,7 @@ export class ProductUsageService {
   }
 
   create(comp: ProductUsage): Observable<ProductUsage> {
-    let url = this.baseUrl()+"/UtilisationDuProduit";
+    let url = this.baseUrl() + "/UtilisationDuProduit";
     return this.http.post<ProductUsage>(url, comp);
   }
 
@@ -38,14 +38,14 @@ export class ProductUsageService {
   }
 
   findAll(): Observable<Array<ProductUsage>> {
-    let url = this.baseUrl()+'/UtilisationDuProduit';
+    let url = this.baseUrl() + "/UtilisationDuProduit";
     return this.http.get<Array<ProductUsage>>(url);
   }
 
   findPage(
     pageNumber: number,
     pageSize: number,
-    filter: string
+    filter: string,
   ): Observable<Page<ProductUsage>> {
     let url = this.baseUrl() + "/UtilisationDuProduit/page";
     let params = new HttpParams();
@@ -70,12 +70,10 @@ export class ProductUsageService {
     return this.http.get<void>(url);
   }
 
-
-
   findArchivedPage(
     pageNumber: number,
     pageSize: number,
-    filter: string
+    filter: string,
   ): Observable<Page<ProductUsage>> {
     let url = this.baseUrl() + "/UtilisationDuProduit/archived/page";
     let params = new HttpParams();
@@ -84,28 +82,21 @@ export class ProductUsageService {
     params = params.append("filter", filter);
     return this.http.get<Page<ProductUsage>>(url, { params });
   }
-  findbycode(code:any): Observable<ProductUsage>{
+  findbycode(code: any): Observable<ProductUsage> {
     let url = `${this.baseUrl()}/UtilisationDuProduit/by-code/${code}`;
     return this.http.get<ProductUsage>(url);
-
   }
-  findbyName(name:any): Observable<ProductUsage>{
+  findbyName(name: any): Observable<ProductUsage> {
     let url = `${this.baseUrl()}/UtilisationDuProduit/getbyname/${name}`;
     return this.http.get<ProductUsage>(url);
   }
 
-
-  getAllproduit(): Observable<string[]>{
+  getAllproduit(): Observable<string[]> {
     let url = `${this.baseUrl()}/UtilisationDuProduit/getAllproduit`;
     return this.http.get<string[]>(url);
-   
   }
-  findProduitName(code:string): Observable<any>{
+  findProduitName(code: string): Observable<any> {
     let url = `${this.baseUrl()}/UtilisationDuProduit/getAllproduit/${code}`;
     return this.http.get(url);
-   
   }
-
-
-
 }

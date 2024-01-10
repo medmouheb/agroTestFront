@@ -1,18 +1,9 @@
 export const environment = {
   production: false,
 
-
   apiUrl: "https://agrotechsolutions.pro/api",
   urlBack: "https://agrotechsolutions.pro",
   auth: "https://agrotechsolutions.pro/auth/",
-
-
-
-
-
-
-
-
 
   serviceDashboard: "/dashboard",
   simulator: "/simulator",

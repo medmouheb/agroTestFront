@@ -1,14 +1,11 @@
-<ng-content>
-</ng-content>
+<ng-content> </ng-content>
 <form class="form-card">
-
   <div *ngIf="currentStep == 0">
-    <app-vehicle-type-form-generale [camp]="camp"></app-vehicle-type-form-generale>
+    <app-vehicle-type-form-generale
+      [camp]="camp"
+    ></app-vehicle-type-form-generale>
   </div>
   <div *ngIf="currentStep == 1">
     <app-vehicle-type-form-detail [camp]="camp"></app-vehicle-type-form-detail>
   </div>
-
-
-
 </form>

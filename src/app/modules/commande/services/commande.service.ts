@@ -13,7 +13,6 @@ export class CommandeService {
 
   baseUrl() {
     return `${environment.apiUrl}`;
-
   }
 
   save(id: string | null, commande: Commande): Observable<Commande> {
@@ -24,7 +23,7 @@ export class CommandeService {
   }
 
   create(commande: Commande): Observable<Commande> {
-    let url = this.baseUrl()+'/commande';
+    let url = this.baseUrl() + "/commande";
     return this.http.post<Commande>(url, commande);
   }
 
@@ -49,14 +48,14 @@ export class CommandeService {
   }
 
   findAll(): Observable<Array<Commande>> {
-    let url = this.baseUrl()+'/commande';
+    let url = this.baseUrl() + "/commande";
     return this.http.get<Array<Commande>>(url);
   }
 
   findPage(
     pageNumber: number,
     pageSize: number,
-    filter: string
+    filter: string,
   ): Observable<Page<Commande>> {
     let url = this.baseUrl() + "/commande/page";
     let params = new HttpParams();
@@ -89,7 +88,7 @@ export class CommandeService {
   findArchivedPage(
     pageNumber: number,
     pageSize: number,
-    filter: string
+    filter: string,
   ): Observable<Page<Commande>> {
     let url = this.baseUrl() + "/commande/archived/page";
     let params = new HttpParams();

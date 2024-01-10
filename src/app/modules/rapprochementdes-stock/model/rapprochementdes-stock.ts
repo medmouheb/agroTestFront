@@ -1,91 +1,91 @@
 export type RapprochementDesStocks = {
-    id?: number
-    typeEnregistrement?:string 
-    transCode?:string
-    dateInventaire?:any
-    ndeReference?:string
-    identiteDeTransaction?:string
-    nomEntiteDeTransaction?:string
-    numeroDeProduit?:string
-    nomDuProduit?:string
-    typeDeProduit?:string
-    numeroDeLot?:string
-    numeroEmplacement?:string
-    quantite?:any
-    leValeur?:string
-    statusDeLaPublication?:string
-    codeSource?:string
-    dateDeDebut?:any
-    dateDeDebutDeReception?:any
-    quantiteDeDepart?:any
-    valeurUnitaireDeDepart?:any
-    valeurDeDepart?:any
-    drapeauFerme?:string
-    consignationComplexeBondecommandeNon?:string
-    drapeaudeconsignation?:string
-    complexeDeTransfertDeConsignationBonDeCommandeN?:string
-    numeroDeReferenceDuTransfertDeConsignation?:any
-    nomDuCentreDeCouts?:string
-    nduCentreDeCouts?:any
-    dateDeCreation?:any
-    dateDeFinDeReception?:any
-    dateDExpiration?:any
-    typeInstallationDuCentreDeCoutsExterne?:string
-    nomDuCentreDeCoutsExterne?:string
-    nduCentreDeCoutsExterne?:any
-    nomDeLaFerme?:string
-    ndeLaFerme?:any
-    typeDeFerme?:string
-    dateDinactivite?:string
-    irn?:string
-    nombreDeReceptions?:any
-    baseDeRemuneration?:string
-    termeDePaiementN?:any
-    termedePaiementNom?:string
-    numeroDeLigneDeCommande?:any
-    bonDecommandeNon?:string
-    commandeAchatcomplexeNon?:string
-    noDeReferenceAchat?:string
-    quantiteRestante?:any
-    valeurUnitaireRestante?:any
-    numeroDeReferenceDuFournisseur?:any
-    quantiteDeDebutDeFiletage?:any
-    valeurUniteDeDebutDeThread?:any
-    valeurDeDebutDeThread?:any
-    dateDeCreationDuFil?:any
-    dateDuFil?:any
-    quantiteDeFil?:any
-    typeEnregistrementDeThread?:string
-    ndeReferenceDuFiletage?:any
-    quantiteRestanteDeFil?:any
-    valeurUnitaireRestanteDuFil?:any
-    valeurRestanteDuFil?:any
-    codeSourceDuFil?:string
-    codeDeTransmissionDeFil?:string
-    valeurUniteDeFiletage?:any
-    valeurDeFil?:any
-    quantiteDeTransport?:any
-    valeurUnitaireTrans?:any
-    valeurTrans?:any
-    emplacementDeDestinationDuTransfertNon?:string
-    numeroDeLotDeDestinationDuTransfert?:any
-    nduProduitDeDestinationDuTransfert?:any
-    nomDuProduitDeDestinationDuTransfert?:string
-    numeroDeReferenceDeLaDestinationDuTransfert?:any
-    idEntiteDeTransactionDeDestinationDeTransfert?:string
-    nomDeEntiteDeLaTransactionDeDestinationDuTransfert?:string
-    typeEntrepotDeDestinationDuTransfert?:string
-    emplacementDeLaSourceDeTransfertNon?:string
-    numeroDeLotSourceDeTransfert?:any
-    nduProduitSourceDeTransfert?:any
-    nomDuProduitSourceDeTransfert?:string
-    typeEntrepotOrigineDuTransfert?:string
-    descriptionDeUnite?:string
-    valeurUnitaire?:any
-    unitesPar?:string
-    nduVendeur?:any
-    nomDuVendeur?:string
-    noSKUDuFournisseur?:any
-    nomSKUDuFournisseur?:string
-    typeEntrepot?:string
-}
+  id?: number;
+  typeEnregistrement?: string;
+  transCode?: string;
+  dateInventaire?: any;
+  ndeReference?: string;
+  identiteDeTransaction?: string;
+  nomEntiteDeTransaction?: string;
+  numeroDeProduit?: string;
+  nomDuProduit?: string;
+  typeDeProduit?: string;
+  numeroDeLot?: string;
+  numeroEmplacement?: string;
+  quantite?: any;
+  leValeur?: string;
+  statusDeLaPublication?: string;
+  codeSource?: string;
+  dateDeDebut?: any;
+  dateDeDebutDeReception?: any;
+  quantiteDeDepart?: any;
+  valeurUnitaireDeDepart?: any;
+  valeurDeDepart?: any;
+  drapeauFerme?: string;
+  consignationComplexeBondecommandeNon?: string;
+  drapeaudeconsignation?: string;
+  complexeDeTransfertDeConsignationBonDeCommandeN?: string;
+  numeroDeReferenceDuTransfertDeConsignation?: any;
+  nomDuCentreDeCouts?: string;
+  nduCentreDeCouts?: any;
+  dateDeCreation?: any;
+  dateDeFinDeReception?: any;
+  dateDExpiration?: any;
+  typeInstallationDuCentreDeCoutsExterne?: string;
+  nomDuCentreDeCoutsExterne?: string;
+  nduCentreDeCoutsExterne?: any;
+  nomDeLaFerme?: string;
+  ndeLaFerme?: any;
+  typeDeFerme?: string;
+  dateDinactivite?: string;
+  irn?: string;
+  nombreDeReceptions?: any;
+  baseDeRemuneration?: string;
+  termeDePaiementN?: any;
+  termedePaiementNom?: string;
+  numeroDeLigneDeCommande?: any;
+  bonDecommandeNon?: string;
+  commandeAchatcomplexeNon?: string;
+  noDeReferenceAchat?: string;
+  quantiteRestante?: any;
+  valeurUnitaireRestante?: any;
+  numeroDeReferenceDuFournisseur?: any;
+  quantiteDeDebutDeFiletage?: any;
+  valeurUniteDeDebutDeThread?: any;
+  valeurDeDebutDeThread?: any;
+  dateDeCreationDuFil?: any;
+  dateDuFil?: any;
+  quantiteDeFil?: any;
+  typeEnregistrementDeThread?: string;
+  ndeReferenceDuFiletage?: any;
+  quantiteRestanteDeFil?: any;
+  valeurUnitaireRestanteDuFil?: any;
+  valeurRestanteDuFil?: any;
+  codeSourceDuFil?: string;
+  codeDeTransmissionDeFil?: string;
+  valeurUniteDeFiletage?: any;
+  valeurDeFil?: any;
+  quantiteDeTransport?: any;
+  valeurUnitaireTrans?: any;
+  valeurTrans?: any;
+  emplacementDeDestinationDuTransfertNon?: string;
+  numeroDeLotDeDestinationDuTransfert?: any;
+  nduProduitDeDestinationDuTransfert?: any;
+  nomDuProduitDeDestinationDuTransfert?: string;
+  numeroDeReferenceDeLaDestinationDuTransfert?: any;
+  idEntiteDeTransactionDeDestinationDeTransfert?: string;
+  nomDeEntiteDeLaTransactionDeDestinationDuTransfert?: string;
+  typeEntrepotDeDestinationDuTransfert?: string;
+  emplacementDeLaSourceDeTransfertNon?: string;
+  numeroDeLotSourceDeTransfert?: any;
+  nduProduitSourceDeTransfert?: any;
+  nomDuProduitSourceDeTransfert?: string;
+  typeEntrepotOrigineDuTransfert?: string;
+  descriptionDeUnite?: string;
+  valeurUnitaire?: any;
+  unitesPar?: string;
+  nduVendeur?: any;
+  nomDuVendeur?: string;
+  noSKUDuFournisseur?: any;
+  nomSKUDuFournisseur?: string;
+  typeEntrepot?: string;
+};

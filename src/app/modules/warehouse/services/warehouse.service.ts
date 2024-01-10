@@ -23,7 +23,7 @@ export class WarehouseService {
   }
 
   create(warehouse: Warehouse): Observable<Warehouse> {
-    let url = this.baseUrl()+"/warehouse";
+    let url = this.baseUrl() + "/warehouse";
     return this.http.post<Warehouse>(url, warehouse);
   }
 
@@ -48,14 +48,14 @@ export class WarehouseService {
   }
 
   findAll(): Observable<Array<Warehouse>> {
-    let url = this.baseUrl()+'/warehouse';
+    let url = this.baseUrl() + "/warehouse";
     return this.http.get<Array<Warehouse>>(url);
   }
 
   findPage(
     pageNumber: number,
     pageSize: number,
-    filter: string
+    filter: string,
   ): Observable<Page<Warehouse>> {
     let url = this.baseUrl() + "/warehouse/page";
     let params = new HttpParams();
@@ -83,7 +83,7 @@ export class WarehouseService {
   findArchivedPage(
     pageNumber: number,
     pageSize: number,
-    filter: string
+    filter: string,
   ): Observable<Page<Warehouse>> {
     let url = this.baseUrl() + "/warehouse/archived/page";
     let params = new HttpParams();
@@ -97,7 +97,7 @@ export class WarehouseService {
     return this.http.get(url, { responseType: "blob" });
   }
 
-  uploadCSVTemplate(file:any): Observable<any> {
+  uploadCSVTemplate(file: any): Observable<any> {
     let url = `${this.baseUrl()}/warehouse/upload`;
     return this.http.post(url, file);
   }

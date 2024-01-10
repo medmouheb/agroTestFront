@@ -13,7 +13,10 @@ export class LoginComponent implements OnInit {
   authenticationError = false;
   otherError = false;
 
-  constructor(private router: Router, private loginService: LoginService) {}
+  constructor(
+    private router: Router,
+    private loginService: LoginService,
+  ) {}
 
   ngOnInit(): void {}
 
@@ -31,7 +34,7 @@ export class LoginComponent implements OnInit {
         } else {
           this.otherError = true;
         }
-      }
+      },
     );
   }
 }

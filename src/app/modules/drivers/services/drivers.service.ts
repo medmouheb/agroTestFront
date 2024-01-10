@@ -1,12 +1,12 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { environment } from 'environments/environment';
-import { Drivers } from '../models/drivers';
-import { Observable } from 'rxjs';
-import { Page } from 'app/shared/models';
+import { HttpClient, HttpParams } from "@angular/common/http";
+import { Injectable } from "@angular/core";
+import { environment } from "environments/environment";
+import { Drivers } from "../models/drivers";
+import { Observable } from "rxjs";
+import { Page } from "app/shared/models";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class DriversService {
   constructor(private http: HttpClient) {}
@@ -23,7 +23,7 @@ export class DriversService {
   }
 
   create(comp: Drivers): Observable<Drivers> {
-    let url = this.baseUrl()+"/drivers";
+    let url = this.baseUrl() + "/drivers";
     return this.http.post<Drivers>(url, comp);
   }
 
@@ -38,14 +38,14 @@ export class DriversService {
   }
 
   findAll(): Observable<Array<Drivers>> {
-    let url = this.baseUrl()+'/drivers';
+    let url = this.baseUrl() + "/drivers";
     return this.http.get<Array<Drivers>>(url);
   }
 
   findPage(
     pageNumber: number,
     pageSize: number,
-    filter: string
+    filter: string,
   ): Observable<Page<Drivers>> {
     let url = this.baseUrl() + "/drivers/page";
     let params = new HttpParams();
@@ -70,12 +70,10 @@ export class DriversService {
     return this.http.get<void>(url);
   }
 
-
-
   findArchivedPage(
     pageNumber: number,
     pageSize: number,
-    filter: string
+    filter: string,
   ): Observable<Page<Drivers>> {
     let url = this.baseUrl() + "/drivers/archived/page";
     let params = new HttpParams();
@@ -84,20 +82,17 @@ export class DriversService {
     params = params.append("filter", filter);
     return this.http.get<Page<Drivers>>(url, { params });
   }
-  findbycode(code:any): Observable<Drivers>{
+  findbycode(code: any): Observable<Drivers> {
     let url = `${this.baseUrl()}/drivers/by-code/${code}`;
     return this.http.get<Drivers>(url);
-
   }
-  findbyName(name:any): Observable<Drivers>{
+  findbyName(name: any): Observable<Drivers> {
     let url = `${this.baseUrl()}/drivers/getbyname/${name}`;
     return this.http.get<Drivers>(url);
   }
 
-
-  findbycompanyname(): Observable<string[]>{
+  findbycompanyname(): Observable<string[]> {
     let url = `${this.baseUrl()}/drivers/getbydivision`;
     return this.http.get<string[]>(url);
   }
-
 }

@@ -1,19 +1,18 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Page } from 'app/shared/models';
-import { Observable } from 'rxjs';
-import { Delivery } from '../models/delivery';
-import { environment } from 'environments/environment';
+import { HttpClient, HttpParams } from "@angular/common/http";
+import { Injectable } from "@angular/core";
+import { Page } from "app/shared/models";
+import { Observable } from "rxjs";
+import { Delivery } from "../models/delivery";
+import { environment } from "environments/environment";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class DeliveryService {
   constructor(private http: HttpClient) {}
 
   baseUrl() {
-   return `${environment.apiUrl}`;
-
+    return `${environment.apiUrl}`;
   }
 
   save(id: string | null, delivery: Delivery): Observable<Delivery> {
@@ -24,7 +23,7 @@ export class DeliveryService {
   }
 
   create(delivery: Delivery): Observable<Delivery> {
-    let url = this.baseUrl()+"/delivery";
+    let url = this.baseUrl() + "/delivery";
     return this.http.post<Delivery>(url, delivery);
   }
 
@@ -39,14 +38,14 @@ export class DeliveryService {
   }
 
   findAll(): Observable<Array<Delivery>> {
-    let url = this.baseUrl()+'/delivery';
+    let url = this.baseUrl() + "/delivery";
     return this.http.get<Array<Delivery>>(url);
   }
 
   findPage(
     pageNumber: number,
     pageSize: number,
-    filter: string
+    filter: string,
   ): Observable<Page<Delivery>> {
     let url = this.baseUrl() + "/delivery/page";
     let params = new HttpParams();
@@ -74,7 +73,7 @@ export class DeliveryService {
   findArchivedPage(
     pageNumber: number,
     pageSize: number,
-    filter: string
+    filter: string,
   ): Observable<Page<Delivery>> {
     let url = this.baseUrl() + "/delivery/archived/page";
     let params = new HttpParams();
@@ -83,14 +82,12 @@ export class DeliveryService {
     params = params.append("filter", filter);
     return this.http.get<Page<Delivery>>(url, { params });
   }
-  findbycode(code:any): Observable<Delivery>{
+  findbycode(code: any): Observable<Delivery> {
     let url = `${this.baseUrl()}/delivery/by-code/${code}`;
     return this.http.get<Delivery>(url);
-
   }
-  findbyName(name:any): Observable<Delivery>{
+  findbyName(name: any): Observable<Delivery> {
     let url = `${this.baseUrl()}/delivery/getbyname/${name}`;
     return this.http.get<Delivery>(url);
-
   }
 }

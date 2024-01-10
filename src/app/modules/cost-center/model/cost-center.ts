@@ -6,7 +6,7 @@ export class CostCenter {
   division_Name?: String;
   division_Code?: string;
   facilityType?: string;
-  speciesType?: string
-  divisiontype?: string
-  typecost?: any
+  speciesType?: string;
+  divisiontype?: string;
+  typecost?: any;
 }

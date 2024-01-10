@@ -21,18 +21,16 @@ export class FournisseursService {
     }
     return this.create(fournisseur);
   }
-  findbycode(code:any): Observable<Fournisseur>{
+  findbycode(code: any): Observable<Fournisseur> {
     let url = `${this.baseUrl()}/fournisseur/by-code/${code}`;
     return this.http.get<Fournisseur>(url);
-
   }
-  findbyName(name:any): Observable<Fournisseur>{
+  findbyName(name: any): Observable<Fournisseur> {
     let url = `${this.baseUrl()}/fournisseur/getbyname/${name}`;
     return this.http.get<Fournisseur>(url);
-
   }
   create(fournisseur: Fournisseur): Observable<Fournisseur> {
-    let url = this.baseUrl()+'/fournisseur';
+    let url = this.baseUrl() + "/fournisseur";
     return this.http.post<Fournisseur>(url, fournisseur);
   }
 
@@ -57,14 +55,14 @@ export class FournisseursService {
   }
 
   findAll(): Observable<Array<Fournisseur>> {
-    let url = this.baseUrl()+'/fournisseur';
+    let url = this.baseUrl() + "/fournisseur";
     return this.http.get<Array<Fournisseur>>(url);
   }
 
   findPage(
     pageNumber: number,
     pageSize: number,
-    filter: string
+    filter: string,
   ): Observable<Page<Fournisseur>> {
     let url = this.baseUrl() + "/fournisseur/page";
     let params = new HttpParams();
@@ -83,7 +81,7 @@ export class FournisseursService {
     let url = `${this.baseUrl()}/fournisseur/csv-template`;
     return this.http.get(url, { responseType: "blob" });
   }
-  uploadCSVTemplate(file:any): Observable<any> {
+  uploadCSVTemplate(file: any): Observable<any> {
     let url = `${this.baseUrl()}/fournisseur/upload`;
     return this.http.post(url, file);
   }
@@ -101,7 +99,7 @@ export class FournisseursService {
   findArchivedPage(
     pageNumber: number,
     pageSize: number,
-    filter: string
+    filter: string,
   ): Observable<Page<Fournisseur>> {
     let url = this.baseUrl() + "/fournisseur/archived/page";
     let params = new HttpParams();

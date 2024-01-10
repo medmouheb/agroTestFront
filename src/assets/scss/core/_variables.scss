@@ -3,7 +3,6 @@
 
 @import "variables/bootstrap-material-design-base";
 
-
 @import "variables/custom-forms";
 @import "variables/spacing";
 @import "variables/body";
@@ -22,10 +21,8 @@
 @import "variables/type";
 @import "variables/modals";
 
-
 $enable-flex: true; // fully adopt flexbox layouts
 $enable-shadows: true; // enable shadows, set to false to turn off shadows
-
 
 @import "variables/layout";
 @import "variables/menu";

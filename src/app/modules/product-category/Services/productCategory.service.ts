@@ -4,72 +4,83 @@ import { Observable } from "rxjs";
 import { productCategory } from "../Models/productCategory.model";
 import { environment } from "environments/environment";
 
-
 @Injectable({
-    providedIn: 'root'
+  providedIn: "root",
 })
 export class productCategoryService {
+  baseUrl() {
+    return `${environment.apiUrl}`;
+  }
+  constructor(private http: HttpClient) {}
 
+  getActiveProductCategories(): Observable<productCategory[]> {
+    return this.http.get<productCategory[]>(
+      this.baseUrl() + "/productCategory/active",
+    );
+  }
+  getArchivedProductCategories(): Observable<productCategory[]> {
+    return this.http.get<productCategory[]>(
+      this.baseUrl() + "/productCategory/archived",
+    );
+  }
 
-    baseUrl() {
-        return `${environment.apiUrl}`;
+  save(
+    id: string | null,
+    productCategory: productCategory,
+  ): Observable<productCategory> {
+    if (id) {
+      return this.update(id, productCategory);
     }
-    constructor(private http: HttpClient) { }
+    return this.create(productCategory);
+  }
+  create(productCategory: productCategory): Observable<productCategory> {
+    let url = this.baseUrl() + "/productCategory";
+    return this.http.post<productCategory>(url, productCategory);
+  }
 
+  update(
+    id: string,
+    productCategory: productCategory,
+  ): Observable<productCategory> {
+    let url = `${this.baseUrl()}/productCategory/${id}`;
+    return this.http.put<productCategory>(url, productCategory);
+  }
+  delete(id: string): Observable<boolean> {
+    let url = `${this.baseUrl()}/productCategory/${id}`;
+    return this.http.delete<boolean>(url);
+  }
 
+  findProductCategoryById(id: string): Observable<productCategory> {
+    let url = `${this.baseUrl()}/productCategory/${id}`;
+    return this.http.get<productCategory>(url);
+  }
 
-    getActiveProductCategories(): Observable<productCategory[]> {
-        return this.http.get<productCategory[]>(this.baseUrl() + '/productCategory/active');
-    }
-    getArchivedProductCategories(): Observable<productCategory[]> {
-        return this.http.get<productCategory[]>(this.baseUrl() + '/productCategory/archived');
-    }
+  searchProductCategoryByNameActive(
+    productCategoryName: string,
+  ): Observable<productCategory[]> {
+    const params = { productCategoryName: productCategoryName };
+    return this.http.get<productCategory[]>(
+      this.baseUrl() + "/productCategory/searchactive",
+      { params },
+    );
+  }
+  searchProductCategoryByNameArchived(
+    productCategoryName: string,
+  ): Observable<productCategory[]> {
+    const params = { productCategoryName: productCategoryName };
+    return this.http.get<productCategory[]>(
+      this.baseUrl() + "/productCategory/searcharchived",
+      { params },
+    );
+  }
 
-    save(id: string | null, productCategory: productCategory): Observable<productCategory> {
-        if (id) {
-            return this.update(id, productCategory);
-        }
-        return this.create(productCategory);
-    }
-    create(productCategory: productCategory): Observable<productCategory> {
-        let url = this.baseUrl() + '/productCategory';
-        return this.http.post<productCategory>(url, productCategory);
-    }
+  deactivateProductCategory(id: string): Observable<void> {
+    const url = `${this.baseUrl()}/productCategory/deactivate/${id}`;
+    return this.http.patch<void>(url, null);
+  }
 
-    update(id: string, productCategory: productCategory): Observable<productCategory> {
-        let url = `${this.baseUrl()}/productCategory/${id}`;
-        return this.http.put<productCategory>(url, productCategory);
-    }
-    delete(id: string): Observable<boolean> {
-        let url = `${this.baseUrl()}/productCategory/${id}`;
-        return this.http.delete<boolean>(url);
-    }
-
-    findProductCategoryById(id: string): Observable<productCategory> {
-        let url = `${this.baseUrl()}/productCategory/${id}`;
-        return this.http.get<productCategory>(url);
-    }
-
-    searchProductCategoryByNameActive(productCategoryName: string): Observable<productCategory[]> {
-        const params = { productCategoryName: productCategoryName };
-        return this.http.get<productCategory[]>(this.baseUrl() + "/productCategory/searchactive", { params });
-    }
-    searchProductCategoryByNameArchived(productCategoryName: string): Observable<productCategory[]> {
-        const params = { productCategoryName: productCategoryName };
-        return this.http.get<productCategory[]>(this.baseUrl() + "/productCategory/searcharchived", { params });
-    }
-
-
-    deactivateProductCategory(id: string): Observable<void> {
-        const url = `${this.baseUrl()}/productCategory/deactivate/${id}`;
-        return this.http.patch<void>(url, null);
-    }
-
-    ActivateProductCategory(id: string): Observable<void> {
-        const url = `${this.baseUrl()}/productCategory/activate/${id}`;
-        return this.http.patch<void>(url, null);
-    }
-
-
-
+  ActivateProductCategory(id: string): Observable<void> {
+    const url = `${this.baseUrl()}/productCategory/activate/${id}`;
+    return this.http.patch<void>(url, null);
+  }
 }

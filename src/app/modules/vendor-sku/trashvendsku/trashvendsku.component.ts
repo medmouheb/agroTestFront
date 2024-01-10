@@ -1,21 +1,20 @@
-import { Component, EventEmitter, OnInit, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
-import { HotToastService } from '@ngneat/hot-toast';
-import { TranslateService } from '@ngx-translate/core';
-import { ConfirmDialogComponent } from 'app/shared/components/confirm-dialog/confirm-dialog.component';
-import { StepperComponent } from 'app/shared/components/stepper/stepper.component';
-import { WizardDialogComponent } from 'app/shared/components/wizard-dialog/wizard-dialog.component';
-import { Page, initPage } from 'app/shared/models';
-import { VendorSKU } from '../models/vendorsku';
-import { VendorskuService } from '../serivce/vendorsku.service';
+import { Component, EventEmitter, OnInit, ViewChild } from "@angular/core";
+import { Router } from "@angular/router";
+import { HotToastService } from "@ngneat/hot-toast";
+import { TranslateService } from "@ngx-translate/core";
+import { ConfirmDialogComponent } from "app/shared/components/confirm-dialog/confirm-dialog.component";
+import { StepperComponent } from "app/shared/components/stepper/stepper.component";
+import { WizardDialogComponent } from "app/shared/components/wizard-dialog/wizard-dialog.component";
+import { Page, initPage } from "app/shared/models";
+import { VendorSKU } from "../models/vendorsku";
+import { VendorskuService } from "../serivce/vendorsku.service";
 
 @Component({
-  selector: 'app-trashvendsku',
-  templateUrl: './trashvendsku.component.html',
-  styleUrls: ['./trashvendsku.component.scss']
+  selector: "app-trashvendsku",
+  templateUrl: "./trashvendsku.component.html",
+  styleUrls: ["./trashvendsku.component.scss"],
 })
 export class TrashvendskuComponent implements OnInit {
-
   @ViewChild("deleteModal")
   deleteModal!: ConfirmDialogComponent;
 
@@ -35,23 +34,23 @@ export class TrashvendskuComponent implements OnInit {
 
   vendorsku: VendorSKU = {};
   vendorskus: Array<VendorSKU> = [];
-  Page: Page<VendorSKU> =initPage;
+  Page: Page<VendorSKU> = initPage;
   onPaginationChange: EventEmitter<string> = new EventEmitter<string>();
 
   constructor(
     private translateService: TranslateService,
     private toastService: HotToastService,
     private vendorsskuservice: VendorskuService,
-    private router:Router
+    private router: Router,
   ) {}
 
   ngOnInit(): void {
     this.findArchivedPage();
-    
+
     this.onPaginationChange.subscribe(() => this.findArchivedPage());
   }
-  goto(){
-    this.router.navigateByUrl("/vendorsku")
+  goto() {
+    this.router.navigateByUrl("/vendorsku");
   }
 
   findArchivedPage() {
@@ -103,59 +102,21 @@ export class TrashvendskuComponent implements OnInit {
         this.toastService.success(
           this.translateService.instant("success.restore", {
             elem: this.translateService.instant("vendorsku"),
-          })
+          }),
         );
-        
       },
     });
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   onClickDelete(id: string) {
     this.vendorsskuservice.delete(id).subscribe({
       next: () => {
         this.findArchivedPage();
-        
+
         this.toastService.success(
           this.translateService.instant("success.deleted", {
             elem: this.translateService.instant("vendorsku"),
-          })
+          }),
         );
       },
     });
@@ -163,24 +124,30 @@ export class TrashvendskuComponent implements OnInit {
   sortByCodeValid: boolean = true;
   sortByCode() {
     if (this.sortByCodeValid) {
-      this.vendorskus.sort((a, b) => a.vendorSKUCode.localeCompare(b.vendorSKUCode));
-      this.sortByCodeValid = false
+      this.vendorskus.sort((a, b) =>
+        a.vendorSKUCode.localeCompare(b.vendorSKUCode),
+      );
+      this.sortByCodeValid = false;
     } else {
-      this.vendorskus.sort((a, b) => b.vendorSKUCode.localeCompare(a.vendorSKUCode));
-      this.sortByCodeValid = true
+      this.vendorskus.sort((a, b) =>
+        b.vendorSKUCode.localeCompare(a.vendorSKUCode),
+      );
+      this.sortByCodeValid = true;
     }
   }
-
-
 
   sortByNameValid: boolean = true;
   sortByName() {
     if (this.sortByNameValid) {
-      this.vendorskus.sort((a, b) => a.vendorSKUName.localeCompare(b.vendorSKUName));
-      this.sortByNameValid = false
+      this.vendorskus.sort((a, b) =>
+        a.vendorSKUName.localeCompare(b.vendorSKUName),
+      );
+      this.sortByNameValid = false;
     } else {
-      this.vendorskus.sort((a, b) => b.vendorSKUName.localeCompare(a.vendorSKUName));
-      this.sortByNameValid = true
+      this.vendorskus.sort((a, b) =>
+        b.vendorSKUName.localeCompare(a.vendorSKUName),
+      );
+      this.sortByNameValid = true;
     }
   }
 }

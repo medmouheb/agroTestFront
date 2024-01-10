@@ -1,15 +1,14 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Page } from 'app/shared/models';
-import { environment } from 'environments/environment';
-import { Observable } from 'rxjs';
-import { SalesSKU } from '../models/salesSku';
+import { HttpClient, HttpParams } from "@angular/common/http";
+import { Injectable } from "@angular/core";
+import { Page } from "app/shared/models";
+import { environment } from "environments/environment";
+import { Observable } from "rxjs";
+import { SalesSKU } from "../models/salesSku";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class SalesSkuService {
-
   constructor(private http: HttpClient) {}
   baseUrl() {
     return `${environment.apiUrl}`;
@@ -22,7 +21,7 @@ export class SalesSkuService {
   }
 
   create(salessku: SalesSKU): Observable<SalesSKU> {
-    let url = this.baseUrl()+"/salesSku";
+    let url = this.baseUrl() + "/salesSku";
     return this.http.post<SalesSKU>(url, salessku);
   }
 
@@ -37,14 +36,14 @@ export class SalesSkuService {
   }
 
   findAll(): Observable<Array<SalesSKU>> {
-    let url = this.baseUrl()+'/salesSku';
+    let url = this.baseUrl() + "/salesSku";
     return this.http.get<Array<SalesSKU>>(url);
   }
 
   findPage(
     pageNumber: number,
     pageSize: number,
-    filter: string
+    filter: string,
   ): Observable<Page<SalesSKU>> {
     let url = this.baseUrl() + "/salesSku/page";
     let params = new HttpParams();
@@ -71,7 +70,7 @@ export class SalesSkuService {
   findArchivedPage(
     pageNumber: number,
     pageSize: number,
-    filter: string
+    filter: string,
   ): Observable<Page<SalesSKU>> {
     let url = this.baseUrl() + "/salesSku/archived/page";
     let params = new HttpParams();
@@ -80,5 +79,4 @@ export class SalesSkuService {
     params = params.append("filter", filter);
     return this.http.get<Page<SalesSKU>>(url, { params });
   }
-
 }

@@ -1,86 +1,189 @@
 <div class="row">
   <div class="form-group col-md-6">
-    <label for="address1">{{'Address' | translate}} 1</label>
-    <input class="form-control" name="address1" #address1="ngModel" ngModel [(ngModel)]="farm.address1">
+    <label for="address1">{{ "Address" | translate }} 1</label>
+    <input
+      class="form-control"
+      name="address1"
+      #address1="ngModel"
+      ngModel
+      [(ngModel)]="farm.address1"
+    />
   </div>
 
   <div class="form-group col-md-6">
-    <label for="address2">{{'Address' | translate}} 2</label>
-    <input class="form-control" name="address2" #address2="ngModel" ngModel [(ngModel)]="farm.address2">
+    <label for="address2">{{ "Address" | translate }} 2</label>
+    <input
+      class="form-control"
+      name="address2"
+      #address2="ngModel"
+      ngModel
+      [(ngModel)]="farm.address2"
+    />
   </div>
 
   <div class="form-group col-md-6">
-    <label for="cityCode">{{'codeCity' | translate}}</label>
-    <input class="form-control" name="cityCode" #cityCode="ngModel" ngModel [(ngModel)]="farm.city_Code">
+    <label for="cityCode">{{ "codeCity" | translate }}</label>
+    <input
+      class="form-control"
+      name="cityCode"
+      #cityCode="ngModel"
+      ngModel
+      [(ngModel)]="farm.city_Code"
+    />
   </div>
 
   <div class="form-group col-md-6">
-    <label for="cityName">{{'nameCity' | translate}}</label>
-    <input class="form-control" name="cityName" #cityName="ngModel" ngModel [(ngModel)]="farm.city_Name">
+    <label for="cityName">{{ "nameCity" | translate }}</label>
+    <input
+      class="form-control"
+      name="cityName"
+      #cityName="ngModel"
+      ngModel
+      [(ngModel)]="farm.city_Name"
+    />
   </div>
 
   <div class="form-group col-md-6">
-    <label for="governorateCode">{{'governorateCode' | translate}}</label>
-    <input class="form-control" name="governorateCode" #governorateCode="ngModel" ngModel
-      [(ngModel)]="farm.governorateCode">
+    <label for="governorateCode">{{ "governorateCode" | translate }}</label>
+    <input
+      class="form-control"
+      name="governorateCode"
+      #governorateCode="ngModel"
+      ngModel
+      [(ngModel)]="farm.governorateCode"
+    />
   </div>
 
   <div class="form-group col-md-6">
-    <label for="governorateName">{{'governorateName' | translate}}</label>
-    <input class="form-control" name="governorateName" #governorateName="ngModel" ngModel
-      [(ngModel)]="farm.governorateName">
+    <label for="governorateName">{{ "governorateName" | translate }}</label>
+    <input
+      class="form-control"
+      name="governorateName"
+      #governorateName="ngModel"
+      ngModel
+      [(ngModel)]="farm.governorateName"
+    />
   </div>
 
   <div class="form-group col-md-6">
-    <label for="zipCode">{{'zipCode' | translate}}</label>
-    <input class="form-control" name="zipCode" #zipCode="ngModel" ngModel [(ngModel)]="farm.zip_Code">
+    <label for="zipCode">{{ "zipCode" | translate }}</label>
+    <input
+      class="form-control"
+      name="zipCode"
+      #zipCode="ngModel"
+      ngModel
+      [(ngModel)]="farm.zip_Code"
+    />
   </div>
 
   <div class="form-group col-md-6">
-    <label for="email">{{'email' | translate}}</label>
-    <input type="email" class="form-control" name="email" #email="ngModel" ngModel [(ngModel)]="farm.email"
-      placeholder="{{ 'Write your email' | translate }}" (blur)="validationEmail()" />
-    <div style="color: red;" *ngIf="emailIsvalid">{{ "Invalid email format" | translate }}</div>
+    <label for="email">{{ "email" | translate }}</label>
+    <input
+      type="email"
+      class="form-control"
+      name="email"
+      #email="ngModel"
+      ngModel
+      [(ngModel)]="farm.email"
+      placeholder="{{ 'Write your email' | translate }}"
+      (blur)="validationEmail()"
+    />
+    <div style="color: red" *ngIf="emailIsvalid">
+      {{ "Invalid email format" | translate }}
+    </div>
   </div>
 
   <div class="form-group col-md-6">
-    <label for="phoneNumber">{{'phoneMobile'| translate}}</label>
-    <div style="display: flex;">
-      <select style="width: 50%;" class="form-control" (change)="selectContry($event)">
-        <option disabled selected> select your
-          contry</option>
-        <option *ngFor="let c of countryPhoneCodes " [value]="c.code"> {{c.country}}
+    <label for="phoneNumber">{{ "phoneMobile" | translate }}</label>
+    <div style="display: flex">
+      <select
+        style="width: 50%"
+        class="form-control"
+        (change)="selectContry($event)"
+      >
+        <option disabled selected>select your contry</option>
+        <option *ngFor="let c of countryPhoneCodes" [value]="c.code">
+          {{ c.country }}
         </option>
       </select>
-      <img   alt="" *ngIf="flag!=''" id="flag" style="width: 40px; height: 35px;margin-left: 1%;margin-right: 1%;"
-        [src]="getflage()">
-      <input (keyup)="phoneNumberinp($event)" class="form-control" name="phoneNumber" #phoneNumber="ngModel" ngModel [(ngModel)]="farm.phoneNumber">
+      <img
+        alt=""
+        *ngIf="flag != ''"
+        id="flag"
+        style="width: 40px; height: 35px; margin-left: 1%; margin-right: 1%"
+        [src]="getflage()"
+      />
+      <input
+        (keyup)="phoneNumberinp($event)"
+        class="form-control"
+        name="phoneNumber"
+        #phoneNumber="ngModel"
+        ngModel
+        [(ngModel)]="farm.phoneNumber"
+      />
     </div>
-    <div style="border: 1px solid red; color : red;" *ngIf="minIphone">{{'phone number must be have 12
-      charactere'|translate}}</div>
+    <div style="border: 1px solid red; color: red" *ngIf="minIphone">
+      {{
+        "phone number must be have 12
+      charactere" | translate
+      }}
+    </div>
   </div>
 
   <div class="form-group col-md-6">
-    <label for="telephone">{{'phoneFixe'| translate}}</label>
-    <input class="form-control" name="telephone" #phonefix="ngModel" ngModel [(ngModel)]="farm.telephone">
+    <label for="telephone">{{ "phoneFixe" | translate }}</label>
+    <input
+      class="form-control"
+      name="telephone"
+      #phonefix="ngModel"
+      ngModel
+      [(ngModel)]="farm.telephone"
+    />
   </div>
   <div class="form-group col-md-6">
-    <label for="faxNumber">{{'faxNumber'| translate}}</label>
-    <input class="form-control" name="faxNumber" #faxNumber="ngModel" ngModel [(ngModel)]="farm.faxNumber">
+    <label for="faxNumber">{{ "faxNumber" | translate }}</label>
+    <input
+      class="form-control"
+      name="faxNumber"
+      #faxNumber="ngModel"
+      ngModel
+      [(ngModel)]="farm.faxNumber"
+    />
   </div>
   <div class="form-group col-md-6">
-    <label for="latitude">{{'latitude'| translate}}</label>
-    <input type="number" class="form-control" name="latitude" #latitude="ngModel" ngModel [(ngModel)]="farm.latitude">
+    <label for="latitude">{{ "latitude" | translate }}</label>
+    <input
+      type="number"
+      class="form-control"
+      name="latitude"
+      #latitude="ngModel"
+      ngModel
+      [(ngModel)]="farm.latitude"
+    />
   </div>
 
   <div class="form-group col-md-6">
-    <label class="clickable" for="longitude">{{'longitude' | translate}}</label>
-    <input type="number" class="form-control" name="longitude" #longitude="ngModel" ngModel
-      [(ngModel)]="farm.longitude">
+    <label class="clickable" for="longitude">{{
+      "longitude" | translate
+    }}</label>
+    <input
+      type="number"
+      class="form-control"
+      name="longitude"
+      #longitude="ngModel"
+      ngModel
+      [(ngModel)]="farm.longitude"
+    />
   </div>
   <div class="form-group col-md-6">
-    <label for="farm_Area">{{'areafarms'| translate}}</label>
-    <input type="text" class="form-control" name="farm_Area" #farm_Area="ngModel" ngModel [(ngModel)]="farm.farm_Area">
+    <label for="farm_Area">{{ "areafarms" | translate }}</label>
+    <input
+      type="text"
+      class="form-control"
+      name="farm_Area"
+      #farm_Area="ngModel"
+      ngModel
+      [(ngModel)]="farm.farm_Area"
+    />
   </div>
-
 </div>

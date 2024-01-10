@@ -1,70 +1,65 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 
 @Component({
-  selector: 'app-stepper',
-  templateUrl: './stepper.component.html',
-  styleUrls: ['./stepper.component.scss']
+  selector: "app-stepper",
+  templateUrl: "./stepper.component.html",
+  styleUrls: ["./stepper.component.scss"],
 })
 export class StepperComponent implements OnInit {
-
   @Input()
-  steps!: Array<any>
+  steps!: Array<any>;
   @Input()
-  currentStep!: number
+  currentStep!: number;
 
   @Output()
   onStepChange = new EventEmitter<number>();
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  getClickstipper() {
+    this.clickStipper = JSON.parse(localStorage.getItem("st"));
   }
 
-  getClickstipper(){
+  clickStipper = false;
 
-    this.clickStipper= JSON.parse( localStorage.getItem("st"))
-
+  setclickStipper(b: boolean) {
+    this.clickStipper = b;
   }
 
-  clickStipper=false
-
-  setclickStipper(b:boolean){
-    this.clickStipper=b
+  selectStep(step: number) {
+    this.currentStep = step;
+    this.onStepChange.emit(step);
   }
 
-  selectStep(step: number){
-    this.currentStep = step
-    this.onStepChange.emit(step)
+  activeStep(step: number) {
+    return this.currentStep === step;
   }
 
-  activeStep(step: number){
-    return this.currentStep === step
+  doneStep(step: number) {
+    return this.currentStep > step;
   }
 
-  doneStep(step: number){
-    return this.currentStep > step
+  firstStep() {
+    return this.currentStep === 0;
   }
 
-  firstStep(){
-    return this.currentStep === 0
+  lastStep() {
+    return this.currentStep === this.steps.length - 1;
   }
 
-  lastStep(){
-    return this.currentStep === this.steps.length - 1
-  }
-
-  nextStep(){
-    if(this.steps.length - 1 > this.currentStep){
-      this.currentStep++
-      this.onStepChange.emit(this.currentStep)
+  nextStep() {
+    if (this.steps.length - 1 > this.currentStep) {
+      this.currentStep++;
+      this.onStepChange.emit(this.currentStep);
     }
   }
 
-  prevStep(){
-    if(this.currentStep > 0){
-      this.currentStep--
-      this.onStepChange.emit(this.currentStep)
+  prevStep() {
+    if (this.currentStep > 0) {
+      this.currentStep--;
+      this.onStepChange.emit(this.currentStep);
     }
   }
-
 }

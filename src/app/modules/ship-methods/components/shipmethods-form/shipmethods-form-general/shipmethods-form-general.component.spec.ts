@@ -1,23 +1,22 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { ShipmethodsFormGeneralComponent } from './shipmethods-form-general.component';
+import { ShipmethodsFormGeneralComponent } from "./shipmethods-form-general.component";
 
-describe('ShipmethodsFormGeneralComponent', () => {
+describe("ShipmethodsFormGeneralComponent", () => {
   let component: ShipmethodsFormGeneralComponent;
   let fixture: ComponentFixture<ShipmethodsFormGeneralComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ShipmethodsFormGeneralComponent ]
-    })
-    .compileComponents();
+      declarations: [ShipmethodsFormGeneralComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(ShipmethodsFormGeneralComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

@@ -1,19 +1,17 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { ShipMethods } from '../models/shipsmethods';
-import { Observable } from 'rxjs';
-import { Page } from 'app/shared/models';
-import { environment } from 'environments/environment';
+import { HttpClient, HttpParams } from "@angular/common/http";
+import { Injectable } from "@angular/core";
+import { ShipMethods } from "../models/shipsmethods";
+import { Observable } from "rxjs";
+import { Page } from "app/shared/models";
+import { environment } from "environments/environment";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class ShipmethodsService {
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
   baseUrl() {
-   return `${environment.apiUrl}`;
-
-
+    return `${environment.apiUrl}`;
   }
   save(id: string | null, shipmethods: ShipMethods): Observable<ShipMethods> {
     if (id) {
@@ -22,7 +20,7 @@ export class ShipmethodsService {
     return this.create(shipmethods);
   }
   create(shipmethods: ShipMethods): Observable<ShipMethods> {
-    let url = this.baseUrl()+"/shipmethods";
+    let url = this.baseUrl() + "/shipmethods";
     return this.http.post<ShipMethods>(url, shipmethods);
   }
 
@@ -36,14 +34,14 @@ export class ShipmethodsService {
     return this.http.get<ShipMethods>(url);
   }
   findAll(): Observable<Array<ShipMethods>> {
-    let url = this.baseUrl()+'/shipmethods';
+    let url = this.baseUrl() + "/shipmethods";
     return this.http.get<Array<ShipMethods>>(url);
   }
 
   findPage(
     pageNumber: number,
     pageSize: number,
-    filter: string
+    filter: string,
   ): Observable<Page<ShipMethods>> {
     let url = this.baseUrl() + "/shipmethods/page";
     let params = new HttpParams();
@@ -71,7 +69,7 @@ export class ShipmethodsService {
   findArchivedPage(
     pageNumber: number,
     pageSize: number,
-    filter: string
+    filter: string,
   ): Observable<Page<ShipMethods>> {
     let url = this.baseUrl() + "/shipmethods/archived/page";
     let params = new HttpParams();
@@ -81,14 +79,12 @@ export class ShipmethodsService {
     return this.http.get<Page<ShipMethods>>(url, { params });
   }
 
-  findbycode(code:any): Observable<ShipMethods>{
+  findbycode(code: any): Observable<ShipMethods> {
     let url = `${this.baseUrl()}/shipmethods/by-code/${code}`;
     return this.http.get<ShipMethods>(url);
-
   }
-  findbyName(name:any): Observable<ShipMethods>{
+  findbyName(name: any): Observable<ShipMethods> {
     let url = `${this.baseUrl()}/shipmethods/getbyname/${name}`;
     return this.http.get<ShipMethods>(url);
-
   }
 }

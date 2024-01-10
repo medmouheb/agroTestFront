@@ -5,26 +5,21 @@ import { Observable } from "rxjs";
 import { Page } from "app/shared/models";
 import { environment } from "environments/environment";
 
-
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class airportService {
-
   baseUrl() {
     return `${environment.apiUrl}`;
   }
 
-
-  constructor(private http: HttpClient) { }
-
-
+  constructor(private http: HttpClient) {}
 
   getActiveAirports(): Observable<airport[]> {
-    return this.http.get<airport[]>(this.baseUrl() + '/airport/active');
+    return this.http.get<airport[]>(this.baseUrl() + "/airport/active");
   }
   getArchivedAirports(): Observable<airport[]> {
-    return this.http.get<airport[]>(this.baseUrl() + '/airport/archived');
+    return this.http.get<airport[]>(this.baseUrl() + "/airport/archived");
   }
 
   save(id: string | null, airport: airport): Observable<airport> {
@@ -34,7 +29,7 @@ export class airportService {
     return this.create(airport);
   }
   create(airport: airport): Observable<airport> {
-    let url = this.baseUrl() + '/airport';
+    let url = this.baseUrl() + "/airport";
     return this.http.post<airport>(url, airport);
   }
 
@@ -54,13 +49,17 @@ export class airportService {
 
   searchAirportByNameActive(airportName: string): Observable<airport[]> {
     const params = { airportName: airportName };
-    return this.http.get<airport[]>(this.baseUrl() + "/airport/searchactive", { params });
+    return this.http.get<airport[]>(this.baseUrl() + "/airport/searchactive", {
+      params,
+    });
   }
   searchAirportByNameArchived(airportName: string): Observable<airport[]> {
     const params = { airportName: airportName };
-    return this.http.get<airport[]>(this.baseUrl() + "/airport/searcharchived", { params });
+    return this.http.get<airport[]>(
+      this.baseUrl() + "/airport/searcharchived",
+      { params },
+    );
   }
-
 
   deactivateAirport(id: string): Observable<void> {
     const url = `${this.baseUrl()}/airport/deactivate/${id}`;
@@ -71,7 +70,4 @@ export class airportService {
     const url = `${this.baseUrl()}/airport/activate/${id}`;
     return this.http.patch<void>(url, null);
   }
-
-
-
 }

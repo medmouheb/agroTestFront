@@ -6,18 +6,15 @@ import { HttpClient, HttpParams } from "@angular/common/http";
 import { VihicleType } from "../models/vehicleType";
 import { Page } from "app/shared/models";
 
-
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class VehicleTypeService {
-
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   baseUrl() {
     return `${environment.apiUrl}`;
   }
-
 
   save(id: string | null, comp: VihicleType): Observable<VihicleType> {
     if (id) {
@@ -26,9 +23,8 @@ export class VehicleTypeService {
     return this.create(comp);
   }
 
-
   create(vehicleType: VihicleType): Observable<VihicleType> {
-    let url = this.baseUrl() + '/vehicleType/create';
+    let url = this.baseUrl() + "/vehicleType/create";
     return this.http.post<VihicleType>(url, vehicleType);
   }
 
@@ -47,9 +43,6 @@ export class VehicleTypeService {
     return this.http.delete<boolean>(url);
   }
 
-
-
-
   findbycode(code: any): Observable<VihicleType> {
     let url = `${this.baseUrl()}/vehicleType/by-code/${code}`;
     return this.http.get<VihicleType>(url);
@@ -58,7 +51,7 @@ export class VehicleTypeService {
   findPage(
     pageNumber: number,
     pageSize: number,
-    filter: string
+    filter: string,
   ): Observable<Page<VihicleType>> {
     let url = this.baseUrl() + "/vehicleType/page";
     let params = new HttpParams();
@@ -71,7 +64,7 @@ export class VehicleTypeService {
   findArchivedPage(
     pageNumber: number,
     pageSize: number,
-    filter: string
+    filter: string,
   ): Observable<Page<VihicleType>> {
     let url = this.baseUrl() + "/vehicleType/archived/page";
     let params = new HttpParams();
@@ -80,9 +73,6 @@ export class VehicleTypeService {
     params = params.append("filter", filter);
     return this.http.get<Page<VihicleType>>(url, { params });
   }
-
-
-
 
   archive(id: string): Observable<void> {
     let url = `${this.baseUrl()}/vehicleType/archiver/${id}`;
@@ -94,12 +84,8 @@ export class VehicleTypeService {
     return this.http.get<void>(url);
   }
 
-
-
   findAll(): Observable<Array<VihicleType>> {
-    let url = this.baseUrl()+'/vehicleType/getAll';
+    let url = this.baseUrl() + "/vehicleType/getAll";
     return this.http.get<Array<VihicleType>>(url);
   }
-
-
 }

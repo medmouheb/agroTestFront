@@ -1,45 +1,42 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Page } from '../../models';
+import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
+import { Page } from "../../models";
 
 @Component({
-  selector: 'app-pagination',
-  templateUrl: './pagination.component.html',
-  styleUrls: ['./pagination.component.scss']
+  selector: "app-pagination",
+  templateUrl: "./pagination.component.html",
+  styleUrls: ["./pagination.component.scss"],
 })
 export class PaginationComponent implements OnInit {
+  @Input()
+  pageNumber!: number;
 
   @Input()
-  pageNumber!: number
+  pageSize!: number;
 
   @Input()
-  pageSize!: number
-
-  @Input()
-  page!: Page<any>
+  page!: Page<any>;
 
   @Output()
-  onPageNumberChange = new EventEmitter<number>()
+  onPageNumberChange = new EventEmitter<number>();
 
   @Output()
-  onPageSizeChange = new EventEmitter<number>()
+  onPageSizeChange = new EventEmitter<number>();
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
-  onClickNext(){
-    if(this.page.last){
+  onClickNext() {
+    if (this.page.last) {
       return;
     }
-    this.onPageNumberChange.emit(++this.pageNumber)
+    this.onPageNumberChange.emit(++this.pageNumber);
   }
 
-  onClickPrev(){
-    if(this.pageNumber === 0){
-      return
+  onClickPrev() {
+    if (this.pageNumber === 0) {
+      return;
     }
-    this.onPageNumberChange.emit(--this.pageNumber)
+    this.onPageNumberChange.emit(--this.pageNumber);
   }
-
 }

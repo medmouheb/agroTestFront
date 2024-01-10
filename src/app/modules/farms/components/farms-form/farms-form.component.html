@@ -1,7 +1,6 @@
 <ng-content></ng-content>
 
 <form class="form-card">
-
   <div *ngIf="currentStep == 0">
     <app-farms-form-general [farm]="farm"></app-farms-form-general>
   </div>
@@ -30,14 +29,11 @@
   <div *ngIf="currentStep == 8">
     <app-farms-form-distance [farm]="farm"></app-farms-form-distance>
   </div>
-  <div *ngIf="currentStep ==9">
+  <div *ngIf="currentStep == 9">
     <app-farms-form-contract [farm]="farm"></app-farms-form-contract>
   </div>
 
-  <div *ngIf="currentStep ==10">
+  <div *ngIf="currentStep == 10">
     <app-farms-form-visitors [farm]="farm"></app-farms-form-visitors>
   </div>
-
-
-  
 </form>

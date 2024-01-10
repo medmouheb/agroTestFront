@@ -1,9 +1,5 @@
 import { Component, Input, OnInit, ViewChild } from "@angular/core";
-import {
-  FormControl,
-  FormGroup,
-  Validators
-} from "@angular/forms";
+import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { SharedService } from "app/modules/company/services/shared.service";
 import { CostCenter } from "app/modules/cost-center/model/cost-center";
 import { CostCenterService } from "app/modules/cost-center/services/cost-center.service";
@@ -24,69 +20,67 @@ export class CostCenterFormGeneralComponent implements OnInit {
   addform: FormGroup;
   fieldControl: FormControl;
 
-  constructor(private sharedService: SharedService, private costserv: CostCenterService) { }
+  constructor(
+    private sharedService: SharedService,
+    private costserv: CostCenterService,
+  ) {}
   names: Array<String> = [];
   codes: Array<String> = [];
-  static = ""
+  static = "";
 
   ngOnInit(): void {
     this.initForm();
     if (this.cost.code != null) {
-      
       this.sharedService.setIsActive(true);
-
     } else {
       this.sharedService.setIsActive(false);
     }
 
-    this.costserv.findAll().subscribe(data => {
-      this.names = data.map(el => {
-        return el.name
-      })
-      this.codes = data.map(el => {
-        return el.code
-      })
-    })
+    this.costserv.findAll().subscribe((data) => {
+      this.names = data.map((el) => {
+        return el.name;
+      });
+      this.codes = data.map((el) => {
+        return el.code;
+      });
+    });
 
     if (this.cost.id) {
-      this.static = "update"
-      this.costreplica = JSON.parse(JSON.stringify(this.cost))
+      this.static = "update";
+      this.costreplica = JSON.parse(JSON.stringify(this.cost));
     } else if (!this.cost.id) {
-      this.static = "create"
-      this.sharedService.setIsActive(false)
+      this.static = "create";
+      this.sharedService.setIsActive(false);
     }
   }
-  dispotrueCode: boolean = false
-  dispotruename: boolean = false
+  dispotrueCode: boolean = false;
+  dispotruename: boolean = false;
 
   blur1() {
     if (this.cost.code == null) {
-      this.dispotrueCode = false
-
+      this.dispotrueCode = false;
     }
   }
   exist() {
     if (this.codes.indexOf(this.cost.code) != -1) {
       if (this.static == "update") {
         if (this.cost.code == this.costreplica.code) {
-          this.dispotrueCode = false
+          this.dispotrueCode = false;
         } else {
-          this.dispotrueCode = true
+          this.dispotrueCode = true;
         }
       } else {
-        this.dispotrueCode = true
+        this.dispotrueCode = true;
       }
     } else {
-      this.dispotrueCode = false
+      this.dispotrueCode = false;
     }
-
-
   }
 
-
   generateRandomCode() {
-    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    let code = '';
+    const characters =
+      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    let code = "";
     for (let i = 0; i < 4; i++) {
       const randomIndex = Math.floor(Math.random() * characters.length);
       code += characters.charAt(randomIndex);
@@ -94,47 +88,30 @@ export class CostCenterFormGeneralComponent implements OnInit {
     return code;
   }
 
-  newSeggestions = ""
-  test = false
+  newSeggestions = "";
+  test = false;
   existname() {
     if (this.names.indexOf(this.cost.name) != -1) {
       if (this.static == "update") {
         if (this.cost.name == this.costreplica.name) {
-          this.dispotruename = false
+          this.dispotruename = false;
         } else {
-          this.dispotruename = true
+          this.dispotruename = true;
         }
       } else {
-        this.dispotruename = true
+        this.dispotruename = true;
       }
     } else {
-      this.dispotruename = false
+      this.dispotruename = false;
     }
   }
 
-
   initForm() {
-
     this.addform = new FormGroup({
-      code: new FormControl("", [
-        Validators.required,
-
-      ]),
-      name: new FormControl("", [
-        Validators.required,
-
-
-      ]),
-      typecost: new FormControl("", [
-        Validators.required,
-
-      ]),
-
+      code: new FormControl("", [Validators.required]),
+      name: new FormControl("", [Validators.required]),
+      typecost: new FormControl("", [Validators.required]),
     });
-    
-    
-    
-    
   }
 
   nom: string = "";
@@ -142,22 +119,13 @@ export class CostCenterFormGeneralComponent implements OnInit {
   isNomValid() {
     return this.nom.length > 5;
   }
-  minIstrueName2: boolean = false
-
-
-
-
-
-
-
-
-
+  minIstrueName2: boolean = false;
 
   isCodeValid() {
     return this.nom.length > 5;
   }
   getvalue(event) {
-    this.existname()
+    this.existname();
 
     if (
       this.cost.code != null &&
@@ -165,9 +133,10 @@ export class CostCenterFormGeneralComponent implements OnInit {
       this.cost.name != null &&
       this.cost.name != "" &&
       this.cost.code.toString().length >= 1 &&
-      this.dispotrueCode == false && this.dispotruename == false && this.minIstrueCode == false &&
+      this.dispotrueCode == false &&
+      this.dispotruename == false &&
+      this.minIstrueCode == false &&
       this.cost.name.toString().length >= 1
-
     ) {
       this.sharedService.setIsActive(true);
     } else {
@@ -176,28 +145,29 @@ export class CostCenterFormGeneralComponent implements OnInit {
   }
   geValuesCode(event) {
     this.cost.code = event.target.value;
-    
 
-    
-    
-    
-    
-    console.log("testt", this.cost.code != null &&
-      this.cost.code != "" &&
-      this.cost.name != null &&
-      this.cost.name != "" &&
-      this.cost.code.toString().length >= 1 &&
-      this.dispotrueCode == false && this.dispotruename == false && this.minIstrueCode == false &&
-      this.cost.name.toString().length >= 1)
+    console.log(
+      "testt",
+      this.cost.code != null &&
+        this.cost.code != "" &&
+        this.cost.name != null &&
+        this.cost.name != "" &&
+        this.cost.code.toString().length >= 1 &&
+        this.dispotrueCode == false &&
+        this.dispotruename == false &&
+        this.minIstrueCode == false &&
+        this.cost.name.toString().length >= 1,
+    );
     if (
       this.cost.code != null &&
       this.cost.code != "" &&
       this.cost.name != null &&
       this.cost.name != "" &&
       this.cost.code.toString().length >= 1 &&
-      this.dispotrueCode == false && this.dispotruename == false && this.minIstrueCode == false &&
+      this.dispotrueCode == false &&
+      this.dispotruename == false &&
+      this.minIstrueCode == false &&
       this.cost.name.toString().length >= 1
-
     ) {
       this.sharedService.setIsActive(true);
     } else {
@@ -205,24 +175,16 @@ export class CostCenterFormGeneralComponent implements OnInit {
     }
   }
   geValuesNom(event) {
-    
-    
-
     this.cost.name = event.target.value;
-    
-    
-    
-
-    
-    
-    
 
     if (
       this.cost.code != "" &&
       this.cost.name != null &&
       this.cost.name != "" &&
       this.cost.code.toString().length >= 1 &&
-      this.dispotrueCode == false && this.dispotruename == false && this.minIstrueCode == false &&
+      this.dispotrueCode == false &&
+      this.dispotruename == false &&
+      this.minIstrueCode == false &&
       this.cost.name.toString().length >= 1
     ) {
       this.sharedService.setIsActive(true);
@@ -233,11 +195,6 @@ export class CostCenterFormGeneralComponent implements OnInit {
   get f() {
     return this.addform.controls;
   }
-
-
-
-
-
 
   isControlValid(controlName: string): boolean {
     const control = this.addform.controls[controlName];
@@ -255,7 +212,6 @@ export class CostCenterFormGeneralComponent implements OnInit {
   isBlur() {
     if (this.cost.code == undefined) {
       this.minIstrueCode = true;
-
     }
     if (this.cost.code.toString().length == 0 && this.cost.code == "") {
       this.minIstrueCode = true;
@@ -267,30 +223,23 @@ export class CostCenterFormGeneralComponent implements OnInit {
   minIstrueName: boolean = false;
   isBlur1() {
     if (this.cost.name === undefined) {
-      this.minIstrueName = true
-
-    }
-    else if (this.cost.name.toString().length == 0 && this.cost.name == "") {
+      this.minIstrueName = true;
+    } else if (this.cost.name.toString().length == 0 && this.cost.name == "") {
       this.minIstrueName = true;
     } else {
       this.minIstrueName = false;
     }
   }
 
-
-  codeIsvalid = false
+  codeIsvalid = false;
 
   validationCode() {
     const codeRegex: RegExp = /^[a-zA-Z0-9]*$/;
-    
+
     if (codeRegex.test(this.cost.code)) {
       this.codeIsvalid = false;
-      
-
+    } else {
+      this.codeIsvalid = true;
     }
-    else {
-      this.codeIsvalid = true
-    }
-
   }
 }

@@ -1,42 +1,78 @@
 <div class="row" [formGroup]="addform">
+  <div class="form-group col-md-6">
+    <label class="required" for="active">{{ "active" | translate }}</label>
+    <select
+      class="form-control"
+      name="active"
+      [(ngModel)]="camp.active"
+      formControlName="active"
+    >
+      <option value="true">true</option>
+      <option value="false">false</option>
+    </select>
+  </div>
 
+  <div class="form-group col-md-6">
+    <label class="required" for="productType">{{
+      "productType" | translate
+    }}</label>
+    <input
+      class="form-control"
+      name="productType"
+      [(ngModel)]="camp.productType"
+      formControlName="productType"
+      placeholder="{{ 'PLproductType' | translate }} "
+      required
+      aria-invalid="true"
+      type="text"
+      aria-describedby="code-error"
+    />
+  </div>
 
-
-    <div class="form-group col-md-6">
-        <label class="required" for="active">{{ "active" | translate }}</label>
-        <select class="form-control" name="active" [(ngModel)]="camp.active"
-            formControlName="active" >
-        <option value="true" >true</option>
-        <option value="false">false</option>
-        </select>
-    </div>
-
-    <div class="form-group col-md-6">
-        <label class="required" for="productType">{{ "productType" | translate }}</label>
-        <input class="form-control" name="productType" [(ngModel)]="camp.productType"
-            formControlName="productType" placeholder="{{'PLproductType'|translate}} " required
-            aria-invalid="true" type="text" aria-describedby="code-error" >
-    </div>
-
-    <div class="form-group col-md-6">
-        <label class="required" for="unitCost">{{ "unitCost" | translate }}</label>
-        <input class="form-control" name="unitCost" [(ngModel)]="camp.unitCost"
-            formControlName="unitCost" placeholder="{{'PLunitCost'|translate}} " required
-            aria-invalid="true" type="number" aria-describedby="code-error" >
-    </div>
-    <div class="form-group col-md-6">
-        <label class="required" for="tareWeight">{{ "tareWeight" | translate }}</label>
-        <input class="form-control" name="tareWeight" [(ngModel)]="camp.tareWeight"
-            formControlName="tareWeight" placeholder="{{'PLtareWeight'|translate}} " required
-            aria-invalid="true" type="number" aria-describedby="code-error" >
-    </div>
-    <div class="form-group col-md-6">
-        <label class="required" for="weightCapacity">{{ "weightCapacity" | translate }}</label>
-        <input class="form-control" name="weightCapacity" [(ngModel)]="camp.weightCapacity"
-            formControlName="weightCapacity" placeholder="{{'PLweightCapacity'|translate}} " required
-            aria-invalid="true" type="number" aria-describedby="code-error" >
-    </div>
-
-
-
+  <div class="form-group col-md-6">
+    <label class="required" for="unitCost">{{ "unitCost" | translate }}</label>
+    <input
+      class="form-control"
+      name="unitCost"
+      [(ngModel)]="camp.unitCost"
+      formControlName="unitCost"
+      placeholder="{{ 'PLunitCost' | translate }} "
+      required
+      aria-invalid="true"
+      type="number"
+      aria-describedby="code-error"
+    />
+  </div>
+  <div class="form-group col-md-6">
+    <label class="required" for="tareWeight">{{
+      "tareWeight" | translate
+    }}</label>
+    <input
+      class="form-control"
+      name="tareWeight"
+      [(ngModel)]="camp.tareWeight"
+      formControlName="tareWeight"
+      placeholder="{{ 'PLtareWeight' | translate }} "
+      required
+      aria-invalid="true"
+      type="number"
+      aria-describedby="code-error"
+    />
+  </div>
+  <div class="form-group col-md-6">
+    <label class="required" for="weightCapacity">{{
+      "weightCapacity" | translate
+    }}</label>
+    <input
+      class="form-control"
+      name="weightCapacity"
+      [(ngModel)]="camp.weightCapacity"
+      formControlName="weightCapacity"
+      placeholder="{{ 'PLweightCapacity' | translate }} "
+      required
+      aria-invalid="true"
+      type="number"
+      aria-describedby="code-error"
+    />
+  </div>
 </div>

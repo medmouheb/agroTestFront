@@ -1,13 +1,13 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { environment } from 'environments/environment';
-import { Observable } from 'rxjs';
-import { LogisticUnit } from '../models/logistic-unit';
-import { Page } from 'app/shared/models';
-import { Company } from 'app/modules/company/models/comany';
+import { HttpClient, HttpParams } from "@angular/common/http";
+import { Injectable } from "@angular/core";
+import { environment } from "environments/environment";
+import { Observable } from "rxjs";
+import { LogisticUnit } from "../models/logistic-unit";
+import { Page } from "app/shared/models";
+import { Company } from "app/modules/company/models/comany";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class LogisticUnitService {
   constructor(private http: HttpClient) {}
@@ -24,7 +24,7 @@ export class LogisticUnitService {
   }
 
   create(comp: LogisticUnit): Observable<LogisticUnit> {
-    let url = this.baseUrl()+"/logisticunit";
+    let url = this.baseUrl() + "/logisticunit";
     return this.http.post<LogisticUnit>(url, comp);
   }
 
@@ -39,14 +39,14 @@ export class LogisticUnitService {
   }
 
   findAll(): Observable<Array<LogisticUnit>> {
-    let url = this.baseUrl()+'/logisticunit';
+    let url = this.baseUrl() + "/logisticunit";
     return this.http.get<Array<LogisticUnit>>(url);
   }
 
   findPage(
     pageNumber: number,
     pageSize: number,
-    filter: string
+    filter: string,
   ): Observable<Page<LogisticUnit>> {
     let url = this.baseUrl() + "/logisticunit/page";
     let params = new HttpParams();
@@ -71,12 +71,10 @@ export class LogisticUnitService {
     return this.http.get<void>(url);
   }
 
-
-
   findArchivedPage(
     pageNumber: number,
     pageSize: number,
-    filter: string
+    filter: string,
   ): Observable<Page<LogisticUnit>> {
     let url = this.baseUrl() + "/logisticunit/archived/page";
     let params = new HttpParams();
@@ -85,28 +83,22 @@ export class LogisticUnitService {
     params = params.append("filter", filter);
     return this.http.get<Page<LogisticUnit>>(url, { params });
   }
-  findbycode(code:any): Observable<LogisticUnit>{
+  findbycode(code: any): Observable<LogisticUnit> {
     let url = `${this.baseUrl()}/logisticunit/by-code/${code}`;
     return this.http.get<LogisticUnit>(url);
-
   }
-  findbyName(name:any): Observable<LogisticUnit>{
-    
+  findbyName(name: any): Observable<LogisticUnit> {
     let url = `${this.baseUrl()}/logisticunit/getbyname/${name}`;
     return this.http.get<LogisticUnit>(url);
   }
 
-  findbycompany(): Observable<string[]>{
+  findbycompany(): Observable<string[]> {
     let url = `${this.baseUrl()}/logisticunit/getbycompany`;
     return this.http.get<string[]>(url);
-   
   }
 
-  findbydivision(): Observable<string[]>{
+  findbydivision(): Observable<string[]> {
     let url = `${this.baseUrl()}/logisticunit/getbydivision`;
     return this.http.get<string[]>(url);
-   
   }
-
-
 }

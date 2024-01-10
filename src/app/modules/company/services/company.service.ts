@@ -24,7 +24,7 @@ export class CompanyService {
   }
 
   create(comp: Company): Observable<Company> {
-    let url = this.baseUrl()+"/campany";
+    let url = this.baseUrl() + "/campany";
     return this.http.post<Company>(url, comp);
   }
 
@@ -39,14 +39,14 @@ export class CompanyService {
   }
 
   findAll(): Observable<Array<Company>> {
-    let url = this.baseUrl()+'/campany';
+    let url = this.baseUrl() + "/campany";
     return this.http.get<Array<Company>>(url);
   }
 
   findPage(
     pageNumber: number,
     pageSize: number,
-    filter: string
+    filter: string,
   ): Observable<Page<Company>> {
     let url = this.baseUrl() + "/campany/page";
     let params = new HttpParams();
@@ -74,7 +74,7 @@ export class CompanyService {
   findArchivedPage(
     pageNumber: number,
     pageSize: number,
-    filter: string
+    filter: string,
   ): Observable<Page<Company>> {
     let url = this.baseUrl() + "/campany/archived/page";
     let params = new HttpParams();
@@ -83,14 +83,12 @@ export class CompanyService {
     params = params.append("filter", filter);
     return this.http.get<Page<Company>>(url, { params });
   }
-  findbycode(code:any): Observable<Company>{
+  findbycode(code: any): Observable<Company> {
     let url = `${this.baseUrl()}/campany/by-code/${code}`;
     return this.http.get<Company>(url);
-
   }
-  findbyName(name:any): Observable<Company>{
+  findbyName(name: any): Observable<Company> {
     let url = `${this.baseUrl()}/campany/getbyname/${name}`;
     return this.http.get<Company>(url);
-
   }
 }

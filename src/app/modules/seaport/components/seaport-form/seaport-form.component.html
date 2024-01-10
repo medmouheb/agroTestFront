@@ -1,13 +1,11 @@
 <ng-content></ng-content>
 
 <form class="form-card">
+  <div *ngIf="currentStep == 0">
+    <app-seaport-form-general [seaport]="seaport"></app-seaport-form-general>
+  </div>
 
-    <div *ngIf="currentStep == 0">
-        <app-seaport-form-general [seaport]="seaport"></app-seaport-form-general>
-    </div>
-
-    <div *ngIf="currentStep == 1">
-        <app-seaport-information [seaport]="seaport"></app-seaport-information>
-    </div>
-
+  <div *ngIf="currentStep == 1">
+    <app-seaport-information [seaport]="seaport"></app-seaport-information>
+  </div>
 </form>

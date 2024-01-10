@@ -1,6 +1,6 @@
 export class ProductOliveOilExportationDtTN {
-    id: number;
-    annee: number;
-    exportationDt: number;
-    idcountry: number;
-} 
+  id: number;
+  annee: number;
+  exportationDt: number;
+  idcountry: number;
+}

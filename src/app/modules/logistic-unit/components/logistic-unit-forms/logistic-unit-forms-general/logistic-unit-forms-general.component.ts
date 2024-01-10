@@ -1,71 +1,64 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { SharedService } from 'app/modules/company/services/shared.service';
-import { LogisticUnit } from 'app/modules/logistic-unit/models/logistic-unit';
-import { LogisticUnitService } from 'app/modules/logistic-unit/services/logistic-unit.service';
+import { Component, Input, OnInit, ViewChild } from "@angular/core";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { SharedService } from "app/modules/company/services/shared.service";
+import { LogisticUnit } from "app/modules/logistic-unit/models/logistic-unit";
+import { LogisticUnitService } from "app/modules/logistic-unit/services/logistic-unit.service";
 
 @Component({
-  selector: 'app-logistic-unit-forms-general',
-  templateUrl: './logistic-unit-forms-general.component.html',
-  styleUrls: ['./logistic-unit-forms-general.component.scss']
+  selector: "app-logistic-unit-forms-general",
+  templateUrl: "./logistic-unit-forms-general.component.html",
+  styleUrls: ["./logistic-unit-forms-general.component.scss"],
 })
 export class LogisticUnitFormsGeneralComponent implements OnInit {
-
   @Input() camp!: LogisticUnit;
-   campReplica!: LogisticUnit;
+  campReplica!: LogisticUnit;
 
   @ViewChild("addform")
   addform: FormGroup;
 
-  constructor(private sharedService: SharedService, private fb: FormBuilder, private compaser: LogisticUnitService) { }
+  constructor(
+    private sharedService: SharedService,
+    private fb: FormBuilder,
+    private compaser: LogisticUnitService,
+  ) {}
   codes: Array<String> = [];
   names: Array<String> = [];
-  id=""
+  id = "";
   getstatus() {
-
     if (this.camp.id) {
-
-      this.static = "update"
+      this.static = "update";
       if (this.id != this.camp.id) {
-        this.id = this.camp.id
-        this.campReplica = JSON.parse(JSON.stringify(this.camp))
-
-
+        this.id = this.camp.id;
+        this.campReplica = JSON.parse(JSON.stringify(this.camp));
       }
 
-      return "update"
-
+      return "update";
     } else if (!this.camp.id) {
-      this.static = "create"
-      this.geValues('z')
-      return "create"
-
+      this.static = "create";
+      this.geValues("z");
+      return "create";
     }
   }
   ngOnInit(): void {
     if (this.camp != null) {
-      
       this.sharedService.setIsActive(true);
-      this.compaser.findAll().subscribe(data => {
-        this.codes = data.map(el => { return el.logisticCode })
-        this.names = data.map(el => { return el.logisticName })
+      this.compaser.findAll().subscribe((data) => {
+        this.codes = data.map((el) => {
+          return el.logisticCode;
+        });
+        this.names = data.map((el) => {
+          return el.logisticName;
+        });
+      });
+    }
 
-      })
-
-    };
-
-    if (this.camp == undefined) { this.camp = { logisticName: "", logisticCode: "" } };
+    if (this.camp == undefined) {
+      this.camp = { logisticName: "", logisticCode: "" };
+    }
     this.initForm();
-    
   }
 
-  initForm(
-
-  ) {
-
-
-
-
+  initForm() {
     this.addform = this.fb.group({
       logisticCode: [
         null,
@@ -76,90 +69,57 @@ export class LogisticUnitFormsGeneralComponent implements OnInit {
           Validators.pattern(/^[a-zA-Z ]*$/),
         ],
       ],
-      logisticName: [
-        null,
-        Validators.required,
-      ],
+      logisticName: [null, Validators.required],
     });
-
   }
 
-  minIstrueCode: boolean = false
+  minIstrueCode: boolean = false;
 
   isBlur() {
-
     if (this.camp.logisticCode == undefined || this.camp.logisticCode == null) {
-      this.minIstrueCode = true
-    }
-    else if (this.camp.logisticCode.toString().length < 1) { this.minIstrueCode = true }
-    else {
-      this.minIstrueCode = false
-    }
-  }
-  dispotrueCode: boolean = false
-  dispotruename: boolean = false
-  static=""
-  exist() {
-    if (this.codes.indexOf((this.camp.logisticCode + "")) != -1) {
-      if(this.static=="update" ){
-        if(this.camp.logisticCode == this.campReplica.logisticCode){
-          this.dispotrueCode = false
-        }else{
-          this.dispotrueCode = true
-        }
-      }else{
-        this.dispotrueCode = true
-      }
-
+      this.minIstrueCode = true;
+    } else if (this.camp.logisticCode.toString().length < 1) {
+      this.minIstrueCode = true;
     } else {
-      this.dispotrueCode = false
+      this.minIstrueCode = false;
     }
-
+  }
+  dispotrueCode: boolean = false;
+  dispotruename: boolean = false;
+  static = "";
+  exist() {
+    if (this.codes.indexOf(this.camp.logisticCode + "") != -1) {
+      if (this.static == "update") {
+        if (this.camp.logisticCode == this.campReplica.logisticCode) {
+          this.dispotrueCode = false;
+        } else {
+          this.dispotrueCode = true;
+        }
+      } else {
+        this.dispotrueCode = true;
+      }
+    } else {
+      this.dispotrueCode = false;
+    }
   }
 
-  codeIsvalid = false
+  codeIsvalid = false;
 
   validationCode() {
     const codeRegex: RegExp = /^[a-zA-Z0-9]*$/;
-    
+
     if (codeRegex.test(this.camp.logisticCode)) {
       this.codeIsvalid = false;
-      
-
+    } else {
+      this.codeIsvalid = true;
     }
-    else {
-      this.codeIsvalid = true
-    }
-
   }
-  exist1() {
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  }
-
-
+  exist1() {}
 
   generateRandomCode() {
-    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    let code = '';
+    const characters =
+      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    let code = "";
     for (let i = 0; i < 4; i++) {
       const randomIndex = Math.floor(Math.random() * characters.length);
       code += characters.charAt(randomIndex);
@@ -167,48 +127,28 @@ export class LogisticUnitFormsGeneralComponent implements OnInit {
     return code;
   }
 
-  newSeggestions = ""
+  newSeggestions = "";
 
   existname() {
     if (this.names.indexOf(this.camp.logisticName) != -1) {
-      if(this.static=="update" ){
-        if(this.camp.logisticName == this.campReplica.logisticName){
-          this.dispotruename = false
-        }else{
-          this.dispotruename = true
+      if (this.static == "update") {
+        if (this.camp.logisticName == this.campReplica.logisticName) {
+          this.dispotruename = false;
+        } else {
+          this.dispotruename = true;
         }
-      }else{
-        this.dispotruename = true
+      } else {
+        this.dispotruename = true;
       }
     } else {
-      this.dispotruename = false
+      this.dispotruename = false;
     }
   }
 
-  minIstrueName: boolean = false
-  minIstrueName2: boolean = false
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  minIstrueName: boolean = false;
+  minIstrueName2: boolean = false;
 
   isBlur1() {
-    
     if (
       this.camp.logisticName === undefined ||
       this.camp.logisticName.trim() === ""
@@ -220,10 +160,12 @@ export class LogisticUnitFormsGeneralComponent implements OnInit {
   }
 
   geValues(event) {
-    
-
     if (
-      !this.dispotrueCode && !this.dispotruename && !this.codeIsvalid && !this.minIstrueCode && !this.minIstrueName &&
+      !this.dispotrueCode &&
+      !this.dispotruename &&
+      !this.codeIsvalid &&
+      !this.minIstrueCode &&
+      !this.minIstrueName &&
       this.camp.logisticCode != null &&
       this.camp.logisticCode != "" &&
       this.camp.logisticName != null &&
@@ -254,7 +196,5 @@ export class LogisticUnitFormsGeneralComponent implements OnInit {
   get f() {
     return this.addform.controls;
   }
-  minIphone: boolean = false
-
-
+  minIphone: boolean = false;
 }

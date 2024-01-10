@@ -1,12 +1,12 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { environment } from 'environments/environment';
-import { Observable } from 'rxjs';
-import { VendorSKU } from '../models/vendorsku';
-import { Page } from 'app/shared/models';
+import { HttpClient, HttpParams } from "@angular/common/http";
+import { Injectable } from "@angular/core";
+import { environment } from "environments/environment";
+import { Observable } from "rxjs";
+import { VendorSKU } from "../models/vendorsku";
+import { Page } from "app/shared/models";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class VendorskuService {
   constructor(private http: HttpClient) {}
@@ -21,7 +21,7 @@ export class VendorskuService {
   }
 
   create(vendorsku: VendorSKU): Observable<VendorSKU> {
-    let url = this.baseUrl()+"/vendorSku";
+    let url = this.baseUrl() + "/vendorSku";
     return this.http.post<VendorSKU>(url, vendorsku);
   }
 
@@ -36,14 +36,14 @@ export class VendorskuService {
   }
 
   findAll(): Observable<Array<VendorSKU>> {
-    let url = this.baseUrl()+'/vendorSku';
+    let url = this.baseUrl() + "/vendorSku";
     return this.http.get<Array<VendorSKU>>(url);
   }
 
   findPage(
     pageNumber: number,
     pageSize: number,
-    filter: string
+    filter: string,
   ): Observable<Page<VendorSKU>> {
     let url = this.baseUrl() + "/vendorSku/page";
     let params = new HttpParams();
@@ -70,7 +70,7 @@ export class VendorskuService {
   findArchivedPage(
     pageNumber: number,
     pageSize: number,
-    filter: string
+    filter: string,
   ): Observable<Page<VendorSKU>> {
     let url = this.baseUrl() + "/vendorSku/archived/page";
     let params = new HttpParams();

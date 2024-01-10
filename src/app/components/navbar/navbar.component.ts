@@ -25,7 +25,7 @@ export class NavbarComponent implements OnInit {
     location: Location,
     private element: ElementRef,
     private router: Router,
-    private translate: TranslateService
+    private translate: TranslateService,
   ) {
     this.location = location;
     this.sidebarVisible = false;
@@ -51,7 +51,7 @@ export class NavbarComponent implements OnInit {
         this.mobile_menu_visible = 0;
       }
     });
-    this.getRoute()
+    this.getRoute();
   }
 
   sidebarOpen() {
@@ -72,8 +72,6 @@ export class NavbarComponent implements OnInit {
     body.classList.remove("nav-open");
   }
   sidebarToggle() {
-
-
     var $toggle = document.getElementsByClassName("navbar-toggler")[0];
 
     if (this.sidebarVisible === false) {
@@ -84,7 +82,6 @@ export class NavbarComponent implements OnInit {
     const body = document.getElementsByTagName("body")[0];
 
     if (this.mobile_menu_visible == 1) {
-
       body.classList.remove("nav-open");
       if ($layer) {
         $layer.remove();
@@ -115,7 +112,6 @@ export class NavbarComponent implements OnInit {
       }, 100);
 
       $layer.onclick = function () {
-
         body.classList.remove("nav-open");
         this.mobile_menu_visible = 0;
         $layer.classList.remove("visible");
@@ -133,12 +129,9 @@ export class NavbarComponent implements OnInit {
   getTitle() {
     var titlee = this.location.prepareExternalUrl(this.location.path());
     var title = this.location.prepareExternalUrl;
-    
-
 
     if (titlee.charAt(0) === "#") {
       titlee = titlee.slice(2);
-
     }
 
     for (var item = 0; item < this.listTitles.length; item++) {
@@ -149,64 +142,112 @@ export class NavbarComponent implements OnInit {
     return titlee;
   }
 
-  routes: String[] = []
+  routes: String[] = [];
 
   getRoute() {
-    var titlee = this.location.prepareExternalUrl(this.location.path()).slice(2);
+    var titlee = this.location
+      .prepareExternalUrl(this.location.path())
+      .slice(2);
     switch (titlee) {
       case "company":
-        this.routes = ["menu.general-Setups", "Admin", "menu.companies"]
+        this.routes = ["menu.general-Setups", "Admin", "menu.companies"];
         break;
       case "division":
-        this.routes = ["menu.general-Setups", "Admin", "menu.division"]
+        this.routes = ["menu.general-Setups", "Admin", "menu.division"];
         break;
       case "growout":
-        this.routes = ["menu.general-Setups", "Admin", "menu.growout"]
+        this.routes = ["menu.general-Setups", "Admin", "menu.growout"];
         break;
       case "costCenter":
-        this.routes = ["menu.general-Setups", "Admin", "menu.costCenter"]
+        this.routes = ["menu.general-Setups", "Admin", "menu.costCenter"];
         break;
       case "country":
-        this.routes = ["menu.general-Setups", "Admin", "menu.country"]
+        this.routes = ["menu.general-Setups", "Admin", "menu.country"];
         break;
       case "willaya":
-        this.routes = ["menu.general-Setups", "Admin", "willaya"]
+        this.routes = ["menu.general-Setups", "Admin", "willaya"];
         break;
       case "currency":
-        this.routes = ["menu.general-Setups", "Admin", "currency"]
+        this.routes = ["menu.general-Setups", "Admin", "currency"];
         break;
       case "tax":
-        this.routes = ["menu.general-Setups", "Admin", "menu.tax"]
+        this.routes = ["menu.general-Setups", "Admin", "menu.tax"];
         break;
       case "Delivery":
-        this.routes = ["menu.general-Setups", "menu.Materialhandling", "menu.Freightsetup", "menu.DeliveryInstruction"]
+        this.routes = [
+          "menu.general-Setups",
+          "menu.Materialhandling",
+          "menu.Freightsetup",
+          "menu.DeliveryInstruction",
+        ];
         break;
       case "vehicule":
-        this.routes = ["menu.general-Setups", "menu.Materialhandling", "menu.Freightsetup", "menu.Vehicules"]
+        this.routes = [
+          "menu.general-Setups",
+          "menu.Materialhandling",
+          "menu.Freightsetup",
+          "menu.Vehicules",
+        ];
         break;
       case "vehicleType":
-        this.routes = ["menu.general-Setups", "menu.Materialhandling", "menu.Freightsetup", "menu.vehicleType"]
+        this.routes = [
+          "menu.general-Setups",
+          "menu.Materialhandling",
+          "menu.Freightsetup",
+          "menu.vehicleType",
+        ];
         break;
       case "freightterms":
-        this.routes = ["menu.general-Setups", "menu.Materialhandling", "menu.Freightsetup", "menu.FreightTerms"];
+        this.routes = [
+          "menu.general-Setups",
+          "menu.Materialhandling",
+          "menu.Freightsetup",
+          "menu.FreightTerms",
+        ];
         break;
       case "shipmethode":
-        this.routes = ["menu.general-Setups", "menu.Materialhandling", "menu.transport", "menu.shipmethode"];
+        this.routes = [
+          "menu.general-Setups",
+          "menu.Materialhandling",
+          "menu.transport",
+          "menu.shipmethode",
+        ];
         break;
       case "fournisseurs":
-        this.routes = ["menu.general-Setups", "menu.Order-Mangment", "menu.vendors"];
+        this.routes = [
+          "menu.general-Setups",
+          "menu.Order-Mangment",
+          "menu.vendors",
+        ];
         break;
       case "airports":
-        this.routes = ["menu.general-Setups", "menu.places", "Ports", "menu.airports"];
+        this.routes = [
+          "menu.general-Setups",
+          "menu.places",
+          "Ports",
+          "menu.airports",
+        ];
         break;
       case "sales":
-        this.routes = ["menu.general-Setups", "menu.Order-Mangment", "menu.sales"];
+        this.routes = [
+          "menu.general-Setups",
+          "menu.Order-Mangment",
+          "menu.sales",
+        ];
         break;
       case "warehouses":
-        this.routes = ["menu.general-Setups", "menu.facilities", "menu.warehouses"];
+        this.routes = [
+          "menu.general-Setups",
+          "menu.facilities",
+          "menu.warehouses",
+        ];
         break;
       case "logisticUnit":
-        this.routes = ["menu.general-Setups", "menu.Logistic", "menu.logistic-Unit"];
+        this.routes = [
+          "menu.general-Setups",
+          "menu.Logistic",
+          "menu.logistic-Unit",
+        ];
         break;
       case "Initialinventory":
         this.routes = ["menu.Business", "Agriculture", "menu.Initialinventory"];
@@ -218,18 +259,32 @@ export class NavbarComponent implements OnInit {
         this.routes = ["menu.Business", "Agriculture", "menu.Fieldproduct"];
         break;
       case "ProductUsage":
-        this.routes = ["menu.Business", "Agriculture", "menu.Warehouse", "menu.ProductUsage"];
+        this.routes = [
+          "menu.Business",
+          "Agriculture",
+          "menu.Warehouse",
+          "menu.ProductUsage",
+        ];
         break;
       case "Rapprochement-des-stocks":
-        this.routes = ["menu.Business", "Agriculture", "menu.Warehouse", "menu.Rapprochement-des-stocks"];
-      break;
+        this.routes = [
+          "menu.Business",
+          "Agriculture",
+          "menu.Warehouse",
+          "menu.Rapprochement-des-stocks",
+        ];
+        break;
       case "drivers":
         this.routes = ["menu.general-Setups", "menu.Logistic", "menu.Drivers"];
-      break;
+        break;
       case "vehicles":
-          this.routes = ["menu.general-Setups", "menu.Logistic", "menu.Driver","menu.Vehicles"];
-      break;
-
+        this.routes = [
+          "menu.general-Setups",
+          "menu.Logistic",
+          "menu.Driver",
+          "menu.Vehicles",
+        ];
+        break;
     }
   }
 }

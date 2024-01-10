@@ -1,21 +1,18 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { ConfirmDialogComponent } from 'app/shared/components/confirm-dialog/confirm-dialog.component';
-import { StepperComponent } from 'app/shared/components/stepper/stepper.component';
-import { WizardDialogComponent } from 'app/shared/components/wizard-dialog/wizard-dialog.component';
-import { productCategory } from '../../Models/productCategory.model';
-import { TranslateService } from '@ngx-translate/core';
-import { HotToastService } from '@ngneat/hot-toast';
-import { productCategoryService } from '../../Services/productCategory.service';
+import { Component, OnInit, ViewChild } from "@angular/core";
+import { ConfirmDialogComponent } from "app/shared/components/confirm-dialog/confirm-dialog.component";
+import { StepperComponent } from "app/shared/components/stepper/stepper.component";
+import { WizardDialogComponent } from "app/shared/components/wizard-dialog/wizard-dialog.component";
+import { productCategory } from "../../Models/productCategory.model";
+import { TranslateService } from "@ngx-translate/core";
+import { HotToastService } from "@ngneat/hot-toast";
+import { productCategoryService } from "../../Services/productCategory.service";
 
 @Component({
-  selector: 'app-trash',
-  templateUrl: './trash.component.html',
-  styleUrls: ['./trash.component.scss']
+  selector: "app-trash",
+  templateUrl: "./trash.component.html",
+  styleUrls: ["./trash.component.scss"],
 })
 export class TrashComponent implements OnInit {
-
-
-
   @ViewChild("dearchivedModal")
   dearchivedModal!: ConfirmDialogComponent;
 
@@ -28,7 +25,7 @@ export class TrashComponent implements OnInit {
   @ViewChild("stepper")
   stepper!: StepperComponent;
 
-  loading?= false;
+  loading? = false;
   pageNumber = 0;
   pageSize = 10;
   filter = "";
@@ -37,25 +34,20 @@ export class TrashComponent implements OnInit {
   productCategories: Array<productCategory> = [];
   productCategoryName: string = "";
 
-
-
-
   constructor(
     private translateService: TranslateService,
     private toastService: HotToastService,
-    private service: productCategoryService
-  ) { }
+    private service: productCategoryService,
+  ) {}
 
   ngOnInit(): void {
-    this.getArchivedProductCategories()
-
+    this.getArchivedProductCategories();
   }
   getArchivedProductCategories() {
     this.loading = true;
     this.service.getArchivedProductCategories().subscribe({
       next: (result) => {
         this.productCategories = result;
-        
       },
       error: (error) => {
         this.loading = false;
@@ -65,23 +57,6 @@ export class TrashComponent implements OnInit {
     });
   }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   findById(id: string) {
     this.service.findProductCategoryById(id).subscribe({
       next: (result) => (this.productcategory = result),
@@ -89,41 +64,23 @@ export class TrashComponent implements OnInit {
     });
   }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   onclickActivateModal(id: string) {
     this.dearchivedModal.showDearchive(() => {
       this.toastService.loading(
         this.translateService.instant("message.loading..."),
         {
           id: "0",
-        }
+        },
       );
       this.service.ActivateProductCategory(id).subscribe({
         next: () => {
-          this.getArchivedProductCategories()
+          this.getArchivedProductCategories();
           this.dearchivedModal.hide();
           this.toastService.close("0");
           this.toastService.success(
             this.translateService.instant("success.restore", {
               elem: this.translateService.instant("product category"),
-            })
+            }),
           );
         },
 
@@ -133,13 +90,12 @@ export class TrashComponent implements OnInit {
           this.toastService.error(
             this.translateService.instant(error.error, {
               elem: this.translateService.instant("product category"),
-            })
+            }),
           );
         },
       });
     });
   }
-
 
   onclickDeletePerma(id: string) {
     this.deletePermaModal.showPermaDelete(() => {
@@ -147,17 +103,17 @@ export class TrashComponent implements OnInit {
         this.translateService.instant("message.loading..."),
         {
           id: "0",
-        }
+        },
       );
       this.service.delete(id).subscribe({
         next: () => {
-          this.getArchivedProductCategories()
+          this.getArchivedProductCategories();
           this.deletePermaModal.hide();
           this.toastService.close("0");
           this.toastService.success(
             this.translateService.instant("success.permadeleted", {
               elem: this.translateService.instant("product category"),
-            })
+            }),
           );
         },
         error: (error) => {
@@ -166,31 +122,35 @@ export class TrashComponent implements OnInit {
           this.toastService.error(
             this.translateService.instant(error.error, {
               elem: this.translateService.instant("product category"),
-            })
+            }),
           );
         },
       });
     });
   }
 
-
   searchProductCategoryByName() {
-    this.service.searchProductCategoryByNameArchived(this.productCategoryName).subscribe({
-      next: (result) => {
-        this.productCategories = result;
-        
-      },
-      error: (error) => console.error(error),
-    });
+    this.service
+      .searchProductCategoryByNameArchived(this.productCategoryName)
+      .subscribe({
+        next: (result) => {
+          this.productCategories = result;
+        },
+        error: (error) => console.error(error),
+      });
   }
 
   sortByProductCategoryCodeValid: boolean = true;
   productCategoryCode() {
     if (this.sortByProductCategoryCodeValid) {
-      this.productCategories.sort((a, b) => a.productCategoryCode.localeCompare(b.productCategoryCode));
+      this.productCategories.sort((a, b) =>
+        a.productCategoryCode.localeCompare(b.productCategoryCode),
+      );
       this.sortByProductCategoryCodeValid = false;
     } else {
-      this.productCategories.sort((a, b) => b.productCategoryCode.localeCompare(a.productCategoryCode));
+      this.productCategories.sort((a, b) =>
+        b.productCategoryCode.localeCompare(a.productCategoryCode),
+      );
       this.sortByProductCategoryCodeValid = true;
     }
   }
@@ -198,20 +158,28 @@ export class TrashComponent implements OnInit {
   sortByProductCategoryNameValid: boolean = true;
   sortByProductCategoryName() {
     if (this.sortByProductCategoryNameValid) {
-      this.productCategories.sort((a, b) => a.productCategoryName.localeCompare(b.productCategoryName));
+      this.productCategories.sort((a, b) =>
+        a.productCategoryName.localeCompare(b.productCategoryName),
+      );
       this.sortByProductCategoryNameValid = false;
     } else {
-      this.productCategories.sort((a, b) => b.productCategoryName.localeCompare(a.productCategoryName));
+      this.productCategories.sort((a, b) =>
+        b.productCategoryName.localeCompare(a.productCategoryName),
+      );
       this.sortByProductCategoryNameValid = true;
     }
   }
   sortByProductCategoryTypeValid: boolean = true;
   sortByProductCategoryType() {
     if (this.sortByProductCategoryTypeValid) {
-      this.productCategories.sort((a, b) => a.productCategoryType.localeCompare(b.productCategoryType));
+      this.productCategories.sort((a, b) =>
+        a.productCategoryType.localeCompare(b.productCategoryType),
+      );
       this.sortByProductCategoryTypeValid = false;
     } else {
-      this.productCategories.sort((a, b) => b.productCategoryType.localeCompare(a.productCategoryType));
+      this.productCategories.sort((a, b) =>
+        b.productCategoryType.localeCompare(a.productCategoryType),
+      );
       this.sortByProductCategoryTypeValid = true;
     }
   }
@@ -225,5 +193,4 @@ export class TrashComponent implements OnInit {
       this.sortByNotesValid = true;
     }
   }
-
 }

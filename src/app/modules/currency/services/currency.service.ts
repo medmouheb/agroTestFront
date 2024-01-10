@@ -23,7 +23,7 @@ export class CurrencyService {
   }
 
   create(currency: Currency): Observable<Currency> {
-    let url = this.baseUrl()+"/currency";
+    let url = this.baseUrl() + "/currency";
     return this.http.post<Currency>(url, currency);
   }
 
@@ -38,14 +38,14 @@ export class CurrencyService {
   }
 
   findAll(): Observable<Array<Currency>> {
-    let url = this.baseUrl()+'/currency';
+    let url = this.baseUrl() + "/currency";
     return this.http.get<Array<Currency>>(url);
   }
 
   findPage(
     pageNumber: number,
     pageSize: number,
-    filter: string
+    filter: string,
   ): Observable<Page<Currency>> {
     let url = this.baseUrl() + "/currency/page";
     let params = new HttpParams();
@@ -73,7 +73,7 @@ export class CurrencyService {
   findArchivedPage(
     pageNumber: number,
     pageSize: number,
-    filter: string
+    filter: string,
   ): Observable<Page<Currency>> {
     let url = this.baseUrl() + "/currency/archived/page";
     let params = new HttpParams();
@@ -82,14 +82,12 @@ export class CurrencyService {
     params = params.append("filter", filter);
     return this.http.get<Page<Currency>>(url, { params });
   }
-  findbycode(code:any): Observable<Currency>{
+  findbycode(code: any): Observable<Currency> {
     let url = `${this.baseUrl()}/currency/by-code/${code}`;
     return this.http.get<Currency>(url);
-
   }
-  findbyName(name:any): Observable<Currency>{
+  findbyName(name: any): Observable<Currency> {
     let url = `${this.baseUrl()}/currency/getbyname/${name}`;
     return this.http.get<Currency>(url);
-
   }
 }

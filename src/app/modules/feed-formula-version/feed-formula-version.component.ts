@@ -1,15 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 
 @Component({
-  selector: 'app-feed-formula-version',
-  templateUrl: './feed-formula-version.component.html',
-  styleUrls: ['./feed-formula-version.component.scss']
+  selector: "app-feed-formula-version",
+  templateUrl: "./feed-formula-version.component.html",
+  styleUrls: ["./feed-formula-version.component.scss"],
 })
 export class FeedFormulaVersionComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

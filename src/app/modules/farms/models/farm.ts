@@ -41,70 +41,60 @@ export type Farm = {
   longitude?: number;
   vendorcode?: string;
   warehousecode?: string;
-  growout?: any
-  product?: any
-  telephone?: any
-  land?: any
-  planning?: any
-  logistic?: any
-  feedMillcode?: any
-  primaryMarket?: any
-  liveProductday?: any
-  maxturckcapacity?: any
-  payee?: any
+  growout?: any;
+  product?: any;
+  telephone?: any;
+  land?: any;
+  planning?: any;
+  logistic?: any;
+  feedMillcode?: any;
+  primaryMarket?: any;
+  liveProductday?: any;
+  maxturckcapacity?: any;
+  payee?: any;
 
-  projectwarehouse?: any
-  projectligistic?: any
+  projectwarehouse?: any;
+  projectligistic?: any;
 
+  distnfarmlogi?: any;
+  distnfarmMarket?: any;
 
-  distnfarmlogi?: any
-  distnfarmMarket?: any
+  warehouseprimary?: any;
+  warehousesecondry?: any;
 
-  warehouseprimary?: any
-  warehousesecondry?: any
+  visitDate?: any;
+  firstNameVisit?: any;
+  lastNameVisit?: any;
+  iDNumberVisit?: any;
+  timeinVisit?: any;
+  timeoutVisit?: any;
+  purposeofthevisit?: any;
 
+  certifications?: any;
 
-  visitDate?: any
-  firstNameVisit?: any
-  lastNameVisit?: any
-  iDNumberVisit?: any
-  timeinVisit?: any
-  timeoutVisit?: any
-  purposeofthevisit?: any
+  contractNumber?: any;
+  contratPay?: any;
+  startDateFarms?: any;
+  endDateFarms?: any;
+  renewalDateFarms?: any;
 
+  paymentType?: any; //Checking, saving or paycheck
+  accountNumber?: any;
+  bankName?: any;
+  bankCode?: any;
+  bankaddress?: any;
+  directDepositflag?: any;
+  typepayment?: any; //auto or not
+  operationDate?: any; //satesystem
+  amounttransferred?: any;
 
-  certifications?: any
-
-
-  contractNumber?: any
-  contratPay?: any
-  startDateFarms?: any
-  endDateFarms?: any
-  renewalDateFarms?: any
-
-
-  paymentType?: any//Checking, saving or paycheck 
-  accountNumber?: any
-  bankName?: any
-  bankCode?: any
-  bankaddress?: any
-  directDepositflag?: any
-  typepayment?: any//auto or not
-  operationDate?: any //satesystem
-  amounttransferred?: any
-
-  ressourceInformation?: any
-  statutInformation?: any
-  adressInformation?: any
-  firstNameInformation?: any
-  lastNameInformation?: any
-  phoneInformation?: any
-  startDateInformation?: any
-  endDateInformation?: any
-  properties?:any
+  ressourceInformation?: any;
+  statutInformation?: any;
+  adressInformation?: any;
+  firstNameInformation?: any;
+  lastNameInformation?: any;
+  phoneInformation?: any;
+  startDateInformation?: any;
+  endDateInformation?: any;
+  properties?: any;
 };
-
-
-
-
-

@@ -1,53 +1,46 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Farm } from 'app/modules/farms/models/farm';
-import { LogisticUnit } from 'app/modules/logistic-unit/models/logistic-unit';
-import { LogisticUnitService } from 'app/modules/logistic-unit/services/logistic-unit.service';
-import { Warehouse } from 'app/modules/warehouse/models/warehouse.model';
-import { WarehouseService } from 'app/modules/warehouse/services/warehouse.service';
+import { Component, Input, OnInit } from "@angular/core";
+import { Farm } from "app/modules/farms/models/farm";
+import { LogisticUnit } from "app/modules/logistic-unit/models/logistic-unit";
+import { LogisticUnitService } from "app/modules/logistic-unit/services/logistic-unit.service";
+import { Warehouse } from "app/modules/warehouse/models/warehouse.model";
+import { WarehouseService } from "app/modules/warehouse/services/warehouse.service";
 
 @Component({
-  selector: 'app-farms-form-planing',
-  templateUrl: './farms-form-planing.component.html',
-  styleUrls: ['./farms-form-planing.component.scss']
+  selector: "app-farms-form-planing",
+  templateUrl: "./farms-form-planing.component.html",
+  styleUrls: ["./farms-form-planing.component.scss"],
 })
 export class FarmsFormPlaningComponent implements OnInit {
-  @Input() farm!: Farm
+  @Input() farm!: Farm;
   warehouses: Array<Warehouse> = [];
   logistics: Array<LogisticUnit> = [];
 
   constructor(
     private warehouseservice: WarehouseService,
-    private logisticsService: LogisticUnitService
-
-  ) { }
+    private logisticsService: LogisticUnitService,
+  ) {}
 
   ngOnInit(): void {
-    this.getallwearhouse()
-    this.getalllogistics()
+    this.getallwearhouse();
+    this.getalllogistics();
   }
   getallwearhouse() {
-    this.warehouseservice.findAll().subscribe(data => {
-      this.warehouses = data
-      
-
-    } )
+    this.warehouseservice.findAll().subscribe((data) => {
+      this.warehouses = data;
+    });
   }
 
   getalllogistics() {
-    this.logisticsService.findAll().subscribe(data => {
-      this.logistics = data
-      
-
-    } )
+    this.logisticsService.findAll().subscribe((data) => {
+      this.logistics = data;
+    });
   }
 
-  selectValue(e:any){
-    this.farm.logistic=e.target.value
+  selectValue(e: any) {
+    this.farm.logistic = e.target.value;
   }
 
-  selectValue1(e:any){
-    
-    this.farm.warehouseprimary=e.target.value
+  selectValue1(e: any) {
+    this.farm.warehouseprimary = e.target.value;
   }
-  
 }

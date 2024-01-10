@@ -1,38 +1,32 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
-import { SharedService } from 'app/modules/company/services/shared.service';
-import { RapprochementDesStocks } from 'app/modules/rapprochementdes-stock/model/rapprochementdes-stock';
-import { RapprochementdesStockService } from 'app/modules/rapprochementdes-stock/service/rapprochementdes-stock.service';
+import { Component, Input, OnInit } from "@angular/core";
+import { FormControl, FormGroup } from "@angular/forms";
+import { SharedService } from "app/modules/company/services/shared.service";
+import { RapprochementDesStocks } from "app/modules/rapprochementdes-stock/model/rapprochementdes-stock";
+import { RapprochementdesStockService } from "app/modules/rapprochementdes-stock/service/rapprochementdes-stock.service";
 
 @Component({
-  selector: 'app-rapprochementdes-stocks-forms-plus',
-  templateUrl: './rapprochementdes-stocks-forms-plus.component.html',
-  styleUrls: ['./rapprochementdes-stocks-forms-plus.component.scss']
+  selector: "app-rapprochementdes-stocks-forms-plus",
+  templateUrl: "./rapprochementdes-stocks-forms-plus.component.html",
+  styleUrls: ["./rapprochementdes-stocks-forms-plus.component.scss"],
 })
 export class RapprochementdesStocksFormsPlusComponent implements OnInit {
-
   @Input() camp!: RapprochementDesStocks;
   addform: FormGroup;
 
   divisionNames: string[] = [];
-  selectedDivisionName: string = '';
+  selectedDivisionName: string = "";
 
+  constructor(
+    private sharedService: SharedService,
+    private rapprochementDesStockService: RapprochementdesStockService,
+  ) {}
 
+  ngOnInit(): void {
+    this.initForm();
+  }
 
-
-  constructor(private sharedService: SharedService,
-    private rapprochementDesStockService: RapprochementdesStockService
-
-    ) {}
-
-    ngOnInit(): void {
-      this.initForm();
-    }
-  
-
-    
   initForm() {
-    this.addform = new FormGroup({  
+    this.addform = new FormGroup({
       noDeReferenceAchat: new FormControl(""),
       quantiteRestante: new FormControl(),
       valeurUnitaireRestante: new FormControl(),
@@ -55,20 +49,12 @@ export class RapprochementdesStocksFormsPlusComponent implements OnInit {
       quantiteDeTransport: new FormControl(),
       valeurUnitaireTrans: new FormControl(),
       valeurTrans: new FormControl(),
-
-  })
+    });
   }
-  
-
-
-
-
 
   get f() {
     return this.addform.controls;
   }
-
-
 
   isControlValid(controlName: string): boolean {
     const control = this.addform.controls[controlName];
@@ -82,7 +68,5 @@ export class RapprochementdesStocksFormsPlusComponent implements OnInit {
     );
   }
 
-  minIwillaya: boolean = false
-
-
+  minIwillaya: boolean = false;
 }

@@ -54,23 +54,23 @@ export class WarehouseListComponent implements OnInit {
     private translateService: TranslateService,
     private toastService: HotToastService,
     private filesService: FilesService,
-    private fb: FormBuilder
-  ) { }
+    private fb: FormBuilder,
+  ) {}
   onCheckboxChange() {
-    
     if (this.isChecked == false) {
-
-      this.affiche = false
-    }
-    else {
-      this.affiche = true
+      this.affiche = false;
+    } else {
+      this.affiche = true;
     }
   }
 
   ngOnInit(): void {
     this.findArchivedPage();
     this.findPage();
-    this.onPaginationChange.subscribe(() => {this.findPage();this.findArchivedPage()});
+    this.onPaginationChange.subscribe(() => {
+      this.findPage();
+      this.findArchivedPage();
+    });
   }
 
   onDownloadCSVTempalte() {
@@ -78,7 +78,7 @@ export class WarehouseListComponent implements OnInit {
       next: (data) =>
         this.filesService.download(
           data,
-          this.translateService.instant("menu.warehouse") + ".csv"
+          this.translateService.instant("menu.warehouse") + ".csv",
         ),
       error: (error) => console.error(error),
     });
@@ -92,28 +92,25 @@ export class WarehouseListComponent implements OnInit {
       this.translateService.instant("message.loading..."),
       {
         id: "0",
-      }
+      },
     );
     let formData: FormData = new FormData();
     formData.append("file", this.file);
-    
 
-    this.warehouseService.uploadCSVTemplate(formData).subscribe(() => {
-      
-      this.importModal.hide();
-      this.findPage();
-      this.file = null;
-      this.toastService.close("0");
-      this.toastService.success(
-        this.translateService.instant("success.imported", {
-          elem: this.translateService.instant("menu.warehouse"),
-        })
-      );
-    },
+    this.warehouseService.uploadCSVTemplate(formData).subscribe(
+      () => {
+        this.importModal.hide();
+        this.findPage();
+        this.file = null;
+        this.toastService.close("0");
+        this.toastService.success(
+          this.translateService.instant("success.imported", {
+            elem: this.translateService.instant("menu.warehouse"),
+          }),
+        );
+      },
       (error) => {
-        
         if (error.status == "200") {
-          
           this.importModal.hide();
           this.findPage();
           this.file = null;
@@ -121,16 +118,14 @@ export class WarehouseListComponent implements OnInit {
           this.toastService.success(
             this.translateService.instant("success.imported", {
               elem: this.translateService.instant("menu.warehouse"),
-            })
+            }),
           );
         } else {
           this.toastService.close("0");
           this.toastService.error(this.translateService.instant(error.error));
         }
-
-
-      })
-
+      },
+    );
   }
 
   findPage() {
@@ -141,7 +136,6 @@ export class WarehouseListComponent implements OnInit {
         next: (result) => {
           this.warehouses = result.content;
           this.warehousesPage = result;
-          
         },
 
         error: (error) => {
@@ -181,35 +175,28 @@ export class WarehouseListComponent implements OnInit {
     this.currentStep = 0;
   }
 
-  emailIsvalid = false
+  emailIsvalid = false;
 
   validationEmail() {
     const emailRegex: RegExp = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
-    
+
     if (emailRegex.test(this.warehouse.email)) {
-
       return false;
-      
-
+    } else {
+      return true;
     }
-    else {
-      return true
-    }
-
   }
 
   onSave(id: string | null) {
     const emailRegex: RegExp = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
-    
 
-    
     this.toastService.loading(
       this.translateService.instant("message.loading..."),
       {
         id: "0",
-      }
+      },
     );
-    
+
     this.warehouseService.save(id, this.warehouse!).subscribe({
       next: () => {
         this.findPage();
@@ -219,7 +206,7 @@ export class WarehouseListComponent implements OnInit {
         this.toastService.success(
           this.translateService.instant("success.saved", {
             elem: this.translateService.instant("warehouse"),
-          })
+          }),
         );
       },
       error: (error) => {
@@ -227,13 +214,10 @@ export class WarehouseListComponent implements OnInit {
         this.toastService.error(
           this.translateService.instant(error.error, {
             elem: this.translateService.instant("warehouse"),
-          })
+          }),
         );
       },
     });
-
-
-
   }
   openImportModal() {
     this.importModal.show({
@@ -267,7 +251,6 @@ export class WarehouseListComponent implements OnInit {
   }
 
   onClickEdit(id: string) {
-
     this.findById(id);
     this.formModal.show({
       title: "menu.edit-warehouse",
@@ -277,7 +260,6 @@ export class WarehouseListComponent implements OnInit {
       prev: () => this.stepper.prevStep(),
     });
   }
-
 
   onClickArchive(id: string) {
     this.archiveModal.show(() => {
@@ -290,19 +272,9 @@ export class WarehouseListComponent implements OnInit {
           this.toastService.success(
             this.translateService.instant("success.deleted", {
               elem: this.translateService.instant("warehouse"),
-            })
+            }),
           );
-
         },
-
-
-
-
-
-
-
-
-
       });
     });
   }
@@ -311,10 +283,10 @@ export class WarehouseListComponent implements OnInit {
   sortByCode() {
     if (this.sortByCodeValid) {
       this.warehouses.sort((a, b) => a.code.localeCompare(b.code));
-      this.sortByCodeValid = false
+      this.sortByCodeValid = false;
     } else {
       this.warehouses.sort((a, b) => b.code.localeCompare(a.code));
-      this.sortByCodeValid = true
+      this.sortByCodeValid = true;
     }
   }
 
@@ -322,43 +294,42 @@ export class WarehouseListComponent implements OnInit {
   sortByName() {
     if (this.sortByNameValid) {
       this.warehouses.sort((a, b) => a.name.localeCompare(b.name));
-      this.sortByNameValid = false
+      this.sortByNameValid = false;
     } else {
       this.warehouses.sort((a, b) => b.name.localeCompare(a.name));
-      this.sortByNameValid = true
+      this.sortByNameValid = true;
     }
   }
   sortcostCenterName: boolean = true;
   sortBycostCenterName() {
     if (this.sortcostCenterName) {
-      this.warehouses.sort((a, b) => a.costCenterName.localeCompare(b.costCenterName));
-      this.sortcostCenterName = false
+      this.warehouses.sort((a, b) =>
+        a.costCenterName.localeCompare(b.costCenterName),
+      );
+      this.sortcostCenterName = false;
     } else {
-      this.warehouses.sort((a, b) => b.costCenterName.localeCompare(a.costCenterName));
-      this.sortcostCenterName = true
+      this.warehouses.sort((a, b) =>
+        b.costCenterName.localeCompare(a.costCenterName),
+      );
+      this.sortcostCenterName = true;
     }
   }
 
   sortBydivisionNameValid: boolean = true;
-  sortBydivisionName() {
-
-
-
-
-
-
-
-  }
-
+  sortBydivisionName() {}
 
   sortBycityNameValid: boolean = true;
   sortBycityName() {
     if (this.sortBycityNameValid) {
-      this.warehouses.sort((a, b) => (a.cityName+"").localeCompare((b.cityName+"")));
-      this.sortBycityNameValid = false
+      this.warehouses.sort((a, b) =>
+        (a.cityName + "").localeCompare(b.cityName + ""),
+      );
+      this.sortBycityNameValid = false;
     } else {
-      this.warehouses.sort((a, b) => (b.cityName+"").localeCompare((a.cityName+"")));
-      this.sortBycityNameValid = true
+      this.warehouses.sort((a, b) =>
+        (b.cityName + "").localeCompare(a.cityName + ""),
+      );
+      this.sortBycityNameValid = true;
     }
   }
 
@@ -366,24 +337,26 @@ export class WarehouseListComponent implements OnInit {
   sortByemail() {
     if (this.sortByemailValid) {
       this.warehouses.sort((a, b) => a.email.localeCompare(b.email));
-      this.sortByemailValid = false
+      this.sortByemailValid = false;
     } else {
       this.warehouses.sort((a, b) => b.email.localeCompare(a.email));
-      this.sortByemailValid = true
+      this.sortByemailValid = true;
     }
   }
   sortByphoneNumberValid: boolean = true;
   sortByphoneNumber() {
     if (this.sortByphoneNumberValid) {
-      this.warehouses.sort((a, b) => (a.isPrimary+"").localeCompare((b.isPrimary+"")));
-      this.sortByphoneNumberValid = false
+      this.warehouses.sort((a, b) =>
+        (a.isPrimary + "").localeCompare(b.isPrimary + ""),
+      );
+      this.sortByphoneNumberValid = false;
     } else {
-      this.warehouses.sort((a, b) => (b.isPrimary+"").localeCompare((a.isPrimary+"")));
-      this.sortByphoneNumberValid = true
+      this.warehouses.sort((a, b) =>
+        (b.isPrimary + "").localeCompare(a.isPrimary + ""),
+      );
+      this.sortByphoneNumberValid = true;
     }
   }
-
-
 
   onCSVChange(event: Event) {
     const element = event.currentTarget as HTMLInputElement;
@@ -394,7 +367,6 @@ export class WarehouseListComponent implements OnInit {
     this.file = fileList[0];
   }
 
-
   findArchivedPage() {
     this.loading = true;
     this.warehouseService
@@ -403,8 +375,6 @@ export class WarehouseListComponent implements OnInit {
         next: (result) => {
           this.warehousess = result.content;
           this.Pagewarehouses = result;
-          
-
         },
         error: (error) => {
           this.loading = false;
@@ -418,12 +388,12 @@ export class WarehouseListComponent implements OnInit {
     this.warehouseService.delete(id).subscribe({
       next: () => {
         this.findArchivedPage();
-        this.findPage()
-        
+        this.findPage();
+
         this.toastService.success(
           this.translateService.instant("success.deleted", {
             elem: this.translateService.instant("warehouse"),
-          })
+          }),
         );
       },
     });
@@ -432,13 +402,12 @@ export class WarehouseListComponent implements OnInit {
     this.warehouseService.disArchive(id).subscribe({
       next: () => {
         this.findArchivedPage();
-        this.findPage()
+        this.findPage();
         this.toastService.success(
           this.translateService.instant("success.restore", {
             elem: this.translateService.instant("warehouse"),
-          })
+          }),
         );
-        
       },
     });
   }

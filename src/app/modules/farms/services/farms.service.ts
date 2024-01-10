@@ -23,12 +23,12 @@ export class FarmsService {
   }
 
   create(farm: Farm): Observable<Farm> {
-    let url = this.baseUrl()+'/ferme';
+    let url = this.baseUrl() + "/ferme";
     return this.http.post<Farm>(url, farm);
   }
 
   handleFileUpload(file: any): Observable<any> {
-    let url = this.baseUrl()+'/files/upload';
+    let url = this.baseUrl() + "/files/upload";
     return this.http.post(url, file);
   }
 
@@ -47,7 +47,6 @@ export class FarmsService {
     return this.http.get<Array<Farm>>(url);
   }
 
-
   findAllNoDeleted(): Observable<Array<Farm>> {
     let url = `${this.baseUrl()}/ferme/list`;
     return this.http.get<Array<Farm>>(url);
@@ -56,7 +55,7 @@ export class FarmsService {
   findPage(
     pageNumber: number,
     pageSize: number,
-    filter: string
+    filter: string,
   ): Observable<Page<Farm>> {
     let url = this.baseUrl() + "/ferme/page";
     let params = new HttpParams();
@@ -84,7 +83,7 @@ export class FarmsService {
   findArchivedPage(
     pageNumber: number,
     pageSize: number,
-    filter: string
+    filter: string,
   ): Observable<Page<Farm>> {
     let url = this.baseUrl() + "/ferme/archived/page";
     let params = new HttpParams();

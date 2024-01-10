@@ -41,12 +41,12 @@ export class TrashWComponent implements OnInit {
     private translateService: TranslateService,
     private toastService: HotToastService,
     private warehouseService: WarehouseService,
-    private router:Router
+    private router: Router,
   ) {}
 
   ngOnInit(): void {
     this.findArchivedPage();
-    
+
     this.onPaginationChange.subscribe(() => this.findArchivedPage());
   }
 
@@ -73,8 +73,8 @@ export class TrashWComponent implements OnInit {
       error: (error) => console.error(error),
     });
   }
-  goto(){
-    this.router.navigateByUrl("/warehouses")
+  goto() {
+    this.router.navigateByUrl("/warehouses");
   }
   onFilterChange(filter: string) {
     this.filter = filter;
@@ -101,9 +101,8 @@ export class TrashWComponent implements OnInit {
         this.toastService.success(
           this.translateService.instant("success.restore", {
             elem: this.translateService.instant("warehouse"),
-          })
+          }),
         );
-        
       },
     });
   }
@@ -112,11 +111,11 @@ export class TrashWComponent implements OnInit {
     this.warehouseService.delete(id).subscribe({
       next: () => {
         this.findArchivedPage();
-        
+
         this.toastService.success(
           this.translateService.instant("success.deleted", {
             elem: this.translateService.instant("warehouse"),
-          })
+          }),
         );
       },
     });

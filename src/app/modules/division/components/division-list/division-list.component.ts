@@ -34,7 +34,6 @@ export class DivisionListComponent implements OnInit {
   divisionPage: Page<Division> = initPage;
   divisionPages: Page<Division> = initPage;
 
-
   onPaginationChange: EventEmitter<string> = new EventEmitter<string>();
 
   currentStep = 0;
@@ -43,16 +42,13 @@ export class DivisionListComponent implements OnInit {
   constructor(
     private divisionService: DivisionService,
     private translateService: TranslateService,
-    private toastService: HotToastService
-  ) { }
+    private toastService: HotToastService,
+  ) {}
   onCheckboxChange() {
-    
     if (this.isChecked == false) {
-
-      this.affiche = false
-    }
-    else {
-      this.affiche = true
+      this.affiche = false;
+    } else {
+      this.affiche = true;
     }
   }
   ngOnInit(): void {
@@ -61,7 +57,10 @@ export class DivisionListComponent implements OnInit {
     });
     this.findPage();
     this.findArchivedPage();
-    this.onPaginationChange.subscribe(() => {this.findPage();this.findArchivedPage()});
+    this.onPaginationChange.subscribe(() => {
+      this.findPage();
+      this.findArchivedPage();
+    });
   }
 
   findPage() {
@@ -84,8 +83,7 @@ export class DivisionListComponent implements OnInit {
   findById(id: string) {
     this.divisionService.findById(id).subscribe({
       next: (result) => {
-        this.division = result
-        
+        this.division = result;
       },
       error: (error) => console.error(error),
     });
@@ -97,7 +95,6 @@ export class DivisionListComponent implements OnInit {
     this.onPaginationChange.emit("");
   }
 
-
   onPageNumberChange(pageNumber: number) {
     this.pageNumber = pageNumber;
     this.onPaginationChange.emit("");
@@ -105,7 +102,7 @@ export class DivisionListComponent implements OnInit {
 
   onPageSizeChange(pageSize: number) {
     this.pageSize = pageSize;
-    
+
     this.pageNumber = 0;
     this.onPaginationChange.emit("");
   }
@@ -118,23 +115,15 @@ export class DivisionListComponent implements OnInit {
     return Object.keys(obj).length === 0;
   }
   onSave(id: string | null) {
-
     this.toastService.loading(
       this.translateService.instant("message.loading..."),
       {
         id: "0",
-      }
+      },
     );
-    
-
-
-
-
 
     this.divisionService.save(id, this.division!).subscribe({
       next: (data) => {
-        
-        
         this.findPage();
         this.formModal.hide();
         this.onCancel();
@@ -142,7 +131,7 @@ export class DivisionListComponent implements OnInit {
         this.toastService.success(
           this.translateService.instant("success.saved", {
             elem: this.translateService.instant("division"),
-          })
+          }),
         );
       },
       error: (error) => {
@@ -150,7 +139,7 @@ export class DivisionListComponent implements OnInit {
         this.toastService.error(
           this.translateService.instant(error.error, {
             elem: this.translateService.instant("division"),
-          })
+          }),
         );
       },
     });
@@ -182,7 +171,6 @@ export class DivisionListComponent implements OnInit {
     this.stepper.nextStep();
     setTimeout(() => {
       this.stepper.prevStep();
-
     }, 100);
     this.findById(id);
 
@@ -195,7 +183,6 @@ export class DivisionListComponent implements OnInit {
     });
   }
 
-
   onClickArchive(id: string) {
     this.archiveModal.show(() => {
       this.divisionService.archive(id).subscribe({
@@ -207,19 +194,9 @@ export class DivisionListComponent implements OnInit {
           this.toastService.success(
             this.translateService.instant("success.deleted", {
               elem: this.translateService.instant("division"),
-            })
+            }),
           );
-
         },
-
-
-
-
-
-
-
-
-
       });
     });
   }
@@ -227,160 +204,185 @@ export class DivisionListComponent implements OnInit {
   sortBySpiec() {
     if (this.affiche == true) {
       if (this.sortBySpiecValid) {
-        this.divisionss.sort((a, b) => a.speciesType.localeCompare(b.speciesType));
-        this.sortBySpiecValid = false
+        this.divisionss.sort((a, b) =>
+          a.speciesType.localeCompare(b.speciesType),
+        );
+        this.sortBySpiecValid = false;
       } else {
-        this.divisionss.sort((a, b) => b.speciesType.localeCompare(a.speciesType));
-        this.sortBySpiecValid = true
+        this.divisionss.sort((a, b) =>
+          b.speciesType.localeCompare(a.speciesType),
+        );
+        this.sortBySpiecValid = true;
       }
     } else {
       if (this.sortBySpiecValid) {
-        this.divisions.sort((a, b) => a.speciesType.localeCompare(b.speciesType));
-        this.sortBySpiecValid = false
+        this.divisions.sort((a, b) =>
+          a.speciesType.localeCompare(b.speciesType),
+        );
+        this.sortBySpiecValid = false;
       } else {
-        this.divisions.sort((a, b) => b.speciesType.localeCompare(a.speciesType));
-        this.sortBySpiecValid = true
+        this.divisions.sort((a, b) =>
+          b.speciesType.localeCompare(a.speciesType),
+        );
+        this.sortBySpiecValid = true;
       }
     }
-
   }
   sortBycompValid: boolean = true;
   sortBycomp() {
     if (this.affiche == true) {
       if (this.sortBycompValid) {
-        this.divisionss.sort((a, b) => a.companyname.localeCompare(b.companyname));
-        this.sortBycompValid = false
+        this.divisionss.sort((a, b) =>
+          a.companyname.localeCompare(b.companyname),
+        );
+        this.sortBycompValid = false;
       } else {
-        this.divisionss.sort((a, b) => b.companyname.localeCompare(a.companyname));
-        this.sortBycompValid = true
+        this.divisionss.sort((a, b) =>
+          b.companyname.localeCompare(a.companyname),
+        );
+        this.sortBycompValid = true;
       }
     } else {
       if (this.sortBycompValid) {
-        this.divisions.sort((a, b) => a.companyname.localeCompare(b.companyname));
-        this.sortBycompValid = false
+        this.divisions.sort((a, b) =>
+          a.companyname.localeCompare(b.companyname),
+        );
+        this.sortBycompValid = false;
       } else {
-        this.divisions.sort((a, b) => b.companyname.localeCompare(a.companyname));
-        this.sortBycompValid = true
+        this.divisions.sort((a, b) =>
+          b.companyname.localeCompare(a.companyname),
+        );
+        this.sortBycompValid = true;
       }
     }
-
-
   }
   sortBycurreValid: boolean = true;
   sortBycurre() {
     if (this.affiche == true) {
       if (this.sortBycurreValid) {
-        this.divisionss.sort((a, b) => a.currencyname.localeCompare(b.currencyname));
-        this.sortBycurreValid = false
+        this.divisionss.sort((a, b) =>
+          a.currencyname.localeCompare(b.currencyname),
+        );
+        this.sortBycurreValid = false;
       } else {
-        this.divisionss.sort((a, b) => b.currencyname.localeCompare(a.currencyname));
-        this.sortBycurreValid = true
+        this.divisionss.sort((a, b) =>
+          b.currencyname.localeCompare(a.currencyname),
+        );
+        this.sortBycurreValid = true;
       }
     } else {
       if (this.sortBycurreValid) {
-        this.divisions.sort((a, b) => a.currencyname.localeCompare(b.currencyname));
-        this.sortBycurreValid = false
+        this.divisions.sort((a, b) =>
+          a.currencyname.localeCompare(b.currencyname),
+        );
+        this.sortBycurreValid = false;
       } else {
-        this.divisions.sort((a, b) => b.currencyname.localeCompare(a.currencyname));
-        this.sortBycurreValid = true
+        this.divisions.sort((a, b) =>
+          b.currencyname.localeCompare(a.currencyname),
+        );
+        this.sortBycurreValid = true;
       }
     }
-
   }
   sortByCodeValid: boolean = true;
   sortByCode() {
     if (this.affiche == true) {
       if (this.sortByCodeValid) {
         this.divisionss.sort((a, b) => a.code.localeCompare(b.code));
-        this.sortByCodeValid = false
+        this.sortByCodeValid = false;
       } else {
         this.divisionss.sort((a, b) => b.code.localeCompare(a.code));
-        this.sortByCodeValid = true
+        this.sortByCodeValid = true;
       }
     } else {
       if (this.sortByCodeValid) {
         this.divisions.sort((a, b) => a.code.localeCompare(b.code));
-        this.sortByCodeValid = false
+        this.sortByCodeValid = false;
       } else {
         this.divisions.sort((a, b) => b.code.localeCompare(a.code));
-        this.sortByCodeValid = true
+        this.sortByCodeValid = true;
       }
     }
-
   }
-
-
 
   sortByNameValid: boolean = true;
   sortByName() {
     if (this.affiche == true) {
       if (this.sortByNameValid) {
         this.divisionss.sort((a, b) => a.name.localeCompare(b.name));
-        this.sortByNameValid = false
+        this.sortByNameValid = false;
       } else {
         this.divisionss.sort((a, b) => b.name.localeCompare(a.name));
-        this.sortByNameValid = true
+        this.sortByNameValid = true;
       }
     } else {
       if (this.sortByNameValid) {
         this.divisions.sort((a, b) => a.name.localeCompare(b.name));
-        this.sortByNameValid = false
+        this.sortByNameValid = false;
       } else {
         this.divisions.sort((a, b) => b.name.localeCompare(a.name));
-        this.sortByNameValid = true
+        this.sortByNameValid = true;
       }
     }
-
   }
-
 
   sortByCityNameValid: boolean = true;
   sortByCityName() {
     if (this.affiche == true) {
       if (this.sortByCityNameValid) {
-        this.divisionss.sort((a, b) => (a.nameCity || "").localeCompare((b.nameCity || "")));
-        this.sortByCityNameValid = false
+        this.divisionss.sort((a, b) =>
+          (a.nameCity || "").localeCompare(b.nameCity || ""),
+        );
+        this.sortByCityNameValid = false;
       } else {
-        this.divisionss.sort((a, b) => (b.nameCity || "").localeCompare((a.nameCity || "")));
-        this.sortByCityNameValid = true
+        this.divisionss.sort((a, b) =>
+          (b.nameCity || "").localeCompare(a.nameCity || ""),
+        );
+        this.sortByCityNameValid = true;
       }
     } else {
       if (this.sortByCityNameValid) {
-        this.divisions.sort((a, b) => (a.nameCity || "").localeCompare((b.nameCity || "")));
-        this.sortByCityNameValid = false
+        this.divisions.sort((a, b) =>
+          (a.nameCity || "").localeCompare(b.nameCity || ""),
+        );
+        this.sortByCityNameValid = false;
       } else {
-        this.divisions.sort((a, b) => (b.nameCity || "").localeCompare((a.nameCity || "")));
-        this.sortByCityNameValid = true
+        this.divisions.sort((a, b) =>
+          (b.nameCity || "").localeCompare(a.nameCity || ""),
+        );
+        this.sortByCityNameValid = true;
       }
     }
-
   }
-
 
   sortByAddressValid: boolean = true;
   sortByAddress() {
     if (this.affiche == true) {
       if (this.sortByAddressValid) {
-        this.divisionss.sort((a, b) => (a.address || "").localeCompare((b.address || "")));
-        this.sortByAddressValid = false
+        this.divisionss.sort((a, b) =>
+          (a.address || "").localeCompare(b.address || ""),
+        );
+        this.sortByAddressValid = false;
       } else {
-        this.divisionss.sort((a, b) => (b.address || "").localeCompare((a.address || "")));
-        this.sortByAddressValid = true
+        this.divisionss.sort((a, b) =>
+          (b.address || "").localeCompare(a.address || ""),
+        );
+        this.sortByAddressValid = true;
       }
     } else {
       if (this.sortByAddressValid) {
-        this.divisions.sort((a, b) => (a.address || "").localeCompare((b.address || "")));
-        this.sortByAddressValid = false
+        this.divisions.sort((a, b) =>
+          (a.address || "").localeCompare(b.address || ""),
+        );
+        this.sortByAddressValid = false;
       } else {
-        this.divisions.sort((a, b) => (b.address || "").localeCompare((a.address || "")));
-        this.sortByAddressValid = true
+        this.divisions.sort((a, b) =>
+          (b.address || "").localeCompare(a.address || ""),
+        );
+        this.sortByAddressValid = true;
       }
     }
-
   }
-
-
-
 
   findArchivedPage() {
     this.loading = true;
@@ -403,14 +405,13 @@ export class DivisionListComponent implements OnInit {
     this.divisionService.disArchive(id).subscribe({
       next: () => {
         this.findArchivedPage();
-        this.findPage()
+        this.findPage();
 
         this.toastService.success(
           this.translateService.instant("success.restore", {
             elem: this.translateService.instant("division"),
-          })
+          }),
         );
-        
       },
     });
   }
@@ -419,12 +420,12 @@ export class DivisionListComponent implements OnInit {
     this.divisionService.delete(id).subscribe({
       next: () => {
         this.findArchivedPage();
-        this.findPage()
-        
+        this.findPage();
+
         this.toastService.success(
           this.translateService.instant("success.deleted", {
             elem: this.translateService.instant("division"),
-          })
+          }),
         );
       },
     });

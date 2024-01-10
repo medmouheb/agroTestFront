@@ -1,70 +1,127 @@
-
-
-
 <div class="row">
   <div class="form-group col-md-6">
     <label for="address">{{ "Address" | translate }}</label>
-    <input class="form-control" name="address" #address="ngModel" ngModel [(ngModel)]="growout.address"
-      placeholder="{{'Write your Address'|translate}} " />
+    <input
+      class="form-control"
+      name="address"
+      #address="ngModel"
+      ngModel
+      [(ngModel)]="growout.address"
+      placeholder="{{ 'Write your Address' | translate }} "
+    />
   </div>
   <div class="form-group col-md-6">
     <label for="email">{{ "emailcontact" | translate }}</label>
-    <input class="form-control" name="email" #email="ngModel" ngModel [(ngModel)]="growout.email"
-      placeholder="{{ 'Write your email' | translate }}" (blur)="validationEmail()" />
-    <div style="color: red;" *ngIf="emailIsvalid">{{ "Invalid email format" | translate }}</div>
+    <input
+      class="form-control"
+      name="email"
+      #email="ngModel"
+      ngModel
+      [(ngModel)]="growout.email"
+      placeholder="{{ 'Write your email' | translate }}"
+      (blur)="validationEmail()"
+    />
+    <div style="color: red" *ngIf="emailIsvalid">
+      {{ "Invalid email format" | translate }}
+    </div>
   </div>
 
-
   <div class="form-group col-md-6">
-    <label for="cityCode">{{'codeCity' | translate}}</label>
-    <input class="form-control" name="cityCode" #cityCode="ngModel" ngModel [(ngModel)]="growout.codeCity"
-      placeholder="{{'Write your city code'|translate}} ">
+    <label for="cityCode">{{ "codeCity" | translate }}</label>
+    <input
+      class="form-control"
+      name="cityCode"
+      #cityCode="ngModel"
+      ngModel
+      [(ngModel)]="growout.codeCity"
+      placeholder="{{ 'Write your city code' | translate }} "
+    />
   </div>
 
   <div class="form-group col-md-6">
-    <label for="cityName">{{'nameCity' | translate}}</label>
-    <input class="form-control" name="cityName" #cityName="ngModel" ngModel [(ngModel)]="growout.nameCity"
-      placeholder="{{'Write your city name'|translate}} ">
+    <label for="cityName">{{ "nameCity" | translate }}</label>
+    <input
+      class="form-control"
+      name="cityName"
+      #cityName="ngModel"
+      ngModel
+      [(ngModel)]="growout.nameCity"
+      placeholder="{{ 'Write your city name' | translate }} "
+    />
   </div>
 
   <div class="form-group col-md-6">
     <label for="wilayaCode">{{ "wilayaCode" | translate }}</label>
-    <select (click)="selectValue($event)" type="number" class="form-control" name="wilayaCode" #wilayaCode="ngModel"
-      [(ngModel)]="growout.wilayaCode">
-      <option *ngFor="let dv of wilayas" [value]="dv.code"> {{dv.code}}</option>
+    <select
+      (click)="selectValue($event)"
+      type="number"
+      class="form-control"
+      name="wilayaCode"
+      #wilayaCode="ngModel"
+      [(ngModel)]="growout.wilayaCode"
+    >
+      <option *ngFor="let dv of wilayas" [value]="dv.code">
+        {{ dv.code }}
+      </option>
     </select>
   </div>
   <div class="form-group col-md-6">
     <label for="wilayaName">{{ "wilayaName" | translate }}</label>
-    <input class="form-control" name="wilayaName" #wilayaName="ngModel" ngModel [(ngModel)]="growout.wilayaName"
-      placeholder="{{'Write your wilaya name'|translate}} " />
-
+    <input
+      class="form-control"
+      name="wilayaName"
+      #wilayaName="ngModel"
+      ngModel
+      [(ngModel)]="growout.wilayaName"
+      placeholder="{{ 'Write your wilaya name' | translate }} "
+    />
   </div>
 
-
   <div class="form-group col-md-6">
-    <label for="zipCode">{{'zipCode' | translate}}</label>
-    <input class="form-control" name="zipCode" #zipCode="ngModel" ngModel [(ngModel)]="growout.zipCode"
-      placeholder="{{'Write your zip code'|translate}} ">
+    <label for="zipCode">{{ "zipCode" | translate }}</label>
+    <input
+      class="form-control"
+      name="zipCode"
+      #zipCode="ngModel"
+      ngModel
+      [(ngModel)]="growout.zipCode"
+      placeholder="{{ 'Write your zip code' | translate }} "
+    />
   </div>
 
-
-
   <div class="form-group col-md-6">
-    <label for="phone">{{'phoneNumber' | translate}}</label>
-    <div style="display: flex;">
-      <select style="width: 50%;" class="form-control" (change)="selectContry($event)">
-        <option disabled selected>{{"selectyourcontry"| translate}}</option>
-        <option *ngFor="let c of countryPhoneCodes " [value]="c.code"> {{c.country}}
+    <label for="phone">{{ "phoneNumber" | translate }}</label>
+    <div style="display: flex">
+      <select
+        style="width: 50%"
+        class="form-control"
+        (change)="selectContry($event)"
+      >
+        <option disabled selected>{{ "selectyourcontry" | translate }}</option>
+        <option *ngFor="let c of countryPhoneCodes" [value]="c.code">
+          {{ c.country }}
         </option>
       </select>
-      <img alt=""  *ngIf="flag!=''" id="flag" style="width: 40px; height: 35px;margin-left: 1%;margin-right: 1%;"
-        [src]="getflage()">
-      <input  (keyup)="phoneNumberinp($event);isBlur3()" type="phone" class="form-control" name="phone" #email="ngModel" ngModel [(ngModel)]="growout.phoneNumber"
-         placeholder="{{'Write your phone'|translate}} ">
+      <img
+        alt=""
+        *ngIf="flag != ''"
+        id="flag"
+        style="width: 40px; height: 35px; margin-left: 1%; margin-right: 1%"
+        [src]="getflage()"
+      />
+      <input
+        (keyup)="phoneNumberinp($event); isBlur3()"
+        type="phone"
+        class="form-control"
+        name="phone"
+        #email="ngModel"
+        ngModel
+        [(ngModel)]="growout.phoneNumber"
+        placeholder="{{ 'Write your phone' | translate }} "
+      />
     </div>
-    <div style="border: 1px solid red; color : red;" *ngIf="minIphone">{{'phone number must be have 12 charactere'|translate}}</div>
+    <div style="border: 1px solid red; color: red" *ngIf="minIphone">
+      {{ "phone number must be have 12 charactere" | translate }}
+    </div>
   </div>
-
-
 </div>

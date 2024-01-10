@@ -1,16 +1,15 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { environment } from 'environments/environment';
-import { Willaya } from '../models/willaya';
-import { Observable } from 'rxjs';
-import { Page } from 'app/shared/models';
+import { HttpClient, HttpParams } from "@angular/common/http";
+import { Injectable } from "@angular/core";
+import { environment } from "environments/environment";
+import { Willaya } from "../models/willaya";
+import { Observable } from "rxjs";
+import { Page } from "app/shared/models";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class WillayaService {
-
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
   baseUrl() {
     return `${environment.apiUrl}`;
   }
@@ -21,7 +20,7 @@ export class WillayaService {
     return this.create(willaya);
   }
   create(willaya: Willaya): Observable<Willaya> {
-    let url = this.baseUrl()+"/willaya";
+    let url = this.baseUrl() + "/willaya";
     return this.http.post<Willaya>(url, willaya);
   }
 
@@ -35,14 +34,14 @@ export class WillayaService {
     return this.http.get<Willaya>(url);
   }
   findAll(): Observable<Array<Willaya>> {
-    let url = this.baseUrl()+'/willaya';
+    let url = this.baseUrl() + "/willaya";
     return this.http.get<Array<Willaya>>(url);
   }
 
   findPage(
     pageNumber: number,
     pageSize: number,
-    filter: string
+    filter: string,
   ): Observable<Page<Willaya>> {
     let url = this.baseUrl() + "/willaya/page";
     let params = new HttpParams();
@@ -70,7 +69,7 @@ export class WillayaService {
   findArchivedPage(
     pageNumber: number,
     pageSize: number,
-    filter: string
+    filter: string,
   ): Observable<Page<Willaya>> {
     let url = this.baseUrl() + "/willaya/archived/page";
     let params = new HttpParams();
@@ -80,14 +79,12 @@ export class WillayaService {
     return this.http.get<Page<Willaya>>(url, { params });
   }
 
-  findbycode(code:any): Observable<Willaya>{
+  findbycode(code: any): Observable<Willaya> {
     let url = `${this.baseUrl()}/willaya/by-code/${code}`;
     return this.http.get<Willaya>(url);
-
   }
-  findbyName(name:any): Observable<Willaya>{
+  findbyName(name: any): Observable<Willaya> {
     let url = `${this.baseUrl()}/willaya/getbyname/${name}`;
     return this.http.get<Willaya>(url);
-
   }
 }

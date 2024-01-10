@@ -23,7 +23,7 @@ export class ProduitsService {
   }
 
   create(produit: Produit): Observable<Produit> {
-    let url = this.baseUrl()+'/produit';
+    let url = this.baseUrl() + "/produit";
     return this.http.post<Produit>(url, produit);
   }
 
@@ -48,14 +48,14 @@ export class ProduitsService {
   }
 
   findAll(): Observable<Array<Produit>> {
-    let url = this.baseUrl()+'/produit';
+    let url = this.baseUrl() + "/produit";
     return this.http.get<Array<Produit>>(url);
   }
 
   findPage(
     pageNumber: number,
     pageSize: number,
-    filter: string
+    filter: string,
   ): Observable<Page<Produit>> {
     let url = this.baseUrl() + "/produit/page";
     let params = new HttpParams();
@@ -88,7 +88,7 @@ export class ProduitsService {
   findArchivedPage(
     pageNumber: number,
     pageSize: number,
-    filter: string
+    filter: string,
   ): Observable<Page<Produit>> {
     let url = this.baseUrl() + "/produit/archived/page";
     let params = new HttpParams();
@@ -97,14 +97,12 @@ export class ProduitsService {
     params = params.append("filter", filter);
     return this.http.get<Page<Produit>>(url, { params });
   }
-  findbycode(code:any): Observable<Produit>{
+  findbycode(code: any): Observable<Produit> {
     let url = `${this.baseUrl()}/produit/by-code/${code}`;
     return this.http.get<Produit>(url);
-
   }
-  findbyName(name:any): Observable<Produit>{
+  findbyName(name: any): Observable<Produit> {
     let url = `${this.baseUrl()}/produit/getbyname/${name}`;
     return this.http.get<Produit>(url);
-
   }
 }

@@ -4,25 +4,20 @@ import { Observable } from "rxjs";
 import { seaport } from "../models/seaport.model";
 import { environment } from "environments/environment";
 
-
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class seaportService {
-
-
   baseUrl() {
     return `${environment.apiUrl}`;
   }
-  constructor(private http: HttpClient) { }
-
-
+  constructor(private http: HttpClient) {}
 
   getActiveSeaports(): Observable<seaport[]> {
-    return this.http.get<seaport[]>(this.baseUrl() + '/seaport/active');
+    return this.http.get<seaport[]>(this.baseUrl() + "/seaport/active");
   }
   getArchivedSeaports(): Observable<seaport[]> {
-    return this.http.get<seaport[]>(this.baseUrl() + '/seaport/archived');
+    return this.http.get<seaport[]>(this.baseUrl() + "/seaport/archived");
   }
 
   save(id: string | null, seaport: seaport): Observable<seaport> {
@@ -32,7 +27,7 @@ export class seaportService {
     return this.create(seaport);
   }
   create(seaport: seaport): Observable<seaport> {
-    let url = this.baseUrl() + '/seaport';
+    let url = this.baseUrl() + "/seaport";
     return this.http.post<seaport>(url, seaport);
   }
 
@@ -52,11 +47,16 @@ export class seaportService {
 
   searchSeaportByNameActive(seaPortName: string): Observable<seaport[]> {
     const params = { seaPortName: seaPortName };
-    return this.http.get<seaport[]>(this.baseUrl() + "/seaport/searchactive", { params });
+    return this.http.get<seaport[]>(this.baseUrl() + "/seaport/searchactive", {
+      params,
+    });
   }
   searchSeaportByNameArchived(seaPortName: string): Observable<seaport[]> {
     const params = { seaPortName: seaPortName };
-    return this.http.get<seaport[]>(this.baseUrl() + "/seaport/searcharchived", { params });
+    return this.http.get<seaport[]>(
+      this.baseUrl() + "/seaport/searcharchived",
+      { params },
+    );
   }
 
   deactivateSeaport(id: string): Observable<void> {
@@ -68,7 +68,4 @@ export class seaportService {
     const url = `${this.baseUrl()}/seaport/activate/${id}`;
     return this.http.patch<void>(url, null);
   }
-
-
-
 }

@@ -1,23 +1,22 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { FournisseursListComponent } from './fournisseurs-list.component';
+import { FournisseursListComponent } from "./fournisseurs-list.component";
 
-describe('FournisseursListComponent', () => {
+describe("FournisseursListComponent", () => {
   let component: FournisseursListComponent;
   let fixture: ComponentFixture<FournisseursListComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FournisseursListComponent ]
-    })
-    .compileComponents();
+      declarations: [FournisseursListComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(FournisseursListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

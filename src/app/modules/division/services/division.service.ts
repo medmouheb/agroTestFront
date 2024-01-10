@@ -23,7 +23,7 @@ export class DivisionService {
   }
 
   create(division: Division): Observable<Division> {
-    let url = this.baseUrl()+'/division';
+    let url = this.baseUrl() + "/division";
     return this.http.post<Division>(url, division);
   }
 
@@ -38,14 +38,14 @@ export class DivisionService {
   }
 
   findAll(): Observable<Array<Division>> {
-    let url = this.baseUrl()+'/division';
+    let url = this.baseUrl() + "/division";
     return this.http.get<Array<Division>>(url);
   }
 
   findPage(
     pageNumber: number,
     pageSize: number,
-    filter: string
+    filter: string,
   ): Observable<Page<Division>> {
     let url = this.baseUrl() + "/division/page";
     let params = new HttpParams();
@@ -73,7 +73,7 @@ export class DivisionService {
   findArchivedPage(
     pageNumber: number,
     pageSize: number,
-    filter: string
+    filter: string,
   ): Observable<Page<Division>> {
     let url = this.baseUrl() + "/division/archived/page";
     let params = new HttpParams();
@@ -82,14 +82,12 @@ export class DivisionService {
     params = params.append("filter", filter);
     return this.http.get<Page<Division>>(url, { params });
   }
-  findbycode(code:any): Observable<Division>{
+  findbycode(code: any): Observable<Division> {
     let url = `${this.baseUrl()}/division/by-code/${code}`;
     return this.http.get<Division>(url);
-
   }
-  findbyName(name:any): Observable<Division>{
+  findbyName(name: any): Observable<Division> {
     let url = `${this.baseUrl()}/division/getbyname/${name}`;
     return this.http.get<Division>(url);
-
   }
 }

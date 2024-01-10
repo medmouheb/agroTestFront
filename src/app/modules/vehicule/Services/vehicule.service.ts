@@ -1,12 +1,12 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { environment } from 'environments/environment';
-import { Vehicule } from '../models/vehicule';
-import { Page } from 'app/shared/models';
-import { Observable } from 'rxjs';
+import { HttpClient, HttpParams } from "@angular/common/http";
+import { Injectable } from "@angular/core";
+import { environment } from "environments/environment";
+import { Vehicule } from "../models/vehicule";
+import { Page } from "app/shared/models";
+import { Observable } from "rxjs";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class VehiculeService {
   constructor(private http: HttpClient) {}
@@ -23,7 +23,7 @@ export class VehiculeService {
   }
 
   create(comp: Vehicule): Observable<Vehicule> {
-    let url = this.baseUrl()+"/vehicule";
+    let url = this.baseUrl() + "/vehicule";
     return this.http.post<Vehicule>(url, comp);
   }
 
@@ -38,14 +38,14 @@ export class VehiculeService {
   }
 
   findAll(): Observable<Array<Vehicule>> {
-    let url = this.baseUrl()+'/vehicule';
+    let url = this.baseUrl() + "/vehicule";
     return this.http.get<Array<Vehicule>>(url);
   }
 
   findPage(
     pageNumber: number,
     pageSize: number,
-    filter: string
+    filter: string,
   ): Observable<Page<Vehicule>> {
     let url = this.baseUrl() + "/vehicule/page";
     let params = new HttpParams();
@@ -73,7 +73,7 @@ export class VehiculeService {
   findArchivedPage(
     pageNumber: number,
     pageSize: number,
-    filter: string
+    filter: string,
   ): Observable<Page<Vehicule>> {
     let url = this.baseUrl() + "/vehicule/archived/page";
     let params = new HttpParams();
@@ -82,14 +82,12 @@ export class VehiculeService {
     params = params.append("filter", filter);
     return this.http.get<Page<Vehicule>>(url, { params });
   }
-  findbycode(code:any): Observable<Vehicule>{
+  findbycode(code: any): Observable<Vehicule> {
     let url = `${this.baseUrl()}/vehicule/by-code/${code}`;
     return this.http.get<Vehicule>(url);
-
   }
-  findbyName(name:any): Observable<Vehicule>{
+  findbyName(name: any): Observable<Vehicule> {
     let url = `${this.baseUrl()}/vehicule/getbyname/${name}`;
     return this.http.get<Vehicule>(url);
-
   }
 }

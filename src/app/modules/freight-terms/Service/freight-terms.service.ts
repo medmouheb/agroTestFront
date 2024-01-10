@@ -1,28 +1,29 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { FreightTerms } from '../models/freightterms';
-import { Page } from 'app/shared/models';
-import { Observable } from 'rxjs';
+import { HttpClient, HttpParams } from "@angular/common/http";
+import { Injectable } from "@angular/core";
+import { FreightTerms } from "../models/freightterms";
+import { Page } from "app/shared/models";
+import { Observable } from "rxjs";
 import { environment } from "environments/environment";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class FreightTermsService {
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
   baseUrl() {
-   return `${environment.apiUrl}`;
-
-
+    return `${environment.apiUrl}`;
   }
-  save(id: string | null, freightterms: FreightTerms): Observable<FreightTerms> {
+  save(
+    id: string | null,
+    freightterms: FreightTerms,
+  ): Observable<FreightTerms> {
     if (id) {
       return this.update(id, freightterms);
     }
     return this.create(freightterms);
   }
   create(freightterms: FreightTerms): Observable<FreightTerms> {
-    let url = this.baseUrl()+"/freightTerms";
+    let url = this.baseUrl() + "/freightTerms";
     return this.http.post<FreightTerms>(url, freightterms);
   }
 
@@ -36,14 +37,14 @@ export class FreightTermsService {
     return this.http.get<FreightTerms>(url);
   }
   findAll(): Observable<Array<FreightTerms>> {
-    let url = this.baseUrl()+'/freightTerms';
+    let url = this.baseUrl() + "/freightTerms";
     return this.http.get<Array<FreightTerms>>(url);
   }
 
   findPage(
     pageNumber: number,
     pageSize: number,
-    filter: string
+    filter: string,
   ): Observable<Page<FreightTerms>> {
     let url = this.baseUrl() + "/freightTerms/page";
     let params = new HttpParams();
@@ -71,7 +72,7 @@ export class FreightTermsService {
   findArchivedPage(
     pageNumber: number,
     pageSize: number,
-    filter: string
+    filter: string,
   ): Observable<Page<FreightTerms>> {
     let url = this.baseUrl() + "/freightTerms/archived/page";
     let params = new HttpParams();
@@ -81,14 +82,12 @@ export class FreightTermsService {
     return this.http.get<Page<FreightTerms>>(url, { params });
   }
 
-  findbycode(code:any): Observable<FreightTerms>{
+  findbycode(code: any): Observable<FreightTerms> {
     let url = `${this.baseUrl()}/freightTerms/by-code/${code}`;
     return this.http.get<FreightTerms>(url);
-
   }
-  findbyName(name:any): Observable<FreightTerms>{
+  findbyName(name: any): Observable<FreightTerms> {
     let url = `${this.baseUrl()}/freightTerms/getbyname/${name}`;
     return this.http.get<FreightTerms>(url);
-
   }
 }

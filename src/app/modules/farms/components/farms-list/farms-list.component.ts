@@ -44,7 +44,6 @@ export class FarmsListComponent implements OnInit {
     "steps.Distance",
     "steps.contract",
     "steps.visitors",
-
   ];
 
   loading = false;
@@ -67,13 +66,16 @@ export class FarmsListComponent implements OnInit {
     private sharedService: SharedService,
     private farmsService: FarmsService,
     private translateService: TranslateService,
-    private toastService: HotToastService
-  ) { }
+    private toastService: HotToastService,
+  ) {}
 
   ngOnInit(): void {
     this.findPage();
-    this.findArchivedPage()
-    this.onPaginationChange.subscribe(() => {this.findPage();this.findArchivedPage()});
+    this.findArchivedPage();
+    this.onPaginationChange.subscribe(() => {
+      this.findPage();
+      this.findArchivedPage();
+    });
   }
 
   findPage() {
@@ -82,7 +84,6 @@ export class FarmsListComponent implements OnInit {
       .findPage(this.pageNumber, this.pageSize, this.filter)
       .subscribe({
         next: (result) => {
-          
           this.farms = result.content;
           this.farmsPage = result;
         },
@@ -95,46 +96,39 @@ export class FarmsListComponent implements OnInit {
   }
 
   onClickdisArchive(id: string) {
-    
-
     this.farmsService.disArchive(id).subscribe({
       next: () => {
         this.findArchivedPage();
-        this.findPage()
+        this.findPage();
         this.toastService.success(
           this.translateService.instant("success.restore", {
             elem: this.translateService.instant("farms"),
-          })
+          }),
         );
-        
       },
     });
   }
 
   onClickDelete(id: string) {
-    
     this.farmsService.delete(id).subscribe({
       next: () => {
         this.findArchivedPage();
-        this.findPage()
-        
+        this.findPage();
+
         this.toastService.success(
           this.translateService.instant("success.deleted", {
             elem: this.translateService.instant("farms"),
-          })
+          }),
         );
       },
     });
   }
 
   onCheckboxChange() {
-    
     if (this.isChecked == false) {
-
-      this.affiche = false
-    }
-    else {
-      this.affiche = true
+      this.affiche = false;
+    } else {
+      this.affiche = true;
     }
   }
 
@@ -168,8 +162,6 @@ export class FarmsListComponent implements OnInit {
   }
 
   onSave(id: string | null) {
-    
-
     if (this.farm.warehouse == undefined) {
       this.farm.warehouse = null;
     } else if (Object.keys(this.farm.warehouse).length == 0) {
@@ -185,7 +177,7 @@ export class FarmsListComponent implements OnInit {
       this.translateService.instant("message.loading..."),
       {
         id: "0",
-      }
+      },
     );
     this.farmsService.save(id, this.farm!).subscribe({
       next: () => {
@@ -196,7 +188,7 @@ export class FarmsListComponent implements OnInit {
         this.toastService.success(
           this.translateService.instant("success.saved", {
             elem: this.translateService.instant("farm"),
-          })
+          }),
         );
       },
       error: (error) => {
@@ -204,22 +196,20 @@ export class FarmsListComponent implements OnInit {
         this.toastService.error(
           this.translateService.instant(error.error, {
             elem: this.translateService.instant("farm"),
-          })
+          }),
         );
       },
     });
   }
 
   onWizardSave(id: string | null) {
-
     if (this.stepper.lastStep()) {
-
       this.onSave(id);
       return;
     }
     this.stepper.nextStep();
-    let a = document.getElementsByClassName("modal-content")[0] as HTMLElement
-    a.style.height = "1680px"
+    let a = document.getElementsByClassName("modal-content")[0] as HTMLElement;
+    a.style.height = "1680px";
   }
 
   onStepChange(step: number) {
@@ -228,27 +218,23 @@ export class FarmsListComponent implements OnInit {
 
   onClickAdd() {
     this.sharedService.setIsActive(false);
-    this.farm ={}
+    this.farm = {};
 
-    this.farm.status=true
-    this.farm.land=100
+    this.farm.status = true;
+    this.farm.land = 100;
     this.stepper.nextStep();
     setTimeout(() => {
-      this.stepper.prevStep();      
-
-    }, 100)
+      this.stepper.prevStep();
+    }, 100);
     setTimeout(() => {
-
-    this.formModal.show({
-      title: "menu.add-farm",
-      stepsCount: this.steps.length - 1,
-      confirm: () => this.onWizardSave(null),
-      cancel: () => this.onCancel(),
-      prev: () => this.stepper.prevStep(),
-    });
-  }, 200)
-
-
+      this.formModal.show({
+        title: "menu.add-farm",
+        stepsCount: this.steps.length - 1,
+        confirm: () => this.onWizardSave(null),
+        cancel: () => this.onCancel(),
+        prev: () => this.stepper.prevStep(),
+      });
+    }, 200);
   }
 
   onClickEdit(id: string) {
@@ -257,7 +243,6 @@ export class FarmsListComponent implements OnInit {
     this.stepper.nextStep();
     setTimeout(() => {
       this.stepper.prevStep();
-
     }, 100);
     setTimeout(() => {
       this.formModal.show({
@@ -268,132 +253,98 @@ export class FarmsListComponent implements OnInit {
         prev: () => this.stepper.prevStep(),
       });
     }, 200);
-
   }
 
   sortByNameValid: boolean = true;
   sortByName() {
-    if(this.affiche==true){
+    if (this.affiche == true) {
       if (this.sortByNameValid) {
         this.farmss.sort((a, b) => a.nom.localeCompare(b.nom));
-        this.sortByNameValid = false
+        this.sortByNameValid = false;
       } else {
         this.farmss.sort((a, b) => b.nom.localeCompare(a.nom));
-        this.sortByNameValid = true
+        this.sortByNameValid = true;
       }
-    }else{
+    } else {
       if (this.sortByNameValid) {
         this.farms.sort((a, b) => a.nom.localeCompare(b.nom));
-        this.sortByNameValid = false
+        this.sortByNameValid = false;
       } else {
         this.farms.sort((a, b) => b.nom.localeCompare(a.nom));
-        this.sortByNameValid = true
+        this.sortByNameValid = true;
       }
     }
-
   }
-
 
   sortByCityNameValid: boolean = true;
   sortByCode() {
-    if(this.affiche==true){
+    if (this.affiche == true) {
       if (this.sortByCityNameValid) {
-        this.farmss.sort((a, b) => (a.code || "").localeCompare((b.code || "")));
-        this.sortByCityNameValid = false
+        this.farmss.sort((a, b) => (a.code || "").localeCompare(b.code || ""));
+        this.sortByCityNameValid = false;
       } else {
-        this.farmss.sort((a, b) => (b.code || "").localeCompare((a.code || "")));
-        this.sortByCityNameValid = true
+        this.farmss.sort((a, b) => (b.code || "").localeCompare(a.code || ""));
+        this.sortByCityNameValid = true;
       }
-    }else{
+    } else {
       if (this.sortByCityNameValid) {
-        this.farms.sort((a, b) => (a.code || "").localeCompare((b.code || "")));
-        this.sortByCityNameValid = false
+        this.farms.sort((a, b) => (a.code || "").localeCompare(b.code || ""));
+        this.sortByCityNameValid = false;
       } else {
-        this.farms.sort((a, b) => (b.code || "").localeCompare((a.code || "")));
-        this.sortByCityNameValid = true
+        this.farms.sort((a, b) => (b.code || "").localeCompare(a.code || ""));
+        this.sortByCityNameValid = true;
       }
     }
-
   }
   sortBywillayaValid: boolean = true;
   sortByType() {
-    if(this.affiche==true){
+    if (this.affiche == true) {
       if (this.sortBywillayaValid) {
-        this.farmss.sort((a, b) => (a.type || "").localeCompare((b.type || "")));
-        this.sortBywillayaValid = false
+        this.farmss.sort((a, b) => (a.type || "").localeCompare(b.type || ""));
+        this.sortBywillayaValid = false;
       } else {
-        this.farmss.sort((a, b) => (b.type || "").localeCompare((a.type || "")));
-        this.sortBywillayaValid = true
+        this.farmss.sort((a, b) => (b.type || "").localeCompare(a.type || ""));
+        this.sortBywillayaValid = true;
       }
-    }else{
+    } else {
       if (this.sortBywillayaValid) {
-        this.farms.sort((a, b) => (a.type || "").localeCompare((b.type || "")));
-        this.sortBywillayaValid = false
+        this.farms.sort((a, b) => (a.type || "").localeCompare(b.type || ""));
+        this.sortBywillayaValid = false;
       } else {
-        this.farms.sort((a, b) => (b.type || "").localeCompare((a.type || "")));
-        this.sortBywillayaValid = true
+        this.farms.sort((a, b) => (b.type || "").localeCompare(a.type || ""));
+        this.sortBywillayaValid = true;
       }
     }
-
   }
-
 
   sortByAddressValid: boolean = true;
   sortByOwner() {
-    if(this.affiche==true){
+    if (this.affiche == true) {
       if (this.sortByAddressValid) {
-        this.farmss.sort((a, b) => (a.owner_Name || "").localeCompare((b.owner_Name || "")));
-        this.sortByAddressValid = false
+        this.farmss.sort((a, b) =>
+          (a.owner_Name || "").localeCompare(b.owner_Name || ""),
+        );
+        this.sortByAddressValid = false;
       } else {
-        this.farmss.sort((a, b) => (b.owner_Name || "").localeCompare((a.owner_Name || "")));
-        this.sortByAddressValid = true
+        this.farmss.sort((a, b) =>
+          (b.owner_Name || "").localeCompare(a.owner_Name || ""),
+        );
+        this.sortByAddressValid = true;
       }
-    }else{
+    } else {
       if (this.sortByAddressValid) {
-        this.farms.sort((a, b) => (a.owner_Name || "").localeCompare((b.owner_Name || "")));
-        this.sortByAddressValid = false
+        this.farms.sort((a, b) =>
+          (a.owner_Name || "").localeCompare(b.owner_Name || ""),
+        );
+        this.sortByAddressValid = false;
       } else {
-        this.farms.sort((a, b) => (b.owner_Name || "").localeCompare((a.owner_Name || "")));
-        this.sortByAddressValid = true
+        this.farms.sort((a, b) =>
+          (b.owner_Name || "").localeCompare(a.owner_Name || ""),
+        );
+        this.sortByAddressValid = true;
       }
-
     }
-
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   findArchivedPage() {
     this.loading = true;
@@ -401,7 +352,6 @@ export class FarmsListComponent implements OnInit {
       .findArchivedPage(this.pageNumber, this.pageSize, this.filter)
       .subscribe({
         next: (result) => {
-          
           this.farmss = result.content;
           this.farmsPages = result;
           this.companyss = result.content;
@@ -419,51 +369,16 @@ export class FarmsListComponent implements OnInit {
       this.farmsService.archive(id).subscribe({
         next: () => {
           this.findPage();
-          this.findArchivedPage()
+          this.findArchivedPage();
           this.archiveModal.hide();
           this.toastService.close("0");
           this.toastService.success(
             this.translateService.instant("success.deleted", {
               elem: this.translateService.instant("farms"),
-            })
+            }),
           );
-
         },
-
-
-
-
-
-
-
-
-
       });
     });
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }

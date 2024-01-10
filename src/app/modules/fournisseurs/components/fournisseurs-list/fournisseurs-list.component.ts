@@ -58,43 +58,43 @@ export class FournisseursListComponent implements OnInit {
     private fournisseursService: FournisseursService,
     private filesService: FilesService,
     private translateService: TranslateService,
-    private toastService: HotToastService
-  ) { }
+    private toastService: HotToastService,
+  ) {}
 
   sortByCodeValid: boolean = true;
   sortByCode() {
     if (this.affiche == true) {
       if (this.sortByCodeValid) {
         this.fournisseurss.sort((a, b) => a.code.localeCompare(b.code));
-        this.sortByCodeValid = false
+        this.sortByCodeValid = false;
       } else {
         this.fournisseurss.sort((a, b) => b.code.localeCompare(a.code));
-        this.sortByCodeValid = true
+        this.sortByCodeValid = true;
       }
-    }else{
+    } else {
       if (this.sortByCodeValid) {
         this.fournisseurs.sort((a, b) => a.code.localeCompare(b.code));
-        this.sortByCodeValid = false
+        this.sortByCodeValid = false;
       } else {
         this.fournisseurs.sort((a, b) => b.code.localeCompare(a.code));
-        this.sortByCodeValid = true
+        this.sortByCodeValid = true;
       }
     }
   }
   onCheckboxChange() {
-    
     if (this.isChecked == false) {
-
-      this.affiche = false
-    }
-    else {
-      this.affiche = true
+      this.affiche = false;
+    } else {
+      this.affiche = true;
     }
   }
   ngOnInit(): void {
     this.findPage();
-    this.findArchivedPage()
-    this.onPaginationChange.subscribe(() => {this.findPage();this.findArchivedPage()});
+    this.findArchivedPage();
+    this.onPaginationChange.subscribe(() => {
+      this.findPage();
+      this.findArchivedPage();
+    });
   }
 
   findPage() {
@@ -114,7 +114,6 @@ export class FournisseursListComponent implements OnInit {
       });
   }
 
-
   findArchivedPage() {
     this.loading = true;
     this.fournisseursService
@@ -123,7 +122,6 @@ export class FournisseursListComponent implements OnInit {
         next: (result) => {
           this.fournisseurss = result.content;
           this.fournisseursPages = result;
-          
         },
         error: (error) => {
           this.loading = false;
@@ -163,34 +161,38 @@ export class FournisseursListComponent implements OnInit {
   }
 
   onSave(id: string | null) {
-    
     this.toastService.loading(
       this.translateService.instant("message.loading..."),
-      { id: "0" }
+      { id: "0" },
     );
-    
-    this.fournisseursService.save(id, { ...this.fournisseur, vendorSKU: this.fournisseur.vendorSKU.id }).subscribe({
-      next: () => {
-        this.findPage();
-        this.formModal.hide();
-        this.onCancel();
-        this.toastService.close("0");
-        this.toastService.success(
-          this.translateService.instant("success.saved", {
-            elem: this.translateService.instant("vendor"),
-          })
-        );
-      },
-      error: (error) => {
-        this.toastService.close("0");
-        
-        this.toastService.error(
-          this.translateService.instant(error.error, {
-            elem: this.translateService.instant("vendor"),
-          })
-        );
-      },
-    });
+
+    this.fournisseursService
+      .save(id, {
+        ...this.fournisseur,
+        vendorSKU: this.fournisseur.vendorSKU.id,
+      })
+      .subscribe({
+        next: () => {
+          this.findPage();
+          this.formModal.hide();
+          this.onCancel();
+          this.toastService.close("0");
+          this.toastService.success(
+            this.translateService.instant("success.saved", {
+              elem: this.translateService.instant("vendor"),
+            }),
+          );
+        },
+        error: (error) => {
+          this.toastService.close("0");
+
+          this.toastService.error(
+            this.translateService.instant(error.error, {
+              elem: this.translateService.instant("vendor"),
+            }),
+          );
+        },
+      });
   }
 
   onDownloadCSVTempalte() {
@@ -198,7 +200,7 @@ export class FournisseursListComponent implements OnInit {
       next: (data) =>
         this.filesService.download(
           data,
-          this.translateService.instant("menu.vendors") + ".csv"
+          this.translateService.instant("menu.vendors") + ".csv",
         ),
       error: (error) => console.error(error),
     });
@@ -221,7 +223,7 @@ export class FournisseursListComponent implements OnInit {
       this.translateService.instant("message.loading..."),
       {
         id: "0",
-      }
+      },
     );
     let formData: FormData = new FormData();
     formData.append("file", this.file);
@@ -234,13 +236,11 @@ export class FournisseursListComponent implements OnInit {
         this.toastService.success(
           this.translateService.instant("success.imported", {
             elem: this.translateService.instant("menu.vendors"),
-          })
+          }),
         );
       },
       (error) => {
-        
         if (error.status == "200") {
-          
           this.importModal.hide();
           this.findPage();
           this.file = null;
@@ -248,7 +248,7 @@ export class FournisseursListComponent implements OnInit {
           this.toastService.success(
             this.translateService.instant("success.imported", {
               elem: this.translateService.instant("menu.products"),
-            })
+            }),
           );
         } else {
           this.toastService.close("0");
@@ -293,62 +293,49 @@ export class FournisseursListComponent implements OnInit {
     this.stepper.nextStep();
     setTimeout(() => {
       this.stepper.prevStep();
-
     }, 100);
     this.findById(id);
     setTimeout(() => {
-
-    this.formModal.show({
-      title: "menu.edit-vendor",
-      stepsCount: this.steps.length - 1,
-      confirm: () => this.onWizardSave(id),
-      cancel: () => this.onCancel(),
-      prev: () => this.stepper.prevStep(),
-    });
-  }, 200);
-
+      this.formModal.show({
+        title: "menu.edit-vendor",
+        stepsCount: this.steps.length - 1,
+        confirm: () => this.onWizardSave(id),
+        cancel: () => this.onCancel(),
+        prev: () => this.stepper.prevStep(),
+      });
+    }, 200);
   }
-
-
 
   onClickdisArchive(id: string) {
     this.fournisseursService.disArchive(id).subscribe({
       next: () => {
         this.findArchivedPage();
-        this.findPage()
+        this.findPage();
         this.toastService.success(
           this.translateService.instant("success.restore", {
             elem: this.translateService.instant("menu.vendors"),
-          })
+          }),
         );
-        
       },
     });
   }
 
-
   onClickDelete(id: string) {
-    
     this.fournisseursService.delete(id).subscribe({
       next: () => {
         this.findArchivedPage();
         this.findPage();
 
-        
         this.toastService.success(
           this.translateService.instant("success.deleted", {
             elem: this.translateService.instant("menu.vendors"),
-          })
+          }),
         );
       },
     });
   }
 
-
-
-
   onClickArchive(id: string) {
-    
     this.archiveModal.show(() => {
       this.fournisseursService.archive(id).subscribe({
         next: () => {
@@ -360,140 +347,147 @@ export class FournisseursListComponent implements OnInit {
           this.toastService.success(
             this.translateService.instant("success.deleted", {
               elem: this.translateService.instant("vendor"),
-            })
+            }),
           );
-
         },
-
-
-
-
-
-
-
-
-
       });
     });
   }
-
-
-
-
-
-
-
-
 
   sortByNameValid: boolean = true;
   sortByName() {
     if (this.affiche == true) {
       if (this.sortByNameValid) {
         this.fournisseurss.sort((a, b) => a.name.localeCompare(b.name));
-        this.sortByNameValid = false
+        this.sortByNameValid = false;
       } else {
         this.fournisseurss.sort((a, b) => b.name.localeCompare(a.name));
-        this.sortByNameValid = true
+        this.sortByNameValid = true;
       }
-    }else{
+    } else {
       if (this.sortByNameValid) {
         this.fournisseurs.sort((a, b) => a.name.localeCompare(b.name));
-        this.sortByNameValid = false
+        this.sortByNameValid = false;
       } else {
         this.fournisseurs.sort((a, b) => b.name.localeCompare(a.name));
-        this.sortByNameValid = true
+        this.sortByNameValid = true;
       }
     }
-    
   }
 
   sortByemailValid: boolean = true;
   sortByemail() {
     if (this.affiche == true) {
       if (this.sortByemailValid) {
-        this.fournisseurss.sort((a, b) => (a.email+"").localeCompare((b.email+"")));
-        this.sortByemailValid = false
+        this.fournisseurss.sort((a, b) =>
+          (a.email + "").localeCompare(b.email + ""),
+        );
+        this.sortByemailValid = false;
       } else {
-        this.fournisseurss.sort((a, b) => (b.email+"").localeCompare((a.email+"")));
-        this.sortByemailValid = true
+        this.fournisseurss.sort((a, b) =>
+          (b.email + "").localeCompare(a.email + ""),
+        );
+        this.sortByemailValid = true;
       }
-    }else{
+    } else {
       if (this.sortByemailValid) {
-        this.fournisseurs.sort((a, b) => (a.email+"").localeCompare((b.email+"")));
-        this.sortByemailValid = false
+        this.fournisseurs.sort((a, b) =>
+          (a.email + "").localeCompare(b.email + ""),
+        );
+        this.sortByemailValid = false;
       } else {
-        this.fournisseurs.sort((a, b) => (b.email+"").localeCompare((a.email+"")));
-        this.sortByemailValid = true
+        this.fournisseurs.sort((a, b) =>
+          (b.email + "").localeCompare(a.email + ""),
+        );
+        this.sortByemailValid = true;
       }
     }
-
   }
-
 
   sortByTypeValid: boolean = true;
   sortByType() {
     if (this.affiche == true) {
       if (this.sortByTypeValid) {
-        this.fournisseurss.sort((a, b) => (a.type || "").localeCompare((b.type || "")));
-        this.sortByTypeValid = false
+        this.fournisseurss.sort((a, b) =>
+          (a.type || "").localeCompare(b.type || ""),
+        );
+        this.sortByTypeValid = false;
       } else {
-        this.fournisseurss.sort((a, b) => (b.type || "").localeCompare((a.type || "")));
-        this.sortByTypeValid = true
+        this.fournisseurss.sort((a, b) =>
+          (b.type || "").localeCompare(a.type || ""),
+        );
+        this.sortByTypeValid = true;
       }
-    }else{
+    } else {
       if (this.sortByTypeValid) {
-        this.fournisseurs.sort((a, b) => (a.type || "").localeCompare((b.type || "")));
-        this.sortByTypeValid = false
+        this.fournisseurs.sort((a, b) =>
+          (a.type || "").localeCompare(b.type || ""),
+        );
+        this.sortByTypeValid = false;
       } else {
-        this.fournisseurs.sort((a, b) => (b.type || "").localeCompare((a.type || "")));
-        this.sortByTypeValid = true
+        this.fournisseurs.sort((a, b) =>
+          (b.type || "").localeCompare(a.type || ""),
+        );
+        this.sortByTypeValid = true;
       }
     }
-    
   }
 
   sortByphoneValid: boolean = true;
   sortByphone() {
     if (this.affiche == true) {
       if (this.sortByphoneValid) {
-        this.fournisseurss.sort((a, b) => (a.phone || "").localeCompare((b.phone || "")));
-        this.sortByphoneValid = false
+        this.fournisseurss.sort((a, b) =>
+          (a.phone || "").localeCompare(b.phone || ""),
+        );
+        this.sortByphoneValid = false;
       } else {
-        this.fournisseurss.sort((a, b) => (b.phone || "").localeCompare((a.phone || "")));
-        this.sortByphoneValid = true
+        this.fournisseurss.sort((a, b) =>
+          (b.phone || "").localeCompare(a.phone || ""),
+        );
+        this.sortByphoneValid = true;
       }
-    }else{
+    } else {
       if (this.sortByphoneValid) {
-        this.fournisseurs.sort((a, b) => (a.phone || "").localeCompare((b.phone || "")));
-        this.sortByphoneValid = false
+        this.fournisseurs.sort((a, b) =>
+          (a.phone || "").localeCompare(b.phone || ""),
+        );
+        this.sortByphoneValid = false;
       } else {
-        this.fournisseurs.sort((a, b) => (b.phone || "").localeCompare((a.phone || "")));
-        this.sortByphoneValid = true
+        this.fournisseurs.sort((a, b) =>
+          (b.phone || "").localeCompare(a.phone || ""),
+        );
+        this.sortByphoneValid = true;
       }
     }
-
   }
-
 
   sortBynameCityValid: boolean = true;
   sortBynameCity() {
     if (this.affiche == true) {
       if (this.sortBynameCityValid) {
-        this.fournisseurss.sort((a, b) => (a.nameCity || "").localeCompare((b.nameCity || "")));
-        this.sortBynameCityValid = false
+        this.fournisseurss.sort((a, b) =>
+          (a.nameCity || "").localeCompare(b.nameCity || ""),
+        );
+        this.sortBynameCityValid = false;
       } else {
-        this.fournisseurss.sort((a, b) => (b.nameCity || "").localeCompare((a.nameCity || "")));
-        this.sortBynameCityValid = true
+        this.fournisseurss.sort((a, b) =>
+          (b.nameCity || "").localeCompare(a.nameCity || ""),
+        );
+        this.sortBynameCityValid = true;
       }
-    }else{
+    } else {
       if (this.sortBynameCityValid) {
-        this.fournisseurs.sort((a, b) => (a.nameCity || "").localeCompare((b.nameCity || "")));
-        this.sortBynameCityValid = false
+        this.fournisseurs.sort((a, b) =>
+          (a.nameCity || "").localeCompare(b.nameCity || ""),
+        );
+        this.sortBynameCityValid = false;
       } else {
-        this.fournisseurs.sort((a, b) => (b.nameCity || "").localeCompare((a.nameCity || "")));
-        this.sortBynameCityValid = true
+        this.fournisseurs.sort((a, b) =>
+          (b.nameCity || "").localeCompare(a.nameCity || ""),
+        );
+        this.sortBynameCityValid = true;
       }
     }
- 
   }
 }

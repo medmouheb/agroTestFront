@@ -1,7 +1,6 @@
 <ng-content></ng-content>
 
 <form class="form-card">
-
   <div *ngIf="currentStep == 0">
     <app-produits-form-group [produit]="produit"></app-produits-form-group>
   </div>
@@ -11,11 +10,14 @@
   </div>
 
   <div *ngIf="currentStep == 2">
-    <app-produits-form-vendor-sku [produit]="produit"></app-produits-form-vendor-sku>
+    <app-produits-form-vendor-sku
+      [produit]="produit"
+    ></app-produits-form-vendor-sku>
   </div>
 
   <div *ngIf="currentStep == 3">
-    <app-produits-form-sales-sku [produit]="produit"></app-produits-form-sales-sku>
+    <app-produits-form-sales-sku
+      [produit]="produit"
+    ></app-produits-form-sales-sku>
   </div>
-
 </form>

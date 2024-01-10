@@ -1,23 +1,22 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { CommandeFormGeneralComponent } from './commande-form-general.component';
+import { CommandeFormGeneralComponent } from "./commande-form-general.component";
 
-describe('CommandeFormGeneralComponent', () => {
+describe("CommandeFormGeneralComponent", () => {
   let component: CommandeFormGeneralComponent;
   let fixture: ComponentFixture<CommandeFormGeneralComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CommandeFormGeneralComponent ]
-    })
-    .compileComponents();
+      declarations: [CommandeFormGeneralComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(CommandeFormGeneralComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

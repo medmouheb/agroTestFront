@@ -24,7 +24,7 @@ export class CostCenterService {
   }
 
   create(costcenter: CostCenter): Observable<CostCenter> {
-    let url = this.baseUrl()+"/costcenter";
+    let url = this.baseUrl() + "/costcenter";
     return this.http.post<CostCenter>(url, costcenter);
   }
 
@@ -39,14 +39,14 @@ export class CostCenterService {
   }
 
   findAll(): Observable<Array<CostCenter>> {
-    let url = this.baseUrl()+"/costcenter";
+    let url = this.baseUrl() + "/costcenter";
     return this.http.get<Array<CostCenter>>(url);
   }
 
   findPage(
     pageNumber: number,
     pageSize: number,
-    filter: string
+    filter: string,
   ): Observable<Page<CostCenter>> {
     let url = this.baseUrl() + "/costcenter/page";
     let params = new HttpParams();
@@ -74,7 +74,7 @@ export class CostCenterService {
   findArchivedPage(
     pageNumber: number,
     pageSize: number,
-    filter: string
+    filter: string,
   ): Observable<Page<CostCenter>> {
     let url = this.baseUrl() + "/costcenter/archived/page";
     let params = new HttpParams();
@@ -83,14 +83,12 @@ export class CostCenterService {
     params = params.append("filter", filter);
     return this.http.get<Page<CostCenter>>(url, { params });
   }
-  findbycode(code:any): Observable<CostCenter>{
+  findbycode(code: any): Observable<CostCenter> {
     let url = `${this.baseUrl()}/costcenter/by-code/${code}`;
     return this.http.get<CostCenter>(url);
-
   }
-  findbyName(name:any): Observable<CostCenter>{
+  findbyName(name: any): Observable<CostCenter> {
     let url = `${this.baseUrl()}/costcenter/getbyname/${name}`;
     return this.http.get<CostCenter>(url);
-
   }
 }

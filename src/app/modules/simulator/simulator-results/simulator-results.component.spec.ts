@@ -1,23 +1,22 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { SimulatorResultsComponent } from './simulator-results.component';
+import { SimulatorResultsComponent } from "./simulator-results.component";
 
-describe('SimulatorResultsComponent', () => {
+describe("SimulatorResultsComponent", () => {
   let component: SimulatorResultsComponent;
   let fixture: ComponentFixture<SimulatorResultsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SimulatorResultsComponent ]
-    })
-    .compileComponents();
+      declarations: [SimulatorResultsComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(SimulatorResultsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

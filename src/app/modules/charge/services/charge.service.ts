@@ -13,7 +13,6 @@ export class ChargeService {
 
   baseUrl() {
     return `${environment.apiUrl}`;
-
   }
 
   save(id: string | null, charge: Charge): Observable<Charge> {
@@ -24,7 +23,7 @@ export class ChargeService {
   }
 
   create(charge: Charge): Observable<Charge> {
-    let url = this.baseUrl()+'/charge';
+    let url = this.baseUrl() + "/charge";
     return this.http.post<Charge>(url, charge);
   }
 
@@ -49,14 +48,14 @@ export class ChargeService {
   }
 
   findAll(): Observable<Array<Charge>> {
-    let url = this.baseUrl()+'/charge';
+    let url = this.baseUrl() + "/charge";
     return this.http.get<Array<Charge>>(url);
   }
 
   findPage(
     pageNumber: number,
     pageSize: number,
-    filter: string
+    filter: string,
   ): Observable<Page<Charge>> {
     let url = this.baseUrl() + "/charge/page";
     let params = new HttpParams();
@@ -89,7 +88,7 @@ export class ChargeService {
   findArchivedPage(
     pageNumber: number,
     pageSize: number,
-    filter: string
+    filter: string,
   ): Observable<Page<Charge>> {
     let url = this.baseUrl() + "/charge/archived/page";
     let params = new HttpParams();
