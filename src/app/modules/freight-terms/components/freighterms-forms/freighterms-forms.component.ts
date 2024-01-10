@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, Input } from "@angular/core";
 import { FreightTerms } from "../../models/freightterms";
 
 @Component({
@@ -6,10 +6,8 @@ import { FreightTerms } from "../../models/freightterms";
   templateUrl: "./freighterms-forms.component.html",
   styleUrls: ["./freighterms-forms.component.scss"],
 })
-export class FreightermsFormsComponent implements OnInit {
+export class FreightermsFormsComponent {
   @Input() freightterm!: FreightTerms;
   @Input() shipmethodsStep!: number;
   constructor() {}
-
-  ngOnInit(): void {}
 }

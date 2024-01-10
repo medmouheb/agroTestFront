@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, Input } from "@angular/core";
 import { SharedService } from "app/modules/company/services/shared.service";
 import { Farm } from "app/modules/farms/models/farm";
 
@@ -7,7 +7,7 @@ import { Farm } from "app/modules/farms/models/farm";
   templateUrl: "./farms-form-paye.component.html",
   styleUrls: ["./farms-form-paye.component.scss"],
 })
-export class FarmsFormPayeComponent implements OnInit {
+export class FarmsFormPayeComponent {
   @Input() farm!: Farm;
   constructor(private sharedService: SharedService) {}
 
@@ -283,6 +283,4 @@ export class FarmsFormPayeComponent implements OnInit {
       this.sharedService.setIsActive(true);
     }
   }
-
-  ngOnInit(): void {}
 }

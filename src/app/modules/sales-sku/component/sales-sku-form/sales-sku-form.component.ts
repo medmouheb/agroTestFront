@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, Input } from "@angular/core";
 import { SalesSKU } from "../../models/salesSku";
 
 @Component({
@@ -6,10 +6,8 @@ import { SalesSKU } from "../../models/salesSku";
   templateUrl: "./sales-sku-form.component.html",
   styleUrls: ["./sales-sku-form.component.scss"],
 })
-export class SalesSkuFormComponent implements OnInit {
+export class SalesSkuFormComponent {
   @Input() salessku!: SalesSKU;
   @Input() currentStep!: number;
   constructor() {}
-
-  ngOnInit(): void {}
 }

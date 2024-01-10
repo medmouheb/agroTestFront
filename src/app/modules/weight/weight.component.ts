@@ -1,12 +1,10 @@
-import { Component, OnInit } from "@angular/core";
+import { Component } from "@angular/core";
 
 @Component({
   selector: "app-weight",
   templateUrl: "./weight.component.html",
   styleUrls: ["./weight.component.scss"],
 })
-export class WeightComponent implements OnInit {
+export class WeightComponent {
   constructor() {}
-
-  ngOnInit(): void {}
 }

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, Input } from "@angular/core";
 import { Delivery } from "../../models/delivery";
 
 @Component({
@@ -6,10 +6,8 @@ import { Delivery } from "../../models/delivery";
   templateUrl: "./delivery-form.component.html",
   styleUrls: ["./delivery-form.component.scss"],
 })
-export class DeliveryFormComponent implements OnInit {
+export class DeliveryFormComponent {
   @Input() delivery!: Delivery;
   @Input() deliveryStep!: number;
   constructor() {}
-
-  ngOnInit(): void {}
 }

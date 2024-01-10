@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, Input } from "@angular/core";
 import { Commande } from "../../models/commande.model";
 
 @Component({
@@ -6,11 +6,9 @@ import { Commande } from "../../models/commande.model";
   templateUrl: "./commande-form.component.html",
   styleUrls: ["./commande-form.component.scss"],
 })
-export class CommandeFormComponent implements OnInit {
+export class CommandeFormComponent {
   @Input() commande!: Commande;
   @Input() currentStep!: number;
 
   constructor() {}
-
-  ngOnInit(): void {}
 }

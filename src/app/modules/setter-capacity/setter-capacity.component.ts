@@ -1,12 +1,10 @@
-import { Component, OnInit } from "@angular/core";
+import { Component } from "@angular/core";
 
 @Component({
   selector: "app-setter-capacity",
   templateUrl: "./setter-capacity.component.html",
   styleUrls: ["./setter-capacity.component.scss"],
 })
-export class SetterCapacityComponent implements OnInit {
+export class SetterCapacityComponent {
   constructor() {}
-
-  ngOnInit(): void {}
 }

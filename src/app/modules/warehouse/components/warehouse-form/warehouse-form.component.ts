@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, Input } from "@angular/core";
 import { Warehouse } from "../../models/warehouse.model";
 
 @Component({
@@ -6,7 +6,7 @@ import { Warehouse } from "../../models/warehouse.model";
   templateUrl: "./warehouse-form.component.html",
   styleUrls: ["./warehouse-form.component.scss"],
 })
-export class WarehouseFormComponent implements OnInit {
+export class WarehouseFormComponent {
   @Input()
   warehouse: Warehouse = {};
 
@@ -49,6 +49,4 @@ export class WarehouseFormComponent implements OnInit {
   onStepChange(step: number) {
     this.currentStep = step;
   }
-
-  ngOnInit(): void {}
 }

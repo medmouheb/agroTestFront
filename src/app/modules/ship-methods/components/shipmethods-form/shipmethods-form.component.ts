@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, Input } from "@angular/core";
 import { ShipMethods } from "../../models/shipsmethods";
 
 @Component({
@@ -6,11 +6,9 @@ import { ShipMethods } from "../../models/shipsmethods";
   templateUrl: "./shipmethods-form.component.html",
   styleUrls: ["./shipmethods-form.component.scss"],
 })
-export class ShipmethodsFormComponent implements OnInit {
+export class ShipmethodsFormComponent {
   @Input() shipmethod!: ShipMethods;
   @Input() shipmethodsStep!: number;
 
   constructor() {}
-
-  ngOnInit(): void {}
 }

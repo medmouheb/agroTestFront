@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, ViewChild } from "@angular/core";
+import { Component, EventEmitter, ViewChild } from "@angular/core";
 import { FormGroup } from "@angular/forms";
 import { ConfirmDialogComponent } from "app/shared/components/confirm-dialog/confirm-dialog.component";
 import { StepperComponent } from "app/shared/components/stepper/stepper.component";
@@ -9,7 +9,7 @@ import { WizardDialogComponent } from "app/shared/components/wizard-dialog/wizar
   templateUrl: "./diver-list.component.html",
   styleUrls: ["./diver-list.component.scss"],
 })
-export class DiverListComponent implements OnInit {
+export class DiverListComponent {
   @ViewChild("deleteModal")
   deleteModal!: ConfirmDialogComponent;
   @ViewChild("archiveModal")
@@ -29,8 +29,6 @@ export class DiverListComponent implements OnInit {
   steps: any = ["steps.general", "steps.localisation"];
 
   constructor() {}
-
-  ngOnInit(): void {}
 
   onClickAdd() {
     this.formModal.show({

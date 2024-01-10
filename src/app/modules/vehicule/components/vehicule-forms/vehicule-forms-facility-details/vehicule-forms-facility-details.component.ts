@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { FormControl, FormGroup } from "@angular/forms";
-import { SharedService } from "app/modules/company/services/shared.service";
 import { Vehicule } from "app/modules/vehicule/models/vehicule";
 
 @Component({
@@ -8,13 +7,11 @@ import { Vehicule } from "app/modules/vehicule/models/vehicule";
   templateUrl: "./vehicule-forms-facility-details.component.html",
   styleUrls: ["./vehicule-forms-facility-details.component.scss"],
 })
-export class VehiculeFormsFacilityDetailsComponent implements OnInit {
+export class VehiculeFormsFacilityDetailsComponent {
   @Input() camp!: Vehicule;
   addform: FormGroup;
 
-  constructor(private sharedService: SharedService) {}
-
-  ngOnInit(): void {}
+  constructor() {}
 
   initForm() {
     this.addform = new FormGroup({

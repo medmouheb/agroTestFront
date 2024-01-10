@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, Input } from "@angular/core";
 import { productCategory } from "../../Models/productCategory.model";
 
 @Component({
@@ -6,11 +6,9 @@ import { productCategory } from "../../Models/productCategory.model";
   templateUrl: "./product-category-form.component.html",
   styleUrls: ["./product-category-form.component.scss"],
 })
-export class ProductCategoryFormComponent implements OnInit {
+export class ProductCategoryFormComponent {
   @Input() productCategory!: productCategory;
   @Input() currentStep!: number;
 
   constructor() {}
-
-  ngOnInit(): void {}
 }

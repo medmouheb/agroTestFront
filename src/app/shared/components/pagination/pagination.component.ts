@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
+import { Component, Input, Output, EventEmitter } from "@angular/core";
 import { Page } from "../../models";
 
 @Component({
@@ -6,7 +6,7 @@ import { Page } from "../../models";
   templateUrl: "./pagination.component.html",
   styleUrls: ["./pagination.component.scss"],
 })
-export class PaginationComponent implements OnInit {
+export class PaginationComponent {
   @Input()
   pageNumber!: number;
 
@@ -23,8 +23,6 @@ export class PaginationComponent implements OnInit {
   onPageSizeChange = new EventEmitter<number>();
 
   constructor() {}
-
-  ngOnInit(): void {}
 
   onClickNext() {
     if (this.page.last) {

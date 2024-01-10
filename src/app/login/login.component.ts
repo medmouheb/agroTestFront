@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component } from "@angular/core";
 import { Router } from "@angular/router";
 import { LoginService } from "app/components/service/login.service";
 
@@ -7,7 +7,7 @@ import { LoginService } from "app/components/service/login.service";
   templateUrl: "./login.component.html",
   styleUrls: ["./login.component.scss"],
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
   username: any;
   password: any;
   authenticationError = false;
@@ -17,8 +17,6 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private loginService: LoginService,
   ) {}
-
-  ngOnInit(): void {}
 
   onClick() {
     this.loginService.signIn(this.username, this.password).subscribe(

@@ -1,11 +1,11 @@
-import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
+import { Component, Input, Output, EventEmitter } from "@angular/core";
 
 @Component({
   selector: "app-stepper",
   templateUrl: "./stepper.component.html",
   styleUrls: ["./stepper.component.scss"],
 })
-export class StepperComponent implements OnInit {
+export class StepperComponent {
   @Input()
   steps!: Array<any>;
   @Input()
@@ -15,8 +15,6 @@ export class StepperComponent implements OnInit {
   onStepChange = new EventEmitter<number>();
 
   constructor() {}
-
-  ngOnInit(): void {}
 
   getClickstipper() {
     this.clickStipper = JSON.parse(localStorage.getItem("st"));

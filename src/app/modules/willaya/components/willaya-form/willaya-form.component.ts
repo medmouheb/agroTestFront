@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, Input } from "@angular/core";
 import { Willaya } from "../../models/willaya";
 
 @Component({
@@ -6,11 +6,9 @@ import { Willaya } from "../../models/willaya";
   templateUrl: "./willaya-form.component.html",
   styleUrls: ["./willaya-form.component.scss"],
 })
-export class WillayaFormComponent implements OnInit {
+export class WillayaFormComponent {
   @Input() willaya!: Willaya;
   @Input() currentStep!: number;
 
   constructor() {}
-
-  ngOnInit(): void {}
 }

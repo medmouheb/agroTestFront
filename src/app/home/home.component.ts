@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component } from "@angular/core";
 import { Router } from "@angular/router";
 
 @Component({
@@ -6,15 +6,12 @@ import { Router } from "@angular/router";
   templateUrl: "./home.component.html",
   styleUrls: ["./home.component.scss"],
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent {
   constructor(private router: Router) {}
   productName: string;
   varietyName: string;
 
   country: string;
-
-  ngOnInit(): void {}
-  ngOnChanges(): void {}
 
   onSelectedProduct(value: string) {
     this.productName = value;

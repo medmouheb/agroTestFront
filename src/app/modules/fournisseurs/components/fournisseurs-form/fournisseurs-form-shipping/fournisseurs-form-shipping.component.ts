@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, Input } from "@angular/core";
 import { Fournisseur } from "../../../models/fournisseur.model";
 
 @Component({
@@ -6,10 +6,8 @@ import { Fournisseur } from "../../../models/fournisseur.model";
   templateUrl: "./fournisseurs-form-shipping.component.html",
   styleUrls: ["./fournisseurs-form-shipping.component.scss"],
 })
-export class FournisseursFormShippingComponent implements OnInit {
+export class FournisseursFormShippingComponent {
   @Input() fournisseur!: Fournisseur;
 
   constructor() {}
-
-  ngOnInit(): void {}
 }

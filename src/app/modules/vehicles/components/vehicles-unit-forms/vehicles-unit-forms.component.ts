@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, Input } from "@angular/core";
 import { Vehicles } from "../../models/vehicles";
 
 @Component({
@@ -6,11 +6,9 @@ import { Vehicles } from "../../models/vehicles";
   templateUrl: "./vehicles-unit-forms.component.html",
   styleUrls: ["./vehicles-unit-forms.component.scss"],
 })
-export class VehiclesUnitFormsComponent implements OnInit {
+export class VehiclesUnitFormsComponent {
   @Input() camp!: Vehicles;
   @Input() currentStep!: number;
 
   constructor() {}
-
-  ngOnInit(): void {}
 }

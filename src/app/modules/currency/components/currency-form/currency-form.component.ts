@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, Input } from "@angular/core";
 import { Currency } from "../../models/currency";
 
 @Component({
@@ -6,11 +6,9 @@ import { Currency } from "../../models/currency";
   templateUrl: "./currency-form.component.html",
   styleUrls: ["./currency-form.component.scss"],
 })
-export class CurrencyFormComponent implements OnInit {
+export class CurrencyFormComponent {
   @Input() currency!: Currency;
   @Input() currentStep!: number;
 
   constructor() {}
-
-  ngOnInit(): void {}
 }

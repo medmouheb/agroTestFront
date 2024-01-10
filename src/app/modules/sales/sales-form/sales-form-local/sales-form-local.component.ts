@@ -1,12 +1,10 @@
-import { Component, OnInit } from "@angular/core";
+import { Component } from "@angular/core";
 
 @Component({
   selector: "app-sales-form-local",
   templateUrl: "./sales-form-local.component.html",
   styleUrls: ["./sales-form-local.component.scss"],
 })
-export class SalesFormLocalComponent implements OnInit {
+export class SalesFormLocalComponent {
   constructor() {}
-
-  ngOnInit(): void {}
 }

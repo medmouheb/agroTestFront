@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, Input } from "@angular/core";
 import { Farm } from "app/modules/farms/models/farm";
 
 @Component({
@@ -6,9 +6,7 @@ import { Farm } from "app/modules/farms/models/farm";
   templateUrl: "./farms-form-visitors.component.html",
   styleUrls: ["./farms-form-visitors.component.scss"],
 })
-export class FarmsFormVisitorsComponent implements OnInit {
+export class FarmsFormVisitorsComponent {
   @Input() farm!: Farm;
   constructor() {}
-
-  ngOnInit(): void {}
 }

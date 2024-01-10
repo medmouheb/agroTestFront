@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, Input } from "@angular/core";
 import { Growout } from "../../models/growout";
 
 @Component({
@@ -6,11 +6,9 @@ import { Growout } from "../../models/growout";
   templateUrl: "./growout-form.component.html",
   styleUrls: ["./growout-form.component.scss"],
 })
-export class GrowoutFormComponent implements OnInit {
+export class GrowoutFormComponent {
   @Input() growout!: Growout;
   @Input() currentStep!: number;
 
   constructor() {}
-
-  ngOnInit(): void {}
 }

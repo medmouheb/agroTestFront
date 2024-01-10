@@ -1,10 +1,5 @@
-import { Component, OnInit } from "@angular/core";
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from "@angular/forms";
+import { Component } from "@angular/core";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import { SimulatorService } from "app/components/service/simulator.service";
 
@@ -13,7 +8,7 @@ import { SimulatorService } from "app/components/service/simulator.service";
   templateUrl: "./simulator-main-page.component.html",
   styleUrls: ["./simulator-main-page.component.scss"],
 })
-export class SimulatorMainPageComponent implements OnInit {
+export class SimulatorMainPageComponent {
   authenticationError = false;
   otherError = false;
   newProjectForm: FormGroup;
@@ -35,8 +30,6 @@ export class SimulatorMainPageComponent implements OnInit {
       Subvariety: ["", Validators.required],
     });
   }
-
-  ngOnInit(): void {}
 
   onSubmit() {
     localStorage.setItem("simulator-country", this.country);

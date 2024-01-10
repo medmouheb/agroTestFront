@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, Input } from "@angular/core";
 import { Farm } from "app/modules/farms/models/farm";
 
 @Component({
@@ -6,10 +6,8 @@ import { Farm } from "app/modules/farms/models/farm";
   templateUrl: "./farms-form-distance.component.html",
   styleUrls: ["./farms-form-distance.component.scss"],
 })
-export class FarmsFormDistanceComponent implements OnInit {
+export class FarmsFormDistanceComponent {
   @Input() farm!: Farm;
 
   constructor() {}
-
-  ngOnInit(): void {}
 }

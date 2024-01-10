@@ -6,9 +6,7 @@ import { Commande } from "app/modules/commande/models/commande.model";
   templateUrl: "./commande-form-information.component.html",
   styleUrls: ["./commande-form-information.component.scss"],
 })
-export class CommandeFormInformationComponent implements OnInit {
+export class CommandeFormInformationComponent {
   @Input() commande!: Commande;
   constructor() {}
-
-  ngOnInit(): void {}
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, Input } from "@angular/core";
 import { Farm } from "../../../models/farm";
 import { SharedService } from "app/modules/company/services/shared.service";
 
@@ -7,7 +7,7 @@ import { SharedService } from "app/modules/company/services/shared.service";
   templateUrl: "./farms-form-localisation.component.html",
   styleUrls: ["./farms-form-localisation.component.scss"],
 })
-export class FarmsFormLocalisationComponent implements OnInit {
+export class FarmsFormLocalisationComponent {
   @Input() farm!: Farm;
 
   constructor(private sharedService: SharedService) {}
@@ -284,8 +284,6 @@ export class FarmsFormLocalisationComponent implements OnInit {
       this.sharedService.setIsActive(true);
     }
   }
-
-  ngOnInit(): void {}
 
   emailIsvalid = false;
 

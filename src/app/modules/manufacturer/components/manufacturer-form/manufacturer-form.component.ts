@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, Input } from "@angular/core";
 import { manufacturer } from "../../Models/manufacturer.model";
 
 @Component({
@@ -6,11 +6,9 @@ import { manufacturer } from "../../Models/manufacturer.model";
   templateUrl: "./manufacturer-form.component.html",
   styleUrls: ["./manufacturer-form.component.scss"],
 })
-export class ManufacturerFormComponent implements OnInit {
+export class ManufacturerFormComponent {
   @Input() manufacturer!: manufacturer;
   @Input() currentStep!: number;
 
   constructor() {}
-
-  ngOnInit(): void {}
 }

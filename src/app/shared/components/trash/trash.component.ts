@@ -1,8 +1,6 @@
 import { Component, EventEmitter, OnInit, ViewChild } from "@angular/core";
 import { HotToastService } from "@ngneat/hot-toast";
 import { TranslateService } from "@ngx-translate/core";
-import { Warehouse } from "app/modules/warehouse/models/warehouse.model";
-import { WarehouseService } from "app/modules/warehouse/services/warehouse.service";
 import { Page, initPage } from "app/shared/models";
 import { ConfirmDialogComponent } from "../confirm-dialog/confirm-dialog.component";
 import { StepperComponent } from "../stepper/stepper.component";
