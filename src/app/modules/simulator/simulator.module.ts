@@ -7,9 +7,13 @@ import { SimulatorMainPageComponent } from "./simulator-main-page/simulator-main
 import { SimulatorResultsComponent } from "./simulator-results/simulator-results.component";
 import { GanttModule } from "@progress/kendo-angular-gantt";
 
+
+
 @NgModule({
-  declarations: [SimulatorMainPageComponent, SimulatorResultsComponent],
-  imports: [CommonModule, SiumulatorRoutingModule, SharedModule, GanttModule],
+  declarations: [
+    SimulatorMainPageComponent , SimulatorResultsComponent
+  ],
+  imports: [CommonModule, SiumulatorRoutingModule, SharedModule , GanttModule],
   providers: [],
 })
 export class SiumulatorModule {}

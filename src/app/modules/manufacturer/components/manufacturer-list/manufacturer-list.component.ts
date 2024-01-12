@@ -1,19 +1,20 @@
-import { Component, OnInit, ViewChild } from "@angular/core";
-import { DialogComponent } from "@progress/kendo-angular-dialog";
-import { ConfirmDialogComponent } from "app/shared/components/confirm-dialog/confirm-dialog.component";
-import { StepperComponent } from "app/shared/components/stepper/stepper.component";
-import { WizardDialogComponent } from "app/shared/components/wizard-dialog/wizard-dialog.component";
-import { manufacturer } from "../../Models/manufacturer.model";
-import { manufacturerService } from "../../Services/manufacturer.service";
-import { TranslateService } from "@ngx-translate/core";
-import { HotToastService } from "@ngneat/hot-toast";
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { DialogComponent } from '@progress/kendo-angular-dialog';
+import { ConfirmDialogComponent } from 'app/shared/components/confirm-dialog/confirm-dialog.component';
+import { StepperComponent } from 'app/shared/components/stepper/stepper.component';
+import { WizardDialogComponent } from 'app/shared/components/wizard-dialog/wizard-dialog.component';
+import { manufacturer } from '../../Models/manufacturer.model';
+import { manufacturerService } from '../../Services/manufacturer.service';
+import { TranslateService } from '@ngx-translate/core';
+import { HotToastService } from '@ngneat/hot-toast';
 
 @Component({
-  selector: "app-manufacturer-list",
-  templateUrl: "./manufacturer-list.component.html",
-  styleUrls: ["./manufacturer-list.component.scss"],
+  selector: 'app-manufacturer-list',
+  templateUrl: './manufacturer-list.component.html',
+  styleUrls: ['./manufacturer-list.component.scss']
 })
 export class ManufacturerListComponent implements OnInit {
+
   @ViewChild("deleteModal")
   deleteModal!: ConfirmDialogComponent;
 
@@ -29,11 +30,15 @@ export class ManufacturerListComponent implements OnInit {
   stepper!: StepperComponent;
 
   currentStep = 0;
-  steps: any = ["steps.general", "steps.information"];
+  steps: any = [
+    "steps.general",
+    "steps.information",
+
+  ];
 
   loading = false;
   manufacturer: manufacturer = {};
-
+  // fournisseursPage: Page<Fournisseur> = initPage;
   pageNumber = 0;
   pageSize = 10;
   filter = "";
@@ -44,7 +49,7 @@ export class ManufacturerListComponent implements OnInit {
     private service: manufacturerService,
     private translateService: TranslateService,
     private toastService: HotToastService,
-  ) {}
+  ) { }
   onCancel() {
     this.manufacturer = {};
     this.currentStep = 0;
@@ -53,7 +58,7 @@ export class ManufacturerListComponent implements OnInit {
   onSave(id: string | null) {
     this.toastService.loading(
       this.translateService.instant("message.loading..."),
-      { id: "0" },
+      { id: "0" }
     );
 
     this.service.save(id, this.manufacturer!).subscribe({
@@ -65,7 +70,7 @@ export class ManufacturerListComponent implements OnInit {
         this.toastService.success(
           this.translateService.instant("success.saved", {
             elem: this.translateService.instant("manufacturer"),
-          }),
+          })
         );
       },
       error: (error) => {
@@ -73,7 +78,7 @@ export class ManufacturerListComponent implements OnInit {
         this.toastService.error(
           this.translateService.instant(error.error, {
             elem: this.translateService.instant("manufacturer"),
-          }),
+          })
         );
       },
     });
@@ -100,7 +105,7 @@ export class ManufacturerListComponent implements OnInit {
         this.translateService.instant("message.loading..."),
         {
           id: "0",
-        },
+        }
       );
       this.service.deactivateManufacturer(id).subscribe({
         next: () => {
@@ -110,7 +115,7 @@ export class ManufacturerListComponent implements OnInit {
           this.toastService.success(
             this.translateService.instant("success.deleted", {
               elem: this.translateService.instant("manufacturer"),
-            }),
+            })
           );
         },
         error: (error) => {
@@ -119,7 +124,7 @@ export class ManufacturerListComponent implements OnInit {
           this.toastService.error(
             this.translateService.instant(error.error, {
               elem: this.translateService.instant("manufacturer"),
-            }),
+            })
           );
         },
       });
@@ -146,14 +151,12 @@ export class ManufacturerListComponent implements OnInit {
   }
 
   searchByManufacturerName() {
-    this.service
-      .searchManufacturerByNameActive(this.manufacturerName)
-      .subscribe({
-        next: (result) => {
-          this.manufacturers = result;
-        },
-        error: (error) => console.error(error),
-      });
+    this.service.searchManufacturerByNameActive(this.manufacturerName).subscribe({
+      next: (result) => {
+        this.manufacturers = result;
+      },
+      error: (error) => console.error(error),
+    });
   }
 
   ngOnInit(): void {
@@ -177,14 +180,10 @@ export class ManufacturerListComponent implements OnInit {
   sortByManufacturerCodeValid: boolean = true;
   manufacturerCode() {
     if (this.sortByManufacturerCodeValid) {
-      this.manufacturers.sort((a, b) =>
-        a.manufacturerCode.localeCompare(b.manufacturerCode),
-      );
+      this.manufacturers.sort((a, b) => a.manufacturerCode.localeCompare(b.manufacturerCode));
       this.sortByManufacturerCodeValid = false;
     } else {
-      this.manufacturers.sort((a, b) =>
-        b.manufacturerCode.localeCompare(a.manufacturerCode),
-      );
+      this.manufacturers.sort((a, b) => b.manufacturerCode.localeCompare(a.manufacturerCode));
       this.sortByManufacturerCodeValid = true;
     }
   }
@@ -192,14 +191,10 @@ export class ManufacturerListComponent implements OnInit {
   sortByManufacturerNameValid: boolean = true;
   sortByManufacturerName() {
     if (this.sortByManufacturerNameValid) {
-      this.manufacturers.sort((a, b) =>
-        a.manufacturerName.localeCompare(b.manufacturerName),
-      );
+      this.manufacturers.sort((a, b) => a.manufacturerName.localeCompare(b.manufacturerName));
       this.sortByManufacturerNameValid = false;
     } else {
-      this.manufacturers.sort((a, b) =>
-        b.manufacturerName.localeCompare(a.manufacturerName),
-      );
+      this.manufacturers.sort((a, b) => b.manufacturerName.localeCompare(a.manufacturerName));
       this.sortByManufacturerNameValid = true;
     }
   }
@@ -213,4 +208,5 @@ export class ManufacturerListComponent implements OnInit {
       this.sortByNotesValid = true;
     }
   }
+
 }

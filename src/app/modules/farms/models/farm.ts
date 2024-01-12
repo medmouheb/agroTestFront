@@ -41,60 +41,70 @@ export type Farm = {
   longitude?: number;
   vendorcode?: string;
   warehousecode?: string;
-  growout?: any;
-  product?: any;
-  telephone?: any;
-  land?: any;
-  planning?: any;
-  logistic?: any;
-  feedMillcode?: any;
-  primaryMarket?: any;
-  liveProductday?: any;
-  maxturckcapacity?: any;
-  payee?: any;
+  growout?: any
+  product?: any
+  telephone?: any
+  land?: any
+  planning?: any
+  logistic?: any
+  feedMillcode?: any
+  primaryMarket?: any
+  liveProductday?: any
+  maxturckcapacity?: any
+  payee?: any
+  //projection
+  projectwarehouse?: any
+  projectligistic?: any
 
-  projectwarehouse?: any;
-  projectligistic?: any;
+  //distance
+  distnfarmlogi?: any
+  distnfarmMarket?: any
 
-  distnfarmlogi?: any;
-  distnfarmMarket?: any;
+  warehouseprimary?: any
+  warehousesecondry?: any
 
-  warehouseprimary?: any;
-  warehousesecondry?: any;
+  //Visitors Logs
+  visitDate?: any
+  firstNameVisit?: any
+  lastNameVisit?: any
+  iDNumberVisit?: any
+  timeinVisit?: any
+  timeoutVisit?: any
+  purposeofthevisit?: any
 
-  visitDate?: any;
-  firstNameVisit?: any;
-  lastNameVisit?: any;
-  iDNumberVisit?: any;
-  timeinVisit?: any;
-  timeoutVisit?: any;
-  purposeofthevisit?: any;
+  //cezrtiff
+  certifications?: any
 
-  certifications?: any;
+  //Contract Farms
+  contractNumber?: any
+  contratPay?: any
+  startDateFarms?: any
+  endDateFarms?: any
+  renewalDateFarms?: any
 
-  contractNumber?: any;
-  contratPay?: any;
-  startDateFarms?: any;
-  endDateFarms?: any;
-  renewalDateFarms?: any;
-
-  paymentType?: any; //Checking, saving or paycheck
-  accountNumber?: any;
-  bankName?: any;
-  bankCode?: any;
-  bankaddress?: any;
-  directDepositflag?: any;
-  typepayment?: any; //auto or not
-  operationDate?: any; //satesystem
-  amounttransferred?: any;
-
-  ressourceInformation?: any;
-  statutInformation?: any;
-  adressInformation?: any;
-  firstNameInformation?: any;
-  lastNameInformation?: any;
-  phoneInformation?: any;
-  startDateInformation?: any;
-  endDateInformation?: any;
-  properties?: any;
+  //Paiement information
+  paymentType?: any//Checking, saving or paycheck 
+  accountNumber?: any
+  bankName?: any
+  bankCode?: any
+  bankaddress?: any
+  directDepositflag?: any
+  typepayment?: any//auto or not
+  operationDate?: any //satesystem
+  amounttransferred?: any
+  //Resource Information
+  ressourceInformation?: any
+  statutInformation?: any
+  adressInformation?: any
+  firstNameInformation?: any
+  lastNameInformation?: any
+  phoneInformation?: any
+  startDateInformation?: any
+  endDateInformation?: any
+  properties?:any
 };
+
+
+
+
+

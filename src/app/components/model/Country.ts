@@ -1,4 +1,5 @@
-export class Country {
-  id: number;
-  name: string;
-}
+export class Country
+{
+      id:number;
+      name:string;
+} 

@@ -1,10 +1,10 @@
 <ng-content></ng-content>
 <form class="form-card">
-  <div *ngIf="currentStep == 0">
-    <app-sales-form-general [sales]="sales"></app-sales-form-general>
-  </div>
+<div *ngIf="currentStep == 0">
+<app-sales-form-general [sales]="sales"></app-sales-form-general>
+</div>
 
-  <div *ngIf="currentStep == 1">
+<div *ngIf="currentStep == 1">
     <app-sales-form-currency [sales]="sales"></app-sales-form-currency>
-  </div>
+   </div>
 </form>

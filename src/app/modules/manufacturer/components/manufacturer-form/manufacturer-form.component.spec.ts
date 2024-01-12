@@ -1,22 +1,23 @@
-import { ComponentFixture, TestBed } from "@angular/core/testing";
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ManufacturerFormComponent } from "./manufacturer-form.component";
+import { ManufacturerFormComponent } from './manufacturer-form.component';
 
-describe("ManufacturerFormComponent", () => {
+describe('ManufacturerFormComponent', () => {
   let component: ManufacturerFormComponent;
   let fixture: ComponentFixture<ManufacturerFormComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ManufacturerFormComponent],
-    }).compileComponents();
+      declarations: [ ManufacturerFormComponent ]
+    })
+    .compileComponents();
 
     fixture = TestBed.createComponent(ManufacturerFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
-  it("should create", () => {
+  it('should create', () => {
     expect(component).toBeTruthy();
   });
 });

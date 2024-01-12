@@ -1,56 +1,53 @@
-import { Component, Input, OnInit, ViewChild } from "@angular/core";
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { SharedService } from "app/modules/company/services/shared.service";
-import { Vehicles } from "app/modules/vehicles/models/vehicles";
-import { VehiclesService } from "app/modules/vehicles/services/vehicles.service";
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { SharedService } from 'app/modules/company/services/shared.service';
+import { Vehicles } from 'app/modules/vehicles/models/vehicles';
+import { VehiclesService } from 'app/modules/vehicles/services/vehicles.service';
 
 @Component({
-  selector: "app-vehicles-unit-forms-general",
-  templateUrl: "./vehicles-unit-forms-general.component.html",
-  styleUrls: ["./vehicles-unit-forms-general.component.scss"],
+  selector: 'app-vehicles-unit-forms-general',
+  templateUrl: './vehicles-unit-forms-general.component.html',
+  styleUrls: ['./vehicles-unit-forms-general.component.scss']
 })
 export class VehiclesUnitFormsGeneralComponent implements OnInit {
+
   @Input() camp!: Vehicles;
   campReplica!: Vehicles;
+
 
   @ViewChild("addform")
   addform: FormGroup;
 
-  constructor(
-    private sharedService: SharedService,
-    private fb: FormBuilder,
-    private compaser: VehiclesService,
-  ) {}
+  constructor(private sharedService: SharedService, private fb: FormBuilder, private compaser: VehiclesService) { }
   codes: Array<String> = [];
   names: Array<String> = [];
   ngOnInit(): void {
     if (this.camp != null) {
       this.sharedService.setIsActive(true);
-      this.compaser.findAll().subscribe((data) => {
-        this.codes = data.map((el) => {
-          return el.codeVehicule;
-        });
-        this.names = data.map((el) => {
-          return el.nomDuVehicule;
-        });
-      });
-    }
+      this.compaser.findAll().subscribe(data => {
+        this.codes = data.map(el => { return el.codeVehicule })
+        this.names = data.map(el => { return el.nomDuVehicule })
+      })
+    };
 
-    if (this.camp == undefined) {
-      this.camp = { nomDuVehicule: "", codeVehicule: "" };
-    }
+    if (this.camp == undefined) { this.camp = { nomDuVehicule: "", codeVehicule: "" } };
     this.initForm();
-
     if (this.camp.id) {
-      this.static = "update";
-      this.campReplica = JSON.parse(JSON.stringify(this.camp));
+      this.static = "update"
+      this.campReplica =  JSON.parse( JSON.stringify(  this.camp))
     } else if (!this.camp.id) {
-      this.static = "create";
-      this.sharedService.setIsActive(false);
+      this.static = "create"
+      this.sharedService.setIsActive(false)
     }
   }
-  static = "";
-  initForm() {
+  static=""
+  initForm(
+
+  ) {
+
+
+
+
     this.addform = this.fb.group({
       codeVehicule: [
         null,
@@ -61,54 +58,65 @@ export class VehiclesUnitFormsGeneralComponent implements OnInit {
           Validators.pattern(/^[a-zA-Z ]*$/),
         ],
       ],
-      nomDuVehicule: [null, Validators.required],
+      nomDuVehicule: [
+        null,
+        Validators.required,
+      ],
     });
+
   }
 
-  minIstrueCode: boolean = false;
+  minIstrueCode: boolean = false
 
   isBlur() {
+
     if (this.camp.codeVehicule == undefined) {
-      this.minIstrueCode = true;
-    } else if (this.camp.codeVehicule.toString().length < 1) {
-      this.minIstrueCode = true;
-    } else {
-      this.minIstrueCode = false;
+      this.minIstrueCode = true
+    }
+    else if (this.camp.codeVehicule.toString().length < 1) { this.minIstrueCode = true }
+    else {
+      this.minIstrueCode = false
     }
   }
-  dispotrueCode: boolean = false;
-  dispotruename: boolean = false;
+  dispotrueCode: boolean = false
+  dispotruename: boolean = false
   blur1() {
     if (this.camp.codeVehicule == null) {
-      this.dispotrueCode = false;
+      this.dispotrueCode = false
+
     }
   }
 
-  codeIsvalid = false;
 
-  validationCode() {
-    const codeRegex: RegExp = /^[a-zA-Z0-9]*$/;
 
-    if (codeRegex.test(this.camp.codeVehicule)) {
-      this.codeIsvalid = false;
-    } else {
-      this.codeIsvalid = true;
-    }
+  codeIsvalid = false
+
+validationCode() {
+  const codeRegex: RegExp =/^[a-zA-Z0-9]*$/;
+  if (codeRegex.test(this.camp.codeVehicule)) {
+    this.codeIsvalid = false;
+
   }
+  else {
+  this.codeIsvalid=true
+  }
+
+}
   exist() {
     if (this.codes.indexOf(this.camp.codeVehicule) != -1) {
-      if (this.static == "update") {
-        if (this.camp.codeVehicule == this.campReplica.codeVehicule) {
-          this.dispotrueCode = false;
-        } else {
-          this.dispotrueCode = true;
+      if(this.static=="update" ){
+        if(this.camp.codeVehicule == this.campReplica.codeVehicule){
+          this.dispotrueCode = false
+        }else{
+          this.dispotrueCode = true
         }
-      } else {
-        this.dispotrueCode = true;
+      }else{
+        this.dispotrueCode = true
       }
     } else {
-      this.dispotrueCode = false;
+      this.dispotrueCode = false
     }
+
   }
 
   exist1() {
@@ -124,42 +132,45 @@ export class VehiclesUnitFormsGeneralComponent implements OnInit {
         if (error.status == 404) {
           this.dispotruename = false;
         }
-      },
+      }
     );
   }
 
-  generateRandomCode() {
-    const characters =
-      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-    let code = "";
-    for (let i = 0; i < 4; i++) {
-      const randomIndex = Math.floor(Math.random() * characters.length);
-      code += characters.charAt(randomIndex);
-    }
-    return code;
-  }
 
-  newSeggestions = "";
+
+ generateRandomCode() {
+  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  let code = '';
+  for (let i = 0; i < 4; i++) {
+    const randomIndex = Math.floor(Math.random() * characters.length);
+    code += characters.charAt(randomIndex);
+  }
+  return code;
+}
+
+  newSeggestions=""
 
   existname() {
     if (this.names.indexOf(this.camp.nomDuVehicule) != -1) {
-      if (this.static == "update") {
-        if (this.camp.nomDuVehicule == this.campReplica.nomDuVehicule) {
-          this.dispotruename = false;
-        } else {
-          this.dispotruename = true;
+      if(this.static=="update" ){
+        if(this.camp.nomDuVehicule == this.campReplica.nomDuVehicule){
+          this.dispotruename = false
+        }else{
+          this.dispotruename = true
         }
-      } else {
-        this.dispotruename = true;
+      }else{
+        this.dispotruename = true
       }
     } else {
-      this.dispotruename = false;
+      this.dispotruename = false
     }
+
+
+
   }
 
-  minIstrueName: boolean = false;
-  minIstrueName2: boolean = false;
-
+  minIstrueName: boolean = false
+  minIstrueName2: boolean = false
   isBlur1() {
     if (
       this.camp.nomDuVehicule === undefined ||
@@ -172,10 +183,10 @@ export class VehiclesUnitFormsGeneralComponent implements OnInit {
   }
 
   geValues(event) {
+
+
     if (
-      !this.codeIsvalid &&
-      this.dispotrueCode == false &&
-      this.dispotruename == false &&
+      !this.codeIsvalid &&  this.dispotrueCode == false && this.dispotruename == false &&
       this.camp.codeVehicule != null &&
       this.camp.codeVehicule != "" &&
       this.camp.nomDuVehicule != null &&
@@ -206,5 +217,7 @@ export class VehiclesUnitFormsGeneralComponent implements OnInit {
   get f() {
     return this.addform.controls;
   }
-  minIphone: boolean = false;
+  minIphone: boolean = false
+
+
 }

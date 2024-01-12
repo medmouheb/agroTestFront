@@ -1,21 +1,22 @@
-import { Component, EventEmitter, OnInit, ViewChild } from "@angular/core";
-import { ConfirmDialogComponent } from "app/shared/components/confirm-dialog/confirm-dialog.component";
-import { StepperComponent } from "app/shared/components/stepper/stepper.component";
-import { WizardDialogComponent } from "app/shared/components/wizard-dialog/wizard-dialog.component";
-import { Sales } from "../models/sales";
-import { Page, initPage } from "app/shared/models";
-import { TranslateService } from "@ngx-translate/core";
-import { HotToastService } from "@ngneat/hot-toast";
+import { Component, EventEmitter, OnInit, ViewChild } from '@angular/core';
+import { ConfirmDialogComponent } from 'app/shared/components/confirm-dialog/confirm-dialog.component';
+import { StepperComponent } from 'app/shared/components/stepper/stepper.component';
+import { WizardDialogComponent } from 'app/shared/components/wizard-dialog/wizard-dialog.component';
+import { Sales } from '../models/sales';
+import { Page, initPage } from 'app/shared/models';
+import { TranslateService } from '@ngx-translate/core';
+import { HotToastService } from '@ngneat/hot-toast';
 
-import { SalesService } from "../service/sales.service";
-import { Router } from "@angular/router";
+import { SalesService } from '../service/sales.service';
+import { Router } from '@angular/router';
 
 @Component({
-  selector: "app-tras-sa",
-  templateUrl: "./tras-sa.component.html",
-  styleUrls: ["./tras-sa.component.scss"],
+  selector: 'app-tras-sa',
+  templateUrl: './tras-sa.component.html',
+  styleUrls: ['./tras-sa.component.scss']
 })
 export class TrasSAComponent implements OnInit {
+
   @ViewChild("deleteModal")
   deleteModal!: ConfirmDialogComponent;
 
@@ -34,7 +35,7 @@ export class TrasSAComponent implements OnInit {
   filter = "";
   sales: Sales = {};
   saless: Array<Sales> = [];
-  test: any;
+ test:any
   salesPage: Page<Sales> = initPage;
 
   Page: Page<Sales> = initPage;
@@ -44,12 +45,11 @@ export class TrasSAComponent implements OnInit {
     private translateService: TranslateService,
     private toastService: HotToastService,
     private salesservice: SalesService,
-    private router: Router,
+    private router:Router
   ) {}
 
   ngOnInit(): void {
     this.findArchivedPage();
-
     this.onPaginationChange.subscribe(() => this.findArchivedPage());
   }
 
@@ -59,7 +59,7 @@ export class TrasSAComponent implements OnInit {
       .findArchivedPage(this.pageNumber, this.pageSize, this.filter)
       .subscribe({
         next: (result) => {
-          this.test = result.content;
+          this.test=result.content
           this.saless = result.content;
           this.Page = result;
         },
@@ -77,9 +77,10 @@ export class TrasSAComponent implements OnInit {
       error: (error) => console.error(error),
     });
   }
-  goto() {
-    this.router.navigateByUrl("/sales");
+  goto(){
+    this.router.navigateByUrl("/sales")
   }
+
 
   onFilterChange(filter: string) {
     this.filter = filter;
@@ -106,7 +107,7 @@ export class TrasSAComponent implements OnInit {
         this.toastService.success(
           this.translateService.instant("success.restore", {
             elem: this.translateService.instant("sales"),
-          }),
+          })
         );
       },
     });
@@ -116,11 +117,10 @@ export class TrasSAComponent implements OnInit {
     this.salesservice.delete(id).subscribe({
       next: () => {
         this.findArchivedPage();
-
         this.toastService.success(
           this.translateService.instant("success.deleted", {
             elem: this.translateService.instant("sales"),
-          }),
+          })
         );
       },
     });

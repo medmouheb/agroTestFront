@@ -1,14 +1,19 @@
-import { Component, Input } from "@angular/core";
-import { Willaya } from "../../models/willaya";
+import { Component, Input, OnInit } from '@angular/core';
+import { Willaya } from '../../models/willaya';
 
 @Component({
-  selector: "app-willaya-form",
-  templateUrl: "./willaya-form.component.html",
-  styleUrls: ["./willaya-form.component.scss"],
+  selector: 'app-willaya-form',
+  templateUrl: './willaya-form.component.html',
+  styleUrls: ['./willaya-form.component.scss']
 })
-export class WillayaFormComponent {
-  @Input() willaya!: Willaya;
-  @Input() currentStep!: number;
+export class WillayaFormComponent implements OnInit {
 
-  constructor() {}
+  @Input() willaya!: Willaya
+  @Input() currentStep!: number
+    
+  constructor() { }
+
+  ngOnInit(): void {
+  }
+
 }

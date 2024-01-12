@@ -1,22 +1,23 @@
-import { ComponentFixture, TestBed } from "@angular/core/testing";
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FreightermsFormsComponent } from "./freighterms-forms.component";
+import { FreightermsFormsComponent } from './freighterms-forms.component';
 
-describe("FreightermsFormsComponent", () => {
+describe('FreightermsFormsComponent', () => {
   let component: FreightermsFormsComponent;
   let fixture: ComponentFixture<FreightermsFormsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [FreightermsFormsComponent],
-    }).compileComponents();
+      declarations: [ FreightermsFormsComponent ]
+    })
+    .compileComponents();
 
     fixture = TestBed.createComponent(FreightermsFormsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
-  it("should create", () => {
+  it('should create', () => {
     expect(component).toBeTruthy();
   });
 });

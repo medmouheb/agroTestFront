@@ -1,193 +1,115 @@
 <div class="row">
   <div class="form-group col-md-6">
-    <label for="address">{{ "Address" | translate }} </label>
-    <input
-      class="form-control"
-      name="address"
-      #address1="ngModel"
-      ngModel
-      [(ngModel)]="warehouse.address1"
-      placeholder="{{ 'Write your Address' | translate }} "
-    />
+    <label for="address">{{'Address' | translate}} </label>
+    <input class="form-control" name="address" #address1="ngModel" ngModel [(ngModel)]="warehouse.address1"
+      placeholder="{{'Write your Address'|translate}} ">
   </div>
+  <!-- <div class="form-group col-md-6">
+    <label for="email">{{ "emailcontact" | translate }}</label>
+    <input type="email" class="form-control" name="email"  #email="ngModel" ngModel [(ngModel)]="warehouse.email"
+     placeholder="{{'Write your email'|translate}} " />
+  </div>  -->
   <div class="form-group col-md-6">
     <label for="email">{{ "emailcontact" | translate }}</label>
-    <input
-      type="email"
-      class="form-control"
-      name="email"
-      #email="ngModel"
-      [(ngModel)]="warehouse.email"
-      placeholder="{{ 'Write your email' | translate }}"
-      (blur)="validationEmail()"
-    />
-    <div style="color: red" *ngIf="emailIsvalid">
-      {{ "Invalid email format" | translate }}
-    </div>
+    <input type="email" class="form-control" name="email" #email="ngModel" [(ngModel)]="warehouse.email"
+      placeholder="{{ 'Write your email' | translate }}" (blur)="validationEmail()" />
+    <div style="color: red;" *ngIf="emailIsvalid">{{ "Invalid email format" | translate }}</div>
+    <!-- <div class="invalid-feedback" *ngIf="emailInput.invalid && (emailInput.dirty || emailInput.touched)">
+      <div *ngIf="emailInput.errors.required">{{ "Email is required" }}</div>
+      <div *ngIf="emailInput.errors.email">{{ "Invalid email format" }}</div>
+      <div *ngIf="emailInput.errors.invalidEmailDomain">{{ "Invalid email domain" }}</div>
+    </div> -->
+  </div>
+
+
+
+
+
+
+  <div class="form-group col-md-6">
+    <label for="cityCode">{{'codeCity' | translate}}</label>
+    <input type="number" class="form-control" name="cityCode" #cityCode="ngModel" ngModel
+      [(ngModel)]="warehouse.cityCode" placeholder="{{'Write your city code'|translate}} ">
   </div>
 
   <div class="form-group col-md-6">
-    <label for="cityCode">{{ "codeCity" | translate }}</label>
-    <input
-      type="number"
-      class="form-control"
-      name="cityCode"
-      #cityCode="ngModel"
-      ngModel
-      [(ngModel)]="warehouse.cityCode"
-      placeholder="{{ 'Write your city code' | translate }} "
-    />
-  </div>
-
-  <div class="form-group col-md-6">
-    <label for="cityName">{{ "nameCity" | translate }}</label>
-    <input
-      class="form-control"
-      name="cityName"
-      #cityName="ngModel"
-      ngModel
-      [(ngModel)]="warehouse.cityName"
-      placeholder="{{ 'Write your city name' | translate }} "
-    />
+    <label for="cityName">{{'nameCity' | translate}}</label>
+    <input class="form-control" name="cityName" #cityName="ngModel" ngModel [(ngModel)]="warehouse.cityName"
+      placeholder="{{'Write your city name'|translate}} ">
   </div>
 
   <div class="form-group col-md-6">
     <label for="wilayaCode">{{ "wilayaCode" | translate }}</label>
-    <select
-      (click)="selectValue($event)"
-      type="number"
-      class="form-control"
-      name="wilayaCode"
-      #wilayaCode="ngModel"
-      [(ngModel)]="warehouse.wilayaCode"
-    >
-      <option *ngFor="let dv of wilayas" [value]="dv.code">
-        {{ dv.code }}
-      </option>
+    <select (click)="selectValue($event)" type="number" class="form-control" name="wilayaCode" #wilayaCode="ngModel"
+      [(ngModel)]="warehouse.wilayaCode">
+      <option *ngFor="let dv of wilayas" [value]="dv.code"> {{dv.code}}</option>
     </select>
   </div>
   <div class="form-group col-md-6">
     <label for="wilayaName">{{ "wilayaName" | translate }}</label>
-    <input
-      readonly
-      class="form-control"
-      name="wilayaName"
-      #wilayaName="ngModel"
-      ngModel
-      [(ngModel)]="warehouse.wilayaName"
-      placeholder="{{ 'Write your wilaya name' | translate }} "
-    />
+    <input readonly class="form-control" name="wilayaName" #wilayaName="ngModel" ngModel
+      [(ngModel)]="warehouse.wilayaName" placeholder="{{'Write your wilaya name'|translate}} " />
+
+
   </div>
 
   <div class="form-group col-md-6">
-    <label class="required" for="isPrimary"
-      >{{ "isPrimary" | translate }}
-    </label>
-    <select
-      class="form-control"
-      name="isPrimary"
-      #isPrimary="ngModel"
-      required
-      aria-invalid="true"
-      aria-describedby="code-error"
-      [(ngModel)]="warehouse.isPrimary"
-    >
+    <label class="required" for="isPrimary">{{ "isPrimary" | translate }} </label>
+    <select class="form-control" name="isPrimary" #isPrimary="ngModel" required aria-invalid="true"
+      aria-describedby="code-error" [(ngModel)]="warehouse.isPrimary">
       <option [value]="" selected disabled>
-        {{ "Select your option" | translate }}
+        {{'Select your option'|translate}}
       </option>
       <option [value]="true">
-        {{ "True" | translate }}
+        {{'True'|translate}}
       </option>
       <option [value]="false">
-        {{ "False" | translate }}
+        {{'False'|translate}}
       </option>
     </select>
+
+
   </div>
   <div class="form-group col-md-6">
-    <label for="zipCode">{{ "zipCode" | translate }}</label>
-    <input
-      class="form-control"
-      type="number"
-      name="zipCode"
-      #zipCode="ngModel"
-      ngModel
-      [(ngModel)]="warehouse.zipCode"
-      placeholder="{{ 'Write your zip code' | translate }} "
-    />
+    <label for="zipCode">{{'zipCode' | translate}}</label>
+    <input class="form-control" type="number" name="zipCode" #zipCode="ngModel" ngModel [(ngModel)]="warehouse.zipCode"
+      placeholder="{{'Write your zip code'|translate}} ">
   </div>
 
-  <div class="form-group col-md-6">
-    <label for="phoneNumber">{{ "phoneNumber" | translate }}</label>
 
-    <div style="display: flex">
-      <select
-        style="width: 50%"
-        class="form-control"
-        (change)="selectContry($event)"
-      >
-        <option disabled selected>{{ "selectyourcontry" | translate }}</option>
-        <option *ngFor="let c of countryPhoneCodes" [value]="c.code">
-          {{ c.country }}
+  <div class="form-group col-md-6">
+    <label for="phoneNumber">{{'phoneNumber' | translate}}</label>
+
+    <div style="display: flex;">
+      <select style="width: 50%;" class="form-control" (change)="selectContry($event)">
+        <option disabled selected>{{"selectyourcontry"| translate}}</option>
+        <option *ngFor="let c of countryPhoneCodes " [value]="c.code"> {{c.country}}
         </option>
       </select>
-      <img
-        alt=""
-        *ngIf="flag != ''"
-        id="flag"
-        style="width: 40px; height: 35px; margin-left: 1%; margin-right: 1%"
-        [src]="getflage()"
-      />
-      <input
-        (keyup)="phoneNumberinp($event)"
-        type="text"
-        class="form-control"
-        name="phoneNumber"
-        #phoneNumber="ngModel"
-        ngModel
-        [(ngModel)]="warehouse.phoneNumber"
-        placeholder="{{ 'Write your phone' | translate }} "
-      />
+      <img alt="" *ngIf="flag!=''" id="flag" style="width: 40px; height: 35px;margin-left: 1%;margin-right: 1%;"
+        [src]="getflage()">
+      <input (keyup)="phoneNumberinp($event)" type="text" class="form-control" name="phoneNumber" #phoneNumber="ngModel" ngModel
+        [(ngModel)]="warehouse.phoneNumber" placeholder="{{'Write your phone'|translate}} ">
     </div>
   </div>
 
   <div class="form-group col-md-6">
-    <label for="faxNumber">{{ "faxNumber" | translate }}</label>
-    <input
-      type="number"
-      class="form-control"
-      name="faxNumber"
-      #faxNumber="ngModel"
-      ngModel
-      [(ngModel)]="warehouse.faxNumber"
-      placeholder=" {{ 'Write your fax Number' | translate }}"
-    />
+    <label for="faxNumber">{{'faxNumber' | translate}}</label>
+    <input type="number" class="form-control" name="faxNumber" #faxNumber="ngModel" ngModel
+      [(ngModel)]="warehouse.faxNumber" placeholder=" {{'Write your fax Number'|translate}}">
   </div>
 
   <div class="form-group col-md-6">
-    <label for="latitude">{{ "latitude" | translate }}</label>
-    <input
-      type="number"
-      class="form-control"
-      name="latitude"
-      #latitude="ngModel"
-      ngModel
-      placeholder=" {{ 'write your latitude' | translate }}"
-      [(ngModel)]="warehouse.latitude"
-    />
+
+    <label for="latitude">{{'latitude' | translate}}</label>
+    <input type="number" class="form-control" name="latitude" #latitude="ngModel" ngModel
+      placeholder=" {{'write your latitude'|translate}}" [(ngModel)]="warehouse.latitude">
   </div>
 
   <div class="form-group col-md-6">
-    <label class="clickable" for="longitude">{{
-      "longitude" | translate
-    }}</label>
-    <input
-      type="number"
-      class="form-control"
-      name="longitude"
-      #longitude="ngModel"
-      ngModel
-      placeholder="{{ 'write your longitude' | translate }}"
-      [(ngModel)]="warehouse.longitude"
-    />
+    <label class="clickable" for="longitude">{{'longitude' | translate}}</label>
+    <input type="number" class="form-control" name="longitude" #longitude="ngModel" ngModel
+      placeholder="{{'write your longitude'|translate}}" [(ngModel)]="warehouse.longitude">
   </div>
+
 </div>

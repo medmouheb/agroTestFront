@@ -1,121 +1,59 @@
 <div class="row" [formGroup]="addform">
-  <div class="form-group col-md-6">
-    <label class="required" for="codefournisseur">{{
-      "codefournisseur" | translate
-    }}</label>
-    <input
-      (blur)="exist(); isBlurDCisvalid(); blur1(); validationCode()"
-      class="form-control"
-      name="code"
-      ngModel
-      [(ngModel)]="fournisseur.code"
-      formControlName="code"
-      required
-      aria-invalid="true"
-      (ngModelChange)="geValues($event)"
-      placeholder="{{ 'Write your vendor code' | translate }} "
-    />
-    <div style="color: red" *ngIf="codeIsvalid">
-      {{ "Invalid code format" | translate }}
-    </div>
-    <div style="color: red" *ngIf="DCisvalid">
-      {{ "Code must be not null" | translate }}
-    </div>
-    <div style="color: red" *ngIf="dispotrueCode">
-      {{ "Code must be unique" | translate }}
-    </div>
-  </div>
 
-  <div class="form-group col-md-6">
-    <label class="required" for="name">{{
-      "namefournisseur" | translate
-    }}</label>
-    <input
-      (keyup)="existname(); isBlurDNisvalid(); geValues($event)"
-      class="form-control"
-      name="name"
-      ngModel
-      [(ngModel)]="fournisseur.name"
-      [formControl]="fieldControl"
-      required
-      aria-invalid="true"
-      formControlName="name"
-      placeholder="{{ 'Write your vendor name' | translate }} "
-      (ngModelChange)="geValues($event)"
-    />
-
-    <div style="color: red" *ngIf="DNisvalid">
-      {{ "Name must be not null" | translate }}
+    <div class="form-group col-md-6">
+        <label class="required" for="codefournisseur">{{'codefournisseur' | translate}}</label>
+        <input  (blur)="exist();isBlurDCisvalid();blur1();validationCode()"  class="form-control"  name="code" ngModel [(ngModel)]="fournisseur.code"
+            formControlName="code" required aria-invalid="true" (ngModelChange)="geValues($event)"
+            placeholder="{{'Write your vendor code'|translate}} "    />
+            <div  style="color: red;" *ngIf="codeIsvalid">{{ "Invalid code format" |translate }}</div>
+            <div style="color: red;" *ngIf="DCisvalid" >{{'Code must be not null'|translate}}</div>
+            <div style=" color : red;" *ngIf="dispotrueCode">{{'Code must be unique'|translate}}</div>
     </div>
-    <div style="color: red" *ngIf="dispotruename">
-      {{ "name must be unique" | translate }}
-    </div>
-  </div>
 
-  <div class="form-group col-md-6">
-    <label class="required" for="currencyCode">{{
-      "currencyCode" | translate
-    }}</label>
-    <select
-      (blur)="selectValue($event)"
-      (click)="selectValue($event); geValues($event)"
-      type="number"
-      class="form-control"
-      name="currencycode"
-      formControlName="currencyCode"
-      [(ngModel)]="fournisseur.currencycode"
-    >
-      <option *ngFor="let dv of cuurencys" [value]="dv.code">
-        {{ dv.code }}
-      </option>
+    <div  class="form-group col-md-6">
+        <label class="required" for="name">{{'namefournisseur' | translate}}</label>
+        <input (keyup)="existname();isBlurDNisvalid();geValues($event);"  class="form-control" name="name" ngModel [(ngModel)]="fournisseur.name" [formControl]="fieldControl"
+            required aria-invalid="true" formControlName="name"  placeholder="{{'Write your vendor name'|translate}} "
+             (ngModelChange)="geValues($event)" />
+             
+<!-- <div style=" color : red;" *ngIf="fieldControl.errors.pattern">{{"Format is invalid"|translate}}</div> -->
+            <div style="color: red;" *ngIf="DNisvalid" >{{'Name must be not null'|translate}}</div>
+        <div style=" color : red;" *ngIf="dispotruename">{{'name must be unique'|translate}}</div>
+           
+
+    </div>
+
+    <div class="form-group col-md-6">
+    <label class="required" for="currencyCode" >{{ "currencyCode" | translate }}</label>
+    <select (blur)="selectValue($event)"  (click)="selectValue($event);geValues($event) "  type="number" class="form-control" name="currencycode" formControlName="currencyCode" [(ngModel)]="fournisseur.currencycode">
+      <option *ngFor="let dv of cuurencys" [value]="dv.code" > {{dv.code}}</option>
     </select>
-  </div>
-  <div class="form-group col-md-6">
-    <label class="required" for="currencyname">{{
-      "currencyName" | translate
-    }}</label>
-    <input
-      class="form-control"
-      name="currencyname"
-      [(ngModel)]="fournisseur.currencyname"
-      [value]="fournisseur.currencyname"
-      (ngModelChange)="geValues($event)"
-      required
-      aria-invalid="true"
-      aria-describedby="code-error"
-      readonly
-    />
-  </div>
+    <!-- //<div style="color: red;" *ngIf="currecnyinv">{{'you must chose'|translate}}</div> -->
 
+  </div>
   <div class="form-group col-md-6">
-    <label class="required" for="type">{{ "type" | translate }}</label>
-    <select
-      class="form-control"
-      name="type"
-      ngModel
-      [(ngModel)]="fournisseur.type"
-      formControlName="type"
-      required
-      aria-invalid="true"
-      (ngModelChange)="geValues($event)"
-    >
-      <option value="INTERN">{{ "INTERN" | translate }}</option>
-      <option value="EXTERN">{{ "EXTERN" | translate }}</option>
+    <label class="required" for="currencyname">{{'currencyName' | translate}}</label>
+    <input  class="form-control" name="currencyname" [(ngModel)]="fournisseur.currencyname" [value]="fournisseur.currencyname"  (ngModelChange)="geValues($event)"
+      required aria-invalid="true" 
+        aria-describedby="code-error" readonly >
+  
+</div>
+
+<div class="form-group col-md-6">
+    <label class="required" for="type">{{'type' | translate}}</label>
+    <select class="form-control" name="type" ngModel [(ngModel)]="fournisseur.type" formControlName="type"
+         required aria-invalid="true"
+        (ngModelChange)="geValues($event)">
+        <option value="INTERN">{{'INTERN'|translate}}</option>
+        <option value="EXTERN">{{'EXTERN'|translate}}</option> 
     </select>
-  </div>
-  <div class="form-group col-md-6">
-    <label class="required" for="paymentTerm">{{
-      "paymentTerm" | translate
-    }}</label>
-    <input
-      class="form-control"
-      name="paymentTerm"
-      ngModel
-      [(ngModel)]="fournisseur.paymentTerm"
-      placeholder="{{ 'write your payement term' | translate }} "
-      required
-      formControlName="paymentTerm"
-      (ngModelChange)="geValues($event)"
-    />
-  </div>
+</div>
+    <div class="form-group col-md-6">
+        <label class="required" for="paymentTerm">{{'paymentTerm' | translate}}</label>
+        <input class="form-control" name="paymentTerm" ngModel [(ngModel)]="fournisseur.paymentTerm"
+        placeholder="{{'write your payement term'|translate}} "
+             required formControlName="paymentTerm" (ngModelChange)="geValues($event)"
+            >
+    </div>
+
 </div>

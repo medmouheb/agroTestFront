@@ -1,54 +1,64 @@
-<div
-  *ngIf="content"
-  class="modal"
-  tabindex="-1"
-  role="dialog"
-  style="display: block !important"
->
+<div *ngIf="content" class="modal" tabindex="-1" role="dialog" style="display:block!important">
   <div (click)="onClickOutside($event)" class="overlay"></div>
   <div class="modal-dialog custom-modal" role="document">
     <div class="modal-content">
-      <div class="modal-title">
-        <h5 class="text-secondary">
-          {{ content.title | translate }}
-        </h5>
-        <div class="d-flex justify-content-end px-2 pb-2">
-          <i
-            [title]="'btns.close' | translate"
-            (click)="content.cancel()"
-            class="zmdi zmdi-close close-modal-icon"
-          ></i>
+      <div style="height: 100%;" class="row">
+        <div style="overflow: scroll;max-height: 100%;" class="col-2">
+          <ng-content select="[stepper]">
+          </ng-content>
         </div>
-      </div>
+        <div style="height: 100%;"  class="col-10">
+          <div class="modal-title">
+            <h5 class="text-secondary">
+              {{content.title | translate}}
+            </h5>
+            <div class="d-flex justify-content-end px-2 pb-2">
+              <i [title]="'btns.close' | translate" (click)="content.cancel()"
+                class="zmdi zmdi-close close-modal-icon"></i>
+            </div>
+          </div>
 
-      <div class="modal-body">
-        <div class="row">
-          <div class="col-md-12 p-3">
-            <ng-content></ng-content>
+          <div class="modal-body">
+
+            <div class="row">
+              <div class="col-md-12 p-3">
+                <ng-content select="[body]"></ng-content>
+              </div>
+            </div>
+          </div>
+          <div style="justify-content: space-between;" class="row d-flex modal-footer">
+            <button (click)="content.cancel()" class="btn btn-sm btn-danger">
+              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                class="bi bi-x-circle-fill" viewBox="0 0 16 16">
+                <path
+                  d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z" />
+              </svg>
+            </button>
+            <button *ngIf="!isfirstStep()" (click)="content.prev()" class="btn btn-sm btn-outline-info">
+              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                class="bi bi-caret-left-fill" viewBox="0 0 16 16">
+                <path
+                  d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z" />
+              </svg>
+            </button>
+            <button style="background-color: #107bfff2 ;" [disabled]="!isNext" (click)="content.confirm()" class="btn btn-sm btn-success">
+              <svg *ngIf="!actionBtnLabel()" xmlns="http://www.w3.org/2000/svg" width="30" height="30"
+                fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16">
+                <path
+                  d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z" />
+              </svg>
+              <svg *ngIf="actionBtnLabel()" xmlns="http://www.w3.org/2000/svg" width="30" height="30"
+                fill="currentColor" class="bi bi-plus-square-fill" viewBox="0 0 16 16">
+                <path
+                  d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 4.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 1 0z" />
+              </svg>
+            </button>
           </div>
         </div>
       </div>
-      <div class="row d-flex justify-content-end modal-footer">
-        <div class="d-flex align-items-center gap-4">
-          <button (click)="content.cancel()" class="btn btn-outline-secondary">
-            {{ "btns.cancel" | translate }}
-          </button>
-          <button
-            *ngIf="!isfirstStep()"
-            (click)="content.prev()"
-            class="btn btn-outline-secondary"
-          >
-            {{ "btns.previous" | translate }}
-          </button>
-          <button
-            [disabled]="!isNext"
-            (click)="content.confirm()"
-            class="btn btn-primary"
-          >
-            {{ actionBtnLabel() | translate }}
-          </button>
-        </div>
-      </div>
+
+
+
     </div>
   </div>
 </div>

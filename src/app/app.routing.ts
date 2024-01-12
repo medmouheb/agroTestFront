@@ -24,6 +24,7 @@ import { TrashWComponent } from "./modules/warehouse/trash/trashw.component";
 import { TrashwilComponent } from "./modules/willaya/trashwil/trashwil.component";
 import { TrashComponent } from "./shared/components/trash/trash.component";
 import { StartPageComponent } from "./start-page/start-page.component";
+import { SignUpComponent } from "./sign-up/sign-up.component";
 
 const routes: Routes = [
   {
@@ -34,6 +35,11 @@ const routes: Routes = [
   {
     path: "login",
     component: LoginComponent,
+    pathMatch: "full",
+  },
+  {
+    path: "signup",
+    component: SignUpComponent,
     pathMatch: "full",
   },
   {
@@ -56,7 +62,7 @@ const routes: Routes = [
         component: TrashComponent,
       },
       {
-        path: "company/trash",
+        path: "company/trash",//
         component: TrashCComponent,
       },
       {
@@ -96,8 +102,8 @@ const routes: Routes = [
         component: TrashGComponent,
       },
       {
-        path: "fournisseurs/trash",
-        component: TrashFouComponent,
+        path:"fournisseurs/trash",
+        component:TrashFouComponent
       },
       {
         path: "simulatorMain/results",
@@ -109,66 +115,64 @@ const routes: Routes = [
       },
 
       {
-        path: "company",
+        path: "company",//
         loadChildren: () =>
           import("./modules/company/company.module").then(
-            (m) => m.CompanyModule,
+            (m) => m.CompanyModule
           ),
       },
       {
         path: "costCenter",
         loadChildren: () =>
           import("./modules/cost-center/cost-center.module").then(
-            (m) => m.CostCenterModule,
+            (m) => m.CostCenterModule
           ),
       },
       {
         path: "salesku",
         loadChildren: () =>
           import("./modules/sales-sku/sales-sku.module").then(
-            (m) => m.SalesSkuModule,
+            (m) => m.SalesSkuModule
           ),
       },
       {
         path: "Field-product",
         loadChildren: () =>
           import("./modules/produits/produits.module").then(
-            (m) => m.ProduitsModule,
+            (m) => m.ProduitsModule
           ),
       },
       {
         path: "Rapprochement-des-stocks",
         loadChildren: () =>
-          import(
-            "./modules/rapprochementdes-stock/rapprochementdes-stock.module"
-          ).then((m) => m.RapprochementdesStockModule),
+          import("./modules/rapprochementdes-stock/rapprochementdes-stock.module").then(
+            (m) => m.RapprochementdesStockModule
+          ),
       },
       {
         path: "ProductUsage",
         loadChildren: () =>
-          import("./modules/product-usage/product-usage.module").then(
-            (m) => m.ProductUsageModule,
-          ),
+          import("./modules/product-usage/product-usage.module").then((m) => m.ProductUsageModule),
       },
       {
         path: "Delivery",
         loadChildren: () =>
-          import(
-            "./modules/delivery-instruction/delivery-instruction.module"
-          ).then((m) => m.DeliveryInstructionModule),
+          import("./modules/delivery-instruction/delivery-instruction.module").then(
+            (m) => m.DeliveryInstructionModule
+          ),
       },
       {
         path: "shipmethode",
         loadChildren: () =>
           import("./modules/ship-methods/ship-methods.module").then(
-            (m) => m.ShipMethodsModule,
+            (m) => m.ShipMethodsModule
           ),
       },
       {
         path: "freightterms",
         loadChildren: () =>
           import("./modules/freight-terms/freight-terms.module").then(
-            (m) => m.FreightTermsModule,
+            (m) => m.FreightTermsModule
           ),
       },
 
@@ -176,28 +180,28 @@ const routes: Routes = [
         path: "fournisseurs",
         loadChildren: () =>
           import("./modules/fournisseurs/fournisseurs.module").then(
-            (m) => m.FournisseursModule,
+            (m) => m.FournisseursModule
           ),
       },
       {
         path: "sanitation",
         loadChildren: () =>
           import("./modules/sanitation/sanitation.module").then(
-            (m) => m.SanitationModule,
+            (m) => m.SanitationModule
           ),
       },
       {
         path: "warehouses",
         loadChildren: () =>
           import("./modules/warehouse/warehouse.module").then(
-            (m) => m.WarehouseModule,
+            (m) => m.WarehouseModule
           ),
       },
       {
         path: "Initialinventory",
         loadChildren: () =>
           import("./modules/beginninginventory/beginninginventory.module").then(
-            (m) => m.BeginninginventoryModule,
+            (m) => m.BeginninginventoryModule
           ),
       },
       {
@@ -209,49 +213,49 @@ const routes: Routes = [
         path: "currency",
         loadChildren: () =>
           import("./modules/currency/currency.module").then(
-            (m) => m.CurrencyModule,
+            (m) => m.CurrencyModule
           ),
       },
       {
         path: "division",
         loadChildren: () =>
           import("./modules/division/division.module").then(
-            (m) => m.DivisionModule,
+            (m) => m.DivisionModule
           ),
       },
       {
         path: "growout",
         loadChildren: () =>
           import("./modules/growout/growout.module").then(
-            (m) => m.GrowoutModule,
+            (m) => m.GrowoutModule
           ),
       },
       {
         path: "vehicule",
         loadChildren: () =>
           import("./modules/vehicule/vehicule.module").then(
-            (m) => m.VehiculeModule,
+            (m) => m.VehiculeModule
           ),
       },
       {
         path: "vehicleType",
         loadChildren: () =>
           import("./modules/vehicle-type/vehicle-type.module").then(
-            (m) => m.VehicleTypeModule,
+            (m) => m.VehicleTypeModule
           ),
       },
       {
         path: "willaya",
         loadChildren: () =>
           import("./modules/willaya/willaya.module").then(
-            (m) => m.WillayaModule,
+            (m) => m.WillayaModule
           ),
       },
       {
         path: "animal-product",
         loadChildren: () =>
           import("./modules/animal-product/animal-product.module").then(
-            (m) => m.AnimalProductModule,
+            (m) => m.AnimalProductModule
           ),
       },
       {
@@ -263,21 +267,21 @@ const routes: Routes = [
         path: "egg-product",
         loadChildren: () =>
           import("./modules/egg-product/egg-product.module").then(
-            (m) => m.EggProductModule,
+            (m) => m.EggProductModule
           ),
       },
       {
         path: "feed-mill",
         loadChildren: () =>
           import("./modules/feed-mill/feed-mill.module").then(
-            (m) => m.FeedMillModule,
+            (m) => m.FeedMillModule
           ),
       },
       {
         path: "hatchery",
         loadChildren: () =>
           import("./modules/hatchery/hatchery.module").then(
-            (m) => m.HatcheryModule,
+            (m) => m.HatcheryModule
           ),
       },
       {
@@ -294,63 +298,63 @@ const routes: Routes = [
         path: "live-stock-product",
         loadChildren: () =>
           import("./modules/live-stock-product/live-stock-product.module").then(
-            (m) => m.LiveStockProductModule,
+            (m) => m.LiveStockProductModule
           ),
       },
       {
         path: "animal-product",
         loadChildren: () =>
           import("./modules/animal-product/animal-product.module").then(
-            (m) => m.AnimalProductModule,
+            (m) => m.AnimalProductModule
           ),
       },
       {
         path: "vendorsku",
         loadChildren: () =>
           import("./modules/vendor-sku/vendor-sku.module").then(
-            (m) => m.VendorSKUModule,
+            (m) => m.VendorSKUModule
           ),
       },
       {
         path: "feed-product",
         loadChildren: () =>
           import("./modules/feed-product/feed-product.module").then(
-            (m) => m.FeedProductModule,
+            (m) => m.FeedProductModule
           ),
       },
       {
         path: "ordermangment",
         loadChildren: () =>
           import("./modules/ordermanagment/ordermanagment.module").then(
-            (m) => m.OrdermanagmentModule,
+            (m) => m.OrdermanagmentModule
           ),
       },
       {
         path: "logistic",
         loadChildren: () =>
           import("./modules/logistic/logistic.module").then(
-            (m) => m.LogisticModule,
+            (m) => m.LogisticModule
           ),
       },
       {
         path: "symtoms",
         loadChildren: () =>
           import("./modules/symtoms/symtoms.module").then(
-            (m) => m.SymtomsModule,
+            (m) => m.SymtomsModule
           ),
       },
       {
         path: "country",
         loadChildren: () =>
           import("./modules/country/country.module").then(
-            (m) => m.CountryModule,
+            (m) => m.CountryModule
           ),
       },
       {
         path: "willaya",
         loadChildren: () =>
           import("./modules/willaya/willaya.module").then(
-            (m) => m.WillayaModule,
+            (m) => m.WillayaModule
           ),
       },
       {
@@ -362,7 +366,7 @@ const routes: Routes = [
         path: "vihicule",
         loadChildren: () =>
           import("./modules/vihicule/vihicule.module").then(
-            (m) => m.VihiculeModule,
+            (m) => m.VihiculeModule
           ),
       },
       {
@@ -374,7 +378,7 @@ const routes: Routes = [
         path: "vetenarians",
         loadChildren: () =>
           import("./modules/vetenarians/vetenarians.module").then(
-            (m) => m.VetenariansModule,
+            (m) => m.VetenariansModule
           ),
       },
       {
@@ -386,7 +390,7 @@ const routes: Routes = [
         path: "treatment",
         loadChildren: () =>
           import("./modules/treatment/treatment.module").then(
-            (m) => m.TreatmentModule,
+            (m) => m.TreatmentModule
           ),
       },
       {
@@ -397,14 +401,14 @@ const routes: Routes = [
         path: "admin",
         loadChildren: () =>
           import("./modules/administration/administration.module").then(
-            (m) => m.AdministrationModule,
+            (m) => m.AdministrationModule
           ),
       },
       {
         path: "simulator",
         loadChildren: () =>
           import("./modules/simulator/simulator.module").then(
-            (m) => m.SiumulatorModule,
+            (m) => m.SiumulatorModule
           ),
       },
 
@@ -412,71 +416,68 @@ const routes: Routes = [
         path: "commandes",
         loadChildren: () =>
           import("./modules/commande/commande.module").then(
-            (m) => m.CommandeModule,
+            (m) => m.CommandeModule
           ),
       },
 
       {
         path: "charges",
         loadChildren: () =>
-          import("./modules/charge/charge.module").then((m) => m.ChargeModule),
+          import("./modules/charge/charge.module").then(
+            (m) => m.ChargeModule
+          ),
       },
 
       {
         path: "airports",
         loadChildren: () =>
           import("./modules/airport/airport.module").then(
-            (m) => m.AirportModule,
-          ),
+            (m) => m.AirportModule)
       },
       {
         path: "vehicles",
         loadChildren: () =>
           import("./modules/vehicles/vehicles.module").then(
-            (m) => m.VehiclesModule,
+            (m) => m.VehiclesModule
           ),
       },
       {
         path: "drivers",
         loadChildren: () =>
           import("./modules/drivers/drivers.module").then(
-            (m) => m.DriversModule,
+            (m) => m.DriversModule
           ),
       },
       {
         path: "logisticUnit",
         loadChildren: () =>
           import("./modules/logistic-unit/logistic-unit.module").then(
-            (m) => m.LogisticUnitModule,
+            (m) => m.LogisticUnitModule
           ),
       },
       {
         path: "seaports",
         loadChildren: () =>
           import("./modules/seaport/seaport.module").then(
-            (m) => m.SeaportModule,
-          ),
+            (m) => m.SeaportModule)
       },
       {
         path: "reasons",
         loadChildren: () =>
           import("./modules/reason-code/reason-code.module").then(
-            (m) => m.ReasonCodeModule,
-          ),
+            (m) => m.ReasonCodeModule)
       },
       {
         path: "manufacturers",
         loadChildren: () =>
           import("./modules/manufacturer/manufacturer.module").then(
-            (m) => m.ManufacturerModule,
-          ),
+            (m) => m.ManufacturerModule)
       },
       {
         path: "productcategories",
         loadChildren: () =>
           import("./modules/product-category/product-category.module").then(
-            (m) => m.ProductCategoryModule,
-          ),
+            (m) => m.ProductCategoryModule)
       },
     ],
   },
@@ -484,11 +485,10 @@ const routes: Routes = [
 
 @NgModule({
   imports: [
-    CommonModule,
+
+  CommonModule,
     BrowserModule,
-    RouterModule.forRoot(routes, {
-      useHash: true,
-    }),
+    RouterModule.forRoot(routes),
   ],
   exports: [],
 })

@@ -45,22 +45,21 @@ export class GrowoutListComponent implements OnInit {
   constructor(
     private growoutService: GrowoutService,
     private translateService: TranslateService,
-    private toastService: HotToastService,
-  ) {}
+    private toastService: HotToastService
+  ) { }
   onCheckboxChange() {
     if (this.isChecked == false) {
-      this.affiche = false;
-    } else {
-      this.affiche = true;
+
+      this.affiche = false
+    }
+    else {
+      this.affiche = true
     }
   }
   ngOnInit(): void {
     this.findPage();
     this.findArchivedPage();
-    this.onPaginationChange.subscribe(() => {
-      this.findPage();
-      this.findArchivedPage();
-    });
+    this.onPaginationChange.subscribe(() => {this.findPage();this.findArchivedPage();});
   }
 
   findPage() {
@@ -86,8 +85,8 @@ export class GrowoutListComponent implements OnInit {
       .findArchivedPage(this.pageNumber, this.pageSize, this.filter)
       .subscribe({
         next: (result) => {
-          this.growoutss = result.content;
 
+          this.growoutss = result.content;
           this.growoutPages = result;
         },
         error: (error) => {
@@ -132,7 +131,7 @@ export class GrowoutListComponent implements OnInit {
       this.translateService.instant("message.loading..."),
       {
         id: "0",
-      },
+      }
     );
     this.growoutService.save(id, this.growout!).subscribe({
       next: () => {
@@ -143,7 +142,7 @@ export class GrowoutListComponent implements OnInit {
         this.toastService.success(
           this.translateService.instant("success.saved", {
             elem: this.translateService.instant("growout"),
-          }),
+          })
         );
       },
       error: (error) => {
@@ -151,7 +150,7 @@ export class GrowoutListComponent implements OnInit {
         this.toastService.error(
           this.translateService.instant(error.error, {
             elem: this.translateService.instant("growout"),
-          }),
+          })
         );
       },
     });
@@ -184,17 +183,22 @@ export class GrowoutListComponent implements OnInit {
     this.stepper.nextStep();
     setTimeout(() => {
       this.stepper.prevStep();
+
     }, 100);
     setTimeout(() => {
-      this.formModal.show({
-        title: "menu.edit-growout",
-        stepsCount: this.steps.length - 1,
-        confirm: () => this.onWizardSave(id),
-        cancel: () => this.onCancel(),
-        prev: () => this.stepper.prevStep(),
-      });
-    }, 200);
+
+    this.formModal.show({
+      title: "menu.edit-growout",
+      stepsCount: this.steps.length - 1,
+      confirm: () => this.onWizardSave(id),
+      cancel: () => this.onCancel(),
+      prev: () => this.stepper.prevStep(),
+    });
+  }, 200);
+
   }
+
+
 
   onClickArchive(id: string) {
     this.archiveModal.show(() => {
@@ -207,7 +211,7 @@ export class GrowoutListComponent implements OnInit {
           this.toastService.success(
             this.translateService.instant("success.deleted", {
               elem: this.translateService.instant("growout"),
-            }),
+            })
           );
         },
       });
@@ -219,167 +223,143 @@ export class GrowoutListComponent implements OnInit {
     if (this.affiche == true) {
       if (this.sortByCodeValid) {
         this.growoutss.sort((a, b) => a.code.localeCompare(b.code));
-        this.sortByCodeValid = false;
+        this.sortByCodeValid = false
       } else {
         this.growoutss.sort((a, b) => b.code.localeCompare(a.code));
-        this.sortByCodeValid = true;
+        this.sortByCodeValid = true
       }
     } else {
       if (this.sortByCodeValid) {
         this.growouts.sort((a, b) => a.code.localeCompare(b.code));
-        this.sortByCodeValid = false;
+        this.sortByCodeValid = false
       } else {
         this.growouts.sort((a, b) => b.code.localeCompare(a.code));
-        this.sortByCodeValid = true;
+        this.sortByCodeValid = true
       }
     }
+
   }
+
+
 
   sortByNameValid: boolean = true;
   sortByName() {
     if (this.affiche == true) {
       if (this.sortByNameValid) {
         this.growoutss.sort((a, b) => a.name.localeCompare(b.name));
-        this.sortByNameValid = false;
+        this.sortByNameValid = false
       } else {
         this.growoutss.sort((a, b) => b.name.localeCompare(a.name));
-        this.sortByNameValid = true;
+        this.sortByNameValid = true
       }
     } else {
       if (this.sortByNameValid) {
         this.growouts.sort((a, b) => a.name.localeCompare(b.name));
-        this.sortByNameValid = false;
+        this.sortByNameValid = false
       } else {
         this.growouts.sort((a, b) => b.name.localeCompare(a.name));
-        this.sortByNameValid = true;
+        this.sortByNameValid = true
       }
     }
+
   }
   sortBydiviValid: boolean = true;
   sortBydivi() {
     if (this.affiche == true) {
       if (this.sortBydiviValid) {
-        this.growoutss.sort((a, b) =>
-          a.divisionName.localeCompare(b.divisionName),
-        );
-        this.sortBydiviValid = false;
+        this.growoutss.sort((a, b) => a.divisionName.localeCompare(b.divisionName));
+        this.sortBydiviValid = false
       } else {
-        this.growoutss.sort((a, b) =>
-          b.divisionName.localeCompare(a.divisionName),
-        );
-        this.sortBydiviValid = true;
+        this.growoutss.sort((a, b) => b.divisionName.localeCompare(a.divisionName));
+        this.sortBydiviValid = true
       }
     } else {
       if (this.sortBydiviValid) {
-        this.growouts.sort((a, b) =>
-          a.divisionName.localeCompare(b.divisionName),
-        );
-        this.sortBydiviValid = false;
+        this.growouts.sort((a, b) => a.divisionName.localeCompare(b.divisionName));
+        this.sortBydiviValid = false
       } else {
-        this.growouts.sort((a, b) =>
-          b.divisionName.localeCompare(a.divisionName),
-        );
-        this.sortBydiviValid = true;
+        this.growouts.sort((a, b) => b.divisionName.localeCompare(a.divisionName));
+        this.sortBydiviValid = true
       }
     }
+
   }
 
   sortByCityNameValid: boolean = true;
   sortByCityName() {
     if (this.affiche == true) {
       if (this.sortByCityNameValid) {
-        this.growoutss.sort((a, b) =>
-          (a.nameCity || "").localeCompare(b.nameCity || ""),
-        );
-        this.sortByCityNameValid = false;
+        this.growoutss.sort((a, b) => (a.nameCity || "").localeCompare((b.nameCity || "")));
+        this.sortByCityNameValid = false
       } else {
-        this.growoutss.sort((a, b) =>
-          (b.nameCity || "").localeCompare(a.nameCity || ""),
-        );
-        this.sortByCityNameValid = true;
+        this.growoutss.sort((a, b) => (b.nameCity || "").localeCompare((a.nameCity || "")));
+        this.sortByCityNameValid = true
       }
     } else {
       if (this.sortByCityNameValid) {
-        this.growouts.sort((a, b) =>
-          (a.nameCity || "").localeCompare(b.nameCity || ""),
-        );
-        this.sortByCityNameValid = false;
+        this.growouts.sort((a, b) => (a.nameCity || "").localeCompare((b.nameCity || "")));
+        this.sortByCityNameValid = false
       } else {
-        this.growouts.sort((a, b) =>
-          (b.nameCity || "").localeCompare(a.nameCity || ""),
-        );
-        this.sortByCityNameValid = true;
+        this.growouts.sort((a, b) => (b.nameCity || "").localeCompare((a.nameCity || "")));
+        this.sortByCityNameValid = true
       }
     }
+
   }
   sortBywillayaValid: boolean = true;
 
   sortBywillaya() {
     if (this.affiche == true) {
       if (this.sortBywillayaValid) {
-        this.growoutss.sort((a, b) =>
-          (a.wilayaName || "").localeCompare(b.wilayaName || ""),
-        );
-        this.sortBywillayaValid = false;
+        this.growoutss.sort((a, b) => (a.wilayaName || "").localeCompare((b.wilayaName || "")));
+        this.sortBywillayaValid = false
       } else {
-        this.growoutss.sort((a, b) =>
-          (b.wilayaName || "").localeCompare(a.wilayaName || ""),
-        );
-        this.sortBywillayaValid = true;
+        this.growoutss.sort((a, b) => (b.wilayaName || "").localeCompare((a.wilayaName || "")));
+        this.sortBywillayaValid = true
       }
     } else {
       if (this.sortBywillayaValid) {
-        this.growouts.sort((a, b) =>
-          (a.wilayaName || "").localeCompare(b.wilayaName || ""),
-        );
-        this.sortBywillayaValid = false;
+        this.growouts.sort((a, b) => (a.wilayaName || "").localeCompare((b.wilayaName || "")));
+        this.sortBywillayaValid = false
       } else {
-        this.growouts.sort((a, b) =>
-          (b.wilayaName || "").localeCompare(a.wilayaName || ""),
-        );
-        this.sortBywillayaValid = true;
+        this.growouts.sort((a, b) => (b.wilayaName || "").localeCompare((a.wilayaName || "")));
+        this.sortBywillayaValid = true
       }
     }
+
   }
 
   sortByAddressValid: boolean = true;
   sortByAddress() {
     if (this.affiche == true) {
       if (this.sortByAddressValid) {
-        this.growoutss.sort((a, b) =>
-          (a.address || "").localeCompare(b.address || ""),
-        );
-        this.sortByAddressValid = false;
+        this.growoutss.sort((a, b) => (a.address || "").localeCompare((b.address || "")));
+        this.sortByAddressValid = false
       } else {
-        this.growoutss.sort((a, b) =>
-          (b.address || "").localeCompare(a.address || ""),
-        );
-        this.sortByAddressValid = true;
+        this.growoutss.sort((a, b) => (b.address || "").localeCompare((a.address || "")));
+        this.sortByAddressValid = true
       }
     } else {
       if (this.sortByAddressValid) {
-        this.growouts.sort((a, b) =>
-          (a.address || "").localeCompare(b.address || ""),
-        );
-        this.sortByAddressValid = false;
+        this.growouts.sort((a, b) => (a.address || "").localeCompare((b.address || "")));
+        this.sortByAddressValid = false
       } else {
-        this.growouts.sort((a, b) =>
-          (b.address || "").localeCompare(a.address || ""),
-        );
-        this.sortByAddressValid = true;
+        this.growouts.sort((a, b) => (b.address || "").localeCompare((a.address || "")));
+        this.sortByAddressValid = true
       }
     }
+
   }
 
   onClickdisArchive(id: string) {
     this.growoutService.disArchive(id).subscribe({
       next: () => {
         this.findArchivedPage();
-        this.findPage();
+        this.findPage()
         this.toastService.success(
           this.translateService.instant("success.restore", {
             elem: this.translateService.instant("growout"),
-          }),
+          })
         );
       },
     });
@@ -389,11 +369,10 @@ export class GrowoutListComponent implements OnInit {
       next: () => {
         this.findArchivedPage();
         this.findPage();
-
         this.toastService.success(
           this.translateService.instant("success.deleted", {
             elem: this.translateService.instant("growout"),
-          }),
+          })
         );
       },
     });

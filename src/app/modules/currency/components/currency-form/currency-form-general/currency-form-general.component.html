@@ -1,136 +1,79 @@
 <div class="row" [formGroup]="addform">
-  <div style="display: none">{{ getstatus() }}</div>
-  <div class="form-group col-md-6">
-    <label class="required" for="code">{{ "currencyCode" | translate }}</label>
-    <input
-      class="form-control"
-      name="code"
-      (blur)="isBlurDCisvalid(); exist(); blur1(); validationCode()"
-      [(ngModel)]="currency.code"
-      formControlName="code"
-      required
-      placeholder=" {{ 'write your currency code' | translate }}"
-      aria-invalid="true"
-      aria-describedby="code-error"
-      (ngModelChange)="geValues($event)"
-    />
-    <div style="color: red" *ngIf="codeIsvalid">
-      {{ "Invalid code format" | translate }}
-    </div>
-    <div style="color: red" *ngIf="DCisvalid">
-      {{ "Code must be not null" | translate }}
-    </div>
-    <div style="color: red" *ngIf="dispotrueCode">
-      {{ "Code must be unique" | translate }}
-    </div>
-  </div>
+    <div style="display: none;" > {{getstatus()}} </div>
+    <!-- <p> {{id}} {{static}}  {{id==this.currency.id}} </p> -->
+    <div class="form-group col-md-6">
+        <label class="required" for="code">{{ "currencyCode" | translate }}</label>
+        <input class="form-control" name="code" (blur)="isBlurDCisvalid();exist();blur1();validationCode()"
+            [(ngModel)]="currency.code" formControlName="code" required
+            placeholder=" {{'write your currency code'|translate}}" aria-invalid="true" aria-describedby="code-error"
+            (ngModelChange)="geValues($event)">
+        <div style="color: red;" *ngIf="codeIsvalid">{{ "Invalid code format" |translate }}</div>
+        <div style="color: red;" *ngIf="DCisvalid">{{'Code must be not null'|translate}}</div>
+        <div style=" color : red;" *ngIf="dispotrueCode">{{'Code must be unique'|translate}}</div>
 
-  <div class="form-group col-md-6">
-    <label class="required" for="name">{{ "currencyName" | translate }}</label>
-    <input
-      class="form-control"
-      [formControl]="fieldControl2"
-      (blur)="isBlurDNisvalid(); existname()"
-      name="name"
-      formControlName="name"
-      [(ngModel)]="currency.name"
-      required
-      placeholder="{{ 'Write your currency name' | translate }}"
-      aria-invalid="true"
-      aria-describedby="name-error"
-      (ngModelChange)="geValues($event)"
-    />
-
-    <div style="color: red" *ngIf="dispotruename">
-      {{ "name must be unique" | translate }}
-    </div>
-    <div style="color: red" *ngIf="DNisvalid">
-      {{ "Name must be not null" | translate }}
-    </div>
-  </div>
-  <div class="form-group col-md-6">
-    <label class="required" for="code">{{ "countryCode" | translate }}</label>
-
-    <input
-      class="form-control"
-      [formControl]="fieldControl"
-      (blur)="isBlurDCjiisvalid()"
-      name="countrcode"
-      formControlName="Countrcode"
-      [(ngModel)]="currency.countrcode"
-      required
-      placeholder="{{ 'write your country name' | translate }}"
-      aria-invalid="true"
-      (ngModelChange)="geValues($event)"
-    />
-    <div style="color: red" *ngIf="DCouisvalid">
-      {{ "Code must be not null" | translate }}
-    </div>
-  </div>
-
-  <div style="display: none" class="form-group col-md-6">
-    <label class="required" for="code">{{ "Digitalcode" | translate }}</label>
-    <input
-      class="form-control"
-      name="code"
-      (blur)="isBlurDCouisvalid()"
-      [(ngModel)]="currency.digitalcode"
-      formControlName="Digitalcode"
-      required
-      placeholder=" {{ 'write your digital code' | translate }}"
-      aria-invalid="true"
-      type="number"
-      aria-describedby="code-error"
-      (ngModelChange)="geValues($event)"
-    />
-
-    <div style="color: red" *ngIf="DCgiisvalid">
-      {{ "Code must be not null" | translate }}
-    </div>
-  </div>
-
-  <div class="form-group col-md-6">
-    <label class="required" for="name">{{ "countryName" | translate }}</label>
-    <input
-      class="form-control"
-      [formControl]="fieldControl"
-      (blur)="isBlurDNouisvalid()"
-      name="name"
-      formControlName="Countryname"
-      [(ngModel)]="currency.countryname"
-      required
-      placeholder="{{ 'write your country name' | translate }}"
-      aria-invalid="true"
-      aria-describedby="name-error"
-      (ngModelChange)="geValues($event)"
-    />
-    <div style="color: red" *ngIf="minIstrueName3">
-      {{ "Format is invalid" | translate }}
     </div>
 
-    <div style="color: red" *ngIf="DNcouisvalid">
-      {{ "Name must be not null" | translate }}
-    </div>
-  </div>
 
-  <div class="form-group col-md-6">
-    <label class="required" for="code">{{ "Digitalcode" | translate }}</label>
-    <input
-      class="form-control"
-      name="code"
-      (blur)="isBlurDCouisvalid()"
-      [(ngModel)]="currency.digitalcode"
-      formControlName="Digitalcode"
-      required
-      placeholder=" {{ 'write your digital code' | translate }}"
-      aria-invalid="true"
-      type="number"
-      aria-describedby="code-error"
-      (ngModelChange)="geValues($event)"
-    />
+    <div class="form-group col-md-6 ">
+        <label class="required" for="name">{{ "currencyName" | translate }}</label>
+        <input class="form-control" [formControl]="fieldControl2" (blur)="isBlurDNisvalid(); existname() " name="name"
+            formControlName="name" [(ngModel)]="currency.name" required
+            placeholder="{{'Write your currency name'|translate}}" aria-invalid="true" aria-describedby="name-error"
+            (ngModelChange)="geValues($event)">
 
-    <div style="color: red" *ngIf="DCgiisvalid">
-      {{ "Code must be not null" | translate }}
+        <div style=" color : red;" *ngIf="dispotruename">{{'name must be unique'|translate}}</div>
+        <div style="color: red;" *ngIf="DNisvalid">{{'Name must be not null'|translate}}</div>
+
+
     </div>
-  </div>
+    <div class="form-group col-md-6">
+        <label class="required" for="code">{{ "countryCode" | translate }}</label>
+        <!-- <input class="form-control" name="countrcode" (blur)="isBlurDCjiisvalid()" [(ngModel)]="currency.countrcode"
+            formControlName="countrcode" required placeholder=" {{'write your country code'|translate}}"
+            aria-invalid="true" type="number" aria-describedby="code-error" (ngModelChange)="geValues($event)">
+
+        <div style="color: red;" *ngIf="DCouisvalid">{{'Code must be not null'|translate}}</div> -->
+
+        <input class="form-control" [formControl]="fieldControl" (blur)="isBlurDCjiisvalid() " name="countrcode"
+            formControlName="Countrcode" [(ngModel)]="currency.countrcode" required
+            placeholder="{{'write your country name'|translate}}" aria-invalid="true"
+            (ngModelChange)="geValues($event)">
+        <div style="color: red;" *ngIf="DCouisvalid">{{'Code must be not null'|translate}}</div>
+
+
+    </div>
+   
+    <div style="display: none;" class="form-group col-md-6">
+        <label class="required" for="code">{{ "Digitalcode" | translate }}</label>
+        <input class="form-control" name="code" (blur)="isBlurDCouisvalid()" [(ngModel)]="currency.digitalcode"
+            formControlName="Digitalcode" required placeholder=" {{'write your digital code'|translate}}"
+            aria-invalid="true" type="number" aria-describedby="code-error" (ngModelChange)="geValues($event)">
+
+        <div style="color: red;" *ngIf="DCgiisvalid">{{'Code must be not null'|translate}}</div>
+
+    </div>
+
+    <div class="form-group col-md-6 ">
+        <label class="required" for="name">{{ "countryName" | translate }}</label>
+        <input class="form-control" [formControl]="fieldControl" (blur)="isBlurDNouisvalid() " name="name"
+            formControlName="Countryname" [(ngModel)]="currency.countryname" required
+            placeholder="{{'write your country name'|translate}}" aria-invalid="true" aria-describedby="name-error"
+            (ngModelChange)="geValues($event)">
+        <div style=" color : red;" *ngIf="minIstrueName3">{{"Format is invalid"|translate}}</div>
+
+        <div style="color: red;" *ngIf="DNcouisvalid">{{'Name must be not null'|translate}}</div>
+    </div>
+
+    <div class="form-group col-md-6">
+        <label class="required" for="code">{{ "Digitalcode" | translate }}</label>
+        <input class="form-control" name="code" (blur)="isBlurDCouisvalid()" [(ngModel)]="currency.digitalcode"
+            formControlName="Digitalcode" required placeholder=" {{'write your digital code'|translate}}"
+            aria-invalid="true" type="number" aria-describedby="code-error" (ngModelChange)="geValues($event)">
+
+        <div style="color: red;" *ngIf="DCgiisvalid">{{'Code must be not null'|translate}}</div>
+
+    </div>
+
+    
+
 </div>

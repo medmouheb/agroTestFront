@@ -1,48 +1,25 @@
 <div class="row" [formGroup]="addform">
-  <div class="form-group col-md-6">
-    <label class="required" for="vehicleTypeCode">{{
-      "vehicleTypeCode" | translate
-    }}</label>
-    <input
-      (keyup)="codetouchedfn()"
-      class="form-control"
-      name="vehicleTypeCode"
-      [(ngModel)]="camp.vehicleTypeCode"
-      formControlName="vehicleTypeCode"
-      placeholder="{{ 'PLvehicleTypeCode' | translate }} "
-      required
-      aria-invalid="true"
-      type="number"
-      aria-describedby="code-error"
-      (ngModelChange)="geValues($event)"
-    />
 
-    <div style="color: red" *ngIf="dispotrueCode">
-      {{ "Code must be unique" | translate }}
-    </div>
-    <div style="color: red" *ngIf="minIstrueCode">
-      {{ "Code must be not null" | translate }}
-    </div>
-  </div>
+    <div class="form-group col-md-6">
+        <label class="required" for="vehicleTypeCode">{{ "vehicleTypeCode" | translate }}</label>
+        <input (keyup)="codetouchedfn()"  class="form-control" name="vehicleTypeCode" [(ngModel)]="camp.vehicleTypeCode"
+            formControlName="vehicleTypeCode" placeholder="{{'PLvehicleTypeCode'|translate}} " required
+            aria-invalid="true" type="number" aria-describedby="code-error" (ngModelChange)="geValues($event)">
 
-  <div class="form-group col-md-6">
-    <label class="required" for="vehicleTypeName">{{
-      "vehicleTypeName" | translate
-    }}</label>
-    <input
-      class="form-control"
-      name="vehicleTypeName"
-      [(ngModel)]="camp.vehicleTypeName"
-      formControlName="vehicleTypeName"
-      placeholder="{{ 'PLvehicleTypeName' | translate }} "
-      required
-      aria-invalid="true"
-      type="text"
-      aria-describedby="code-error"
-      (ngModelChange)="geValues1($event)"
-    />
-    <div style="color: red" *ngIf="minIstrueName">
-      {{ "Name must be not null" | translate }}
+        <div style=" color : red;" *ngIf="dispotrueCode">{{'Code must be unique'|translate}}</div>
+        <div style=" color : red;" *ngIf="minIstrueCode">{{'Code must be not null'|translate}}</div>
     </div>
-  </div>
+
+    <div class="form-group col-md-6">
+        <label class="required" for="vehicleTypeName">{{ "vehicleTypeName" | translate }}</label>
+        <input class="form-control" name="vehicleTypeName" [(ngModel)]="camp.vehicleTypeName"
+            formControlName="vehicleTypeName" placeholder="{{'PLvehicleTypeName'|translate}} " required
+            aria-invalid="true" type="text" aria-describedby="code-error" (ngModelChange)="geValues1($event)">
+            <div style=" color : red;" *ngIf="minIstrueName">{{'Name must be not null'|translate}}</div>
+    </div>
+
+
+
+
+
 </div>

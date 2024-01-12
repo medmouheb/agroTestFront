@@ -1,59 +1,30 @@
 <div class="row">
-  <div class="form-group col-md-6">
-    <label for="ContractNumber">{{ "ContractNumber" | translate }}</label>
-    <input
-      class="form-control"
-      type="number"
-      name="contractNumber"
-      #contractNumber="ngModel"
-      ngModel
-      [(ngModel)]="farm.contractNumber"
-    />
-  </div>
+    <div class="form-group col-md-6">
+        <label for="ContractNumber">{{'ContractNumber' | translate}}</label>
+        <input class="form-control" type="number" name="contractNumber" #contractNumber="ngModel" ngModel [(ngModel)]="farm.contractNumber">
+      </div>
+   
+      <div class="form-group col-md-6">
+        <label for="contratPay">{{'contratPay' | translate}}</label>
+        <input class="form-control" name="contratPay" #contratPay="ngModel" ngModel [(ngModel)]="farm.contratPay">
+      </div>
+    <div class="form-group col-md-6">
+      <label for="startDateFarms">{{'StartDate' | translate}}</label>
+      <input type="date" class="form-control" name="startDateFarms" #startDateFarms="ngModel" ngModel [(ngModel)]="farm.startDateFarms">
+    </div>
+  
+    <div class="form-group col-md-6">
+      <label for="endDateFarms">{{'EndDate' | translate}} </label>
+      <input type="date" class="form-control" name="endDateFarms" #endDateFarms="ngModel" ngModel [(ngModel)]="farm.endDateFarms">
+    </div>
+  
+    <div class="form-group col-md-6">
+      <label for="renewalDateFarms">{{'renewalDateFarms' | translate}}</label>
+      <input type="date" class="form-control" name="renewalDateFarms" #renewalDateFarms="ngModel" ngModel [(ngModel)]="farm.renewalDateFarms">
+    </div>
+ 
+    
 
-  <div class="form-group col-md-6">
-    <label for="contratPay">{{ "contratPay" | translate }}</label>
-    <input
-      class="form-control"
-      name="contratPay"
-      #contratPay="ngModel"
-      ngModel
-      [(ngModel)]="farm.contratPay"
-    />
-  </div>
-  <div class="form-group col-md-6">
-    <label for="startDateFarms">{{ "StartDate" | translate }}</label>
-    <input
-      type="date"
-      class="form-control"
-      name="startDateFarms"
-      #startDateFarms="ngModel"
-      ngModel
-      [(ngModel)]="farm.startDateFarms"
-    />
-  </div>
 
-  <div class="form-group col-md-6">
-    <label for="endDateFarms">{{ "EndDate" | translate }} </label>
-    <input
-      type="date"
-      class="form-control"
-      name="endDateFarms"
-      #endDateFarms="ngModel"
-      ngModel
-      [(ngModel)]="farm.endDateFarms"
-    />
   </div>
-
-  <div class="form-group col-md-6">
-    <label for="renewalDateFarms">{{ "renewalDateFarms" | translate }}</label>
-    <input
-      type="date"
-      class="form-control"
-      name="renewalDateFarms"
-      #renewalDateFarms="ngModel"
-      ngModel
-      [(ngModel)]="farm.renewalDateFarms"
-    />
-  </div>
-</div>
+  

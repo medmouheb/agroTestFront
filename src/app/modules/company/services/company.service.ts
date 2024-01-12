@@ -58,7 +58,6 @@ export class CompanyService {
   ): Observable<Page<Company>> {
     let url = this.baseUrl() + "/campany/page";
     let params = new HttpParams();
-    console.log(`${JSON.parse(localStorage.getItem("tocken")).tokenType} ${JSON.parse(localStorage.getItem("tocken")).accessToken}`);
     const headers = new HttpHeaders()
       .set("Authorization", `${JSON.parse(localStorage.getItem("tocken")).tokenType} ${JSON.parse(localStorage.getItem("tocken")).accessToken}`)
     params = params.append("pageNumber", pageNumber);

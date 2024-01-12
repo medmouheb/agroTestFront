@@ -1,22 +1,23 @@
-import { ComponentFixture, TestBed } from "@angular/core/testing";
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ReasonFormComponent } from "./reason-form.component";
+import { ReasonFormComponent } from './reason-form.component';
 
-describe("ReasonFormComponent", () => {
+describe('ReasonFormComponent', () => {
   let component: ReasonFormComponent;
   let fixture: ComponentFixture<ReasonFormComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ReasonFormComponent],
-    }).compileComponents();
+      declarations: [ ReasonFormComponent ]
+    })
+    .compileComponents();
 
     fixture = TestBed.createComponent(ReasonFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
-  it("should create", () => {
+  it('should create', () => {
     expect(component).toBeTruthy();
   });
 });

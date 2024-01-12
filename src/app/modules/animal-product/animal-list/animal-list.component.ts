@@ -1,5 +1,7 @@
-import { Component, EventEmitter, ViewChild } from "@angular/core";
+import { Component, EventEmitter, OnInit, ViewChild } from "@angular/core";
 import { FormGroup } from "@angular/forms";
+import { HotToastService } from "@ngneat/hot-toast";
+import { TranslateService } from "@ngx-translate/core";
 import { ConfirmDialogComponent } from "app/shared/components/confirm-dialog/confirm-dialog.component";
 import { StepperComponent } from "app/shared/components/stepper/stepper.component";
 import { WizardDialogComponent } from "app/shared/components/wizard-dialog/wizard-dialog.component";
@@ -9,7 +11,7 @@ import { WizardDialogComponent } from "app/shared/components/wizard-dialog/wizar
   templateUrl: "./animal-list.component.html",
   styleUrls: ["./animal-list.component.scss"],
 })
-export class AnimalListComponent {
+export class AnimalListComponent implements OnInit {
   @ViewChild("deleteModal")
   deleteModal!: ConfirmDialogComponent;
   @ViewChild("archiveModal")
@@ -30,7 +32,12 @@ export class AnimalListComponent {
   currentStep = 0;
   steps: any = ["steps.general", "steps.localisation"];
 
-  constructor() {}
+  constructor(
+    private translateService: TranslateService,
+    private toastService: HotToastService
+  ) {}
+
+  ngOnInit(): void {}
 
   onClickAdd() {
     this.formModal.show({

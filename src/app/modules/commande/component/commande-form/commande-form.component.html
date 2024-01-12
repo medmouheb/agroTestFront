@@ -1,21 +1,18 @@
+
 <ng-content></ng-content>
 
 <form class="form-card">
+
   <div *ngIf="currentStep == 0">
-    <app-commande-form-general
-      [commande]="commande"
-    ></app-commande-form-general>
+    <app-commande-form-general [commande]="commande"></app-commande-form-general>
   </div>
 
   <div *ngIf="currentStep == 1">
-    <app-commande-form-information
-      [commande]="commande"
-    ></app-commande-form-information>
+    <app-commande-form-information [commande]="commande"></app-commande-form-information>
   </div>
 
+
   <div *ngIf="currentStep == 2">
-    <app-commande-form-schedule
-      [commande]="commande"
-    ></app-commande-form-schedule>
+    <app-commande-form-schedule [commande]="commande"></app-commande-form-schedule>
   </div>
 </form>

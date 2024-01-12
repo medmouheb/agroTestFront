@@ -1,246 +1,120 @@
 <div class="row">
-  <div class="form-group col-md-6">
-    <label for="noDeReferenceAchat">{{
-      "noDeReferenceAchat" | translate
-    }}</label>
-    <input
-      class="form-control"
-      name="noDeReferenceAchat"
-      [(ngModel)]="camp.noDeReferenceAchat"
-    />
-  </div>
+<div class="form-group col-md-6">
+    <label for="noDeReferenceAchat">{{ "noDeReferenceAchat" | translate }}</label>
+    <input class="form-control" name="noDeReferenceAchat" [(ngModel)]="camp.noDeReferenceAchat">
+</div>
 
-  <div class="form-group col-md-6">
+<div class="form-group col-md-6">
     <label for="quantiteRestante">{{ "quantiteRestante" | translate }}</label>
-    <input
-      type="number"
-      class="form-control"
-      name="quantiteRestante"
-      [(ngModel)]="camp.quantiteRestante"
-    />
-  </div>
+    <input  type="number" class="form-control" name="quantiteRestante" [(ngModel)]="camp.quantiteRestante">
 
-  <div class="form-group col-md-6">
-    <label for="valeurUnitaireRestante">{{
-      "valeurUnitaireRestante" | translate
-    }}</label>
-    <input
-      type="number"
-      class="form-control"
-      name="valeurUnitaireRestante"
-      [(ngModel)]="camp.valeurUnitaireRestante"
-    />
-  </div>
-  <div class="form-group col-md-6">
-    <label for="numeroDeReferenceDuFournisseur">{{
-      "numeroDeReferenceDuFournisseur" | translate
-    }}</label>
-    <input
-      type="number"
-      class="form-control"
-      name="numeroDeReferenceDuFournisseur"
-      [(ngModel)]="camp.numeroDeReferenceDuFournisseur"
-    />
-  </div>
+</div>
 
-  <div class="form-group col-md-6">
-    <label for="quantiteDeDebutDeFiletage">{{
-      "quantiteDeDebutDeFiletage" | translate
-    }}</label>
-    <input
-      class="form-control"
-      type="number"
-      name="quantiteDeDebutDeFiletage"
-      [(ngModel)]="camp.quantiteDeDebutDeFiletage"
-    />
-  </div>
+<div class="form-group col-md-6">
+    <label for="valeurUnitaireRestante">{{ "valeurUnitaireRestante" | translate }}</label>
+    <input  type=number class="form-control" name="valeurUnitaireRestante" [(ngModel)]="camp.valeurUnitaireRestante">
+</div>
+<div class="form-group col-md-6">
+    <label for="numeroDeReferenceDuFournisseur">{{ "numeroDeReferenceDuFournisseur" | translate }}</label>
+    <input  type="number" class="form-control" name="numeroDeReferenceDuFournisseur" [(ngModel)]="camp.numeroDeReferenceDuFournisseur">
 
-  <div class="form-group col-md-6">
-    <label for="valeurUniteDeDebutDeThread">{{
-      "valeurUniteDeDebutDeThread" | translate
-    }}</label>
-    <input
-      type="number"
-      class="form-control"
-      name="valeurUniteDeDebutDeThread"
-      [(ngModel)]="camp.valeurUniteDeDebutDeThread"
-    />
-  </div>
+</div>
 
-  <div class="form-group col-md-6">
-    <label for="valeurDeDebutDeThread">{{
-      "valeurDeDebutDeThread" | translate
-    }}</label>
-    <input
-      type="number"
-      class="form-control"
-      name="valeurDeDebutDeThread"
-      [(ngModel)]="camp.valeurDeDebutDeThread"
-    />
-  </div>
+<div class="form-group col-md-6">
+    <label for="quantiteDeDebutDeFiletage">{{ "quantiteDeDebutDeFiletage" | translate }}</label>
+    <input  class="form-control" type="number" name="quantiteDeDebutDeFiletage" [(ngModel)]="camp.quantiteDeDebutDeFiletage">
+</div>
 
-  <div class="form-group col-md-6">
-    <label for="dateDeCreationDuFil">{{
-      "dateDeCreationDuFil" | translate
-    }}</label>
-    <input
-      type="date"
-      class="form-control"
-      name="dateDeCreationDuFil"
-      [(ngModel)]="camp.dateDeCreationDuFil"
-    />
-  </div>
+<div class="form-group col-md-6">
+    <label for="valeurUniteDeDebutDeThread">{{ "valeurUniteDeDebutDeThread" | translate }}</label>
+    <input type="number" class="form-control" name="valeurUniteDeDebutDeThread" [(ngModel)]="camp.valeurUniteDeDebutDeThread">
+</div>
 
-  <div class="form-group col-md-6">
+<div class="form-group col-md-6">
+    <label for="valeurDeDebutDeThread">{{ "valeurDeDebutDeThread" | translate }}</label>
+    <input type="number" class="form-control" name="valeurDeDebutDeThread"
+        [(ngModel)]="camp.valeurDeDebutDeThread">
+
+</div>
+
+<div class="form-group col-md-6">
+    <label for="dateDeCreationDuFil">{{ "dateDeCreationDuFil" | translate }}</label>
+    <input type="date"  class="form-control" name="dateDeCreationDuFil" [(ngModel)]="camp.dateDeCreationDuFil">
+</div>
+
+<div class="form-group col-md-6">
     <label for="dateDuFil">{{ "dateDuFil" | translate }}</label>
-    <input
-      type="date"
-      class="form-control"
-      name="dateDuFil"
-      [(ngModel)]="camp.dateDuFil"
-    />
-  </div>
+    <input type="date" class="form-control" name="dateDuFil"
+        [(ngModel)]="camp.dateDuFil">
 
-  <div class="form-group col-md-6">
-    <label for="quantiteDeFil">{{ "quantiteDeFil" | translate }}</label>
-    <input
-      class="form-control"
-      type="number"
-      name="quantiteDeFil"
-      [(ngModel)]="camp.quantiteDeFil"
-    />
-  </div>
+</div>
 
-  <div class="form-group col-md-6">
-    <label for="typeEnregistrementDeThread">{{
-      "typeEnregistrementDeThread" | translate
-    }}</label>
-    <input
-      class="form-control"
-      name="typeEnregistrementDeThread"
-      [(ngModel)]="camp.typeEnregistrementDeThread"
-    />
-  </div>
+<div class="form-group col-md-6">
+    <label for="quantiteDeFil">{{ "quantiteDeFil" | translate}}</label>
+    <input  class="form-control" type="number" name="quantiteDeFil"
+        [(ngModel)]="camp.quantiteDeFil">
+</div>
 
-  <div class="form-group col-md-6">
-    <label for="ndeReferenceDuFiletage">{{
-      "nDeReferenceDuFiletage" | translate
-    }}</label>
-    <input
-      type="number"
-      class="form-control"
-      name="ndeReferenceDuFiletage"
-      [(ngModel)]="camp.ndeReferenceDuFiletage"
-    />
-  </div>
+<div class="form-group col-md-6">
+    <label for="typeEnregistrementDeThread">{{ "typeEnregistrementDeThread" | translate }}</label>
+    <input class="form-control" name="typeEnregistrementDeThread" [(ngModel)]="camp.typeEnregistrementDeThread">
+</div>
 
-  <div class="form-group col-md-6">
-    <label for="quantiteRestanteDeFil">{{
-      "quantiteRestanteDeFil" | translate
-    }}</label>
-    <input
-      type="number"
-      class="form-control"
-      name="quantiteRestanteDeFil"
-      [(ngModel)]="camp.quantiteRestanteDeFil"
-    />
-  </div>
-  <div class="form-group col-md-6">
-    <label for="valeurUnitaireRestanteDuFil">{{
-      "valeurUnitaireRestanteDuFil" | translate
-    }}</label>
-    <input
-      type="number"
-      class="form-control"
-      name="valeurUnitaireRestanteDuFil"
-      [(ngModel)]="camp.valeurUnitaireRestanteDuFil"
-    />
-  </div>
+<div class="form-group col-md-6">
+    <label for="ndeReferenceDuFiletage">{{ "nDeReferenceDuFiletage" | translate }}</label>
+    <input type="number" class="form-control" name="ndeReferenceDuFiletage" [(ngModel)]="camp.ndeReferenceDuFiletage">
 
-  <div class="form-group col-md-6">
-    <label for="valeurRestanteDuFil">{{
-      "valeurRestanteDuFil" | translate
-    }}</label>
-    <input
-      type="number"
-      class="form-control"
-      name="valeurRestanteDuFil"
-      [(ngModel)]="camp.valeurRestanteDuFil"
-    />
-  </div>
+</div>
 
-  <div class="form-group col-md-6">
-    <label for="codeSourceDuFil">{{ "codeSourceDuFil" | translate }}</label>
-    <input
-      class="form-control"
-      name="codeSourceDuFil"
-      [(ngModel)]="camp.codeSourceDuFil"
-    />
-  </div>
+<div class="form-group col-md-6">
+    <label for="quantiteRestanteDeFil">{{ "quantiteRestanteDeFil" | translate }}</label>
+    <input  type="number" class="form-control" name="quantiteRestanteDeFil" [(ngModel)]="camp.quantiteRestanteDeFil">
+</div>
+<div class="form-group col-md-6">
+    <label for="valeurUnitaireRestanteDuFil">{{ "valeurUnitaireRestanteDuFil" | translate }}</label>
+    <input type="number" class="form-control" name="valeurUnitaireRestanteDuFil" [(ngModel)]="camp.valeurUnitaireRestanteDuFil">
 
-  <div class="form-group col-md-6">
-    <label for="codeDeTransmissionDeFil">{{
-      "codeDeTransmissionDeFil" | translate
-    }}</label>
-    <input
-      class="form-control"
-      name="codeDeTransmissionDeFil"
-      [(ngModel)]="camp.codeDeTransmissionDeFil"
-    />
-  </div>
+</div>
 
-  <div class="form-group col-md-6">
-    <label for="valeurUniteDeFiletage">{{
-      "valeurUniteDeFiletage" | translate
-    }}</label>
-    <input
-      type="number"
-      class="form-control"
-      name="valeurUniteDeFiletage"
-      [(ngModel)]="camp.valeurUniteDeFiletage"
-    />
-  </div>
-  <div class="form-group col-md-6">
+<div class="form-group col-md-6">
+    <label for="valeurRestanteDuFil">{{ "valeurRestanteDuFil" | translate }}</label>
+    <input type="number" class="form-control"  name="valeurRestanteDuFil" [(ngModel)]="camp.valeurRestanteDuFil">
+</div>
+
+<div class="form-group col-md-6">
+    <label for="codeSourceDuFil">{{ "codeSourceDuFil" | translate}}</label>
+    <input  class="form-control" name="codeSourceDuFil"
+        [(ngModel)]="camp.codeSourceDuFil">
+</div>
+
+<div class="form-group col-md-6">
+    <label for="codeDeTransmissionDeFil">{{ "codeDeTransmissionDeFil" | translate }}</label>
+    <input class="form-control" name="codeDeTransmissionDeFil" [(ngModel)]="camp.codeDeTransmissionDeFil">
+</div>
+
+<div class="form-group col-md-6">
+    <label for="valeurUniteDeFiletage">{{ "valeurUniteDeFiletage" | translate }}</label>
+    <input type="number" class="form-control" name="valeurUniteDeFiletage" [(ngModel)]="camp.valeurUniteDeFiletage">
+</div>
+<div class="form-group col-md-6">
     <label for="valeurDeFil">{{ "valeurDeFil" | translate }}</label>
-    <input
-      type="number"
-      class="form-control"
-      name="valeurDeFil"
-      [(ngModel)]="camp.valeurDeFil"
-    />
-  </div>
+    <input type="number" class="form-control" name="valeurDeFil" [(ngModel)]="camp.valeurDeFil">
 
-  <div class="form-group col-md-6">
-    <label for="quantiteDeTransport">{{
-      "quantiteDeTransport" | translate
-    }}</label>
-    <input
-      class="form-control"
-      type="number"
-      name="quantiteDeTransport"
-      [(ngModel)]="camp.quantiteDeTransport"
-    />
-  </div>
+</div>
 
-  <div class="form-group col-md-6">
-    <label for="valeurUnitaireTrans">{{
-      "valeurUnitaireTrans" | translate
-    }}</label>
-    <input
-      type="number"
-      class="form-control"
-      name="valeurUnitaireTrans"
-      [(ngModel)]="camp.valeurUnitaireTrans"
-    />
-  </div>
+<div class="form-group col-md-6">
+    <label for="quantiteDeTransport">{{ "quantiteDeTransport" | translate }}</label>
+    <input class="form-control" type="number" name="quantiteDeTransport" [(ngModel)]="camp.quantiteDeTransport">
+</div>
 
-  <div class="form-group col-md-6">
+<div class="form-group col-md-6">
+    <label for="valeurUnitaireTrans">{{ "valeurUnitaireTrans" | translate}}</label>
+    <input type="number" class="form-control" name="valeurUnitaireTrans"
+        [(ngModel)]="camp.valeurUnitaireTrans">
+</div>
+
+<div class="form-group col-md-6">
     <label for="valeurTrans">{{ "valeurTrans" | translate }}</label>
-    <input
-      type="number"
-      class="form-control"
-      name="valeurTrans"
-      [(ngModel)]="camp.valeurTrans"
-    />
-  </div>
+    <input type="number" class="form-control" name="valeurTrans" [(ngModel)]="camp.valeurTrans">
+</div>
 </div>

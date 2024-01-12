@@ -1,52 +1,21 @@
 <div class="row" [formGroup]="addform">
-  <p style="display: none">{{ getstatus() }}</p>
-  <div class="form-group col-md-6">
-    <label class="required" for="logisticCode">{{
-      "logisticCode" | translate
-    }}</label>
-    <input
-      (keyup)="isBlur(); validationCode(); exist(); geValues($event)"
-      class="form-control"
-      name="logisticCode"
-      [(ngModel)]="camp.logisticCode"
-      formControlName="logisticCode"
-      placeholder="{{ 'Write your  logisticCode' | translate }} "
-      required
-      aria-invalid="true"
-      aria-describedby="code-error"
-    />
-    <div style="color: red" *ngIf="codeIsvalid">
-      {{ "Invalid code format" | translate }}
-    </div>
-    <div style="color: red" *ngIf="dispotrueCode">
-      {{ "logistic Code must be unique" | translate }}
-    </div>
-    <div style="color: red" *ngIf="minIstrueCode">
-      {{ "logistic Code must be not null" | translate }}
-    </div>
-  </div>
-
-  <div class="form-group col-md-6">
-    <label class="required" for="logisticName">{{
-      "logisticName" | translate
-    }}</label>
-    <input
-      (keyup)="isBlur1(); existname(); geValues($event)"
-      class="form-control"
-      name="logisticName"
-      formControlName="logisticName"
-      [(ngModel)]="camp.logisticName"
-      placeholder="{{ 'Write your logisticName' | translate }} "
-      required
-      aria-invalid="true"
-      aria-describedby="name-error"
-    />
-    <div style="color: red" *ngIf="minIstrueName">
-      {{ "Logistic Name Name must be not null" | translate }}
+<p style="display: none;" > {{getstatus() }} </p>
+    <div class="form-group col-md-6">
+        <label class="required" for="logisticCode">{{ "logisticCode" | translate }}</label>
+        <input (keyup)="isBlur();validationCode() ;exist();geValues($event)" class="form-control" name="logisticCode" [(ngModel)]="camp.logisticCode" formControlName="logisticCode" placeholder="{{'Write your  logisticCode'|translate}} "
+            required aria-invalid="true"  aria-describedby="code-error" >
+            <div  style="color: red;" *ngIf="codeIsvalid">{{ "Invalid code format" |translate }}</div>
+            <div style=" color : red;" *ngIf="dispotrueCode">{{'logistic Code must be unique'|translate}}</div>
+            <div style=" color : red;" *ngIf="minIstrueCode">{{'logistic Code must be not null'|translate}}</div>
     </div>
 
-    <div style="color: red" *ngIf="dispotruename">
-      {{ "Logistic Name Name must be unique" | translate }}
-    </div>
-  </div>
+    <div class="form-group col-md-6 ">
+        <label class="required" for="logisticName">{{ "logisticName" | translate }}</label>
+        <input (keyup)="isBlur1();existname();geValues($event)"  class="form-control" name="logisticName" formControlName="logisticName" [(ngModel)]="camp.logisticName"  placeholder="{{'Write your logisticName'|translate}} "
+            required aria-invalid="true" aria-describedby="name-error" >
+        <div style=" color : red;" *ngIf="minIstrueName">{{'Logistic Name Name must be not null'|translate}} </div> 
+
+        <div style=" color : red;" *ngIf="dispotruename">{{'Logistic Name Name must be unique'|translate}}</div>
+        <!-- <div style=" color : black;" *ngIf="dispotruename">{{newSeggestions}}</div> -->
+
 </div>

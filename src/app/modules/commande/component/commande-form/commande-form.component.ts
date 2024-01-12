@@ -1,14 +1,18 @@
-import { Component, Input } from "@angular/core";
-import { Commande } from "../../models/commande.model";
+import { Component, Input, OnInit } from '@angular/core';
+import { Commande } from '../../models/commande.model';
 
 @Component({
-  selector: "app-commande-form",
-  templateUrl: "./commande-form.component.html",
-  styleUrls: ["./commande-form.component.scss"],
+  selector: 'app-commande-form',
+  templateUrl: './commande-form.component.html',
+  styleUrls: ['./commande-form.component.scss']
 })
-export class CommandeFormComponent {
-  @Input() commande!: Commande;
-  @Input() currentStep!: number;
+export class CommandeFormComponent implements OnInit {
 
-  constructor() {}
+  @Input() commande!: Commande
+  @Input() currentStep!: number
+
+  constructor() { }
+
+  ngOnInit(): void {
+  }
 }

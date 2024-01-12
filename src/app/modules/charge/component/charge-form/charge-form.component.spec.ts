@@ -1,22 +1,23 @@
-import { ComponentFixture, TestBed } from "@angular/core/testing";
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ChargeFormComponent } from "./charge-form.component";
+import { ChargeFormComponent } from './charge-form.component';
 
-describe("ChargeFormComponent", () => {
+describe('ChargeFormComponent', () => {
   let component: ChargeFormComponent;
   let fixture: ComponentFixture<ChargeFormComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ChargeFormComponent],
-    }).compileComponents();
+      declarations: [ ChargeFormComponent ]
+    })
+    .compileComponents();
 
     fixture = TestBed.createComponent(ChargeFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
-  it("should create", () => {
+  it('should create', () => {
     expect(component).toBeTruthy();
   });
 });

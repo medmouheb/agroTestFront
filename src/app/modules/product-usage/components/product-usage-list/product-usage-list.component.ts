@@ -1,21 +1,23 @@
-import { Component, EventEmitter, OnInit, ViewChild } from "@angular/core";
-import { ConfirmDialogComponent } from "app/shared/components/confirm-dialog/confirm-dialog.component";
-import { StepperComponent } from "app/shared/components/stepper/stepper.component";
-import { WizardDialogComponent } from "app/shared/components/wizard-dialog/wizard-dialog.component";
-import { ProductUsage } from "../../model/product-usage";
-import { Page, initPage } from "app/shared/models";
-import { FormBuilder, FormGroup } from "@angular/forms";
-import { ProductUsageService } from "../../service/product-usage.service";
-import { TranslateService } from "@ngx-translate/core";
-import { HotToastService } from "@ngneat/hot-toast";
+import { Component, EventEmitter, OnInit, ViewChild } from '@angular/core';
+import { ConfirmDialogComponent } from 'app/shared/components/confirm-dialog/confirm-dialog.component';
+import { StepperComponent } from 'app/shared/components/stepper/stepper.component';
+import { WizardDialogComponent } from 'app/shared/components/wizard-dialog/wizard-dialog.component';
+import { ProductUsage } from '../../model/product-usage';
+import { Page, initPage } from 'app/shared/models';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { ProductUsageService } from '../../service/product-usage.service';
+import { TranslateService } from '@ngx-translate/core';
+import { HotToastService } from '@ngneat/hot-toast';
 
 @Component({
-  selector: "app-product-usage-list",
+  selector: 'app-product-usage-list',
 
-  templateUrl: "./product-usage-list.component.html",
-  styleUrls: ["./product-usage-list.component.scss"],
+  templateUrl: './product-usage-list.component.html',
+  styleUrls: ['./product-usage-list.component.scss']
 })
 export class ProductUsageListComponent implements OnInit {
+
+
   @ViewChild("deleteModal")
   deleteModal!: ConfirmDialogComponent;
   @ViewChild("archiveModal")
@@ -39,32 +41,31 @@ export class ProductUsageListComponent implements OnInit {
   onPaginationChange: EventEmitter<string> = new EventEmitter<string>();
   form: FormGroup;
 
-  fullDetail = false;
+  fullDetail = false
 
   currentStep = 0;
-  steps: any = ["steps.general", "steps.localisation", "steps.details"];
+  steps: any = ["steps.general", "steps.localisation",
+    "steps.details"];
 
   constructor(
     private productUsageService: ProductUsageService,
     private translateService: TranslateService,
     private toastService: HotToastService,
-    private formBuilder: FormBuilder,
-  ) {}
+    private formBuilder: FormBuilder
+  ) { }
   onCheckboxChange() {
     if (this.isChecked == false) {
-      this.affiche = false;
-    } else {
-      this.affiche = true;
+
+      this.affiche = false
+    }
+    else {
+      this.affiche = true
     }
   }
-
   ngOnInit(): void {
     this.findPage();
-    this.findArchivedPage();
-    this.onPaginationChange.subscribe(() => {
-      this.findPage();
-      this.findArchivedPage();
-    });
+    this.findArchivedPage()
+    this.onPaginationChange.subscribe(() => { this.findPage(); this.findArchivedPage() });
   }
 
   findPage() {
@@ -75,6 +76,7 @@ export class ProductUsageListComponent implements OnInit {
         next: (result) => {
           this.companys = result.content;
           this.companyPage = result;
+
         },
         error: (error) => {
           this.loading = false;
@@ -95,7 +97,7 @@ export class ProductUsageListComponent implements OnInit {
     this.filter = filter;
     this.pageNumber = 0;
     this.findPage();
-    this.findArchivedPage();
+    this.findArchivedPage()
   }
 
   onPageNumberChange(pageNumber: number) {
@@ -119,7 +121,7 @@ export class ProductUsageListComponent implements OnInit {
       this.translateService.instant("message.loading..."),
       {
         id: "0",
-      },
+      }
     );
 
     this.productUsageService.save(id, this.camp!).subscribe({
@@ -131,7 +133,7 @@ export class ProductUsageListComponent implements OnInit {
         this.toastService.success(
           this.translateService.instant("success.saved", {
             elem: this.translateService.instant("ProductUsage"),
-          }),
+          })
         );
       },
       error: (error) => {
@@ -139,7 +141,7 @@ export class ProductUsageListComponent implements OnInit {
         this.toastService.error(
           this.translateService.instant(error.error, {
             elem: this.translateService.instant("ProductUsage"),
-          }),
+          })
         );
       },
     });
@@ -161,6 +163,7 @@ export class ProductUsageListComponent implements OnInit {
     this.stepper.nextStep();
     setTimeout(() => {
       this.stepper.prevStep();
+
     }, 100);
     setTimeout(() => {
       this.formModal.show({
@@ -171,6 +174,7 @@ export class ProductUsageListComponent implements OnInit {
         prev: () => this.stepper.prevStep(),
       });
     }, 200);
+
   }
 
   onClickEdit(id: string) {
@@ -179,6 +183,7 @@ export class ProductUsageListComponent implements OnInit {
     this.stepper.nextStep();
     setTimeout(() => {
       this.stepper.prevStep();
+
     }, 100);
     setTimeout(() => {
       this.formModal.show({
@@ -189,20 +194,23 @@ export class ProductUsageListComponent implements OnInit {
         prev: () => this.stepper.prevStep(),
       });
     }, 200);
+
   }
+
+
 
   onClickArchive(id: string) {
     this.archiveModal.show(() => {
       this.productUsageService.archive(id).subscribe({
         next: () => {
           this.findPage();
-          this.findArchivedPage();
+          this.findArchivedPage()
           this.archiveModal.hide();
           this.toastService.close("0");
           this.toastService.success(
             this.translateService.instant("success.deleted", {
               elem: this.translateService.instant("ProductUsage"),
-            }),
+            })
           );
         },
       });
@@ -212,127 +220,110 @@ export class ProductUsageListComponent implements OnInit {
   sortByCode() {
     if (this.affiche) {
       if (this.sortByCodeValid) {
-        this.companyss.sort((a, b) =>
-          a.codeProduit.localeCompare(b.codeProduit),
-        );
-        this.sortByCodeValid = false;
+        this.companyss.sort((a, b) => a.codeProduit.localeCompare(b.codeProduit));
+        this.sortByCodeValid = false
       } else {
-        this.companyss.sort((a, b) =>
-          b.codeProduit.localeCompare(a.codeProduit),
-        );
-        this.sortByCodeValid = true;
+        this.companyss.sort((a, b) => b.codeProduit.localeCompare(a.codeProduit));
+        this.sortByCodeValid = true
       }
     } else {
       if (this.sortByCodeValid) {
-        this.companys.sort((a, b) =>
-          a.codeProduit.localeCompare(b.codeProduit),
-        );
-        this.sortByCodeValid = false;
+        this.companys.sort((a, b) => a.codeProduit.localeCompare(b.codeProduit));
+        this.sortByCodeValid = false
       } else {
-        this.companys.sort((a, b) =>
-          b.codeProduit.localeCompare(a.codeProduit),
-        );
-        this.sortByCodeValid = true;
+        this.companys.sort((a, b) => b.codeProduit.localeCompare(a.codeProduit));
+        this.sortByCodeValid = true
       }
     }
+
   }
+
+
 
   sortByNameValid: boolean = true;
   sortByName() {
     if (this.affiche) {
       if (this.sortByNameValid) {
-        this.companyss.sort((a, b) =>
-          a.nomDuProduit.localeCompare(b.nomDuProduit),
-        );
-        this.sortByNameValid = false;
+        this.companyss.sort((a, b) => a.nomDuProduit.localeCompare(b.nomDuProduit));
+        this.sortByNameValid = false
       } else {
-        this.companyss.sort((a, b) =>
-          b.nomDuProduit.localeCompare(a.nomDuProduit),
-        );
-        this.sortByNameValid = true;
+        this.companyss.sort((a, b) => b.nomDuProduit.localeCompare(a.nomDuProduit));
+        this.sortByNameValid = true
       }
     } else {
       if (this.sortByNameValid) {
-        this.companys.sort((a, b) =>
-          a.nomDuProduit.localeCompare(b.nomDuProduit),
-        );
-        this.sortByNameValid = false;
+        this.companys.sort((a, b) => a.nomDuProduit.localeCompare(b.nomDuProduit));
+        this.sortByNameValid = false
       } else {
-        this.companys.sort((a, b) =>
-          b.nomDuProduit.localeCompare(a.nomDuProduit),
-        );
-        this.sortByNameValid = true;
+        this.companys.sort((a, b) => b.nomDuProduit.localeCompare(a.nomDuProduit));
+        this.sortByNameValid = true
       }
     }
+
   }
+
+
 
   sortBynumeroDeLotValid: boolean = true;
   sortBsortBynumeroDeLotValid() {
     if (this.affiche) {
       if (this.sortBynumeroDeLotValid) {
-        this.companyss.sort((a, b) =>
-          a.numeroDeLot.localeCompare(b.numeroDeLot),
-        );
-        this.sortBynumeroDeLotValid = false;
+        this.companyss.sort((a, b) => a.numeroDeLot.localeCompare(b.numeroDeLot));
+        this.sortBynumeroDeLotValid = false
       } else {
-        this.companyss.sort((a, b) =>
-          b.numeroDeLot.localeCompare(a.numeroDeLot),
-        );
-        this.sortBynumeroDeLotValid = true;
+        this.companyss.sort((a, b) => b.numeroDeLot.localeCompare(a.numeroDeLot));
+        this.sortBynumeroDeLotValid = true
       }
     } else {
       if (this.sortBynumeroDeLotValid) {
-        this.companys.sort((a, b) =>
-          a.numeroDeLot.localeCompare(b.numeroDeLot),
-        );
-        this.sortBynumeroDeLotValid = false;
+        this.companys.sort((a, b) => a.numeroDeLot.localeCompare(b.numeroDeLot));
+        this.sortBynumeroDeLotValid = false
       } else {
-        this.companys.sort((a, b) =>
-          b.numeroDeLot.localeCompare(a.numeroDeLot),
-        );
-        this.sortBynumeroDeLotValid = true;
+        this.companys.sort((a, b) => b.numeroDeLot.localeCompare(a.numeroDeLot));
+        this.sortBynumeroDeLotValid = true
       }
     }
+
   }
+
+
 
   sortByndeReferenceValid: boolean = true;
   sortByndeReference() {
     if (this.affiche) {
       if (this.sortByndeReferenceValid) {
-        this.companyss.sort((a, b) =>
-          a.ndeReference.localeCompare(b.ndeReference),
-        );
-        this.sortByndeReferenceValid = false;
+        this.companyss.sort((a, b) => a.ndeReference.localeCompare(b.ndeReference));
+        this.sortByndeReferenceValid = false
       } else {
-        this.companyss.sort((a, b) =>
-          b.ndeReference.localeCompare(a.ndeReference),
-        );
-        this.sortByndeReferenceValid = true;
+        this.companyss.sort((a, b) => b.ndeReference.localeCompare(a.ndeReference));
+        this.sortByndeReferenceValid = true
       }
     } else {
       if (this.sortByndeReferenceValid) {
-        this.companys.sort((a, b) =>
-          a.ndeReference.localeCompare(b.ndeReference),
-        );
-        this.sortByndeReferenceValid = false;
+        this.companys.sort((a, b) => a.ndeReference.localeCompare(b.ndeReference));
+        this.sortByndeReferenceValid = false
       } else {
-        this.companys.sort((a, b) =>
-          b.ndeReference.localeCompare(a.ndeReference),
-        );
-        this.sortByndeReferenceValid = true;
+        this.companys.sort((a, b) => b.ndeReference.localeCompare(a.ndeReference));
+        this.sortByndeReferenceValid = true
       }
     }
+
   }
 
+
+
+
+
   onClickdisArchive(id: string) {
+
     this.productUsageService.disArchive(id).subscribe({
       next: () => {
         this.findArchivedPage();
-        this.findPage();
+        this.findPage()
         this.toastService.success(
           this.translateService.instant("success.restore", {
             elem: this.translateService.instant("ProductUsage"),
-          }),
+          })
         );
       },
     });
@@ -342,16 +333,36 @@ export class ProductUsageListComponent implements OnInit {
     this.productUsageService.delete(id).subscribe({
       next: () => {
         this.findArchivedPage();
-        this.findPage();
-
+        this.findPage()
         this.toastService.success(
           this.translateService.instant("success.deleted", {
             elem: this.translateService.instant("ProductUsage"),
-          }),
+          })
         );
       },
     });
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   findArchivedPage() {
     this.loading = true;
@@ -361,6 +372,7 @@ export class ProductUsageListComponent implements OnInit {
         next: (result) => {
           this.companyss = result.content;
           this.companyPages = result;
+
         },
         error: (error) => {
           this.loading = false;
@@ -369,4 +381,5 @@ export class ProductUsageListComponent implements OnInit {
         complete: () => (this.loading = false),
       });
   }
+
 }

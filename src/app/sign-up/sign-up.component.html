@@ -1,0 +1,124 @@
+<section class="vh-100">
+    <div class="container-fluid h-custom">
+      <div style="padding-top: 5%;
+      justify-content: space-around;
+      align-items: start;" class="row d-flex  h-100">
+
+        <div class="col-md-5 col-lg-5 col-xl-5 ">
+          <div >
+
+            <form >
+                <div class="form-outline mb-4 ">
+                    <label class="form-label" for="username">Username :</label>
+                  <input type="text" [(ngModel)]="user.username" name="username" id="username"  />
+                </div>
+
+                <div class="form-outline mb-4 ">
+                    <label class="form-label" for="email">Email :</label>
+                  <input type="email" [(ngModel)]="user.email" name="email" id="email"  />
+                </div>
+
+                <div class="form-outline mb-3 ">
+                    <label class="form-label" for="password">Password :</label>
+
+                  <input [(ngModel)]="user.password" name="password" type="password" id="password"
+                     />
+                </div>
+                <div class="form-outline mb-3 ">
+                    <label class="form-label" for="confirmPassword">Confirm Password :</label>
+
+                  <input [(ngModel)]="user.confirmPassword" name="confirmPassword" type="password"
+                    id="confirmPassword"  />
+                </div>
+
+                <div class="form-outline mb-4 ">
+                    <label class="form-label" for="nom">Nom :</label>
+
+                  <input type="text" [(ngModel)]="user.nom" name="nom" id="nom"  />
+                </div>
+
+                <div class="form-outline mb-4 ">
+                    <label class="form-label" for="prenom">Prenom :</label>
+                  <input type="text" [(ngModel)]="user.prenom" name="prenom" id="prenom"  />
+
+                </div>
+
+                <div class="form-outline mb-4 ">
+                  <div style="justify-content: space-between; display: flex;" >
+                      <label class="form-label" for="Male"> Male </label>
+                      <input style="transform: scale(1.5);" type="radio" [(ngModel)]="user.sexe" value="Male" name="Male" id="Male" /><br>
+
+
+                        <label class="form-label" for="Female">Female </label>
+
+                      <input  style="transform: scale(1.5);"  type="radio" [(ngModel)]="user.sexe" value="Female" name="Female" id="Female" />
+
+                  </div>
+
+                </div>
+
+                <div class="form-outline mb-4 ">
+                    <label class="form-label" for="pays">Pays :</label>
+                  <input type="text" [(ngModel)]="user.pays" name="pays" id="pays"  />
+                </div>
+
+                <div class="form-outline mb-4 ">
+                    <label class="form-label" for="region">Region :</label>
+
+                  <input type="text" [(ngModel)]="user.region" name="region" id="region"  />
+                </div>
+
+                <div class="form-outline mb-4 ">
+                    <label class="form-label" for="dateNaissance">Date Naissance :</label>
+
+                  <input type="date" [(ngModel)]="user.dateNaissance" name="dateNaissance" id="dateNaissance"
+                     />
+                </div>
+
+                <div class="form-outline mb-4 ">
+                    <label class="form-label" for="numeroTelephone">numero Telephone</label>
+
+                  <div style="display: flex;">
+                    <select style="width: 50%;" (change)="selectContry($event)">
+                      <option disabled selected> select your contry</option>
+                      <option *ngFor="let c of countryPhoneCodes " [value]="c.code"> {{c.country }}</option>
+                    </select>
+                    <img alt="" *ngIf="flag!=''" id="flag" style="width: 40px; height: 35px;margin-left: 1%;margin-right: 1%;"
+                      [src]="getflage()">
+                    <input type="text" (keyup)="phoneNumberinp($event)" [(ngModel)]="user.numeroTelephone" name="numeroTelephone"
+                      id="numeroTelephone"  />
+                  </div>
+
+                </div>
+
+
+              <ul>
+                <li *ngIf="emptyFields" class="text-danger">No field must be empty</li>
+                <li *ngIf="invalidConfirmPasword" class="text-danger">The passwords did not match</li>
+                <li *ngIf="invalidPasword" class="text-danger">password should have a length between 8 and 20 characters,
+                  contain only numbers and alphabetic characters, and have at least one uppercase character</li>
+              </ul>
+
+
+
+              <div class="text-center text-lg-start mt-4 pt-2">
+                <button type="button" class="btn btn-info" style=" width: 100%;font-size: large;    background-color: #903df4;"
+                  (click)="signUp()">Sign up</button>
+
+              </div>
+              <div style="display: flex;justify-content: center;margin-top: 2rem;text-align: center;" >
+                <div style="color: black;">Do you have an account ? </div>
+                <a routerLink="/login" style="color: #838383;text-decoration: underline;
+                font-size: inherit;
+                font-style: inherit;
+                font-weight: inherit;
+                line-height: inherit;" > Login </a>
+              </div>
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>

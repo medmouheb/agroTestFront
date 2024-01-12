@@ -1,22 +1,23 @@
-import { ComponentFixture, TestBed } from "@angular/core/testing";
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SalesFormCurrencyComponent } from "./sales-form-currency.component";
+import { SalesFormCurrencyComponent } from './sales-form-currency.component';
 
-describe("SalesFormCurrencyComponent", () => {
+describe('SalesFormCurrencyComponent', () => {
   let component: SalesFormCurrencyComponent;
   let fixture: ComponentFixture<SalesFormCurrencyComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [SalesFormCurrencyComponent],
-    }).compileComponents();
+      declarations: [ SalesFormCurrencyComponent ]
+    })
+    .compileComponents();
 
     fixture = TestBed.createComponent(SalesFormCurrencyComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
-  it("should create", () => {
+  it('should create', () => {
     expect(component).toBeTruthy();
   });
 });

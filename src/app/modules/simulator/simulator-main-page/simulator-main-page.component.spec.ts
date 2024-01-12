@@ -1,22 +1,23 @@
-import { ComponentFixture, TestBed } from "@angular/core/testing";
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SimulatorMainPageComponent } from "./simulator-main-page.component";
+import { SimulatorMainPageComponent } from './simulator-main-page.component';
 
-describe("SimulatorMainPageComponent", () => {
+describe('SimulatorMainPageComponent', () => {
   let component: SimulatorMainPageComponent;
   let fixture: ComponentFixture<SimulatorMainPageComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [SimulatorMainPageComponent],
-    }).compileComponents();
+      declarations: [ SimulatorMainPageComponent ]
+    })
+    .compileComponents();
 
     fixture = TestBed.createComponent(SimulatorMainPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
-  it("should create", () => {
+  it('should create', () => {
     expect(component).toBeTruthy();
   });
 });

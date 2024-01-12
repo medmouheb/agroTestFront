@@ -13,7 +13,7 @@ const httpOptions = {
 const httpHeaders = {
   headers: new HttpHeaders({
     "Content-Type": "application/json",
-    "Authorization": `${JSON.parse(localStorage.getItem("tocken")).tokenType} ${JSON.parse(localStorage.getItem("tocken")).accessToken}`
+    // "Authorization": `${JSON.parse(localStorage.getItem("tocken")).tokenType} ${JSON.parse(localStorage.getItem("tocken")).accessToken}`
 
   }),
 };

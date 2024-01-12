@@ -1,21 +1,25 @@
-import { Component, EventEmitter, OnInit, ViewChild } from "@angular/core";
-import { Router } from "@angular/router";
-import { HotToastService } from "@ngneat/hot-toast";
-import { TranslateService } from "@ngx-translate/core";
-import { ConfirmDialogComponent } from "app/shared/components/confirm-dialog/confirm-dialog.component";
-import { StepperComponent } from "app/shared/components/stepper/stepper.component";
-import { WizardDialogComponent } from "app/shared/components/wizard-dialog/wizard-dialog.component";
-import { Page, initPage } from "app/shared/models";
+import { Component, EventEmitter, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
+import { HotToastService } from '@ngneat/hot-toast';
+import { TranslateService } from '@ngx-translate/core';
+import { ConfirmDialogComponent } from 'app/shared/components/confirm-dialog/confirm-dialog.component';
+import { StepperComponent } from 'app/shared/components/stepper/stepper.component';
+import { WizardDialogComponent } from 'app/shared/components/wizard-dialog/wizard-dialog.component';
+import { Page, initPage } from 'app/shared/models';
 
-import { SalesSKU } from "../models/salesSku";
-import { SalesSkuService } from "../services/sales-sku.service";
+import { SalesSKU } from '../models/salesSku';
+import { SalesSkuService } from '../services/sales-sku.service';
 
 @Component({
-  selector: "app-trashsalessku",
-  templateUrl: "./trashsalessku.component.html",
-  styleUrls: ["./trashsalessku.component.scss"],
+  selector: 'app-trashsalessku',
+  templateUrl: './trashsalessku.component.html',
+  styleUrls: ['./trashsalessku.component.scss']
 })
 export class TrashsalesskuComponent implements OnInit {
+
+
+
+
   @ViewChild("deleteModal")
   deleteModal!: ConfirmDialogComponent;
 
@@ -35,23 +39,22 @@ export class TrashsalesskuComponent implements OnInit {
 
   salessku: SalesSKU = {};
   salesskus: Array<SalesSKU> = [];
-  Page: Page<SalesSKU> = initPage;
+  Page: Page<SalesSKU> =initPage;
   onPaginationChange: EventEmitter<string> = new EventEmitter<string>();
 
   constructor(
     private translateService: TranslateService,
     private toastService: HotToastService,
     private salesskuservice: SalesSkuService,
-    private router: Router,
+    private router:Router
   ) {}
 
   ngOnInit(): void {
     this.findArchivedPage();
-
     this.onPaginationChange.subscribe(() => this.findArchivedPage());
   }
-  goto() {
-    this.router.navigateByUrl("/salesku");
+  goto(){
+    this.router.navigateByUrl("/salesku")
   }
 
   findArchivedPage() {
@@ -103,21 +106,22 @@ export class TrashsalesskuComponent implements OnInit {
         this.toastService.success(
           this.translateService.instant("success.restore", {
             elem: this.translateService.instant("salessku"),
-          }),
+          })
         );
       },
     });
   }
 
+
+
   onClickDelete(id: string) {
     this.salesskuservice.delete(id).subscribe({
       next: () => {
         this.findArchivedPage();
-
         this.toastService.success(
           this.translateService.instant("success.deleted", {
             elem: this.translateService.instant("salessku"),
-          }),
+          })
         );
       },
     });
@@ -125,30 +129,25 @@ export class TrashsalesskuComponent implements OnInit {
   sortByCodeValid: boolean = true;
   sortByCode() {
     if (this.sortByCodeValid) {
-      this.salesskus.sort((a, b) =>
-        a.sailorCodeSku.localeCompare(b.sailorCodeSku),
-      );
-      this.sortByCodeValid = false;
+      this.salesskus.sort((a, b) => a.sailorCodeSku.localeCompare(b.sailorCodeSku));
+      this.sortByCodeValid = false
     } else {
-      this.salesskus.sort((a, b) =>
-        b.sailorCodeSku.localeCompare(a.sailorCodeSku),
-      );
-      this.sortByCodeValid = true;
+      this.salesskus.sort((a, b) => b.sailorCodeSku.localeCompare(a.sailorCodeSku));
+      this.sortByCodeValid = true
     }
   }
+
+
 
   sortByNameValid: boolean = true;
   sortByName() {
     if (this.sortByNameValid) {
-      this.salesskus.sort((a, b) =>
-        a.sailorNameSku.localeCompare(b.sailorNameSku),
-      );
-      this.sortByNameValid = false;
+      this.salesskus.sort((a, b) => a.sailorNameSku.localeCompare(b.sailorNameSku));
+      this.sortByNameValid = false
     } else {
-      this.salesskus.sort((a, b) =>
-        b.sailorNameSku.localeCompare(a.sailorNameSku),
-      );
-      this.sortByNameValid = true;
+      this.salesskus.sort((a, b) => b.sailorNameSku.localeCompare(a.sailorNameSku));
+      this.sortByNameValid = true
     }
   }
+
 }

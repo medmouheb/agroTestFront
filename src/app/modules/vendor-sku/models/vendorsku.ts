@@ -1,6 +1,8 @@
 export type VendorSKU = {
-  id?: string;
-  vendorCode?: string;
-  vendorSKUName?: string;
-  vendorSKUCode?: string;
-};
+    id?: string
+    vendorCode?: string
+    vendorSKUName?: string
+    vendorSKUCode?: string
+    
+    
+}

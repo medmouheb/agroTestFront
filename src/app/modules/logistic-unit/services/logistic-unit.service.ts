@@ -141,7 +141,6 @@ export class LogisticUnitService {
 
   }
   findbyName(name:any): Observable<LogisticUnit>{
-    console.log('nom',name)
     const headers = new HttpHeaders()
       .set(
         "Authorization",

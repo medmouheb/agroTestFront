@@ -1,113 +1,69 @@
 <div class="row">
-  <div class="form-group col-md-6">
-    <label for="typeDeProduit">{{ "typeDeProduit" | translate }}</label>
-    <select
-      class="form-control"
-      name="typeDeProduit"
-      [(ngModel)]="camp.typeDeProduit"
-    >
-      <option value="Received">{{ "Received" | translate }}</option>
-      <option value="Usage">{{ "Usage" | translate }}</option>
-      <option value="Physical">{{ "Physical" | translate }}</option>
-    </select>
-  </div>
+    <div class="form-group col-md-6">
+        <label for="typeDeProduit">{{ "typeDeProduit" | translate }}</label>
+        <select class="form-control" name="typeDeProduit" [(ngModel)]="camp.typeDeProduit">
+            <option value="Received">{{"Received"| translate}}</option>
+            <option value="Usage">{{"Usage"| translate}}</option>
+            <option value="Physical">{{"Physical"| translate}}</option>
+        </select>
+    </div>
 
-  <div class="form-group col-md-6">
-    <label for="transCode">{{ "transCode" | translate }}</label>
-    <input class="form-control" name="transCode" [(ngModel)]="camp.transCode" />
-  </div>
+    <div class="form-group col-md-6">
+        <label for="transCode">{{ "transCode" | translate }}</label>
+        <input class="form-control" name="transCode" [(ngModel)]="camp.transCode">
+    </div>
 
-  <div class="form-group col-md-6">
-    <label for="dateInventaire">{{ "dateInventaire" | translate }}</label>
-    <input
-      type="date"
-      class="form-control"
-      name="dateInventaire"
-      [(ngModel)]="camp.dateInventaire"
-    />
-  </div>
+    <div class="form-group col-md-6">
+        <label for="dateInventaire">{{ "dateInventaire" | translate }}</label>
+        <input type="date" class="form-control" name="dateInventaire" [(ngModel)]="camp.dateInventaire">
+    </div>
 
-  <div class="form-group col-md-6">
-    <label for="identiteDeTransaction">{{
-      "iDEntiteDeTransaction" | translate
-    }}</label>
-    <input
-      class="form-control"
-      name="identiteDeTransaction"
-      [(ngModel)]="camp.identiteDeTransaction"
-    />
-  </div>
+    <div class="form-group col-md-6">
+        <label for="identiteDeTransaction">{{ "iDEntiteDeTransaction" | translate }}</label>
+        <input class="form-control" name="identiteDeTransaction" [(ngModel)]="camp.identiteDeTransaction">
+    </div>
 
-  <div class="form-group col-md-6">
-    <label for="nomEntiteDeTransaction">{{
-      "nomEntiteDeTransaction" | translate
-    }}</label>
-    <input
-      class="form-control"
-      name="nomEntiteDeTransaction"
-      [(ngModel)]="camp.nomEntiteDeTransaction"
-    />
-  </div>
+    <div class="form-group col-md-6">
+        <label for="nomEntiteDeTransaction">{{ "nomEntiteDeTransaction" | translate }}</label>
+        <input class="form-control" name="nomEntiteDeTransaction" [(ngModel)]="camp.nomEntiteDeTransaction">
 
-  <div class="form-group col-md-6">
-    <label for="numeroDeProduit">{{ "numeroDeProduit" | translate }}</label>
-    <input
-      class="form-control"
-      name="numeroDeProduit"
-      [(ngModel)]="camp.numeroDeProduit"
-    />
-  </div>
+    </div>
 
-  <div class="form-group col-md-6">
-    <label for="nomDuProduit">{{ "nomDuProduit" | translate }}</label>
-    <input
-      class="form-control"
-      name="nomDuProduit"
-      [(ngModel)]="camp.nomDuProduit"
-    />
-  </div>
+    <div class="form-group col-md-6">
+        <label for="numeroDeProduit">{{ "numeroDeProduit" | translate }}</label>
+        <input class="form-control" name="numeroDeProduit" [(ngModel)]="camp.numeroDeProduit">
+    </div>
 
-  <div class="form-group col-md-6">
-    <label for="numeroEmplacement">{{ "numeroEmplacement" | translate }}</label>
-    <input
-      class="form-control"
-      name="numeroEmplacement"
-      [(ngModel)]="camp.numeroEmplacement"
-    />
-  </div>
+    <div class="form-group col-md-6">
+        <label for="nomDuProduit">{{ "nomDuProduit" | translate }}</label>
+        <input class="form-control" name="nomDuProduit" [(ngModel)]="camp.nomDuProduit">
 
-  <div class="form-group col-md-6">
-    <label for="quantite">{{ "quantite" | translate }}</label>
-    <input
-      type="number"
-      class="form-control"
-      name="quantite"
-      [(ngModel)]="camp.quantite"
-    />
-  </div>
+    </div>
 
-  <div class="form-group col-md-6">
-    <label for="leValeur">{{ "leValeur" | translate }}</label>
-    <input class="form-control" name="leValeur" [(ngModel)]="camp.leValeur" />
-  </div>
 
-  <div class="form-group col-md-6">
-    <label for="statusDeLaPublication">{{
-      "statusDeLaPublication" | translate
-    }}</label>
-    <input
-      class="form-control"
-      name="statusDeLaPublication"
-      [(ngModel)]="camp.statusDeLaPublication"
-    />
-  </div>
 
-  <div class="form-group col-md-6">
-    <label for="codeSource">{{ "codeSource" | translate }}</label>
-    <input
-      class="form-control"
-      name="codeSource"
-      [(ngModel)]="camp.codeSource"
-    />
-  </div>
+    <div class="form-group col-md-6">
+        <label for="numeroEmplacement">{{ "numeroEmplacement" | translate }}</label>
+        <input class="form-control" name="numeroEmplacement" [(ngModel)]="camp.numeroEmplacement">
+    </div>
+
+    <div class="form-group col-md-6">
+        <label for="quantite">{{ "quantite" | translate }}</label>
+        <input type="number" class="form-control" name="quantite" [(ngModel)]="camp.quantite">
+    </div>
+
+    <div class="form-group col-md-6">
+        <label for="leValeur">{{ "leValeur" | translate }}</label>
+        <input class="form-control" name="leValeur" [(ngModel)]="camp.leValeur">
+    </div>
+
+    <div class="form-group col-md-6">
+        <label for="statusDeLaPublication">{{ "statusDeLaPublication" | translate }}</label>
+        <input class="form-control" name="statusDeLaPublication" [(ngModel)]="camp.statusDeLaPublication">
+    </div>
+
+    <div class="form-group col-md-6">
+        <label for="codeSource">{{ "codeSource" | translate }}</label>
+        <input class="form-control" name="codeSource" [(ngModel)]="camp.codeSource">
+    </div>
 </div>

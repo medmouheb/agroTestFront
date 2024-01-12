@@ -1,14 +1,19 @@
-import { Component, Input } from "@angular/core";
-import { airport } from "../../models/airport.model";
+import { Component, Input, OnInit } from '@angular/core';
+import { airport } from '../../models/airport.model';
 
 @Component({
-  selector: "app-airport-form",
-  templateUrl: "./airport-form.component.html",
-  styleUrls: ["./airport-form.component.scss"],
+  selector: 'app-airport-form',
+  templateUrl: './airport-form.component.html',
+  styleUrls: ['./airport-form.component.scss']
 })
-export class AirportFormComponent {
-  @Input() airport!: airport;
-  @Input() currentStep!: number;
+export class AirportFormComponent implements OnInit {
 
-  constructor() {}
+  @Input() airport!: airport
+  @Input() currentStep!: number
+
+  constructor() { }
+
+  ngOnInit(): void {
+  }
+
 }

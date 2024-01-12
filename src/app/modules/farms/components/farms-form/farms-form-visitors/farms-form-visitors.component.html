@@ -1,69 +1,36 @@
 <div class="row">
-  <div class="form-group col-md-6">
-    <label for="VisitDate">{{ "VisitDate" | translate }}</label>
-    <input
-      type="date"
-      class="form-control"
-      name="visitDate"
-      #visitDate="ngModel"
-      ngModel
-      [(ngModel)]="farm.visitDate"
-    />
-  </div>
+    <div class="form-group col-md-6">
+      <label for="VisitDate">{{'VisitDate' | translate}}</label>
+      <input type="date" class="form-control" name="visitDate" #visitDate="ngModel" ngModel [(ngModel)]="farm.visitDate">
+    </div>
+  
 
-  <div class="form-group col-md-6">
-    <label for="FirstNameVisit">{{ "Firstname" | translate }}</label>
-    <input
-      class="form-control"
-      name="firstNameVisit"
-      #firstNameVisit="ngModel"
-      ngModel
-      [(ngModel)]="farm.firstNameVisit"
-    />
+  
+    
+    <div class="form-group col-md-6">
+      <label for="FirstNameVisit">{{'Firstname' | translate}}</label>
+      <input class="form-control" name="firstNameVisit" #firstNameVisit="ngModel" ngModel [(ngModel)]="farm.firstNameVisit">
+    </div>
+  
+    <div class="form-group col-md-6">
+      <label for="LastNameVisit">{{'Lastname' | translate}}</label>
+      <input class="form-control" name="lastNameVisit" #lastNameVisit="ngModel" ngModel [(ngModel)]="farm.lastNameVisit">
+    </div>
+  
+    <div class="form-group col-md-6">
+      <label for="TimeinVisit">{{'timein' | translate}}</label>
+      <input class="form-control" type="time" name="timeinVisit" #timeinVisit="ngModel" ngModel [(ngModel)]="farm.timeinVisit">
+    </div>
+  
+    <div class="form-group col-md-6">
+      <label for="TimeoutVisit">{{'timeout' | translate}}</label>
+      <input class="form-control" type="time" name="timeoutVisit" #timeoutVisit="ngModel" ngModel [(ngModel)]="farm.timeoutVisit">
+    </div>
+    <div class="form-group col-md-6">
+        <label for="Purposeofthevisit">{{'pruposeofthevisit'| translate}}</label>
+        <input class="form-control" name="purposeofthevisit" #purposeofthevisit="ngModel" ngModel [(ngModel)]="farm.purposeofthevisit">
+      </div>
+  
+  
   </div>
-
-  <div class="form-group col-md-6">
-    <label for="LastNameVisit">{{ "Lastname" | translate }}</label>
-    <input
-      class="form-control"
-      name="lastNameVisit"
-      #lastNameVisit="ngModel"
-      ngModel
-      [(ngModel)]="farm.lastNameVisit"
-    />
-  </div>
-
-  <div class="form-group col-md-6">
-    <label for="TimeinVisit">{{ "timein" | translate }}</label>
-    <input
-      class="form-control"
-      type="time"
-      name="timeinVisit"
-      #timeinVisit="ngModel"
-      ngModel
-      [(ngModel)]="farm.timeinVisit"
-    />
-  </div>
-
-  <div class="form-group col-md-6">
-    <label for="TimeoutVisit">{{ "timeout" | translate }}</label>
-    <input
-      class="form-control"
-      type="time"
-      name="timeoutVisit"
-      #timeoutVisit="ngModel"
-      ngModel
-      [(ngModel)]="farm.timeoutVisit"
-    />
-  </div>
-  <div class="form-group col-md-6">
-    <label for="Purposeofthevisit">{{ "pruposeofthevisit" | translate }}</label>
-    <input
-      class="form-control"
-      name="purposeofthevisit"
-      #purposeofthevisit="ngModel"
-      ngModel
-      [(ngModel)]="farm.purposeofthevisit"
-    />
-  </div>
-</div>
+  

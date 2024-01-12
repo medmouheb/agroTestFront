@@ -20,10 +20,7 @@ export class AdminLayoutComponent implements OnInit {
   private lastPoppedUrl: string;
   private yScrollStack: number[] = [];
 
-  constructor(
-    public location: Location,
-    private router: Router,
-  ) {}
+  constructor(public location: Location, private router: Router) {}
 
   ngOnInit() {
     const isWindows = navigator.platform.indexOf("Win") > -1 ? true : false;
@@ -34,6 +31,8 @@ export class AdminLayoutComponent implements OnInit {
         .getElementsByTagName("body")[0]
         .classList.contains("sidebar-mini")
     ) {
+      // if we are on windows OS we activate the perfectScrollbar function
+
       document
         .getElementsByTagName("body")[0]
         .classList.add("perfect-scrollbar-on");
@@ -84,6 +83,7 @@ export class AdminLayoutComponent implements OnInit {
     }
 
     $(".fixed-plugin a").click(function (event) {
+      // Alex if we click on switch, stop propagation of the event, so the dropdown will not be hide, otherwise we set the  section active
       if ($(this).hasClass("switch-trigger")) {
         if (event.stopPropagation) {
           event.stopPropagation();
@@ -122,7 +122,7 @@ export class AdminLayoutComponent implements OnInit {
         $sidebar_img_container.fadeOut("fast", function () {
           $sidebar_img_container.css(
             "background-image",
-            'url("' + new_image + '")',
+            'url("' + new_image + '")'
           );
           $sidebar_img_container.fadeIn("fast");
         });
@@ -132,7 +132,7 @@ export class AdminLayoutComponent implements OnInit {
         $full_page_background.fadeOut("fast", function () {
           $full_page_background.css(
             "background-image",
-            'url("' + new_image + '")',
+            'url("' + new_image + '")'
           );
           $full_page_background.fadeIn("fast");
         });

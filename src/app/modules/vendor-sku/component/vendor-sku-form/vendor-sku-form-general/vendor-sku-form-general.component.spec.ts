@@ -1,22 +1,23 @@
-import { ComponentFixture, TestBed } from "@angular/core/testing";
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { VendorSKUFormGeneralComponent } from "./vendor-sku-form-general.component";
+import { VendorSKUFormGeneralComponent } from './vendor-sku-form-general.component';
 
-describe("VendorSKUFormGeneralComponent", () => {
+describe('VendorSKUFormGeneralComponent', () => {
   let component: VendorSKUFormGeneralComponent;
   let fixture: ComponentFixture<VendorSKUFormGeneralComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [VendorSKUFormGeneralComponent],
-    }).compileComponents();
+      declarations: [ VendorSKUFormGeneralComponent ]
+    })
+    .compileComponents();
 
     fixture = TestBed.createComponent(VendorSKUFormGeneralComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
-  it("should create", () => {
+  it('should create', () => {
     expect(component).toBeTruthy();
   });
 });

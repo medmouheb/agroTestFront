@@ -1,14 +1,15 @@
-<ng-content> </ng-content>
+<ng-content>
+</ng-content>
 <form class="form-card">
+
   <div *ngIf="currentStep == 0">
-    <app-logistic-unit-forms-general
-      [camp]="camp"
-    ></app-logistic-unit-forms-general>
+    <app-logistic-unit-forms-general [camp]="camp"></app-logistic-unit-forms-general>
   </div>
 
   <div *ngIf="currentStep == 1">
-    <app-logistic-unit-forms-information
-      [camp]="camp"
-    ></app-logistic-unit-forms-information>
+    <app-logistic-unit-forms-information [camp]="camp"></app-logistic-unit-forms-information>
   </div>
+
+
+
 </form>

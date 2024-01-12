@@ -10,6 +10,7 @@ import { GrowoutListComponent } from "./component/growout-list/growout-list.comp
 import { GrowoutRoutingModule } from "./growout-routing.module";
 import { TrashGComponent } from "./trash/trashG.component";
 
+
 @NgModule({
   declarations: [
     GrowoutFormComponent,

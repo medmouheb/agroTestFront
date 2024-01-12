@@ -1,6 +1,8 @@
 import { Component, EventEmitter, OnInit, ViewChild } from "@angular/core";
 import { HotToastService } from "@ngneat/hot-toast";
 import { TranslateService } from "@ngx-translate/core";
+import { Warehouse } from "app/modules/warehouse/models/warehouse.model";
+import { WarehouseService } from "app/modules/warehouse/services/warehouse.service";
 import { Page, initPage } from "app/shared/models";
 import { ConfirmDialogComponent } from "../confirm-dialog/confirm-dialog.component";
 import { StepperComponent } from "../stepper/stepper.component";
@@ -41,12 +43,11 @@ export class TrashComponent implements OnInit {
     private translateService: TranslateService,
     private toastService: HotToastService,
     private growoutService: GrowoutService,
-    private router: Router,
+    private router:Router
   ) {}
 
   ngOnInit(): void {
     this.findArchivedPage();
-
     this.onPaginationChange.subscribe(() => this.findArchivedPage());
   }
 
@@ -66,8 +67,8 @@ export class TrashComponent implements OnInit {
         complete: () => (this.loading = false),
       });
   }
-  goto() {
-    this.router.navigateByUrl("/growout");
+  goto(){
+    this.router.navigateByUrl("/growout")
   }
   findById(id: string) {
     this.growoutService.findById(id).subscribe({
@@ -101,21 +102,21 @@ export class TrashComponent implements OnInit {
         this.toastService.success(
           this.translateService.instant("success.reset", {
             elem: this.translateService.instant("growout"),
-          }),
+          })
         );
       },
     });
   }
 
+
   onClickDelete(id: string) {
     this.growoutService.delete(id).subscribe({
       next: () => {
         this.findArchivedPage();
-
         this.toastService.success(
           this.translateService.instant("success.deleted", {
             elem: this.translateService.instant("warehouse"),
-          }),
+          })
         );
       },
     });

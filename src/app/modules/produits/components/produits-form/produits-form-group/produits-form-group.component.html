@@ -1,213 +1,110 @@
 <div class="row" [formGroup]="addform">
-  <div style="display: none">{{ getstatus() }}</div>
+    <div style="display: none;" > {{getstatus()}} </div>
 
-  <div class="form-group col-md-4">
-    <label class="required" for="code">{{ "codeproduct" | translate }}</label>
-    <input
-      (blur)="isBlur(); validationCode(); exist(); existname()"
-      class="form-control"
-      name="code"
-      [(ngModel)]="produit.code"
-      formControlName="code"
-      placeholder="{{ 'write your code product' | translate }} "
-      required
-      aria-invalid="true"
-      aria-describedby="code-error"
-      (ngModelChange)="geValues($event)"
-    />
-    <div style="color: red" *ngIf="codeIsvalid">
-      {{ "Invalid code format" | translate }}
-    </div>
-    <div style="color: red" *ngIf="minIstrueCode">
-      {{ "code must be not null" | translate }}
-    </div>
-    <div style="color: red" *ngIf="dispotrueCode">
-      {{ "Code must be unique" | translate }}
-    </div>
-  </div>
+    <div class="form-group col-md-4">
+        <label class="required" for="code">{{'codeproduct' | translate}}</label>
+        <input (blur)="isBlur();validationCode();exist();existname()" class="form-control" name="code"
+            [(ngModel)]="produit.code" formControlName="code" placeholder="{{'write your code product'|translate}} "
+            required aria-invalid="true" aria-describedby="code-error" (ngModelChange)="geValues($event)">
+        <div style="color: red;" *ngIf="codeIsvalid">{{ "Invalid code format" |translate }}</div>
+        <div style=" color : red;" *ngIf="minIstrueCode">{{'code must be not null'|translate}}</div>
+        <div style=" color : red;" *ngIf="dispotrueCode">{{'Code must be unique'|translate}}</div>
 
-  <div class="form-group col-md-4">
-    <label class="required" for="name">{{ "nameproduct" | translate }}</label>
-    <input
-      (blur)="isBlur1(); existname()"
-      class="form-control"
-      name="name"
-      formControlName="name"
-      [(ngModel)]="produit.name"
-      placeholder="{{ 'write your name product' | translate }} "
-      required
-      aria-invalid="true"
-      aria-describedby="name-error"
-      (ngModelChange)="geValues($event)"
-    />
-    <div style="color: red" *ngIf="dispotruename">
-      {{ "name must be unique" | translate }}
     </div>
 
-    <div style="color: red" *ngIf="minIstrueName">
-      {{ "the name must be between 3 and 8 characters" | translate }}
+    <div class="form-group col-md-4">
+        <label class="required" for="name">{{'nameproduct' | translate}}</label>
+        <input (blur)="isBlur1();existname()" class="form-control" name="name" formControlName="name"
+            [(ngModel)]="produit.name" placeholder="{{'write your name product'|translate}} " required
+            aria-invalid="true" aria-describedby="name-error" (ngModelChange)="geValues($event)">
+        <div style=" color : red;" *ngIf="dispotruename">{{'name must be unique'|translate}}</div>
+
+        <div style=" color : red;" *ngIf="minIstrueName">{{'the name must be between 3 and 8 characters'|translate}}
+        </div>
     </div>
-  </div>
 
-  <div class="form-group col-md-4">
-    <label for="type">{{ "typeproduct" | translate }}</label>
-    <input
-      class="form-control"
-      name="type"
-      formControlName="type"
-      placeholder="{{ 'write your type product' | translate }} "
-      [(ngModel)]="produit.type"
-    />
-  </div>
+    <div class="form-group col-md-4">
+        <label  for="type">{{'typeproduct' | translate}}</label>
+        <input class="form-control" name="type" formControlName="type"
+            placeholder="{{'write your type product'|translate}} " [(ngModel)]="produit.type">
+    </div>
 
-  <div class="form-group col-md-4">
-    <label for="vendor">{{ "vendor" | translate }}</label>
-    <select
-      class="form-control"
-      name="vendor"
-      (blur)="existname(); exist()"
-      (change)="onVendorChange($event)"
-    >
-      <option selected disabled [value]="">
-        {{ "il faut choisir" | translate }}
-      </option>
-      <option
-        [selected]="produit.fournisseur.id == vendor.id"
-        *ngFor="let vendor of vendors"
-        [value]="vendor.id"
-      >
-        {{ vendor.name }}
-      </option>
-    </select>
-  </div>
+    <div class="form-group col-md-4">
+        <label for="vendor">{{'vendor' | translate}}</label>
+        <select class="form-control" name="vendor" (blur)="existname();exist()" (change)="onVendorChange($event)  ">
+            <option selected disabled [value]="">{{"il faut choisir"| translate}}</option>
+            <option [selected]="produit.fournisseur.id==vendor.id" *ngFor="let vendor of vendors" [value]="vendor.id">
+                {{vendor.name}}
+            </option>
+        </select>
+    </div>
 
-  <div class="form-group col-md-4">
-    <label for="currency">{{ "currency" | translate }}</label>
-    <input
-      class="form-control"
-      name="currency"
-      placeholder="{{ 'write your currency code' | translate }} "
-      formControlName="currency"
-      ngModel
-      [(ngModel)]="produit.currency"
-    />
-  </div>
+    <div class="form-group col-md-4">
+        <label for="currency">{{'currency' | translate}}</label>
+        <input class="form-control" name="currency" placeholder="{{'write your currency code'|translate}} "
+            formControlName="currency" ngModel [(ngModel)]="produit.currency">
+    </div>
 
-  <div class="form-group col-md-4">
-    <label for="category">{{ "category" | translate }}</label>
+    <div class="form-group col-md-4">
+        <label for="category">{{'category' | translate}}</label>
 
-    <select
-      class="form-control"
-      name="category"
-      formControlName="category"
-      ngModel
-      [(ngModel)]="produit.category"
-    >
-      <option value="Category 1">Category 1</option>
-      <option value="Category 2">Category 2</option>
-      <option value="Category 3">Category 3</option>
-    </select>
-  </div>
+        <select class="form-control" name="category" formControlName="category" ngModel [(ngModel)]="produit.category">
+            <option value="Category 1">Category 1</option>
+            <option value="Category 2">Category 2</option>
+            <option value="Category 3">Category 3</option>
+        </select>
+    </div>
 
-  <div class="form-group col-md-4 align-self-end">
-    <label for="active">
-      <input
-        type="checkbox"
-        id="active"
-        name="active"
-        formControlName="statuss"
-        ngModel
-        [(ngModel)]="produit.statuss"
-      />
-      {{ "active" | translate }}
-    </label>
-  </div>
+    <div class="form-group col-md-4 align-self-end">
+        <label for="active">
+            <input type="checkbox" id="active" name="active" formControlName="statuss" ngModel
+                [(ngModel)]="produit.statuss">
+            {{'active' | translate}}
+        </label>
+    </div>
 
-  <div class="form-group col-md-4 align-self-end">
-    <label for="medicamenteux">
-      <input
-        type="checkbox"
-        id="medicamenteux"
-        name="medicamenteux"
-        formControlName="medicamenteux"
-        ngModel
-        [(ngModel)]="produit.medicamenteux"
-      />
-      {{ "medicated" | translate }}
-    </label>
-  </div>
+    <div class="form-group col-md-4 align-self-end">
+        <label for="medicamenteux">
+            <input type="checkbox" id="medicamenteux" name="medicamenteux" formControlName="medicamenteux" ngModel
+                [(ngModel)]="produit.medicamenteux">
+            {{'medicated' | translate}}
+        </label>
+    </div>
 
-  <div class="form-group col-md-4">
-    <label for="inventaire">{{ "inventory" | translate }}</label>
-    <input
-      class="form-control"
-      name="inventaire"
-      placeholder="{{ 'write your Inventaire' | translate }} "
-      formControlName="inventaire"
-      ngModel
-      [(ngModel)]="produit.inventaire"
-    />
-  </div>
+    <div class="form-group col-md-4">
+        <label for="inventaire">{{'inventory' | translate}}</label>
+        <input class="form-control" name="inventaire" placeholder="{{'write your Inventaire'|translate}} "
+            formControlName="inventaire" ngModel [(ngModel)]="produit.inventaire">
+    </div>
 
-  <div class="form-group col-md-4">
-    <label for="couleur">{{ "color" | translate }}</label>
-    <input
-      type="color"
-      class="form-control"
-      name="couleur"
-      formControlName="couleur"
-      ngModel
-      [(ngModel)]="produit.couleur"
-    />
-  </div>
+    <div class="form-group col-md-4">
+        <label for="couleur">{{'color' | translate}}</label>
+        <input type="color" class="form-control" name="couleur" formControlName="couleur" ngModel
+            [(ngModel)]="produit.couleur">
+    </div>
 
-  <div class="form-group col-md-4">
-    <label for="fabricant">{{ "manufacturer" | translate }}</label>
-    <input
-      class="form-control"
-      name="fabricant"
-      formControlName="fabricant"
-      placeholder="{{ 'write your Fabricant' | translate }} "
-      ngModel
-      [(ngModel)]="produit.fabricant"
-    />
-  </div>
+    <div class="form-group col-md-4">
+        <label for="fabricant">{{'manufacturer' | translate}}</label>
+        <input class="form-control" name="fabricant" formControlName="fabricant"
+            placeholder="{{'write your Fabricant'|translate}} " ngModel [(ngModel)]="produit.fabricant">
+    </div>
 
-  <div class="form-group col-md-4">
-    <label for="maxdepasse">{{ "maxOver" | translate }}</label>
-    <input
-      class="form-control"
-      name="maxdepasse"
-      formControlName="maxdepasse"
-      placeholder="{{ 'write your max over' | translate }} "
-      ngModel
-      [(ngModel)]="produit.maxdepasse"
-    />
-  </div>
+    <div class="form-group col-md-4">
+        <label for="maxdepasse">{{'maxOver' | translate}}</label>
+        <input class="form-control" name="maxdepasse" formControlName="maxdepasse"
+            placeholder="{{'write your max over'|translate}} " ngModel [(ngModel)]="produit.maxdepasse">
+    </div>
 
-  <div class="form-group col-md-4">
-    <label for="prixUnitaireHt">{{ "prixUnitaireHt" | translate }}</label>
-    <input
-      type="number"
-      class="form-control"
-      name="prixUnitaireHt"
-      formControlName="prixUnitaireHt"
-      placeholder="{{ 'write your Unit price Ht' | translate }} "
-      ngModel
-      [(ngModel)]="produit.prixUnitaireHt"
-    />
-  </div>
+    <div class="form-group col-md-4">
+        <label for="prixUnitaireHt">{{'prixUnitaireHt' | translate}}</label>
+        <input type="number" class="form-control" name="prixUnitaireHt" formControlName="prixUnitaireHt"
+            placeholder="{{'write your Unit price Ht'|translate}} " ngModel [(ngModel)]="produit.prixUnitaireHt">
+    </div>
 
-  <div class="form-group col-md-4">
-    <label for="tauxTva">{{ "tauxTva" | translate }}</label>
-    <input
-      type="number"
-      class="form-control"
-      name="tauxTva"
-      formControlName="tauxTva"
-      ngModel
-      placeholder="{{ 'write your rate' | translate }} "
-      [(ngModel)]="produit.tauxTva"
-    />
-  </div>
+    <div class="form-group col-md-4">
+        <label for="tauxTva">{{'tauxTva' | translate}}</label>
+        <input type="number" class="form-control" name="tauxTva" formControlName="tauxTva" ngModel
+            placeholder="{{'write your rate'|translate}} " [(ngModel)]="produit.tauxTva">
+    </div>
+
 </div>

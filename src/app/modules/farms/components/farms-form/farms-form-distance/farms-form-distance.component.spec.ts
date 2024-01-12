@@ -1,22 +1,23 @@
-import { ComponentFixture, TestBed } from "@angular/core/testing";
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FarmsFormDistanceComponent } from "./farms-form-distance.component";
+import { FarmsFormDistanceComponent } from './farms-form-distance.component';
 
-describe("FarmsFormDistanceComponent", () => {
+describe('FarmsFormDistanceComponent', () => {
   let component: FarmsFormDistanceComponent;
   let fixture: ComponentFixture<FarmsFormDistanceComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [FarmsFormDistanceComponent],
-    }).compileComponents();
+      declarations: [ FarmsFormDistanceComponent ]
+    })
+    .compileComponents();
 
     fixture = TestBed.createComponent(FarmsFormDistanceComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
-  it("should create", () => {
+  it('should create', () => {
     expect(component).toBeTruthy();
   });
 });

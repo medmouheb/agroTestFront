@@ -84,7 +84,7 @@ import { NumberSeparatorPipe } from "app/components/NumberSeparatorPipe";
     NotificationsComponent,
     UpgradeComponent,
     CardComponent,
-    NumberSeparatorPipe,
+    NumberSeparatorPipe
   ],
 })
 export class AdminLayoutModule {}

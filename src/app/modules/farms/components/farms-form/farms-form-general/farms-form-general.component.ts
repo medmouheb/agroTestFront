@@ -38,8 +38,8 @@ export class FarmsFormGeneralComponent implements OnInit {
     private sharedService: SharedService,
     private growoutservice: GrowoutService,
     private costcenterservice: CostCenterService,
-    private toastService: HotToastService,
-  ) {}
+    private toastService: HotToastService
+  ) { }
   getAllgrowout() {
     this.growoutservice.findAll().subscribe({
       next: (result) => (this.growouts = result),
@@ -50,118 +50,148 @@ export class FarmsFormGeneralComponent implements OnInit {
     this.costcenterservice.findAll().subscribe({
       next: (res) => (this.costcenters = res),
       error: (error) => console.error(error),
-    });
+
+    })
   }
   selectValue(e: any) {
-    let wil = this.growouts.filter((el) => {
-      return el.code == e.target.value;
-    })[0];
 
-    this.farm.growout = wil;
-    this.farm.growoutcode = wil.code;
+    let wil = this.growouts.filter(el => {
+      return el.code == e.target.value
+
+    })[0]
+
+    this.farm.growout = wil
+    this.farm.growoutcode = wil.code
+
+
+
   }
-  uploadText1 = "upload";
-  uploadText2 = "upload";
+  uploadText1="upload"
+  uploadText2="upload"
 
   selectValuecostCenter(e: any) {
-    let wil = this.costcenters.filter((el) => {
-      return el.code == e.target.value;
-    })[0];
 
-    this.farm.cost_Center = wil;
+    let wil = this.costcenters.filter(el => {
+      return el.code == e.target.value
+
+    })[0]
+
+    this.farm.cost_Center = wil
+
+
+
   }
 
   setActif() {
-    this.farm.status = !this.farm.status;
+    this.farm.status = !this.farm.status
   }
-  static = "";
+  static = ""
 
   ngOnInit(): void {
     if (this.farm == undefined) {
-      this.farm = { nom: "", code: "", status: true };
+      this.farm = { nom: "", code: "", status: true }
+
     }
 
-    this.getallcostCenter();
-    this.getAllgrowout();
+
+
+    this.getallcostCenter()
+    this.getAllgrowout()
     this.initForm();
     if (!this.farm.warehouse) {
       this.farm.warehouse = {};
+
+
     }
     if (!this.farm.vendor) {
       this.farm.vendor = {};
+
     }
 
     this.getAllWarehouses();
     this.getAllVendors();
 
-    this.farmsService.findAll().subscribe((data) => {
-      this.names = data.map((el) => {
-        return el.nom;
-      });
-      this.codes = data.map((el) => {
-        return el.code;
-      });
-    });
+    this.farmsService.findAll().subscribe(data => {
+      this.names = data.map(el => {
+        return el.nom
+      })
+      this.codes = data.map(el => {
+        return el.code
+      })
+    })
+
+
   }
-  id = "";
-  getstatus() {
+  id=""
+  getstatus(){
+
     if (this.farm.id) {
-      this.static = "update";
-      if (this.id != this.farm.id) {
-        this.id = this.farm.id;
-        this.farmReplica = JSON.parse(JSON.stringify(this.farm));
+
+      this.static = "update"
+      if(this.id!=this.farm.id){
+        this.id=this.farm.id
+        this.farmReplica =  JSON.parse( JSON.stringify(  this.farm))
       }
-      this.sharedService.setIsActive(true);
-      return "update";
+      this.sharedService.setIsActive(true)
+      return "update"
     } else if (!this.farm.id) {
-      this.static = "create";
-      this.geValues("");
-      return "create";
+      this.static = "create"
+      this.geValues("")
+      return "create"
     }
   }
 
-  dispotruename = false;
+  dispotruename = false
 
   existname() {
-    if (this.names.indexOf(this.farm.nom + "") != -1) {
-      if (this.static == "update") {
-        if (this.farm.nom == this.farmReplica.nom) {
-          this.dispotruename = false;
-        } else {
-          this.dispotruename = true;
+    if (this.names.indexOf((this.farm.nom + "")) != -1) {
+
+      if(this.static=="update" ){
+
+        if(this.farm.nom == this.farmReplica.nom){
+
+          this.dispotruename = false
+        }else{
+
+          this.dispotruename = true
         }
-      } else {
-        this.dispotruename = true;
+      }else{
+        this.dispotruename = true
       }
+
     } else {
-      this.dispotruename = false;
+      this.dispotruename = false
     }
+
   }
 
-  dispotruecode = false;
+  dispotruecode = false
 
   existcode() {
-    if (this.codes.indexOf(this.farm.code + "") != -1) {
-      if (this.static == "update") {
-        if (this.farm.code == this.farmReplica.code) {
-          this.dispotruecode = false;
-        } else {
-          this.dispotruecode = true;
+
+    if (this.codes.indexOf((this.farm.code + "")) != -1) {
+      if(this.static=="update" ){
+
+        if(this.farm.code == this.farmReplica.code){
+          this.dispotruecode = false
+        }else{
+          this.dispotruecode = true
         }
-      } else {
-        this.dispotruecode = true;
+      }else{
+        this.dispotruecode = true
       }
+
     } else {
-      this.dispotruecode = false;
+      this.dispotruecode = false
     }
   }
 
-  getFile(id: any) {
-    window.open(`${environment.apiUrl}/files/download/${id}`, "_blank");
+  getFile(id:any){
+    window.open( `${environment.apiUrl}/files/download/${id}`,"_blank" )
   }
 
   initForm() {
-    this.fieldControl = new FormControl("", [
+    this.fieldControl = new FormControl('', [
       Validators.required,
 
       Validators.pattern(/^[a-zA-Z ]*$/),
@@ -210,36 +240,13 @@ export class FarmsFormGeneralComponent implements OnInit {
       latitude: new FormControl(""),
       longitude: new FormControl(""),
     });
+
   }
 
   geValues(event) {
-    console.log(
-      this.farm.code != null &&
-        this.farm.code != "" &&
-        this.farm.nom != null &&
-        this.farm.nom != "" &&
-        this.farm.owner_Name != null &&
-        this.farm.owner_Name != "" &&
-        this.farm.manager_Code != null &&
-        this.farm.manager_Code != "" &&
-        this.farm.manager_name != null &&
-        this.farm.manager_name != "" &&
-        this.farm.technician_Code != null &&
-        this.farm.technician_Code != "" &&
-        this.farm.technician_Name != null &&
-        this.farm.technician_Name != "" &&
-        this.farm.code.toString().length >= 1 &&
-        this.farm.nom.toString().length >= 1 &&
-        this.farm.owner_Name.toString().length >= 1 &&
-        this.farm.manager_Code.toString().length >= 1 &&
-        this.farm.manager_name.toString().length >= 1 &&
-        this.farm.technician_Code.toString().length >= 1 &&
-        this.farm.technician_Name.toString().length >= 1,
-    );
 
     if (
-      !this.dispotruecode &&
-      !this.dispotruename &&
+      !this.dispotruecode && !this.dispotruename &&
       this.farm.code != null &&
       this.farm.code != "" &&
       this.farm.nom != null &&
@@ -269,24 +276,18 @@ export class FarmsFormGeneralComponent implements OnInit {
   }
 
   onWarehouseChange(e: any) {
-    this.farm.warehouse = this.warehouses.filter((el) => {
-      return el.id == e.target.value;
-    })[0];
+    this.farm.warehouse = this.warehouses.filter(el => { return el.id == e.target.value })[0];
   }
 
   getAllWarehouses() {
     this.warehouseService.findAll().subscribe({
-      next: (result) => {
-        this.warehouses = result;
-      },
+      next: (result) => {this.warehouses = result},
       error: (error) => console.error(error),
     });
   }
 
   onVendorChange(e: any) {
-    this.farm.vendor = this.vendors.filter((el) => {
-      return el.id == e.target.value;
-    })[0];
+    this.farm.vendor = this.vendors.filter(el => { return el.id == e.target.value })[0]
   }
 
   getAllVendors() {
@@ -317,17 +318,21 @@ export class FarmsFormGeneralComponent implements OnInit {
   valid3: boolean = false;
   valid4: boolean = false;
   valid5: boolean = false;
-  minIstrueName: boolean = false;
+  minIstrueName: boolean = false
   isBlur2() {
     if (this.fieldControl.status == "INVALID") {
-      this.minIstrueName = true;
-    } else if (this.fieldControl.status == "VALID") {
-      this.minIstrueName = false;
+      this.minIstrueName = true
+
+    }
+    else if (this.fieldControl.status == "VALID") {
+      this.minIstrueName = false
+
     }
   }
   isBlur4() {
-    if (this.fieldControl.value == "" || this.fieldControl.value == undefined) {
-      this.minIstrueName = false;
+    if ((this.fieldControl.value == '') || (this.fieldControl.value == undefined)) {
+      this.minIstrueName = false
+
     }
   }
   isBlurDCisvalid() {
@@ -347,17 +352,21 @@ export class FarmsFormGeneralComponent implements OnInit {
     }
   }
 
-  codeIsvalid = false;
 
-  validationCode() {
-    const codeRegex: RegExp = /^[a-zA-Z0-9]*$/;
 
-    if (codeRegex.test(this.farm.code)) {
-      this.codeIsvalid = false;
-    } else {
-      this.codeIsvalid = true;
-    }
+  codeIsvalid = false
+
+validationCode() {
+  const codeRegex: RegExp =/^[a-zA-Z0-9]*$/;
+  if (codeRegex.test(this.farm.code)) {
+    this.codeIsvalid = false;
+
   }
+  else {
+  this.codeIsvalid=true
+  }
+
+}
 
   codeISvalid: boolean = false;
   codeBlur() {
@@ -460,39 +469,31 @@ export class FarmsFormGeneralComponent implements OnInit {
       this.valid5 = false;
     }
   }
-  handleAttachments(e: any) {
+  handleAttachments(e:any){
     let dataFile = new FormData();
-    this.uploadText2 = e.target.files[0].name;
+    this.uploadText2=e.target.files[0].name
 
     dataFile.append("file", e.target.files[0]);
-    this.farmsService.handleFileUpload(dataFile).subscribe(
-      (data) => {
-        this.farm.attachments = data;
-      },
-      (err) => {
-        this.farm.attachments = err.error.text;
-      },
-    );
+    this.farmsService.handleFileUpload(dataFile).subscribe(data=>{
+      this.farm.attachments=data
+    },(err)=>{
+      this.farm.attachments=err.error.text
+    })
   }
 
-  handleComments(e: any) {
+  handleComments(e:any){
     let dataFile = new FormData();
-    if (
-      e.target.files[0].type ==
-      "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-    ) {
-      this.uploadText1 = e.target.files[0].name;
+    if(e.target.files[0].type=="application/vnd.openxmlformats-officedocument.wordprocessingml.document"){
+      this.uploadText1=e.target.files[0].name
       dataFile.append("file", e.target.files[0]);
-      this.farmsService.handleFileUpload(dataFile).subscribe(
-        (data) => {
-          this.farm.comments = data;
-        },
-        (err) => {
-          this.farm.comments = err.error.text;
-        },
-      );
-    } else {
-      this.toastService.error("accest only file.doc");
+      this.farmsService.handleFileUpload(dataFile).subscribe(data=>{
+        this.farm.comments=data
+      },(err)=>{
+        this.farm.comments=err.error.text
+      })
+    }else{
+      this.toastService.error('accest only file.doc');
     }
+
   }
 }

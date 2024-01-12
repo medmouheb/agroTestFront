@@ -1,22 +1,23 @@
-import { ComponentFixture, TestBed } from "@angular/core/testing";
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { GrowoutFormGeneralComponent } from "./growout-form-general.component";
+import { GrowoutFormGeneralComponent } from './growout-form-general.component';
 
-describe("GrowoutFormGeneralComponent", () => {
+describe('GrowoutFormGeneralComponent', () => {
   let component: GrowoutFormGeneralComponent;
   let fixture: ComponentFixture<GrowoutFormGeneralComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [GrowoutFormGeneralComponent],
-    }).compileComponents();
+      declarations: [ GrowoutFormGeneralComponent ]
+    })
+    .compileComponents();
 
     fixture = TestBed.createComponent(GrowoutFormGeneralComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
-  it("should create", () => {
+  it('should create', () => {
     expect(component).toBeTruthy();
   });
 });

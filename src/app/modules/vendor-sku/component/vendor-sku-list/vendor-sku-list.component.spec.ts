@@ -1,22 +1,23 @@
-import { ComponentFixture, TestBed } from "@angular/core/testing";
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { VendorSKUListComponent } from "./vendor-sku-list.component";
+import { VendorSKUListComponent } from './vendor-sku-list.component';
 
-describe("VendorSKUListComponent", () => {
+describe('VendorSKUListComponent', () => {
   let component: VendorSKUListComponent;
   let fixture: ComponentFixture<VendorSKUListComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [VendorSKUListComponent],
-    }).compileComponents();
+      declarations: [ VendorSKUListComponent ]
+    })
+    .compileComponents();
 
     fixture = TestBed.createComponent(VendorSKUListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
-  it("should create", () => {
+  it('should create', () => {
     expect(component).toBeTruthy();
   });
 });

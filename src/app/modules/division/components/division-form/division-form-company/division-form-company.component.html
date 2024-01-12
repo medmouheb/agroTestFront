@@ -1,32 +1,35 @@
 <div class="row">
+  <!-- 
+    <div class="form-group col-md-6">
+        <label for="company">{{'company' | translate}}</label>
+        <select class="form-control" name="companycode"  #companycode="ngModel" ngModel [(ngModel)]="division.companycode"  aria-placeholder="--Select your Campany--"
+        (click)="selectValue($event)">
+            <option value="" [selected]> --Select your Campany-- </option>
+            <option *ngFor="let comp of companys" [value]="comp.id">
+                {{comp.name}}
+            </option>
+        </select> -->
+  <!-- </div> -->
   <div class="form-group col-md-6">
-    <label for="company">{{ "namecompany" | translate }}</label>
-    <select
-      (click)="selectValue($event)"
-      class="form-control"
-      [(ngModel)]="division.companyname"
-    >
-      <option *ngFor="let dv of companys" [value]="dv.name">
-        {{ dv.name }}
-      </option>
+    <label for="company">{{'namecompany' | translate}}</label>
+    <select (click)="selectValue($event)" class="form-control" [(ngModel)]="division.companyname">
+      <option *ngFor="let dv of companys" [value]="dv.name"> {{dv.name}}</option>
     </select>
   </div>
   <div class="form-group col-md-6">
-    <label class="required" for="code">{{ "codecompany" | translate }}</label>
-    <input
-      class="form-control"
-      name="codecompany"
-      [(ngModel)]="division.companycode"
-      required
-      aria-invalid="true"
-      aria-describedby="code-error"
-    />
+    <label class="required" for="code">{{'codecompany' | translate}}</label>
+    <input class="form-control" name="codecompany" [(ngModel)]="division.companycode" required aria-invalid="true"
+      aria-describedby="code-error">
+
   </div>
 
-  <div style="padding-left: 2%">
-    <input (click)="setCompany()" type="checkbox" [checked]="isRemenber" />
+  <div style="padding-left: 2%;">
+    <input (click)="setCompany()"  type="checkbox" [checked]="isRemenber">
     <label class="form-check-label" for="flexCheckChecked">
       Checked checkbox
     </label>
   </div>
+
+
+
 </div>

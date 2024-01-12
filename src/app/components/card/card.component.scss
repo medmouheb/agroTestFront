@@ -1,7 +1,7 @@
 /* Add application styles & imports to this file! */
 
 body {
-  font-family: "RobotoRegular", Helvetica, Arial, sans-serif;
+  font-family: 'RobotoRegular', Helvetica, Arial, sans-serif;
   font-size: 14px;
   margin: 0;
   background: #eee;
@@ -14,7 +14,7 @@ my-app {
   background-color: #eee;
 }
 
-my-app > .k-icon.k-i-loading {
+my-app>.k-icon.k-i-loading {
   font-size: 64px;
   position: absolute;
   top: 50%;
@@ -81,8 +81,8 @@ my-app > .k-icon.k-i-loading {
   background-color: #596944;
 }
 
-.card [class*="card-header-"] .card-icon,
-.card [class*="card-header-"] .card-text {
+.card [class*=card-header-] .card-icon,
+.card [class*=card-header-] .card-text {
   border-radius: 3px;
   background-color: #999999;
   padding: 0px;

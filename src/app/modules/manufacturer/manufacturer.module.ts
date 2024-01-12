@@ -1,13 +1,14 @@
-import { NgModule } from "@angular/core";
-import { CommonModule } from "@angular/common";
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
-import { ManufacturerRoutingModule } from "./manufacturer-routing.module";
-import { ManufacturerListComponent } from "./components/manufacturer-list/manufacturer-list.component";
-import { ManufacturerFormComponent } from "./components/manufacturer-form/manufacturer-form.component";
-import { TrashComponent } from "./components/trash/trash.component";
-import { ManufacturerFormGeneralComponent } from "./components/manufacturer-form/manufacturer-form-general/manufacturer-form-general.component";
-import { ManufacturerFormNotesComponent } from "./components/manufacturer-form/manufacturer-notes/manufacturer-form-notes.component";
-import { SharedModule } from "app/shared/shared.module";
+import { ManufacturerRoutingModule } from './manufacturer-routing.module';
+import { ManufacturerListComponent } from './components/manufacturer-list/manufacturer-list.component';
+import { ManufacturerFormComponent } from './components/manufacturer-form/manufacturer-form.component';
+import { TrashComponent } from './components/trash/trash.component';
+import { ManufacturerFormGeneralComponent } from './components/manufacturer-form/manufacturer-form-general/manufacturer-form-general.component';
+import { ManufacturerFormNotesComponent } from './components/manufacturer-form/manufacturer-notes/manufacturer-form-notes.component';
+import { SharedModule } from 'app/shared/shared.module';
+
 
 @NgModule({
   declarations: [
@@ -15,8 +16,12 @@ import { SharedModule } from "app/shared/shared.module";
     ManufacturerFormComponent,
     TrashComponent,
     ManufacturerFormGeneralComponent,
-    ManufacturerFormNotesComponent,
+    ManufacturerFormNotesComponent
   ],
-  imports: [CommonModule, ManufacturerRoutingModule, SharedModule],
+  imports: [
+    CommonModule,
+    ManufacturerRoutingModule,
+    SharedModule
+  ]
 })
-export class ManufacturerModule {}
+export class ManufacturerModule { }

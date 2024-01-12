@@ -1,177 +1,86 @@
+
+
+
 <div class="row">
-  <div class="form-group col-md-6">
-    <label for="active">{{ "active" | translate }}</label>
-    <select
-      class="form-control"
-      name="active"
-      #active="ngModel"
-      ngModel
-      [(ngModel)]="camp.active"
-    >
-      <option value="false">False</option>
-      <option value="true">True</option>
-    </select>
-  </div>
-  <div class="form-group col-md-6">
-    <label for="yardBuggy">{{ "yardBuggy" | translate }}</label>
-    <select
-      class="form-control"
-      name="yardBuggy"
-      #yardBuggy="ngModel"
-      ngModel
-      [(ngModel)]="camp.yardBuggy"
-    >
-      <option value="false">False</option>
-      <option value="true">True</option>
-    </select>
-  </div>
-  <div class="form-group col-md-6">
-    <label for="external">{{ "external" | translate }}</label>
-    <select
-      class="form-control"
-      name="external"
-      #external="ngModel"
-      ngModel
-      [(ngModel)]="camp.external"
-    >
-      <option value="false">False</option>
-      <option value="true">True</option>
-    </select>
-  </div>
-  <div class="form-group col-md-6">
-    <label for="bioSecurityLevelCode">{{
-      "bioSecurityLevelCode" | translate
-    }}</label>
-    <input
-      class="form-control"
-      name="bioSecurityLevelCode"
-      #bioSecurityLevelCode="ngModel"
-      ngModel
-      [(ngModel)]="camp.bioSecurityLevelCode"
-      placeholder="{{ 'Write your bioSecurityLevelCode' | translate }} "
-    />
-  </div>
-  <div class="form-group col-md-6">
-    <label for="tareVariance">{{ "tareVariance" | translate }}</label>
-    <input
-      type="number"
-      class="form-control"
-      name="tareVariance"
-      #tareVariance="ngModel"
-      ngModel
-      [(ngModel)]="camp.tareVariance"
-      placeholder="{{ 'Write your tareVariance' | translate }} "
-    />
-  </div>
-  <div class="form-group col-md-6">
-    <label for="tareWeight">{{ "tareWeight" | translate }}</label>
-    <input
-      type="number"
-      class="form-control"
-      name="tareWeight"
-      #tareWeight="ngModel"
-      ngModel
-      [(ngModel)]="camp.tareWeight"
-      placeholder="{{ 'Write your tareWeight' | translate }} "
-    />
-  </div>
 
-  <div class="form-group col-md-6">
-    <label for="tareWtRecord">{{ "tareWtRecord" | translate }}</label>
-    <input
-      type="date"
-      class="form-control"
-      name="tareWtRecord"
-      #tareWtRecord="ngModel"
-      ngModel
-      [(ngModel)]="camp.tareWtRecord"
-      placeholder="{{ 'Write your tareWtRecord' | translate }} "
-    />
-  </div>
-
-  <div class="form-group col-md-6">
-    <label for="tareWtRecordRef">{{ "tareWtRecordRef" | translate }}</label>
-    <input
-      class="form-control"
-      name="tareWtRecordRef"
-      #tareWtRecordRef="ngModel"
-      ngModel
-      [(ngModel)]="camp.tareWtRecordRef"
-      placeholder="{{ 'Write your tareWtRecordRef' | translate }} "
-    />
-  </div>
-  <div class="form-group col-md-6">
-    <label for="bins">{{ "bins" | translate }}</label>
-    <input
-      type="number"
-      class="form-control"
-      name="bins"
-      #bins="ngModel"
-      ngModel
-      [(ngModel)]="camp.bins"
-      placeholder="{{ 'Write your Bins' | translate }} "
-    />
-  </div>
-  <div class="form-group col-md-6">
-    <label for="trailer">{{ "trailer" | translate }}</label>
-    <select
-      class="form-control"
-      name="trailer"
-      #trailer="ngModel"
-      ngModel
-      [(ngModel)]="camp.trailer"
-    >
-      <option value="false">False</option>
-      <option value="true">True</option>
+    <div class="form-group col-md-6">
+      <label for="active">{{ "active" | translate }}</label>
+      <select class="form-control" name="active" #active="ngModel" ngModel [(ngModel)]="camp.active">
+        <option value="false" >False</option>
+        <option value="true" >True</option>
     </select>
+    </div>
+    <div class="form-group col-md-6">
+        <label for="yardBuggy">{{ "yardBuggy" | translate }}</label>
+        <select class="form-control" name="yardBuggy" #yardBuggy="ngModel" ngModel [(ngModel)]="camp.yardBuggy">
+            <option value="false" >False</option>
+            <option value="true" >True</option>
+        </select>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="external">{{ "external" | translate }}</label>
+        <select class="form-control" name="external" #external="ngModel" ngModel [(ngModel)]="camp.external">
+            <option value="false" >False</option>
+            <option value="true" >True</option>
+        </select>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="bioSecurityLevelCode">{{ "bioSecurityLevelCode" | translate }}</label>
+        <input class="form-control" name="bioSecurityLevelCode" #bioSecurityLevelCode="ngModel" ngModel [(ngModel)]="camp.bioSecurityLevelCode"
+          placeholder="{{'Write your bioSecurityLevelCode'|translate}} "/>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="tareVariance">{{ "tareVariance" | translate }}</label>
+        <input type="number" class="form-control" name="tareVariance" #tareVariance="ngModel" ngModel [(ngModel)]="camp.tareVariance"
+          placeholder="{{'Write your tareVariance'|translate}} "/>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="tareWeight">{{ "tareWeight" | translate }}</label>
+        <input type="number" class="form-control" name="tareWeight" #tareWeight="ngModel" ngModel [(ngModel)]="camp.tareWeight"
+          placeholder="{{'Write your tareWeight'|translate}} "/>
+      </div>
+
+      <div class="form-group col-md-6">
+        <label for="tareWtRecord">{{ "tareWtRecord" | translate }}</label>
+        <input type="date" class="form-control" name="tareWtRecord" #tareWtRecord="ngModel" ngModel [(ngModel)]="camp.tareWtRecord"
+          placeholder="{{'Write your tareWtRecord'|translate}} "/>
+      </div>
+
+      <div class="form-group col-md-6">
+        <label for="tareWtRecordRef">{{ "tareWtRecordRef" | translate }}</label>
+        <input class="form-control" name="tareWtRecordRef" #tareWtRecordRef="ngModel" ngModel [(ngModel)]="camp.tareWtRecordRef"
+          placeholder="{{'Write your tareWtRecordRef'|translate}} "/>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="bins">{{ "bins" | translate }}</label>
+        <input type="number" class="form-control" name="bins" #bins="ngModel" ngModel [(ngModel)]="camp.bins"
+          placeholder="{{'Write your Bins'|translate}} "/>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="trailer">{{ "trailer" | translate }}</label>
+        <select class="form-control" name="trailer" #trailer="ngModel" ngModel [(ngModel)]="camp.trailer">
+            <option value="false" >False</option>
+            <option value="true" >True</option>
+        </select>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="trailerSequence">{{ "trailerSequence" | translate }}</label>
+        <input type="number" class="form-control" name="trailerSequence" #trailerSequence="ngModel" ngModel [(ngModel)]="camp.trailerSequence"
+          placeholder="{{'Write your trailerSequence'|translate}} "/>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="capacity">{{ "capacity" | translate }}</label>
+        <input type="number" class="form-control" name="capacity" #capacity="ngModel" ngModel [(ngModel)]="camp.capacity"
+          placeholder="{{'Write your capacity'|translate}} "/>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="color">{{ "color" | translate }}</label>
+        <input type="color" class="form-control" class="form-control" name="color" #color="ngModel" ngModel [(ngModel)]="camp.color"
+        placeholder="{{'Write your color'|translate}} ">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="notes">{{ "notes" | translate }}</label>
+        <textarea type="text" class="form-control" name="notes" #notes="ngModel" ngModel [(ngModel)]="camp.notes"
+          placeholder="{{'Write your notes'|translate}} "></textarea>
+      </div>
   </div>
-  <div class="form-group col-md-6">
-    <label for="trailerSequence">{{ "trailerSequence" | translate }}</label>
-    <input
-      type="number"
-      class="form-control"
-      name="trailerSequence"
-      #trailerSequence="ngModel"
-      ngModel
-      [(ngModel)]="camp.trailerSequence"
-      placeholder="{{ 'Write your trailerSequence' | translate }} "
-    />
-  </div>
-  <div class="form-group col-md-6">
-    <label for="capacity">{{ "capacity" | translate }}</label>
-    <input
-      type="number"
-      class="form-control"
-      name="capacity"
-      #capacity="ngModel"
-      ngModel
-      [(ngModel)]="camp.capacity"
-      placeholder="{{ 'Write your capacity' | translate }} "
-    />
-  </div>
-  <div class="form-group col-md-6">
-    <label for="color">{{ "color" | translate }}</label>
-    <input
-      type="color"
-      class="form-control"
-      class="form-control"
-      name="color"
-      #color="ngModel"
-      ngModel
-      [(ngModel)]="camp.color"
-      placeholder="{{ 'Write your color' | translate }} "
-    />
-  </div>
-  <div class="form-group col-md-6">
-    <label for="notes">{{ "notes" | translate }}</label>
-    <textarea
-      type="text"
-      class="form-control"
-      name="notes"
-      #notes="ngModel"
-      ngModel
-      [(ngModel)]="camp.notes"
-      placeholder="{{ 'Write your notes' | translate }} "
-    ></textarea>
-  </div>
-</div>

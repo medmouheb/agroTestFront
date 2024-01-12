@@ -1,22 +1,23 @@
-import { ComponentFixture, TestBed } from "@angular/core/testing";
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { WarehouseFormGeneralComponent } from "./warehouse-form-general.component";
+import { WarehouseFormGeneralComponent } from './warehouse-form-general.component';
 
-describe("WarehouseFormGeneralComponent", () => {
+describe('WarehouseFormGeneralComponent', () => {
   let component: WarehouseFormGeneralComponent;
   let fixture: ComponentFixture<WarehouseFormGeneralComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [WarehouseFormGeneralComponent],
-    }).compileComponents();
+      declarations: [ WarehouseFormGeneralComponent ]
+    })
+    .compileComponents();
 
     fixture = TestBed.createComponent(WarehouseFormGeneralComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
-  it("should create", () => {
+  it('should create', () => {
     expect(component).toBeTruthy();
   });
 });

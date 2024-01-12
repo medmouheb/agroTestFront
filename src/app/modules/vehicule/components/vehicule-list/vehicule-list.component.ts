@@ -1,19 +1,19 @@
-import { Component, EventEmitter, OnInit, ViewChild } from "@angular/core";
-import { ConfirmDialogComponent } from "app/shared/components/confirm-dialog/confirm-dialog.component";
-import { StepperComponent } from "app/shared/components/stepper/stepper.component";
-import { WizardDialogComponent } from "app/shared/components/wizard-dialog/wizard-dialog.component";
-import { Vehicule } from "../../models/vehicule";
-import { Page, initPage } from "app/shared/models";
-import { FormBuilder, FormGroup } from "@angular/forms";
-import { VehiculeService } from "../../Services/vehicule.service";
-import { TranslateService } from "@ngx-translate/core";
-import { HotToastService } from "@ngneat/hot-toast";
-import { SharedService } from "app/modules/company/services/shared.service";
+import { Component, EventEmitter, OnInit, ViewChild } from '@angular/core';
+import { ConfirmDialogComponent } from 'app/shared/components/confirm-dialog/confirm-dialog.component';
+import { StepperComponent } from 'app/shared/components/stepper/stepper.component';
+import { WizardDialogComponent } from 'app/shared/components/wizard-dialog/wizard-dialog.component';
+import { Vehicule } from '../../models/vehicule';
+import { Page, initPage } from 'app/shared/models';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { VehiculeService } from '../../Services/vehicule.service';
+import { TranslateService } from '@ngx-translate/core';
+import { HotToastService } from '@ngneat/hot-toast';
+import { SharedService } from 'app/modules/company/services/shared.service';
 
 @Component({
-  selector: "app-vehicule-list",
-  templateUrl: "./vehicule-list.component.html",
-  styleUrls: ["./vehicule-list.component.scss"],
+  selector: 'app-vehicule-list',
+  templateUrl: './vehicule-list.component.html',
+  styleUrls: ['./vehicule-list.component.scss']
 })
 export class VehiculeListComponent implements OnInit {
   @ViewChild("deleteModal")
@@ -35,19 +35,16 @@ export class VehiculeListComponent implements OnInit {
   companyPages: Page<Vehicule> = initPage;
 
   isChecked: boolean = false;
-  affiche: boolean = false;
+  affiche:boolean = false;
   onPaginationChange: EventEmitter<string> = new EventEmitter<string>();
   form: FormGroup;
 
-  fullDetail = false;
+  fullDetail=false
 
   currentStep = 0;
-  steps: any = [
-    "steps.general",
-    "steps.localisation",
-    "steps.facility-details",
-    "steps.bin-details",
-  ];
+  steps: any = ["steps.general", "steps.localisation",
+  "steps.facility-details" , "steps.bin-details"
+];
 
   constructor(
     private vehiculeService: VehiculeService,
@@ -55,18 +52,19 @@ export class VehiculeListComponent implements OnInit {
     private toastService: HotToastService,
     private formBuilder: FormBuilder,
     private sharedService: SharedService,
-  ) {}
+  ) { }
   onCheckboxChange() {
-    if (this.isChecked == false) {
-      this.affiche = false;
-    } else {
-      this.affiche = true;
+    if (this.isChecked==false){
+
+      this.affiche=false
+    }
+    else{
+      this.affiche=true
     }
   }
-
   ngOnInit(): void {
     this.findPage();
-    this.findArchivedPage();
+    this.findArchivedPage()
     this.onPaginationChange.subscribe(() => this.findPage());
   }
 
@@ -81,7 +79,7 @@ export class VehiculeListComponent implements OnInit {
         },
         error: (error) => {
           this.loading = false;
-          console.error("aze", error);
+          console.error("aze",error );
         },
         complete: () => (this.loading = false),
       });
@@ -114,7 +112,7 @@ export class VehiculeListComponent implements OnInit {
     this.filter = filter;
     this.pageNumber = 0;
     this.findPage();
-    this.findArchivedPage();
+    this.findArchivedPage()
   }
 
   onPageNumberChange(pageNumber: number) {
@@ -138,7 +136,7 @@ export class VehiculeListComponent implements OnInit {
       this.translateService.instant("message.loading..."),
       {
         id: "0",
-      },
+      }
     );
 
     this.vehiculeService.save(id, this.camp!).subscribe({
@@ -150,7 +148,7 @@ export class VehiculeListComponent implements OnInit {
         this.toastService.success(
           this.translateService.instant("success.saved", {
             elem: this.translateService.instant("vehicule"),
-          }),
+          })
         );
       },
       error: (error) => {
@@ -158,7 +156,7 @@ export class VehiculeListComponent implements OnInit {
         this.toastService.error(
           this.translateService.instant(error.error, {
             elem: this.translateService.instant("company"),
-          }),
+          })
         );
       },
     });
@@ -180,17 +178,21 @@ export class VehiculeListComponent implements OnInit {
     this.stepper.nextStep();
     setTimeout(() => {
       this.stepper.prevStep();
+
     }, 100);
     setTimeout(() => {
-      this.formModal.show({
-        title: "menu.add-Vehicles",
-        stepsCount: this.steps.length - 1,
-        confirm: () => this.onWizardSave(null),
-        cancel: () => this.onCancel(),
-        prev: () => this.stepper.prevStep(),
-      });
-      this.sharedService.setIsActive(false);
-    }, 200);
+    this.formModal.show({
+      title: "menu.add-Vehicles",
+      stepsCount: this.steps.length - 1,
+      confirm: () => this.onWizardSave(null),
+      cancel: () => this.onCancel(),
+      prev: () => this.stepper.prevStep(),
+    });
+    this.sharedService.setIsActive(false);
+
+  }, 200);
+
+
   }
 
   onClickEdit(id: string) {
@@ -199,6 +201,7 @@ export class VehiculeListComponent implements OnInit {
     this.stepper.nextStep();
     setTimeout(() => {
       this.stepper.prevStep();
+
     }, 100);
     setTimeout(() => {
       this.formModal.show({
@@ -209,21 +212,25 @@ export class VehiculeListComponent implements OnInit {
         prev: () => this.stepper.prevStep(),
       });
       this.sharedService.setIsActive(true);
+
     }, 200);
+
   }
+
+
 
   onClickArchive(id: string) {
     this.archiveModal.show(() => {
       this.vehiculeService.archive(id).subscribe({
         next: () => {
           this.findPage();
-          this.findArchivedPage();
+          this.findArchivedPage()
           this.archiveModal.hide();
           this.toastService.close("0");
           this.toastService.success(
             this.translateService.instant("success.deleted", {
               elem: this.translateService.instant("vehicule"),
-            }),
+            })
           );
         },
       });
@@ -231,71 +238,67 @@ export class VehiculeListComponent implements OnInit {
   }
   sortByCodeValid: boolean = true;
   sortByCode() {
-    if (this.affiche) {
+    if(this.affiche){
       if (this.sortByCodeValid) {
-        this.companyss.sort((a, b) =>
-          a.vehiculeCode.localeCompare(b.vehiculeCode),
-        );
-        this.sortByCodeValid = false;
+        this.companyss.sort((a, b) => a.vehiculeCode.localeCompare(b.vehiculeCode));
+        this.sortByCodeValid = false
       } else {
-        this.companyss.sort((a, b) =>
-          b.vehiculeCode.localeCompare(a.vehiculeCode),
-        );
-        this.sortByCodeValid = true;
+        this.companyss.sort((a, b) => b.vehiculeCode.localeCompare(a.vehiculeCode));
+        this.sortByCodeValid = true
       }
-    } else {
+    }else{
       if (this.sortByCodeValid) {
-        this.companys.sort((a, b) =>
-          a.vehiculeCode.localeCompare(b.vehiculeCode),
-        );
-        this.sortByCodeValid = false;
+        this.companys.sort((a, b) => a.vehiculeCode.localeCompare(b.vehiculeCode));
+        this.sortByCodeValid = false
       } else {
-        this.companys.sort((a, b) =>
-          b.vehiculeCode.localeCompare(a.vehiculeCode),
-        );
-        this.sortByCodeValid = true;
+        this.companys.sort((a, b) => b.vehiculeCode.localeCompare(a.vehiculeCode));
+        this.sortByCodeValid = true
       }
     }
+
   }
+
+
 
   sortByNameValid: boolean = true;
   sortByName() {
-    if (this.affiche) {
+    if(this.affiche){
       if (this.sortByNameValid) {
-        this.companyss.sort((a, b) =>
-          a.vehiculeName.localeCompare(b.vehiculeName),
-        );
-        this.sortByNameValid = false;
+        this.companyss.sort((a, b) => a.vehiculeName.localeCompare(b.vehiculeName));
+        this.sortByNameValid = false
       } else {
-        this.companyss.sort((a, b) =>
-          b.vehiculeName.localeCompare(a.vehiculeName),
-        );
-        this.sortByNameValid = true;
+        this.companyss.sort((a, b) => b.vehiculeName.localeCompare(a.vehiculeName));
+        this.sortByNameValid = true
       }
-    } else {
+    }else{
       if (this.sortByNameValid) {
-        this.companys.sort((a, b) =>
-          a.vehiculeName.localeCompare(b.vehiculeName),
-        );
-        this.sortByNameValid = false;
+        this.companys.sort((a, b) => a.vehiculeName.localeCompare(b.vehiculeName));
+        this.sortByNameValid = false
       } else {
-        this.companys.sort((a, b) =>
-          b.vehiculeName.localeCompare(a.vehiculeName),
-        );
-        this.sortByNameValid = true;
+        this.companys.sort((a, b) => b.vehiculeName.localeCompare(a.vehiculeName));
+        this.sortByNameValid = true
       }
     }
+
   }
 
+
+
+
+
+
+
+
   onClickdisArchive(id: string) {
+
     this.vehiculeService.disArchive(id).subscribe({
       next: () => {
         this.findArchivedPage();
-        this.findPage();
+this.findPage()
         this.toastService.success(
           this.translateService.instant("success.restore", {
             elem: this.translateService.instant("vehicule"),
-          }),
+          })
         );
       },
     });
@@ -305,14 +308,37 @@ export class VehiculeListComponent implements OnInit {
     this.vehiculeService.delete(id).subscribe({
       next: () => {
         this.findArchivedPage();
-        this.findPage();
-
+        this.findPage()
         this.toastService.success(
           this.translateService.instant("success.deleted", {
             elem: this.translateService.instant("vehicule"),
-          }),
+          })
         );
       },
     });
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

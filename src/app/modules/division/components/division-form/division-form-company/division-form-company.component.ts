@@ -14,53 +14,44 @@ import { DivisionService } from "app/modules/division/services/division.service"
 export class DivisionFormCompanyComponent implements OnInit {
   @Input() division: Division = {};
   companys: Array<Company> = [];
-  divisions: Array<Division> = [];
+  divisions:Array<Division> = [];
   addform: FormGroup;
-  companyname: any;
+  companyname:any
   constructor(
     private sharedService: SharedService,
     private companyService: CompanyService,
-    private FormBuilder: FormBuilder,
-    private divisionService: DivisionService,
+    private FormBuilder:FormBuilder,
+    private divisionService:DivisionService
   ) {}
-  isRemenber = false;
+    isRemenber=false
   ngOnInit(): void {
-    if (localStorage.getItem("company")) {
-      this.isRemenber = true;
-      this.division.companyname = JSON.parse(
-        localStorage.getItem("company"),
-      ).companyname;
-      this.division.companycode = JSON.parse(
-        localStorage.getItem("company"),
-      ).codecompany;
+    if(localStorage.getItem("company")){
+      this.isRemenber=true
+      this.division.companyname=JSON.parse(  localStorage.getItem("company")).companyname
+      this.division.companycode=JSON.parse(  localStorage.getItem("company")).codecompany
     }
-    this.addform = this.FormBuilder.group({
-      idcamp: ["", Validators.required],
-    });
+    this.addform=this.FormBuilder.group({
+      idcamp:['',Validators.required]
 
+    })
+    // if (!this.division.campany) {
+    //   this.division.campany = {};
+    // }
     this.getAllCompany();
   }
 
-  setCompany() {
-    this.isRemenber = !this.isRemenber;
-    if (this.isRemenber == false) {
-      localStorage.setItem("company", "");
-    } else {
-      localStorage.setItem(
-        "company",
-        JSON.stringify({
-          companyname: this.division.companyname,
-          codecompany: this.companyname,
-        }),
-      );
+  setCompany(){
+    this.isRemenber=!this.isRemenber
+    if(this.isRemenber==false){
+      localStorage.setItem("company","")
+    }else{
+      localStorage.setItem("company", JSON.stringify({companyname:this.division.companyname,codecompany:this.companyname}) )
     }
   }
 
-  getAlldivision() {
+  getAlldivision(){
     this.divisionService.findAll().subscribe({
-      next: (result) => {
-        this.divisions = result;
-      },
+      next: (result) => {this.divisions = result;},
       error: (error) => console.error(error),
     });
     this.getAllCompany();
@@ -73,13 +64,18 @@ export class DivisionFormCompanyComponent implements OnInit {
     });
   }
 
-  selectValue(e: any) {
-    let wil = this.companys.filter((el) => {
-      return el.name == e.target.value;
-    })[0].code;
 
-    this.division.companycode = wil;
+  selectValue(e:any){
 
-    this.companyname = wil;
+    let wil=this.companys.filter(el=>{
+      return el.name==e.target.value
+
+    })[0].code
+
+    this.division.companycode=wil
+    this.companyname=wil
+
+
+
   }
 }

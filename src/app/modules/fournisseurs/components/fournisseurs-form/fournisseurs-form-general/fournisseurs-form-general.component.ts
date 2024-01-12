@@ -17,40 +17,39 @@ export class FournisseursFormGeneralComponent implements OnInit {
 
   fieldControl: FormControl;
   addform: FormGroup;
-  cuurencys: Array<Currency> = [];
-  constructor(
-    private sharedService: SharedService,
-    private currencyservice: CurrencyService,
-    private founriserv: FournisseursService,
-  ) {}
-  names: Array<String> = [];
-  codes: Array<String> = [];
-  static = "";
+  cuurencys: Array<Currency> = []
+  constructor(private sharedService: SharedService,
+    private currencyservice: CurrencyService, private founriserv: FournisseursService) { }
+    names: Array<String> = [];
+    codes: Array<String> = [];
+    static = ""
 
   ngOnInit(): void {
     this.initForm();
     if (this.fournisseur.code != null) {
       this.sharedService.setIsActive(true);
+
     }
 
     this.initForm();
-    this.getAllCurrency();
+    this.getAllCurrency()
 
-    this.founriserv.findAll().subscribe((data) => {
-      this.names = data.map((el) => {
-        return el.name;
-      });
-      this.codes = data.map((el) => {
-        return el.code;
-      });
-    });
+    this.founriserv.findAll().subscribe(data => {
+      this.names = data.map(el => {
+        return el.name
+      })
+      this.codes = data.map(el => {
+        return el.code
+      })
+    })
 
     if (this.fournisseur.id) {
-      this.static = "update";
-      this.fournisseurReplica = JSON.parse(JSON.stringify(this.fournisseur));
+      this.static = "update"
+      this.fournisseurReplica =  JSON.parse( JSON.stringify(  this.fournisseur))
     } else if (!this.fournisseur.id) {
-      this.static = "create";
+      this.static = "create"
     }
+
   }
   getAllCurrency() {
     this.currencyservice.findAll().subscribe({
@@ -58,113 +57,143 @@ export class FournisseursFormGeneralComponent implements OnInit {
       error: (error) => console.error(error),
     });
   }
-  dispotrueCode: boolean = false;
-  dispotruename: boolean = false;
+  dispotrueCode: boolean = false
+  dispotruename: boolean = false
   blur1() {
     if (this.fournisseur.code == null) {
-      this.dispotrueCode = false;
+      this.dispotrueCode = false
+
     }
   }
   exist() {
-    if (this.codes.indexOf(this.fournisseur.code + "") != -1) {
-      if (this.static == "update") {
-        if (this.fournisseur.code == this.fournisseurReplica.code) {
-          this.dispotrueCode = false;
-        } else {
-          this.dispotrueCode = true;
+    if (this.codes.indexOf((this.fournisseur.code + "")) != -1) {
+      if(this.static=="update" ){
+
+        if(this.fournisseur.code == this.fournisseurReplica.code){
+          this.dispotrueCode = false
+        }else{
+          this.dispotrueCode = true
         }
-      } else {
-        this.dispotrueCode = true;
+      }else{
+        this.dispotrueCode = true
       }
+
     } else {
-      this.dispotrueCode = false;
+      this.dispotrueCode = false
     }
+
   }
 
-  newSeggestions = "";
+
+
+  newSeggestions = ""
   existname() {
-    if (this.names.indexOf(this.fournisseur.name + "") != -1) {
-      if (this.static == "update") {
-        if (this.fournisseur.name == this.fournisseurReplica.name) {
-          this.dispotruename = false;
-        } else {
-          this.dispotruename = true;
+    if (this.names.indexOf((this.fournisseur.name + "")) != -1) {
+      if(this.static=="update" ){
+
+        if(this.fournisseur.name == this.fournisseurReplica.name){
+          this.dispotruename = false
+        }else{
+          this.dispotruename = true
         }
-      } else {
-        this.dispotruename = true;
+      }else{
+        this.dispotruename = true
       }
+
     } else {
-      this.dispotruename = false;
+      this.dispotruename = false
     }
+
   }
+
 
   selectValue(e: any) {
-    let wil = this.cuurencys.filter((el) => {
-      return el.code == e.target.value;
-    })[0].name;
 
-    this.fournisseur.currencyname = wil;
+    let wil = this.cuurencys.filter(el => {
+      return el.code == e.target.value
+
+    })[0].name
+    this.fournisseur.currencyname = wil
+
+
   }
 
+
   initForm() {
+
+
     this.addform = new FormGroup({
-      code: new FormControl("", [Validators.required]),
-      name: new FormControl("", [Validators.required]),
-      type: new FormControl("", [Validators.required]),
-      paymentTerm: new FormControl("", [Validators.required]),
-      currencyCode: new FormControl("", [Validators.required]),
+      code: new FormControl("", [
+        Validators.required,
+
+      ]),
+      name: new FormControl("", [
+        Validators.required,
+
+      ]),
+      type: new FormControl("", [
+        Validators.required,
+
+      ]),
+      paymentTerm: new FormControl("", [
+        Validators.required,
+
+      ]),
+      currencyCode: new FormControl("", [
+        Validators.required,
+
+      ]),
     });
+
   }
 
   geValues(event) {
-    console.log(
-      "dsss:",
-      this.fournisseur.code != null,
-      this.fournisseur.code != "",
-      this.fournisseur.name != null,
-      this.dispotrueCode == false,
-      this.dispotruename == false,
-      this.fournisseur.name != "",
-      this.fournisseur.paymentTerm != null,
-      this.fournisseur.paymentTerm != "",
-      this.fournisseur.currencycode != null,
-      this.fournisseur.currencycode != "",
-    );
 
-    if (
-      this.fournisseur.type &&
-      this.fournisseur.code != null &&
-      this.fournisseur.code != "" &&
-      this.fournisseur.name != null &&
-      this.dispotrueCode == false &&
-      this.dispotruename == false &&
-      this.fournisseur.name != "" &&
-      this.fournisseur.paymentTerm != null &&
-      this.fournisseur.paymentTerm != "" &&
-      this.fournisseur.currencycode != null &&
-      this.fournisseur.currencycode != ""
-    ) {
+
+
+    if ( this.fournisseur.type && this.fournisseur.code != null && this.fournisseur.code != "" && this.fournisseur.name != null && this.dispotrueCode == false && this.dispotruename == false &&
+      this.fournisseur.name != "" && this.fournisseur.paymentTerm != null && this.fournisseur.paymentTerm != ""
+      && this.fournisseur.currencycode != null && this.fournisseur.currencycode != "") {
+
       this.sharedService.setIsActive(true);
     } else {
+
       this.sharedService.setIsActive(false);
     }
+
+
   }
 
-  codeIsvalid = false;
+  codeIsvalid = false
 
-  validationCode() {
-    const codeRegex: RegExp = /^[a-zA-Z0-9]*$/;
+validationCode() {
+  const codeRegex: RegExp =/^[a-zA-Z0-9]*$/;
+  if (codeRegex.test(this.fournisseur.code)) {
+    this.codeIsvalid = false;
 
-    if (codeRegex.test(this.fournisseur.code)) {
-      this.codeIsvalid = false;
-    } else {
-      this.codeIsvalid = true;
-    }
   }
+  else {
+  this.codeIsvalid=true
+  }
+
+}
+
 
   get f() {
     return this.addform.controls;
   }
+
+  // isControlValid(controlCode: string): boolean {
+  //   const control = this.addform.controls[controlCode];
+  //   return control.invalid && (control.dirty || control.touched);
+  // }
+
+  // isControlInValid(controlName: string): boolean {
+  //   const control = this.addform.controls[controlName];
+  //   return control.invalid && (control.dirty || control.touched);
+  // }
+
+
 
   DCisvalid: boolean = false;
   DNisvalid: boolean = false;
@@ -172,19 +201,19 @@ export class FournisseursFormGeneralComponent implements OnInit {
   Misvalid: boolean = false;
   isBlurDCisvalid() {
     if (this.fournisseur.code == undefined) {
-      this.DCisvalid = true;
-    } else if (this.fournisseur.code.toString().length < 1) {
-      this.DCisvalid = true;
-    } else {
-      this.DCisvalid = false;
+      this.DCisvalid = true
+    }
+    else if (this.fournisseur.code.toString().length < 1) { this.DCisvalid = true }
+    else {
+      this.DCisvalid = false
     }
   }
 
   isBlurDNisvalid() {
-    if (this.fournisseur.name.toString().length < 1) {
-      this.DNisvalid = true;
-    } else {
-      this.DNisvalid = false;
+
+    if (this.fournisseur.name.toString().length < 1) { this.DNisvalid = true }
+    else {
+      this.DNisvalid = false
     }
   }
 }

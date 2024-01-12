@@ -1,22 +1,23 @@
-import { ComponentFixture, TestBed } from "@angular/core/testing";
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DivisionFromLocalisationComponent } from "./division-from-localisation.component";
+import { DivisionFromLocalisationComponent } from './division-from-localisation.component';
 
-describe("DivisionFromLocalisationComponent", () => {
+describe('DivisionFromLocalisationComponent', () => {
   let component: DivisionFromLocalisationComponent;
   let fixture: ComponentFixture<DivisionFromLocalisationComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [DivisionFromLocalisationComponent],
-    }).compileComponents();
+      declarations: [ DivisionFromLocalisationComponent ]
+    })
+    .compileComponents();
 
     fixture = TestBed.createComponent(DivisionFromLocalisationComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
-  it("should create", () => {
+  it('should create', () => {
     expect(component).toBeTruthy();
   });
 });

@@ -1,35 +1,35 @@
-.container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 40vh;
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40vh;
 }
 
-.success {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 5vh;
+.success{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 5vh;
 }
-.logo {
-  max-width: 27%;
-  max-height: 80%;
+.logo{
+    max-width: 27%;
+    max-height: 80%; 
 }
 .success-message {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  height: 100vh;
-}
-
-.success-icon {
-  width: 80px;
-  height: 80px;
-}
-
-.message {
-  font-size: 24px;
-  font-weight: bold;
-  margin-top: 20px;
-}
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+  }
+  
+  .success-icon {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .message {
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 20px;
+  }

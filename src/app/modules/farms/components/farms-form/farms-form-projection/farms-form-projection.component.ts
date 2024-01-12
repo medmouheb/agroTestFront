@@ -1,12 +1,16 @@
-import { Component, Input } from "@angular/core";
-import { Farm } from "app/modules/farms/models/farm";
+import { Component, Input, OnInit } from '@angular/core';
+import { Farm } from 'app/modules/farms/models/farm';
 
 @Component({
-  selector: "app-farms-form-projection",
-  templateUrl: "./farms-form-projection.component.html",
-  styleUrls: ["./farms-form-projection.component.scss"],
+  selector: 'app-farms-form-projection',
+  templateUrl: './farms-form-projection.component.html',
+  styleUrls: ['./farms-form-projection.component.scss']
 })
-export class FarmsFormProjectionComponent {
+export class FarmsFormProjectionComponent implements OnInit {
   @Input() farm!: Farm;
-  constructor() {}
+  constructor() { }
+
+  ngOnInit(): void {
+  }
+
 }

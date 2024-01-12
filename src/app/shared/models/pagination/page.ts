@@ -8,7 +8,7 @@ export type Page<T> = {
   size: number;
   number: number;
   empty: boolean;
-};
+}
 
 export const initPage: Page<any> = {
   content: [],
@@ -19,5 +19,5 @@ export const initPage: Page<any> = {
   numberOfElements: 0,
   size: 0,
   number: 0,
-  empty: true,
-};
+  empty: true
+}

@@ -1,53 +1,31 @@
-<div class="row">
+<div class="row" >
   <div class="form-group col-md-6">
-    <label for="scheduleBasis">{{ "scheduleBasis" | translate }}</label>
-    <input
-      class="form-control"
-      name="scheduleBasis"
-      [(ngModel)]="commande.scheduleBasis"
-    />
+    <label for="scheduleBasis">{{ 'scheduleBasis'| translate }}</label>
+    <input class="form-control" name="scheduleBasis"  [(ngModel)]="commande.scheduleBasis"
+    
+    >
   </div>
-
+  
   <div class="form-group col-md-6 align-self-end">
-    <input type="checkbox" name="active" [(ngModel)]="commande.schedulePay" />
-    <label for="createschedulePay">{{ "createschedulePay" | translate }}</label>
-  </div>
-
+    <input type="checkbox" name="active" [(ngModel)]="commande.schedulePay">
+    <label for="createschedulePay">{{ 'createschedulePay' | translate }}</label>
+  </div> 
+  
   <div *ngIf="commande.schedulePay">
-    <div class="form-group col-md-18">
-      <label for="paymentCount">{{ "paymentCount" | translate }}</label>
-      <input
-        class="form-control"
-        type="number"
-        id="paymentCount"
-        ngModel
-        [(ngModel)]="commande.paymentCount"
-        required
-      />
+    <div class="form-group col-md-18 ">
+      <label for="paymentCount">{{'paymentCount' | translate}}</label>
+      <input class="form-control" type="number" id="paymentCount" ngModel [(ngModel)]="commande.paymentCount" required />
     </div>
 
     <div class="form-group col-md-18">
-      <label for="scheduleBasisUnit">{{
-        "scheduleBasisUnit" | translate
-      }}</label>
-      <input
-        class="form-control"
-        type="text"
-        id="scheduleBasisUnit"
-        [(ngModel)]="commande.scheduleBasisUnit"
-        required
-      />
+      <label for="scheduleBasisUnit">{{'scheduleBasisUnit' | translate}}</label>
+      <input class="form-control" type="text" id="scheduleBasisUnit" [(ngModel)]="commande.scheduleBasisUnit" required />
     </div>
 
     <div class="form-group col-md-18">
-      <label for="paymentRate">{{ "paymentRate" | translate }}</label>
-      <input
-        class="form-control"
-        type="number"
-        id="paymentRate"
-        [(ngModel)]="commande.paymentRate"
-        required
-      />
+      <label for="paymentRate">{{'paymentRate' | translate}}</label>
+      <input class="form-control" type="number" id="paymentRate" [(ngModel)]="commande.paymentRate" required />
     </div>
   </div>
+
 </div>

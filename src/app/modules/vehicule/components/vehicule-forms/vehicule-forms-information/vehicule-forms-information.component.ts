@@ -1,17 +1,27 @@
-import { Component, Input } from "@angular/core";
-import { FormControl, FormGroup } from "@angular/forms";
-import { Vehicule } from "app/modules/vehicule/models/vehicule";
+import { Component, Input, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { SharedService } from 'app/modules/company/services/shared.service';
+import { Vehicule } from 'app/modules/vehicule/models/vehicule';
 
 @Component({
-  selector: "app-vehicule-forms-information",
-  templateUrl: "./vehicule-forms-information.component.html",
-  styleUrls: ["./vehicule-forms-information.component.scss"],
+  selector: 'app-vehicule-forms-information',
+  templateUrl: './vehicule-forms-information.component.html',
+  styleUrls: ['./vehicule-forms-information.component.scss']
 })
-export class VehiculeFormsInformationComponent {
+export class VehiculeFormsInformationComponent implements OnInit {
   @Input() camp!: Vehicule;
   addform: FormGroup;
 
-  constructor() {}
+
+  constructor(private sharedService: SharedService) {}
+
+  ngOnInit(): void {
+  }
+
+
+
+
+
 
   initForm() {
     this.addform = new FormGroup({
@@ -28,7 +38,7 @@ export class VehiculeFormsInformationComponent {
       trailerSequence: new FormControl(0),
       capacity: new FormControl(0),
       color: new FormControl(""),
-      notes: new FormControl(""),
+      notes: new FormControl("")
     });
   }
 
@@ -48,5 +58,7 @@ export class VehiculeFormsInformationComponent {
     );
   }
 
-  minIwillaya: boolean = false;
+  minIwillaya: boolean = false
+
+
 }

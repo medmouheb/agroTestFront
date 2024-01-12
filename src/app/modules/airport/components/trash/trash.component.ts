@@ -1,23 +1,25 @@
-import { Component, OnInit, ViewChild } from "@angular/core";
-import { ConfirmDialogComponent } from "app/shared/components/confirm-dialog/confirm-dialog.component";
-import { StepperComponent } from "app/shared/components/stepper/stepper.component";
-import { WizardDialogComponent } from "app/shared/components/wizard-dialog/wizard-dialog.component";
-import { airport } from "../../models/airport.model";
-import { TranslateService } from "@ngx-translate/core";
-import { HotToastService } from "@ngneat/hot-toast";
-import { airportService } from "../../Services/airport.service";
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { ConfirmDialogComponent } from 'app/shared/components/confirm-dialog/confirm-dialog.component';
+import { StepperComponent } from 'app/shared/components/stepper/stepper.component';
+import { WizardDialogComponent } from 'app/shared/components/wizard-dialog/wizard-dialog.component';
+import { airport } from '../../models/airport.model';
+import { TranslateService } from '@ngx-translate/core';
+import { HotToastService } from '@ngneat/hot-toast';
+import { airportService } from '../../Services/airport.service';
 
 @Component({
-  selector: "app-trash",
-  templateUrl: "./trash.component.html",
-  styleUrls: ["./trash.component.scss"],
+  selector: 'app-trash',
+  templateUrl: './trash.component.html',
+  styleUrls: ['./trash.component.scss']
 })
 export class TrashComponent implements OnInit {
+
   @ViewChild("deleteModal")
   deleteModal!: ConfirmDialogComponent;
 
   @ViewChild("deletePermaModal")
   deletePermaModal!: ConfirmDialogComponent;
+
 
   @ViewChild("dearchivedModal")
   dearchivedModal!: ConfirmDialogComponent;
@@ -28,7 +30,7 @@ export class TrashComponent implements OnInit {
   @ViewChild("stepper")
   stepper!: StepperComponent;
 
-  loading? = false;
+  loading?= false;
   pageNumber = 0;
   pageSize = 10;
   filter = "";
@@ -37,20 +39,26 @@ export class TrashComponent implements OnInit {
   airports: Array<airport> = [];
   airportName: string = "";
 
+  // Page: Page<Fournisseur> = initPage;
+  // onPaginationChange: EventEmitter<string> = new EventEmitter<string>();
+
   constructor(
     private translateService: TranslateService,
     private toastService: HotToastService,
-    private service: airportService,
-  ) {}
+    private service: airportService
+  ) { }
+
 
   isChecked: boolean = true;
 
+
   onCheckboxChange() {
-    window.location.href = "/agrotechsolutions.pro#/airports";
+    window.location.href="/agrotechsolutions.pro#/airports"
   }
 
   ngOnInit(): void {
-    this.getArchivedAirports();
+    this.getArchivedAirports()
+
   }
   getArchivedAirports() {
     this.loading = true;
@@ -66,6 +74,8 @@ export class TrashComponent implements OnInit {
     });
   }
 
+
+
   findById(id: string) {
     this.service.findAirportById(id).subscribe({
       next: (result) => (this.airport = result),
@@ -76,11 +86,11 @@ export class TrashComponent implements OnInit {
   onclickActivateModal(id: string) {
     this.service.ActivateAirport(id).subscribe({
       next: () => {
-        this.getArchivedAirports();
+        this.getArchivedAirports()
         this.toastService.success(
           this.translateService.instant("success.restore", {
             elem: this.translateService.instant("menu.vendors"),
-          }),
+          })
         );
       },
     });
@@ -89,16 +99,17 @@ export class TrashComponent implements OnInit {
   onclickDeletePerma(id: string) {
     this.service.delete(id).subscribe({
       next: () => {
-        this.getArchivedAirports();
+        this.getArchivedAirports()
 
         this.toastService.success(
           this.translateService.instant("success.deleted", {
             elem: this.translateService.instant("menu.vendors"),
-          }),
+          })
         );
       },
     });
   }
+
 
   searchByAirportName() {
     this.service.searchAirportByNameArchived(this.airportName).subscribe({
@@ -140,4 +151,5 @@ export class TrashComponent implements OnInit {
       this.sortByNotesValid = true;
     }
   }
+
 }

@@ -43,12 +43,11 @@ export class TrashComponent implements OnInit {
   constructor(
     private translateService: TranslateService,
     private toastService: HotToastService,
-    private produitService: ProduitsService,
+    private produitService: ProduitsService
   ) {}
 
   ngOnInit(): void {
     this.findArchivedPage();
-
     this.onPaginationChange.subscribe(() => this.findArchivedPage());
   }
 
@@ -101,7 +100,7 @@ export class TrashComponent implements OnInit {
         this.toastService.success(
           this.translateService.instant("success.deleted", {
             elem: this.translateService.instant("warehouse"),
-          }),
+          })
         );
       },
     });
@@ -111,11 +110,10 @@ export class TrashComponent implements OnInit {
     this.produitService.delete(id).subscribe({
       next: () => {
         this.findArchivedPage();
-
         this.toastService.success(
           this.translateService.instant("success.deleted", {
             elem: this.translateService.instant("warehouse"),
-          }),
+          })
         );
       },
     });

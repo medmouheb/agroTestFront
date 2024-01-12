@@ -11,119 +11,127 @@ import { Division } from "../../../models/division";
   templateUrl: "./division-form-general.component.html",
   styleUrls: ["./division-form-general.component.scss"],
 })
+
+
 export class DivisionFormGeneralComponent implements OnInit {
   @Input() division!: Division;
   divisionReplica!: Division;
   addform: FormGroup;
   fieldControl: FormControl;
-  cuurencys: Array<Currency> = [];
-  constructor(
-    private sharedService: SharedService,
-    private currencyservice: CurrencyService,
-    private divisionserv: DivisionService,
-  ) {}
+  cuurencys: Array<Currency> = []
+  constructor(private sharedService: SharedService, private currencyservice: CurrencyService, private divisionserv: DivisionService) { }
   names: Array<String> = [];
   codes: Array<String> = [];
 
-  static = "";
+  static = ""
 
   ngOnInit(): void {
-    this.divisionserv.findAll().subscribe((data) => {
-      this.names = data.map((el) => {
-        return el.name;
-      });
-      this.codes = data.map((el) => {
-        return el.code;
-      });
-    });
-
+    this.divisionserv.findAll().subscribe(data => {
+      this.names = data.map(el => {
+        return el.name
+      })
+      this.codes = data.map(el => {
+        return el.code
+      })
+    })
     if (this.division != null) {
       this.sharedService.setIsActive(true);
-    }
-    this.affiche();
+    };
+    this.affiche()
     this.initForm();
-    this.getAllCurrency();
+    this.getAllCurrency()
+
 
     switch (this.division.divisiontype) {
-      case "Agriculture":
-        this.listA = [
-          "Agriculture maraîchère",
-          "Arboriculture",
-          "Agriculture biologique",
-          "Permaculture",
-        ];
-        break;
-      case "Aviculture":
-        this.listA = ["Chicken", "Layer", "Turkey", "Duck"];
-        break;
-      case "Bovin":
-        this.listA = ["fattening cow farms", "Dairy farms"];
-        break;
+      case "Agriculture": this.listA = ["Agriculture maraîchère", "Arboriculture", "Agriculture biologique", "Permaculture"]; break;
+      case "Aviculture": this.listA = ["Chicken", "Layer", "Turkey", "Duck"]; break;
+      case "Bovin": this.listA = ["fattening cow farms", "Dairy farms"]; break;
     }
 
     if (this.division.id) {
-      this.static = "update";
-      this.divisionReplica = JSON.parse(JSON.stringify(this.division));
+      this.static = "update"
+      this.divisionReplica =  JSON.parse( JSON.stringify(  this.division))
     } else if (!this.division.id) {
-      this.static = "create";
+      this.static = "create"
     }
+
   }
   affiche() {
-    if (this.division.code != null && this.division.code != "") {
+    if (this.division.code != null &&
+      this.division.code != "") {
       this.sharedService.setIsActive(true);
+
     }
   }
-  dispotrueCode: boolean = false;
-  dispotruename: boolean = false;
+  dispotrueCode: boolean = false
+  dispotruename: boolean = false
 
   blur1() {
     if (this.division.code == null) {
-      this.dispotrueCode = false;
+      this.dispotrueCode = false
+
     }
   }
   exist() {
-    if (this.codes.indexOf(this.division.code + "") != -1) {
-      if (this.static == "update") {
-        if (this.division.code == this.divisionReplica.code) {
-          this.dispotrueCode = false;
-        } else {
-          this.dispotrueCode = true;
+    if (this.codes.indexOf((this.division.code + "")) != -1) {
+      if(this.static=="update" ){
+        if(this.division.code == this.divisionReplica.code){
+          this.dispotrueCode = false
+        }else{
+          this.dispotrueCode = true
         }
-      } else {
-        this.dispotrueCode = true;
+      }else{
+        this.dispotrueCode = true
       }
+
     } else {
-      this.dispotrueCode = false;
+      this.dispotrueCode = false
     }
+
   }
 
-  newSeggestions = "";
+
+  newSeggestions = ""
 
   existname() {
     if (this.names.indexOf(this.division.name) != -1) {
-      if (this.static == "update") {
-        if (this.division.name == this.divisionReplica.name) {
-          this.dispotruename = false;
-        } else {
-          this.dispotruename = true;
+      if(this.static=="update" ){
+        if(this.division.name == this.divisionReplica.name){
+          this.dispotruename = false
+        }else{
+          this.dispotruename = true
         }
-      } else {
-        this.dispotruename = true;
+      }else{
+        this.dispotruename = true
       }
     } else {
-      this.dispotruename = false;
+      this.dispotruename = false
     }
+
   }
 
   initForm() {
+
     this.addform = new FormGroup({
-      code: new FormControl("", [Validators.required]),
-      name: new FormControl("", [Validators.required]),
-      speciesType: new FormControl("", [Validators.required]),
-      measurement: new FormControl("", []),
-      currencycode: new FormControl("", [Validators.required]),
-      currencyname: new FormControl("", []),
-      divisiontype: new FormControl("", []),
+      code: new FormControl("", [
+        Validators.required,
+
+      ]),
+      name: new FormControl("", [
+        Validators.required
+      ]),
+      speciesType: new FormControl("", [
+        Validators.required,
+      ]),
+      measurement: new FormControl("", [
+      ]),
+      currencycode: new FormControl("", [
+        Validators.required,
+      ]),
+      currencyname: new FormControl("", [
+      ]),
+      divisiontype: new FormControl("", [
+      ]),
     });
   }
   getAllCurrency() {
@@ -134,66 +142,51 @@ export class DivisionFormGeneralComponent implements OnInit {
   }
 
   selectValue(e: any) {
-    let wil = this.cuurencys.filter((el) => {
-      return el.code == e.target.value;
-    })[0].name;
 
-    this.division.currencyname = wil;
+    let wil = this.cuurencys.filter(el => {
+      return el.code == e.target.value
+
+    })[0].name
+    this.division.currencyname = wil
+
+
   }
 
-  listA: String[] = [];
+  listA: String[] = []
   setList() {
     switch (this.division.divisiontype) {
-      case "Agriculture":
-        this.listA = [
-          "Agriculture maraîchère",
-          "Arboriculture",
-          "Agriculture biologique",
-          "Permaculture",
-        ];
-        break;
-      case "Aviculture":
-        this.listA = ["Chicken", "Layer", "Turkey", "Duck"];
-        break;
-      case "Bovin":
-        this.listA = ["fattening cow farms", "Dairy farms"];
-        break;
+      case "Agriculture": this.listA = ["Agriculture maraîchère", "Arboriculture", "Agriculture biologique", "Permaculture"]; break;
+      case "Aviculture": this.listA = ["Chicken", "Layer", "Turkey", "Duck"]; break;
+      case "Bovin": this.listA = ["fattening cow farms", "Dairy farms"]; break;
     }
-    this.division.speciesType = "";
+    this.division.speciesType=""
   }
 
   geValues(event) {
-    console.log(
-      this.division.code != null &&
-        this.division.code != "" &&
-        this.division.name != null &&
-        this.division.name != "" &&
-        this.division.currencycode != "" &&
-        this.division.speciesType != "" &&
-        this.division.speciesType != undefined &&
-        this.division.currencycode != undefined,
-    );
     if (
-      this.dispotrueCode == false &&
-      this.dispotruename == false &&
+
+      this.dispotrueCode == false && this.dispotruename == false &&
+
       this.division.code != null &&
       this.division.code != "" &&
       this.division.measurement != null &&
       this.division.measurement != "" &&
       this.division.name != null &&
-      this.division.name != "" &&
-      !!this.division.speciesType &&
-      this.division.currencycode != "" &&
-      this.division.speciesType != "" &&
-      this.division.currencycode != undefined &&
-      this.division.speciesType != undefined
+
+      this.division.name != "" && !(!this.division.speciesType)
+      && this.division.currencycode!="" &&this.division.speciesType!="" && this.division.currencycode!=undefined
+      && this.division.speciesType!=undefined
     ) {
+
+
+
       this.sharedService.setIsActive(true);
     } else {
       this.sharedService.setIsActive(false);
     }
   }
-  minIstrueName2: boolean = false;
+  minIstrueName2: boolean = false
+
 
   DCisvalid: boolean = false;
   MSisvalid: boolean = false;
@@ -201,21 +194,20 @@ export class DivisionFormGeneralComponent implements OnInit {
   DNisvalid: boolean = false;
   STisvali: boolean = false;
   Misvalid: boolean = false;
-  currecnyinv: boolean = false;
+  currecnyinv: boolean = false
   isBlur4() {
-    if (
-      this.addform.value.currencycode == "" ||
-      this.division.currencycode == undefined
-    ) {
-      this.currecnyinv = true;
+    if ((this.addform.value.currencycode == "") || (this.division.currencycode == undefined)) {
+      this.currecnyinv = true
     } else {
-      this.currecnyinv = false;
+      this.currecnyinv = false
+
     }
   }
   isBlurDCisvalid() {
     if (this.division.code == undefined) {
       this.DCisvalid = true;
-    } else if (this.division.code.toString().length < 1) {
+    }
+    else if (this.division.code.toString().length < 1) {
       this.DCisvalid = true;
     } else {
       this.DCisvalid = false;
@@ -225,7 +217,8 @@ export class DivisionFormGeneralComponent implements OnInit {
   isBlurMSisvalid() {
     if (this.division.code == undefined) {
       this.MSisvalid = true;
-    } else if (this.division.code.toString().length < 1) {
+    }
+    else if (this.division.code.toString().length < 1) {
       this.MSisvalid = true;
     } else {
       this.MSisvalid = false;
@@ -233,9 +226,11 @@ export class DivisionFormGeneralComponent implements OnInit {
   }
 
   isBlurDNisvalid() {
+
     if (this.division.name == undefined) {
       this.DNisvalid = true;
-    } else if (this.division.name.toString().length < 1) {
+    }
+    else if (this.division.name.toString().length < 1) {
       this.DNisvalid = true;
     } else {
       this.DNisvalid = false;
@@ -243,28 +238,28 @@ export class DivisionFormGeneralComponent implements OnInit {
   }
 
   isBlurSTisvali() {
-    if (
-      this.division.speciesType.toString().length < 1 ||
-      this.division.speciesType.toString().length > 20 ||
-      this.addform.value.speciesType == ""
-    ) {
+
+    if ((this.division.speciesType.toString().length < 1) || (this.division.speciesType.toString().length > 20)
+      || (this.addform.value.speciesType == "")) {
       this.STisvali = true;
     } else {
       this.STisvali = false;
     }
   }
 
-  codeIsvalid = false;
+  codeIsvalid = false
 
-  validationCode() {
-    const codeRegex: RegExp = /^[a-zA-Z0-9]*$/;
+validationCode() {
+  const codeRegex: RegExp =/^[a-zA-Z0-9]*$/;
+  if (codeRegex.test(this.division.code)) {
+    this.codeIsvalid = false;
 
-    if (codeRegex.test(this.division.code)) {
-      this.codeIsvalid = false;
-    } else {
-      this.codeIsvalid = true;
-    }
   }
+  else {
+  this.codeIsvalid=true
+  }
+
+}
 
   get f() {
     return this.addform.controls;

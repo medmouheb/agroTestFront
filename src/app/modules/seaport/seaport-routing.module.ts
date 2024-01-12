@@ -1,21 +1,21 @@
-import { NgModule } from "@angular/core";
-import { RouterModule, Routes } from "@angular/router";
-import { SeaportListComponent } from "./components/seaport-list/seaport-list.component";
-import { TrashComponent } from "./components/trash/trash.component";
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { SeaportListComponent } from './components/seaport-list/seaport-list.component';
+import { TrashComponent } from './components/trash/trash.component';
 
 const routes: Routes = [
   {
-    path: "",
-    component: SeaportListComponent,
+    path: '',
+    component: SeaportListComponent
   },
   {
-    path: "trash",
-    component: TrashComponent,
-  },
+    path: 'trash',
+    component: TrashComponent
+  }
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule],
+  exports: [RouterModule]
 })
-export class SeaportRoutingModule {}
+export class SeaportRoutingModule { }

@@ -1,116 +1,66 @@
 <div class="row" [formGroup]="addform">
-  <div class="form-group col-md-6">
-    <label for="suppChargeType">{{ "suppChargeType" | translate }}</label>
-    <select
-      class="form-control"
-      name="suppChargeType"
-      [(ngModel)]="charge.suppChargeType"
-      required
-      (change)="geValues($event)"
-    >
-      <option value="Premium">Premium</option>
-      <option value="Discount">Discount</option>
-      <option value="Commission">Commission</option>
-    </select>
-  </div>
-  <div class="form-group col-md-6">
-    <label for="suppNo">{{ "suppNo" | translate }}</label>
-    <input
-      class="form-control"
-      type="text"
-      name="suppNo"
-      [(ngModel)]="charge.suppNo"
-      required
-      formControlName="suppNo"
-      (change)="geValues($event)"
-    />
-  </div>
-  <div class="form-group col-md-6">
-    <label for="suppName">{{ "suppName" | translate }}</label>
-    <input
-      class="form-control"
-      type="text"
-      name="suppName"
-      [(ngModel)]="charge.suppName"
-      formControlName="suppName"
-      required
-      (change)="geValues($event)"
-    />
-  </div>
 
-  <div class="form-group col-md-6">
-    <label for="suppType">{{ "suppType" | translate }}</label>
-    <select
-      class="form-control"
-      name="suppType"
-      ngModel
-      [(ngModel)]="charge.suppType"
-      required
-      aria-invalid="true"
-      (change)="geValues($event)"
-    >
-      <option value="Pricing Method">Pricing Method</option>
-      <option value="Miscellaneous">Miscellaneous</option>
-      <option value="Field Product">Field Product</option>
-    </select>
-  </div>
+    <div class="form-group col-md-6">
+        <label for="suppChargeType">{{"suppChargeType" | translate}}</label>
+        <select class="form-control" name="suppChargeType" [(ngModel)]="charge.suppChargeType" required (change)="geValues($event)">
+          <option value="Premium">Premium</option>
+          <option value="Discount">Discount</option>
+          <option value="Commission">Commission</option>
+        </select>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="suppNo">{{"suppNo" | translate}}</label>
+        <input class="form-control" type="text" name="suppNo" [(ngModel)]="charge.suppNo" required   formControlName="suppNo" (change)="geValues($event)">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="suppName">{{"suppName" | translate}}</label>
+        <input class="form-control" type="text" name="suppName" [(ngModel)]="charge.suppName" formControlName="suppName" required
+        (change)="geValues($event)">
+      </div>
 
-  <div class="form-group col-md-6">
-    <label for="chargeCalculationType">{{
-      "chargeCalculationType" | translate
-    }}</label>
-    <input
-      class="form-control"
-      type="text"
-      name="chargeCalculationType"
-      [(ngModel)]="charge.chargeCalculationType"
-      (change)="geValues($event)"
-    />
-  </div>
+      <div class="form-group col-md-6">
+        <label for="suppType">{{"suppType" | translate}}</label>
+        <select class="form-control" name="suppType" ngModel [(ngModel)]="charge.suppType"   required aria-invalid="true"
+        (change)="geValues($event)">
+          <option value="Pricing Method">Pricing Method</option>
+          <option value="Miscellaneous">Miscellaneous</option>
+          <option value="Field Product">Field Product</option>
+        </select>
+      </div>
 
-  <div class="form-group col-md-6">
-    <label for="vendorCalculationType">{{
-      "vendorCalculationType" | translate
-    }}</label>
-    <input
-      class="form-control"
-      type="text"
-      name="vendorCalculationType"
-      [(ngModel)]="charge.vendorCalculationType"
-      (change)="geValues($event)"
-    />
-  </div>
+      <div class="form-group col-md-6">
+        <label for="chargeCalculationType">{{"chargeCalculationType" | translate}}</label>
+        <input class="form-control" type="text" name="chargeCalculationType" [(ngModel)]="charge.chargeCalculationType" 
+        
+        (change)="geValues($event)">
+      </div>  
 
-  <div class="form-group col-md-6">
-    <label for="transactionBase">{{ "transactionBase" | translate }}</label>
-    <input
-      class="form-control"
-      type="text"
-      name="transactionBase"
-      [(ngModel)]="charge.transactionBase"
-      (change)="geValues($event)"
-    />
-  </div>
+      <div class="form-group col-md-6">
+        <label for="vendorCalculationType">{{"vendorCalculationType" | translate}}</label>
+        <input class="form-control" type="text" name="vendorCalculationType" [(ngModel)]="charge.vendorCalculationType" 
+        
+        (change)="geValues($event)">
+      </div>  
 
-  <div class="form-group col-md-6">
-    <label for="active">{{ "active" | translate }} </label>
-    <input
-      class="form-control"
-      type="text"
-      name="active"
-      [(ngModel)]="charge.active"
-      (change)="geValues($event)"
-    />
-  </div>
+      <div class="form-group col-md-6">
+        <label for="transactionBase">{{"transactionBase" | translate}}</label>
+        <input class="form-control" type="text" name="transactionBase" [(ngModel)]="charge.transactionBase" 
+        
+        (change)="geValues($event)">
+      </div>  
 
-  <div class="form-group col-md-6">
-    <label for="notes">{{ "notes" | translate }}</label>
-    <input
-      class="form-control"
-      type="text"
-      name="notes"
-      [(ngModel)]="charge.notes"
-      (change)="geValues($event)"
-    />
-  </div>
-</div>
+
+      <div class="form-group col-md-6">
+        <label for="active">{{"active" | translate}} </label>
+        <input class="form-control" type="text" name="active" [(ngModel)]="charge.active" 
+        (change)="geValues($event)">
+      </div>
+
+      
+      <div class="form-group col-md-6">
+        <label for="notes">{{"notes" | translate}}</label>
+        <input class="form-control" type="text" name="notes" [(ngModel)]="charge.notes"
+        (change)="geValues($event)" >
+      </div>
+
+</div>    

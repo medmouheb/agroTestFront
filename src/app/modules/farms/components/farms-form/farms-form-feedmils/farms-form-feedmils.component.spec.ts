@@ -1,22 +1,23 @@
-import { ComponentFixture, TestBed } from "@angular/core/testing";
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FarmsFormFeedmilsComponent } from "./farms-form-feedmils.component";
+import { FarmsFormFeedmilsComponent } from './farms-form-feedmils.component';
 
-describe("FarmsFormFeedmilsComponent", () => {
+describe('FarmsFormFeedmilsComponent', () => {
   let component: FarmsFormFeedmilsComponent;
   let fixture: ComponentFixture<FarmsFormFeedmilsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [FarmsFormFeedmilsComponent],
-    }).compileComponents();
+      declarations: [ FarmsFormFeedmilsComponent ]
+    })
+    .compileComponents();
 
     fixture = TestBed.createComponent(FarmsFormFeedmilsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
-  it("should create", () => {
+  it('should create', () => {
     expect(component).toBeTruthy();
   });
 });

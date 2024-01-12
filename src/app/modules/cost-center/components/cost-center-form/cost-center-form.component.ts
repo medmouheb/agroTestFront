@@ -1,4 +1,4 @@
-import { Component, Input } from "@angular/core";
+import { Component, Input, OnInit } from "@angular/core";
 import { CostCenter } from "../../model/cost-center";
 
 @Component({
@@ -6,11 +6,13 @@ import { CostCenter } from "../../model/cost-center";
   templateUrl: "./cost-center-form.component.html",
   styleUrls: ["./cost-center-form.component.scss"],
 })
-export class CostCenterFormComponent {
+export class CostCenterFormComponent implements OnInit {
   @Input() cost!: CostCenter;
   @Input() currentStep!: number;
 
   wizardStep!: number;
 
   constructor() {}
+
+  ngOnInit(): void {}
 }

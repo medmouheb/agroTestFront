@@ -1,50 +1,40 @@
 <div class="main-content">
+
   <label class="pure-material-switch">
-    <input
-      type="checkbox"
-      [(ngModel)]="isChecked"
-      (change)="onCheckboxChange()"
-    />
-    <span class="style-text2"> {{ "Go To Trash" | translate }}</span>
+    <input type="checkbox" [(ngModel)]="isChecked" (change)="onCheckboxChange()">
+    <span class="style-text2"> {{'Go To Trash' | translate}}</span>
   </label>
 
-  <div
-    class="d-flex flex-wrap justify-content-between align-items-center gap-2"
-  >
+  <div class="d-flex flex-wrap justify-content-between align-items-center gap-2">
+
     <div class="d-flex gap-2">
-      <button
-        class="btn btn-add btn-outline-success btn-sm btn-action rounded-pill style-button"
-        (click)="onClickAdd()"
-        [title]="'btns.add' | translate"
-      >
+      <button class="btn btn-add btn-outline-success btn-sm btn-action rounded-pill style-button" (click)="onClickAdd()"
+        [title]="'btns.add' | translate">
         <i class="fa fa-plus style-icons"></i>
-        <span class="style-title">
-          {{ "menu.add-FieldProduct" | translate }}</span
-        >
+        <span class="style-title"> {{'menu.add-FieldProduct'|translate}}</span>
       </button>
 
-      <button
-        class="btn btn-add btn-outline-success btn-sm btn-action"
-        (click)="openImportModal()"
-        [title]="'btns.import' | translate"
-      >
+
+
+      <button class="btn btn-add btn-outline-success btn-sm btn-action" (click)="openImportModal()"
+        [title]="'btns.import' | translate">
         <i class="fa fa-upload"></i>
       </button>
     </div>
 
+
+
+
     <div class="form-group has-search">
       <span class="fa fa-search form-control-feedback"></span>
-      <input
-        #search
-        (input)="onFilterChange(search.value)"
-        type="text"
-        class="form-control bg-white"
-        placeholder="{{ 'Search by FieldProductName' | translate }}"
-      />
+      <input #search (input)="onFilterChange(search.value)" type="text" class="form-control bg-white"
+        placeholder="{{'Search by FieldProductName' | translate}}">
+
     </div>
   </div>
 
   <div *ngIf="!affiche" class="datatable">
+
     <ng-container *ngIf="loading">
       <app-spinner></app-spinner>
     </ng-container>
@@ -56,141 +46,95 @@
     <table aria-label="" class="table" *ngIf="!loading && !produitsPage.empty">
       <thead class="datatable-header">
         <tr>
-          <th scope="">
+          <th>
             <strong class="style-text">
-              {{ "nameField" | translate }}
+              {{'nameField' | translate}}
               <a href="javascript:void(0);">
-                <svg
-                  (click)="sortByName()"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  fill="currentColor"
-                  class="bi bi-chevron-double-down custom-color"
-                  viewBox="0 0 16 16"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z"
-                  />
+                <svg (click)="sortByName()" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                  fill="currentColor" class="bi bi-chevron-double-down custom-color" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd"
+                    d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z" />
+
                 </svg>
               </a>
-            </strong>
+            </strong >
           </th>
-          <th scope="">
+          <th>
             <strong class="style-text">
-              {{ "codeField" | translate }}
+              {{'codeField' | translate}}
               <a href="javascript:void(0);">
-                <svg
-                  (click)="sortByCode()"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  fill="currentColor"
-                  class="bi bi-chevron-double-down custom-color"
-                  viewBox="0 0 16 16"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z"
-                  />
+                <svg (click)="sortByCode()" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                  fill="currentColor" class="bi bi-chevron-double-down custom-color" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd"
+                    d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z" />
+
                 </svg>
               </a>
             </strong>
           </th>
 
-          <th scope="">
+          <th>
             <strong class="style-text">
-              {{ "category" | translate }}
+              {{'category' | translate}}
               <a href="javascript:void(0);">
-                <svg
-                  (click)="sortByCategorie()"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  fill="currentColor"
-                  class="bi bi-chevron-double-down custom-color"
-                  viewBox="0 0 16 16"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z"
-                  />
+                <svg (click)="sortByCategorie()" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                  fill="currentColor" class="bi bi-chevron-double-down custom-color" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd"
+                    d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z" />
+
                 </svg>
               </a>
             </strong>
           </th>
-          <th scope="">
+          <th>
             <strong class="style-text">
-              {{ "status" | translate }}
+              {{'status' | translate}}
               <a href="javascript:void(0);">
-                <svg
-                  (click)="sortByprixUnitaireHt()"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  fill="currentColor"
-                  class="bi bi-chevron-double-down custom-color"
-                  viewBox="0 0 16 16"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z"
-                  />
+                <svg (click)="sortByprixUnitaireHt()" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                  fill="currentColor" class="bi bi-chevron-double-down custom-color" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd"
+                    d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z" />
+
                 </svg>
               </a>
             </strong>
           </th>
-          <th scope="">
+          <th>
             <strong class="style-text">
-              {{ "prixUnitaireHt" | translate }}
+              {{'prixUnitaireHt' | translate}}
               <a href="javascript:void(0);">
-                <svg
-                  (click)="sortByprixUnitaireHta()"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  fill="currentColor"
-                  class="bi bi-chevron-double-down custom-color"
-                  viewBox="0 0 16 16"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z"
-                  />
+                <svg (click)="sortByprixUnitaireHta()" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                  fill="currentColor" class="bi bi-chevron-double-down custom-color" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd"
+                    d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z" />
+
                 </svg>
               </a>
             </strong>
           </th>
-          <th scope="">
+          <th>
             <strong class="style-text">
-              {{ "tauxTva" | translate }}
+              {{'tauxTva' | translate}}
               <a href="javascript:void(0);">
-                <svg
-                  (click)="sortByAddress()"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  fill="currentColor"
-                  class="bi bi-chevron-double-down custom-color"
-                  viewBox="0 0 16 16"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z"
-                  />
+                <svg (click)="sortByAddress()" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                  fill="currentColor" class="bi bi-chevron-double-down custom-color" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd"
+                    d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z" />
+
                 </svg>
               </a>
             </strong>
           </th>
-          <th scope="">
+          <th>
             <strong class="style-text">
-              {{ "prixTTC" | translate }}
+              {{'prixTTC' | translate}}
+
             </strong>
           </th>
-          <th scope="">
+          <th>
             <strong class="style-text">
-              {{ "actions" | translate }}
+              {{'actions' | translate}}
+
             </strong>
           </th>
         </tr>
@@ -198,70 +142,42 @@
       <tbody class="text-sm">
         <tr class="row-data" *ngFor="let produit of produits">
           <td>
-            {{ produit.name }}
+            {{produit.name}}
           </td>
           <td>
-            {{ produit.code }}
+            {{produit.code}}
           </td>
 
           <td>
-            {{ produit.category }}
+            {{produit.category}}
           </td>
           <td>
-            <svg
-              *ngIf="produit.statuss"
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="green"
-              class="bi bi-check-circle-fill"
-              viewBox="0 0 16 16"
-            >
-              <path
-                d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"
-              />
+            <svg *ngIf="produit.statuss"  xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="green" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+              <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
             </svg>
-            <svg
-              *ngIf="!produit.statuss"
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="red"
-              class="bi bi-slash-circle"
-              viewBox="0 0 16 16"
-            >
-              <path
-                d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"
-              />
-              <path
-                d="M11.354 4.646a.5.5 0 0 0-.708 0l-6 6a.5.5 0 0 0 .708.708l6-6a.5.5 0 0 0 0-.708z"
-              />
+            <svg  *ngIf="!produit.statuss" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="red" class="bi bi-slash-circle" viewBox="0 0 16 16">
+              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+              <path d="M11.354 4.646a.5.5 0 0 0-.708 0l-6 6a.5.5 0 0 0 .708.708l6-6a.5.5 0 0 0 0-.708z"/>
             </svg>
+
           </td>
           <td>
-            {{ produit.prixUnitaireHt }}
+            {{produit.prixUnitaireHt}}
           </td>
-          <td>{{ produit.tauxTva }}%</td>
           <td>
-            {{
-              (produit.prixUnitaireHt * produit.tauxTva) / 100 +
-                produit.prixUnitaireHt | number: "1.2-2"
-            }}
+            {{produit.tauxTva}}%
+          </td>
+          <td>
+            {{ ((produit.prixUnitaireHt * produit.tauxTva)/100)+produit.prixUnitaireHt | number:'1.2-2' }}
           </td>
 
           <td class="d-flex gap-4">
-            <button
-              class="text-primary datatable-action-btn"
-              (click)="onClickEdit(produit.id!)"
-              [title]="'btns.edit' | translate"
-            >
+            <button class="text-primary datatable-action-btn" (click)="onClickEdit(produit.id!)"
+              [title]="'btns.edit' | translate">
               <i class="fa fa-pencil"></i>
             </button>
-            <button
-              class="text-danger datatable-action-btn"
-              (click)="onClickArchive(produit.id!)"
-              [title]="'btns.delete' | translate"
-            >
+            <button class="text-danger datatable-action-btn" (click)="onClickArchive(produit.id!)"
+              [title]="'btns.delete' | translate">
               <i class="fa fa-trash"></i>
             </button>
           </td>
@@ -271,6 +187,7 @@
   </div>
 
   <div *ngIf="affiche" class="datatable">
+
     <ng-container *ngIf="loading">
       <app-spinner></app-spinner>
     </ng-container>
@@ -282,141 +199,94 @@
     <table aria-label="" class="table" *ngIf="!loading && !produitsPages.empty">
       <thead class="datatable-header">
         <tr>
-          <th scope="">
+          <th>
             <strong class="style-text">
-              {{ "nameField" | translate }}
+              {{'nameField' | translate}}
               <a href="javascript:void(0);">
-                <svg
-                  (click)="sortByName()"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  fill="currentColor"
-                  class="bi bi-chevron-double-down custom-color"
-                  viewBox="0 0 16 16"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z"
-                  />
+                <svg (click)="sortByName()" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                  fill="currentColor" class="bi bi-chevron-double-down custom-color" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd"
+                    d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z" />
+
                 </svg>
               </a>
-            </strong>
+            </strong >
           </th>
-          <th scope="">
+          <th>
             <strong class="style-text">
-              {{ "codeField" | translate }}
+              {{'codeField' | translate}}
               <a href="javascript:void(0);">
-                <svg
-                  (click)="sortByCode()"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  fill="currentColor"
-                  class="bi bi-chevron-double-down custom-color"
-                  viewBox="0 0 16 16"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z"
-                  />
+                <svg (click)="sortByCode()" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                  fill="currentColor" class="bi bi-chevron-double-down custom-color" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd"
+                    d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z" />
+
                 </svg>
               </a>
             </strong>
           </th>
 
-          <th scope="">
+          <th>
             <strong class="style-text">
-              {{ "category" | translate }}
+              {{'category' | translate}}
               <a href="javascript:void(0);">
-                <svg
-                  (click)="sortByCategorie()"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  fill="currentColor"
-                  class="bi bi-chevron-double-down custom-color"
-                  viewBox="0 0 16 16"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z"
-                  />
+                <svg (click)="sortByCategorie()" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                  fill="currentColor" class="bi bi-chevron-double-down custom-color" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd"
+                    d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z" />
+
                 </svg>
               </a>
             </strong>
           </th>
-          <th scope="">
+          <th>
             <strong class="style-text">
-              {{ "status" | translate }}
+              {{'status' | translate}}
               <a href="javascript:void(0);">
-                <svg
-                  (click)="sortByprixUnitaireHt()"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  fill="currentColor"
-                  class="bi bi-chevron-double-down custom-color"
-                  viewBox="0 0 16 16"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z"
-                  />
+                <svg (click)="sortByprixUnitaireHt()" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                  fill="currentColor" class="bi bi-chevron-double-down custom-color" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd"
+                    d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z" />
+
                 </svg>
               </a>
             </strong>
           </th>
-          <th scope="">
+          <th>
             <strong class="style-text">
-              {{ "prixUnitaireHt" | translate }}
+              {{'prixUnitaireHt' | translate}}
               <a href="javascript:void(0);">
-                <svg
-                  (click)="sortByprixUnitaireHta()"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  fill="currentColor"
-                  class="bi bi-chevron-double-down custom-color"
-                  viewBox="0 0 16 16"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z"
-                  />
+                <svg (click)="sortByprixUnitaireHta()" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                  fill="currentColor" class="bi bi-chevron-double-down custom-color" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd"
+                    d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z" />
+
                 </svg>
               </a>
             </strong>
           </th>
-          <th scope="">
+          <th>
             <strong class="style-text">
-              {{ "tauxTva" | translate }}
+              {{'tauxTva' | translate}}
               <a href="javascript:void(0);">
-                <svg
-                  (click)="sortByAddress()"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  fill="currentColor"
-                  class="bi bi-chevron-double-down custom-color"
-                  viewBox="0 0 16 16"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z"
-                  />
+                <svg (click)="sortByAddress()" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                  fill="currentColor" class="bi bi-chevron-double-down custom-color" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd"
+                    d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z" />
+
                 </svg>
               </a>
             </strong>
           </th>
-          <th scope="">
+          <th>
             <strong class="style-text">
-              {{ "prixTTC" | translate }}
+              {{'prixTTC' | translate}}
             </strong>
           </th>
-          <th scope="">
+          <th>
             <strong class="style-text">
-              {{ "actions" | translate }}
+              {{'actions' | translate}}
+
             </strong>
           </th>
         </tr>
@@ -424,72 +294,44 @@
       <tbody class="text-sm">
         <tr class="row-data" *ngFor="let produit of produitss">
           <td>
-            {{ produit.name }}
+            {{produit.name}}
           </td>
           <td>
-            {{ produit.code }}
+            {{produit.code}}
           </td>
 
           <td>
-            {{ produit.category }}
+            {{produit.category}}
           </td>
           <td>
-            <svg
-              *ngIf="produit.statuss"
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="green"
-              class="bi bi-check-circle-fill"
-              viewBox="0 0 16 16"
-            >
-              <path
-                d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"
-              />
+            <svg *ngIf="produit.statuss"  xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="green" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+              <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
             </svg>
-            <svg
-              *ngIf="!produit.statuss"
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="red"
-              class="bi bi-slash-circle"
-              viewBox="0 0 16 16"
-            >
-              <path
-                d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"
-              />
-              <path
-                d="M11.354 4.646a.5.5 0 0 0-.708 0l-6 6a.5.5 0 0 0 .708.708l6-6a.5.5 0 0 0 0-.708z"
-              />
+            <svg  *ngIf="!produit.statuss" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="red" class="bi bi-slash-circle" viewBox="0 0 16 16">
+              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+              <path d="M11.354 4.646a.5.5 0 0 0-.708 0l-6 6a.5.5 0 0 0 .708.708l6-6a.5.5 0 0 0 0-.708z"/>
             </svg>
+
           </td>
           <td>
-            {{ produit.prixUnitaireHt }}
+            {{produit.prixUnitaireHt}}
           </td>
-          <td>{{ produit.tauxTva }}%</td>
           <td>
-            {{
-              (produit.prixUnitaireHt * produit.tauxTva) / 100 +
-                produit.prixUnitaireHt | number: "1.2-2"
-            }}
+            {{produit.tauxTva}}%
+          </td>
+          <td>
+            {{ ((produit.prixUnitaireHt * produit.tauxTva)/100)+produit.prixUnitaireHt | number:'1.2-2' }}
           </td>
 
           <td class="d-flex gap-4">
-            <button
-              class="text-primary datatable-action-btn"
-              (click)="onClickdisArchive(produit.id!)"
-              [title]="'Restore line' | translate"
-            >
-              <i class="fa fa-reply-all"></i>
-            </button>
-            <button
-              class="text-danger datatable-action-btn"
-              (click)="onClickDelete(produit.id!)"
-              [title]="'Delete permanently' | translate"
-            >
-              <i class="fa fa-trash"></i>
-            </button>
+            <button class="text-primary datatable-action-btn" (click)="onClickdisArchive(produit.id!)"
+            [title]="'Restore line' | translate">
+            <i class="fa fa-reply-all"></i>
+        </button>
+          <button class="text-danger datatable-action-btn" (click)="onClickDelete(produit.id!)"
+            [title]="'Delete permanently' | translate">
+            <i class="fa fa-trash"></i>
+          </button>
           </td>
         </tr>
       </tbody>
@@ -497,60 +339,35 @@
   </div>
   <app-confirm-dialog #archiveModal></app-confirm-dialog>
 
-  <app-pagination
-    [pageNumber]="pageNumber"
-    [pageSize]="pageSize"
-    [page]="produitsPage"
-    (onPageNumberChange)="onPageNumberChange($event)"
-    (onPageSizeChange)="onPageSizeChange($event)"
-  >
+  <app-pagination [pageNumber]="pageNumber" [pageSize]="pageSize" [page]="produitsPage"
+    (onPageNumberChange)="onPageNumberChange($event)" (onPageSizeChange)="onPageSizeChange($event)">
   </app-pagination>
 
   <app-wizard-dialog [currentStep]="currentStep" #formModal>
     <app-produits-form [currentStep]="currentStep" [produit]="produit">
-      <app-stepper
-        #stepper
-        [currentStep]="currentStep"
-        [steps]="steps"
-        (onStepChange)="onStepChange($event)"
-      ></app-stepper>
+      <app-stepper #stepper [currentStep]="currentStep" [steps]="steps"
+        (onStepChange)="onStepChange($event)"></app-stepper>
     </app-produits-form>
   </app-wizard-dialog>
 
   <app-dialog #importModal>
     <div class="d-flex align-items-center justify-content-around my-2">
-      <button
-        class="btn btn-add btn-outline-success"
-        (click)="onDownloadCSVTempalte()"
-        [title]="'btns.download' | translate"
-      >
+      <button class="btn btn-add btn-outline-success" (click)="onDownloadCSVTempalte()"
+        [title]="'btns.download' | translate">
         <i class="fa fa-download"></i>
-        {{ "message.download-csv-template" | translate }}
+        {{'message.download-csv-template' | translate}}
       </button>
-      <button
-        class="btn btn-add btn-outline-success"
-        (click)="fileInput.click()"
-        [title]="'btns.import' | translate"
-      >
+      <button class="btn btn-add btn-outline-success" (click)="fileInput.click()" [title]="'btns.import' | translate">
         <i class="fa fa-upload"></i>
-        {{ "btns.select-file" | translate }}
+        {{'btns.select-file' | translate}}
       </button>
     </div>
 
-    <div
-      *ngIf="file"
-      class="d-flex align-items-center gap-2 justify-content-center"
-    >
+    <div *ngIf="file" class="d-flex align-items-center gap-2 justify-content-center">
       <i class="fa fa-file"></i>
-      <strong>{{ file.name }}</strong>
+      <strong>{{file.name}}</strong>
     </div>
-    <input
-      (change)="onCSVChange($event)"
-      hidden
-      type="file"
-      accept=".csv"
-      #fileInput
-    />
+    <input (change)="onCSVChange($event)" hidden type="file" accept=".csv" #fileInput>
   </app-dialog>
 
   <app-confirm-dialog #deleteModal></app-confirm-dialog>

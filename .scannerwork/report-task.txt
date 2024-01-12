@@ -1,6 +1,0 @@
-projectKey=agrofront
-serverUrl=http://localhost:9000
-serverVersion=9.9.3.79811
-dashboardUrl=http://localhost:9000/dashboard?id=agrofront
-ceTaskId=AYzy6_gWlh2fQ7-2TcN3
-ceTaskUrl=http://localhost:9000/api/ce/task?id=AYzy6_gWlh2fQ7-2TcN3

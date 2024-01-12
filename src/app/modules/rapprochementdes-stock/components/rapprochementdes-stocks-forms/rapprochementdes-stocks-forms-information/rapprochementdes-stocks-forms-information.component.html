@@ -1,313 +1,165 @@
 <div class="row">
-  <div class="form-group col-md-6">
+<div class="form-group col-md-6">
     <label for="dateDeDebut">{{ "dateDeDebut" | translate }}</label>
-    <input
-      type="date"
-      class="form-control"
-      name="dateDeDebut"
-      [(ngModel)]="camp.dateDeDebut"
-    />
-  </div>
+    <input type="date" class="form-control" name="dateDeDebut" [(ngModel)]="camp.dateDeDebut">
+</div>
 
-  <div class="form-group col-md-6">
-    <label for="dateDeDebutDeReception">{{
-      "dateDeDebutDeReception" | translate
-    }}</label>
-    <input
-      type="date"
-      class="form-control"
-      name="dateDeDebutDeReception"
-      [(ngModel)]="camp.dateDeDebutDeReception"
-    />
-  </div>
+<div class="form-group col-md-6">
+    <label for="dateDeDebutDeReception">{{ "dateDeDebutDeReception" | translate }}</label>
+    <input  type="date" class="form-control" name="dateDeDebutDeReception" [(ngModel)]="camp.dateDeDebutDeReception">
 
-  <div class="form-group col-md-6">
+</div>
+
+<div class="form-group col-md-6">
     <label for="quantiteDeDepart">{{ "quantiteDeDepart" | translate }}</label>
-    <input
-      type="number"
-      class="form-control"
-      name="quantiteDeDepart"
-      [(ngModel)]="camp.quantiteDeDepart"
-    />
-  </div>
-  <div class="form-group col-md-6">
-    <label for="valeurUnitaireDeDepart">{{
-      "valeurUnitaireDeDepart" | translate
-    }}</label>
-    <input
-      type="number"
-      class="form-control"
-      name="valeurUnitaireDeDepart"
-      [(ngModel)]="camp.valeurUnitaireDeDepart"
-    />
-  </div>
+    <input  type="number" class="form-control" name="quantiteDeDepart" [(ngModel)]="camp.quantiteDeDepart">
+</div>
+<div class="form-group col-md-6">
+    <label for="valeurUnitaireDeDepart">{{ "valeurUnitaireDeDepart" | translate }}</label>
+    <input  type="number" class="form-control" name="valeurUnitaireDeDepart" [(ngModel)]="camp.valeurUnitaireDeDepart">
 
-  <div class="form-group col-md-6">
+</div>
+
+<div class="form-group col-md-6">
     <label for="valeurDeDepart">{{ "valeurDeDepart" | translate }}</label>
-    <input
-      type="number"
-      class="form-control"
-      name="valeurDeDepart"
-      [(ngModel)]="camp.valeurDeDepart"
-    />
-  </div>
+    <input type="number" class="form-control"  name="valeurDeDepart" [(ngModel)]="camp.valeurDeDepart">
+</div>
 
-  <div class="form-group col-md-6">
+<div class="form-group col-md-6">
     <label for="drapeauFerme">{{ "drapeauFerme" | translate }}</label>
-    <input
-      class="form-control"
-      name="drapeauFerme"
-      [(ngModel)]="camp.drapeauFerme"
-    />
-  </div>
+    <input class="form-control" name="drapeauFerme" [(ngModel)]="camp.drapeauFerme">
+</div>
 
-  <div class="form-group col-md-6">
-    <label for="consignationComplexeBondecommandeNon">{{
-      "consignationComplexeBondecommandeNon" | translate
-    }}</label>
-    <input
-      class="form-control"
-      name="consignationComplexeBondecommandeNon"
-      [(ngModel)]="camp.consignationComplexeBondecommandeNon"
-    />
-  </div>
+<div class="form-group col-md-6">
+    <label for="consignationComplexeBondecommandeNon">{{ "consignationComplexeBondecommandeNon" | translate }}</label>
+    <input class="form-control" name="consignationComplexeBondecommandeNon"
+        [(ngModel)]="camp.consignationComplexeBondecommandeNon">
 
-  <div class="form-group col-md-6">
-    <label for="drapeaudeconsignation">{{
-      "drapeaudeconsignation" | translate
-    }}</label>
-    <input
-      class="form-control"
-      name="drapeaudeconsignation"
-      [(ngModel)]="camp.drapeaudeconsignation"
-    />
-  </div>
+</div>
 
-  <div class="form-group col-md-6">
-    <label for="complexeDeTransfertDeConsignationBonDeCommandeN">{{
-      "complexeDeTransfertDeConsignationBonDeCommandeN" | translate
-    }}</label>
-    <input
-      class="form-control"
-      name="complexeDeTransfertDeConsignationBonDeCommandeN"
-      [(ngModel)]="camp.complexeDeTransfertDeConsignationBonDeCommandeN"
-    />
-  </div>
+<div class="form-group col-md-6">
+    <label for="drapeaudeconsignation">{{ "drapeaudeconsignation" | translate }}</label>
+    <input class="form-control" name="drapeaudeconsignation" [(ngModel)]="camp.drapeaudeconsignation">
+</div>
 
-  <div class="form-group col-md-6">
-    <label for="numeroDeReferenceDuTransfertDeConsignation">{{
-      "numeroDeReferenceDuTransfertDeConsignation" | translate
-    }}</label>
-    <input
-      type="number"
-      class="form-control"
-      name="numeroDeReferenceDuTransfertDeConsignation"
-      [(ngModel)]="camp.numeroDeReferenceDuTransfertDeConsignation"
-    />
-  </div>
+<div class="form-group col-md-6">
+    <label for="complexeDeTransfertDeConsignationBonDeCommandeN">{{ "complexeDeTransfertDeConsignationBonDeCommandeN" | translate }}</label>
+    <input class="form-control" name="complexeDeTransfertDeConsignationBonDeCommandeN"
+        [(ngModel)]="camp.complexeDeTransfertDeConsignationBonDeCommandeN">
 
-  <div class="form-group col-md-6">
-    <label for="nomDuCentreDeCouts">{{
-      "nomDuCentreDeCouts" | translate
-    }}</label>
-    <input
-      class="form-control"
-      name="nomDuCentreDeCouts"
-      [(ngModel)]="camp.nomDuCentreDeCouts"
-    />
-  </div>
+</div>
 
-  <div class="form-group col-md-6">
+<div class="form-group col-md-6">
+    <label for="numeroDeReferenceDuTransfertDeConsignation">{{ "numeroDeReferenceDuTransfertDeConsignation" | translate}}</label>
+    <input type="number" class="form-control"  name="numeroDeReferenceDuTransfertDeConsignation"
+        [(ngModel)]="camp.numeroDeReferenceDuTransfertDeConsignation">
+</div>
+
+<div class="form-group col-md-6">
+    <label for="nomDuCentreDeCouts">{{ "nomDuCentreDeCouts" | translate }}</label>
+    <input class="form-control" name="nomDuCentreDeCouts" [(ngModel)]="camp.nomDuCentreDeCouts">
+</div>
+
+<div class="form-group col-md-6">
     <label for="nduCentreDeCouts">{{ "nDuCentreDeCouts" | translate }}</label>
-    <input
-      type="number"
-      class="form-control"
-      name="nduCentreDeCouts"
-      [(ngModel)]="camp.nduCentreDeCouts"
-    />
-  </div>
+    <input type="number" class="form-control" name="nduCentreDeCouts" [(ngModel)]="camp.nduCentreDeCouts">
 
-  <div class="form-group col-md-6">
+</div>
+
+<div class="form-group col-md-6">
     <label for="dateDeCreation">{{ "dateDeCreation" | translate }}</label>
-    <input
-      type="date"
-      class="form-control"
-      name="dateDeCreation"
-      [(ngModel)]="camp.dateDeCreation"
-    />
-  </div>
-  <div class="form-group col-md-6">
-    <label for="dateDeFinDeReception">{{
-      "dateDeFinDeReception" | translate
-    }}</label>
-    <input
-      type="date"
-      class="form-control"
-      name="dateDeFinDeReception"
-      [(ngModel)]="camp.dateDeFinDeReception"
-    />
-  </div>
+    <input type="date" class="form-control" name="dateDeCreation" [(ngModel)]="camp.dateDeCreation">
+</div>
+<div class="form-group col-md-6">
+    <label for="dateDeFinDeReception">{{ "dateDeFinDeReception" | translate }}</label>
+    <input type="date" class="form-control" name="dateDeFinDeReception" [(ngModel)]="camp.dateDeFinDeReception">
 
-  <div class="form-group col-md-6">
+</div>
+
+<div class="form-group col-md-6">
     <label for="dateDExpiration">{{ "dateDExpiration" | translate }}</label>
-    <input
-      type="date"
-      class="form-control"
-      name="dateDExpiration"
-      [(ngModel)]="camp.dateDExpiration"
-    />
-  </div>
+    <input type="date" class="form-control" name="dateDExpiration" [(ngModel)]="camp.dateDExpiration">
+</div>
 
-  <div class="form-group col-md-6">
-    <label for="typeInstallationDuCentreDeCoutsExterne">{{
-      "typeInstallationDuCentreDeCoutsExterne" | translate
-    }}</label>
-    <input
-      class="form-control"
-      name="typeInstallationDuCentreDeCoutsExterne"
-      [(ngModel)]="camp.typeInstallationDuCentreDeCoutsExterne"
-    />
-  </div>
+<div class="form-group col-md-6">
+    <label for="typeInstallationDuCentreDeCoutsExterne">{{ "typeInstallationDuCentreDeCoutsExterne" | translate}}</label>
+    <input class="form-control" name="typeInstallationDuCentreDeCoutsExterne"
+        [(ngModel)]="camp.typeInstallationDuCentreDeCoutsExterne">
+</div>
 
-  <div class="form-group col-md-6">
-    <label for="nomDuCentreDeCoutsExterne">{{
-      "nomDuCentreDeCoutsExterne" | translate
-    }}</label>
-    <input
-      class="form-control"
-      name="nomDuCentreDeCoutsExterne"
-      [(ngModel)]="camp.nomDuCentreDeCoutsExterne"
-    />
-  </div>
+<div class="form-group col-md-6">
+    <label for="nomDuCentreDeCoutsExterne">{{ "nomDuCentreDeCoutsExterne" | translate }}</label>
+    <input class="form-control" name="nomDuCentreDeCoutsExterne" [(ngModel)]="camp.nomDuCentreDeCoutsExterne">
+</div>
 
-  <div class="form-group col-md-6">
-    <label for="nduCentreDeCoutsExterne">{{
-      "nDuCentreDeCoutsExterne" | translate
-    }}</label>
-    <input
-      type="number"
-      class="form-control"
-      name="nduCentreDeCoutsExterne"
-      [(ngModel)]="camp.nduCentreDeCoutsExterne"
-    />
-  </div>
+<div class="form-group col-md-6">
+    <label for="nduCentreDeCoutsExterne">{{ "nDuCentreDeCoutsExterne" | translate }}</label>
+    <input type="number" class="form-control"  name="nduCentreDeCoutsExterne" [(ngModel)]="camp.nduCentreDeCoutsExterne">
+</div>
 
-  <div class="form-group col-md-6">
+<div class="form-group col-md-6">
     <label for="nomDeLaFerme">{{ "nomDeLaFerme" | translate }}</label>
-    <input
-      class="form-control"
-      name="nomDeLaFerme"
-      [(ngModel)]="camp.nomDeLaFerme"
-    />
-  </div>
+    <input class="form-control" name="nomDeLaFerme" [(ngModel)]="camp.nomDeLaFerme">
+</div>
 
-  <div class="form-group col-md-6">
+<div class="form-group col-md-6">
     <label for="ndeLaFerme">{{ "nDeLaFerme" | translate }}</label>
-    <input
-      type="number"
-      class="form-control"
-      name="ndeLaFerme"
-      [(ngModel)]="camp.ndeLaFerme"
-    />
-  </div>
+    <input  type="number" class="form-control" name="ndeLaFerme" [(ngModel)]="camp.ndeLaFerme">
 
-  <div class="form-group col-md-6">
+</div>
+
+<div class="form-group col-md-6">
     <label for="typeDeFerme">{{ "typeDeFerme" | translate }}</label>
-    <input
-      class="form-control"
-      name="typeDeFerme"
-      [(ngModel)]="camp.typeDeFerme"
-    />
-  </div>
+    <input class="form-control" name="typeDeFerme" [(ngModel)]="camp.typeDeFerme">
+</div>
 
-  <div class="form-group col-md-6">
+<div class="form-group col-md-6">
     <label for="dateDinactivite">{{ "dateDinactivite" | translate }}</label>
-    <input
-      class="form-control"
-      name="dateDinactivite"
-      [(ngModel)]="camp.dateDinactivite"
-    />
-  </div>
+    <input  class="form-control" name="dateDinactivite"
+        [(ngModel)]="camp.dateDinactivite">
 
-  <div class="form-group col-md-6">
-    <label for="irn">{{ "IRN" | translate }}</label>
-    <input class="form-control" type="text" name="irn" [(ngModel)]="camp.irn" />
-  </div>
+</div>
 
-  <div class="form-group col-md-6">
-    <label for="nombreDeReceptions">{{
-      "nombreDeReceptions" | translate
-    }}</label>
-    <input
-      type="number"
-      class="form-control"
-      name="nombreDeReceptions"
-      [(ngModel)]="camp.nombreDeReceptions"
-    />
-  </div>
+<div class="form-group col-md-6">
+    <label for="irn">{{ "IRN" | translate}}</label>
+    <input  class="form-control" type="text" name="irn"
+        [(ngModel)]="camp.irn">
+</div>
 
-  <div class="form-group col-md-6">
-    <label for="baseDeRemuneration">{{
-      "baseDeRemuneration" | translate
-    }}</label>
-    <input
-      class="form-control"
-      name="baseDeRemuneration"
-      [(ngModel)]="camp.baseDeRemuneration"
-    />
-  </div>
+<div class="form-group col-md-6">
+    <label  for="nombreDeReceptions">{{ "nombreDeReceptions" | translate }}</label>
+    <input  type="number" class="form-control" name="nombreDeReceptions" [(ngModel)]="camp.nombreDeReceptions">
+</div>
 
-  <div class="form-group col-md-6">
+<div class="form-group col-md-6">
+    <label for="baseDeRemuneration">{{ "baseDeRemuneration" | translate }}</label>
+    <input class="form-control" name="baseDeRemuneration" [(ngModel)]="camp.baseDeRemuneration">
+
+</div>
+
+<div class="form-group col-md-6">
     <label for="termeDePaiementN">{{ "termeDePaiementN" | translate }}</label>
-    <input
-      type="number"
-      class="form-control"
-      name="termeDePaiementN"
-      [(ngModel)]="camp.termeDePaiementN"
-    />
-  </div>
-  <div class="form-group col-md-6">
-    <label for="termedePaiementNom">{{
-      "termedePaiementNom" | translate
-    }}</label>
-    <input
-      type="text"
-      class="form-control"
-      name="termedePaiementNom"
-      [(ngModel)]="camp.termedePaiementNom"
-    />
-  </div>
+    <input type="number"class="form-control" name="termeDePaiementN" [(ngModel)]="camp.termeDePaiementN">
+</div>
+<div class="form-group col-md-6">
+    <label for="termedePaiementNom">{{ "termedePaiementNom" | translate }}</label>
+    <input type="text" class="form-control" name="termedePaiementNom" [(ngModel)]="camp.termedePaiementNom">
 
-  <div class="form-group col-md-6">
-    <label for="numeroDeLigneDeCommande">{{
-      "numeroDeLigneDeCommande" | translate
-    }}</label>
-    <input
-      type="number"
-      type="date"
-      class="form-control"
-      name="numeroDeLigneDeCommande"
-      [(ngModel)]="camp.numeroDeLigneDeCommande"
-    />
-  </div>
+</div>
 
-  <div class="form-group col-md-6">
-    <label for="bonDecommandeNon">{{ "bonDecommandeNon" | translate }}</label>
-    <input
-      class="form-control"
-      name="bonDecommandeNon"
-      [(ngModel)]="camp.bonDecommandeNon"
-    />
-  </div>
+<div class="form-group col-md-6">
+    <label  for="numeroDeLigneDeCommande">{{ "numeroDeLigneDeCommande" | translate }}</label>
+    <input  type="number" type=date class="form-control"  name="numeroDeLigneDeCommande" [(ngModel)]="camp.numeroDeLigneDeCommande">
+</div>
 
-  <div class="form-group col-md-6">
-    <label for="commandeAchatcomplexeNon">{{
-      "commandeAchatcomplexeNon" | translate
-    }}</label>
-    <input
-      class="form-control"
-      name="commandeAchatcomplexeNon"
-      [(ngModel)]="camp.commandeAchatcomplexeNon"
-    />
-  </div>
+<div class="form-group col-md-6">
+    <label for="bonDecommandeNon">{{ "bonDecommandeNon" | translate}}</label>
+    <input class="form-control" name="bonDecommandeNon"
+        [(ngModel)]="camp.bonDecommandeNon">
+</div>
+
+<div class="form-group col-md-6">
+    <label for="commandeAchatcomplexeNon">{{ "commandeAchatcomplexeNon" | translate }}</label>
+    <input class="form-control" name="commandeAchatcomplexeNon" [(ngModel)]="camp.commandeAchatcomplexeNon">
+</div>
 </div>

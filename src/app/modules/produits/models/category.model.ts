@@ -1,3 +1,3 @@
 export type Category = {
-  id?: string;
-};
+    id?: string
+}

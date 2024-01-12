@@ -1,22 +1,23 @@
-import { ComponentFixture, TestBed } from "@angular/core/testing";
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DivisionFormGeneralComponent } from "./division-form-general.component";
+import { DivisionFormGeneralComponent } from './division-form-general.component';
 
-describe("DivisionFormGeneralComponent", () => {
+describe('DivisionFormGeneralComponent', () => {
   let component: DivisionFormGeneralComponent;
   let fixture: ComponentFixture<DivisionFormGeneralComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [DivisionFormGeneralComponent],
-    }).compileComponents();
+      declarations: [ DivisionFormGeneralComponent ]
+    })
+    .compileComponents();
 
     fixture = TestBed.createComponent(DivisionFormGeneralComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
-  it("should create", () => {
+  it('should create', () => {
     expect(component).toBeTruthy();
   });
 });

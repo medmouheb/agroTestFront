@@ -1,24 +1,23 @@
-import { ComponentFixture, TestBed } from "@angular/core/testing";
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RapprochementdesStocksFormsDetailsComponent } from "./rapprochementdes-stocks-forms-details.component";
+import { RapprochementdesStocksFormsDetailsComponent } from './rapprochementdes-stocks-forms-details.component';
 
-describe("RapprochementdesStocksFormsDetailsComponent", () => {
+describe('RapprochementdesStocksFormsDetailsComponent', () => {
   let component: RapprochementdesStocksFormsDetailsComponent;
   let fixture: ComponentFixture<RapprochementdesStocksFormsDetailsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [RapprochementdesStocksFormsDetailsComponent],
-    }).compileComponents();
+      declarations: [ RapprochementdesStocksFormsDetailsComponent ]
+    })
+    .compileComponents();
 
-    fixture = TestBed.createComponent(
-      RapprochementdesStocksFormsDetailsComponent,
-    );
+    fixture = TestBed.createComponent(RapprochementdesStocksFormsDetailsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
-  it("should create", () => {
+  it('should create', () => {
     expect(component).toBeTruthy();
   });
 });

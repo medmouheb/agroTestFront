@@ -263,7 +263,7 @@
           this.$ele
             .find('[data-notify="icon"]')
             .append(
-              '<img src="' +
+              '<img alt="" src="' +
                 this.settings.content.icon +
                 '" alt="Notify Icon" />',
             );

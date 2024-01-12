@@ -1,10 +1,14 @@
-import { NgModule } from "@angular/core";
-import { CommonModule } from "@angular/common";
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
-import { VetenariansRoutingModule } from "./vetenarians-routing.module";
+import { VetenariansRoutingModule } from './vetenarians-routing.module';
+
 
 @NgModule({
   declarations: [],
-  imports: [CommonModule, VetenariansRoutingModule],
+  imports: [
+    CommonModule,
+    VetenariansRoutingModule
+  ]
 })
-export class VetenariansModule {}
+export class VetenariansModule { }

@@ -7,11 +7,11 @@ const routes: Routes = [
   {
     path: "",
     component: SimulatorMainPageComponent,
-  },
+  }, 
   {
-    path: "/simulatorMain/results",
-    component: SimulatorResultsComponent,
-  },
+    path : "/simulatorMain/results",
+    component : SimulatorResultsComponent
+  }
 ];
 
 @NgModule({

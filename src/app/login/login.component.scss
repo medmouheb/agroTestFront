@@ -1,39 +1,142 @@
 .divider:after,
 .divider:before {
-  content: "";
-  flex: 1;
-  height: 1px;
-  background: #eee;
+content: "";
+flex: 1;
+height: 1px;
+background: #eee;
 }
 .h-custom {
-  height: calc(100% - 73px);
+height: calc(100% - 73px);
 }
+
+h1{
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+    text-align: center;
+    font-size: 2.25rem;
+    font-family: Roboto,sans-serif;
+    font-weight: 700;
+    line-height: 3rem;
+    color: #424242;
+    margin: .67em 0;
+}
+
+.sub-title{
+    margin-bottom: 2rem;
+    text-align: center;
+    color: #424242;
+    font-family: Roboto,sans-serif;
+    font-size: .9375rem;
+    font-weight: 400;
+    line-height: 1.25rem;
+    margin-top: 0;
+}
+
+label{
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #838383;
+    font-family: Roboto,sans-serif;
+    font-size: .75rem;
+    font-weight: 700;
+    line-height: 1rem;
+}
+label > a{
+    color: #8383837a;
+    text-decoration: none;
+    margin-bottom: 0.5rem;
+    font-family: Roboto,sans-serif;
+    font-size: .75rem;
+    font-weight: 600;
+    line-height: 1rem;
+    font-family: Roboto,sans-serif;
+    font-size: .75rem;
+    font-weight: 600;
+    line-height: 1rem;
+}
+
+input[type=text]{
+    border-radius: 0.25rem;
+    font-size: .9375rem;
+    font-weight: 400;
+    line-height: 1.5rem;
+    padding: 1rem;
+    background-color: transparent;
+    border-color: #0000006b;
+    color: #424242;
+    width: 100%;
+    transition-duration: .15s;
+    transition-property: border,background-color,color,box-shadow;
+    transition-timing-function: ease-in;
+}
+
+input[type=text]:hover{
+    border-color: #4b00cc!important;
+}
+
+input[type=text]:focus{
+    border-color: #4b00cc88!important;
+}
+
+input[type=password]{
+    border-radius: 0.25rem;
+    font-size: .9375rem;
+    font-weight: 400;
+    line-height: 1.5rem;
+    padding: 1rem;
+    background-color: transparent;
+    border-color: #0000006b;
+    color: #424242;
+    width: 100%;
+    transition-duration: .15s;
+    transition-property: border,background-color,color,box-shadow;
+    transition-timing-function: ease-in;
+}
+
+input[type=password]:hover{
+    border-color: #4b00cc!important;
+}
+
+input[type=password]:focus{
+    border-color: #4b00cc88!important;
+}
+
+// input[type=checkbox]{
+//     box-sizing: border-box;
+//     padding: 0;
+//     position: absolute!important;
+//     height: 1px;
+//     width: 1px;
+//     overflow: hidden;
+//     clip: rect(1px 1px 1px 1px);
+//     clip: rect(1px,1px,1px,1px);
+// }
+label.remember{
+    transition-duration: .15s;
+    transition-property: color;
+    transition-timing-function: ease-in;
+    padding-left: 0.6875rem;
+    color: #424242;
+    font-family: Roboto,sans-serif;
+    font-size: .8125rem;
+    font-weight: 600;
+    line-height: 1.5rem;
+}
+
+
 @media (max-width: 450px) {
-  .h-custom {
-    height: 100%;
-  }
+.h-custom {
+height: 100%;
 }
-.mat-button.btn.btn-primary,
-.mat-raised-button.btn.btn-primary,
-.mat-raised-button.btn:not([class*="mat-elevation-z"]).btn-primary,
-.btn.btn-primary {
-  color: #fff;
-  background-color: #88b14a;
-  border-color: #88b14a;
-  box-shadow:
-    0 2px 2px 0 rgb(156 39 176 / 14%),
-    0 3px 1px -2px rgb(156 39 176 / 20%),
-    0 1px 5px 0 rgb(156 39 176 / 12%);
+}
+.mat-button.btn.btn-primary, .mat-raised-button.btn.btn-primary, .mat-raised-button.btn:not([class*=mat-elevation-z]).btn-primary, .btn.btn-primary {
+    color: #fff;
+    background-color: #88b14a;
+    border-color: #88b14a;
+    box-shadow: 0 2px 2px 0 rgb(156 39 176 / 14%), 0 3px 1px -2px rgb(156 39 176 / 20%), 0 1px 5px 0 rgb(156 39 176 / 12%);
 }
 a {
-  color: #88b14a;
+    color: #88b14a;
 }
-.form-control,
-.is-focused .form-control {
-  background-image: linear-gradient(
-      to top,
-      #43a047 2px,
-      rgba(156, 39, 176, 0) 2px
-    ),
-    linear-gradient(to top, #d2d2d2 1px, rgba(210, 210, 210, 0) 1px);
-}
+.form-control, .is-focused .form-control {
+    background-image: linear-gradient(to top, #43a047 2px, rgba(156, 39, 176, 0) 2px), linear-gradient(to top, #d2d2d2 1px, rgba(210, 210, 210, 0) 1px);}

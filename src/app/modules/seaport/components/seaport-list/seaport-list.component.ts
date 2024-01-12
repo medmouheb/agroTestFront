@@ -1,21 +1,22 @@
-import { Component, OnInit, ViewChild } from "@angular/core";
-import { HotToastService } from "@ngneat/hot-toast";
-import { TranslateService } from "@ngx-translate/core";
-import { DialogComponent } from "@progress/kendo-angular-dialog";
-import { airportService } from "app/modules/airport/Services/airport.service";
-import { airport } from "app/modules/airport/models/airport.model";
-import { ConfirmDialogComponent } from "app/shared/components/confirm-dialog/confirm-dialog.component";
-import { StepperComponent } from "app/shared/components/stepper/stepper.component";
-import { WizardDialogComponent } from "app/shared/components/wizard-dialog/wizard-dialog.component";
-import { seaport } from "../../models/seaport.model";
-import { seaportService } from "../../services/seaport.service";
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { HotToastService } from '@ngneat/hot-toast';
+import { TranslateService } from '@ngx-translate/core';
+import { DialogComponent } from '@progress/kendo-angular-dialog';
+import { airportService } from 'app/modules/airport/Services/airport.service';
+import { airport } from 'app/modules/airport/models/airport.model';
+import { ConfirmDialogComponent } from 'app/shared/components/confirm-dialog/confirm-dialog.component';
+import { StepperComponent } from 'app/shared/components/stepper/stepper.component';
+import { WizardDialogComponent } from 'app/shared/components/wizard-dialog/wizard-dialog.component';
+import { seaport } from '../../models/seaport.model';
+import { seaportService } from '../../services/seaport.service';
 
 @Component({
-  selector: "app-seaport-list",
-  templateUrl: "./seaport-list.component.html",
-  styleUrls: ["./seaport-list.component.scss"],
+  selector: 'app-seaport-list',
+  templateUrl: './seaport-list.component.html',
+  styleUrls: ['./seaport-list.component.scss']
 })
 export class SeaportListComponent implements OnInit {
+
   @ViewChild("deleteModal")
   deleteModal!: ConfirmDialogComponent;
 
@@ -31,22 +32,28 @@ export class SeaportListComponent implements OnInit {
   stepper!: StepperComponent;
 
   currentStep = 0;
-  steps: any = ["steps.general", "steps.information"];
+  steps: any = [
+    "steps.general",
+    "steps.information",
+
+  ];
 
   loading = false;
   seaport: seaport = {};
-
+  // fournisseursPage: Page<Fournisseur> = initPage;
   pageNumber = 0;
   pageSize = 10;
   filter = "";
   seaports: Array<seaport> = [];
-  seaportName: string = "";
+  seaportName: string = '';
+
+
 
   constructor(
     private service: seaportService,
     private translateService: TranslateService,
-    private toastService: HotToastService,
-  ) {}
+    private toastService: HotToastService
+  ) { }
   onCancel() {
     this.seaport = {};
     this.currentStep = 0;
@@ -55,18 +62,18 @@ export class SeaportListComponent implements OnInit {
   onSave(id: string | null) {
     this.toastService.loading(
       this.translateService.instant("message.loading..."),
-      { id: "0" },
+      { id: "0" }
     );
     this.service.save(id, this.seaport!).subscribe({
       next: () => {
-        this.getActiveSeaports();
+        this.getActiveSeaports()
         this.formModal.hide();
         this.onCancel();
         this.toastService.close("0");
         this.toastService.success(
           this.translateService.instant("success.saved", {
             elem: this.translateService.instant("seaport"),
-          }),
+          })
         );
       },
       error: (error) => {
@@ -74,7 +81,7 @@ export class SeaportListComponent implements OnInit {
         this.toastService.error(
           this.translateService.instant(error.error, {
             elem: this.translateService.instant("seaport"),
-          }),
+          })
         );
       },
     });
@@ -101,7 +108,7 @@ export class SeaportListComponent implements OnInit {
         this.translateService.instant("message.loading..."),
         {
           id: "0",
-        },
+        }
       );
       this.service.deactivateSeaport(id).subscribe({
         next: () => {
@@ -111,7 +118,7 @@ export class SeaportListComponent implements OnInit {
           this.toastService.success(
             this.translateService.instant("success.deleted", {
               elem: this.translateService.instant("seaport"),
-            }),
+            })
           );
         },
         error: (error) => {
@@ -120,7 +127,7 @@ export class SeaportListComponent implements OnInit {
           this.toastService.error(
             this.translateService.instant(error.error, {
               elem: this.translateService.instant("airport"),
-            }),
+            })
           );
         },
       });
@@ -146,6 +153,7 @@ export class SeaportListComponent implements OnInit {
     this.currentStep = step;
   }
 
+
   searchBySeaportName() {
     this.service.searchSeaportByNameActive(this.seaportName).subscribe({
       next: (result) => {
@@ -156,31 +164,33 @@ export class SeaportListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getActiveSeaports();
+    this.getActiveSeaports()
   }
 
   getActiveSeaports() {
     this.loading = true;
-    this.service.getActiveSeaports().subscribe({
-      next: (result) => {
-        this.seaports = result;
-      },
-      error: (error) => {
-        this.loading = false;
-        console.error(error);
-      },
-      complete: () => (this.loading = false),
-    });
+    this.service.getActiveSeaports()
+      .subscribe({
+        next: (result) => {
+          this.seaports = result;
+        },
+        error: (error) => {
+          this.loading = false;
+          console.error(error);
+        },
+        complete: () => (this.loading = false),
+      });
   }
+
 
   sortBySeaportCodeValid: boolean = true;
   SeaportCode() {
     if (this.sortBySeaportCodeValid) {
       this.seaports.sort((a, b) => a.seaportCode.localeCompare(b.seaportCode));
-      this.sortBySeaportCodeValid = false;
+      this.sortBySeaportCodeValid = false
     } else {
       this.seaports.sort((a, b) => b.seaportCode.localeCompare(a.seaportCode));
-      this.sortBySeaportCodeValid = true;
+      this.sortBySeaportCodeValid = true
     }
   }
 
@@ -188,20 +198,22 @@ export class SeaportListComponent implements OnInit {
   sortBySeaportName() {
     if (this.sortBySeaportNameValid) {
       this.seaports.sort((a, b) => a.seaportName.localeCompare(b.seaportName));
-      this.sortBySeaportNameValid = false;
+      this.sortBySeaportNameValid = false
     } else {
       this.seaports.sort((a, b) => b.seaportName.localeCompare(a.seaportName));
-      this.sortBySeaportNameValid = true;
+      this.sortBySeaportNameValid = true
     }
   }
   sortByNotesValid: boolean = true;
   sortByNotes() {
     if (this.sortByNotesValid) {
       this.seaports.sort((a, b) => a.notes.localeCompare(b.notes));
-      this.sortByNotesValid = false;
+      this.sortByNotesValid = false
     } else {
       this.seaports.sort((a, b) => b.notes.localeCompare(a.notes));
-      this.sortByNotesValid = true;
+      this.sortByNotesValid = true
     }
   }
+
+
 }

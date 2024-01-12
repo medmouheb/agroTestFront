@@ -1,17 +1,28 @@
-import { Component, Input, OnInit } from "@angular/core";
-import { FormControl, FormGroup } from "@angular/forms";
-import { Vehicule } from "app/modules/vehicule/models/vehicule";
+import { Component, Input, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
+import { SharedService } from 'app/modules/company/services/shared.service';
+import { Vehicule } from 'app/modules/vehicule/models/vehicule';
 
 @Component({
-  selector: "app-vehicule-forms-facility-details",
-  templateUrl: "./vehicule-forms-facility-details.component.html",
-  styleUrls: ["./vehicule-forms-facility-details.component.scss"],
+  selector: 'app-vehicule-forms-facility-details',
+  templateUrl: './vehicule-forms-facility-details.component.html',
+  styleUrls: ['./vehicule-forms-facility-details.component.scss']
 })
-export class VehiculeFormsFacilityDetailsComponent {
+export class VehiculeFormsFacilityDetailsComponent implements OnInit {
+
   @Input() camp!: Vehicule;
   addform: FormGroup;
 
-  constructor() {}
+
+  constructor(private sharedService: SharedService) {}
+
+  ngOnInit(): void {
+  }
+
+
+
+
+
 
   initForm() {
     this.addform = new FormGroup({
@@ -38,5 +49,7 @@ export class VehiculeFormsFacilityDetailsComponent {
     );
   }
 
-  minIwillaya: boolean = false;
+  minIwillaya: boolean = false
+
+
 }

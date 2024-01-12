@@ -1,22 +1,23 @@
-import { ComponentFixture, TestBed } from "@angular/core/testing";
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DivisionListComponent } from "./division-list.component";
+import { DivisionListComponent } from './division-list.component';
 
-describe("DivisionListComponent", () => {
+describe('DivisionListComponent', () => {
   let component: DivisionListComponent;
   let fixture: ComponentFixture<DivisionListComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [DivisionListComponent],
-    }).compileComponents();
+      declarations: [ DivisionListComponent ]
+    })
+    .compileComponents();
 
     fixture = TestBed.createComponent(DivisionListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
-  it("should create", () => {
+  it('should create', () => {
     expect(component).toBeTruthy();
   });
 });

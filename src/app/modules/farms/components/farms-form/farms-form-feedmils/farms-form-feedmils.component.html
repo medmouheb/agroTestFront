@@ -1,15 +1,13 @@
 <div class="row">
-  <div class="form-group col-md-6">
-    <label class="clickable" for="feedMillcode">{{
-      "feedMillcode" | translate
-    }}</label>
-    <input
-      type="number"
-      class="form-control"
-      name="feedMillcode"
-      #feedMillcode="ngModel"
-      ngModel
-      [(ngModel)]="farm.feedMillcode"
-    />
+  
+ 
+     
+    <div class="form-group col-md-6">
+      <label class="clickable" for="feedMillcode">{{'feedMillcode' | translate}}</label>
+      <input type="number" class="form-control" name="feedMillcode" #feedMillcode="ngModel" ngModel
+        [(ngModel)]="farm.feedMillcode">
+    </div>
+  
+  
   </div>
-</div>
+  

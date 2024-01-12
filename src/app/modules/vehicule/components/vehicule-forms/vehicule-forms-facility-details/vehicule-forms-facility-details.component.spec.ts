@@ -1,22 +1,23 @@
-import { ComponentFixture, TestBed } from "@angular/core/testing";
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { VehiculeFormsFacilityDetailsComponent } from "./vehicule-forms-facility-details.component";
+import { VehiculeFormsFacilityDetailsComponent } from './vehicule-forms-facility-details.component';
 
-describe("VehiculeFormsFacilityDetailsComponent", () => {
+describe('VehiculeFormsFacilityDetailsComponent', () => {
   let component: VehiculeFormsFacilityDetailsComponent;
   let fixture: ComponentFixture<VehiculeFormsFacilityDetailsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [VehiculeFormsFacilityDetailsComponent],
-    }).compileComponents();
+      declarations: [ VehiculeFormsFacilityDetailsComponent ]
+    })
+    .compileComponents();
 
     fixture = TestBed.createComponent(VehiculeFormsFacilityDetailsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
-  it("should create", () => {
+  it('should create', () => {
     expect(component).toBeTruthy();
   });
 });

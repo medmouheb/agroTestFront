@@ -1,14 +1,20 @@
-import { Component, Input } from "@angular/core";
-import { manufacturer } from "../../Models/manufacturer.model";
+import { Component, Input, OnInit } from '@angular/core';
+import { manufacturer } from '../../Models/manufacturer.model';
 
 @Component({
-  selector: "app-manufacturer-form",
-  templateUrl: "./manufacturer-form.component.html",
-  styleUrls: ["./manufacturer-form.component.scss"],
+  selector: 'app-manufacturer-form',
+  templateUrl: './manufacturer-form.component.html',
+  styleUrls: ['./manufacturer-form.component.scss']
 })
-export class ManufacturerFormComponent {
-  @Input() manufacturer!: manufacturer;
-  @Input() currentStep!: number;
+export class ManufacturerFormComponent implements OnInit {
 
-  constructor() {}
+
+  @Input() manufacturer!: manufacturer
+  @Input() currentStep!: number
+
+  constructor() { }
+
+  ngOnInit(): void {
+  }
+
 }
