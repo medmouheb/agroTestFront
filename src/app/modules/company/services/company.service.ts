@@ -1,4 +1,4 @@
-import { HttpClient, HttpParams } from "@angular/common/http";
+import { HttpClient, HttpParams, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { environment } from "environments/environment";
 import { Observable } from "rxjs";
@@ -10,7 +10,7 @@ import { Company } from "../models/comany";
   providedIn: "root",
 })
 export class CompanyService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   baseUrl() {
     return `${environment.apiUrl}`;
@@ -25,70 +25,113 @@ export class CompanyService {
 
   create(comp: Company): Observable<Company> {
     let url = this.baseUrl() + "/campany";
-    return this.http.post<Company>(url, comp);
+    const headers = new HttpHeaders()
+      .set("Authorization", `${JSON.parse(localStorage.getItem("tocken")).tokenType} ${JSON.parse(localStorage.getItem("tocken")).accessToken}`)
+    return this.http.post<Company>(url, comp,{'headers':headers});
   }
 
   update(id: string, comp: Company): Observable<Company> {
     let url = `${this.baseUrl()}/campany/${id}`;
-    return this.http.put<Company>(url, comp);
+    const headers = new HttpHeaders()
+      .set("Authorization", `${JSON.parse(localStorage.getItem("tocken")).tokenType} ${JSON.parse(localStorage.getItem("tocken")).accessToken}`)
+    return this.http.put<Company>(url, comp,{'headers':headers});
   }
 
   findById(id: string): Observable<Company> {
     let url = `${this.baseUrl()}/campany/${id}`;
-    return this.http.get<Company>(url);
+    const headers = new HttpHeaders()
+      .set("Authorization", `${JSON.parse(localStorage.getItem("tocken")).tokenType} ${JSON.parse(localStorage.getItem("tocken")).accessToken}`)
+    return this.http.get<Company>(url,{'headers':headers});
   }
 
   findAll(): Observable<Array<Company>> {
-    let url = this.baseUrl() + "/campany";
-    return this.http.get<Array<Company>>(url);
+    let url = this.baseUrl() + '/campany';
+    const headers = new HttpHeaders()
+      .set("Authorization", `${JSON.parse(localStorage.getItem("tocken")).tokenType} ${JSON.parse(localStorage.getItem("tocken")).accessToken}`)
+    return this.http.get<Array<Company>>(url,{'headers':headers});
   }
 
   findPage(
     pageNumber: number,
     pageSize: number,
-    filter: string,
+    filter: string
   ): Observable<Page<Company>> {
     let url = this.baseUrl() + "/campany/page";
     let params = new HttpParams();
+    console.log(`${JSON.parse(localStorage.getItem("tocken")).tokenType} ${JSON.parse(localStorage.getItem("tocken")).accessToken}`);
+    const headers = new HttpHeaders()
+      .set("Authorization", `${JSON.parse(localStorage.getItem("tocken")).tokenType} ${JSON.parse(localStorage.getItem("tocken")).accessToken}`)
     params = params.append("pageNumber", pageNumber);
     params = params.append("pageSize", pageSize);
     params = params.append("filter", filter);
-    return this.http.get<Page<Company>>(url, { params });
+    return this.http.get<Page<Company>>(url, { params, headers });
   }
 
   delete(id: string): Observable<boolean> {
     let url = `${this.baseUrl()}/campany/${id}`;
-    return this.http.delete<boolean>(url);
+    const headers = new HttpHeaders()
+      .set(
+        "Authorization",
+        `${JSON.parse(localStorage.getItem("tocken")).tokenType} ${JSON.parse(localStorage.getItem("tocken")).accessToken}`
+      )
+    return this.http.delete<boolean>(url,{'headers':headers});
   }
 
   archive(id: string): Observable<void> {
     let url = `${this.baseUrl()}/campany/archiver/${id}`;
-    return this.http.get<void>(url);
+    const headers = new HttpHeaders()
+      .set(
+        "Authorization",
+        `${JSON.parse(localStorage.getItem("tocken")).tokenType} ${JSON.parse(localStorage.getItem("tocken")).accessToken}`
+      )
+    return this.http.get<void>(url,{'headers':headers});
   }
 
   disArchive(id: string): Observable<void> {
     let url = `${this.baseUrl()}/campany/desarchiver/${id}`;
-    return this.http.get<void>(url);
+    const headers = new HttpHeaders()
+      .set(
+        "Authorization",
+        `${JSON.parse(localStorage.getItem("tocken")).tokenType} ${JSON.parse(localStorage.getItem("tocken")).accessToken}`
+      )
+    return this.http.get<void>(url,{'headers':headers});
   }
 
   findArchivedPage(
     pageNumber: number,
     pageSize: number,
-    filter: string,
+    filter: string
   ): Observable<Page<Company>> {
     let url = this.baseUrl() + "/campany/archived/page";
+    const headers = new HttpHeaders()
+      .set(
+        "Authorization",
+        `${JSON.parse(localStorage.getItem("tocken")).tokenType} ${JSON.parse(localStorage.getItem("tocken")).accessToken}`
+      )
     let params = new HttpParams();
     params = params.append("pageNumber", pageNumber);
     params = params.append("pageSize", pageSize);
     params = params.append("filter", filter);
-    return this.http.get<Page<Company>>(url, { params });
+    return this.http.get<Page<Company>>(url, { params,'headers':headers });
   }
   findbycode(code: any): Observable<Company> {
     let url = `${this.baseUrl()}/campany/by-code/${code}`;
-    return this.http.get<Company>(url);
+    const headers = new HttpHeaders()
+      .set(
+        "Authorization",
+        `${JSON.parse(localStorage.getItem("tocken")).tokenType} ${JSON.parse(localStorage.getItem("tocken")).accessToken}`
+      )
+    return this.http.get<Company>(url,{'headers':headers});
+
   }
   findbyName(name: any): Observable<Company> {
     let url = `${this.baseUrl()}/campany/getbyname/${name}`;
-    return this.http.get<Company>(url);
+    const headers = new HttpHeaders()
+      .set(
+        "Authorization",
+        `${JSON.parse(localStorage.getItem("tocken")).tokenType} ${JSON.parse(localStorage.getItem("tocken")).accessToken}`
+      )
+    return this.http.get<Company>(url,{'headers':headers});
+
   }
 }

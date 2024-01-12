@@ -13,6 +13,8 @@ const httpOptions = {
 const httpHeaders = {
   headers: new HttpHeaders({
     "Content-Type": "application/json",
+    "Authorization": `${JSON.parse(localStorage.getItem("tocken")).tokenType} ${JSON.parse(localStorage.getItem("tocken")).accessToken}`
+
   }),
 };
 @Injectable({
@@ -27,7 +29,7 @@ export class DashboardServiceService {
   getCountry(): Observable<Country[]> {
     return this.http.get<Country[]>(
       this.baseURL + this.serviceDashboard + "/country",
-      httpHeaders,
+      httpHeaders
     );
   }
 
@@ -39,7 +41,7 @@ export class DashboardServiceService {
         country +
         "/" +
         product,
-      httpHeaders,
+      httpHeaders
     );
   }
 
@@ -51,14 +53,14 @@ export class DashboardServiceService {
         country +
         "/" +
         product,
-      httpHeaders,
+      httpHeaders
     );
   }
 
   detailsPerCountryAndProductAndVariety(
     country,
     product,
-    variety,
+    variety
   ): Observable<any[]> {
     return this.http.get<any[]>(
       this.baseURL +
@@ -69,7 +71,7 @@ export class DashboardServiceService {
         product +
         "/" +
         variety,
-      httpHeaders,
+      httpHeaders
     );
   }
 
@@ -78,7 +80,7 @@ export class DashboardServiceService {
     product,
     variety,
     min,
-    max,
+    max
   ): Observable<any[]> {
     return this.http.get<any[]>(
       this.baseURL +
@@ -93,7 +95,7 @@ export class DashboardServiceService {
         min +
         "/" +
         max,
-      httpHeaders,
+      httpHeaders
     );
   }
 }

@@ -1,8 +1,8 @@
-import { TestBed } from "@angular/core/testing";
+import { TestBed } from '@angular/core/testing';
 
-import { WillayaService } from "./willaya.service";
+import { WillayaService } from './willaya.service';
 
-describe("WillayaService", () => {
+describe('WillayaService', () => {
   let service: WillayaService;
 
   beforeEach(() => {
@@ -10,7 +10,7 @@ describe("WillayaService", () => {
     service = TestBed.inject(WillayaService);
   });
 
-  it("should be created", () => {
+  it('should be created', () => {
     expect(service).toBeTruthy();
   });
 });
