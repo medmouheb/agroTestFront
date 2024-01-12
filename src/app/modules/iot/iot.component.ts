@@ -1,15 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 
 @Component({
-  selector: 'app-iot',
-  templateUrl: './iot.component.html',
-  styleUrls: ['./iot.component.scss']
+  selector: "app-iot",
+  templateUrl: "./iot.component.html",
+  styleUrls: ["./iot.component.scss"],
 })
 export class IOTComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

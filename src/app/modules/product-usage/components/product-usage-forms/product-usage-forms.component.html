@@ -1,18 +1,20 @@
-<ng-content>
-</ng-content>
+<ng-content> </ng-content>
 <form class="form-card">
-
   <div *ngIf="currentStep == 0">
-    <app-product-usage-forms-general [camp]="camp"></app-product-usage-forms-general>
+    <app-product-usage-forms-general
+      [camp]="camp"
+    ></app-product-usage-forms-general>
   </div>
 
   <div *ngIf="currentStep == 1">
-    <app-product-usage-forms-information [camp]="camp"></app-product-usage-forms-information>
+    <app-product-usage-forms-information
+      [camp]="camp"
+    ></app-product-usage-forms-information>
   </div>
 
   <div *ngIf="currentStep == 2">
-    <app-product-usage-forms-details [camp]="camp"></app-product-usage-forms-details>
+    <app-product-usage-forms-details
+      [camp]="camp"
+    ></app-product-usage-forms-details>
   </div>
-
-
 </form>

@@ -1,4 +1,4 @@
-import { Component, OnInit,  } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 
 import { SvgTransitionService } from "../svgTransition/svg-transition.service";
@@ -43,7 +43,6 @@ declare interface RouteInfo {
   id?: string;
   class?: string;
   subCategories?: Categry[];
-
 }
 export const ROUTES: Categries[] = [
   {
@@ -52,7 +51,7 @@ export const ROUTES: Categries[] = [
     title: "menu.general-Setups",
     icon: "settings_applications",
     id: "15",
-    
+
     SubCat: [
       {
         label: "Admin",
@@ -84,18 +83,35 @@ export const ROUTES: Categries[] = [
     cateeg: "Business",
     icon: "corporate_fare",
     id: "18",
-
   },
 ];
-
 
 @Component({
   selector: "app-sidebar",
   templateUrl: "./sidebar.component.html",
   styleUrls: ["./sidebar.component.css"],
 })
-export class SidebarComponent implements OnInit  {
-  constructor(private router: Router,private svgTransitionService: SvgTransitionService) {}
+export class SidebarComponent implements OnInit {
+  constructor(
+    private router: Router,
+    private svgTransitionService: SvgTransitionService,
+  ) {}
+
+  role:String []= JSON.parse( localStorage.getItem("tocken")).roles  ;
+
+  allowForOnlyAdmin():boolean{
+    if(JSON.parse( localStorage.getItem("tocken")).roles.includes("ROLE_ADMIN") ){
+      return true
+    }
+    return false
+  }
+
+  anyLoggedinUser(){
+    if(JSON.parse( localStorage.getItem("tocken")).roles.length>0 ){
+      return true
+    }
+    return false
+  }
 
   selectItem(item: string) {
     // Navigate to the selected item when it's clicked
@@ -110,7 +126,7 @@ export class SidebarComponent implements OnInit  {
     this.svgTransitionService.toggleTransition();
   }
 
-  isAdmin:boolean=false
+  isAdmin: boolean = true;
 
   ngOnInit() {
     // if(JSON.parse(localStorage.getItem("tocken")).roles[0]=="ROLE_ADMIN" ){

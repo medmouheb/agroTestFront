@@ -5,13 +5,10 @@ import { AdministrationRoutingModule } from "./administration-routing.module";
 import { SharedModule } from "app/shared/shared.module";
 
 import { UsersListComponent } from "./users-list/users-list.component";
-import { VerifyEmailComponent } from './verify-email/verify-email.component';
+import { VerifyEmailComponent } from "./verify-email/verify-email.component";
 
 @NgModule({
-  declarations: [
-   UsersListComponent,
-   VerifyEmailComponent
-  ],
+  declarations: [UsersListComponent, VerifyEmailComponent],
   imports: [CommonModule, AdministrationRoutingModule, SharedModule],
   providers: [],
 })

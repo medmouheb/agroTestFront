@@ -1,23 +1,38 @@
-<div class="row" >
+<div class="row">
   <div class="form-group col-md-6">
-    <label for="transactionDate">{{'transactionDate' | translate}}</label>
-    <input type="date" class="form-control" name="transactionDate" #transactionDate="ngModel" ngModel
-      [(ngModel)]="produit.transactionDate">
+    <label for="transactionDate">{{ "transactionDate" | translate }}</label>
+    <input
+      type="date"
+      class="form-control"
+      name="transactionDate"
+      #transactionDate="ngModel"
+      ngModel
+      [(ngModel)]="produit.transactionDate"
+    />
   </div>
   <div class="form-group col-md-6">
-    <label for="farmCode">{{'farmCode' | translate}}</label>
+    <label for="farmCode">{{ "farmCode" | translate }}</label>
     <!-- <input class="form-control" name="farmCode" #farmCode="ngModel" ngModel
       [(ngModel)]="produit.farmCode"> -->
-      <select (change)="selectVAlue($event)" class="form-control">
-
-        <option disabled selected>{{"il faut choisir"| translate}}</option>
-        <option [selected]="produit.farmCode==dv.code" *ngFor="let dv of farmList" [value]="dv.code">{{dv.code}}
-        </option>
-      </select>
+    <select (change)="selectVAlue($event)" class="form-control">
+      <option disabled selected>{{ "il faut choisir" | translate }}</option>
+      <option
+        [selected]="produit.farmCode == dv.code"
+        *ngFor="let dv of farmList"
+        [value]="dv.code"
+      >
+        {{ dv.code }}
+      </option>
+    </select>
   </div>
   <div class="form-group col-md-6">
-    <label for="houseCode">{{'houseCode' | translate}}</label>
-    <input class="form-control" name="houseCode" #houseCode="ngModel" ngModel
-      [(ngModel)]="produit.houseCode">
+    <label for="houseCode">{{ "houseCode" | translate }}</label>
+    <input
+      class="form-control"
+      name="houseCode"
+      #houseCode="ngModel"
+      ngModel
+      [(ngModel)]="produit.houseCode"
+    />
   </div>
 </div>

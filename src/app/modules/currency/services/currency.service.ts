@@ -1,4 +1,4 @@
-import { HttpClient, HttpParams ,HttpHeaders } from "@angular/common/http";
+import { HttpClient, HttpParams, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Page } from "app/shared/models";
 import { environment } from "environments/environment";
@@ -23,128 +23,137 @@ export class CurrencyService {
   }
 
   create(currency: Currency): Observable<Currency> {
-    const headers = new HttpHeaders()
-      .set(
-        "Authorization",
-        `${JSON.parse(localStorage.getItem("tocken")).tokenType} ${JSON.parse(localStorage.getItem("tocken")).accessToken}`
-      )
-    let url = this.baseUrl()+"/currency";
-    return this.http.post<Currency>(url, currency , {headers});;
+    const headers = new HttpHeaders().set(
+      "Authorization",
+      `${JSON.parse(localStorage.getItem("tocken")).tokenType} ${
+        JSON.parse(localStorage.getItem("tocken")).accessToken
+      }`,
+    );
+    let url = this.baseUrl() + "/currency";
+    return this.http.post<Currency>(url, currency, { headers });
   }
 
   update(id: string, currency: Currency): Observable<Currency> {
-    const headers = new HttpHeaders()
-      .set(
-        "Authorization",
-        `${JSON.parse(localStorage.getItem("tocken")).tokenType} ${JSON.parse(localStorage.getItem("tocken")).accessToken}`
-      )
+    const headers = new HttpHeaders().set(
+      "Authorization",
+      `${JSON.parse(localStorage.getItem("tocken")).tokenType} ${
+        JSON.parse(localStorage.getItem("tocken")).accessToken
+      }`,
+    );
     let url = `${this.baseUrl()}/currency/${id}`;
-    return this.http.put<Currency>(url, currency , {headers});
+    return this.http.put<Currency>(url, currency, { headers });
   }
 
   findById(id: string): Observable<Currency> {
-    const headers = new HttpHeaders()
-      .set(
-        "Authorization",
-        `${JSON.parse(localStorage.getItem("tocken")).tokenType} ${JSON.parse(localStorage.getItem("tocken")).accessToken}`
-      )
+    const headers = new HttpHeaders().set(
+      "Authorization",
+      `${JSON.parse(localStorage.getItem("tocken")).tokenType} ${
+        JSON.parse(localStorage.getItem("tocken")).accessToken
+      }`,
+    );
     let url = `${this.baseUrl()}/currency/${id}`;
-    return this.http.get<Currency>(url , {headers});
+    return this.http.get<Currency>(url, { headers });
   }
 
   findAll(): Observable<Array<Currency>> {
-    const headers = new HttpHeaders()
-      .set(
-        "Authorization",
-        `${JSON.parse(localStorage.getItem("tocken")).tokenType} ${JSON.parse(localStorage.getItem("tocken")).accessToken}`
-      )
-    let url = this.baseUrl()+'/currency';
-    return this.http.get<Array<Currency>>(url , {headers});
+    const headers = new HttpHeaders().set(
+      "Authorization",
+      `${JSON.parse(localStorage.getItem("tocken")).tokenType} ${
+        JSON.parse(localStorage.getItem("tocken")).accessToken
+      }`,
+    );
+    let url = this.baseUrl() + "/currency";
+    return this.http.get<Array<Currency>>(url, { headers });
   }
 
   findPage(
     pageNumber: number,
     pageSize: number,
-    filter: string
+    filter: string,
   ): Observable<Page<Currency>> {
-    const headers = new HttpHeaders()
-      .set(
-        "Authorization",
-        `${JSON.parse(localStorage.getItem("tocken")).tokenType} ${JSON.parse(localStorage.getItem("tocken")).accessToken}`
-      )
+    const headers = new HttpHeaders().set(
+      "Authorization",
+      `${JSON.parse(localStorage.getItem("tocken")).tokenType} ${
+        JSON.parse(localStorage.getItem("tocken")).accessToken
+      }`,
+    );
     let url = this.baseUrl() + "/currency/page";
     let params = new HttpParams();
     params = params.append("pageNumber", pageNumber);
     params = params.append("pageSize", pageSize);
     params = params.append("filter", filter);
-    return this.http.get<Page<Currency>>(url, { params  ,headers});
+    return this.http.get<Page<Currency>>(url, { params, headers });
   }
 
   delete(id: string): Observable<boolean> {
-    const headers = new HttpHeaders()
-      .set(
-        "Authorization",
-        `${JSON.parse(localStorage.getItem("tocken")).tokenType} ${JSON.parse(localStorage.getItem("tocken")).accessToken}`
-      )
+    const headers = new HttpHeaders().set(
+      "Authorization",
+      `${JSON.parse(localStorage.getItem("tocken")).tokenType} ${
+        JSON.parse(localStorage.getItem("tocken")).accessToken
+      }`,
+    );
     let url = `${this.baseUrl()}/currency/${id}`;
-    return this.http.delete<boolean>(url , {headers});
+    return this.http.delete<boolean>(url, { headers });
   }
 
   archive(id: string): Observable<void> {
-    const headers = new HttpHeaders()
-      .set(
-        "Authorization",
-        `${JSON.parse(localStorage.getItem("tocken")).tokenType} ${JSON.parse(localStorage.getItem("tocken")).accessToken}`
-      )
+    const headers = new HttpHeaders().set(
+      "Authorization",
+      `${JSON.parse(localStorage.getItem("tocken")).tokenType} ${
+        JSON.parse(localStorage.getItem("tocken")).accessToken
+      }`,
+    );
     let url = `${this.baseUrl()}/currency/archiver/${id}`;
-    return this.http.get<void>(url , {headers});
+    return this.http.get<void>(url, { headers });
   }
 
   disArchive(id: string): Observable<void> {
-    const headers = new HttpHeaders()
-      .set(
-        "Authorization",
-        `${JSON.parse(localStorage.getItem("tocken")).tokenType} ${JSON.parse(localStorage.getItem("tocken")).accessToken}`
-      )
+    const headers = new HttpHeaders().set(
+      "Authorization",
+      `${JSON.parse(localStorage.getItem("tocken")).tokenType} ${
+        JSON.parse(localStorage.getItem("tocken")).accessToken
+      }`,
+    );
     let url = `${this.baseUrl()}/currency/desarchiver/${id}`;
-    return this.http.get<void>(url , {headers});
+    return this.http.get<void>(url, { headers });
   }
 
   findArchivedPage(
     pageNumber: number,
     pageSize: number,
-    filter: string
+    filter: string,
   ): Observable<Page<Currency>> {
-    const headers = new HttpHeaders()
-      .set(
-        "Authorization",
-        `${JSON.parse(localStorage.getItem("tocken")).tokenType} ${JSON.parse(localStorage.getItem("tocken")).accessToken}`
-      )
+    const headers = new HttpHeaders().set(
+      "Authorization",
+      `${JSON.parse(localStorage.getItem("tocken")).tokenType} ${
+        JSON.parse(localStorage.getItem("tocken")).accessToken
+      }`,
+    );
     let url = this.baseUrl() + "/currency/archived/page";
     let params = new HttpParams();
     params = params.append("pageNumber", pageNumber);
     params = params.append("pageSize", pageSize);
     params = params.append("filter", filter);
-    return this.http.get<Page<Currency>>(url, { params , headers });
+    return this.http.get<Page<Currency>>(url, { params, headers });
   }
-  findbycode(code:any): Observable<Currency>{
-    const headers = new HttpHeaders()
-      .set(
-        "Authorization",
-        `${JSON.parse(localStorage.getItem("tocken")).tokenType} ${JSON.parse(localStorage.getItem("tocken")).accessToken}`
-      )
+  findbycode(code: any): Observable<Currency> {
+    const headers = new HttpHeaders().set(
+      "Authorization",
+      `${JSON.parse(localStorage.getItem("tocken")).tokenType} ${
+        JSON.parse(localStorage.getItem("tocken")).accessToken
+      }`,
+    );
     let url = `${this.baseUrl()}/currency/by-code/${code}`;
-    return this.http.get<Currency>(url , {headers});
-
+    return this.http.get<Currency>(url, { headers });
   }
-  findbyName(name:any): Observable<Currency>{
-    const headers = new HttpHeaders()
-      .set(
-        "Authorization",
-        `${JSON.parse(localStorage.getItem("tocken")).tokenType} ${JSON.parse(localStorage.getItem("tocken")).accessToken}`
-      )
+  findbyName(name: any): Observable<Currency> {
+    const headers = new HttpHeaders().set(
+      "Authorization",
+      `${JSON.parse(localStorage.getItem("tocken")).tokenType} ${
+        JSON.parse(localStorage.getItem("tocken")).accessToken
+      }`,
+    );
     let url = `${this.baseUrl()}/currency/getbyname/${name}`;
-    return this.http.get<Currency>(url , {headers});
-
+    return this.http.get<Currency>(url, { headers });
   }
 }

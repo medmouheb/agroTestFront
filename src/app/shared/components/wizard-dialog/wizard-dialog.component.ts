@@ -16,7 +16,8 @@ import { Subscription } from "rxjs";
   styleUrls: ["./wizard-dialog.component.scss"],
 })
 export class WizardDialogComponent
-  implements OnInit, OnChanges, AfterViewChecked {
+  implements OnInit, OnChanges, AfterViewChecked
+{
   @Input()
   type: string = null;
   @Input()
@@ -35,13 +36,13 @@ export class WizardDialogComponent
 
   constructor(
     private sharedServ: SharedService,
-    private cdRef: ChangeDetectorRef
-  ) { }
+    private cdRef: ChangeDetectorRef,
+  ) {}
 
   ngOnInit(): any {
     this.wizardStep = 1;
     this.sharedServ.setIsActive(true);
-    this.sharedServ.isActive$.subscribe((data) => { });
+    this.sharedServ.isActive$.subscribe((data) => {});
     this.subscription = this.sharedServ.isActive$.subscribe((response) => {
       this.isNext = response;
     });
@@ -63,7 +64,7 @@ export class WizardDialogComponent
   }
 
   actionBtnLabel() {
-    return this.content && this.content.stepsCount === this.currentStep
+    return this.content && this.content.stepsCount === this.currentStep;
   }
   isfirstStep() {
     return this.content && this.currentStep === 0;
@@ -83,7 +84,7 @@ export class WizardDialogComponent
   }
 
   @HostListener("document:keydown.escape", ["$event"]) onKeydownHandler(
-    evt: KeyboardEvent
+    evt: KeyboardEvent,
   ) {
     this.hide();
   }
@@ -93,9 +94,7 @@ export class WizardDialogComponent
   }
 
   ngOnChanges() {
-
-    this.subscription = this.sharedServ.isActive$.subscribe((response) => { });
-
+    this.subscription = this.sharedServ.isActive$.subscribe((response) => {});
   }
 
   ngAfterViewChecked(): void {

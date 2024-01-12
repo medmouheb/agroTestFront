@@ -30,11 +30,7 @@ export class AirportListComponent implements OnInit {
   stepper!: StepperComponent;
 
   currentStep = 0;
-  steps: any = [
-    "steps.general",
-    "steps.information",
-
-  ];
+  steps: any = ["steps.general", "steps.information"];
 
   loading = false;
   airport: airport = {};
@@ -47,16 +43,15 @@ export class AirportListComponent implements OnInit {
 
   isChecked: boolean = false;
 
-
   onCheckboxChange() {
-    window.location.href="/agrotechsolutions.pro#/airports/trash"
+    window.location.href = "/agrotechsolutions.pro#/airports/trash";
   }
 
   constructor(
     private service: airportService,
     private translateService: TranslateService,
     private toastService: HotToastService,
-  ) { }
+  ) {}
   onCancel() {
     this.airport = {};
     this.currentStep = 0;
@@ -65,7 +60,7 @@ export class AirportListComponent implements OnInit {
   onSave(id: string | null) {
     this.toastService.loading(
       this.translateService.instant("message.loading..."),
-      { id: "0" }
+      { id: "0" },
     );
     //control required fiels
     // if (this.airport.airportCode == null || this.airport.airportCode == "" || this.airport.airportName == null || this.airport.airportName == "") {
@@ -86,7 +81,7 @@ export class AirportListComponent implements OnInit {
         this.toastService.success(
           this.translateService.instant("success.saved", {
             elem: this.translateService.instant("airport"),
-          })
+          }),
         );
       },
       error: (error) => {
@@ -94,7 +89,7 @@ export class AirportListComponent implements OnInit {
         this.toastService.error(
           this.translateService.instant(error.error, {
             elem: this.translateService.instant("airport"),
-          })
+          }),
         );
       },
     });
@@ -122,7 +117,7 @@ export class AirportListComponent implements OnInit {
         this.translateService.instant("message.loading..."),
         {
           id: "0",
-        }
+        },
       );
       this.service.delete(id).subscribe({
         next: () => {
@@ -132,7 +127,7 @@ export class AirportListComponent implements OnInit {
           this.toastService.success(
             this.translateService.instant("success.deleted", {
               elem: this.translateService.instant("airport"),
-            })
+            }),
           );
         },
         error: (error) => {
@@ -141,7 +136,7 @@ export class AirportListComponent implements OnInit {
           this.toastService.error(
             this.translateService.instant(error.error, {
               elem: this.translateService.instant("airport"),
-            })
+            }),
           );
         },
       });
@@ -153,7 +148,7 @@ export class AirportListComponent implements OnInit {
         this.translateService.instant("message.loading..."),
         {
           id: "0",
-        }
+        },
       );
       this.service.deactivateAirport(id).subscribe({
         next: () => {
@@ -163,7 +158,7 @@ export class AirportListComponent implements OnInit {
           this.toastService.success(
             this.translateService.instant("success.deleted", {
               elem: this.translateService.instant("airport"),
-            })
+            }),
           );
         },
         error: (error) => {
@@ -172,7 +167,7 @@ export class AirportListComponent implements OnInit {
           this.toastService.error(
             this.translateService.instant(error.error, {
               elem: this.translateService.instant("airport"),
-            })
+            }),
           );
         },
       });

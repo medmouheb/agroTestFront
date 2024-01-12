@@ -1,57 +1,115 @@
 <div class="row">
-    <div class="form-group col-md-6">
-      <label for="startDateInformation">{{'PayementType' | translate}}</label>
-      <select    class="form-control" name="paymentType" #paymentType="ngModel" ngModel [(ngModel)]="farm.paymentType">
-        <option  value="Checking" > {{'Checking'|translate}}</option>
-        <option  value="saving" >{{'saving'|translate}}  </option>
-        <option  value="paycheck" >{{'paycheck'|translate}}  </option>
-      </select>
-    </div>
-  
-    <div class="form-group col-md-6">
-      <label for="AccountNumber">{{'AccountNumber' | translate}} </label>
-      <input class="form-control" name="accountNumber" #accountNumber="ngModel" ngModel [(ngModel)]="farm.accountNumber">
-    </div>
-  
-    <div class="form-group col-md-6">
-      <label for="BankName">{{'BankNme' | translate}}</label>
-      <input class="form-control" name="bankName" #bankName="ngModel" ngModel [(ngModel)]="farm.bankName">
-    </div>
-   
-    <div class="form-group col-md-6">
-      <label for="BankCode">{{'BankCode' | translate}}</label>
-      <input class="form-control" name="bankCode" #bankCode="ngModel" ngModel [(ngModel)]="farm.bankCode">
-    </div>
-    <div class="form-group col-md-6">
-      <label for="Bankaddress">{{'Bankaddress' | translate}}</label>
-      <input class="form-control" name="bankaddress" #bankaddress="ngModel" ngModel [(ngModel)]="farm.bankaddress">
-    </div>
-  
-    <div class="form-group col-md-6">
-      <label for="DirectDepositflag">{{'DirectDepositflag' | translate}}</label>
-      <input class="form-control" name="directDepositflag" #directDepositflag="ngModel" ngModel [(ngModel)]="farm.directDepositflag">
-    </div>
-  
-   
-    <div class="form-group col-md-6">
-      <label for="typepayment">{{'typepayment' | translate}}</label>
-      <input class="form-control" name="typepayment" #typepayment="ngModel" ngModel [(ngModel)]="farm.typepayment">
-    </div>
-  
-    <div class="form-group col-md-6">
-      <label for="OperationDate">{{'OperationDate' | translate}}</label>
-      <input class="form-control" type="date" name="operationDate" #operationDate="ngModel" ngModel [(ngModel)]="farm.operationDate">
-    </div>
-  
-    <div class="form-group col-md-6">
-      <label for="typepayment">{{'typepayment' | translate}}</label>
-      <input class="form-control" name="typepayment" #typepayment="ngModel" ngModel [(ngModel)]="farm.typepayment">
-    </div>
-  
-    <div class="form-group col-md-6">
-      <label for="amounttransferred">{{'amounttransferred' | translate}}</label>
-      <input class="form-control" name="amounttransferred" #amounttransferred="ngModel" ngModel [(ngModel)]="farm.amounttransferred">
-    </div>
-  
+  <div class="form-group col-md-6">
+    <label for="startDateInformation">{{ "PayementType" | translate }}</label>
+    <select
+      class="form-control"
+      name="paymentType"
+      #paymentType="ngModel"
+      ngModel
+      [(ngModel)]="farm.paymentType"
+    >
+      <option value="Checking">{{ "Checking" | translate }}</option>
+      <option value="saving">{{ "saving" | translate }}</option>
+      <option value="paycheck">{{ "paycheck" | translate }}</option>
+    </select>
   </div>
-  
+
+  <div class="form-group col-md-6">
+    <label for="AccountNumber">{{ "AccountNumber" | translate }} </label>
+    <input
+      class="form-control"
+      name="accountNumber"
+      #accountNumber="ngModel"
+      ngModel
+      [(ngModel)]="farm.accountNumber"
+    />
+  </div>
+
+  <div class="form-group col-md-6">
+    <label for="BankName">{{ "BankNme" | translate }}</label>
+    <input
+      class="form-control"
+      name="bankName"
+      #bankName="ngModel"
+      ngModel
+      [(ngModel)]="farm.bankName"
+    />
+  </div>
+
+  <div class="form-group col-md-6">
+    <label for="BankCode">{{ "BankCode" | translate }}</label>
+    <input
+      class="form-control"
+      name="bankCode"
+      #bankCode="ngModel"
+      ngModel
+      [(ngModel)]="farm.bankCode"
+    />
+  </div>
+  <div class="form-group col-md-6">
+    <label for="Bankaddress">{{ "Bankaddress" | translate }}</label>
+    <input
+      class="form-control"
+      name="bankaddress"
+      #bankaddress="ngModel"
+      ngModel
+      [(ngModel)]="farm.bankaddress"
+    />
+  </div>
+
+  <div class="form-group col-md-6">
+    <label for="DirectDepositflag">{{ "DirectDepositflag" | translate }}</label>
+    <input
+      class="form-control"
+      name="directDepositflag"
+      #directDepositflag="ngModel"
+      ngModel
+      [(ngModel)]="farm.directDepositflag"
+    />
+  </div>
+
+  <div class="form-group col-md-6">
+    <label for="typepayment">{{ "typepayment" | translate }}</label>
+    <input
+      class="form-control"
+      name="typepayment"
+      #typepayment="ngModel"
+      ngModel
+      [(ngModel)]="farm.typepayment"
+    />
+  </div>
+
+  <div class="form-group col-md-6">
+    <label for="OperationDate">{{ "OperationDate" | translate }}</label>
+    <input
+      class="form-control"
+      type="date"
+      name="operationDate"
+      #operationDate="ngModel"
+      ngModel
+      [(ngModel)]="farm.operationDate"
+    />
+  </div>
+
+  <div class="form-group col-md-6">
+    <label for="typepayment">{{ "typepayment" | translate }}</label>
+    <input
+      class="form-control"
+      name="typepayment"
+      #typepayment="ngModel"
+      ngModel
+      [(ngModel)]="farm.typepayment"
+    />
+  </div>
+
+  <div class="form-group col-md-6">
+    <label for="amounttransferred">{{ "amounttransferred" | translate }}</label>
+    <input
+      class="form-control"
+      name="amounttransferred"
+      #amounttransferred="ngModel"
+      ngModel
+      [(ngModel)]="farm.amounttransferred"
+    />
+  </div>
+</div>

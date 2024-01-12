@@ -1,23 +1,22 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { FarmsFormProjectionComponent } from './farms-form-projection.component';
+import { FarmsFormProjectionComponent } from "./farms-form-projection.component";
 
-describe('FarmsFormProjectionComponent', () => {
+describe("FarmsFormProjectionComponent", () => {
   let component: FarmsFormProjectionComponent;
   let fixture: ComponentFixture<FarmsFormProjectionComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FarmsFormProjectionComponent ]
-    })
-    .compileComponents();
+      declarations: [FarmsFormProjectionComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(FarmsFormProjectionComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

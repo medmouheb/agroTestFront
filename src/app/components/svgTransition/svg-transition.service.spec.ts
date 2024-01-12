@@ -1,8 +1,8 @@
-import { TestBed } from '@angular/core/testing';
+import { TestBed } from "@angular/core/testing";
 
-import { SvgTransitionService } from './svg-transition.service';
+import { SvgTransitionService } from "./svg-transition.service";
 
-describe('SvgTransitionService', () => {
+describe("SvgTransitionService", () => {
   let service: SvgTransitionService;
 
   beforeEach(() => {
@@ -10,7 +10,7 @@ describe('SvgTransitionService', () => {
     service = TestBed.inject(SvgTransitionService);
   });
 
-  it('should be created', () => {
+  it("should be created", () => {
     expect(service).toBeTruthy();
   });
 });

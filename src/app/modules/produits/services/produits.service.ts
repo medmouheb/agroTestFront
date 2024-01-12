@@ -23,31 +23,34 @@ export class ProduitsService {
   }
 
   create(produit: Produit): Observable<Produit> {
-    const headers = new HttpHeaders()
-      .set(
-        "Authorization",
-        `${JSON.parse(localStorage.getItem("tocken")).tokenType} ${JSON.parse(localStorage.getItem("tocken")).accessToken}`
-      )
-    let url = this.baseUrl()+'/produit';
-    return this.http.post<Produit>(url, produit , {headers});
+    const headers = new HttpHeaders().set(
+      "Authorization",
+      `${JSON.parse(localStorage.getItem("tocken")).tokenType} ${
+        JSON.parse(localStorage.getItem("tocken")).accessToken
+      }`,
+    );
+    let url = this.baseUrl() + "/produit";
+    return this.http.post<Produit>(url, produit, { headers });
   }
 
   update(id: string, produit: Produit): Observable<Produit> {
-    const headers = new HttpHeaders()
-      .set(
-        "Authorization",
-        `${JSON.parse(localStorage.getItem("tocken")).tokenType} ${JSON.parse(localStorage.getItem("tocken")).accessToken}`
-      )
+    const headers = new HttpHeaders().set(
+      "Authorization",
+      `${JSON.parse(localStorage.getItem("tocken")).tokenType} ${
+        JSON.parse(localStorage.getItem("tocken")).accessToken
+      }`,
+    );
     let url = `${this.baseUrl()}/produit/${id}`;
-    return this.http.put<Produit>(url, produit , {headers});
+    return this.http.put<Produit>(url, produit, { headers });
   }
 
   importCSV(formData: FormData): Observable<void> {
-    const headers = new HttpHeaders()
-      .set(
-        "Authorization",
-        `${JSON.parse(localStorage.getItem("tocken")).tokenType} ${JSON.parse(localStorage.getItem("tocken")).accessToken}`
-      )
+    const headers = new HttpHeaders().set(
+      "Authorization",
+      `${JSON.parse(localStorage.getItem("tocken")).tokenType} ${
+        JSON.parse(localStorage.getItem("tocken")).accessToken
+      }`,
+    );
     let url = this.baseUrl() + "/produit/import";
 
     headers.append("Content-Type", "multipart/form-data");
@@ -57,118 +60,126 @@ export class ProduitsService {
   }
 
   findById(id: string): Observable<Produit> {
-    const headers = new HttpHeaders()
-      .set(
-        "Authorization",
-        `${JSON.parse(localStorage.getItem("tocken")).tokenType} ${JSON.parse(localStorage.getItem("tocken")).accessToken}`
-      )
+    const headers = new HttpHeaders().set(
+      "Authorization",
+      `${JSON.parse(localStorage.getItem("tocken")).tokenType} ${
+        JSON.parse(localStorage.getItem("tocken")).accessToken
+      }`,
+    );
     let url = `${this.baseUrl()}/produit/${id}`;
-    return this.http.get<Produit>(url , {headers});
+    return this.http.get<Produit>(url, { headers });
   }
 
   findAll(): Observable<Array<Produit>> {
-    const headers = new HttpHeaders()
-      .set(
-        "Authorization",
-        `${JSON.parse(localStorage.getItem("tocken")).tokenType} ${JSON.parse(localStorage.getItem("tocken")).accessToken}`
-      )
-    let url = this.baseUrl()+'/produit';
-    return this.http.get<Array<Produit>>(url , {headers});
+    const headers = new HttpHeaders().set(
+      "Authorization",
+      `${JSON.parse(localStorage.getItem("tocken")).tokenType} ${
+        JSON.parse(localStorage.getItem("tocken")).accessToken
+      }`,
+    );
+    let url = this.baseUrl() + "/produit";
+    return this.http.get<Array<Produit>>(url, { headers });
   }
 
   findPage(
     pageNumber: number,
     pageSize: number,
-    filter: string
+    filter: string,
   ): Observable<Page<Produit>> {
-    const headers = new HttpHeaders()
-      .set(
-        "Authorization",
-        `${JSON.parse(localStorage.getItem("tocken")).tokenType} ${JSON.parse(localStorage.getItem("tocken")).accessToken}`
-      )
+    const headers = new HttpHeaders().set(
+      "Authorization",
+      `${JSON.parse(localStorage.getItem("tocken")).tokenType} ${
+        JSON.parse(localStorage.getItem("tocken")).accessToken
+      }`,
+    );
     let url = this.baseUrl() + "/produit/page";
     let params = new HttpParams();
     params = params.append("pageNumber", pageNumber);
     params = params.append("pageSize", pageSize);
     params = params.append("filter", filter);
-    return this.http.get<Page<Produit>>(url, { params , ...{headers} });
+    return this.http.get<Page<Produit>>(url, { params, ...{ headers } });
   }
 
   delete(id: string): Observable<boolean> {
-    const headers = new HttpHeaders()
-      .set(
-        "Authorization",
-        `${JSON.parse(localStorage.getItem("tocken")).tokenType} ${JSON.parse(localStorage.getItem("tocken")).accessToken}`
-      )
+    const headers = new HttpHeaders().set(
+      "Authorization",
+      `${JSON.parse(localStorage.getItem("tocken")).tokenType} ${
+        JSON.parse(localStorage.getItem("tocken")).accessToken
+      }`,
+    );
     let url = `${this.baseUrl()}/produit/${id}`;
-    return this.http.delete<boolean>(url , {headers});
+    return this.http.delete<boolean>(url, { headers });
   }
 
   downloadCSVTemplate(): Observable<any> {
-    const headers = new HttpHeaders()
-      .set(
-        "Authorization",
-        `${JSON.parse(localStorage.getItem("tocken")).tokenType} ${JSON.parse(localStorage.getItem("tocken")).accessToken}`
-      )
+    const headers = new HttpHeaders().set(
+      "Authorization",
+      `${JSON.parse(localStorage.getItem("tocken")).tokenType} ${
+        JSON.parse(localStorage.getItem("tocken")).accessToken
+      }`,
+    );
     let url = `${this.baseUrl()}/produit/csv-template`;
-    return this.http.get(url, { responseType: "blob" , ...{headers} });
+    return this.http.get(url, { responseType: "blob", ...{ headers } });
   }
 
   archive(id: string): Observable<void> {
-    const headers = new HttpHeaders()
-      .set(
-        "Authorization",
-        `${JSON.parse(localStorage.getItem("tocken")).tokenType} ${JSON.parse(localStorage.getItem("tocken")).accessToken}`
-      )
+    const headers = new HttpHeaders().set(
+      "Authorization",
+      `${JSON.parse(localStorage.getItem("tocken")).tokenType} ${
+        JSON.parse(localStorage.getItem("tocken")).accessToken
+      }`,
+    );
     let url = `${this.baseUrl()}/produit/archiver/${id}`;
-    return this.http.get<void>(url , {headers});
+    return this.http.get<void>(url, { headers });
   }
 
   disArchive(id: string): Observable<void> {
-    const headers = new HttpHeaders()
-      .set(
-        "Authorization",
-        `${JSON.parse(localStorage.getItem("tocken")).tokenType} ${JSON.parse(localStorage.getItem("tocken")).accessToken}`
-      )
+    const headers = new HttpHeaders().set(
+      "Authorization",
+      `${JSON.parse(localStorage.getItem("tocken")).tokenType} ${
+        JSON.parse(localStorage.getItem("tocken")).accessToken
+      }`,
+    );
     let url = `${this.baseUrl()}/produit/desarchiver/${id}`;
-    return this.http.get<void>(url , {headers});
+    return this.http.get<void>(url, { headers });
   }
 
   findArchivedPage(
     pageNumber: number,
     pageSize: number,
-    filter: string
+    filter: string,
   ): Observable<Page<Produit>> {
-    const headers = new HttpHeaders()
-      .set(
-        "Authorization",
-        `${JSON.parse(localStorage.getItem("tocken")).tokenType} ${JSON.parse(localStorage.getItem("tocken")).accessToken}`
-      )
+    const headers = new HttpHeaders().set(
+      "Authorization",
+      `${JSON.parse(localStorage.getItem("tocken")).tokenType} ${
+        JSON.parse(localStorage.getItem("tocken")).accessToken
+      }`,
+    );
     let url = this.baseUrl() + "/produit/archived/page";
     let params = new HttpParams();
     params = params.append("pageNumber", pageNumber);
     params = params.append("pageSize", pageSize);
     params = params.append("filter", filter);
-    return this.http.get<Page<Produit>>(url, { params , ...{headers} });
+    return this.http.get<Page<Produit>>(url, { params, ...{ headers } });
   }
-  findbycode(code:any): Observable<Produit>{
-    const headers = new HttpHeaders()
-      .set(
-        "Authorization",
-        `${JSON.parse(localStorage.getItem("tocken")).tokenType} ${JSON.parse(localStorage.getItem("tocken")).accessToken}`
-      )
+  findbycode(code: any): Observable<Produit> {
+    const headers = new HttpHeaders().set(
+      "Authorization",
+      `${JSON.parse(localStorage.getItem("tocken")).tokenType} ${
+        JSON.parse(localStorage.getItem("tocken")).accessToken
+      }`,
+    );
     let url = `${this.baseUrl()}/produit/by-code/${code}`;
-    return this.http.get<Produit>(url , {headers});
-
+    return this.http.get<Produit>(url, { headers });
   }
-  findbyName(name:any): Observable<Produit>{
-    const headers = new HttpHeaders()
-      .set(
-        "Authorization",
-        `${JSON.parse(localStorage.getItem("tocken")).tokenType} ${JSON.parse(localStorage.getItem("tocken")).accessToken}`
-      )
+  findbyName(name: any): Observable<Produit> {
+    const headers = new HttpHeaders().set(
+      "Authorization",
+      `${JSON.parse(localStorage.getItem("tocken")).tokenType} ${
+        JSON.parse(localStorage.getItem("tocken")).accessToken
+      }`,
+    );
     let url = `${this.baseUrl()}/produit/getbyname/${name}`;
-    return this.http.get<Produit>(url , {headers});
-
+    return this.http.get<Produit>(url, { headers });
   }
 }

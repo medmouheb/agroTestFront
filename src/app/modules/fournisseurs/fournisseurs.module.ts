@@ -20,7 +20,7 @@ import { TrashFouComponent } from "./trash/trash.component";
     FournisseursFormInformationComponent,
     FournisseursFormVendorSkuComponent,
     FournisseursFormShippingComponent,
-    TrashFouComponent
+    TrashFouComponent,
   ],
   imports: [CommonModule, FournisseursRoutingModule, SharedModule],
   providers: [SharedService],

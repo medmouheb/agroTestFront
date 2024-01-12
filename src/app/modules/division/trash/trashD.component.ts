@@ -45,7 +45,7 @@ export class TrashDComponent implements OnInit {
     private translateService: TranslateService,
     private toastService: HotToastService,
     private divisionService: DivisionService,
-    private router:Router
+    private router: Router,
   ) {}
 
   ngOnInit(): void {
@@ -76,10 +76,9 @@ export class TrashDComponent implements OnInit {
       error: (error) => console.error(error),
     });
   }
-  goto(){
-    this.router.navigateByUrl("/division")
+  goto() {
+    this.router.navigateByUrl("/division");
   }
-
 
   onFilterChange(filter: string) {
     this.filter = filter;
@@ -106,7 +105,7 @@ export class TrashDComponent implements OnInit {
         this.toastService.success(
           this.translateService.instant("success.restore", {
             elem: this.translateService.instant("division"),
-          })
+          }),
         );
       },
     });
@@ -119,7 +118,7 @@ export class TrashDComponent implements OnInit {
         this.toastService.success(
           this.translateService.instant("success.deleted", {
             elem: this.translateService.instant("division"),
-          })
+          }),
         );
       },
     });
@@ -128,77 +127,85 @@ export class TrashDComponent implements OnInit {
   sortBySpiec() {
     if (this.sortBySpiecValid) {
       this.divisions.sort((a, b) => a.speciesType.localeCompare(b.speciesType));
-      this.sortBySpiecValid = false
+      this.sortBySpiecValid = false;
     } else {
       this.divisions.sort((a, b) => b.speciesType.localeCompare(a.speciesType));
-      this.sortBySpiecValid = true
+      this.sortBySpiecValid = true;
     }
   }
   sortBycompValid: boolean = true;
   sortBycomp() {
     if (this.sortBycompValid) {
       this.divisions.sort((a, b) => a.companyname.localeCompare(b.companyname));
-      this.sortBycompValid = false
+      this.sortBycompValid = false;
     } else {
       this.divisions.sort((a, b) => b.companyname.localeCompare(a.companyname));
-      this.sortBycompValid = true
+      this.sortBycompValid = true;
     }
   }
   sortBycurreValid: boolean = true;
   sortBycurre() {
     if (this.sortBycurreValid) {
-      this.divisions.sort((a, b) => a.currencyname.localecurreare(b.currencyname));
-      this.sortBycurreValid = false
+      this.divisions.sort((a, b) =>
+        a.currencyname.localecurreare(b.currencyname),
+      );
+      this.sortBycurreValid = false;
     } else {
-      this.divisions.sort((a, b) => b.currencyname.localecurreare(a.currencyname));
-      this.sortBycurreValid = true
+      this.divisions.sort((a, b) =>
+        b.currencyname.localecurreare(a.currencyname),
+      );
+      this.sortBycurreValid = true;
     }
   }
   sortByCodeValid: boolean = true;
   sortByCode() {
     if (this.sortByCodeValid) {
       this.divisions.sort((a, b) => a.code.localeCompare(b.code));
-      this.sortByCodeValid = false
+      this.sortByCodeValid = false;
     } else {
       this.divisions.sort((a, b) => b.code.localeCompare(a.code));
-      this.sortByCodeValid = true
+      this.sortByCodeValid = true;
     }
   }
-
-
 
   sortByNameValid: boolean = true;
   sortByName() {
     if (this.sortByNameValid) {
       this.divisions.sort((a, b) => a.name.localeCompare(b.name));
-      this.sortByNameValid = false
+      this.sortByNameValid = false;
     } else {
       this.divisions.sort((a, b) => b.name.localeCompare(a.name));
-      this.sortByNameValid = true
+      this.sortByNameValid = true;
     }
   }
-
 
   sortByCityNameValid: boolean = true;
   sortByCityName() {
     if (this.sortByCityNameValid) {
-      this.divisions.sort((a, b) => (a.nameCity || "").localeCompare((b.nameCity || "")));
-      this.sortByCityNameValid = false
+      this.divisions.sort((a, b) =>
+        (a.nameCity || "").localeCompare(b.nameCity || ""),
+      );
+      this.sortByCityNameValid = false;
     } else {
-      this.divisions.sort((a, b) => (b.nameCity || "").localeCompare((a.nameCity || "")));
-      this.sortByCityNameValid = true
+      this.divisions.sort((a, b) =>
+        (b.nameCity || "").localeCompare(a.nameCity || ""),
+      );
+      this.sortByCityNameValid = true;
     }
   }
-
 
   sortByAddressValid: boolean = true;
   sortByAddress() {
     if (this.sortByAddressValid) {
-      this.divisions.sort((a, b) => (a.address || "").localeCompare((b.address || "")));
-      this.sortByAddressValid = false
+      this.divisions.sort((a, b) =>
+        (a.address || "").localeCompare(b.address || ""),
+      );
+      this.sortByAddressValid = false;
     } else {
-      this.divisions.sort((a, b) => (b.address || "").localeCompare((a.address || "")));
-      this.sortByAddressValid = true
+      this.divisions.sort((a, b) =>
+        (b.address || "").localeCompare(a.address || ""),
+      );
+      this.sortByAddressValid = true;
     }
   }
 }

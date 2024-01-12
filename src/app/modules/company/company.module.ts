@@ -1,6 +1,6 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { MatSlideToggleModule } from "@angular/material/slide-toggle";
 
 import { CompanyRoutingModule } from "./company-routing.module";
 import { SharedModule } from "app/shared/shared.module";
@@ -19,7 +19,12 @@ import { TrashCComponent } from "./trash/trashC.component";
     CompanyFromLocalisationComponent,
     TrashCComponent,
   ],
-  imports: [CommonModule, CompanyRoutingModule, SharedModule,MatSlideToggleModule],
+  imports: [
+    CommonModule,
+    CompanyRoutingModule,
+    SharedModule,
+    MatSlideToggleModule,
+  ],
   providers: [SharedService],
 })
 export class CompanyModule {}

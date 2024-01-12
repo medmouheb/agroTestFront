@@ -43,7 +43,7 @@ export class TrashComponent implements OnInit {
   constructor(
     private translateService: TranslateService,
     private toastService: HotToastService,
-    private farmService: FarmsService
+    private farmService: FarmsService,
   ) {}
 
   ngOnInit(): void {
@@ -95,12 +95,11 @@ export class TrashComponent implements OnInit {
   onClickdisArchive(id: string) {
     this.farmService.disArchive(id).subscribe({
       next: () => {
-
         this.findArchivedPage();
         this.toastService.success(
           this.translateService.instant("success.deleted", {
             elem: this.translateService.instant("warehouse"),
-          })
+          }),
         );
       },
     });
@@ -113,7 +112,7 @@ export class TrashComponent implements OnInit {
         this.toastService.success(
           this.translateService.instant("success.deleted", {
             elem: this.translateService.instant("warehouse"),
-          })
+          }),
         );
       },
     });

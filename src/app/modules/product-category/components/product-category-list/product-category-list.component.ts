@@ -1,21 +1,19 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { DialogComponent } from '@progress/kendo-angular-dialog';
-import { ConfirmDialogComponent } from 'app/shared/components/confirm-dialog/confirm-dialog.component';
-import { StepperComponent } from 'app/shared/components/stepper/stepper.component';
-import { WizardDialogComponent } from 'app/shared/components/wizard-dialog/wizard-dialog.component';
-import { productCategory } from '../../Models/productCategory.model';
-import { productCategoryService } from '../../Services/productCategory.service';
-import { TranslateService } from '@ngx-translate/core';
-import { HotToastService } from '@ngneat/hot-toast';
+import { Component, OnInit, ViewChild } from "@angular/core";
+import { DialogComponent } from "@progress/kendo-angular-dialog";
+import { ConfirmDialogComponent } from "app/shared/components/confirm-dialog/confirm-dialog.component";
+import { StepperComponent } from "app/shared/components/stepper/stepper.component";
+import { WizardDialogComponent } from "app/shared/components/wizard-dialog/wizard-dialog.component";
+import { productCategory } from "../../Models/productCategory.model";
+import { productCategoryService } from "../../Services/productCategory.service";
+import { TranslateService } from "@ngx-translate/core";
+import { HotToastService } from "@ngneat/hot-toast";
 
 @Component({
-  selector: 'app-product-category-list',
-  templateUrl: './product-category-list.component.html',
-  styleUrls: ['./product-category-list.component.scss']
+  selector: "app-product-category-list",
+  templateUrl: "./product-category-list.component.html",
+  styleUrls: ["./product-category-list.component.scss"],
 })
 export class ProductCategoryListComponent implements OnInit {
-
-
   @ViewChild("deleteModal")
   deleteModal!: ConfirmDialogComponent;
 
@@ -31,11 +29,7 @@ export class ProductCategoryListComponent implements OnInit {
   stepper!: StepperComponent;
 
   currentStep = 0;
-  steps: any = [
-    "steps.general",
-    "steps.information",
-
-  ];
+  steps: any = ["steps.general", "steps.information"];
 
   loading = false;
   productCategory: productCategory = {};
@@ -50,7 +44,7 @@ export class ProductCategoryListComponent implements OnInit {
     private service: productCategoryService,
     private translateService: TranslateService,
     private toastService: HotToastService,
-  ) { }
+  ) {}
   onCancel() {
     this.productCategory = {};
     this.currentStep = 0;
@@ -59,7 +53,7 @@ export class ProductCategoryListComponent implements OnInit {
   onSave(id: string | null) {
     this.toastService.loading(
       this.translateService.instant("message.loading..."),
-      { id: "0" }
+      { id: "0" },
     );
 
     this.service.save(id, this.productCategory!).subscribe({
@@ -71,7 +65,7 @@ export class ProductCategoryListComponent implements OnInit {
         this.toastService.success(
           this.translateService.instant("success.saved", {
             elem: this.translateService.instant("product Category"),
-          })
+          }),
         );
       },
       error: (error) => {
@@ -79,7 +73,7 @@ export class ProductCategoryListComponent implements OnInit {
         this.toastService.error(
           this.translateService.instant(error.error, {
             elem: this.translateService.instant("product Category"),
-          })
+          }),
         );
       },
     });
@@ -106,7 +100,7 @@ export class ProductCategoryListComponent implements OnInit {
         this.translateService.instant("message.loading..."),
         {
           id: "0",
-        }
+        },
       );
       this.service.deactivateProductCategory(id).subscribe({
         next: () => {
@@ -116,7 +110,7 @@ export class ProductCategoryListComponent implements OnInit {
           this.toastService.success(
             this.translateService.instant("success.deleted", {
               elem: this.translateService.instant("product Category"),
-            })
+            }),
           );
         },
         error: (error) => {
@@ -125,7 +119,7 @@ export class ProductCategoryListComponent implements OnInit {
           this.toastService.error(
             this.translateService.instant(error.error, {
               elem: this.translateService.instant("product Category"),
-            })
+            }),
           );
         },
       });
@@ -152,12 +146,14 @@ export class ProductCategoryListComponent implements OnInit {
   }
 
   searchProductCategoryByName() {
-    this.service.searchProductCategoryByNameActive(this.productCategoryName).subscribe({
-      next: (result) => {
-        this.productCategories = result;
-      },
-      error: (error) => console.error(error),
-    });
+    this.service
+      .searchProductCategoryByNameActive(this.productCategoryName)
+      .subscribe({
+        next: (result) => {
+          this.productCategories = result;
+        },
+        error: (error) => console.error(error),
+      });
   }
 
   ngOnInit(): void {
@@ -181,10 +177,14 @@ export class ProductCategoryListComponent implements OnInit {
   sortByProductCategoryCodeValid: boolean = true;
   productCategoryCode() {
     if (this.sortByProductCategoryCodeValid) {
-      this.productCategories.sort((a, b) => a.productCategoryCode.localeCompare(b.productCategoryCode));
+      this.productCategories.sort((a, b) =>
+        a.productCategoryCode.localeCompare(b.productCategoryCode),
+      );
       this.sortByProductCategoryCodeValid = false;
     } else {
-      this.productCategories.sort((a, b) => b.productCategoryCode.localeCompare(a.productCategoryCode));
+      this.productCategories.sort((a, b) =>
+        b.productCategoryCode.localeCompare(a.productCategoryCode),
+      );
       this.sortByProductCategoryCodeValid = true;
     }
   }
@@ -192,20 +192,28 @@ export class ProductCategoryListComponent implements OnInit {
   sortByProductCategoryNameValid: boolean = true;
   sortByProductCategoryName() {
     if (this.sortByProductCategoryNameValid) {
-      this.productCategories.sort((a, b) => a.productCategoryName.localeCompare(b.productCategoryName));
+      this.productCategories.sort((a, b) =>
+        a.productCategoryName.localeCompare(b.productCategoryName),
+      );
       this.sortByProductCategoryNameValid = false;
     } else {
-      this.productCategories.sort((a, b) => b.productCategoryName.localeCompare(a.productCategoryName));
+      this.productCategories.sort((a, b) =>
+        b.productCategoryName.localeCompare(a.productCategoryName),
+      );
       this.sortByProductCategoryNameValid = true;
     }
   }
   sortByProductCategoryTypeValid: boolean = true;
   sortByProductCategoryType() {
     if (this.sortByProductCategoryTypeValid) {
-      this.productCategories.sort((a, b) => a.productCategoryType.localeCompare(b.productCategoryType));
+      this.productCategories.sort((a, b) =>
+        a.productCategoryType.localeCompare(b.productCategoryType),
+      );
       this.sortByProductCategoryTypeValid = false;
     } else {
-      this.productCategories.sort((a, b) => b.productCategoryType.localeCompare(a.productCategoryType));
+      this.productCategories.sort((a, b) =>
+        b.productCategoryType.localeCompare(a.productCategoryType),
+      );
       this.sortByProductCategoryTypeValid = true;
     }
   }
@@ -219,6 +227,4 @@ export class ProductCategoryListComponent implements OnInit {
       this.sortByNotesValid = true;
     }
   }
-
-
 }

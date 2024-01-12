@@ -1,19 +1,18 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { HotToastService } from '@ngneat/hot-toast';
-import { TranslateService } from '@ngx-translate/core';
-import { ConfirmDialogComponent } from 'app/shared/components/confirm-dialog/confirm-dialog.component';
-import { StepperComponent } from 'app/shared/components/stepper/stepper.component';
-import { WizardDialogComponent } from 'app/shared/components/wizard-dialog/wizard-dialog.component';
-import { seaport } from '../../models/seaport.model';
-import { seaportService } from '../../services/seaport.service';
+import { Component, OnInit, ViewChild } from "@angular/core";
+import { HotToastService } from "@ngneat/hot-toast";
+import { TranslateService } from "@ngx-translate/core";
+import { ConfirmDialogComponent } from "app/shared/components/confirm-dialog/confirm-dialog.component";
+import { StepperComponent } from "app/shared/components/stepper/stepper.component";
+import { WizardDialogComponent } from "app/shared/components/wizard-dialog/wizard-dialog.component";
+import { seaport } from "../../models/seaport.model";
+import { seaportService } from "../../services/seaport.service";
 
 @Component({
-  selector: 'app-trash',
-  templateUrl: './trash.component.html',
-  styleUrls: ['./trash.component.scss']
+  selector: "app-trash",
+  templateUrl: "./trash.component.html",
+  styleUrls: ["./trash.component.scss"],
 })
 export class TrashComponent implements OnInit {
-
   @ViewChild("deletePermaModal")
   deletePermaModal!: ConfirmDialogComponent;
 
@@ -26,14 +25,14 @@ export class TrashComponent implements OnInit {
   @ViewChild("stepper")
   stepper!: StepperComponent;
 
-  loading?= false;
+  loading? = false;
   pageNumber = 0;
   pageSize = 10;
   filter = "";
 
   seaport: seaport = {};
   seaports: Array<seaport> = [];
-  seaportName: string = '';
+  seaportName: string = "";
 
   // Page: Page<Fournisseur> = initPage;
   // onPaginationChange: EventEmitter<string> = new EventEmitter<string>();
@@ -41,12 +40,11 @@ export class TrashComponent implements OnInit {
   constructor(
     private translateService: TranslateService,
     private toastService: HotToastService,
-    private service: seaportService
-  ) { }
+    private service: seaportService,
+  ) {}
 
   ngOnInit(): void {
-    this.getArchivedSeaports()
-
+    this.getArchivedSeaports();
   }
   getArchivedSeaports() {
     this.loading = true;
@@ -62,7 +60,6 @@ export class TrashComponent implements OnInit {
     });
   }
 
-
   findById(id: string) {
     this.service.findSeaportById(id).subscribe({
       next: (result) => (this.seaport = result),
@@ -70,26 +67,23 @@ export class TrashComponent implements OnInit {
     });
   }
 
-
-
-
   onclickActivateModal(id: string) {
     this.dearchivedModal.showDearchive(() => {
       this.toastService.loading(
         this.translateService.instant("message.loading..."),
         {
           id: "0",
-        }
+        },
       );
       this.service.ActivateSeaport(id).subscribe({
         next: () => {
-          this.getArchivedSeaports()
+          this.getArchivedSeaports();
           this.dearchivedModal.hide();
           this.toastService.close("0");
           this.toastService.success(
             this.translateService.instant("success.restore", {
               elem: this.translateService.instant("Seaport"),
-            })
+            }),
           );
         },
 
@@ -99,13 +93,12 @@ export class TrashComponent implements OnInit {
           this.toastService.error(
             this.translateService.instant(error.error, {
               elem: this.translateService.instant("Seaport"),
-            })
+            }),
           );
         },
       });
     });
   }
-
 
   onclickDeletePerma(id: string) {
     this.deletePermaModal.showPermaDelete(() => {
@@ -113,17 +106,17 @@ export class TrashComponent implements OnInit {
         this.translateService.instant("message.loading..."),
         {
           id: "0",
-        }
+        },
       );
       this.service.delete(id).subscribe({
         next: () => {
-          this.getArchivedSeaports()
+          this.getArchivedSeaports();
           this.deletePermaModal.hide();
           this.toastService.close("0");
           this.toastService.success(
             this.translateService.instant("success.permadeleted", {
               elem: this.translateService.instant("product category"),
-            })
+            }),
           );
         },
         error: (error) => {
@@ -132,7 +125,7 @@ export class TrashComponent implements OnInit {
           this.toastService.error(
             this.translateService.instant(error.error, {
               elem: this.translateService.instant("product category"),
-            })
+            }),
           );
         },
       });
@@ -142,12 +135,12 @@ export class TrashComponent implements OnInit {
   onClickActivate(id: string) {
     this.service.ActivateSeaport(id).subscribe({
       next: () => {
-        this.getArchivedSeaports()
+        this.getArchivedSeaports();
 
         this.toastService.success(
           this.translateService.instant("success.restore", {
             elem: this.translateService.instant("seaport"),
-          })
+          }),
         );
       },
     });
@@ -156,11 +149,11 @@ export class TrashComponent implements OnInit {
   onClickDelete(id: string) {
     this.service.delete(id).subscribe({
       next: () => {
-        this.getArchivedSeaports()
+        this.getArchivedSeaports();
         this.toastService.success(
           this.translateService.instant("success.permadeleted", {
             elem: this.translateService.instant("seaport"),
-          })
+          }),
         );
       },
     });
@@ -175,15 +168,14 @@ export class TrashComponent implements OnInit {
     });
   }
 
-
   sortBySeaportCodeValid: boolean = true;
   SeaportCode() {
     if (this.sortBySeaportCodeValid) {
       this.seaports.sort((a, b) => a.seaportCode.localeCompare(b.seaportCode));
-      this.sortBySeaportCodeValid = false
+      this.sortBySeaportCodeValid = false;
     } else {
       this.seaports.sort((a, b) => b.seaportCode.localeCompare(a.seaportCode));
-      this.sortBySeaportCodeValid = true
+      this.sortBySeaportCodeValid = true;
     }
   }
 
@@ -191,21 +183,20 @@ export class TrashComponent implements OnInit {
   sortBySeaportName() {
     if (this.sortBySeaportNameValid) {
       this.seaports.sort((a, b) => a.seaportName.localeCompare(b.seaportName));
-      this.sortBySeaportNameValid = false
+      this.sortBySeaportNameValid = false;
     } else {
       this.seaports.sort((a, b) => b.seaportName.localeCompare(a.seaportName));
-      this.sortBySeaportNameValid = true
+      this.sortBySeaportNameValid = true;
     }
   }
   sortByNotesValid: boolean = true;
   sortByNotes() {
     if (this.sortByNotesValid) {
       this.seaports.sort((a, b) => a.notes.localeCompare(b.notes));
-      this.sortByNotesValid = false
+      this.sortByNotesValid = false;
     } else {
       this.seaports.sort((a, b) => b.notes.localeCompare(a.notes));
-      this.sortByNotesValid = true
+      this.sortByNotesValid = true;
     }
   }
-
 }

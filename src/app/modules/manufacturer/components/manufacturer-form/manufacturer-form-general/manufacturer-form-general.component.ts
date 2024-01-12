@@ -1,41 +1,43 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { SharedService } from 'app/modules/company/services/shared.service';
-import { manufacturer } from 'app/modules/manufacturer/Models/manufacturer.model';
+import { Component, Input, OnInit } from "@angular/core";
+import { FormControl, FormGroup, Validators } from "@angular/forms";
+import { SharedService } from "app/modules/company/services/shared.service";
+import { manufacturer } from "app/modules/manufacturer/Models/manufacturer.model";
 
 @Component({
-  selector: 'app-manufacturer-form-general',
-  templateUrl: './manufacturer-form-general.component.html',
-  styleUrls: ['./manufacturer-form-general.component.scss']
+  selector: "app-manufacturer-form-general",
+  templateUrl: "./manufacturer-form-general.component.html",
+  styleUrls: ["./manufacturer-form-general.component.scss"],
 })
 export class ManufacturerFormGeneralComponent implements OnInit {
-
   @Input() manufacturer!: manufacturer;
 
   addform: FormGroup;
 
-  constructor(private sharedService: SharedService) { }
+  constructor(private sharedService: SharedService) {}
 
   ngOnInit(): void {
     this.initForm();
   }
 
   initForm() {
-
     this.addform = new FormGroup({
       code: new FormControl("", [
         Validators.required,
         Validators.maxLength(50),
-        Validators.pattern(/^[+]?\d+(\.\d+)?$/)
+        Validators.pattern(/^[+]?\d+(\.\d+)?$/),
       ]),
       name: new FormControl("", [
         Validators.required,
         Validators.maxLength(50),
-      ])
+      ]),
     });
   }
-  get code() { return this.addform.get('code') }
-  get name() { return this.addform.get('name') }
+  get code() {
+    return this.addform.get("code");
+  }
+  get name() {
+    return this.addform.get("name");
+  }
 
   geValues(event) {
     this.sharedService.setIsActive(false);
@@ -47,6 +49,4 @@ export class ManufacturerFormGeneralComponent implements OnInit {
   get f() {
     return this.addform.controls;
   }
-
-
 }

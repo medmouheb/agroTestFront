@@ -24,31 +24,34 @@ export class CommandeService {
   }
 
   create(commande: Commande): Observable<Commande> {
-    const headers = new HttpHeaders()
-      .set(
-        "Authorization",
-        `${JSON.parse(localStorage.getItem("tocken")).tokenType} ${JSON.parse(localStorage.getItem("tocken")).accessToken}`
-      )
-    let url = this.baseUrl()+'/commande';
-    return this.http.post<Commande>(url, commande , {headers});
+    const headers = new HttpHeaders().set(
+      "Authorization",
+      `${JSON.parse(localStorage.getItem("tocken")).tokenType} ${
+        JSON.parse(localStorage.getItem("tocken")).accessToken
+      }`,
+    );
+    let url = this.baseUrl() + "/commande";
+    return this.http.post<Commande>(url, commande, { headers });
   }
 
   update(id: string, commande: Commande): Observable<Commande> {
-    const headers = new HttpHeaders()
-      .set(
-        "Authorization",
-        `${JSON.parse(localStorage.getItem("tocken")).tokenType} ${JSON.parse(localStorage.getItem("tocken")).accessToken}`
-      )
+    const headers = new HttpHeaders().set(
+      "Authorization",
+      `${JSON.parse(localStorage.getItem("tocken")).tokenType} ${
+        JSON.parse(localStorage.getItem("tocken")).accessToken
+      }`,
+    );
     let url = `${this.baseUrl()}/commande/${id}`;
-    return this.http.put<Commande>(url, commande , {headers});
+    return this.http.put<Commande>(url, commande, { headers });
   }
 
   importCSV(formData: FormData): Observable<void> {
-    const headers = new HttpHeaders()
-      .set(
-        "Authorization",
-        `${JSON.parse(localStorage.getItem("tocken")).tokenType} ${JSON.parse(localStorage.getItem("tocken")).accessToken}`
-      )
+    const headers = new HttpHeaders().set(
+      "Authorization",
+      `${JSON.parse(localStorage.getItem("tocken")).tokenType} ${
+        JSON.parse(localStorage.getItem("tocken")).accessToken
+      }`,
+    );
     let url = this.baseUrl() + "/commande/import";
 
     headers.append("Content-Type", "multipart/form-data");
@@ -58,98 +61,106 @@ export class CommandeService {
   }
 
   findById(id: string): Observable<Commande> {
-    const headers = new HttpHeaders()
-      .set(
-        "Authorization",
-        `${JSON.parse(localStorage.getItem("tocken")).tokenType} ${JSON.parse(localStorage.getItem("tocken")).accessToken}`
-      )
+    const headers = new HttpHeaders().set(
+      "Authorization",
+      `${JSON.parse(localStorage.getItem("tocken")).tokenType} ${
+        JSON.parse(localStorage.getItem("tocken")).accessToken
+      }`,
+    );
     let url = `${this.baseUrl()}/commande/${id}`;
-    return this.http.get<Commande>(url , {headers});
+    return this.http.get<Commande>(url, { headers });
   }
 
   findAll(): Observable<Array<Commande>> {
-    const headers = new HttpHeaders()
-      .set(
-        "Authorization",
-        `${JSON.parse(localStorage.getItem("tocken")).tokenType} ${JSON.parse(localStorage.getItem("tocken")).accessToken}`
-      )
-    let url = this.baseUrl()+'/commande';
-    return this.http.get<Array<Commande>>(url , {headers});
+    const headers = new HttpHeaders().set(
+      "Authorization",
+      `${JSON.parse(localStorage.getItem("tocken")).tokenType} ${
+        JSON.parse(localStorage.getItem("tocken")).accessToken
+      }`,
+    );
+    let url = this.baseUrl() + "/commande";
+    return this.http.get<Array<Commande>>(url, { headers });
   }
 
   findPage(
     pageNumber: number,
     pageSize: number,
-    filter: string
+    filter: string,
   ): Observable<Page<Commande>> {
-    const headers = new HttpHeaders()
-      .set(
-        "Authorization",
-        `${JSON.parse(localStorage.getItem("tocken")).tokenType} ${JSON.parse(localStorage.getItem("tocken")).accessToken}`
-      )
+    const headers = new HttpHeaders().set(
+      "Authorization",
+      `${JSON.parse(localStorage.getItem("tocken")).tokenType} ${
+        JSON.parse(localStorage.getItem("tocken")).accessToken
+      }`,
+    );
     let url = this.baseUrl() + "/commande/page";
     let params = new HttpParams();
     params = params.append("pageNumber", pageNumber);
     params = params.append("pageSize", pageSize);
     params = params.append("filter", filter);
-    return this.http.get<Page<Commande>>(url, { params , headers });
+    return this.http.get<Page<Commande>>(url, { params, headers });
   }
 
   delete(id: string): Observable<boolean> {
-    const headers = new HttpHeaders()
-      .set(
-        "Authorization",
-        `${JSON.parse(localStorage.getItem("tocken")).tokenType} ${JSON.parse(localStorage.getItem("tocken")).accessToken}`
-      )
+    const headers = new HttpHeaders().set(
+      "Authorization",
+      `${JSON.parse(localStorage.getItem("tocken")).tokenType} ${
+        JSON.parse(localStorage.getItem("tocken")).accessToken
+      }`,
+    );
     let url = `${this.baseUrl()}/commande/${id}`;
-    return this.http.delete<boolean>(url , {headers});
+    return this.http.delete<boolean>(url, { headers });
   }
 
   downloadCSVTemplate(): Observable<any> {
-    const headers = new HttpHeaders()
-      .set(
-        "Authorization",
-        `${JSON.parse(localStorage.getItem("tocken")).tokenType} ${JSON.parse(localStorage.getItem("tocken")).accessToken}`
-      )
+    const headers = new HttpHeaders().set(
+      "Authorization",
+      `${JSON.parse(localStorage.getItem("tocken")).tokenType} ${
+        JSON.parse(localStorage.getItem("tocken")).accessToken
+      }`,
+    );
     let url = `${this.baseUrl()}/commande/csv-template`;
-    return this.http.get(url, { responseType: "blob"  , headers });
+    return this.http.get(url, { responseType: "blob", headers });
   }
 
   archive(id: string): Observable<void> {
-    const headers = new HttpHeaders()
-      .set(
-        "Authorization",
-        `${JSON.parse(localStorage.getItem("tocken")).tokenType} ${JSON.parse(localStorage.getItem("tocken")).accessToken}`
-      )
+    const headers = new HttpHeaders().set(
+      "Authorization",
+      `${JSON.parse(localStorage.getItem("tocken")).tokenType} ${
+        JSON.parse(localStorage.getItem("tocken")).accessToken
+      }`,
+    );
     let url = `${this.baseUrl()}/commande/archiver/${id}`;
-    return this.http.get<void>(url , {headers});
+    return this.http.get<void>(url, { headers });
   }
 
   disArchive(id: string): Observable<void> {
-    const headers = new HttpHeaders()
-      .set(
-        "Authorization",
-        `${JSON.parse(localStorage.getItem("tocken")).tokenType} ${JSON.parse(localStorage.getItem("tocken")).accessToken}`
-      )
+    const headers = new HttpHeaders().set(
+      "Authorization",
+      `${JSON.parse(localStorage.getItem("tocken")).tokenType} ${
+        JSON.parse(localStorage.getItem("tocken")).accessToken
+      }`,
+    );
     let url = `${this.baseUrl()}/commande/desarchiver/${id}`;
-    return this.http.get<void>(url , {headers});
+    return this.http.get<void>(url, { headers });
   }
 
   findArchivedPage(
     pageNumber: number,
     pageSize: number,
-    filter: string
+    filter: string,
   ): Observable<Page<Commande>> {
-    const headers = new HttpHeaders()
-      .set(
-        "Authorization",
-        `${JSON.parse(localStorage.getItem("tocken")).tokenType} ${JSON.parse(localStorage.getItem("tocken")).accessToken}`
-      )
+    const headers = new HttpHeaders().set(
+      "Authorization",
+      `${JSON.parse(localStorage.getItem("tocken")).tokenType} ${
+        JSON.parse(localStorage.getItem("tocken")).accessToken
+      }`,
+    );
     let url = this.baseUrl() + "/commande/archived/page";
     let params = new HttpParams();
     params = params.append("pageNumber", pageNumber);
     params = params.append("pageSize", pageSize);
     params = params.append("filter", filter);
-    return this.http.get<Page<Commande>>(url, { params , headers});
+    return this.http.get<Page<Commande>>(url, { params, headers });
   }
 }

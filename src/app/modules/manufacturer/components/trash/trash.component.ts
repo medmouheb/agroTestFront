@@ -1,19 +1,18 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { ConfirmDialogComponent } from 'app/shared/components/confirm-dialog/confirm-dialog.component';
-import { StepperComponent } from 'app/shared/components/stepper/stepper.component';
-import { WizardDialogComponent } from 'app/shared/components/wizard-dialog/wizard-dialog.component';
-import { manufacturer } from '../../Models/manufacturer.model';
-import { TranslateService } from '@ngx-translate/core';
-import { HotToastService } from '@ngneat/hot-toast';
-import { manufacturerService } from '../../Services/manufacturer.service';
+import { Component, OnInit, ViewChild } from "@angular/core";
+import { ConfirmDialogComponent } from "app/shared/components/confirm-dialog/confirm-dialog.component";
+import { StepperComponent } from "app/shared/components/stepper/stepper.component";
+import { WizardDialogComponent } from "app/shared/components/wizard-dialog/wizard-dialog.component";
+import { manufacturer } from "../../Models/manufacturer.model";
+import { TranslateService } from "@ngx-translate/core";
+import { HotToastService } from "@ngneat/hot-toast";
+import { manufacturerService } from "../../Services/manufacturer.service";
 
 @Component({
-  selector: 'app-trash',
-  templateUrl: './trash.component.html',
-  styleUrls: ['./trash.component.scss']
+  selector: "app-trash",
+  templateUrl: "./trash.component.html",
+  styleUrls: ["./trash.component.scss"],
 })
 export class TrashComponent implements OnInit {
-
   @ViewChild("dearchivedModal")
   dearchivedModal!: ConfirmDialogComponent;
 
@@ -26,7 +25,7 @@ export class TrashComponent implements OnInit {
   @ViewChild("stepper")
   stepper!: StepperComponent;
 
-  loading?= false;
+  loading? = false;
   pageNumber = 0;
   pageSize = 10;
   filter = "";
@@ -41,12 +40,11 @@ export class TrashComponent implements OnInit {
   constructor(
     private translateService: TranslateService,
     private toastService: HotToastService,
-    private service: manufacturerService
-  ) { }
+    private service: manufacturerService,
+  ) {}
 
   ngOnInit(): void {
-    this.getArchivedManufacturers()
-
+    this.getArchivedManufacturers();
   }
   getArchivedManufacturers() {
     this.loading = true;
@@ -62,8 +60,6 @@ export class TrashComponent implements OnInit {
     });
   }
 
-
-
   findById(id: string) {
     this.service.findManufacturerById(id).subscribe({
       next: (result) => (this.manufacturer = result),
@@ -71,27 +67,23 @@ export class TrashComponent implements OnInit {
     });
   }
 
-
-
-
-
   onclickActivateModal(id: string) {
     this.dearchivedModal.showDearchive(() => {
       this.toastService.loading(
         this.translateService.instant("message.loading..."),
         {
           id: "0",
-        }
+        },
       );
       this.service.ActivateManufacturer(id).subscribe({
         next: () => {
-          this.getArchivedManufacturers()
+          this.getArchivedManufacturers();
           this.dearchivedModal.hide();
           this.toastService.close("0");
           this.toastService.success(
             this.translateService.instant("success.restore", {
               elem: this.translateService.instant("Manufacturer"),
-            })
+            }),
           );
         },
 
@@ -101,13 +93,12 @@ export class TrashComponent implements OnInit {
           this.toastService.error(
             this.translateService.instant(error.error, {
               elem: this.translateService.instant("Manufacturer"),
-            })
+            }),
           );
         },
       });
     });
   }
-
 
   onclickDeletePerma(id: string) {
     this.deletePermaModal.showPermaDelete(() => {
@@ -115,17 +106,17 @@ export class TrashComponent implements OnInit {
         this.translateService.instant("message.loading..."),
         {
           id: "0",
-        }
+        },
       );
       this.service.delete(id).subscribe({
         next: () => {
-          this.getArchivedManufacturers()
+          this.getArchivedManufacturers();
           this.deletePermaModal.hide();
           this.toastService.close("0");
           this.toastService.success(
             this.translateService.instant("success.permadeleted", {
               elem: this.translateService.instant("Manufacturer"),
-            })
+            }),
           );
         },
         error: (error) => {
@@ -134,29 +125,34 @@ export class TrashComponent implements OnInit {
           this.toastService.error(
             this.translateService.instant(error.error, {
               elem: this.translateService.instant("Manufacturer"),
-            })
+            }),
           );
         },
       });
     });
   }
 
-
   searchByManufacturerName() {
-    this.service.searchManufacturerByNameArchived(this.manufacturerName).subscribe({
-      next: (result) => {
-        this.manufacturers = result;
-      },
-      error: (error) => console.error(error),
-    });
+    this.service
+      .searchManufacturerByNameArchived(this.manufacturerName)
+      .subscribe({
+        next: (result) => {
+          this.manufacturers = result;
+        },
+        error: (error) => console.error(error),
+      });
   }
   sortByManufacturerCodeValid: boolean = true;
   manufacturerCode() {
     if (this.sortByManufacturerCodeValid) {
-      this.manufacturers.sort((a, b) => a.manufacturerCode.localeCompare(b.manufacturerCode));
+      this.manufacturers.sort((a, b) =>
+        a.manufacturerCode.localeCompare(b.manufacturerCode),
+      );
       this.sortByManufacturerCodeValid = false;
     } else {
-      this.manufacturers.sort((a, b) => b.manufacturerCode.localeCompare(a.manufacturerCode));
+      this.manufacturers.sort((a, b) =>
+        b.manufacturerCode.localeCompare(a.manufacturerCode),
+      );
       this.sortByManufacturerCodeValid = true;
     }
   }
@@ -164,10 +160,14 @@ export class TrashComponent implements OnInit {
   sortByManufacturerNameValid: boolean = true;
   sortByManufacturerName() {
     if (this.sortByManufacturerNameValid) {
-      this.manufacturers.sort((a, b) => a.manufacturerName.localeCompare(b.manufacturerName));
+      this.manufacturers.sort((a, b) =>
+        a.manufacturerName.localeCompare(b.manufacturerName),
+      );
       this.sortByManufacturerNameValid = false;
     } else {
-      this.manufacturers.sort((a, b) => b.manufacturerName.localeCompare(a.manufacturerName));
+      this.manufacturers.sort((a, b) =>
+        b.manufacturerName.localeCompare(a.manufacturerName),
+      );
       this.sortByManufacturerNameValid = true;
     }
   }
@@ -181,6 +181,4 @@ export class TrashComponent implements OnInit {
       this.sortByNotesValid = true;
     }
   }
-
-
 }

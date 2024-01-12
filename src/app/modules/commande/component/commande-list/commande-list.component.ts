@@ -12,13 +12,11 @@ import { CommandeService } from "../../services/commande.service";
 import { WizardDialogComponent } from "app/shared/components/wizard-dialog/wizard-dialog.component";
 import { HotToastService } from "@ngneat/hot-toast";
 @Component({
-  selector: 'app-commande-list',
-  templateUrl: './commande-list.component.html',
-  styleUrls: ['./commande-list.component.scss']
+  selector: "app-commande-list",
+  templateUrl: "./commande-list.component.html",
+  styleUrls: ["./commande-list.component.scss"],
 })
-
 export class CommandeListComponent implements OnInit {
-
   @ViewChild("deleteModal")
   deleteModal!: ConfirmDialogComponent;
 
@@ -35,12 +33,7 @@ export class CommandeListComponent implements OnInit {
   stepper!: StepperComponent;
 
   currentStep = 0;
-  steps: any = [
-    "steps.general",
-    "steps.information",
-    "steps.schedule",
-
-  ];
+  steps: any = ["steps.general", "steps.information", "steps.schedule"];
 
   show: boolean = false;
   loading = false;
@@ -58,14 +51,13 @@ export class CommandeListComponent implements OnInit {
     private commandesService: CommandeService,
     private filesService: FilesService,
     private translateService: TranslateService,
-    private toastService: HotToastService
+    private toastService: HotToastService,
   ) {}
 
   ngOnInit(): void {
     this.findPage();
     this.onPaginationChange.subscribe(() => this.findPage());
   }
-
 
   findPage() {
     this.loading = true;
@@ -82,16 +74,15 @@ export class CommandeListComponent implements OnInit {
         },
         complete: () => (this.loading = false),
       });
-
   }
 
-   findById(id: string) {
+  findById(id: string) {
     this.commandesService.findById(id).subscribe({
       next: (result) => (this.commande = result),
       error: (error) => console.error(error),
     });
   }
- onFilterChange(filter: string) {
+  onFilterChange(filter: string) {
     this.filter = filter;
     this.pageNumber = 0;
     this.onPaginationChange.emit("");
@@ -112,10 +103,10 @@ export class CommandeListComponent implements OnInit {
     this.currentStep = 0;
   }
 
-   onSave(id: string | null) {
+  onSave(id: string | null) {
     this.toastService.loading(
       this.translateService.instant("message.loading..."),
-      { id: "0" }
+      { id: "0" },
     );
     this.commandesService.save(id, this.commande!).subscribe({
       next: () => {
@@ -126,7 +117,7 @@ export class CommandeListComponent implements OnInit {
         this.toastService.success(
           this.translateService.instant("success.saved", {
             elem: this.translateService.instant("Modalité de paiement"),
-          })
+          }),
         );
       },
       error: (error) => {
@@ -134,18 +125,18 @@ export class CommandeListComponent implements OnInit {
         this.toastService.error(
           this.translateService.instant(error.error, {
             elem: this.translateService.instant("Modalité de paiement"),
-          })
+          }),
         );
       },
     });
   }
 
-onDownloadCSVTempalte() {
+  onDownloadCSVTempalte() {
     this.commandesService.downloadCSVTemplate().subscribe({
       next: (data) =>
         this.filesService.download(
           data,
-          this.translateService.instant("menu.commande") + ".csv"
+          this.translateService.instant("menu.commande") + ".csv",
         ),
       error: (error) => console.error(error),
     });
@@ -160,7 +151,7 @@ onDownloadCSVTempalte() {
     this.file = fileList[0];
   }
 
-   onCSVImport() {
+  onCSVImport() {
     if (!this.file) {
       return;
     }
@@ -168,7 +159,7 @@ onDownloadCSVTempalte() {
       this.translateService.instant("message.loading..."),
       {
         id: "0",
-      }
+      },
     );
     let formData: FormData = new FormData();
     formData.append("file", this.file);
@@ -181,7 +172,7 @@ onDownloadCSVTempalte() {
         this.toastService.success(
           this.translateService.instant("success.imported", {
             elem: this.translateService.instant("menu.commande"),
-          })
+          }),
         );
       },
       error: (error) => {
@@ -191,8 +182,7 @@ onDownloadCSVTempalte() {
     });
   }
 
-
-   openImportModal() {
+  openImportModal() {
     this.importModal.show({
       title: "menu.import-commande",
       btnLabel: "btns.import",
@@ -213,8 +203,7 @@ onDownloadCSVTempalte() {
     this.currentStep = step;
   }
 
-
-   onClickAdd() {
+  onClickAdd() {
     this.formModal.show({
       title: "menu.add-commande",
       stepsCount: this.steps.length - 1,
@@ -234,13 +223,13 @@ onDownloadCSVTempalte() {
       prev: () => this.stepper.prevStep(),
     });
   }
-   onClickDelete(id: string) {
+  onClickDelete(id: string) {
     this.deleteModal.show(() => {
       this.toastService.loading(
         this.translateService.instant("message.loading..."),
         {
           id: "0",
-        }
+        },
       );
       this.commandesService.delete(id).subscribe({
         next: () => {
@@ -251,7 +240,7 @@ onDownloadCSVTempalte() {
           this.toastService.success(
             this.translateService.instant("success.deleted", {
               elem: this.translateService.instant("Modalité de paiement"),
-            })
+            }),
           );
         },
         error: (error) => {
@@ -260,31 +249,22 @@ onDownloadCSVTempalte() {
           this.toastService.error(
             this.translateService.instant(error.error, {
               elem: this.translateService.instant("Modalité de paiement"),
-            })
+            }),
           );
         },
       });
     });
   }
 
-
-
   onClickArchive(id: string) {
     this.archiveModal.show(() => {
       this.commandesService.archive(id).subscribe({
         next: () => {
-          this.findPage()
+          this.findPage();
           this.archiveModal.hide();
-          this.toastService.success;
+          this.toastService.success();
         },
       });
     });
   }
-
-
-
-
-
-
-
 }

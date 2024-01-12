@@ -41,7 +41,7 @@ export class TrashFouComponent implements OnInit {
     private translateService: TranslateService,
     private toastService: HotToastService,
     private fournisseursService: FournisseursService,
-    private router:Router
+    private router: Router,
   ) {}
 
   ngOnInit(): void {
@@ -98,7 +98,7 @@ export class TrashFouComponent implements OnInit {
         this.toastService.success(
           this.translateService.instant("success.restore", {
             elem: this.translateService.instant("vendor"),
-          })
+          }),
         );
       },
     });
@@ -111,13 +111,12 @@ export class TrashFouComponent implements OnInit {
         this.toastService.success(
           this.translateService.instant("success.deleted", {
             elem: this.translateService.instant("vendor"),
-          })
+          }),
         );
       },
     });
   }
-  goto(){
-    this.router.navigateByUrl("/fournisseurs")
+  goto() {
+    this.router.navigateByUrl("/fournisseurs");
   }
-
 }

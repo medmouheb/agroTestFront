@@ -45,23 +45,23 @@ export class CurrencyListComponent implements OnInit {
     private currencyService: CurrencyService,
     private translateService: TranslateService,
     private toastService: HotToastService,
-    private http: HttpClient
-
-  ) { }
+    private http: HttpClient,
+  ) {}
 
   ngOnInit(): void {
     this.findPage();
     this.findArchivedPage();
 
-    this.onPaginationChange.subscribe(() => {this.findPage();this.findArchivedPage()});
+    this.onPaginationChange.subscribe(() => {
+      this.findPage();
+      this.findArchivedPage();
+    });
   }
   onCheckboxChange() {
     if (this.isChecked == false) {
-
-      this.affiche = false
-    }
-    else {
-      this.affiche = true
+      this.affiche = false;
+    } else {
+      this.affiche = true;
     }
   }
   findPage() {
@@ -115,9 +115,8 @@ export class CurrencyListComponent implements OnInit {
       this.translateService.instant("message.loading..."),
       {
         id: "0",
-      }
+      },
     );
-
 
     this.currencyService.save(id, this.currency!).subscribe({
       next: () => {
@@ -128,7 +127,7 @@ export class CurrencyListComponent implements OnInit {
         this.toastService.success(
           this.translateService.instant("success.saved", {
             elem: this.translateService.instant("currency"),
-          })
+          }),
         );
       },
       error: (error) => {
@@ -136,11 +135,10 @@ export class CurrencyListComponent implements OnInit {
         this.toastService.error(
           this.translateService.instant(error.error, {
             elem: this.translateService.instant("currency"),
-          })
+          }),
         );
       },
     });
-
   }
 
   onClickAdd() {
@@ -149,8 +147,6 @@ export class CurrencyListComponent implements OnInit {
       confirm: () => this.onSave(null),
       cancel: () => this.onCancel(),
     });
-
-
   }
 
   onClickEdit(id: string) {
@@ -161,7 +157,6 @@ export class CurrencyListComponent implements OnInit {
       cancel: () => this.onCancel(),
     });
   }
-
 
   onClickArchive(id: string) {
     this.archiveModal.show(() => {
@@ -175,9 +170,8 @@ export class CurrencyListComponent implements OnInit {
           this.toastService.success(
             this.translateService.instant("success.deleted", {
               elem: this.translateService.instant("currency"),
-            })
+            }),
           );
-
         },
       });
     });
@@ -188,90 +182,99 @@ export class CurrencyListComponent implements OnInit {
     if (this.affiche == true) {
       if (this.sortByCodeValid) {
         this.currencyss.sort((a, b) => a.code.localeCompare(b.code));
-        this.sortByCodeValid = false
+        this.sortByCodeValid = false;
       } else {
         this.currencyss.sort((a, b) => b.code.localeCompare(a.code));
-        this.sortByCodeValid = true
+        this.sortByCodeValid = true;
       }
     } else {
       if (this.sortByCodeValid) {
         this.currencys.sort((a, b) => a.code.localeCompare(b.code));
-        this.sortByCodeValid = false
+        this.sortByCodeValid = false;
       } else {
         this.currencys.sort((a, b) => b.code.localeCompare(a.code));
-        this.sortByCodeValid = true
+        this.sortByCodeValid = true;
       }
     }
-
   }
 
   sortBydigitalValid: boolean = true;
   sortBydigital() {
     if (this.affiche == true) {
       if (this.sortBydigitalValid) {
-        this.currencyss.sort((a, b) => a.digitalcode.localeCompare(b.digitalcode));
-        this.sortBydigitalValid = false
+        this.currencyss.sort((a, b) =>
+          a.digitalcode.localeCompare(b.digitalcode),
+        );
+        this.sortBydigitalValid = false;
       } else {
-        this.currencyss.sort((a, b) => b.digitalcode.localeCompare(a.digitalcode));
-        this.sortBydigitalValid = true
+        this.currencyss.sort((a, b) =>
+          b.digitalcode.localeCompare(a.digitalcode),
+        );
+        this.sortBydigitalValid = true;
       }
     } else {
       if (this.sortBydigitalValid) {
-        this.currencys.sort((a, b) => a.digitalcode.localeCompare(b.digitalcode));
-        this.sortBydigitalValid = false
+        this.currencys.sort((a, b) =>
+          a.digitalcode.localeCompare(b.digitalcode),
+        );
+        this.sortBydigitalValid = false;
       } else {
-        this.currencys.sort((a, b) => b.digitalcode.localeCompare(a.digitalcode));
-        this.sortBydigitalValid = true
+        this.currencys.sort((a, b) =>
+          b.digitalcode.localeCompare(a.digitalcode),
+        );
+        this.sortBydigitalValid = true;
       }
     }
-
   }
   sortBycountryValid: boolean = true;
   sortBycountry() {
     if (this.affiche == true) {
       if (this.sortBycountryValid) {
-        this.currencyss.sort((a, b) => a.countryname.localeCompare(b.countryname));
-        this.sortBycountryValid = false
+        this.currencyss.sort((a, b) =>
+          a.countryname.localeCompare(b.countryname),
+        );
+        this.sortBycountryValid = false;
       } else {
-        this.currencyss.sort((a, b) => b.countryname.localeCompare(a.countryname));
-        this.sortBycountryValid = true
+        this.currencyss.sort((a, b) =>
+          b.countryname.localeCompare(a.countryname),
+        );
+        this.sortBycountryValid = true;
       }
     } else {
       if (this.sortBycountryValid) {
-        this.currencys.sort((a, b) => a.countryname.localeCompare(b.countryname));
-        this.sortBycountryValid = false
+        this.currencys.sort((a, b) =>
+          a.countryname.localeCompare(b.countryname),
+        );
+        this.sortBycountryValid = false;
       } else {
-        this.currencys.sort((a, b) => b.countryname.localeCompare(a.countryname));
-        this.sortBycountryValid = true
+        this.currencys.sort((a, b) =>
+          b.countryname.localeCompare(a.countryname),
+        );
+        this.sortBycountryValid = true;
       }
     }
-
-
   }
-
 
   sortByNameValid: boolean = true;
   sortByName() {
     if (this.affiche == true) {
       if (this.sortByNameValid) {
         this.currencyss.sort((a, b) => a.name.localeCompare(b.name));
-        this.sortByNameValid = false
+        this.sortByNameValid = false;
       } else {
         this.currencyss.sort((a, b) => b.name.localeCompare(a.name));
-        this.sortByNameValid = true
+        this.sortByNameValid = true;
       }
     } else {
       if (this.sortByNameValid) {
         this.currencys.sort((a, b) => a.name.localeCompare(b.name));
-        this.sortByNameValid = false
+        this.sortByNameValid = false;
       } else {
         this.currencys.sort((a, b) => b.name.localeCompare(a.name));
-        this.sortByNameValid = true
+        this.sortByNameValid = true;
       }
     }
-
   }
-
 
   findArchivedPage() {
     this.loading = true;
@@ -290,8 +293,6 @@ export class CurrencyListComponent implements OnInit {
       });
   }
 
-
-
   onClickdisArchive(id: string) {
     this.currencyService.disArchive(id).subscribe({
       next: () => {
@@ -301,13 +302,11 @@ export class CurrencyListComponent implements OnInit {
         this.toastService.success(
           this.translateService.instant("success.restore", {
             elem: this.translateService.instant("currency"),
-          })
+          }),
         );
       },
     });
   }
-
-
 
   onClickDelete(id: string) {
     this.currencyService.delete(id).subscribe({
@@ -316,12 +315,9 @@ export class CurrencyListComponent implements OnInit {
         this.toastService.success(
           this.translateService.instant("success.deleted", {
             elem: this.translateService.instant("currency"),
-          })
+          }),
         );
       },
     });
   }
-
-
-
 }

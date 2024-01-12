@@ -14,27 +14,30 @@ export class CostCenterFormInformationComponent implements OnInit {
   @Input() cost!: CostCenter;
   divisions: Array<Division> = [];
   addform: FormGroup;
-  affichetype: boolean = false
-  constructor(private sharedService: SharedService, private divisionService: DivisionService) { }
+  affichetype: boolean = false;
+  constructor(
+    private sharedService: SharedService,
+    private divisionService: DivisionService,
+  ) {}
 
   ngOnInit(): void {
-        if (this.cost.division_Code == undefined || this.cost.division_Code == "") {
-      this.affiche = false
+    if (this.cost.division_Code == undefined || this.cost.division_Code == "") {
+      this.affiche = false;
     } else {
-      this.affiche = true
+      this.affiche = true;
     }
-    if (this.cost.facilityType == 'Farm') {
-
-      this.affichetype = true}
+    if (this.cost.facilityType == "Farm") {
+      this.affichetype = true;
+    }
     this.initForm();
-    this.getAlldivision()
-    this.getetat()
-
-
+    this.getAlldivision();
+    this.getetat();
   }
   getAlldivision() {
     this.divisionService.findAll().subscribe({
-      next: (result) => { this.divisions = result; },
+      next: (result) => {
+        this.divisions = result;
+      },
       error: (error) => console.error(error),
     });
   }
@@ -74,91 +77,87 @@ export class CostCenterFormInformationComponent implements OnInit {
       ]),
     });
   }
-  div: any
-  affiche: boolean = false
+  div: any;
+  affiche: boolean = false;
 
   setvalue() {
     if (this.cost.division_Code == undefined || this.cost.division_Code == "") {
-      this.affiche = false
+      this.affiche = false;
     } else {
-      this.affiche = true
+      this.affiche = true;
     }
   }
 
   selectVAlue(e: any) {
-    let t = this.divisions.filter(el => { return el.code == e.target.value })[0]
-    this.addform.value.division_Name = t.name
-    this.cost.division_Name = t.name
-    this.cost.division_Code = t.code
-    this.cost.speciesType = t.divisiontype
+    let t = this.divisions.filter((el) => {
+      return el.code == e.target.value;
+    })[0];
+    this.addform.value.division_Name = t.name;
+    this.cost.division_Name = t.name;
+    this.cost.division_Code = t.code;
+    this.cost.speciesType = t.divisiontype;
 
-   this.cost.divisiontype = t.divisiontype
-    this.addform.value['division_Name'] = t
-    this.div = t
-    this.affiche = true
+    this.cost.divisiontype = t.divisiontype;
+    this.addform.value["division_Name"] = t;
+    this.div = t;
+    this.affiche = true;
   }
   selectVAlue2(e: any) {
-    let t = this.divisions.filter(el => { return el.name == e.target.value })[0]
-    this.addform.value.division_Code = t.code
-    this.cost.division_Name = t.name
-    this.cost.division_Code = t.code
-    this.cost.speciesType = t.divisiontype
+    let t = this.divisions.filter((el) => {
+      return el.name == e.target.value;
+    })[0];
+    this.addform.value.division_Code = t.code;
+    this.cost.division_Name = t.name;
+    this.cost.division_Code = t.code;
+    this.cost.speciesType = t.divisiontype;
 
-    this.cost.divisiontype = t.divisiontype
+    this.cost.divisiontype = t.divisiontype;
 
-    this.addform.value['division_Name'] = t
-    this.div = t
+    this.addform.value["division_Name"] = t;
+    this.div = t;
   }
   getetat() {
-    if(this.cost.division_Code){
+    if (this.cost.division_Code) {
       this.sharedService.setIsActive(true);
-    }else{
+    } else {
       this.sharedService.setIsActive(false);
-
     }
-
-
   }
 
-
   geValues(event) {
-
-
-    if (this.cost.facilityType == 'Farm') {
-
-      this.affichetype = true
-      this.cost.farmType = this.div.speciesType
-      this.cost.speciesType = this.div.divisiontype
-
+    if (this.cost.facilityType == "Farm") {
+      this.affichetype = true;
+      this.cost.farmType = this.div.speciesType;
+      this.cost.speciesType = this.div.divisiontype;
     } else {
-      this.affichetype = false
-      this.cost.farmType = ""
-
+      this.affichetype = false;
+      this.cost.farmType = "";
     }
 
-    if (this.cost.division_Code != "" && this.cost.division_Code != undefined &&
-      this.cost.facilityType != null && this.cost.facilityType != '' &&
-      this.cost.divisiontype != '' &&
-      this.cost.divisiontype != null) {
+    if (
+      this.cost.division_Code != "" &&
+      this.cost.division_Code != undefined &&
+      this.cost.facilityType != null &&
+      this.cost.facilityType != "" &&
+      this.cost.divisiontype != "" &&
+      this.cost.divisiontype != null
+    ) {
       this.sharedService.setIsActive(true);
     } else {
       this.sharedService.setIsActive(false);
     }
-
-
   }
   get f() {
     return this.addform.controls;
   }
 
-  divisinv: boolean = false
+  divisinv: boolean = false;
 
   isBlur5() {
-    if ((this.cost.division_Code == "") || (this.cost.division_Code == undefined)) {
-      this.divisinv = true
+    if (this.cost.division_Code == "" || this.cost.division_Code == undefined) {
+      this.divisinv = true;
     } else {
-      this.divisinv = false
-
+      this.divisinv = false;
     }
   }
   isControlValid(controlName: string): boolean {
@@ -175,7 +174,10 @@ export class CostCenterFormInformationComponent implements OnInit {
   minIfarmtype: boolean = false;
 
   isBlur() {
-    if ((this.cost.farmType.toString().length < 5) || (this.cost.farmType.toString().length > 6)) {
+    if (
+      this.cost.farmType.toString().length < 5 ||
+      this.cost.farmType.toString().length > 6
+    ) {
       this.minIfarmtype = true;
     } else {
       this.minIfarmtype = false;
@@ -184,7 +186,7 @@ export class CostCenterFormInformationComponent implements OnInit {
   minIfacilityType: boolean = false;
 
   isBlur2() {
-    if ((this.cost.facilityType.toString().length > 11)) {
+    if (this.cost.facilityType.toString().length > 11) {
       this.minIfacilityType = true;
     } else {
       this.minIfacilityType = false;
@@ -208,5 +210,4 @@ export class CostCenterFormInformationComponent implements OnInit {
       this.minIdivision = false;
     }
   }
-
 }

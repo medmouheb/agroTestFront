@@ -1,58 +1,111 @@
 <section class="vh-100">
   <div class="container-fluid h-custom">
-    <div style="padding-top: 5%;justify-content: center;align-items: start;" class="row d-flex  h-100">
+    <div
+      style="padding-top: 5%; justify-content: center; align-items: start"
+      class="row d-flex h-100"
+    >
       <div class="col-md-5 col-lg-5 col-xl-5">
         <div>
           <h1>Login</h1>
-          <p class="sub-title">
-            Hello! Log in with your email.
-          </p>
+          <p class="sub-title">Hello! Log in with your email.</p>
           <form>
-
             <div class="form-outline mb-4">
               <label class="form-label" for="username">Username :</label>
-              <input placeholder="Email address" [(ngModel)]="username" type="text" name="username" id="username" />
+              <input
+                placeholder="Email address"
+                [(ngModel)]="username"
+                type="text"
+                name="username"
+                id="username"
+              />
             </div>
 
             <div class="form-outline mb-3">
-              <label style="width: 100%; display: flex; justify-content: space-between;" class="form-label"
-                for="password"><span>Password : </span><a routerlink="/request-password">Forgot Password?</a> </label>
-              <input placeholder="Password" [(ngModel)]="password" name="password" type="password" id="password">
+              <label
+                style="
+                  width: 100%;
+                  display: flex;
+                  justify-content: space-between;
+                "
+                class="form-label"
+                for="password"
+                ><span>Password : </span
+                ><a routerlink="/request-password">Forgot Password?</a>
+              </label>
+              <input
+                placeholder="Password"
+                [(ngModel)]="password"
+                name="password"
+                type="password"
+                id="password"
+              />
             </div>
 
-            <div style="display: flex;  align-items: center; " class="form-outline mb-3">
-              <input style="    transform: scale(1.5);" name="rememberMe" type="checkbox" id="rememberMe">
+            <div
+              style="display: flex; align-items: center"
+              class="form-outline mb-3"
+            >
+              <input
+                style="transform: scale(1.5)"
+                name="rememberMe"
+                type="checkbox"
+                id="rememberMe"
+              />
 
-              <label style="padding-top: 1%;" class="form-label remember" for="rememberMe"> Remember me </label>
+              <label
+                style="padding-top: 1%"
+                class="form-label remember"
+                for="rememberMe"
+              >
+                Remember me
+              </label>
             </div>
 
+            <div *ngIf="authenticationError" class="text-danger">
+              Incorrect username or password
+            </div>
 
-            <div *ngIf="authenticationError" class="text-danger">Incorrect username or password</div>
-
-            <div *ngIf="otherError" class="text-danger">An error has occurred !</div>
-
-
-
+            <div *ngIf="otherError" class="text-danger">
+              An error has occurred !
+            </div>
 
             <div class="text-center text-lg-start mt-4 pt-2">
-              <button type="button" class="btn  " style=" width: 100%;font-size: large;    background-color: #903df4;"
-                (click)="onClick()">Login</button>
-
+              <button
+                type="button"
+                class="btn"
+                style="width: 100%; font-size: large; background-color: #903df4"
+                (click)="onClick()"
+              >
+                Login
+              </button>
             </div>
 
-            <div style="display: flex;justify-content: center;margin-top: 2rem;text-align: center;" >
-              <div style="color: black;">Don't have an account ? </div>
-              <a routerLink="/signup" style="color: #838383;text-decoration: underline;
-              font-size: inherit;
-              font-style: inherit;
-              font-weight: inherit;
-              line-height: inherit;" > Register </a>
+            <div
+              style="
+                display: flex;
+                justify-content: center;
+                margin-top: 2rem;
+                text-align: center;
+              "
+            >
+              <div style="color: black">Don't have an account ?</div>
+              <a
+                routerLink="/signup"
+                style="
+                  color: #838383;
+                  text-decoration: underline;
+                  font-size: inherit;
+                  font-style: inherit;
+                  font-weight: inherit;
+                  line-height: inherit;
+                "
+              >
+                Register
+              </a>
             </div>
-
           </form>
         </div>
       </div>
     </div>
   </div>
-
 </section>

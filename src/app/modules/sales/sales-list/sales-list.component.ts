@@ -1,17 +1,17 @@
-import { Component, EventEmitter, OnInit, ViewChild } from '@angular/core';
-import { ConfirmDialogComponent } from 'app/shared/components/confirm-dialog/confirm-dialog.component';
-import { StepperComponent } from 'app/shared/components/stepper/stepper.component';
-import { WizardDialogComponent } from 'app/shared/components/wizard-dialog/wizard-dialog.component';
-import { Sales } from '../models/sales';
-import { Page, initPage } from 'app/shared/models';
-import { SalesService } from './../service/sales.service';
-import { TranslateService } from '@ngx-translate/core';
-import { HotToastService } from '@ngneat/hot-toast';
+import { Component, EventEmitter, OnInit, ViewChild } from "@angular/core";
+import { ConfirmDialogComponent } from "app/shared/components/confirm-dialog/confirm-dialog.component";
+import { StepperComponent } from "app/shared/components/stepper/stepper.component";
+import { WizardDialogComponent } from "app/shared/components/wizard-dialog/wizard-dialog.component";
+import { Sales } from "../models/sales";
+import { Page, initPage } from "app/shared/models";
+import { SalesService } from "./../service/sales.service";
+import { TranslateService } from "@ngx-translate/core";
+import { HotToastService } from "@ngneat/hot-toast";
 
 @Component({
-  selector: 'app-sales-list',
-  templateUrl: './sales-list.component.html',
-  styleUrls: ['./sales-list.component.scss']
+  selector: "app-sales-list",
+  templateUrl: "./sales-list.component.html",
+  styleUrls: ["./sales-list.component.scss"],
 })
 export class SalesListComponent implements OnInit {
   @ViewChild("deleteModal")
@@ -42,21 +42,22 @@ export class SalesListComponent implements OnInit {
   constructor(
     private salesservice: SalesService,
     private translateService: TranslateService,
-    private toastService: HotToastService
-  ) { }
+    private toastService: HotToastService,
+  ) {}
   onCheckboxChange() {
     if (this.isChecked == false) {
-
-      this.affiche = false
-    }
-    else {
-      this.affiche = true
+      this.affiche = false;
+    } else {
+      this.affiche = true;
     }
   }
   ngOnInit(): void {
     this.findPage();
     this.findArchivedPage();
-    this.onPaginationChange.subscribe(() => {this.findPage();    this.findArchivedPage();    });
+    this.onPaginationChange.subscribe(() => {
+      this.findPage();
+      this.findArchivedPage();
+    });
   }
 
   findPage() {
@@ -65,7 +66,6 @@ export class SalesListComponent implements OnInit {
       .findPage(this.pageNumber, this.pageSize, this.filter)
       .subscribe({
         next: (result) => {
-
           this.saless = result.content;
           this.salesPage = result;
         },
@@ -85,7 +85,7 @@ export class SalesListComponent implements OnInit {
         this.toastService.success(
           this.translateService.instant("success.restore", {
             elem: this.translateService.instant("sales"),
-          })
+          }),
         );
       },
     });
@@ -99,7 +99,7 @@ export class SalesListComponent implements OnInit {
         this.toastService.success(
           this.translateService.instant("success.deleted", {
             elem: this.translateService.instant("sales"),
-          })
+          }),
         );
       },
     });
@@ -111,8 +111,6 @@ export class SalesListComponent implements OnInit {
       .findArchivedPage(this.pageNumber, this.pageSize, this.filter)
       .subscribe({
         next: (result) => {
-
-
           this.salesss = result.content;
           this.salesPages = result;
         },
@@ -126,7 +124,8 @@ export class SalesListComponent implements OnInit {
 
   findById(id: string) {
     this.salesservice.findById(id).subscribe({
-      next: (result) => {this.sales = result
+      next: (result) => {
+        this.sales = result;
       },
       error: (error) => console.error(error),
     });
@@ -157,15 +156,14 @@ export class SalesListComponent implements OnInit {
     return Object.keys(obj).length === 0;
   }
   onSave(id: string | null) {
-
     this.toastService.loading(
       this.translateService.instant("message.loading..."),
       {
         id: "0",
-      }
+      },
     );
     if (this.estObjetVide(this.sales.currency)) {
-      this.toastService.error("you must select a currency ")
+      this.toastService.error("you must select a currency ");
     }
     this.salesservice.save(id, this.sales!).subscribe({
       next: () => {
@@ -176,7 +174,7 @@ export class SalesListComponent implements OnInit {
         this.toastService.success(
           this.translateService.instant("success.saved", {
             elem: this.translateService.instant("sales"),
-          })
+          }),
         );
       },
       error: (error) => {
@@ -184,7 +182,7 @@ export class SalesListComponent implements OnInit {
         this.toastService.error(
           this.translateService.instant(error.error, {
             elem: this.translateService.instant("sales"),
-          })
+          }),
         );
       },
     });
@@ -217,7 +215,6 @@ export class SalesListComponent implements OnInit {
     this.stepper.nextStep();
     setTimeout(() => {
       this.stepper.prevStep();
-
     }, 100);
     this.formModal.show({
       title: "menu.edit-sales",
@@ -271,7 +268,7 @@ export class SalesListComponent implements OnInit {
           this.toastService.success(
             this.translateService.instant("success.deleted", {
               elem: this.translateService.instant("sales"),
-            })
+            }),
           );
         },
       });
@@ -280,95 +277,93 @@ export class SalesListComponent implements OnInit {
 
   sortByCodeValid: boolean = true;
   sortByCode() {
-    if(this.affiche){
+    if (this.affiche) {
       if (this.sortByCodeValid) {
         this.salesss.sort((a, b) => a.code.localeCompare(b.code));
-        this.sortByCodeValid = false
+        this.sortByCodeValid = false;
       } else {
         this.salesss.sort((a, b) => b.code.localeCompare(a.code));
-        this.sortByCodeValid = true
+        this.sortByCodeValid = true;
       }
-    }else{
+    } else {
       if (this.sortByCodeValid) {
         this.saless.sort((a, b) => a.code.localeCompare(b.code));
-        this.sortByCodeValid = false
+        this.sortByCodeValid = false;
       } else {
         this.saless.sort((a, b) => b.code.localeCompare(a.code));
-        this.sortByCodeValid = true
+        this.sortByCodeValid = true;
       }
     }
-
   }
-
-
 
   sortByNameValid: boolean = true;
   sortByName() {
-    if(this.affiche){
+    if (this.affiche) {
       if (this.sortByNameValid) {
         this.salesss.sort((a, b) => a.name.localeCompare(b.name));
-        this.sortByNameValid = false
+        this.sortByNameValid = false;
       } else {
         this.salesss.sort((a, b) => b.name.localeCompare(a.name));
-        this.sortByNameValid = true
+        this.sortByNameValid = true;
       }
-    }else{
+    } else {
       if (this.sortByNameValid) {
         this.saless.sort((a, b) => a.name.localeCompare(b.name));
-        this.sortByNameValid = false
+        this.sortByNameValid = false;
       } else {
         this.saless.sort((a, b) => b.name.localeCompare(a.name));
-        this.sortByNameValid = true
+        this.sortByNameValid = true;
       }
     }
-
   }
-
 
   sortByCityNameValid: boolean = true;
   sortByCityName() {
-       if(this.affiche){
-        if (this.sortByCityNameValid) {
-          this.salesss.sort((a, b) => (a.payment_Term || "").localeCompare((b.payment_Term || "")));
-          this.sortByCityNameValid = false
-        } else {
-          this.salesss.sort((a, b) => (b.payment_Term || "").localeCompare((a.payment_Term || "")));
-          this.sortByCityNameValid = true
-        }
-       }else{
-        if (this.sortByCityNameValid) {
-          this.saless.sort((a, b) => (a.payment_Term || "").localeCompare((b.payment_Term || "")));
-          this.sortByCityNameValid = false
-        } else {
-          this.saless.sort((a, b) => (b.payment_Term || "").localeCompare((a.payment_Term || "")));
-          this.sortByCityNameValid = true
-        }
-       }
-
-
+    if (this.affiche) {
+      if (this.sortByCityNameValid) {
+        this.salesss.sort((a, b) =>
+          (a.payment_Term || "").localeCompare(b.payment_Term || ""),
+        );
+        this.sortByCityNameValid = false;
+      } else {
+        this.salesss.sort((a, b) =>
+          (b.payment_Term || "").localeCompare(a.payment_Term || ""),
+        );
+        this.sortByCityNameValid = true;
+      }
+    } else {
+      if (this.sortByCityNameValid) {
+        this.saless.sort((a, b) =>
+          (a.payment_Term || "").localeCompare(b.payment_Term || ""),
+        );
+        this.sortByCityNameValid = false;
+      } else {
+        this.saless.sort((a, b) =>
+          (b.payment_Term || "").localeCompare(a.payment_Term || ""),
+        );
+        this.sortByCityNameValid = true;
+      }
+    }
   }
-
 
   sortByAddressValid: boolean = true;
   sortByAddress() {
-    if(this.affiche){
+    if (this.affiche) {
       if (this.sortByAddressValid) {
-        this.salesss.sort((a, b) => (a.type || "").localeCompare((b.type || "")));
-        this.sortByAddressValid = false
+        this.salesss.sort((a, b) => (a.type || "").localeCompare(b.type || ""));
+        this.sortByAddressValid = false;
       } else {
-        this.salesss.sort((a, b) => (b.type || "").localeCompare((a.type || "")));
-        this.sortByAddressValid = true
+        this.salesss.sort((a, b) => (b.type || "").localeCompare(a.type || ""));
+        this.sortByAddressValid = true;
       }
-    }else{
+    } else {
       if (this.sortByAddressValid) {
-        this.saless.sort((a, b) => (a.type || "").localeCompare((b.type || "")));
-        this.sortByAddressValid = false
+        this.saless.sort((a, b) => (a.type || "").localeCompare(b.type || ""));
+        this.sortByAddressValid = false;
       } else {
-        this.saless.sort((a, b) => (b.type || "").localeCompare((a.type || "")));
-        this.sortByAddressValid = true
+        this.saless.sort((a, b) => (b.type || "").localeCompare(a.type || ""));
+        this.sortByAddressValid = true;
       }
     }
-
   }
-
 }

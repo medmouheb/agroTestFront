@@ -66,49 +66,104 @@
 
   </div> -->
   <div class="form-group col-md-6">
-    <label class="required" for="division_Code">{{ "divisionCode" | translate }}</label>
+    <label class="required" for="division_Code">{{
+      "divisionCode" | translate
+    }}</label>
     <!-- <input (blur)="isBlurSTisvali()" type="number" class="form-control" name="codeCity" formControlName="codeCity" [(ngModel)]="growout.codeCity" placeholder=" write your City code"
       aria-describedby="code-error" required aria-invalid="true" (ngModelChange)="geValues($event)"> -->
-      <select (blur)="isBlur5();geValues($event); setvalue()" (click)="selectVAlue($event)" (ngModelChange)="geValues($event)" type="number" class="form-control" name="division_Code"  [(ngModel)]="cost.division_Code" placeholder=" write your City code">
-        <option *ngFor="let dv of divisions" [value]="dv.code"   (blur)="setvalue()" > {{dv.code}}</option>
-      </select>
-      <!-- //<div style="color: red;" *ngIf="STisvali" >{{'code must be between 5 and 10 numbres'|translate}}</div> -->
-      <div style="color: red;" *ngIf="divisinv">{{'you must chose'|translate}}</div>
-
+    <select
+      (blur)="isBlur5(); geValues($event); setvalue()"
+      (click)="selectVAlue($event)"
+      (ngModelChange)="geValues($event)"
+      type="number"
+      class="form-control"
+      name="division_Code"
+      [(ngModel)]="cost.division_Code"
+      placeholder=" write your City code"
+    >
+      <option
+        *ngFor="let dv of divisions"
+        [value]="dv.code"
+        (blur)="setvalue()"
+      >
+        {{ dv.code }}
+      </option>
+    </select>
+    <!-- //<div style="color: red;" *ngIf="STisvali" >{{'code must be between 5 and 10 numbres'|translate}}</div> -->
+    <div style="color: red" *ngIf="divisinv">
+      {{ "you must chose" | translate }}
     </div>
+  </div>
 
   <div class="form-group col-md-6">
-    <label class="required" for="division_Name">{{"divisionName" | translate }}</label>
-    <select (blur)="isBlur5();geValues($event)" (click)="selectVAlue2($event)" (ngModelChange)="geValues($event)" type="text" class="form-control"name="division_Name"   [(ngModel)]="cost.division_Name" placeholder=" write your City code">
-      <option *ngFor="let dv of divisions" [value]="dv.name" > {{dv.name}}</option>
+    <label class="required" for="division_Name">{{
+      "divisionName" | translate
+    }}</label>
+    <select
+      (blur)="isBlur5(); geValues($event)"
+      (click)="selectVAlue2($event)"
+      (ngModelChange)="geValues($event)"
+      type="text"
+      class="form-control"
+      name="division_Name"
+      [(ngModel)]="cost.division_Name"
+      placeholder=" write your City code"
+    >
+      <option *ngFor="let dv of divisions" [value]="dv.name">
+        {{ dv.name }}
+      </option>
     </select>
     <!-- <input    class="form-control" name="division_Name"
     [(ngModel)]="cost.division_Name" placeholder=" {{'Write your Division name'|translate}}"
       aria-describedby="code-error" required aria-invalid="true"  /> -->
-      <!-- <div style="color: red;" *ngIf="Misvalid" >{{'the name must be between 3 and 8 characters'|translate}} </div> -->
+    <!-- <div style="color: red;" *ngIf="Misvalid" >{{'the name must be between 3 and 8 characters'|translate}} </div> -->
+  </div>
+  <div class="form-group col-md-6">
+    <label class="required" for="facilityType">{{
+      "facilityType" | translate
+    }}</label>
 
-    </div>
-    <div class="form-group col-md-6">
-      <label class="required" for="facilityType">{{ "facilityType" | translate }}</label>
-      
-       <!-- <div style="border: 1px solid red; color : red;" *ngIf="minIfacilityType">{{'farmType must be between 1 and 10 charactere'|translate}}</div> -->
-       <select  (blur)="isBlur2();geValues($event) "  class="form-control" name="facilityType" #facilityType="ngModel" (ngModelChange)="geValues($event)" ngModel [(ngModel)]="cost.facilityType">
-        <option value="Hatchery" (blur)="geValues($event)" >{{'Hatchery'|translate}}</option>
-        <option value="Feed mill"  (blur)="geValues($event)">{{'Feed mill'|translate}}</option>
-        <option value="Warehouse"  (blur)="geValues($event)">{{'Warehouse'|translate}}</option>
-        <option value="Plant"  (blur)="geValues($event)">{{'Plant'|translate}}</option>
-        <option value="Logistics" (blur)="geValues($event)" >{{'Logistics'|translate}}</option>
-        <option value="Farm" (blur)="geValues($event)" > {{'Farm'|translate}}</option>
+    <!-- <div style="border: 1px solid red; color : red;" *ngIf="minIfacilityType">{{'farmType must be between 1 and 10 charactere'|translate}}</div> -->
+    <select
+      (blur)="isBlur2(); geValues($event)"
+      class="form-control"
+      name="facilityType"
+      #facilityType="ngModel"
+      (ngModelChange)="geValues($event)"
+      ngModel
+      [(ngModel)]="cost.facilityType"
+    >
+      <option value="Hatchery" (blur)="geValues($event)">
+        {{ "Hatchery" | translate }}
+      </option>
+      <option value="Feed mill" (blur)="geValues($event)">
+        {{ "Feed mill" | translate }}
+      </option>
+      <option value="Warehouse" (blur)="geValues($event)">
+        {{ "Warehouse" | translate }}
+      </option>
+      <option value="Plant" (blur)="geValues($event)">
+        {{ "Plant" | translate }}
+      </option>
+      <option value="Logistics" (blur)="geValues($event)">
+        {{ "Logistics" | translate }}
+      </option>
+      <option value="Farm" (blur)="geValues($event)">
+        {{ "Farm" | translate }}
+      </option>
+    </select>
+  </div>
+  <div class="form-group col-md-6" *ngIf="affiche == true">
+    <label class="required" for="divisiondivisiontype"
+      >{{ "divisiontype" | translate }}
+    </label>
+    : {{ cost.divisiontype }}
 
-      </select>
-    </div>
-    <div class="form-group col-md-6" *ngIf="affiche==true">
-      <label class="required" for="divisiondivisiontype">{{ "divisiontype" | translate }} </label> : {{cost.divisiontype}}
-      
-       <!-- <div style="border: 1px solid red; color : red;" *ngIf="minIdivisiontype">{{'species type must be between 1 and 10 charactere'|translate}}</div> -->
-  
-    </div>
-    <div class="form-group col-md-6" *ngIf="affichetype==true">
-      <label  for="farmType">{{ "Farmtype" | translate }} </label> :{{cost.farmType}}
-    </div> 
+    <!-- <div style="border: 1px solid red; color : red;" *ngIf="minIdivisiontype">{{'species type must be between 1 and 10 charactere'|translate}}</div> -->
+  </div>
+  <div class="form-group col-md-6" *ngIf="affichetype == true">
+    <label for="farmType">{{ "Farmtype" | translate }} </label> :{{
+      cost.farmType
+    }}
+  </div>
 </div>

@@ -1,54 +1,95 @@
 <div class="row">
-
   <div class="form-group col-md-6">
     <label for="transCode">{{ "transCode" | translate }}</label>
-    <input class="form-control" name="transCode" [(ngModel)]="camp.transCode">
+    <input class="form-control" name="transCode" [(ngModel)]="camp.transCode" />
   </div>
 
   <div class="form-group col-md-6">
     <label for="typeDeProduit">{{ "typeDeProduit" | translate }}</label>
-    <select class="form-control" name="typeDeProduit" [(ngModel)]="camp.typeDeProduit">
-      <option value="Field Products">{{"Field Products"|translate}}</option>
-      <option value="Medicaments">{{"Medicaments"|translate}}</option>
-      <option value="Vaccinations">{{"Vaccinations"|translate}}</option>
+    <select
+      class="form-control"
+      name="typeDeProduit"
+      [(ngModel)]="camp.typeDeProduit"
+    >
+      <option value="Field Products">{{ "Field Products" | translate }}</option>
+      <option value="Medicaments">{{ "Medicaments" | translate }}</option>
+      <option value="Vaccinations">{{ "Vaccinations" | translate }}</option>
     </select>
   </div>
 
-
   <div class="form-group col-md-6">
     <label for="codeProduit">{{ "codeProduit" | translate }}</label>
-    <select class="form-control" name="codeProduit" [(ngModel)]="camp.codeProduit" (change)="onCodeSelect()">
-      <option *ngFor="let name of divisionNames" [value]="name">{{name}}</option>
+    <select
+      class="form-control"
+      name="codeProduit"
+      [(ngModel)]="camp.codeProduit"
+      (change)="onCodeSelect()"
+    >
+      <option *ngFor="let name of divisionNames" [value]="name">
+        {{ name }}
+      </option>
     </select>
   </div>
 
   <div class="form-group col-md-6">
     <label for="nomDuProduit">{{ "nomDuProduit" | translate }}</label>
-    <input class="form-control" type="text" name="nomDuProduit" [(ngModel)]="camp.nomDuProduit" value="productName">
+    <input
+      class="form-control"
+      type="text"
+      name="nomDuProduit"
+      [(ngModel)]="camp.nomDuProduit"
+      value="productName"
+    />
   </div>
   <div class="form-group col-md-6">
     <label for="location">{{ "locationLot" | translate }}</label>
-    <input type="text" class="form-control" name="location" [(ngModel)]="camp.location">
+    <input
+      type="text"
+      class="form-control"
+      name="location"
+      [(ngModel)]="camp.location"
+    />
   </div>
   <div class="form-group col-md-6">
     <label for="quantite">{{ "quantite" | translate }}</label>
-    <input type="number" class="form-control" name="quantite" [(ngModel)]="camp.quantite">
+    <input
+      type="number"
+      class="form-control"
+      name="quantite"
+      [(ngModel)]="camp.quantite"
+    />
   </div>
 
   <div class="form-group col-md-6">
     <label for="montant">{{ "montant" | translate }}</label>
-    <input type="number" class="form-control" name="montant" [(ngModel)]="camp.montant">
-
+    <input
+      type="number"
+      class="form-control"
+      name="montant"
+      [(ngModel)]="camp.montant"
+    />
   </div>
   <div class="form-group col-md-6 align-self-end">
     <label for="void">
-      <input type="checkbox" [checked]="camp.void" (click)="setVoid()" id="active" name="void" formControlName="void"
-        ngModel [(ngModel)]="camp.void">
-      {{"Voidflag" | translate}}
+      <input
+        type="checkbox"
+        [checked]="camp.void"
+        (click)="setVoid()"
+        id="active"
+        name="void"
+        formControlName="void"
+        ngModel
+        [(ngModel)]="camp.void"
+      />
+      {{ "Voidflag" | translate }}
     </label>
   </div>
   <div class="form-group col-md-6">
     <label for="commentaire">{{ "commentaire" | translate }}</label>
-    <input class="form-control" name="commentaire" [(ngModel)]="camp.commentaire">
+    <input
+      class="form-control"
+      name="commentaire"
+      [(ngModel)]="camp.commentaire"
+    />
   </div>
 </div>

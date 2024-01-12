@@ -1,20 +1,19 @@
-import { Component, OnInit ,Input} from '@angular/core';
-import { Commande } from 'app/modules/commande/models/commande.model';
+import { Component, OnInit, Input } from "@angular/core";
+import { Commande } from "app/modules/commande/models/commande.model";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { SharedService } from "app/modules/company/services/shared.service";
 
 @Component({
-  selector: 'app-commande-form-general',
-  templateUrl: './commande-form-general.component.html',
-  styleUrls: ['./commande-form-general.component.scss']
+  selector: "app-commande-form-general",
+  templateUrl: "./commande-form-general.component.html",
+  styleUrls: ["./commande-form-general.component.scss"],
 })
 export class CommandeFormGeneralComponent implements OnInit {
-
   @Input() commande!: Commande;
 
   addform: FormGroup;
 
-  constructor(private sharedService: SharedService) { }
+  constructor(private sharedService: SharedService) {}
 
   ngOnInit(): void {
     this.initForm();
@@ -61,7 +60,7 @@ export class CommandeFormGeneralComponent implements OnInit {
         Validators.required,
         Validators.minLength(3),
         Validators.maxLength(8),
-      ])
+      ]),
     });
   }
   geValues(event) {
@@ -71,6 +70,4 @@ export class CommandeFormGeneralComponent implements OnInit {
   get f() {
     return this.addform.controls;
   }
-
-
 }

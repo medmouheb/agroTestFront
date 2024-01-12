@@ -43,7 +43,7 @@ export class TrashComponent implements OnInit {
     private translateService: TranslateService,
     private toastService: HotToastService,
     private growoutService: GrowoutService,
-    private router:Router
+    private router: Router,
   ) {}
 
   ngOnInit(): void {
@@ -67,8 +67,8 @@ export class TrashComponent implements OnInit {
         complete: () => (this.loading = false),
       });
   }
-  goto(){
-    this.router.navigateByUrl("/growout")
+  goto() {
+    this.router.navigateByUrl("/growout");
   }
   findById(id: string) {
     this.growoutService.findById(id).subscribe({
@@ -102,12 +102,11 @@ export class TrashComponent implements OnInit {
         this.toastService.success(
           this.translateService.instant("success.reset", {
             elem: this.translateService.instant("growout"),
-          })
+          }),
         );
       },
     });
   }
-
 
   onClickDelete(id: string) {
     this.growoutService.delete(id).subscribe({
@@ -116,7 +115,7 @@ export class TrashComponent implements OnInit {
         this.toastService.success(
           this.translateService.instant("success.deleted", {
             elem: this.translateService.instant("warehouse"),
-          })
+          }),
         );
       },
     });

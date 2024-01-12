@@ -1,57 +1,51 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from "@angular/core";
 
 @Component({
-  selector: 'app-dialog',
-  templateUrl: './dialog.component.html',
-  styleUrls: ['./dialog.component.scss']
+  selector: "app-dialog",
+  templateUrl: "./dialog.component.html",
+  styleUrls: ["./dialog.component.scss"],
 })
 export class DialogComponent implements OnInit {
-
   content: any;
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): any {
-  }
+  ngOnInit(): any {}
 
-  show({
-    title,
-    confirm,
-    cancel,
-    btnLabel
-  }: any) {
+  show({ title, confirm, cancel, btnLabel }: any) {
     this.content = {
       title,
-      btnLabel: btnLabel ?? 'btns.save',
+      btnLabel: btnLabel ?? "btns.save",
       confirm,
       cancel: () => {
-        this.content = null
+        this.content = null;
         if (cancel) {
-          cancel()
+          cancel();
         }
-      }
-    }
+      },
+    };
   }
 
   hide() {
     if (this.content.cancel) {
-      this.content.cancel()
+      this.content.cancel();
     }
-    this.content = null
+    this.content = null;
   }
 
   protected onClickOutside(event: Event) {
-    event.stopPropagation()
-    event.preventDefault()
-    this.hide()
+    event.stopPropagation();
+    event.preventDefault();
+    this.hide();
   }
 
-  submitstatus = true
+  submitstatus = true;
   setsubmitstatus(b: boolean) {
-    this.submitstatus = b
+    this.submitstatus = b;
   }
 
-  @HostListener('document:keydown.escape', ['$event']) onKeydownHandler(evt: KeyboardEvent) {
-    this.hide()
+  @HostListener("document:keydown.escape", ["$event"]) onKeydownHandler(
+    evt: KeyboardEvent,
+  ) {
+    this.hide();
   }
-
 }

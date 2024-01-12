@@ -42,15 +42,15 @@ export class CostTrashComponent implements OnInit {
     private translateService: TranslateService,
     private toastService: HotToastService,
     private costCenterService: CostCenterService,
-    private router:Router
+    private router: Router,
   ) {}
 
   ngOnInit(): void {
     this.findArchivedPage();
     this.onPaginationChange.subscribe(() => this.findArchivedPage());
   }
-  goto(){
-    this.router.navigateByUrl("/costCenter")
+  goto() {
+    this.router.navigateByUrl("/costCenter");
   }
 
   findArchivedPage() {
@@ -102,13 +102,11 @@ export class CostTrashComponent implements OnInit {
         this.toastService.success(
           this.translateService.instant("success.restore", {
             elem: this.translateService.instant("costCenter"),
-          })
+          }),
         );
       },
     });
   }
-
-
 
   onClickDelete(id: string) {
     this.costCenterService.delete(id).subscribe({
@@ -117,7 +115,7 @@ export class CostTrashComponent implements OnInit {
         this.toastService.success(
           this.translateService.instant("success.deleted", {
             elem: this.translateService.instant("costCenter"),
-          })
+          }),
         );
       },
     });

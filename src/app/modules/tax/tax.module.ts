@@ -1,14 +1,10 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
 
-import { TaxRoutingModule } from './tax-routing.module';
-
+import { TaxRoutingModule } from "./tax-routing.module";
 
 @NgModule({
   declarations: [],
-  imports: [
-    CommonModule,
-    TaxRoutingModule
-  ]
+  imports: [CommonModule, TaxRoutingModule],
 })
-export class TaxModule { }
+export class TaxModule {}

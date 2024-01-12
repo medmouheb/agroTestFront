@@ -1,5 +1,5 @@
 export type ProductUsage = {
-  transactionDate?: string
-  farmCode?: string
-  houseCode?: string
-}
+  transactionDate?: string;
+  farmCode?: string;
+  houseCode?: string;
+};

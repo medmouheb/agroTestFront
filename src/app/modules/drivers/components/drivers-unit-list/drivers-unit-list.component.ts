@@ -1,21 +1,20 @@
-import { Component, EventEmitter, OnInit, ViewChild } from '@angular/core';
-import { ConfirmDialogComponent } from 'app/shared/components/confirm-dialog/confirm-dialog.component';
-import { StepperComponent } from 'app/shared/components/stepper/stepper.component';
-import { WizardDialogComponent } from 'app/shared/components/wizard-dialog/wizard-dialog.component';
-import { Drivers } from '../../models/drivers';
-import { Page, initPage } from 'app/shared/models';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { DriversService } from '../../services/drivers.service';
-import { TranslateService } from '@ngx-translate/core';
-import { HotToastService } from '@ngneat/hot-toast';
+import { Component, EventEmitter, OnInit, ViewChild } from "@angular/core";
+import { ConfirmDialogComponent } from "app/shared/components/confirm-dialog/confirm-dialog.component";
+import { StepperComponent } from "app/shared/components/stepper/stepper.component";
+import { WizardDialogComponent } from "app/shared/components/wizard-dialog/wizard-dialog.component";
+import { Drivers } from "../../models/drivers";
+import { Page, initPage } from "app/shared/models";
+import { FormBuilder, FormGroup } from "@angular/forms";
+import { DriversService } from "../../services/drivers.service";
+import { TranslateService } from "@ngx-translate/core";
+import { HotToastService } from "@ngneat/hot-toast";
 
 @Component({
-  selector: 'app-drivers-unit-list',
-  templateUrl: './drivers-unit-list.component.html',
-  styleUrls: ['./drivers-unit-list.component.scss']
+  selector: "app-drivers-unit-list",
+  templateUrl: "./drivers-unit-list.component.html",
+  styleUrls: ["./drivers-unit-list.component.scss"],
 })
 export class DriversUnitListComponent implements OnInit {
-
   @ViewChild("deleteModal")
   deleteModal!: ConfirmDialogComponent;
   @ViewChild("archiveModal")
@@ -34,11 +33,11 @@ export class DriversUnitListComponent implements OnInit {
   companyPage: Page<Drivers> = initPage;
   companyPages: Page<Drivers> = initPage;
   isChecked: boolean = false;
-  affiche:boolean = false;
+  affiche: boolean = false;
   onPaginationChange: EventEmitter<string> = new EventEmitter<string>();
   form: FormGroup;
 
-  fullDetail=false
+  fullDetail = false;
 
   currentStep = 0;
   steps: any = [
@@ -51,20 +50,18 @@ export class DriversUnitListComponent implements OnInit {
     private driversService: DriversService,
     private translateService: TranslateService,
     private toastService: HotToastService,
-    private formBuilder: FormBuilder
-  ) { }
+    private formBuilder: FormBuilder,
+  ) {}
   onCheckboxChange() {
-    if (this.isChecked==false){
-
-      this.affiche=false
-    }
-    else{
-      this.affiche=true
+    if (this.isChecked == false) {
+      this.affiche = false;
+    } else {
+      this.affiche = true;
     }
   }
   ngOnInit(): void {
     this.findPage();
-    this.findArchivedPage()
+    this.findArchivedPage();
     this.onPaginationChange.subscribe(() => this.findPage());
   }
 
@@ -95,7 +92,7 @@ export class DriversUnitListComponent implements OnInit {
     this.filter = filter;
     this.pageNumber = 0;
     this.findPage();
-    this.findArchivedPage()
+    this.findArchivedPage();
   }
 
   onPageNumberChange(pageNumber: number) {
@@ -119,7 +116,7 @@ export class DriversUnitListComponent implements OnInit {
       this.translateService.instant("message.loading..."),
       {
         id: "0",
-      }
+      },
     );
 
     this.driversService.save(id, this.camp!).subscribe({
@@ -131,7 +128,7 @@ export class DriversUnitListComponent implements OnInit {
         this.toastService.success(
           this.translateService.instant("success.saved", {
             elem: this.translateService.instant("Drivers"),
-          })
+          }),
         );
       },
       error: (error) => {
@@ -139,7 +136,7 @@ export class DriversUnitListComponent implements OnInit {
         this.toastService.error(
           this.translateService.instant(error.error, {
             elem: this.translateService.instant("Drivers"),
-          })
+          }),
         );
       },
     });
@@ -173,7 +170,6 @@ export class DriversUnitListComponent implements OnInit {
     this.stepper.nextStep();
     setTimeout(() => {
       this.stepper.prevStep();
-
     }, 100);
     setTimeout(() => {
       this.formModal.show({
@@ -184,23 +180,20 @@ export class DriversUnitListComponent implements OnInit {
         prev: () => this.stepper.prevStep(),
       });
     }, 200);
-
   }
-
-
 
   onClickArchive(id: string) {
     this.archiveModal.show(() => {
       this.driversService.archive(id).subscribe({
         next: () => {
           this.findPage();
-          this.findArchivedPage()
+          this.findArchivedPage();
           this.archiveModal.hide();
           this.toastService.close("0");
           this.toastService.success(
             this.translateService.instant("success.deleted", {
               elem: this.translateService.instant("Drivers"),
-            })
+            }),
           );
         },
       });
@@ -210,43 +203,37 @@ export class DriversUnitListComponent implements OnInit {
   sortByCode() {
     if (this.sortByCodeValid) {
       this.companys.sort((a, b) => a.codeEmploye.localeCompare(b.codeEmploye));
-      this.sortByCodeValid = false
+      this.sortByCodeValid = false;
     } else {
       this.companys.sort((a, b) => b.codeEmploye.localeCompare(a.codeEmploye));
-      this.sortByCodeValid = true
+      this.sortByCodeValid = true;
     }
   }
-
-
 
   sortByNameValid: boolean = true;
   sortByName() {
     if (this.sortByNameValid) {
-      this.companys.sort((a, b) => a.nomDuChauffeur.localeCompare(b.nomDuChauffeur));
-      this.sortByNameValid = false
+      this.companys.sort((a, b) =>
+        a.nomDuChauffeur.localeCompare(b.nomDuChauffeur),
+      );
+      this.sortByNameValid = false;
     } else {
-      this.companys.sort((a, b) => b.nomDuChauffeur.localeCompare(a.nomDuChauffeur));
-      this.sortByNameValid = true
+      this.companys.sort((a, b) =>
+        b.nomDuChauffeur.localeCompare(a.nomDuChauffeur),
+      );
+      this.sortByNameValid = true;
     }
   }
 
-
-
-
-
-
-
-
   onClickdisArchive(id: string) {
-
     this.driversService.disArchive(id).subscribe({
       next: () => {
         this.findArchivedPage();
-this.findPage()
+        this.findPage();
         this.toastService.success(
           this.translateService.instant("success.restore", {
             elem: this.translateService.instant("Drivers"),
-          })
+          }),
         );
       },
     });
@@ -256,36 +243,15 @@ this.findPage()
     this.driversService.delete(id).subscribe({
       next: () => {
         this.findArchivedPage();
-        this.findPage()
+        this.findPage();
         this.toastService.success(
           this.translateService.instant("success.deleted", {
             elem: this.translateService.instant("Drivers"),
-          })
+          }),
         );
       },
     });
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   findArchivedPage() {
     this.loading = true;
@@ -294,7 +260,7 @@ this.findPage()
       .subscribe({
         next: (result) => {
           this.companyss = result.content;
-          this.companyPages=result;
+          this.companyPages = result;
         },
         error: (error) => {
           this.loading = false;
@@ -303,5 +269,4 @@ this.findPage()
         complete: () => (this.loading = false),
       });
   }
-
 }

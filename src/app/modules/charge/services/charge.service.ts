@@ -24,31 +24,34 @@ export class ChargeService {
   }
 
   create(charge: Charge): Observable<Charge> {
-    const headers = new HttpHeaders()
-      .set(
-        "Authorization",
-        `${JSON.parse(localStorage.getItem("tocken")).tokenType} ${JSON.parse(localStorage.getItem("tocken")).accessToken}`
-      )
-    let url = this.baseUrl()+'/charge';
-    return this.http.post<Charge>(url, charge , {headers});
+    const headers = new HttpHeaders().set(
+      "Authorization",
+      `${JSON.parse(localStorage.getItem("tocken")).tokenType} ${
+        JSON.parse(localStorage.getItem("tocken")).accessToken
+      }`,
+    );
+    let url = this.baseUrl() + "/charge";
+    return this.http.post<Charge>(url, charge, { headers });
   }
 
   update(id: string, charge: Charge): Observable<Charge> {
-    const headers = new HttpHeaders()
-      .set(
-        "Authorization",
-        `${JSON.parse(localStorage.getItem("tocken")).tokenType} ${JSON.parse(localStorage.getItem("tocken")).accessToken}`
-      )
+    const headers = new HttpHeaders().set(
+      "Authorization",
+      `${JSON.parse(localStorage.getItem("tocken")).tokenType} ${
+        JSON.parse(localStorage.getItem("tocken")).accessToken
+      }`,
+    );
     let url = `${this.baseUrl()}/charge/${id}`;
-    return this.http.put<Charge>(url, charge, {headers});
+    return this.http.put<Charge>(url, charge, { headers });
   }
 
   importCSV(formData: FormData): Observable<void> {
-    const headers = new HttpHeaders()
-      .set(
-        "Authorization",
-        `${JSON.parse(localStorage.getItem("tocken")).tokenType} ${JSON.parse(localStorage.getItem("tocken")).accessToken}`
-      )
+    const headers = new HttpHeaders().set(
+      "Authorization",
+      `${JSON.parse(localStorage.getItem("tocken")).tokenType} ${
+        JSON.parse(localStorage.getItem("tocken")).accessToken
+      }`,
+    );
     let url = this.baseUrl() + "/charge/import";
 
     headers.append("Content-Type", "multipart/form-data");
@@ -58,35 +61,38 @@ export class ChargeService {
   }
 
   findById(id: string): Observable<Charge> {
-    const headers = new HttpHeaders()
-      .set(
-        "Authorization",
-        `${JSON.parse(localStorage.getItem("tocken")).tokenType} ${JSON.parse(localStorage.getItem("tocken")).accessToken}`
-      )
+    const headers = new HttpHeaders().set(
+      "Authorization",
+      `${JSON.parse(localStorage.getItem("tocken")).tokenType} ${
+        JSON.parse(localStorage.getItem("tocken")).accessToken
+      }`,
+    );
     let url = `${this.baseUrl()}/charge/${id}`;
-    return this.http.get<Charge>(url, {headers});
+    return this.http.get<Charge>(url, { headers });
   }
 
   findAll(): Observable<Array<Charge>> {
-    const headers = new HttpHeaders()
-      .set(
-        "Authorization",
-        `${JSON.parse(localStorage.getItem("tocken")).tokenType} ${JSON.parse(localStorage.getItem("tocken")).accessToken}`
-      )
-    let url = this.baseUrl()+'/charge';
-    return this.http.get<Array<Charge>>(url, {headers});
+    const headers = new HttpHeaders().set(
+      "Authorization",
+      `${JSON.parse(localStorage.getItem("tocken")).tokenType} ${
+        JSON.parse(localStorage.getItem("tocken")).accessToken
+      }`,
+    );
+    let url = this.baseUrl() + "/charge";
+    return this.http.get<Array<Charge>>(url, { headers });
   }
 
   findPage(
     pageNumber: number,
     pageSize: number,
-    filter: string
+    filter: string,
   ): Observable<Page<Charge>> {
-    const headers = new HttpHeaders()
-      .set(
-        "Authorization",
-        `${JSON.parse(localStorage.getItem("tocken")).tokenType} ${JSON.parse(localStorage.getItem("tocken")).accessToken}`
-      )
+    const headers = new HttpHeaders().set(
+      "Authorization",
+      `${JSON.parse(localStorage.getItem("tocken")).tokenType} ${
+        JSON.parse(localStorage.getItem("tocken")).accessToken
+      }`,
+    );
     let url = this.baseUrl() + "/charge/page";
     let params = new HttpParams();
     params = params.append("pageNumber", pageNumber);
@@ -96,55 +102,60 @@ export class ChargeService {
   }
 
   delete(id: string): Observable<boolean> {
-    const headers = new HttpHeaders()
-      .set(
-        "Authorization",
-        `${JSON.parse(localStorage.getItem("tocken")).tokenType} ${JSON.parse(localStorage.getItem("tocken")).accessToken}`
-      )
+    const headers = new HttpHeaders().set(
+      "Authorization",
+      `${JSON.parse(localStorage.getItem("tocken")).tokenType} ${
+        JSON.parse(localStorage.getItem("tocken")).accessToken
+      }`,
+    );
     let url = `${this.baseUrl()}/charge/${id}`;
-    return this.http.delete<boolean>(url, {headers});
+    return this.http.delete<boolean>(url, { headers });
   }
 
   downloadCSVTemplate(): Observable<any> {
-    const headers = new HttpHeaders()
-      .set(
-        "Authorization",
-        `${JSON.parse(localStorage.getItem("tocken")).tokenType} ${JSON.parse(localStorage.getItem("tocken")).accessToken}`
-      )
+    const headers = new HttpHeaders().set(
+      "Authorization",
+      `${JSON.parse(localStorage.getItem("tocken")).tokenType} ${
+        JSON.parse(localStorage.getItem("tocken")).accessToken
+      }`,
+    );
     let url = `${this.baseUrl()}/charge/csv-template`;
-    return this.http.get(url, { responseType: "blob" , headers});
+    return this.http.get(url, { responseType: "blob", headers });
   }
 
   archive(id: string): Observable<void> {
-    const headers = new HttpHeaders()
-      .set(
-        "Authorization",
-        `${JSON.parse(localStorage.getItem("tocken")).tokenType} ${JSON.parse(localStorage.getItem("tocken")).accessToken}`
-      )
+    const headers = new HttpHeaders().set(
+      "Authorization",
+      `${JSON.parse(localStorage.getItem("tocken")).tokenType} ${
+        JSON.parse(localStorage.getItem("tocken")).accessToken
+      }`,
+    );
     let url = `${this.baseUrl()}/charge/archiver/${id}`;
-    return this.http.get<void>(url, {headers});
+    return this.http.get<void>(url, { headers });
   }
 
   disArchive(id: string): Observable<void> {
-    const headers = new HttpHeaders()
-      .set(
-        "Authorization",
-        `${JSON.parse(localStorage.getItem("tocken")).tokenType} ${JSON.parse(localStorage.getItem("tocken")).accessToken}`
-      )
+    const headers = new HttpHeaders().set(
+      "Authorization",
+      `${JSON.parse(localStorage.getItem("tocken")).tokenType} ${
+        JSON.parse(localStorage.getItem("tocken")).accessToken
+      }`,
+    );
     let url = `${this.baseUrl()}/charge/desarchiver/${id}`;
-    return this.http.get<void>(url, {headers});
+    return this.http.get<void>(url, { headers });
   }
 
   findArchivedPage(
     pageNumber: number,
     pageSize: number,
-    filter: string
+    filter: string,
   ): Observable<Page<Charge>> {
-    const headers = new HttpHeaders()
-      .set(
-        "Authorization",
-        `${JSON.parse(localStorage.getItem("tocken")).tokenType} ${JSON.parse(localStorage.getItem("tocken")).accessToken}`
-      )
+    const headers = new HttpHeaders().set(
+      "Authorization",
+      `${JSON.parse(localStorage.getItem("tocken")).tokenType} ${
+        JSON.parse(localStorage.getItem("tocken")).accessToken
+      }`,
+    );
     let url = this.baseUrl() + "/charge/archived/page";
     let params = new HttpParams();
     params = params.append("pageNumber", pageNumber);

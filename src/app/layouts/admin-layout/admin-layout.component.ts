@@ -20,7 +20,10 @@ export class AdminLayoutComponent implements OnInit {
   private lastPoppedUrl: string;
   private yScrollStack: number[] = [];
 
-  constructor(public location: Location, private router: Router) {}
+  constructor(
+    public location: Location,
+    private router: Router,
+  ) {}
 
   ngOnInit() {
     const isWindows = navigator.platform.indexOf("Win") > -1 ? true : false;
@@ -122,7 +125,7 @@ export class AdminLayoutComponent implements OnInit {
         $sidebar_img_container.fadeOut("fast", function () {
           $sidebar_img_container.css(
             "background-image",
-            'url("' + new_image + '")'
+            'url("' + new_image + '")',
           );
           $sidebar_img_container.fadeIn("fast");
         });
@@ -132,7 +135,7 @@ export class AdminLayoutComponent implements OnInit {
         $full_page_background.fadeOut("fast", function () {
           $full_page_background.css(
             "background-image",
-            'url("' + new_image + '")'
+            'url("' + new_image + '")',
           );
           $full_page_background.fadeIn("fast");
         });

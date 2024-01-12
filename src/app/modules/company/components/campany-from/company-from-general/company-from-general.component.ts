@@ -1,9 +1,5 @@
 import { Component, Input, OnInit, ViewChild } from "@angular/core";
-import {
-  FormBuilder,
-  FormGroup,
-  Validators
-} from "@angular/forms";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 
 import { CompanyService } from "app/modules/company/services/company.service";
 import { SharedService } from "app/modules/company/services/shared.service";
@@ -15,34 +11,41 @@ import { Company } from "../../../models/comany";
 })
 export class CompanyFromGeneralComponent implements OnInit {
   @Input() camp!: Company;
-   campReplicat!: Company;
-
+  campReplicat!: Company;
 
   @ViewChild("addform")
   addform: FormGroup;
 
-  constructor(private sharedService: SharedService, private fb: FormBuilder, private compaser: CompanyService) { }
+  constructor(
+    private sharedService: SharedService,
+    private fb: FormBuilder,
+    private compaser: CompanyService,
+  ) {}
   names: Array<String> = [];
-  static = ""
+  static = "";
   ngOnInit(): void {
     if (this.camp != null) {
       this.sharedService.setIsActive(true);
-      this.compaser.findAll().subscribe(data => {
-        this.names = data.map(el => { return el.name })
-      })
-    };
-
-    if (this.camp == undefined) { this.camp = { name: "", code: "" } };
-    this.initForm();
-    if (this.camp.id) {
-      this.static = "update"
-      this.campReplicat =  JSON.parse( JSON.stringify(  this.camp))
-    } else if (!this.camp.id) {
-      this.static = "create"
-      this.sharedService.setIsActive(false)
+      this.compaser.findAll().subscribe((data) => {
+        this.names = data.map((el) => {
+          return el.name;
+        });
+      });
     }
 
-    this.geValues("")
+    if (this.camp == undefined) {
+      this.camp = { name: "", code: "" };
+    }
+    this.initForm();
+    if (this.camp.id) {
+      this.static = "update";
+      this.campReplicat = JSON.parse(JSON.stringify(this.camp));
+    } else if (!this.camp.id) {
+      this.static = "create";
+      this.sharedService.setIsActive(false);
+    }
+
+    this.geValues("");
   }
 
   initForm() {
@@ -56,82 +59,63 @@ export class CompanyFromGeneralComponent implements OnInit {
           Validators.pattern(/^[a-zA-Z ]*$/),
         ],
       ],
-      name: [
-        null,
-        [Validators.required,],
-      ],
+      name: [null, [Validators.required]],
     });
-
   }
 
-  minIstrueCode: boolean = false
+  minIstrueCode: boolean = false;
 
   isBlur() {
-
     if (this.camp.code == undefined) {
-      this.minIstrueCode = true
-    }
-    else if (this.camp.code.toString().length < 1) { this.minIstrueCode = true }
-    else {
-      this.minIstrueCode = false
+      this.minIstrueCode = true;
+    } else if (this.camp.code.toString().length < 1) {
+      this.minIstrueCode = true;
+    } else {
+      this.minIstrueCode = false;
     }
   }
-  dispotrueCode: boolean = false
-  dispotruename: boolean = false
+  dispotrueCode: boolean = false;
+  dispotruename: boolean = false;
   blur1() {
     if (this.camp.code == null) {
-      this.dispotrueCode = false
-
+      this.dispotrueCode = false;
     }
   }
   exist() {
-    this.compaser.findbycode(this.camp.code).subscribe(data => {
-      if(this.static=="update" ){
-
-        try{
-          if(this.camp.code == this.campReplicat.code){
-            this.dispotrueCode = false
-
-          }else{
-            if (data != null) {
-              this.dispotrueCode = true
-
-
+    this.compaser.findbycode(this.camp.code).subscribe(
+      (data) => {
+        if (this.static == "update") {
+          try {
+            if (this.camp.code == this.campReplicat.code) {
+              this.dispotrueCode = false;
             } else {
-              this.dispotrueCode = false
-
+              if (data != null) {
+                this.dispotrueCode = true;
+              } else {
+                this.dispotrueCode = false;
+              }
             }
-          }
-        }catch(e){}
-
-
-      }else{
-        if (data != null) {
-          this.dispotrueCode = true
-
-
+          } catch (e) {}
         } else {
-          this.dispotrueCode = false
-
+          if (data != null) {
+            this.dispotrueCode = true;
+          } else {
+            this.dispotrueCode = false;
+          }
         }
-      }
-
-
-
-    }, error => {
-      if (error.status == 404) {
-        this.dispotrueCode = false
-
-      }
-    })
-
+      },
+      (error) => {
+        if (error.status == 404) {
+          this.dispotrueCode = false;
+        }
+      },
+    );
   }
 
-
-
   generateRandomCode() {
-    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    let code = '';
+    const characters =
+      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    let code = "";
     for (let i = 0; i < 4; i++) {
       const randomIndex = Math.floor(Math.random() * characters.length);
       code += characters.charAt(randomIndex);
@@ -139,47 +123,42 @@ export class CompanyFromGeneralComponent implements OnInit {
     return code;
   }
 
-  newSeggestions = ""
+  newSeggestions = "";
 
   existname() {
     if (this.names.indexOf(this.camp.name) != -1) {
-      if(this.static=="update" ){
-        if(this.camp.name == this.campReplicat.name){
-          this.dispotruename = false
-        }else{
-          this.dispotruename = true
+      if (this.static == "update") {
+        if (this.camp.name == this.campReplicat.name) {
+          this.dispotruename = false;
+        } else {
+          this.dispotruename = true;
         }
-      }else{
-        this.dispotruename = true
+      } else {
+        this.dispotruename = true;
       }
     } else {
-      this.dispotruename = false
+      this.dispotruename = false;
     }
   }
 
-  minIstrueName: boolean = false
-  minIstrueName2: boolean = false
+  minIstrueName: boolean = false;
+  minIstrueName2: boolean = false;
 
   isBlur1() {
     if (this.camp.name == undefined) {
-      this.minIstrueName = true
-
-
-    }
-    else if (this.camp.name.toString().length < 1) {
-      this.minIstrueName = true
-
-    }
-    else {
-      this.minIstrueName = false
-
+      this.minIstrueName = true;
+    } else if (this.camp.name.toString().length < 1) {
+      this.minIstrueName = true;
+    } else {
+      this.minIstrueName = false;
     }
   }
 
   geValues(event) {
-
     if (
-      !this.codeIsvalid && this.dispotrueCode == false && !this.dispotruename &&
+      !this.codeIsvalid &&
+      this.dispotrueCode == false &&
+      !this.dispotruename &&
       this.camp.code != null &&
       this.camp.code != "" &&
       this.camp.name != null &&
@@ -211,18 +190,14 @@ export class CompanyFromGeneralComponent implements OnInit {
     return this.addform.controls;
   }
 
-
-  codeIsvalid = false
+  codeIsvalid = false;
 
   validationCode() {
     const codeRegex: RegExp = /^[a-zA-Z0-9]*$/;
     if (codeRegex.test(this.camp.code)) {
       this.codeIsvalid = false;
-
+    } else {
+      this.codeIsvalid = true;
     }
-    else {
-      this.codeIsvalid = true
-    }
-
   }
 }

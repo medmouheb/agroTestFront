@@ -1,20 +1,31 @@
 <div class="main-content">
   <label class="pure-material-switch">
-    <input type="checkbox" [(ngModel)]="isChecked" (change)="onCheckboxChange()" >
-    <span class="style-text2"> {{'Go To Trash' | translate}}</span>
+    <input
+      type="checkbox"
+      [(ngModel)]="isChecked"
+      (change)="onCheckboxChange()"
+    />
+    <span class="style-text2"> {{ "Go To Trash" | translate }}</span>
   </label>
-  <div class="d-flex flex-wrap justify-content-between align-items-center gap-2">
+  <div
+    class="d-flex flex-wrap justify-content-between align-items-center gap-2"
+  >
     <div class="d-flex gap-2">
-      <button class="btn btn-add btn-outline-success btn-sm btn-action rounded-pill style-button" (click)="onClickAdd()"
-        [title]="'btns.add' | translate">
+      <button
+        class="btn btn-add btn-outline-success btn-sm btn-action rounded-pill style-button"
+        (click)="onClickAdd()"
+        [title]="'btns.add' | translate"
+      >
         <i class="fa fa-plus style-icons"></i>
-        <span class="style-title"> {{'menu.add-warehouse'|translate}}</span>
-
+        <span class="style-title"> {{ "menu.add-warehouse" | translate }}</span>
       </button>
-      <button class="btn btn-add btn-outline-success btn-sm btn-action" (click)="openImportModal()"
-      [title]="'btns.import' | translate">
-      <i class="fa fa-upload"></i>
-    </button>
+      <button
+        class="btn btn-add btn-outline-success btn-sm btn-action"
+        (click)="openImportModal()"
+        [title]="'btns.import' | translate"
+      >
+        <i class="fa fa-upload"></i>
+      </button>
       <!-- <button class="btn btn-add btn-outline-success btn-sm btn-action" (click)="file.click()"
         [title]="'btns.import' | translate">
         <i class="fa fa-upload"></i>
@@ -22,16 +33,19 @@
       <input (change)="onCSVImport($event)" hidden type="file" accept=".csv" #file> -->
     </div>
 
-
-
     <div class="form-group has-search">
       <span class="fa fa-search form-control-feedback"></span>
-      <input #search (input)="onFilterChange(search.value)" type="text" class="form-control bg-white"
-      placeholder="{{'Search by name'|translate}}"  />
+      <input
+        #search
+        (input)="onFilterChange(search.value)"
+        type="text"
+        class="form-control bg-white"
+        placeholder="{{ 'Search by name' | translate }}"
+      />
     </div>
   </div>
 
-  <div class="datatable"  *ngIf="affiche==false">
+  <div class="datatable" *ngIf="affiche == false">
     <ng-container *ngIf="loading">
       <app-spinner></app-spinner>
     </ng-container>
@@ -40,73 +54,123 @@
       <app-no-data></app-no-data>
     </ng-container>
 
-    <table aria-label="" class="table" *ngIf="!loading && !warehousesPage.empty">
+    <table
+      aria-label=""
+      class="table"
+      *ngIf="!loading && !warehousesPage.empty"
+    >
       <thead class="datatable-header">
         <tr>
           <th>
-            <strong  class="style-text" >
-              {{'wname' | translate}}
+            <strong class="style-text">
+              {{ "wname" | translate }}
               <a href="javascript:void(0);">
-                <svg (click)="sortByName()" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                  fill="currentColor" class="bi bi-chevron-double-down custom-color" viewBox="0 0 16 16">
-                  <path fill-rule="evenodd" d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z"/>
-
+                <svg
+                  (click)="sortByName()"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-chevron-double-down custom-color"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z"
+                  />
                 </svg>
               </a>
             </strong>
           </th>
           <th>
-            <strong  class="style-text" >
-              {{'wcode' | translate}}
+            <strong class="style-text">
+              {{ "wcode" | translate }}
               <a href="javascript:void(0);">
-                <svg (click)="sortByName()" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                  fill="currentColor" class="bi bi-chevron-double-down custom-color" viewBox="0 0 16 16">
-                  <path fill-rule="evenodd" d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z"/>
-
+                <svg
+                  (click)="sortByName()"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-chevron-double-down custom-color"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z"
+                  />
                 </svg>
               </a>
             </strong>
           </th>
           <th>
-            <strong  class="style-text" >
-              {{'costCenter' | translate}}
+            <strong class="style-text">
+              {{ "costCenter" | translate }}
               <a href="javascript:void(0);">
-                <svg (click)="sortBycostCenterName()" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                  fill="currentColor" class="bi bi-chevron-double-down custom-color" viewBox="0 0 16 16">
-                  <path fill-rule="evenodd" d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z"/>
-
-                </svg>
-              </a>
-            </strong>
-          </th>
-
-          <th>
-            <strong  class="style-text" >
-              {{'primary' | translate}}
-              <a href="javascript:void(0);">
-                <svg (click)="sortByphoneNumber()" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                  fill="currentColor" class="bi bi-chevron-double-down custom-color" viewBox="0 0 16 16">
-                  <path fill-rule="evenodd" d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z"/>
-                </svg>
-              </a>
-            </strong>
-          </th>
-          <th>
-            <strong  class="style-text" >
-              {{'City' | translate}}
-              <a href="javascript:void(0);">
-                <svg (click)="sortBycityName()" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                  fill="currentColor" class="bi bi-chevron-double-down custom-color" viewBox="0 0 16 16">
-                  <path fill-rule="evenodd" d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z"/>
+                <svg
+                  (click)="sortBycostCenterName()"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-chevron-double-down custom-color"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z"
+                  />
                 </svg>
               </a>
             </strong>
           </th>
 
           <th>
-            <strong  class="style-text">
-              {{'actions' | translate}}
+            <strong class="style-text">
+              {{ "primary" | translate }}
+              <a href="javascript:void(0);">
+                <svg
+                  (click)="sortByphoneNumber()"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-chevron-double-down custom-color"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z"
+                  />
+                </svg>
+              </a>
+            </strong>
+          </th>
+          <th>
+            <strong class="style-text">
+              {{ "City" | translate }}
+              <a href="javascript:void(0);">
+                <svg
+                  (click)="sortBycityName()"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-chevron-double-down custom-color"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z"
+                  />
+                </svg>
+              </a>
+            </strong>
+          </th>
 
+          <th>
+            <strong class="style-text">
+              {{ "actions" | translate }}
             </strong>
           </th>
         </tr>
@@ -114,168 +178,238 @@
       <tbody class="text-sm">
         <tr class="row-data" *ngFor="let warehouse of warehouses">
           <td>
-            {{warehouse.name}}
-
+            {{ warehouse.name }}
           </td>
           <td>
-            {{warehouse.code}}
-
+            {{ warehouse.code }}
           </td>
           <td>
-            {{warehouse.costCenterName}}
+            {{ warehouse.costCenterName }}
           </td>
 
           <td>
-            {{ (warehouse.isPrimary ? 'message.yes' : 'message.no') | translate }}
+            {{
+              (warehouse.isPrimary ? "message.yes" : "message.no") | translate
+            }}
           </td>
           <td>
-            {{warehouse.cityName}}
+            {{ warehouse.cityName }}
           </td>
 
           <td class="d-flex gap-4">
-            <button class="text-primary datatable-action-btn" (click)="onClickEdit(warehouse.id!)"
-              [title]="'btns.edit' | translate">
+            <button
+              class="text-primary datatable-action-btn"
+              (click)="onClickEdit(warehouse.id!)"
+              [title]="'btns.edit' | translate"
+            >
               <i class="fa fa-pencil color-edit"></i>
             </button>
-            <button class="text-danger datatable-action-btn" (click)="onClickArchive(warehouse.id!)"
-              [title]="'btns.delete' | translate">
+            <button
+              class="text-danger datatable-action-btn"
+              (click)="onClickArchive(warehouse.id!)"
+              [title]="'btns.delete' | translate"
+            >
               <i class="fa fa-trash"></i>
             </button>
           </td>
         </tr>
       </tbody>
-
     </table>
   </div>
-  <div class="datatable" *ngIf="affiche==true">
+  <div class="datatable" *ngIf="affiche == true">
     <ng-container *ngIf="loading">
       <app-spinner></app-spinner>
     </ng-container>
-
 
     <ng-container *ngIf="!loading && Pagewarehouses.empty">
       <app-no-data></app-no-data>
     </ng-container>
 
-    <table aria-label="" class="table" *ngIf="!loading && !Pagewarehouses.empty">
+    <table
+      aria-label=""
+      class="table"
+      *ngIf="!loading && !Pagewarehouses.empty"
+    >
       <thead class="datatable-header">
         <tr>
           <th>
-            <strong  class="style-text" >
-              {{'wname' | translate}}
+            <strong class="style-text">
+              {{ "wname" | translate }}
               <a href="javascript:void(0);">
-                <svg (click)="sortByName()" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                  fill="currentColor" class="bi bi-chevron-double-down custom-color" viewBox="0 0 16 16">
-                  <path fill-rule="evenodd" d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z"/>
-
+                <svg
+                  (click)="sortByName()"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-chevron-double-down custom-color"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z"
+                  />
                 </svg>
               </a>
             </strong>
           </th>
           <th>
-            <strong  class="style-text" >
-              {{'wcode' | translate}}
+            <strong class="style-text">
+              {{ "wcode" | translate }}
               <a href="javascript:void(0);">
-                <svg (click)="sortByName()" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                  fill="currentColor" class="bi bi-chevron-double-down custom-color" viewBox="0 0 16 16">
-                  <path fill-rule="evenodd" d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z"/>
-
+                <svg
+                  (click)="sortByName()"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-chevron-double-down custom-color"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z"
+                  />
                 </svg>
               </a>
             </strong>
           </th>
 
           <th>
-            <strong  class="style-text" >
-              {{'costCenter' | translate}}
+            <strong class="style-text">
+              {{ "costCenter" | translate }}
               <a href="javascript:void(0);">
-                <svg (click)="sortBycostCenterName()" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                  fill="currentColor" class="bi bi-chevron-double-down custom-color" viewBox="0 0 16 16">
-                  <path fill-rule="evenodd" d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z"/>
-
+                <svg
+                  (click)="sortBycostCenterName()"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-chevron-double-down custom-color"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z"
+                  />
                 </svg>
               </a>
             </strong>
           </th>
 
           <th>
-            <strong  class="style-text" >
-              {{'primary' | translate}}
+            <strong class="style-text">
+              {{ "primary" | translate }}
               <a href="javascript:void(0);">
-                <svg (click)="sortByphoneNumber()" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                  fill="currentColor" class="bi bi-chevron-double-down custom-color" viewBox="0 0 16 16">
-                  <path fill-rule="evenodd" d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z"/>
+                <svg
+                  (click)="sortByphoneNumber()"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-chevron-double-down custom-color"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z"
+                  />
                 </svg>
               </a>
             </strong>
           </th>
           <th>
-            <strong  class="style-text" >
-              {{'City' | translate}}
+            <strong class="style-text">
+              {{ "City" | translate }}
               <a href="javascript:void(0);">
-                <svg (click)="sortBycityName()" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                  fill="currentColor" class="bi bi-chevron-double-down custom-color" viewBox="0 0 16 16">
-                  <path fill-rule="evenodd" d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z"/>
+                <svg
+                  (click)="sortBycityName()"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-chevron-double-down custom-color"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z"
+                  />
                 </svg>
               </a>
             </strong>
           </th>
           <th>
-            <strong  class="style-text">
-              {{'actions' | translate}}
-
+            <strong class="style-text">
+              {{ "actions" | translate }}
             </strong>
           </th>
         </tr>
       </thead>
 
-      <tbody class="text-sm" >
+      <tbody class="text-sm">
         <tr class="row-data" *ngFor="let warehouse of warehousess">
           <td>
-            {{warehouse.name}}
-
+            {{ warehouse.name }}
           </td>
           <td>
-            {{warehouse.code}}
-
+            {{ warehouse.code }}
           </td>
           <td>
-            {{warehouse.costCenterName}}
+            {{ warehouse.costCenterName }}
           </td>
 
           <td>
-            {{ (warehouse.isPrimary ? 'message.yes' : 'message.no') | translate }}
+            {{
+              (warehouse.isPrimary ? "message.yes" : "message.no") | translate
+            }}
           </td>
           <td>
-            {{warehouse.cityName}}
+            {{ warehouse.cityName }}
           </td>
-           <td class="d-flex gap-4">
-
-
-
-            <button class="text-primary datatable-action-btn" (click)="onClickdisArchive(warehouse.id!)"
-            [title]="'Restore line' | translate">
-            <i class="fa fa-reply-all"></i>
-        </button>
-        <button class="text-danger datatable-action-btn" (click)="onClickDelete(warehouse.id!)"
-            [title]="'Delete permanently' | translate">
-            <i class="fa fa-trash"></i>
-        </button>
-
-
-        </td>
+          <td class="d-flex gap-4">
+            <button
+              class="text-primary datatable-action-btn"
+              (click)="onClickdisArchive(warehouse.id!)"
+              [title]="'Restore line' | translate"
+            >
+              <i class="fa fa-reply-all"></i>
+            </button>
+            <button
+              class="text-danger datatable-action-btn"
+              (click)="onClickDelete(warehouse.id!)"
+              [title]="'Delete permanently' | translate"
+            >
+              <i class="fa fa-trash"></i>
+            </button>
+          </td>
         </tr>
       </tbody>
     </table>
   </div>
-  <app-pagination [pageNumber]="pageNumber" [pageSize]="pageSize" [page]="warehousesPage"
-    (onPageNumberChange)="onPageNumberChange($event)" (onPageSizeChange)="onPageSizeChange($event)">
+  <app-pagination
+    [pageNumber]="pageNumber"
+    [pageSize]="pageSize"
+    [page]="warehousesPage"
+    (onPageNumberChange)="onPageNumberChange($event)"
+    (onPageSizeChange)="onPageSizeChange($event)"
+  >
   </app-pagination>
 
-  <app-wizard-dialog [currentStep]="currentStep" [entity]="warehouse" [type]="'Warehouse'" [field]="null" #formModal>
+  <app-wizard-dialog
+    [currentStep]="currentStep"
+    [entity]="warehouse"
+    [type]="'Warehouse'"
+    [field]="null"
+    #formModal
+  >
     <app-warehouse-form [currentStep]="currentStep" [warehouse]="warehouse">
-      <app-stepper #stepper [currentStep]="currentStep" [steps]="steps"
-        (onStepChange)="onStepChange($event)"></app-stepper>
+      <app-stepper
+        #stepper
+        [currentStep]="currentStep"
+        [steps]="steps"
+        (onStepChange)="onStepChange($event)"
+      ></app-stepper>
     </app-warehouse-form>
   </app-wizard-dialog>
 
@@ -283,22 +417,37 @@
 
   <app-dialog #importModal>
     <div class="d-flex align-items-center justify-content-around my-2">
-      <button class="btn btn-add btn-outline-success" (click)="onDownloadCSVTempalte()"
-        [title]="'btns.download' | translate">
+      <button
+        class="btn btn-add btn-outline-success"
+        (click)="onDownloadCSVTempalte()"
+        [title]="'btns.download' | translate"
+      >
         <i class="fa fa-download"></i>
-        {{'message.download-csv-template' | translate}}
+        {{ "message.download-csv-template" | translate }}
       </button>
-      <button class="btn btn-add btn-outline-success" (click)="fileInput.click()" [title]="'btns.import' | translate">
+      <button
+        class="btn btn-add btn-outline-success"
+        (click)="fileInput.click()"
+        [title]="'btns.import' | translate"
+      >
         <i class="fa fa-upload"></i>
-        {{'btns.select-file' | translate}}
+        {{ "btns.select-file" | translate }}
       </button>
     </div>
 
-    <div *ngIf="file" class="d-flex align-items-center gap-2 justify-content-center">
+    <div
+      *ngIf="file"
+      class="d-flex align-items-center gap-2 justify-content-center"
+    >
       <i class="fa fa-file"></i>
-      <strong>{{file.name}}</strong>
+      <strong>{{ file.name }}</strong>
     </div>
-    <input (change)="onCSVChange($event)" hidden type="file" accept=".csv" #fileInput>
+    <input
+      (change)="onCSVChange($event)"
+      hidden
+      type="file"
+      accept=".csv"
+      #fileInput
+    />
   </app-dialog>
-
 </div>

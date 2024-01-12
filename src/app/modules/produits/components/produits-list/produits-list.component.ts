@@ -16,8 +16,6 @@ import { HotToastService } from "@ngneat/hot-toast";
   styleUrls: ["./produits-list.component.scss"],
 })
 export class ProduitsListComponent implements OnInit {
-
-
   @ViewChild("deleteModal")
   deleteModal!: ConfirmDialogComponent;
 
@@ -54,7 +52,7 @@ export class ProduitsListComponent implements OnInit {
   companyss: Array<Produit> = [];
   filter = "";
   isChecked: boolean = false;
-  affiche:boolean = false;
+  affiche: boolean = false;
   onPaginationChange: EventEmitter<string> = new EventEmitter<string>();
 
   file: File | null = null;
@@ -63,22 +61,23 @@ export class ProduitsListComponent implements OnInit {
     private produitsService: ProduitsService,
     private filesService: FilesService,
     private translateService: TranslateService,
-    private toastService: HotToastService
+    private toastService: HotToastService,
   ) {}
 
   ngOnInit(): void {
     this.findPage();
-    this.findArchivedPage()
-    this.onPaginationChange.subscribe(() => {this.findPage();this.findArchivedPage()});
+    this.findArchivedPage();
+    this.onPaginationChange.subscribe(() => {
+      this.findPage();
+      this.findArchivedPage();
+    });
   }
 
   onCheckboxChange() {
-    if (this.isChecked==false){
-
-      this.affiche=false
-    }
-    else{
-      this.affiche=true
+    if (this.isChecked == false) {
+      this.affiche = false;
+    } else {
+      this.affiche = true;
     }
   }
 
@@ -152,7 +151,7 @@ export class ProduitsListComponent implements OnInit {
       this.translateService.instant("message.loading..."),
       {
         id: "0",
-      }
+      },
     );
     this.produitsService.save(id, this.produit!).subscribe({
       next: () => {
@@ -163,7 +162,7 @@ export class ProduitsListComponent implements OnInit {
         this.toastService.success(
           this.translateService.instant("success.saved", {
             elem: this.translateService.instant("product"),
-          })
+          }),
         );
       },
       error: (error) => {
@@ -171,7 +170,7 @@ export class ProduitsListComponent implements OnInit {
         this.toastService.error(
           this.translateService.instant(error.error, {
             elem: this.translateService.instant("product"),
-          })
+          }),
         );
       },
     });
@@ -182,7 +181,7 @@ export class ProduitsListComponent implements OnInit {
       next: (data) =>
         this.filesService.download(
           data,
-          this.translateService.instant("menu.products") + ".csv"
+          this.translateService.instant("menu.products") + ".csv",
         ),
       error: (error) => console.error(error),
     });
@@ -205,7 +204,7 @@ export class ProduitsListComponent implements OnInit {
       this.translateService.instant("message.loading..."),
       {
         id: "0",
-      }
+      },
     );
     let formData: FormData = new FormData();
     formData.append("file", this.file);
@@ -218,7 +217,7 @@ export class ProduitsListComponent implements OnInit {
         this.toastService.success(
           this.translateService.instant("success.imported", {
             elem: this.translateService.instant("menu.products"),
-          })
+          }),
         );
       },
       error: (error) => {
@@ -253,50 +252,44 @@ export class ProduitsListComponent implements OnInit {
     this.stepper.nextStep();
     setTimeout(() => {
       this.stepper.prevStep();
-
     }, 100);
     setTimeout(() => {
-
-    this.formModal.show({
-      title: "menu.add-product",
-      stepsCount: this.steps.length - 1,
-      confirm: () => this.onWizardSave(null),
-      cancel: () => this.onCancel(),
-      prev: () => this.stepper.prevStep(),
-    });
-  }, 200);
-
+      this.formModal.show({
+        title: "menu.add-product",
+        stepsCount: this.steps.length - 1,
+        confirm: () => this.onWizardSave(null),
+        cancel: () => this.onCancel(),
+        prev: () => this.stepper.prevStep(),
+      });
+    }, 200);
   }
 
   onClickEdit(id: string) {
     this.stepper.nextStep();
     setTimeout(() => {
       this.stepper.prevStep();
-
     }, 100);
     this.findById(id);
     setTimeout(() => {
-
-    this.formModal.show({
-      title: "menu.edit-product",
-      stepsCount: this.steps.length - 1,
-      confirm: () => this.onWizardSave(id),
-      cancel: () => this.onCancel(),
-      prev: () => this.stepper.prevStep(),
-    });
-  }, 200);
-
+      this.formModal.show({
+        title: "menu.edit-product",
+        stepsCount: this.steps.length - 1,
+        confirm: () => this.onWizardSave(id),
+        cancel: () => this.onCancel(),
+        prev: () => this.stepper.prevStep(),
+      });
+    }, 200);
   }
 
   onClickDelete(id: string) {
     this.produitsService.delete(id).subscribe({
       next: () => {
         this.findArchivedPage();
-        this.findPage()
+        this.findPage();
         this.toastService.success(
           this.translateService.instant("success.deleted", {
             elem: this.translateService.instant("product"),
-          })
+          }),
         );
       },
     });
@@ -307,177 +300,196 @@ export class ProduitsListComponent implements OnInit {
       this.produitsService.archive(id).subscribe({
         next: () => {
           this.findPage();
-          this.findArchivedPage()
+          this.findArchivedPage();
           this.archiveModal.hide();
-          this.toastService.success;
-
+          this.toastService.success();
         },
       });
     });
   }
 
-
-
   onClickdisArchive(id: string) {
     this.produitsService.disArchive(id).subscribe({
       next: () => {
         this.findArchivedPage();
-        this.findPage()
+        this.findPage();
         this.toastService.success(
           this.translateService.instant("success.restore", {
             elem: this.translateService.instant("product"),
-          })
+          }),
         );
       },
     });
   }
 
-
   sortByCodeValid: boolean = true;
   sortByCode() {
-    if(this.affiche){
+    if (this.affiche) {
       if (this.sortByCodeValid) {
         this.produitss.sort((a, b) => a.code.localeCompare(b.code));
-        this.sortByCodeValid = false
+        this.sortByCodeValid = false;
       } else {
         this.produitss.sort((a, b) => b.code.localeCompare(a.code));
-        this.sortByCodeValid = true
+        this.sortByCodeValid = true;
       }
-    }else{
+    } else {
       if (this.sortByCodeValid) {
         this.produits.sort((a, b) => a.code.localeCompare(b.code));
-        this.sortByCodeValid = false
+        this.sortByCodeValid = false;
       } else {
         this.produits.sort((a, b) => b.code.localeCompare(a.code));
-        this.sortByCodeValid = true
+        this.sortByCodeValid = true;
       }
     }
-
   }
-
-
 
   sortByNameValid: boolean = true;
   sortByName() {
-    if(this.affiche){
+    if (this.affiche) {
       if (this.sortByNameValid) {
         this.produitss.sort((a, b) => a.name.localeCompare(b.name));
-        this.sortByNameValid = false
+        this.sortByNameValid = false;
       } else {
         this.produitss.sort((a, b) => b.name.localeCompare(a.name));
-        this.sortByNameValid = true
+        this.sortByNameValid = true;
       }
-    }else{
+    } else {
       if (this.sortByNameValid) {
         this.produits.sort((a, b) => a.name.localeCompare(b.name));
-        this.sortByNameValid = false
+        this.sortByNameValid = false;
       } else {
         this.produits.sort((a, b) => b.name.localeCompare(a.name));
-        this.sortByNameValid = true
+        this.sortByNameValid = true;
       }
     }
-
   }
-
 
   sortByCityNameValid: boolean = true;
   sortByCategorie() {
-    if(this.affiche){
+    if (this.affiche) {
       if (this.sortByCityNameValid) {
-        this.produitss.sort((a, b) => (a.category || "").localeCompare((b.category|| "")));
-        this.sortByCityNameValid = false
+        this.produitss.sort((a, b) =>
+          (a.category || "").localeCompare(b.category || ""),
+        );
+        this.sortByCityNameValid = false;
       } else {
-        this.produitss.sort((a, b) => (b.category|| "").localeCompare((a.category|| "")));
-        this.sortByCityNameValid = true
+        this.produitss.sort((a, b) =>
+          (b.category || "").localeCompare(a.category || ""),
+        );
+        this.sortByCityNameValid = true;
       }
-    }else{
+    } else {
       if (this.sortByCityNameValid) {
-        this.produits.sort((a, b) => (a.category || "").localeCompare((b.category|| "")));
-        this.sortByCityNameValid = false
+        this.produits.sort((a, b) =>
+          (a.category || "").localeCompare(b.category || ""),
+        );
+        this.sortByCityNameValid = false;
       } else {
-        this.produits.sort((a, b) => (b.category|| "").localeCompare((a.category|| "")));
-        this.sortByCityNameValid = true
+        this.produits.sort((a, b) =>
+          (b.category || "").localeCompare(a.category || ""),
+        );
+        this.sortByCityNameValid = true;
       }
     }
   }
   sortBywillayaValid: boolean = true;
   sortByprixUnitaireHt() {
-    if(this.affiche){
+    if (this.affiche) {
       if (this.sortBywillayaValid) {
-        this.produitss.sort((a, b) => (a.statuss + "").localeCompare((b.statuss + "")));
-        this.sortBywillayaValid = false
+        this.produitss.sort((a, b) =>
+          (a.statuss + "").localeCompare(b.statuss + ""),
+        );
+        this.sortBywillayaValid = false;
       } else {
-        this.produitss.sort((a, b) => (b.statuss + "").localeCompare((a.statuss + "")));
-        this.sortBywillayaValid = true
+        this.produitss.sort((a, b) =>
+          (b.statuss + "").localeCompare(a.statuss + ""),
+        );
+        this.sortBywillayaValid = true;
       }
-    }else{
+    } else {
       if (this.sortBywillayaValid) {
-        this.produits.sort((a, b) => (a.statuss + "").localeCompare((b.statuss + "")));
-        this.sortBywillayaValid = false
+        this.produits.sort((a, b) =>
+          (a.statuss + "").localeCompare(b.statuss + ""),
+        );
+        this.sortBywillayaValid = false;
       } else {
-        this.produits.sort((a, b) => (b.statuss + "").localeCompare((a.statuss + "")));
-        this.sortBywillayaValid = true
+        this.produits.sort((a, b) =>
+          (b.statuss + "").localeCompare(a.statuss + ""),
+        );
+        this.sortBywillayaValid = true;
       }
     }
-
   }
   sortBywillayaValida: boolean = true;
   sortByprixUnitaireHta() {
-    if(this.affiche){
+    if (this.affiche) {
       if (this.sortBywillayaValida) {
-        this.produitss.sort((a, b) => (a.prixUnitaireHt +"" ).localeCompare((b.prixUnitaireHt +"" )));
-        this.sortBywillayaValida = false
+        this.produitss.sort((a, b) =>
+          (a.prixUnitaireHt + "").localeCompare(b.prixUnitaireHt + ""),
+        );
+        this.sortBywillayaValida = false;
       } else {
-        this.produitss.sort((a, b) => (b.prixUnitaireHt +"" ).localeCompare((a.prixUnitaireHt +"" )));
-        this.sortBywillayaValida = true
+        this.produitss.sort((a, b) =>
+          (b.prixUnitaireHt + "").localeCompare(a.prixUnitaireHt + ""),
+        );
+        this.sortBywillayaValida = true;
       }
-    }else{
+    } else {
       if (this.sortBywillayaValida) {
-        this.produits.sort((a, b) => (a.prixUnitaireHt +"" ).localeCompare((b.prixUnitaireHt +"" )));
-        this.sortBywillayaValida = false
+        this.produits.sort((a, b) =>
+          (a.prixUnitaireHt + "").localeCompare(b.prixUnitaireHt + ""),
+        );
+        this.sortBywillayaValida = false;
       } else {
-        this.produits.sort((a, b) => (b.prixUnitaireHt  +"").localeCompare((a.prixUnitaireHt  +"")));
-        this.sortBywillayaValida = true
+        this.produits.sort((a, b) =>
+          (b.prixUnitaireHt + "").localeCompare(a.prixUnitaireHt + ""),
+        );
+        this.sortBywillayaValida = true;
       }
     }
-
   }
-
 
   sortByAddressValid: boolean = true;
   sortByAddress() {
-    if(this.affiche){
+    if (this.affiche) {
       if (this.sortByAddressValid) {
-        this.produitss.sort((a, b) => (a.tauxTva + "").localeCompare((b.tauxTva + "")));
-        this.sortByAddressValid = false
+        this.produitss.sort((a, b) =>
+          (a.tauxTva + "").localeCompare(b.tauxTva + ""),
+        );
+        this.sortByAddressValid = false;
       } else {
-        this.produitss.sort((a, b) => (b.tauxTva + "").localeCompare((a.tauxTva + "")));
-        this.sortByAddressValid = true
+        this.produitss.sort((a, b) =>
+          (b.tauxTva + "").localeCompare(a.tauxTva + ""),
+        );
+        this.sortByAddressValid = true;
       }
-    }else{
+    } else {
       if (this.sortByAddressValid) {
-        this.produits.sort((a, b) => (a.tauxTva + "").localeCompare((b.tauxTva + "")));
-        this.sortByAddressValid = false
+        this.produits.sort((a, b) =>
+          (a.tauxTva + "").localeCompare(b.tauxTva + ""),
+        );
+        this.sortByAddressValid = false;
       } else {
-        this.produits.sort((a, b) => (b.tauxTva + "").localeCompare((a.tauxTva + "")));
-        this.sortByAddressValid = true
+        this.produits.sort((a, b) =>
+          (b.tauxTva + "").localeCompare(a.tauxTva + ""),
+        );
+        this.sortByAddressValid = true;
       }
     }
-
   }
 
   sortByEmailValid: boolean = true;
   sortByEmail() {
     if (this.sortByEmailValid) {
-      this.produits.sort((a, b) => (a.prixUnitaireTtc || "").localeCompare((b.prixUnitaireTtc || "")));
-      this.sortByEmailValid = false
+      this.produits.sort((a, b) =>
+        (a.prixUnitaireTtc || "").localeCompare(b.prixUnitaireTtc || ""),
+      );
+      this.sortByEmailValid = false;
     } else {
-      this.produits.sort((a, b) => (b.prixUnitaireTtc || "").localeCompare((a.prixUnitaireTtc || "")));
-      this.sortByEmailValid = true
+      this.produits.sort((a, b) =>
+        (b.prixUnitaireTtc || "").localeCompare(a.prixUnitaireTtc || ""),
+      );
+      this.sortByEmailValid = true;
     }
   }
-
-
-
-
 }

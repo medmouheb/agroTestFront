@@ -1,14 +1,13 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
 
-import { SeaportRoutingModule } from './seaport-routing.module';
-import { SeaportFormComponent } from './components/seaport-form/seaport-form.component';
-import { SeaportListComponent } from './components/seaport-list/seaport-list.component';
-import { SharedModule } from 'app/shared/shared.module';
-import { SeaportFormGeneralComponent } from './components/seaport-form/seaport-form-general/seaport-form-general.component';
-import { SeaportInformationComponent } from './components/seaport-form/seaport-information/seaport-information.component';
-import { TrashComponent } from './components/trash/trash.component';
-
+import { SeaportRoutingModule } from "./seaport-routing.module";
+import { SeaportFormComponent } from "./components/seaport-form/seaport-form.component";
+import { SeaportListComponent } from "./components/seaport-list/seaport-list.component";
+import { SharedModule } from "app/shared/shared.module";
+import { SeaportFormGeneralComponent } from "./components/seaport-form/seaport-form-general/seaport-form-general.component";
+import { SeaportInformationComponent } from "./components/seaport-form/seaport-information/seaport-information.component";
+import { TrashComponent } from "./components/trash/trash.component";
 
 @NgModule({
   declarations: [
@@ -18,10 +17,6 @@ import { TrashComponent } from './components/trash/trash.component';
     SeaportInformationComponent,
     TrashComponent,
   ],
-  imports: [
-    CommonModule,
-    SeaportRoutingModule,
-    SharedModule
-  ]
+  imports: [CommonModule, SeaportRoutingModule, SharedModule],
 })
-export class SeaportModule { }
+export class SeaportModule {}

@@ -1,22 +1,20 @@
-import { Component, EventEmitter, OnInit, ViewChild } from '@angular/core';
-import { ConfirmDialogComponent } from 'app/shared/components/confirm-dialog/confirm-dialog.component';
-import { WizardDialogComponent } from 'app/shared/components/wizard-dialog/wizard-dialog.component';
-import { RapprochementDesStocks } from '../../model/rapprochementdes-stock';
-import { Page, initPage } from 'app/shared/models';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { RapprochementdesStockService } from '../../service/rapprochementdes-stock.service';
-import { TranslateService } from '@ngx-translate/core';
-import { HotToastService } from '@ngneat/hot-toast';
-import { StepperComponent } from 'app/shared/components/stepper/stepper.component';
+import { Component, EventEmitter, OnInit, ViewChild } from "@angular/core";
+import { ConfirmDialogComponent } from "app/shared/components/confirm-dialog/confirm-dialog.component";
+import { WizardDialogComponent } from "app/shared/components/wizard-dialog/wizard-dialog.component";
+import { RapprochementDesStocks } from "../../model/rapprochementdes-stock";
+import { Page, initPage } from "app/shared/models";
+import { FormBuilder, FormGroup } from "@angular/forms";
+import { RapprochementdesStockService } from "../../service/rapprochementdes-stock.service";
+import { TranslateService } from "@ngx-translate/core";
+import { HotToastService } from "@ngneat/hot-toast";
+import { StepperComponent } from "app/shared/components/stepper/stepper.component";
 
 @Component({
-  selector: 'app-rapprochementdes-stocks-list',
-  templateUrl: './rapprochementdes-stocks-list.component.html',
-  styleUrls: ['./rapprochementdes-stocks-list.component.scss']
+  selector: "app-rapprochementdes-stocks-list",
+  templateUrl: "./rapprochementdes-stocks-list.component.html",
+  styleUrls: ["./rapprochementdes-stocks-list.component.scss"],
 })
 export class RapprochementdesStocksListComponent implements OnInit {
-
-
   @ViewChild("deleteModal")
   deleteModal!: ConfirmDialogComponent;
   @ViewChild("archiveModal")
@@ -36,11 +34,11 @@ export class RapprochementdesStocksListComponent implements OnInit {
   companyPages: Page<RapprochementDesStocks> = initPage;
 
   isChecked: boolean = false;
-  affiche:boolean = false;
+  affiche: boolean = false;
   onPaginationChange: EventEmitter<string> = new EventEmitter<string>();
   form: FormGroup;
 
-  fullDetail=false
+  fullDetail = false;
 
   currentStep = 0;
   steps: any = [
@@ -49,28 +47,29 @@ export class RapprochementdesStocksListComponent implements OnInit {
     "steps.pluss",
     "steps.localisations",
 
-    "steps.supplementairess"
+    "steps.supplementairess",
   ];
 
   constructor(
     private rapprochementdesstocksService: RapprochementdesStockService,
     private translateService: TranslateService,
     private toastService: HotToastService,
-    private formBuilder: FormBuilder
-  ) { }
+    private formBuilder: FormBuilder,
+  ) {}
   onCheckboxChange() {
-    if (this.isChecked==false){
-
-      this.affiche=false
-    }
-    else{
-      this.affiche=true
+    if (this.isChecked == false) {
+      this.affiche = false;
+    } else {
+      this.affiche = true;
     }
   }
   ngOnInit(): void {
     this.findPage();
-    this.findArchivedPage()
-    this.onPaginationChange.subscribe(() => {this.findPage();this.findArchivedPage()});
+    this.findArchivedPage();
+    this.onPaginationChange.subscribe(() => {
+      this.findPage();
+      this.findArchivedPage();
+    });
   }
 
   findPage() {
@@ -81,11 +80,10 @@ export class RapprochementdesStocksListComponent implements OnInit {
         next: (result) => {
           this.companys = result.content;
           this.companyPage = result;
-
         },
         error: (error) => {
           this.loading = false;
-          console.error("aze",error );
+          console.error("aze", error);
         },
         complete: () => (this.loading = false),
       });
@@ -102,7 +100,7 @@ export class RapprochementdesStocksListComponent implements OnInit {
     this.filter = filter;
     this.pageNumber = 0;
     this.findPage();
-    this.findArchivedPage()
+    this.findArchivedPage();
   }
 
   onPageNumberChange(pageNumber: number) {
@@ -126,7 +124,7 @@ export class RapprochementdesStocksListComponent implements OnInit {
       this.translateService.instant("message.loading..."),
       {
         id: "0",
-      }
+      },
     );
 
     this.rapprochementdesstocksService.save(id, this.camp!).subscribe({
@@ -137,16 +135,20 @@ export class RapprochementdesStocksListComponent implements OnInit {
         this.toastService.close("0");
         this.toastService.success(
           this.translateService.instant("success.saved", {
-            elem: this.translateService.instant("menu.Rapprochement-des-stocks"),
-          })
+            elem: this.translateService.instant(
+              "menu.Rapprochement-des-stocks",
+            ),
+          }),
         );
       },
       error: (error) => {
         this.toastService.close("0");
         this.toastService.error(
           this.translateService.instant(error.error, {
-            elem: this.translateService.instant("menu.Rapprochement-des-stocks"),
-          })
+            elem: this.translateService.instant(
+              "menu.Rapprochement-des-stocks",
+            ),
+          }),
         );
       },
     });
@@ -168,18 +170,16 @@ export class RapprochementdesStocksListComponent implements OnInit {
     this.stepper.nextStep();
     setTimeout(() => {
       this.stepper.prevStep();
-
     }, 100);
     setTimeout(() => {
-    this.formModal.show({
-      title: "menu.add-Rapprochement-des-stocks",
-      stepsCount: this.steps.length - 1,
-      confirm: () => this.onWizardSave(null),
-      cancel: () => this.onCancel(),
-      prev: () => this.stepper.prevStep(),
-    });
-  }, 200);
-
+      this.formModal.show({
+        title: "menu.add-Rapprochement-des-stocks",
+        stepsCount: this.steps.length - 1,
+        confirm: () => this.onWizardSave(null),
+        cancel: () => this.onCancel(),
+        prev: () => this.stepper.prevStep(),
+      });
+    }, 200);
   }
 
   onClickEdit(id: string) {
@@ -188,7 +188,6 @@ export class RapprochementdesStocksListComponent implements OnInit {
     this.stepper.nextStep();
     setTimeout(() => {
       this.stepper.prevStep();
-
     }, 100);
     setTimeout(() => {
       this.formModal.show({
@@ -199,23 +198,22 @@ export class RapprochementdesStocksListComponent implements OnInit {
         prev: () => this.stepper.prevStep(),
       });
     }, 200);
-
   }
-
-
 
   onClickArchive(id: string) {
     this.archiveModal.show(() => {
       this.rapprochementdesstocksService.archive(id).subscribe({
         next: () => {
           this.findPage();
-          this.findArchivedPage()
+          this.findArchivedPage();
           this.archiveModal.hide();
           this.toastService.close("0");
           this.toastService.success(
             this.translateService.instant("success.deleted", {
-              elem: this.translateService.instant("menu.Rapprochement-des-stocks"),
-            })
+              elem: this.translateService.instant(
+                "menu.Rapprochement-des-stocks",
+              ),
+            }),
           );
         },
       });
@@ -224,44 +222,44 @@ export class RapprochementdesStocksListComponent implements OnInit {
   sortByCodeValid: boolean = true;
   sortByCode() {
     if (this.sortByCodeValid) {
-      this.companys.sort((a, b) => a.numeroDeProduit.localeCompare(b.numeroDeProduit));
-      this.sortByCodeValid = false
+      this.companys.sort((a, b) =>
+        a.numeroDeProduit.localeCompare(b.numeroDeProduit),
+      );
+      this.sortByCodeValid = false;
     } else {
-      this.companys.sort((a, b) => b.numeroDeProduit.localeCompare(a.numeroDeProduit));
-      this.sortByCodeValid = true
+      this.companys.sort((a, b) =>
+        b.numeroDeProduit.localeCompare(a.numeroDeProduit),
+      );
+      this.sortByCodeValid = true;
     }
   }
-
-
 
   sortByNameValid: boolean = true;
   sortByName() {
     if (this.sortByNameValid) {
-      this.companys.sort((a, b) => a.nomDuProduit.localeCompare(b.nomDuProduit));
-      this.sortByNameValid = false
+      this.companys.sort((a, b) =>
+        a.nomDuProduit.localeCompare(b.nomDuProduit),
+      );
+      this.sortByNameValid = false;
     } else {
-      this.companys.sort((a, b) => b.nomDuProduit.localeCompare(a.nomDuProduit));
-      this.sortByNameValid = true
+      this.companys.sort((a, b) =>
+        b.nomDuProduit.localeCompare(a.nomDuProduit),
+      );
+      this.sortByNameValid = true;
     }
   }
 
-
-
-
-
-
-
-
   onClickdisArchive(id: string) {
-
     this.rapprochementdesstocksService.disArchive(id).subscribe({
       next: () => {
         this.findArchivedPage();
-this.findPage()
+        this.findPage();
         this.toastService.success(
           this.translateService.instant("success.restore", {
-            elem: this.translateService.instant("menu.Rapprochement-des-stocks"),
-          })
+            elem: this.translateService.instant(
+              "menu.Rapprochement-des-stocks",
+            ),
+          }),
         );
       },
     });
@@ -271,36 +269,17 @@ this.findPage()
     this.rapprochementdesstocksService.delete(id).subscribe({
       next: () => {
         this.findArchivedPage();
-        this.findPage()
+        this.findPage();
         this.toastService.success(
           this.translateService.instant("success.deleted", {
-            elem: this.translateService.instant("menu.Rapprochement-des-stocks"),
-          })
+            elem: this.translateService.instant(
+              "menu.Rapprochement-des-stocks",
+            ),
+          }),
         );
       },
     });
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   findArchivedPage() {
     this.loading = true;
@@ -310,7 +289,6 @@ this.findPage()
         next: (result) => {
           this.companyss = result.content;
           this.companyPages = result;
-
         },
         error: (error) => {
           this.loading = false;
@@ -319,5 +297,4 @@ this.findPage()
         complete: () => (this.loading = false),
       });
   }
-
 }

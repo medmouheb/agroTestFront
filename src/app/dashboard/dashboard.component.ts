@@ -157,7 +157,7 @@ export class DashboardComponent implements OnInit {
 
     // Capitalize the first letter of each word
     const capitalizedWords = words.map(
-      (word) => word.charAt(0).toUpperCase() + word.slice(1)
+      (word) => word.charAt(0).toUpperCase() + word.slice(1),
     );
 
     // Join the words with spaces
@@ -277,7 +277,7 @@ export class DashboardComponent implements OnInit {
           this.temperatures = temperatures;
           this.averageArea = (sumAr / areas.length || 0).toFixed(2);
           this.averageProduction = (sumProd / productions.length || 0).toFixed(
-            2
+            2,
           );
           this.averageExportationPrice = (
             sumExp / exportations.length || 0
@@ -294,7 +294,7 @@ export class DashboardComponent implements OnInit {
         this.product,
         this.variety,
         this.minDate,
-        this.maxDate
+        this.maxDate,
       )
       .subscribe((response) => {
         if (response != null && response != undefined) {
@@ -371,7 +371,7 @@ export class DashboardComponent implements OnInit {
           this.temperatures = temperatures;
           this.averageArea = (sumAr / areas.length || 0).toFixed(2);
           this.averageProduction = (sumProd / productions.length || 0).toFixed(
-            2
+            2,
           );
           this.averageExportationPrice = (
             sumExp / exportations.length || 0
@@ -386,7 +386,7 @@ export class DashboardComponent implements OnInit {
       .detailsPerCountryAndProductAndVariety(
         this.country,
         this.product,
-        this.variety
+        this.variety,
       )
       .subscribe((response) => {
         if (response != null && response != undefined) {
@@ -465,7 +465,7 @@ export class DashboardComponent implements OnInit {
           this.temperatures = temperatures;
           this.averageArea = (sumAr / areas.length || 0).toFixed(2);
           this.averageProduction = (sumProd / productions.length || 0).toFixed(
-            2
+            2,
           );
           this.averageExportationPrice = (
             sumExp / exportations.length || 0

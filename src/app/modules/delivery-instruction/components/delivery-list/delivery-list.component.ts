@@ -1,22 +1,21 @@
-import { Component, EventEmitter, OnInit, ViewChild } from '@angular/core';
-import { HotToastService } from '@ngneat/hot-toast';
-import { TranslateService } from '@ngx-translate/core';
-import { ConfirmDialogComponent } from 'app/shared/components/confirm-dialog/confirm-dialog.component';
-import { DialogComponent } from 'app/shared/components/dialog/dialog.component';
-import { StepperComponent } from 'app/shared/components/stepper/stepper.component';
-import { Page, initPage } from 'app/shared/models';
-import { DeliveryService } from '../../Services/delivery.service';
-import { Delivery } from '../../models/delivery';
-import { SharedService } from 'app/modules/company/services/shared.service';
-import { HttpClient } from '@angular/common/http';
+import { Component, EventEmitter, OnInit, ViewChild } from "@angular/core";
+import { HotToastService } from "@ngneat/hot-toast";
+import { TranslateService } from "@ngx-translate/core";
+import { ConfirmDialogComponent } from "app/shared/components/confirm-dialog/confirm-dialog.component";
+import { DialogComponent } from "app/shared/components/dialog/dialog.component";
+import { StepperComponent } from "app/shared/components/stepper/stepper.component";
+import { Page, initPage } from "app/shared/models";
+import { DeliveryService } from "../../Services/delivery.service";
+import { Delivery } from "../../models/delivery";
+import { SharedService } from "app/modules/company/services/shared.service";
+import { HttpClient } from "@angular/common/http";
 
 @Component({
-  selector: 'app-delivery-list',
-  templateUrl: './delivery-list.component.html',
-  styleUrls: ['./delivery-list.component.scss']
+  selector: "app-delivery-list",
+  templateUrl: "./delivery-list.component.html",
+  styleUrls: ["./delivery-list.component.scss"],
 })
 export class DeliveryListComponent implements OnInit {
-
   @ViewChild("deleteModal")
   deleteModal!: ConfirmDialogComponent;
   @ViewChild("archiveModal")
@@ -46,22 +45,23 @@ export class DeliveryListComponent implements OnInit {
     private translateService: TranslateService,
     private toastService: HotToastService,
     private sharedService: SharedService,
-    private http: HttpClient
-  ) { }
+    private http: HttpClient,
+  ) {}
 
   ngOnInit(): void {
     this.findPage();
     this.findArchivedPage();
 
-    this.onPaginationChange.subscribe(() => {this.findPage();this.findArchivedPage()});
+    this.onPaginationChange.subscribe(() => {
+      this.findPage();
+      this.findArchivedPage();
+    });
   }
   onCheckboxChange() {
     if (this.isChecked == false) {
-
-      this.affiche = false
-    }
-    else {
-      this.affiche = true
+      this.affiche = false;
+    } else {
+      this.affiche = true;
     }
   }
   findPage() {
@@ -84,7 +84,7 @@ export class DeliveryListComponent implements OnInit {
   findById(id: string) {
     this.deliveryservice.findById(id).subscribe({
       next: (result) => {
-        this.delivery = result
+        this.delivery = result;
       },
       error: (error) => console.error(error),
     });
@@ -118,14 +118,20 @@ export class DeliveryListComponent implements OnInit {
 
       {
         id: "0",
-      }
+      },
     );
-    if ((this.delivery.productType == undefined) || (this.delivery.instructiuonCode == undefined) || (this.delivery.instructiuonName == undefined)) {
+    if (
+      this.delivery.productType == undefined ||
+      this.delivery.instructiuonCode == undefined ||
+      this.delivery.instructiuonName == undefined
+    ) {
       this.toastService.close("0");
-      let lg = localStorage.getItem("locale")
-      this.http.get("../../../../../assets/i18n/" + lg + ".json").subscribe((data: any) => {
-        this.toastService.warning(data.verifCodeName)
-      });
+      let lg = localStorage.getItem("locale");
+      this.http
+        .get("../../../../../assets/i18n/" + lg + ".json")
+        .subscribe((data: any) => {
+          this.toastService.warning(data.verifCodeName);
+        });
       return;
     }
 
@@ -138,7 +144,7 @@ export class DeliveryListComponent implements OnInit {
         this.toastService.success(
           this.translateService.instant("success.saved", {
             elem: this.translateService.instant("delivery"),
-          })
+          }),
         );
       },
       error: (error) => {
@@ -146,22 +152,21 @@ export class DeliveryListComponent implements OnInit {
         this.toastService.error(
           this.translateService.instant(error.error, {
             elem: this.translateService.instant("delivery"),
-          })
+          }),
         );
       },
     });
   }
 
   onClickAdd() {
-    this.delivery={}
+    this.delivery = {};
     this.formModal.show({
       title: "menu.add-delivery",
       confirm: () => this.onSave(null),
       cancel: () => this.onCancel(),
     });
     setTimeout(() => {
-      this.sharedService.setIsActive(false)
-
+      this.sharedService.setIsActive(false);
     }, 500);
   }
 
@@ -173,7 +178,6 @@ export class DeliveryListComponent implements OnInit {
       cancel: () => this.onCancel(),
     });
   }
-
 
   onClickArchive(id: string) {
     this.archiveModal.show(() => {
@@ -187,7 +191,7 @@ export class DeliveryListComponent implements OnInit {
           this.toastService.success(
             this.translateService.instant("success.deleted", {
               elem: this.translateService.instant("delivery"),
-            })
+            }),
           );
         },
       });
@@ -196,72 +200,89 @@ export class DeliveryListComponent implements OnInit {
 
   sortByCodeValid: boolean = true;
   sortByCode() {
-    if(this.affiche){
+    if (this.affiche) {
       if (this.sortByCodeValid) {
-        this.deliveryss.sort((a, b) => a.instructiuonCode.localeCompare(b.instructiuonCode));
-        this.sortByCodeValid = false
+        this.deliveryss.sort((a, b) =>
+          a.instructiuonCode.localeCompare(b.instructiuonCode),
+        );
+        this.sortByCodeValid = false;
       } else {
-        this.deliveryss.sort((a, b) => b.instructiuonCode.localeCompare(a.instructiuonCode));
-        this.sortByCodeValid = true
+        this.deliveryss.sort((a, b) =>
+          b.instructiuonCode.localeCompare(a.instructiuonCode),
+        );
+        this.sortByCodeValid = true;
       }
-    }else{
+    } else {
       if (this.sortByCodeValid) {
-        this.deliverys.sort((a, b) => a.instructiuonCode.localeCompare(b.instructiuonCode));
-        this.sortByCodeValid = false
+        this.deliverys.sort((a, b) =>
+          a.instructiuonCode.localeCompare(b.instructiuonCode),
+        );
+        this.sortByCodeValid = false;
       } else {
-        this.deliverys.sort((a, b) => b.instructiuonCode.localeCompare(a.instructiuonCode));
-        this.sortByCodeValid = true
+        this.deliverys.sort((a, b) =>
+          b.instructiuonCode.localeCompare(a.instructiuonCode),
+        );
+        this.sortByCodeValid = true;
       }
     }
-
   }
 
   sortBydigitalValid: boolean = true;
   sortBydigital() {
-    if(this.affiche){
+    if (this.affiche) {
       if (this.sortBydigitalValid) {
-        this.deliveryss.sort((a, b) => a.productType.localeCompare(b.productType));
-        this.sortBydigitalValid = false
+        this.deliveryss.sort((a, b) =>
+          a.productType.localeCompare(b.productType),
+        );
+        this.sortBydigitalValid = false;
       } else {
-        this.deliveryss.sort((a, b) => b.productType.localeCompare(a.productType));
-        this.sortBydigitalValid = true
+        this.deliveryss.sort((a, b) =>
+          b.productType.localeCompare(a.productType),
+        );
+        this.sortBydigitalValid = true;
       }
-    }else{
+    } else {
       if (this.sortBydigitalValid) {
-        this.deliverys.sort((a, b) => a.productType.localeCompare(b.productType));
-        this.sortBydigitalValid = false
+        this.deliverys.sort((a, b) =>
+          a.productType.localeCompare(b.productType),
+        );
+        this.sortBydigitalValid = false;
       } else {
-        this.deliverys.sort((a, b) => b.productType.localeCompare(a.productType));
-        this.sortBydigitalValid = true
+        this.deliverys.sort((a, b) =>
+          b.productType.localeCompare(a.productType),
+        );
+        this.sortBydigitalValid = true;
       }
     }
-
   }
   sortBycountryValid: boolean = true;
   sortBycountry() {
-    if(this.affiche){
+    if (this.affiche) {
       if (this.sortBycountryValid) {
-        this.deliveryss.sort((a, b) => a.instructiuonName.localeCompare(b.instructiuonName));
-        this.sortBycountryValid = false
+        this.deliveryss.sort((a, b) =>
+          a.instructiuonName.localeCompare(b.instructiuonName),
+        );
+        this.sortBycountryValid = false;
       } else {
-        this.deliveryss.sort((a, b) => b.instructiuonName.localeCompare(a.instructiuonName));
-        this.sortBycountryValid = true
+        this.deliveryss.sort((a, b) =>
+          b.instructiuonName.localeCompare(a.instructiuonName),
+        );
+        this.sortBycountryValid = true;
       }
-    }else{
+    } else {
       if (this.sortBycountryValid) {
-        this.deliverys.sort((a, b) => a.instructiuonName.localeCompare(b.instructiuonName));
-        this.sortBycountryValid = false
+        this.deliverys.sort((a, b) =>
+          a.instructiuonName.localeCompare(b.instructiuonName),
+        );
+        this.sortBycountryValid = false;
       } else {
-        this.deliverys.sort((a, b) => b.instructiuonName.localeCompare(a.instructiuonName));
-        this.sortBycountryValid = true
+        this.deliverys.sort((a, b) =>
+          b.instructiuonName.localeCompare(a.instructiuonName),
+        );
+        this.sortBycountryValid = true;
       }
     }
-
   }
-
-
-
-
 
   findArchivedPage() {
     this.loading = true;
@@ -280,39 +301,31 @@ export class DeliveryListComponent implements OnInit {
       });
   }
 
-
-
   onClickdisArchive(id: string) {
     this.deliveryservice.disArchive(id).subscribe({
       next: () => {
         this.findArchivedPage();
-        this.findPage()
+        this.findPage();
         this.toastService.success(
           this.translateService.instant("success.restore", {
             elem: this.translateService.instant("delivery"),
-          })
+          }),
         );
       },
     });
   }
-
-
 
   onClickDelete(id: string) {
     this.deliveryservice.delete(id).subscribe({
       next: () => {
         this.findArchivedPage();
-        this.findPage()
+        this.findPage();
         this.toastService.success(
           this.translateService.instant("success.deleted", {
             elem: this.translateService.instant("delivery"),
-          })
+          }),
         );
       },
     });
   }
-
-
-
-
 }

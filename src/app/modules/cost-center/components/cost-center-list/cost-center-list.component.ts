@@ -55,30 +55,28 @@ export class CostCenterListComponent implements OnInit {
     private translateService: TranslateService,
     private toastService: HotToastService,
 
-    private fb: FormBuilder
-  ) { }
+    private fb: FormBuilder,
+  ) {}
   onCheckboxChange() {
     if (this.isChecked == false) {
-
-      this.affiche = false
-    }
-    else {
-      this.affiche = true
+      this.affiche = false;
+    } else {
+      this.affiche = true;
     }
   }
 
   ngOnInit(): void {
     this.findPage();
-    this.findArchivedPage()
-    this.onPaginationChange.subscribe(() => {this.findPage();this.findArchivedPage()});
+    this.findArchivedPage();
+    this.onPaginationChange.subscribe(() => {
+      this.findPage();
+      this.findArchivedPage();
+    });
   }
 
   onStepChange(step: number) {
     this.currentStep = step;
   }
-
-
-
 
   findById(id: string) {
     this.costcenterServive.findById(id).subscribe({
@@ -114,7 +112,7 @@ export class CostCenterListComponent implements OnInit {
       this.translateService.instant("message.loading..."),
       {
         id: "0",
-      }
+      },
     );
     this.costcenterServive.save(id, this.costCenter!).subscribe({
       next: () => {
@@ -125,7 +123,7 @@ export class CostCenterListComponent implements OnInit {
         this.toastService.success(
           this.translateService.instant("success.saved", {
             elem: this.translateService.instant("costCenter"),
-          })
+          }),
         );
       },
       error: (error) => {
@@ -133,18 +131,17 @@ export class CostCenterListComponent implements OnInit {
         this.toastService.error(
           this.translateService.instant(error.error, {
             elem: this.translateService.instant("costCenter"),
-          })
+          }),
         );
       },
     });
   }
 
   onClickAdd() {
-    this.costCenter = {}
+    this.costCenter = {};
     this.stepper.nextStep();
     setTimeout(() => {
       this.stepper.prevStep();
-
     }, 100);
     setTimeout(() => {
       this.formModal.show({
@@ -155,7 +152,6 @@ export class CostCenterListComponent implements OnInit {
         prev: () => this.stepper.prevStep(),
       });
     }, 200);
-
   }
   onClickEdit(id: string) {
     this.findById(id);
@@ -163,7 +159,6 @@ export class CostCenterListComponent implements OnInit {
     this.stepper.nextStep();
     setTimeout(() => {
       this.stepper.prevStep();
-
     }, 100);
     setTimeout(() => {
       this.formModal.show({
@@ -174,10 +169,7 @@ export class CostCenterListComponent implements OnInit {
         prev: () => this.stepper.prevStep(),
       });
     }, 200);
-
   }
-
-
 
   // onClickDelete(id: string) {
   //   this.deleteModal.show(() => {
@@ -226,15 +218,13 @@ export class CostCenterListComponent implements OnInit {
       this.costcenterServive.archive(id).subscribe({
         next: () => {
           this.findPage();
-          this.findArchivedPage()
+          this.findArchivedPage();
           this.archiveModal.hide();
           this.toastService.success(
             this.translateService.instant("success.deleted", {
-
               elem: this.translateService.instant("costCenter"),
-            })
+            }),
           );
-
         },
       });
     });
@@ -242,97 +232,102 @@ export class CostCenterListComponent implements OnInit {
 
   sortByCodeValid: boolean = true;
   sortByCode() {
-    if(this.affiche==true){
+    if (this.affiche == true) {
       if (this.sortByCodeValid) {
         this.costCenterss.sort((a, b) => a.code.localeCompare(b.code));
-        this.sortByCodeValid = false
+        this.sortByCodeValid = false;
       } else {
         this.costCenterss.sort((a, b) => b.code.localeCompare(a.code));
-        this.sortByCodeValid = true
+        this.sortByCodeValid = true;
       }
-    }else{
+    } else {
       if (this.sortByCodeValid) {
         this.costCenters.sort((a, b) => a.code.localeCompare(b.code));
-        this.sortByCodeValid = false
+        this.sortByCodeValid = false;
       } else {
         this.costCenters.sort((a, b) => b.code.localeCompare(a.code));
-        this.sortByCodeValid = true
+        this.sortByCodeValid = true;
       }
     }
-
   }
-
 
   sortBydiviValid: boolean = true;
   sortBydivi() {
-    if(this.affiche==true){
+    if (this.affiche == true) {
       if (this.sortBydiviValid) {
-        this.costCenterss.sort((a, b) => a.division_Name.localeCompare(b.division_Name+""));
-        this.sortBydiviValid = false
+        this.costCenterss.sort((a, b) =>
+          a.division_Name.localeCompare(b.division_Name + ""),
+        );
+        this.sortBydiviValid = false;
       } else {
-        this.costCenterss.sort((a, b) => b.division_Name.localeCompare(a.division_Name+""));
-        this.sortBydiviValid = true
+        this.costCenterss.sort((a, b) =>
+          b.division_Name.localeCompare(a.division_Name + ""),
+        );
+        this.sortBydiviValid = true;
       }
-    }else{
+    } else {
       if (this.sortBydiviValid) {
-        this.costCenters.sort((a, b) => a.division_Name.localeCompare(b.division_Name+""));
-        this.sortBydiviValid = false
+        this.costCenters.sort((a, b) =>
+          a.division_Name.localeCompare(b.division_Name + ""),
+        );
+        this.sortBydiviValid = false;
       } else {
-        this.costCenters.sort((a, b) => b.division_Name.localeCompare(a.division_Name+""));
-        this.sortBydiviValid = true
+        this.costCenters.sort((a, b) =>
+          b.division_Name.localeCompare(a.division_Name + ""),
+        );
+        this.sortBydiviValid = true;
       }
     }
-
   }
   sortByfaciValid: boolean = true;
   sortByfaci() {
-    if(this.affiche==true){
+    if (this.affiche == true) {
       if (this.sortByfaciValid) {
-        this.costCenterss.sort((a, b) => a.facilityType.localeCompare(b.facilityType+""));
-        this.sortByfaciValid = false
+        this.costCenterss.sort((a, b) =>
+          a.facilityType.localeCompare(b.facilityType + ""),
+        );
+        this.sortByfaciValid = false;
       } else {
-        this.costCenterss.sort((a, b) => b.facilityType.localeCompare(a.facilityType+""));
-        this.sortByfaciValid = true
+        this.costCenterss.sort((a, b) =>
+          b.facilityType.localeCompare(a.facilityType + ""),
+        );
+        this.sortByfaciValid = true;
       }
-    }else{
+    } else {
       if (this.sortByfaciValid) {
-        this.costCenters.sort((a, b) => a.facilityType.localeCompare(b.facilityType+""));
-        this.sortByfaciValid = false
+        this.costCenters.sort((a, b) =>
+          a.facilityType.localeCompare(b.facilityType + ""),
+        );
+        this.sortByfaciValid = false;
       } else {
-        this.costCenters.sort((a, b) => b.facilityType.localeCompare(a.facilityType+""));
-        this.sortByfaciValid = true
+        this.costCenters.sort((a, b) =>
+          b.facilityType.localeCompare(a.facilityType + ""),
+        );
+        this.sortByfaciValid = true;
       }
     }
-
   }
-
-
 
   sortByNameValid: boolean = true;
   sortByName() {
-    if(this.affiche==true){
+    if (this.affiche == true) {
       if (this.sortByNameValid) {
         this.costCenterss.sort((a, b) => a.name.localeCompare(b.name));
-        this.sortByNameValid = false
+        this.sortByNameValid = false;
       } else {
         this.costCenterss.sort((a, b) => b.name.localeCompare(a.name));
-        this.sortByNameValid = true
+        this.sortByNameValid = true;
       }
-    }else{
+    } else {
       if (this.sortByNameValid) {
         this.costCenters.sort((a, b) => a.name.localeCompare(b.name));
-        this.sortByNameValid = false
+        this.sortByNameValid = false;
       } else {
         this.costCenters.sort((a, b) => b.name.localeCompare(a.name));
-        this.sortByNameValid = true
+        this.sortByNameValid = true;
       }
     }
-
   }
-
-
-
-
 
   //trash
   findArchivedPage() {
@@ -368,20 +363,16 @@ export class CostCenterListComponent implements OnInit {
       });
   }
 
-
-
-
-
   onClickdisArchive(id: string) {
     this.costcenterServive.disArchive(id).subscribe({
       next: () => {
         this.findArchivedPage();
-        this.findPage()
+        this.findPage();
 
         this.toastService.success(
           this.translateService.instant("success.restore", {
             elem: this.translateService.instant("costCenter"),
-          })
+          }),
         );
       },
     });
@@ -393,19 +384,9 @@ export class CostCenterListComponent implements OnInit {
         this.toastService.success(
           this.translateService.instant("success.deleted", {
             elem: this.translateService.instant("costCenter"),
-          })
+          }),
         );
       },
     });
   }
-
-
-
-
-
-
-
-
-
-
 }

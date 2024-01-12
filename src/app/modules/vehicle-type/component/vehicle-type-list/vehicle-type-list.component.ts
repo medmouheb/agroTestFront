@@ -1,23 +1,20 @@
-import { Component, OnInit, ViewChild ,EventEmitter} from '@angular/core';
+import { Component, OnInit, ViewChild, EventEmitter } from "@angular/core";
 
-import { VehicleTypeService } from '../../service/vehicle-type.service';
-import { VihicleType } from '../../models/vehicleType';
-
+import { VehicleTypeService } from "../../service/vehicle-type.service";
+import { VihicleType } from "../../models/vehicleType";
 
 import { Page, initPage } from "app/shared/models";
-import { WizardDialogComponent } from 'app/shared/components/wizard-dialog/wizard-dialog.component';
+import { WizardDialogComponent } from "app/shared/components/wizard-dialog/wizard-dialog.component";
 import { DialogComponent } from "@progress/kendo-angular-dialog";
-import { StepperComponent } from 'app/shared/components/stepper/stepper.component';
-import { HotToastService } from '@ngneat/hot-toast';
-import { TranslateService } from '@ngx-translate/core';
-import { ConfirmDialogComponent } from 'app/shared/components/confirm-dialog/confirm-dialog.component';
-
-
+import { StepperComponent } from "app/shared/components/stepper/stepper.component";
+import { HotToastService } from "@ngneat/hot-toast";
+import { TranslateService } from "@ngx-translate/core";
+import { ConfirmDialogComponent } from "app/shared/components/confirm-dialog/confirm-dialog.component";
 
 @Component({
-  selector: 'app-vehicle-type-list',
-  templateUrl: './vehicle-type-list.component.html',
-  styleUrls: ['./vehicle-type-list.component.scss']
+  selector: "app-vehicle-type-list",
+  templateUrl: "./vehicle-type-list.component.html",
+  styleUrls: ["./vehicle-type-list.component.scss"],
 })
 export class VehicleTypeListComponent implements OnInit {
   @ViewChild("deleteModal")
@@ -37,58 +34,51 @@ export class VehicleTypeListComponent implements OnInit {
   vehicleTypeListArchived: Array<VihicleType> = [];
   vehicleTypePageArchived: Page<VihicleType> = initPage;
 
+  pageNumber = 0;
 
+  pageSize = 10;
 
-  pageNumber=0
+  vehicleType: VihicleType = {};
 
-  pageSize=10
-
-
-  vehicleType:VihicleType={}
-
-
-  filter=""
-
-  
+  filter = "";
 
   isChecked: boolean = false;
-  affiche:boolean = false;
+  affiche: boolean = false;
   currentStep = 0;
 
-  steps: any = ["steps.general","steps.general"];
+  steps: any = ["steps.general", "steps.general"];
 
   onPaginationChange: EventEmitter<string> = new EventEmitter<string>();
 
-
-  constructor(private translateService: TranslateService,    private toastService: HotToastService,
-    private vehicleTypeService:VehicleTypeService) { }
+  constructor(
+    private translateService: TranslateService,
+    private toastService: HotToastService,
+    private vehicleTypeService: VehicleTypeService,
+  ) {}
 
   ngOnInit(): void {
-    this.findPage()
-    this.findArchivedPage()
+    this.findPage();
+    this.findArchivedPage();
   }
 
   findById(id: string) {
     this.vehicleTypeService.findById(id).subscribe({
       next: (result) => {
-        console.log("as::",result)
-        this.vehicleType = result
-        console.log("ass::",this.vehicleType)
-
+        console.log("as::", result);
+        this.vehicleType = result;
+        console.log("ass::", this.vehicleType);
       },
       error: (error) => console.error(error),
     });
   }
-
 
   onClickEdit(id: string) {
     this.findById(id);
     this.stepper.nextStep();
     setTimeout(() => {
       this.stepper.prevStep();
-
     }, 100);
-    setTimeout(()=>{
+    setTimeout(() => {
       this.formModal.show({
         title: "menu.add-vehicleType",
         stepsCount: this.steps.length - 1,
@@ -96,8 +86,7 @@ export class VehicleTypeListComponent implements OnInit {
         cancel: () => this.onCancel(),
         prev: () => this.stepper.prevStep(),
       });
-    },500)
-    
+    }, 500);
   }
   onCancel() {
     this.vehicleType = {};
@@ -109,7 +98,7 @@ export class VehicleTypeListComponent implements OnInit {
       this.translateService.instant("message.loading..."),
       {
         id: "0",
-      }
+      },
     );
 
     this.vehicleTypeService.save(id, this.vehicleType!).subscribe({
@@ -121,7 +110,7 @@ export class VehicleTypeListComponent implements OnInit {
         this.toastService.success(
           this.translateService.instant("success.saved", {
             elem: this.translateService.instant("vehicleType"),
-          })
+          }),
         );
       },
       error: (error) => {
@@ -129,7 +118,7 @@ export class VehicleTypeListComponent implements OnInit {
         this.toastService.error(
           this.translateService.instant(error.error, {
             elem: this.translateService.instant("vehicleType"),
-          })
+          }),
         );
       },
     });
@@ -145,20 +134,18 @@ export class VehicleTypeListComponent implements OnInit {
 
   onCheckboxChange() {
     console.log("La valeur de la case à cocher est : ", this.isChecked);
-    if (this.isChecked==false){
-
-      this.affiche=false
-    }
-    else{
-      this.affiche=true
+    if (this.isChecked == false) {
+      this.affiche = false;
+    } else {
+      this.affiche = true;
     }
   }
 
-  onFilterChange(e:any){
-    this.pageNumber=0
-    this.filter=e
-    this.findPage()
-    this.findArchivedPage()
+  onFilterChange(e: any) {
+    this.pageNumber = 0;
+    this.filter = e;
+    this.findPage();
+    this.findArchivedPage();
   }
 
   findPage() {
@@ -167,10 +154,9 @@ export class VehicleTypeListComponent implements OnInit {
       .findPage(this.pageNumber, this.pageSize, this.filter)
       .subscribe({
         next: (result) => {
-          console.log("dd::",result.content)
+          console.log("dd::", result.content);
           this.vehicleTypeList = result.content;
           this.vehicleTypePage = result;
-
         },
         error: (error) => {
           this.loading = false;
@@ -186,10 +172,10 @@ export class VehicleTypeListComponent implements OnInit {
       .findArchivedPage(this.pageNumber, this.pageSize, this.filter)
       .subscribe({
         next: (result) => {
-          console.log("n:",result.content)
+          console.log("n:", result.content);
 
           this.vehicleTypeListArchived = result.content;
-          console.log(this.vehicleTypeListArchived)
+          console.log(this.vehicleTypeListArchived);
           this.vehicleTypePageArchived = result;
         },
         error: (error) => {
@@ -206,21 +192,29 @@ export class VehicleTypeListComponent implements OnInit {
   sortByCodeValid: boolean = true;
   sortByCode() {
     if (this.sortByCodeValid) {
-      this.vehicleTypeList.sort((a, b) => a.vehicleTypeCode.localeCompare(b.vehicleTypeCode));
-      this.sortByCodeValid = false
+      this.vehicleTypeList.sort((a, b) =>
+        a.vehicleTypeCode.localeCompare(b.vehicleTypeCode),
+      );
+      this.sortByCodeValid = false;
     } else {
-      this.vehicleTypeList.sort((a, b) => b.vehicleTypeCode.localeCompare(a.vehicleTypeCode));
-      this.sortByCodeValid = true
+      this.vehicleTypeList.sort((a, b) =>
+        b.vehicleTypeCode.localeCompare(a.vehicleTypeCode),
+      );
+      this.sortByCodeValid = true;
     }
   }
   sortByNameValid: boolean = true;
   sortByName() {
     if (this.sortByNameValid) {
-      this.vehicleTypeList.sort((a, b) => a.vehicleTypeName.localeCompare(b.vehicleTypeName));
-      this.sortByNameValid = false
+      this.vehicleTypeList.sort((a, b) =>
+        a.vehicleTypeName.localeCompare(b.vehicleTypeName),
+      );
+      this.sortByNameValid = false;
     } else {
-      this.vehicleTypeList.sort((a, b) => b.vehicleTypeName.localeCompare(a.vehicleTypeName));
-      this.sortByNameValid = true
+      this.vehicleTypeList.sort((a, b) =>
+        b.vehicleTypeName.localeCompare(a.vehicleTypeName),
+      );
+      this.sortByNameValid = true;
     }
   }
 
@@ -244,7 +238,7 @@ export class VehicleTypeListComponent implements OnInit {
         this.toastService.success(
           this.translateService.instant("success.deleted", {
             elem: this.translateService.instant("vehicleType"),
-          })
+          }),
         );
       },
     });
@@ -254,11 +248,11 @@ export class VehicleTypeListComponent implements OnInit {
     this.vehicleTypeService.disArchive(id).subscribe({
       next: () => {
         this.findArchivedPage();
-        this.findPage()
+        this.findPage();
         this.toastService.success(
           this.translateService.instant("success.restore", {
             elem: this.translateService.instant("vehicleType"),
-          })
+          }),
         );
         console.log(id);
       },
@@ -270,13 +264,13 @@ export class VehicleTypeListComponent implements OnInit {
       this.vehicleTypeService.archive(id).subscribe({
         next: () => {
           this.findPage();
-          this.findArchivedPage()
+          this.findArchivedPage();
           this.archiveModal.hide();
           this.toastService.close("0");
           this.toastService.success(
             this.translateService.instant("success.deleted", {
               elem: this.translateService.instant("vehicleType"),
-            })
+            }),
           );
         },
       });
@@ -292,5 +286,4 @@ export class VehicleTypeListComponent implements OnInit {
       prev: () => this.stepper.prevStep(),
     });
   }
-
 }

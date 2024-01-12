@@ -11,7 +11,7 @@
 }
 
 .modal-title {
-  padding: .5rem 1rem !important;
+  padding: 0.5rem 1rem !important;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -21,8 +21,8 @@
   height: auto !important;
   max-height: 70vh !important;
   overflow-y: auto;
-  border-block: .5px solid lightgray !important;
-  background-color: #ffffff!important;
+  border-block: 0.5px solid lightgray !important;
+  background-color: #ffffff !important;
 }
 
 .modal {
@@ -53,13 +53,12 @@
 
 .modal-footer {
   padding-inline: 2rem !important;
-  padding-block: .5rem !important;
+  padding-block: 0.5rem !important;
   border: none !important;
 }
 
 @media screen and (min-width: 1280px) {
-
-  .custom-modal{
-    max-width: 1024px!important;
+  .custom-modal {
+    max-width: 1024px !important;
   }
 }

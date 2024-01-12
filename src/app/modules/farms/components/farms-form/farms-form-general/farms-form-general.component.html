@@ -1,74 +1,148 @@
 <div class="row" [formGroup]="addform">
-  <div style="display: none;" > {{getstatus()}} </div>
+  <div style="display: none">{{ getstatus() }}</div>
   <!-- <span> {{static}} </span> -->
   <div class="form-group col-md-6">
     <label class="required" for="code">{{ "codefarms" | translate }}</label>
-    <input (keyup)="existcode()" (blur)="codeBlur();validationCode()" class="form-control" name="code" [(ngModel)]="farm.code"
-      formControlName="code" placeholder=" {{'write your farms code'|translate}}" required aria-invalid="true"
-      aria-describedby="code-error" (change)="geValues($event)">
-    <div *ngIf="codeISvalid" style="color: red;">{{'Code must be not null'|translate}}</div>
-    <div style="color: red;" *ngIf="codeIsvalid">{{ "Invalid code format" |translate }}</div>
-    <div style="color: red;" *ngIf="dispotruecode">{{'Code must be unique'|translate}}</div>
+    <input
+      (keyup)="existcode()"
+      (blur)="codeBlur(); validationCode()"
+      class="form-control"
+      name="code"
+      [(ngModel)]="farm.code"
+      formControlName="code"
+      placeholder=" {{ 'write your farms code' | translate }}"
+      required
+      aria-invalid="true"
+      aria-describedby="code-error"
+      (change)="geValues($event)"
+    />
+    <div *ngIf="codeISvalid" style="color: red">
+      {{ "Code must be not null" | translate }}
+    </div>
+    <div style="color: red" *ngIf="codeIsvalid">
+      {{ "Invalid code format" | translate }}
+    </div>
+    <div style="color: red" *ngIf="dispotruecode">
+      {{ "Code must be unique" | translate }}
+    </div>
   </div>
 
   <div class="form-group col-md-6">
     <label class="required" for="name">{{ "namefarms" | translate }}</label>
-    <input (keyup)="existname()" (blur)="nameBlur();isBlur4();isBlur2()" [formControl]="fieldControl" class="form-control" name="name"
-      formControlName="name" [(ngModel)]="farm.nom" required aria-invalid="true" aria-describedby="name-error"
-      placeholder=" {{'write your farms name'|translate}}" (change)="geValues($event)">
-    <div *ngIf="nameISvalid" style="color: red;">{{'Name must be not null'|translate}}</div>
-    <div style=" color : red;" *ngIf="minIstrueName">{{"Format is invalid"|translate}}</div>
-    <div style="color: red;" *ngIf="dispotruename">{{'name must be unique'|translate}}</div>
-
-
+    <input
+      (keyup)="existname()"
+      (blur)="nameBlur(); isBlur4(); isBlur2()"
+      [formControl]="fieldControl"
+      class="form-control"
+      name="name"
+      formControlName="name"
+      [(ngModel)]="farm.nom"
+      required
+      aria-invalid="true"
+      aria-describedby="name-error"
+      placeholder=" {{ 'write your farms name' | translate }}"
+      (change)="geValues($event)"
+    />
+    <div *ngIf="nameISvalid" style="color: red">
+      {{ "Name must be not null" | translate }}
+    </div>
+    <div style="color: red" *ngIf="minIstrueName">
+      {{ "Format is invalid" | translate }}
+    </div>
+    <div style="color: red" *ngIf="dispotruename">
+      {{ "name must be unique" | translate }}
+    </div>
   </div>
   <div class="form-group col-md-6 align-self-end">
     <label for="active">
-      <input [checked]="farm.status" (click)="setActif()" type="checkbox" id="active" name="active" #active="ngModel"
-        ngModel [(ngModel)]="farm.status" [value]="farm.status" (change)="geValues($event)" />
+      <input
+        [checked]="farm.status"
+        (click)="setActif()"
+        type="checkbox"
+        id="active"
+        name="active"
+        #active="ngModel"
+        ngModel
+        [(ngModel)]="farm.status"
+        [value]="farm.status"
+        (change)="geValues($event)"
+      />
 
       {{ "Farm Status" | translate }}
     </label>
   </div>
   <div class="form-group col-md-6">
     <label for="growout">{{ "growoutnumber" | translate }}</label>
-    <select [ngStyle]="{'color': (farm.growoutcode) ? 'black' : '#AAAAAA'}" (click)="selectValue($event)"
-      class="form-control" name="growoutcode" (change)="geValues($event)">
-      <option value=""> {{'you must chose' |translate}}</option>
+    <select
+      [ngStyle]="{ color: farm.growoutcode ? 'black' : '#AAAAAA' }"
+      (click)="selectValue($event)"
+      class="form-control"
+      name="growoutcode"
+      (change)="geValues($event)"
+    >
+      <option value="">{{ "you must chose" | translate }}</option>
 
-      <option [selected]="dv.code==farm.growoutcode" *ngFor="let dv of growouts;let index=index" [value]="dv.code">
-        {{dv.name}}</option>
+      <option
+        [selected]="dv.code == farm.growoutcode"
+        *ngFor="let dv of growouts; let index = index"
+        [value]="dv.code"
+      >
+        {{ dv.name }}
+      </option>
     </select>
-
   </div>
 
   <div class="form-group col-md-6">
-    <label class="required" for="type">{{"Farmtype"| translate }}</label>
-    <select class="form-control" name="type" formControlName="type" [(ngModel)]="farm.type" required aria-invalid="true"
-      aria-describedby="type-error" (change)="geValues($event)">
-      <option value="INTERN">{{'INTERN'|translate}}</option>
-      <option value="EXTERN">{{'EXTERN'|translate}}</option>
+    <label class="required" for="type">{{ "Farmtype" | translate }}</label>
+    <select
+      class="form-control"
+      name="type"
+      formControlName="type"
+      [(ngModel)]="farm.type"
+      required
+      aria-invalid="true"
+      aria-describedby="type-error"
+      (change)="geValues($event)"
+    >
+      <option value="INTERN">{{ "INTERN" | translate }}</option>
+      <option value="EXTERN">{{ "EXTERN" | translate }}</option>
     </select>
   </div>
   <div class="form-group col-md-6">
     <label for="costCenter">{{ "costCenter" | translate }}</label>
 
-    <select [ngStyle]="{'color': (farm.cost_Center) ? 'black' : '#AAAAAA'}" (click)="selectValuecostCenter($event)"
-      class="form-control" name="costCenter">
-      <option value=""> {{'you must chose' |translate}}</option>
+    <select
+      [ngStyle]="{ color: farm.cost_Center ? 'black' : '#AAAAAA' }"
+      (click)="selectValuecostCenter($event)"
+      class="form-control"
+      name="costCenter"
+    >
+      <option value="">{{ "you must chose" | translate }}</option>
 
-
-      <option *ngFor="let dv of costcenters" [selected]="dv.code==farm.cost_Center?.code" [value]="dv.code"> {{dv.name}}
+      <option
+        *ngFor="let dv of costcenters"
+        [selected]="dv.code == farm.cost_Center?.code"
+        [value]="dv.code"
+      >
+        {{ dv.name }}
       </option>
     </select>
   </div>
   <div class="form-group col-md-6">
     <label for="warehouse">{{ "primaryWarehouse" | translate }}</label>
-    <select [ngStyle]="{'color': (farm.warehouse.id) ? 'black' : '#AAAAAA'}" class="form-control" name="warehouse"
-      (change)="onWarehouseChange($event);geValues($event);">
-      <option value=""> {{'you must chose' |translate}}</option>
+    <select
+      [ngStyle]="{ color: farm.warehouse.id ? 'black' : '#AAAAAA' }"
+      class="form-control"
+      name="warehouse"
+      (change)="onWarehouseChange($event); geValues($event)"
+    >
+      <option value="">{{ "you must chose" | translate }}</option>
 
-      <option *ngFor="let warehouse of warehouses" [selected]="warehouse.id==farm.warehouse.id" [value]="warehouse.id">
+      <option
+        *ngFor="let warehouse of warehouses"
+        [selected]="warehouse.id == farm.warehouse.id"
+        [value]="warehouse.id"
+      >
         {{ warehouse.name }}
       </option>
     </select>
@@ -76,11 +150,19 @@
 
   <div class="form-group col-md-6">
     <label for="vendor">{{ "namefournisseur" | translate }}</label>
-    <select [ngStyle]="{'color': (farm.vendor.id) ? 'black' : '#AAAAAA'}" class="form-control" name="vendor"
-      (change)="onVendorChange($event)">
-      <option value=""> {{'you must chose' |translate}}</option>
+    <select
+      [ngStyle]="{ color: farm.vendor.id ? 'black' : '#AAAAAA' }"
+      class="form-control"
+      name="vendor"
+      (change)="onVendorChange($event)"
+    >
+      <option value="">{{ "you must chose" | translate }}</option>
 
-      <option *ngFor="let vendor of vendors" [selected]="vendor.id==farm.vendor.id" [value]="vendor.id">
+      <option
+        *ngFor="let vendor of vendors"
+        [selected]="vendor.id == farm.vendor.id"
+        [value]="vendor.id"
+      >
         {{ vendor.name }}
       </option>
     </select>
@@ -88,137 +170,249 @@
   <div class="form-group col-md-6">
     <label for="constructionStatus">{{
       "constructionStatus" | translate
-      }}</label>
-    <input class="form-control" name="status_Construction" [(ngModel)]="farm.status_Construction"
-      formControlName="status_Construction" required aria-invalid="true" type="text" (change)="geValues($event)" />
+    }}</label>
+    <input
+      class="form-control"
+      name="status_Construction"
+      [(ngModel)]="farm.status_Construction"
+      formControlName="status_Construction"
+      required
+      aria-invalid="true"
+      type="text"
+      (change)="geValues($event)"
+    />
   </div>
   <div class="form-group col-md-6">
     <label for="customerCode">{{ "customerNumber" | translate }}</label>
-    <input class="form-control" name="customerCode" [(ngModel)]="farm.customerCode" formControlName="customerCode"
-      required aria-invalid="true" type="text" (change)="geValues($event)" />
+    <input
+      class="form-control"
+      name="customerCode"
+      [(ngModel)]="farm.customerCode"
+      formControlName="customerCode"
+      required
+      aria-invalid="true"
+      type="text"
+      (change)="geValues($event)"
+    />
   </div>
   <div class="form-group col-md-6">
     <label class="required" for="farmerManagerCode">{{
       "farmerManagerCode" | translate
-      }}</label>
-    <input (blur)="manager_CodeBlur()" class="form-control" name="manager_Code" [(ngModel)]="farm.manager_Code"
-      formControlName="manager_Code" required aria-invalid="true" type="number" aria-describedby="manager_Code-error"
-      (change)="geValues($event)">
-    <div *ngIf="manager_CodeISvalid" style="color: red;">farmer Manager Code is required</div>
-
+    }}</label>
+    <input
+      (blur)="manager_CodeBlur()"
+      class="form-control"
+      name="manager_Code"
+      [(ngModel)]="farm.manager_Code"
+      formControlName="manager_Code"
+      required
+      aria-invalid="true"
+      type="number"
+      aria-describedby="manager_Code-error"
+      (change)="geValues($event)"
+    />
+    <div *ngIf="manager_CodeISvalid" style="color: red">
+      farmer Manager Code is required
+    </div>
   </div>
 
   <div class="form-group col-md-6">
     <label class="required" for="manager_name">{{
       "farmerManagerName" | translate
-      }}</label>
-    <input (blur)="manager_nameBlur()" class="form-control" name="manager_name" [(ngModel)]="farm.manager_name"
-      formControlName="manager_name" required aria-invalid="true" aria-describedby="manager_name-error"
-      (change)="geValues($event)">
-    <div *ngIf="manager_nameISvalid" style="color: red;">farmer Manager Name is required</div>
-
+    }}</label>
+    <input
+      (blur)="manager_nameBlur()"
+      class="form-control"
+      name="manager_name"
+      [(ngModel)]="farm.manager_name"
+      formControlName="manager_name"
+      required
+      aria-invalid="true"
+      aria-describedby="manager_name-error"
+      (change)="geValues($event)"
+    />
+    <div *ngIf="manager_nameISvalid" style="color: red">
+      farmer Manager Name is required
+    </div>
   </div>
 
   <div class="form-group col-md-6">
     <label class="required" for="technician_Code">{{
       "technicianCode" | translate
-      }}</label>
-    <input (blur)="technician_CodeBlur()" class="form-control" name="technician_Code" [(ngModel)]="farm.technician_Code"
-      formControlName="technician_Code" required aria-invalid="true" aria-describedby="technician_Code-error"
-      type="number" (change)="geValues($event)">
-    <div *ngIf="technician_CodeISvalid" style="color: red;">technician Code is required</div>
-
+    }}</label>
+    <input
+      (blur)="technician_CodeBlur()"
+      class="form-control"
+      name="technician_Code"
+      [(ngModel)]="farm.technician_Code"
+      formControlName="technician_Code"
+      required
+      aria-invalid="true"
+      aria-describedby="technician_Code-error"
+      type="number"
+      (change)="geValues($event)"
+    />
+    <div *ngIf="technician_CodeISvalid" style="color: red">
+      technician Code is required
+    </div>
   </div>
 
-  <div  class="form-group col-md-6">
-    <label class="required" for="technicianName">{{ "technicianName" | translate }}</label>
-    <input (blur)="technician_NameBlur()" class="form-control" name="technicianName" [(ngModel)]="farm.technician_Name"
-      formControlName="technician_Name" required aria-invalid="true" aria-describedby="technicianName-error"
-      (change)="geValues($event)">
-    <div *ngIf="technician_NameISvalid" style="color: red;">technician name is required</div>
-
+  <div class="form-group col-md-6">
+    <label class="required" for="technicianName">{{
+      "technicianName" | translate
+    }}</label>
+    <input
+      (blur)="technician_NameBlur()"
+      class="form-control"
+      name="technicianName"
+      [(ngModel)]="farm.technician_Name"
+      formControlName="technician_Name"
+      required
+      aria-invalid="true"
+      aria-describedby="technicianName-error"
+      (change)="geValues($event)"
+    />
+    <div *ngIf="technician_NameISvalid" style="color: red">
+      technician name is required
+    </div>
   </div>
 
   <div class="form-group col-md-6">
     <label for="areaType">{{ "areaType" | translate }}</label>
     <label for="technicianName">{{ "technicianName" | translate }}</label>
-    <input class="form-control" formControlName="area_type" name="area_type" ngModel [(ngModel)]="farm.area_type" />
+    <input
+      class="form-control"
+      formControlName="area_type"
+      name="area_type"
+      ngModel
+      [(ngModel)]="farm.area_type"
+    />
   </div>
   <div class="form-group col-md-6">
     <label class="required" for="owner_Name">{{ "owner" | translate }}</label>
-    <input (blur)="owner_NameBlur()" class="form-control" name="owner_Name" [(ngModel)]="farm.owner_Name"
-      formControlName="owner_Name" required aria-invalid="true" aria-describedby="owner_Name-error"
-      (change)="geValues($event)">
-    <div *ngIf="owner_NameISvalid" style="color: red;">owner Name is required</div>
-
+    <input
+      (blur)="owner_NameBlur()"
+      class="form-control"
+      name="owner_Name"
+      [(ngModel)]="farm.owner_Name"
+      formControlName="owner_Name"
+      required
+      aria-invalid="true"
+      aria-describedby="owner_Name-error"
+      (change)="geValues($event)"
+    />
+    <div *ngIf="owner_NameISvalid" style="color: red">
+      owner Name is required
+    </div>
   </div>
 
-
-  <div class=" col-md-6">
+  <div class="col-md-6">
     <label>{{ "Attachments" | translate }}</label>
-    <a href="javascript:void(0);" *ngIf="farm.attachments" (click)="getFile(farm.attachments)">
-      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-cloud-arrow-down"
-        viewBox="0 0 16 16">
-        <path fill-rule="evenodd"
-          d="M7.646 10.854a.5.5 0 0 0 .708 0l2-2a.5.5 0 0 0-.708-.708L8.5 9.293V5.5a.5.5 0 0 0-1 0v3.793L6.354 8.146a.5.5 0 1 0-.708.708l2 2z" />
+    <a
+      href="javascript:void(0);"
+      *ngIf="farm.attachments"
+      (click)="getFile(farm.attachments)"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="20"
+        height="20"
+        fill="currentColor"
+        class="bi bi-cloud-arrow-down"
+        viewBox="0 0 16 16"
+      >
         <path
-          d="M4.406 3.342A5.53 5.53 0 0 1 8 2c2.69 0 4.923 2 5.166 4.579C14.758 6.804 16 8.137 16 9.773 16 11.569 14.502 13 12.687 13H3.781C1.708 13 0 11.366 0 9.318c0-1.763 1.266-3.223 2.942-3.593.143-.863.698-1.723 1.464-2.383zm.653.757c-.757.653-1.153 1.44-1.153 2.056v.448l-.445.049C2.064 6.805 1 7.952 1 9.318 1 10.785 2.23 12 3.781 12h8.906C13.98 12 15 10.988 15 9.773c0-1.216-1.02-2.228-2.313-2.228h-.5v-.5C12.188 4.825 10.328 3 8 3a4.53 4.53 0 0 0-2.941 1.1z" />
+          fill-rule="evenodd"
+          d="M7.646 10.854a.5.5 0 0 0 .708 0l2-2a.5.5 0 0 0-.708-.708L8.5 9.293V5.5a.5.5 0 0 0-1 0v3.793L6.354 8.146a.5.5 0 1 0-.708.708l2 2z"
+        />
+        <path
+          d="M4.406 3.342A5.53 5.53 0 0 1 8 2c2.69 0 4.923 2 5.166 4.579C14.758 6.804 16 8.137 16 9.773 16 11.569 14.502 13 12.687 13H3.781C1.708 13 0 11.366 0 9.318c0-1.763 1.266-3.223 2.942-3.593.143-.863.698-1.723 1.464-2.383zm.653.757c-.757.653-1.153 1.44-1.153 2.056v.448l-.445.049C2.064 6.805 1 7.952 1 9.318 1 10.785 2.23 12 3.781 12h8.906C13.98 12 15 10.988 15 9.773c0-1.216-1.02-2.228-2.313-2.228h-.5v-.5C12.188 4.825 10.328 3 8 3a4.53 4.53 0 0 0-2.941 1.1z"
+        />
       </svg>
     </a>
     <div>
-      <input id="attachments" style="display: none;" (change)="handleAttachments($event)" type="file">
+      <input
+        id="attachments"
+        style="display: none"
+        (change)="handleAttachments($event)"
+        type="file"
+      />
 
       <label class="btn btn-outline-success" for="attachments">
-        <svg style="margin-left: 3%;" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-upload"
-          viewBox="0 0 16 16">
+        <svg
+          style="margin-left: 3%"
+          xmlns="http://www.w3.org/2000/svg"
+          width="20"
+          height="20"
+          fill="currentColor"
+          class="bi bi-upload"
+          viewBox="0 0 16 16"
+        >
           <path
-            d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z">
-          </path>
+            d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"
+          ></path>
           <path
-            d="M7.646 1.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 2.707V11.5a.5.5 0 0 1-1 0V2.707L5.354 4.854a.5.5 0 1 1-.708-.708l3-3z">
-          </path>
+            d="M7.646 1.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 2.707V11.5a.5.5 0 0 1-1 0V2.707L5.354 4.854a.5.5 0 1 1-.708-.708l3-3z"
+          ></path>
         </svg>
-        {{uploadText2 | translate}}
-
+        {{ uploadText2 | translate }}
       </label>
     </div>
   </div>
 
-
-  <div class=" col-md-6">
+  <div class="col-md-6">
     <label>{{ "comments" | translate }}</label>
-    <a href="javascript:void(0);" *ngIf="farm.comments" (click)="getFile(farm.comments)">
-      <svg style="margin-left: 3%;" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-cloud-arrow-down"
-        viewBox="0 0 16 16">
-        <path fill-rule="evenodd"
-          d="M7.646 10.854a.5.5 0 0 0 .708 0l2-2a.5.5 0 0 0-.708-.708L8.5 9.293V5.5a.5.5 0 0 0-1 0v3.793L6.354 8.146a.5.5 0 1 0-.708.708l2 2z" />
+    <a
+      href="javascript:void(0);"
+      *ngIf="farm.comments"
+      (click)="getFile(farm.comments)"
+    >
+      <svg
+        style="margin-left: 3%"
+        xmlns="http://www.w3.org/2000/svg"
+        width="20"
+        height="20"
+        fill="currentColor"
+        class="bi bi-cloud-arrow-down"
+        viewBox="0 0 16 16"
+      >
         <path
-          d="M4.406 3.342A5.53 5.53 0 0 1 8 2c2.69 0 4.923 2 5.166 4.579C14.758 6.804 16 8.137 16 9.773 16 11.569 14.502 13 12.687 13H3.781C1.708 13 0 11.366 0 9.318c0-1.763 1.266-3.223 2.942-3.593.143-.863.698-1.723 1.464-2.383zm.653.757c-.757.653-1.153 1.44-1.153 2.056v.448l-.445.049C2.064 6.805 1 7.952 1 9.318 1 10.785 2.23 12 3.781 12h8.906C13.98 12 15 10.988 15 9.773c0-1.216-1.02-2.228-2.313-2.228h-.5v-.5C12.188 4.825 10.328 3 8 3a4.53 4.53 0 0 0-2.941 1.1z" />
+          fill-rule="evenodd"
+          d="M7.646 10.854a.5.5 0 0 0 .708 0l2-2a.5.5 0 0 0-.708-.708L8.5 9.293V5.5a.5.5 0 0 0-1 0v3.793L6.354 8.146a.5.5 0 1 0-.708.708l2 2z"
+        />
+        <path
+          d="M4.406 3.342A5.53 5.53 0 0 1 8 2c2.69 0 4.923 2 5.166 4.579C14.758 6.804 16 8.137 16 9.773 16 11.569 14.502 13 12.687 13H3.781C1.708 13 0 11.366 0 9.318c0-1.763 1.266-3.223 2.942-3.593.143-.863.698-1.723 1.464-2.383zm.653.757c-.757.653-1.153 1.44-1.153 2.056v.448l-.445.049C2.064 6.805 1 7.952 1 9.318 1 10.785 2.23 12 3.781 12h8.906C13.98 12 15 10.988 15 9.773c0-1.216-1.02-2.228-2.313-2.228h-.5v-.5C12.188 4.825 10.328 3 8 3a4.53 4.53 0 0 0-2.941 1.1z"
+        />
       </svg>
     </a>
     <div>
-      <input id="comments" style="display: none;" accept=".docx" (change)="handleComments($event)" type="file">
+      <input
+        id="comments"
+        style="display: none"
+        accept=".docx"
+        (change)="handleComments($event)"
+        type="file"
+      />
       <label class="btn btn-outline-success" for="comments">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-upload"
-          viewBox="0 0 16 16">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="20"
+          height="20"
+          fill="currentColor"
+          class="bi bi-upload"
+          viewBox="0 0 16 16"
+        >
           <path
-            d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z">
-          </path>
+            d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"
+          ></path>
           <path
-            d="M7.646 1.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 2.707V11.5a.5.5 0 0 1-1 0V2.707L5.354 4.854a.5.5 0 1 1-.708-.708l3-3z">
-          </path>
+            d="M7.646 1.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 2.707V11.5a.5.5 0 0 1-1 0V2.707L5.354 4.854a.5.5 0 1 1-.708-.708l3-3z"
+          ></path>
         </svg>
-        {{uploadText1 | translate}}
-
+        {{ uploadText1 | translate }}
       </label>
     </div>
   </div>
-
-
-
-
-
-
 
   <!-- 
   <div class="form-group col-md-6">
@@ -234,7 +428,4 @@
     <label for="areaType">{{ "areaType" | translate }}</label>
     <input class="form-control" name="areaType" #areaType="ngModel" ngModel [(ngModel)]="farm.area_type" />
   </div> -->
-
-
-
 </div>

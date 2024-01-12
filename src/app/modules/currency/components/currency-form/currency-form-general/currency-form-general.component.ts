@@ -17,29 +17,27 @@ export class CurrencyFormGeneralComponent implements OnInit {
   addform: FormGroup;
   fieldControl: FormControl;
   fieldControl2: FormControl;
-  constructor(private sharedService: SharedService, private cuurencyserv: CurrencyService, private dialogComponent: DialogComponent) { }
-  static = ""
-  id = ""
+  constructor(
+    private sharedService: SharedService,
+    private cuurencyserv: CurrencyService,
+    private dialogComponent: DialogComponent,
+  ) {}
+  static = "";
+  id = "";
   getstatus() {
-
     if (this.currency.id) {
-
-      this.static = "update"
+      this.static = "update";
       if (this.id != this.currency.id) {
-        this.id = this.currency.id
-        this.currencyReplica = JSON.parse(JSON.stringify(this.currency))
-
-
+        this.id = this.currency.id;
+        this.currencyReplica = JSON.parse(JSON.stringify(this.currency));
       }
-      this.dialogComponent.setsubmitstatus(true)
+      this.dialogComponent.setsubmitstatus(true);
 
-      return "update"
-
+      return "update";
     } else if (!this.currency.id) {
-      this.static = "create"
-      this.geValues('z')
-      return "create"
-
+      this.static = "create";
+      this.geValues("z");
+      return "create";
     }
   }
   names: Array<String> = [];
@@ -47,42 +45,37 @@ export class CurrencyFormGeneralComponent implements OnInit {
   ngOnInit(): void {
     if (this.currency == undefined) this.currency = { name: "", code: "" };
     this.initForm();
-    this.cuurencyserv.findAll().subscribe(data => {
-      this.names = data.map(el => {
-        return el.name
-      })
-      this.codes = data.map(el => {
-        return el.code
-      })
-    })
-
+    this.cuurencyserv.findAll().subscribe((data) => {
+      this.names = data.map((el) => {
+        return el.name;
+      });
+      this.codes = data.map((el) => {
+        return el.code;
+      });
+    });
   }
-  dispotrueCode: boolean = false
-  dispotruename: boolean = false
+  dispotrueCode: boolean = false;
+  dispotruename: boolean = false;
 
   blur1() {
     if (this.currency.code == null) {
-      this.dispotrueCode = false
-
+      this.dispotrueCode = false;
     }
   }
   exist() {
-    if (this.codes.indexOf((this.currency.code + "")) != -1) {
-      if(this.static=="update" ){
-        if(this.currency.code == this.currencyReplica.code){
-          this.dispotrueCode = false
-        }else{
-          this.dispotrueCode = true
+    if (this.codes.indexOf(this.currency.code + "") != -1) {
+      if (this.static == "update") {
+        if (this.currency.code == this.currencyReplica.code) {
+          this.dispotrueCode = false;
+        } else {
+          this.dispotrueCode = true;
         }
-      }else{
-        this.dispotrueCode = true
+      } else {
+        this.dispotrueCode = true;
       }
-
     } else {
-      this.dispotrueCode = false
+      this.dispotrueCode = false;
     }
-
-
   }
 
   // generateRandomCode() {
@@ -95,36 +88,27 @@ export class CurrencyFormGeneralComponent implements OnInit {
   //   return code;
   // }
 
-  newSeggestions = ""
+  newSeggestions = "";
 
   existname() {
-    if (this.names.indexOf((this.currency.name + "")) != -1) {
-      if(this.static=="update" ){
-
-        if(this.currency.name == this.currencyReplica.name){
-          this.dispotruename = false
-        }else{
-          this.dispotruename = true
+    if (this.names.indexOf(this.currency.name + "") != -1) {
+      if (this.static == "update") {
+        if (this.currency.name == this.currencyReplica.name) {
+          this.dispotruename = false;
+        } else {
+          this.dispotruename = true;
         }
-      }else{
-        this.dispotruename = true
+      } else {
+        this.dispotruename = true;
       }
-
     } else {
-      this.dispotruename = false
+      this.dispotruename = false;
     }
-
   }
   initForm() {
-
-    this.fieldControl2 = new FormControl('', [
-      Validators.required
-    ]);
+    this.fieldControl2 = new FormControl("", [Validators.required]);
     this.addform = new FormGroup({
-      code: new FormControl(null, [
-        Validators.required,
-
-      ]),
+      code: new FormControl(null, [Validators.required]),
       name: new FormControl(null, [
         Validators.required,
         Validators.pattern(/^[a-zA-Z ]*$/),
@@ -133,23 +117,20 @@ export class CurrencyFormGeneralComponent implements OnInit {
         Validators.required,
         Validators.pattern(/^[a-zA-Z ]*$/),
       ]),
-      Countrcode: new FormControl(null, [
-        Validators.required,
-
-      ]),
-      Digitalcode: new FormControl(null, [
-        Validators.required,
-
-      ])
+      Countrcode: new FormControl(null, [Validators.required]),
+      Digitalcode: new FormControl(null, [Validators.required]),
     });
-
   }
 
   geValues(event) {
-
     if (
-      !!(this.currency.countrcode && this.currency.countryname && this.currency.digitalcode) &&
-      this.dispotrueCode == false && this.dispotruename == false &&
+      !!(
+        this.currency.countrcode &&
+        this.currency.countryname &&
+        this.currency.digitalcode
+      ) &&
+      this.dispotrueCode == false &&
+      this.dispotruename == false &&
       this.currency.digitalcode != null &&
       this.currency.digitalcode != "" &&
       this.currency.countrcode != null &&
@@ -161,11 +142,12 @@ export class CurrencyFormGeneralComponent implements OnInit {
       this.currency.name != null &&
       this.currency.name != "" &&
       this.currency.code.toString().length >= 1 &&
-      this.currency.name.toString().length >= 1) {
-        this.dialogComponent.setsubmitstatus(true)
-      } else {
-        this.dialogComponent.setsubmitstatus(false)
-      }
+      this.currency.name.toString().length >= 1
+    ) {
+      this.dialogComponent.setsubmitstatus(true);
+    } else {
+      this.dialogComponent.setsubmitstatus(false);
+    }
   }
 
   get f() {
@@ -174,12 +156,16 @@ export class CurrencyFormGeneralComponent implements OnInit {
 
   isControlValid(controlName: string): boolean {
     const control = this.addform.controls[controlName];
-    return control.invalid && (control.dirty || control.touched || control.invalid);
+    return (
+      control.invalid && (control.dirty || control.touched || control.invalid)
+    );
   }
 
   isControlInValid(controlName: string): boolean {
     const control = this.addform.controls[controlName];
-    return control.invalid && (control.dirty || control.touched || control.invalid);
+    return (
+      control.invalid && (control.dirty || control.touched || control.invalid)
+    );
   }
   DCisvalid: boolean = false;
   DNisvalid: boolean = false;
@@ -188,75 +174,66 @@ export class CurrencyFormGeneralComponent implements OnInit {
   DNcouisvalid: boolean = false;
   STisvali: boolean = false;
   Misvalid: boolean = false;
-  minIstrueName2: boolean = false
+  minIstrueName2: boolean = false;
 
-  minIstrueName3: boolean = false
+  minIstrueName3: boolean = false;
 
   isBlurDCouisvalid() {
     if (this.currency.digitalcode == undefined) {
-      this.DCgiisvalid = true
-    } else
-      if (this.currency.digitalcode.toString().length < 0) { this.DCgiisvalid = true }
-      else {
-        this.DCgiisvalid = false
-      }
+      this.DCgiisvalid = true;
+    } else if (this.currency.digitalcode.toString().length < 0) {
+      this.DCgiisvalid = true;
+    } else {
+      this.DCgiisvalid = false;
+    }
   }
   isBlurDCjiisvalid() {
     if (this.currency.countrcode == undefined) {
-      this.DCouisvalid = true
-    } else
-      if (this.currency.countrcode.toString().length < 1) { this.DCouisvalid = true }
-      else {
-        this.DCouisvalid = false
-      }
+      this.DCouisvalid = true;
+    } else if (this.currency.countrcode.toString().length < 1) {
+      this.DCouisvalid = true;
+    } else {
+      this.DCouisvalid = false;
+    }
   }
   isBlurDCisvalid() {
     if (this.currency.code == undefined) {
-      this.DCisvalid = true
-    } else
-      if (this.currency.code.toString().length < 0) { this.DCisvalid = true }
-      else {
-        this.DCisvalid = false
-      }
+      this.DCisvalid = true;
+    } else if (this.currency.code.toString().length < 0) {
+      this.DCisvalid = true;
+    } else {
+      this.DCisvalid = false;
+    }
   }
   isBlurDNouisvalid() {
     if (this.currency.countryname == undefined) {
-      this.DNcouisvalid = true
-    } else
-
-      if (this.currency.countryname.toString().length < 0) { this.DNcouisvalid = true }
-      else {
-        this.DNcouisvalid = false
-      }
+      this.DNcouisvalid = true;
+    } else if (this.currency.countryname.toString().length < 0) {
+      this.DNcouisvalid = true;
+    } else {
+      this.DNcouisvalid = false;
+    }
   }
   isBlurDNisvalid() {
     if (this.currency.name == undefined) {
-      this.DNisvalid = true
-    } else
-
-      if (this.currency.name.toString().length < 0) { this.DNisvalid = true }
-      else {
-        this.DNisvalid = false
-      }
+      this.DNisvalid = true;
+    } else if (this.currency.name.toString().length < 0) {
+      this.DNisvalid = true;
+    } else {
+      this.DNisvalid = false;
+    }
   }
 
-  codeIsvalid = false
+  codeIsvalid = false;
 
   validationCode() {
     const codeRegex: RegExp = /^[a-zA-Z0-9]*$/;
     if (codeRegex.test(this.currency.code)) {
       this.codeIsvalid = false;
       this.sharedService.setIsActive(false);
-
-    }
-    else {
-      this.codeIsvalid = true
+    } else {
+      this.codeIsvalid = true;
       this.sharedService.setIsActive(true);
-
     }
-
   }
-
-
-
 }

@@ -34,7 +34,7 @@ export class AnimalListComponent implements OnInit {
 
   constructor(
     private translateService: TranslateService,
-    private toastService: HotToastService
+    private toastService: HotToastService,
   ) {}
 
   ngOnInit(): void {}

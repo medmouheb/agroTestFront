@@ -1,22 +1,21 @@
-import { Component, EventEmitter, OnInit, ViewChild } from '@angular/core';
-import { ConfirmDialogComponent } from 'app/shared/components/confirm-dialog/confirm-dialog.component';
-import { StepperComponent } from 'app/shared/components/stepper/stepper.component';
-import { WizardDialogComponent } from 'app/shared/components/wizard-dialog/wizard-dialog.component';
-import { Vehicles } from '../../models/vehicles';
-import { Page, initPage } from 'app/shared/models';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { VehiclesService } from '../../services/vehicles.service';
-import { TranslateService } from '@ngx-translate/core';
-import { HotToastService } from '@ngneat/hot-toast';
-import { environment } from 'environments/environment';
+import { Component, EventEmitter, OnInit, ViewChild } from "@angular/core";
+import { ConfirmDialogComponent } from "app/shared/components/confirm-dialog/confirm-dialog.component";
+import { StepperComponent } from "app/shared/components/stepper/stepper.component";
+import { WizardDialogComponent } from "app/shared/components/wizard-dialog/wizard-dialog.component";
+import { Vehicles } from "../../models/vehicles";
+import { Page, initPage } from "app/shared/models";
+import { FormBuilder, FormGroup } from "@angular/forms";
+import { VehiclesService } from "../../services/vehicles.service";
+import { TranslateService } from "@ngx-translate/core";
+import { HotToastService } from "@ngneat/hot-toast";
+import { environment } from "environments/environment";
 
 @Component({
-  selector: 'app-vehicles-unit-list',
-  templateUrl: './vehicles-unit-list.component.html',
-  styleUrls: ['./vehicles-unit-list.component.scss']
+  selector: "app-vehicles-unit-list",
+  templateUrl: "./vehicles-unit-list.component.html",
+  styleUrls: ["./vehicles-unit-list.component.scss"],
 })
 export class VehiclesUnitListComponent implements OnInit {
-
   @ViewChild("deleteModal")
   deleteModal!: ConfirmDialogComponent;
   @ViewChild("archiveModal")
@@ -40,7 +39,7 @@ export class VehiclesUnitListComponent implements OnInit {
   onPaginationChange: EventEmitter<string> = new EventEmitter<string>();
   form: FormGroup;
 
-  fullDetail = false
+  fullDetail = false;
 
   currentStep = 0;
   steps: any = [
@@ -53,21 +52,22 @@ export class VehiclesUnitListComponent implements OnInit {
     private vehiclesService: VehiclesService,
     private translateService: TranslateService,
     private toastService: HotToastService,
-    private formBuilder: FormBuilder
-  ) { }
+    private formBuilder: FormBuilder,
+  ) {}
   onCheckboxChange() {
     if (this.isChecked == false) {
-
-      this.affiche = false
-    }
-    else {
-      this.affiche = true
+      this.affiche = false;
+    } else {
+      this.affiche = true;
     }
   }
   ngOnInit(): void {
     this.findPage();
-    this.findArchivedPage()
-    this.onPaginationChange.subscribe(() => { this.findPage(); this.findArchivedPage() });
+    this.findArchivedPage();
+    this.onPaginationChange.subscribe(() => {
+      this.findPage();
+      this.findArchivedPage();
+    });
   }
 
   findPage() {
@@ -97,7 +97,7 @@ export class VehiclesUnitListComponent implements OnInit {
     this.filter = filter;
     this.pageNumber = 0;
     this.findPage();
-    this.findArchivedPage()
+    this.findArchivedPage();
   }
 
   onPageNumberChange(pageNumber: number) {
@@ -121,7 +121,7 @@ export class VehiclesUnitListComponent implements OnInit {
       this.translateService.instant("message.loading..."),
       {
         id: "0",
-      }
+      },
     );
 
     this.vehiclesService.save(id, this.camp!).subscribe({
@@ -133,7 +133,7 @@ export class VehiclesUnitListComponent implements OnInit {
         this.toastService.success(
           this.translateService.instant("success.saved", {
             elem: this.translateService.instant("Vehicles"),
-          })
+          }),
         );
       },
       error: (error) => {
@@ -141,7 +141,7 @@ export class VehiclesUnitListComponent implements OnInit {
         this.toastService.error(
           this.translateService.instant(error.error, {
             elem: this.translateService.instant("Vehicles"),
-          })
+          }),
         );
       },
     });
@@ -163,7 +163,6 @@ export class VehiclesUnitListComponent implements OnInit {
     this.stepper.nextStep();
     setTimeout(() => {
       this.stepper.prevStep();
-
     }, 100);
     setTimeout(() => {
       this.formModal.show({
@@ -174,7 +173,6 @@ export class VehiclesUnitListComponent implements OnInit {
         prev: () => this.stepper.prevStep(),
       });
     }, 200);
-
   }
 
   onClickEdit(id: string) {
@@ -183,7 +181,6 @@ export class VehiclesUnitListComponent implements OnInit {
     this.stepper.nextStep();
     setTimeout(() => {
       this.stepper.prevStep();
-
     }, 100);
     setTimeout(() => {
       this.formModal.show({
@@ -194,23 +191,20 @@ export class VehiclesUnitListComponent implements OnInit {
         prev: () => this.stepper.prevStep(),
       });
     }, 200);
-
   }
-
-
 
   onClickArchive(id: string) {
     this.archiveModal.show(() => {
       this.vehiclesService.archive(id).subscribe({
         next: () => {
           this.findPage();
-          this.findArchivedPage()
+          this.findArchivedPage();
           this.archiveModal.hide();
           this.toastService.close("0");
           this.toastService.success(
             this.translateService.instant("success.deleted", {
               elem: this.translateService.instant("Vehicles"),
-            })
+            }),
           );
         },
       });
@@ -220,66 +214,69 @@ export class VehiclesUnitListComponent implements OnInit {
   sortByCode() {
     if (this.affiche) {
       if (this.sortByCodeValid) {
-        this.companyss.sort((a, b) => a.codeVehicule.localeCompare(b.codeVehicule));
-        this.sortByCodeValid = false
+        this.companyss.sort((a, b) =>
+          a.codeVehicule.localeCompare(b.codeVehicule),
+        );
+        this.sortByCodeValid = false;
       } else {
-        this.companyss.sort((a, b) => b.codeVehicule.localeCompare(a.codeVehicule));
-        this.sortByCodeValid = true
+        this.companyss.sort((a, b) =>
+          b.codeVehicule.localeCompare(a.codeVehicule),
+        );
+        this.sortByCodeValid = true;
       }
     } else {
       if (this.sortByCodeValid) {
-        this.companys.sort((a, b) => a.codeVehicule.localeCompare(b.codeVehicule));
-        this.sortByCodeValid = false
+        this.companys.sort((a, b) =>
+          a.codeVehicule.localeCompare(b.codeVehicule),
+        );
+        this.sortByCodeValid = false;
       } else {
-        this.companys.sort((a, b) => b.codeVehicule.localeCompare(a.codeVehicule));
-        this.sortByCodeValid = true
+        this.companys.sort((a, b) =>
+          b.codeVehicule.localeCompare(a.codeVehicule),
+        );
+        this.sortByCodeValid = true;
       }
     }
-
-
   }
-
-
 
   sortByNameValid: boolean = true;
   sortByName() {
     if (this.affiche) {
       if (this.sortByNameValid) {
-        this.companyss.sort((a, b) => a.nomDuVehicule.localeCompare(b.nomDuVehicule));
-        this.sortByNameValid = false
+        this.companyss.sort((a, b) =>
+          a.nomDuVehicule.localeCompare(b.nomDuVehicule),
+        );
+        this.sortByNameValid = false;
       } else {
-        this.companyss.sort((a, b) => b.nomDuVehicule.localeCompare(a.nomDuVehicule));
-        this.sortByNameValid = true
+        this.companyss.sort((a, b) =>
+          b.nomDuVehicule.localeCompare(a.nomDuVehicule),
+        );
+        this.sortByNameValid = true;
       }
     } else {
       if (this.sortByNameValid) {
-        this.companys.sort((a, b) => a.nomDuVehicule.localeCompare(b.nomDuVehicule));
-        this.sortByNameValid = false
+        this.companys.sort((a, b) =>
+          a.nomDuVehicule.localeCompare(b.nomDuVehicule),
+        );
+        this.sortByNameValid = false;
       } else {
-        this.companys.sort((a, b) => b.nomDuVehicule.localeCompare(a.nomDuVehicule));
-        this.sortByNameValid = true
+        this.companys.sort((a, b) =>
+          b.nomDuVehicule.localeCompare(a.nomDuVehicule),
+        );
+        this.sortByNameValid = true;
       }
     }
-
   }
 
-
-
-
-
-
-
-
   onClickdisArchive(id: string) {
-
     this.vehiclesService.disArchive(id).subscribe({
       next: () => {
         this.findArchivedPage();
-        this.findPage()
+        this.findPage();
         this.toastService.success(
           this.translateService.instant("success.restore", {
             elem: this.translateService.instant("Vehicles"),
-          })
+          }),
         );
       },
     });
@@ -289,21 +286,19 @@ export class VehiclesUnitListComponent implements OnInit {
     this.vehiclesService.delete(id).subscribe({
       next: () => {
         this.findArchivedPage();
-        this.findPage()
+        this.findPage();
         this.toastService.success(
           this.translateService.instant("success.deleted", {
             elem: this.translateService.instant("Vehicles"),
-          })
+          }),
         );
       },
     });
   }
 
   getImage(id: any) {
-    window.open(`${environment.apiUrl}/images/${id}`, "_blank")
+    window.open(`${environment.apiUrl}/images/${id}`, "_blank");
   }
-
-
 
   findArchivedPage() {
     this.loading = true;
@@ -321,5 +316,4 @@ export class VehiclesUnitListComponent implements OnInit {
         complete: () => (this.loading = false),
       });
   }
-
 }

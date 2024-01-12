@@ -1,22 +1,34 @@
-<div style="color: black;font-weight: bold; "  class="d-flex align-items-center justify-content-center gap-6">
+<div
+  style="color: black; font-weight: bold"
+  class="d-flex align-items-center justify-content-center gap-6"
+>
   <div class="d-flex align-items-center gap-4">
-    <button (click)="onClickPrev()" class="btn" [title]="'btns.previous' | translate"
-      [disabled]="pageNumber == 0">
+    <button
+      (click)="onClickPrev()"
+      class="btn"
+      [title]="'btns.previous' | translate"
+      [disabled]="pageNumber == 0"
+    >
       <i class="fa fa-chevron-left text-secondary text-xl"></i>
-      {{'btns.previous' | translate}}
+      {{ "btns.previous" | translate }}
     </button>
-    <div style="text-shadow: 0 0 5px rgba(255, 255, 255, 1) " class="d-flex align-items-center gap-2">
-      {{page.empty ? 0 : pageSize * pageNumber + 1}}
-      -
-      ({{pageSize * pageNumber + page.numberOfElements}}
+    <div
+      style="text-shadow: 0 0 5px rgba(255, 255, 255, 1)"
+      class="d-flex align-items-center gap-2"
+    >
+      {{ page.empty ? 0 : pageSize * pageNumber + 1 }}
+      - ({{ pageSize * pageNumber + page.numberOfElements }}
       /
-      {{page.totalElements}})
+      {{ page.totalElements }})
     </div>
-    <button (click)="onClickNext()" class="btn" [title]="'btns.next' | translate" [disabled]="page.last">
+    <button
+      (click)="onClickNext()"
+      class="btn"
+      [title]="'btns.next' | translate"
+      [disabled]="page.last"
+    >
       <i class="fa fa-chevron-right text-secondary text-xl"></i>
-      {{'btns.next' | translate}}
+      {{ "btns.next" | translate }}
     </button>
   </div>
-
 </div>
-

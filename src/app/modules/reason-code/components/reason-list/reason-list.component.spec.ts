@@ -1,23 +1,22 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { ReasonListComponent } from './reason-list.component';
+import { ReasonListComponent } from "./reason-list.component";
 
-describe('ReasonListComponent', () => {
+describe("ReasonListComponent", () => {
   let component: ReasonListComponent;
   let fixture: ComponentFixture<ReasonListComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ReasonListComponent ]
-    })
-    .compileComponents();
+      declarations: [ReasonListComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(ReasonListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

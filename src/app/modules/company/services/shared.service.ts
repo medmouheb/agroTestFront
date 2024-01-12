@@ -6,12 +6,11 @@ import { BehaviorSubject } from "rxjs";
   providedIn: "root",
 })
 export class SharedService {
-
   private isActive = new BehaviorSubject<boolean>(false);
   isActive$ = this.isActive.asObservable();
 
   public setIsActive(value: boolean) {
-    localStorage.setItem("st", value ? "true" : "false")
+    localStorage.setItem("st", value ? "true" : "false");
     return this.isActive.next(value);
   }
 }

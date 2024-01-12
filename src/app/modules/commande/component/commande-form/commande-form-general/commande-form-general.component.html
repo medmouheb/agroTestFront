@@ -1,56 +1,120 @@
 <div class="row" [formGroup]="addform">
+  <div class="form-group col-md-6">
+    <label class="required" for="paymentTermCode">{{
+      "paymentTermCode" | translate
+    }}</label>
+    <input
+      type="number"
+      class="form-control"
+      name="paymentTermCode"
+      ngModel
+      [(ngModel)]="commande.paymentTermCode"
+      formControlName="paymentTermCode"
+      required
+      aria-invalid="true"
+      (change)="geValues($event)"
+    />
+  </div>
 
-    <div class="form-group col-md-6">
-        <label class="required" for="paymentTermCode">{{'paymentTermCode' | translate}}</label>
-        <input type="number" class="form-control"  name="paymentTermCode" ngModel [(ngModel)]="commande.paymentTermCode"
-            formControlName="paymentTermCode" required aria-invalid="true" (change)="geValues($event)" />
-    </div>
+  <div class="required" class="form-group col-md-6">
+    <label for="paymentTermName">{{ "paymentTermName" | translate }}</label>
+    <input
+      class="form-control"
+      name="paymentTermName"
+      ngModel
+      [(ngModel)]="commande.paymentTermName"
+      required
+      aria-invalid="true"
+      formControlName="paymentTermName"
+      (change)="geValues($event)"
+    />
+  </div>
 
-    <div class="required" class="form-group col-md-6">
-        <label for="paymentTermName">{{'paymentTermName' | translate}}</label>
-        <input class="form-control" name="paymentTermName" ngModel [(ngModel)]="commande.paymentTermName"
-            required aria-invalid="true" formControlName="paymentTermName"
-             (change)="geValues($event)" />
-    </div>
+  <div class="required" class="form-group col-md-6">
+    <label for="dateSold">{{ "dateSold" | translate }}</label>
+    <input
+      type="date"
+      class="form-control"
+      name="dateSold"
+      ngModel
+      [(ngModel)]="commande.dateSold"
+      required
+      aria-invalid="true"
+      formControlName="dateSold"
+      (change)="geValues($event)"
+    />
+  </div>
+  <div class="required" class="form-group col-md-6">
+    <label for="daysAfterCurrentMonth">{{
+      "daysAfterCurrentMonth" | translate
+    }}</label>
+    <input
+      class="form-control"
+      name="Days After Current Month"
+      ngModel
+      [(ngModel)]="commande.daysAfterCurrentMonth"
+      required
+      aria-invalid="true"
+      formControlName="daysAfterCurrentMonth"
+      (change)="geValues($event)"
+    />
+  </div>
+  <div class="required" class="form-group col-md-6">
+    <label for="deliveryDate">{{ "deliveryDate" | translate }}</label>
+    <input
+      type="date"
+      class="form-control"
+      name="deliveryDate"
+      ngModel
+      [(ngModel)]="commande.deliveryDate"
+      required
+      aria-invalid="true"
+      formControlName="deliveryDate"
+      (change)="geValues($event)"
+    />
+  </div>
+  <div class="required" class="form-group col-md-6">
+    <label for="invoiceDate">{{ "invoiceDate" | translate }}</label>
+    <input
+      type="date"
+      class="form-control"
+      name="invoiceDate"
+      ngModel
+      [(ngModel)]="commande.invoiceDate"
+      required
+      aria-invalid="true"
+      formControlName="invoiceDate"
+      (change)="geValues($event)"
+    />
+  </div>
 
-    <div class="required" class="form-group col-md-6">
-        <label for="dateSold">{{'dateSold' | translate}}</label>
-        <input type="date" class="form-control" name="dateSold" ngModel [(ngModel)]="commande.dateSold"
-            required aria-invalid="true" formControlName="dateSold"
-             (change)="geValues($event)"  />
-    </div>
-    <div class="required" class="form-group col-md-6">
-        <label for="daysAfterCurrentMonth">{{'daysAfterCurrentMonth' | translate}}</label>
-        <input class="form-control" name="Days After Current Month" ngModel [(ngModel)]="commande.daysAfterCurrentMonth"
-            required aria-invalid="true" formControlName="daysAfterCurrentMonth"
-             (change)="geValues($event)" />
-    </div>
-    <div class="required" class="form-group col-md-6">
-        <label for="deliveryDate">{{'deliveryDate' | translate}}</label>
-        <input type="date" class="form-control" name="deliveryDate" ngModel [(ngModel)]="commande.deliveryDate"
-            required aria-invalid="true" formControlName="deliveryDate"
-             (change)="geValues($event)"  />
-    </div>
-    <div class="required" class="form-group col-md-6">
-        <label for="invoiceDate">{{'invoiceDate' | translate}}</label>
-        <input type="date" class="form-control" name="invoiceDate" ngModel [(ngModel)]="commande.invoiceDate"
-            required aria-invalid="true" formControlName="invoiceDate"
-             (change)="geValues($event)"   />
-    </div>
+  <div class="required" class="form-group col-md-6">
+    <label for="receiveDate">{{ "receiveDate" | translate }}</label>
+    <input
+      type="date"
+      class="form-control"
+      name="receiveDate"
+      ngModel
+      [(ngModel)]="commande.receiveDate"
+      required
+      aria-invalid="true"
+      formControlName="receiveDate"
+      (change)="geValues($event)"
+    />
+  </div>
 
-    <div class="required" class="form-group col-md-6">
-        <label for="receiveDate">{{'receiveDate' | translate}}</label>
-        <input type="date" class="form-control" name="receiveDate" ngModel [(ngModel)]="commande.receiveDate"
-            required aria-invalid="true" formControlName="receiveDate"
-             (change)="geValues($event)"  />
-    </div>
-
-
-    <div class="required" class="form-group col-md-6">
-        <label for="shipDate">{{'shipDate' | translate}}</label>
-        <input type="date" class="form-control" name="shipDate" ngModel [(ngModel)]="commande.shipDate"
-            required aria-invalid="true" formControlName="shipDate"
-             (change)="geValues($event)"  />
-    </div>
-
+  <div class="required" class="form-group col-md-6">
+    <label for="shipDate">{{ "shipDate" | translate }}</label>
+    <input
+      type="date"
+      class="form-control"
+      name="shipDate"
+      ngModel
+      [(ngModel)]="commande.shipDate"
+      required
+      aria-invalid="true"
+      formControlName="shipDate"
+      (change)="geValues($event)"
+    />
+  </div>
 </div>

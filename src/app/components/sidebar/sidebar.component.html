@@ -1,358 +1,825 @@
 <div id="sidebar" class="sidebar">
-
-    <div>
-        <svg style="  float: right; margin: 3%;cursor: pointer;" xmlns="http://www.w3.org/2000/svg" width="30"
-            height="30" fill="black" class="bi bi-x-lg" viewBox="0 0 16 16" *ngIf="!isTransitioned" [@svgTransition]
-            (click)="toggleTransition()">
-            <path
-                d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z" />
-        </svg>
-        <svg style="  float: right; margin: 3%;cursor: pointer;" *ngIf="isTransitioned" [@svgTransition]
-            (click)="toggleTransition()" xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="black"
-            class="bi bi-border-width" viewBox="0 0 16 16">
-            <path
-                d="M0 3.5A.5.5 0 0 1 .5 3h15a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5H.5a.5.5 0 0 1-.5-.5v-2zm0 5A.5.5 0 0 1 .5 8h15a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H.5a.5.5 0 0 1-.5-.5v-1zm0 4a.5.5 0 0 1 .5-.5h15a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5z" />
-        </svg>
-    </div>
-    <a *ngIf="isAdmin" routerLink="/start" routerLinkActive="active" (click)="selectItem('start')">
-        <img alt="" src="assets/img/admin.png" style="width: 20px; height: 20px; margin-right: 5px;">
-        <span *ngIf="!isTransitioned">Dashboard</span>
-
-    </a>
-    <a routerLink="/company" routerLinkActive="active" (click)="selectItem('company')">
-        <img alt="" src="assets/img/company.png" style="width: 20px; height: 20px; margin-right: 5px;">
-        <span *ngIf="!isTransitioned">Company</span>
-    </a>
-    <a routerLink="/costCenter" routerLinkActive="active" (click)="selectItem('costCenter')">
-        <img alt="" src="assets/img/company.png" style="width: 20px; height: 20px; margin-right: 5px;">
-        <span *ngIf="!isTransitioned">Cost center</span>
-    </a>
-
-    <a routerLink="/salesku" routerLinkActive="active" (click)="selectItem('salesku')">
-        <img alt="" src="assets/img/company.png" style="width: 20px; height: 20px; margin-right: 5px;">
-        <span *ngIf="!isTransitioned">Sale sku</span>
-    </a>
-
-    <a routerLink="/Field-product" routerLinkActive="active" (click)="selectItem('Field-product')">
-        <img alt="" src="assets/img/product.png" style="width: 20px; height: 20px; margin-right: 5px;">
-        <span *ngIf="!isTransitioned">Product</span>
-    </a>
-
-    <a routerLink="/Rapprochement-des-stocks" routerLinkActive="active" (click)="selectItem('Rapprochement-des-stocks')">
-        <img alt="" src="assets/img/farm.png" style="width: 20px; height: 20px; margin-right: 5px;">
-        <span *ngIf="!isTransitioned">Rapprochement des stocks</span>
-    </a>
-
-
-    <a routerLink="/ProductUsage" routerLinkActive="active" (click)="selectItem('ProductUsage')">
-        <img alt="" src="assets/img/farm.png" style="width: 20px; height: 20px; margin-right: 5px;">
-        <span *ngIf="!isTransitioned">Product usage</span>
-    </a>
-
-    <a routerLink="/Delivery" routerLinkActive="active" (click)="selectItem('Delivery')">
-        <img alt="" src="assets/img/farm.png" style="width: 20px; height: 20px; margin-right: 5px;">
-        <span *ngIf="!isTransitioned">Delivery</span>
-    </a>
-
-    <a routerLink="/shipmethode" routerLinkActive="active" (click)="selectItem('shipmethode')">
-        <img alt="" src="assets/img/farm.png" style="width: 20px; height: 20px; margin-right: 5px;">
-        <span *ngIf="!isTransitioned">Ship methode</span>
-    </a>
-
-    <a routerLink="/freightterms" routerLinkActive="active" (click)="selectItem('freightterms')">
-        <img alt="" src="assets/img/farm.png" style="width: 20px; height: 20px; margin-right: 5px;">
-        <span *ngIf="!isTransitioned">Freight terms</span>
-    </a>
-
-    <a routerLink="/fournisseurs" routerLinkActive="active" (click)="selectItem('fournisseurs')">
-        <img alt="" src="assets/img/farm.png" style="width: 20px; height: 20px; margin-right: 5px;">
-        <span *ngIf="!isTransitioned">Fournisseurs</span>
-    </a>
-
-    <a routerLink="/sanitation" routerLinkActive="active" (click)="selectItem('sanitation')">
-        <img alt="" src="assets/img/farm.png" style="width: 20px; height: 20px; margin-right: 5px;">
-        <span *ngIf="!isTransitioned">Sanitation</span>
-    </a>
-
-    <a routerLink="/warehouses" routerLinkActive="active" (click)="selectItem('warehouses')">
-        <img alt="" src="assets/img/warehouse.png" style="width: 20px; height: 20px; margin-right: 5px;">
-        <span *ngIf="!isTransitioned">Warehouse</span>
-    </a>
-
-    <a routerLink="/Initialinventory" routerLinkActive="active" (click)="selectItem('Initialinventory')">
-        <img alt="" src="assets/img/farm.png" style="width: 20px; height: 20px; margin-right: 5px;">
-        <span *ngIf="!isTransitioned">Initial inventory</span>
-    </a>
-
-
-    <a routerLink="/farms" routerLinkActive="active" (click)="selectItem('farms')">
-        <img alt="" src="assets/img/farm.png" style="width: 20px; height: 20px; margin-right: 5px;">
-        <span *ngIf="!isTransitioned">Farms</span>
-    </a>
-
-
-
-
-
-
-    <a routerLink="/currency" routerLinkActive="active" (click)="selectItem('currency')">
-        <img alt="" src="assets/img/farm.png" style="width: 20px; height: 20px; margin-right: 5px;">
-        <span *ngIf="!isTransitioned">Currency</span>
-    </a>
-
-    <a routerLink="/division" routerLinkActive="active" (click)="selectItem('division')">
-        <img alt="" src="assets/img/farm.png" style="width: 20px; height: 20px; margin-right: 5px;">
-        <span *ngIf="!isTransitioned">Division</span>
-    </a>
-
-    <a routerLink="/growout" routerLinkActive="active" (click)="selectItem('growout')">
-        <img alt="" src="assets/img/farm.png" style="width: 20px; height: 20px; margin-right: 5px;">
-        <span *ngIf="!isTransitioned">Growout</span>
-    </a>
-
-
-
-
-
-
-
-
-    <a routerLink="/vehicule" routerLinkActive="active" (click)="selectItem('vehicule')">
-        <img alt="" src="assets/img/farm.png" style="width: 20px; height: 20px; margin-right: 5px;">
-        <span *ngIf="!isTransitioned">Vehicule</span>
-    </a>
-    <a routerLink="/vehicleType" routerLinkActive="active" (click)="selectItem('vehicleType')">
-        <img alt="" src="assets/img/farm.png" style="width: 20px; height: 20px; margin-right: 5px;">
-        <span *ngIf="!isTransitioned">VehicleType</span>
-    </a>
-    <a routerLink="/willaya" routerLinkActive="active" (click)="selectItem('willaya')">
-        <img alt="" src="assets/img/farm.png" style="width: 20px; height: 20px; margin-right: 5px;">
-        <span *ngIf="!isTransitioned">Willaya</span>
-    </a>
-    <a routerLink="/animal-product" routerLinkActive="active" (click)="selectItem('animal-product')">
-        <img alt="" src="assets/img/farm.png" style="width: 20px; height: 20px; margin-right: 5px;">
-        <span *ngIf="!isTransitioned">animal product</span>
-    </a>
-    <a routerLink="/diver" routerLinkActive="active" (click)="selectItem('diver')">
-        <img alt="" src="assets/img/farm.png" style="width: 20px; height: 20px; margin-right: 5px;">
-        <span *ngIf="!isTransitioned">diver</span>
-    </a>
-
-
-
-
-
-
-
-
-    <a routerLink="/egg-product" routerLinkActive="active" (click)="selectItem('egg-product')">
-        <img alt="" src="assets/img/farm.png" style="width: 20px; height: 20px; margin-right: 5px;">
-        <span *ngIf="!isTransitioned">Egg product</span>
-    </a>
-    <a routerLink="/feed-mill" routerLinkActive="active" (click)="selectItem('feed-mill')">
-        <img alt="" src="assets/img/farm.png" style="width: 20px; height: 20px; margin-right: 5px;">
-        <span *ngIf="!isTransitioned">Feed mill</span>
-    </a>
-    <a routerLink="/hatchery" routerLinkActive="active" (click)="selectItem('hatchery')">
-        <img alt="" src="assets/img/farm.png" style="width: 20px; height: 20px; margin-right: 5px;">
-        <span *ngIf="!isTransitioned">Hatchery</span>
-    </a>
-    <a routerLink="/plant" routerLinkActive="active" (click)="selectItem('plant')">
-        <img alt="" src="assets/img/farm.png" style="width: 20px; height: 20px; margin-right: 5px;">
-        <span *ngIf="!isTransitioned">Plant</span>
-    </a>
-    <a routerLink="/sales" routerLinkActive="active" (click)="selectItem('sales')">
-        <img alt="" src="assets/img/farm.png" style="width: 20px; height: 20px; margin-right: 5px;">
-        <span *ngIf="!isTransitioned">Sales</span>
-    </a>
-
-
-
-
-
-
-    <a routerLink="/live-stock-product" routerLinkActive="active" (click)="selectItem('live-stock-product')">
-        <img alt="" src="assets/img/farm.png" style="width: 20px; height: 20px; margin-right: 5px;">
-        <span *ngIf="!isTransitioned">Live stock product</span>
-    </a>
-    <a routerLink="/animal-product" routerLinkActive="active" (click)="selectItem('animal-product')">
-        <img alt="" src="assets/img/farm.png" style="width: 20px; height: 20px; margin-right: 5px;">
-        <span *ngIf="!isTransitioned">Animal product</span>
-    </a>
-    <a routerLink="/vendorsku" routerLinkActive="active" (click)="selectItem('vendorsku')">
-        <img alt="" src="assets/img/farm.png" style="width: 20px; height: 20px; margin-right: 5px;">
-        <span *ngIf="!isTransitioned">Vendor sku</span>
-    </a>
-    <a routerLink="/feed-product" routerLinkActive="active" (click)="selectItem('feed-product')">
-        <img alt="" src="assets/img/farm.png" style="width: 20px; height: 20px; margin-right: 5px;">
-        <span *ngIf="!isTransitioned">Feed product</span>
-    </a>
-    <a routerLink="/ordermangment" routerLinkActive="active" (click)="selectItem('ordermangment')">
-        <img alt="" src="assets/img/farm.png" style="width: 20px; height: 20px; margin-right: 5px;">
-        <span *ngIf="!isTransitioned">Order mangment</span>
-    </a>
-
-
-
-
-
-
-
-    <a routerLink="/logistic" routerLinkActive="active" (click)="selectItem('logistic')">
-        <img alt="" src="assets/img/farm.png" style="width: 20px; height: 20px; margin-right: 5px;">
-        <span *ngIf="!isTransitioned">Logistic</span>
-    </a>
-    <a routerLink="/symtoms" routerLinkActive="active" (click)="selectItem('symtoms')">
-        <img alt="" src="assets/img/farm.png" style="width: 20px; height: 20px; margin-right: 5px;">
-        <span *ngIf="!isTransitioned">Symtoms</span>
-    </a>
-    <a routerLink="/country" routerLinkActive="active" (click)="selectItem('country')">
-        <img alt="" src="assets/img/farm.png" style="width: 20px; height: 20px; margin-right: 5px;">
-        <span *ngIf="!isTransitioned">Country</span>
-    </a>
-    <a routerLink="/willaya" routerLinkActive="active" (click)="selectItem('willaya')">
-        <img alt="" src="assets/img/farm.png" style="width: 20px; height: 20px; margin-right: 5px;">
-        <span *ngIf="!isTransitioned">Willaya</span>
-    </a>
-    <a routerLink="/tax" routerLinkActive="active" (click)="selectItem('tax')">
-        <img alt="" src="assets/img/farm.png" style="width: 20px; height: 20px; margin-right: 5px;">
-        <span *ngIf="!isTransitioned">Tax</span>
-    </a>
-
-
-
-
-
-    <a routerLink="/vihicule" routerLinkActive="active" (click)="selectItem('vihicule')">
-        <img alt="" src="assets/img/farm.png" style="width: 20px; height: 20px; margin-right: 5px;">
-        <span *ngIf="!isTransitioned">Vihicule</span>
-    </a>
-    <a routerLink="/diver" routerLinkActive="active" (click)="selectItem('diver')">
-        <img alt="" src="assets/img/farm.png" style="width: 20px; height: 20px; margin-right: 5px;">
-        <span *ngIf="!isTransitioned">Diver</span>
-    </a>
-    <a routerLink="/vetenarians" routerLinkActive="active" (click)="selectItem('vetenarians')">
-        <img alt="" src="assets/img/farm.png" style="width: 20px; height: 20px; margin-right: 5px;">
-        <span *ngIf="!isTransitioned">Vetenarians</span>
-    </a>
-    <a routerLink="/field" routerLinkActive="active" (click)="selectItem('field')">
-        <img alt="" src="assets/img/farm.png" style="width: 20px; height: 20px; margin-right: 5px;">
-        <span *ngIf="!isTransitioned">Field</span>
-    </a>
-    <a routerLink="/treatment" routerLinkActive="active" (click)="selectItem('treatment')">
-        <img alt="" src="assets/img/farm.png" style="width: 20px; height: 20px; margin-right: 5px;">
-        <span *ngIf="!isTransitioned">Treatment</span>
-    </a>
-
-
-
-
-
-
-    <a routerLink="/commandes" routerLinkActive="active" (click)="selectItem('commandes')">
-        <img alt="" src="assets/img/farm.png" style="width: 20px; height: 20px; margin-right: 5px;">
-        <span *ngIf="!isTransitioned">Commandes</span>
-    </a>
-    <a routerLink="/charges" routerLinkActive="active" (click)="selectItem('charges')">
-        <img alt="" src="assets/img/farm.png" style="width: 20px; height: 20px; margin-right: 5px;">
-        <span *ngIf="!isTransitioned">Charges</span>
-    </a>
-
-
-
-
-
-
-    <a routerLink="/airports" routerLinkActive="active" (click)="selectItem('airports')">
-        <img alt="" src="assets/img/farm.png" style="width: 20px; height: 20px; margin-right: 5px;">
-        <span *ngIf="!isTransitioned">Airports</span>
-    </a>
-    <a routerLink="/vehicles" routerLinkActive="active" (click)="selectItem('vehicles')">
-        <img alt="" src="assets/img/farm.png" style="width: 20px; height: 20px; margin-right: 5px;">
-        <span *ngIf="!isTransitioned">Vehicles</span>
-    </a>
-    <a routerLink="/drivers" routerLinkActive="active" (click)="selectItem('drivers')">
-        <img alt="" src="assets/img/farm.png" style="width: 20px; height: 20px; margin-right: 5px;">
-        <span *ngIf="!isTransitioned">Drivers</span>
-    </a>
-    <a routerLink="/logisticUnit" routerLinkActive="active" (click)="selectItem('logisticUnit')">
-        <img alt="" src="assets/img/farm.png" style="width: 20px; height: 20px; margin-right: 5px;">
-        <span *ngIf="!isTransitioned">logistic Unit</span>
-    </a>
-    <a routerLink="/seaports" routerLinkActive="active" (click)="selectItem('seaports')">
-        <img alt="" src="assets/img/farm.png" style="width: 20px; height: 20px; margin-right: 5px;">
-        <span *ngIf="!isTransitioned">Seaports</span>
-    </a>
-
-
-
-
-
-    <a routerLink="/reasons" routerLinkActive="active" (click)="selectItem('reasons')">
-        <img alt="" src="assets/img/farm.png" style="width: 20px; height: 20px; margin-right: 5px;">
-        <span *ngIf="!isTransitioned">Reasons</span>
-    </a>
-    <a routerLink="/manufacturers" routerLinkActive="active" (click)="selectItem('manufacturers')">
-        <img alt="" src="assets/img/farm.png" style="width: 20px; height: 20px; margin-right: 5px;">
-        <span *ngIf="!isTransitioned">Manufacturers</span>
-    </a>
-
-
-
-
-
-
-
-
-
-    <a routerLink="/milkProduction" routerLinkActive="active" (click)="selectItem('milkProduction')">
-        <img alt="" src="assets/img/production.png" style="width: 20px; height: 20px; margin-right: 5px;">
-        <span *ngIf="!isTransitioned">Milk production</span>
-    </a>
-    <a routerLink="/herds" routerLinkActive="active" (click)="selectItem('herds')">
-        <img alt="" src="assets/img/herds.png" style="width: 20px; height: 20px; margin-right: 5px;">
-        <span *ngIf="!isTransitioned">Herds</span>
-    </a>
-    <a routerLink="/milking" routerLinkActive="active" (click)="selectItem('milking')">
-        <img alt="" src="assets/img/milking.png" style="width: 20px; height: 20px; margin-right: 5px;">
-        <span *ngIf="!isTransitioned">Milking</span>
-    </a>
-    <a routerLink="/milkQuality" routerLinkActive="active" (click)="selectItem('milkQuality')">
-        <img alt="" src="assets/img/quality.png" style="width: 20px; height: 20px; margin-right: 5px;">
-        <span *ngIf="!isTransitioned">Milk quality</span>
-    </a>
-    <a routerLink="/storageConditions" routerLinkActive="active" (click)="selectItem('storageConditions')">
-        <img alt="" src="assets/img/storage.png" style="width: 20px; height: 20px; margin-right: 5px;">
-        <span *ngIf="!isTransitioned">Storage conditions</span>
-    </a>
-    <a routerLink="/coldChain" routerLinkActive="active" (click)="selectItem('coldChain')">
-        <img alt="" src="assets/img/cold.png" style="width: 20px; height: 20px; margin-right: 5px;">
-        <span *ngIf="!isTransitioned">Cold chain</span>
-    </a>
-    <a routerLink="/dataAnalysis" routerLinkActive="active" (click)="selectItem('dataAnalysis')">
-        <img alt="" src="assets/img/analysis.png" style="width: 20px; height: 20px; margin-right: 5px;">
-        <span *ngIf="!isTransitioned">Data analysis</span>
-    </a>
-    <a routerLink="/labelingAndTraceability" routerLinkActive="active" (click)="selectItem('labelingAndTraceability')">
-        <img alt="" src="assets/img/trace.png" style="width: 20px; height: 20px; margin-right: 5px;">
-        <span *ngIf="!isTransitioned">Labeling and traceability</span>
-    </a>
-    <a routerLink="/dataStorage" routerLinkActive="active" (click)="selectItem('dataStorage')">
-        <img alt="" src="assets/img/data.png" style="width: 20px; height: 20px; margin-right: 5px;">
-        <span *ngIf="!isTransitioned">Data storage</span>
-    </a>
-    <a routerLink="/notificationsAndAlerts" routerLinkActive="active" (click)="selectItem('notificationsAndAlerts')">
-        <img alt="" src="assets/img/alert.png" style="width: 20px; height: 20px; margin-right: 5px;">
-        <span *ngIf="!isTransitioned">Notifications and alerts</span>
-    </a>
-    <a routerLink="/laboratories" routerLinkActive="active" (click)="selectItem('laboratories')">
-        <img alt="" src="assets/img/laboratory.png" style="width: 20px; height: 20px; margin-right: 5px;">
-        <span *ngIf="!isTransitioned">Laboratories</span>
-    </a>
-    <a routerLink="/reportsAndDocumentation" routerLinkActive="active" (click)="selectItem('reportsAndDocumentation')">
-        <img alt="" src="assets/img/report.png" style="width: 20px; height: 20px; margin-right: 5px;">
-        <span *ngIf="!isTransitioned">Reports and documentation</span>
-    </a>
-
-
+  <div>
+    <svg
+      style="float: right; margin: 3%; cursor: pointer"
+      xmlns="http://www.w3.org/2000/svg"
+      width="30"
+      height="30"
+      fill="black"
+      class="bi bi-x-lg"
+      viewBox="0 0 16 16"
+      *ngIf="!isTransitioned"
+      [@svgTransition]
+      (click)="toggleTransition()"
+    >
+      <path
+        d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"
+      />
+    </svg>
+    <svg
+      style="float: right; margin: 3%; cursor: pointer"
+      *ngIf="isTransitioned"
+      [@svgTransition]
+      (click)="toggleTransition()"
+      xmlns="http://www.w3.org/2000/svg"
+      width="30"
+      height="30"
+      fill="black"
+      class="bi bi-border-width"
+      viewBox="0 0 16 16"
+    >
+      <path
+        d="M0 3.5A.5.5 0 0 1 .5 3h15a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5H.5a.5.5 0 0 1-.5-.5v-2zm0 5A.5.5 0 0 1 .5 8h15a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H.5a.5.5 0 0 1-.5-.5v-1zm0 4a.5.5 0 0 1 .5-.5h15a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5z"
+      />
+    </svg>
+  </div>
+  <a
+    *ngIf="isAdmin"
+    routerLink="/start"
+    routerLinkActive="active"
+    (click)="selectItem('start')"
+  >
+    <img
+      alt=""
+      src="assets/img/admin.png"
+      style="width: 20px; height: 20px; margin-right: 5px"
+    />
+    <span *ngIf="!isTransitioned">Dashboard</span>
+  </a>
+  <a
+    routerLink="/company"
+    routerLinkActive="active"
+    (click)="selectItem('company')"
+  >
+    <img
+      alt=""
+      src="assets/img/company.png"
+      style="width: 20px; height: 20px; margin-right: 5px"
+    />
+    <span *ngIf="!isTransitioned">Company</span>
+  </a>
+  <a
+    routerLink="/costCenter"
+    routerLinkActive="active"
+    (click)="selectItem('costCenter')"
+  >
+    <img
+      alt=""
+      src="assets/img/company.png"
+      style="width: 20px; height: 20px; margin-right: 5px"
+    />
+    <span *ngIf="!isTransitioned">Cost center</span>
+  </a>
+
+  <a
+    routerLink="/salesku"
+    routerLinkActive="active"
+    (click)="selectItem('salesku')"
+  >
+    <img
+      alt=""
+      src="assets/img/company.png"
+      style="width: 20px; height: 20px; margin-right: 5px"
+    />
+    <span *ngIf="!isTransitioned">Sale sku</span>
+  </a>
+
+  <a
+    routerLink="/Field-product"
+    routerLinkActive="active"
+    (click)="selectItem('Field-product')"
+  >
+    <img
+      alt=""
+      src="assets/img/product.png"
+      style="width: 20px; height: 20px; margin-right: 5px"
+    />
+    <span *ngIf="!isTransitioned">Product</span>
+  </a>
+
+  <a
+    routerLink="/Rapprochement-des-stocks"
+    routerLinkActive="active"
+    (click)="selectItem('Rapprochement-des-stocks')"
+  >
+    <img
+      alt=""
+      src="assets/img/farm.png"
+      style="width: 20px; height: 20px; margin-right: 5px"
+    />
+    <span *ngIf="!isTransitioned">Rapprochement des stocks</span>
+  </a>
+
+  <a
+    routerLink="/ProductUsage"
+    routerLinkActive="active"
+    (click)="selectItem('ProductUsage')"
+  >
+    <img
+      alt=""
+      src="assets/img/farm.png"
+      style="width: 20px; height: 20px; margin-right: 5px"
+    />
+    <span *ngIf="!isTransitioned">Product usage</span>
+  </a>
+
+  <a
+    routerLink="/Delivery"
+    routerLinkActive="active"
+    (click)="selectItem('Delivery')"
+  >
+    <img
+      alt=""
+      src="assets/img/farm.png"
+      style="width: 20px; height: 20px; margin-right: 5px"
+    />
+    <span *ngIf="!isTransitioned">Delivery</span>
+  </a>
+
+  <a
+    routerLink="/shipmethode"
+    routerLinkActive="active"
+    (click)="selectItem('shipmethode')"
+  >
+    <img
+      alt=""
+      src="assets/img/farm.png"
+      style="width: 20px; height: 20px; margin-right: 5px"
+    />
+    <span *ngIf="!isTransitioned">Ship methode</span>
+  </a>
+
+  <a
+    routerLink="/freightterms"
+    routerLinkActive="active"
+    (click)="selectItem('freightterms')"
+  >
+    <img
+      alt=""
+      src="assets/img/farm.png"
+      style="width: 20px; height: 20px; margin-right: 5px"
+    />
+    <span *ngIf="!isTransitioned">Freight terms</span>
+  </a>
+
+  <a
+    routerLink="/fournisseurs"
+    routerLinkActive="active"
+    (click)="selectItem('fournisseurs')"
+  >
+    <img
+      alt=""
+      src="assets/img/farm.png"
+      style="width: 20px; height: 20px; margin-right: 5px"
+    />
+    <span *ngIf="!isTransitioned">Fournisseurs</span>
+  </a>
+
+  <a
+    routerLink="/sanitation"
+    routerLinkActive="active"
+    (click)="selectItem('sanitation')"
+  >
+    <img
+      alt=""
+      src="assets/img/farm.png"
+      style="width: 20px; height: 20px; margin-right: 5px"
+    />
+    <span *ngIf="!isTransitioned">Sanitation</span>
+  </a>
+
+  <a
+    routerLink="/warehouses"
+    routerLinkActive="active"
+    (click)="selectItem('warehouses')"
+  >
+    <img
+      alt=""
+      src="assets/img/warehouse.png"
+      style="width: 20px; height: 20px; margin-right: 5px"
+    />
+    <span *ngIf="!isTransitioned">Warehouse</span>
+  </a>
+
+  <a
+    routerLink="/Initialinventory"
+    routerLinkActive="active"
+    (click)="selectItem('Initialinventory')"
+  >
+    <img
+      alt=""
+      src="assets/img/farm.png"
+      style="width: 20px; height: 20px; margin-right: 5px"
+    />
+    <span *ngIf="!isTransitioned">Initial inventory</span>
+  </a>
+
+  <a
+    routerLink="/farms"
+    routerLinkActive="active"
+    (click)="selectItem('farms')"
+  >
+    <img
+      alt=""
+      src="assets/img/farm.png"
+      style="width: 20px; height: 20px; margin-right: 5px"
+    />
+    <span *ngIf="!isTransitioned">Farms</span>
+  </a>
+
+  <a
+    routerLink="/currency"
+    routerLinkActive="active"
+    (click)="selectItem('currency')"
+  >
+    <img
+      alt=""
+      src="assets/img/farm.png"
+      style="width: 20px; height: 20px; margin-right: 5px"
+    />
+    <span *ngIf="!isTransitioned">Currency</span>
+  </a>
+
+  <a
+    routerLink="/division"
+    routerLinkActive="active"
+    (click)="selectItem('division')"
+  >
+    <img
+      alt=""
+      src="assets/img/farm.png"
+      style="width: 20px; height: 20px; margin-right: 5px"
+    />
+    <span *ngIf="!isTransitioned">Division</span>
+  </a>
+
+  <a
+    routerLink="/growout"
+    routerLinkActive="active"
+    (click)="selectItem('growout')"
+  >
+    <img
+      alt=""
+      src="assets/img/farm.png"
+      style="width: 20px; height: 20px; margin-right: 5px"
+    />
+    <span *ngIf="!isTransitioned">Growout</span>
+  </a>
+
+  <a
+    routerLink="/vehicule"
+    routerLinkActive="active"
+    (click)="selectItem('vehicule')"
+  >
+    <img
+      alt=""
+      src="assets/img/farm.png"
+      style="width: 20px; height: 20px; margin-right: 5px"
+    />
+    <span *ngIf="!isTransitioned">Vehicule</span>
+  </a>
+  <a
+    routerLink="/vehicleType"
+    routerLinkActive="active"
+    (click)="selectItem('vehicleType')"
+  >
+    <img
+      alt=""
+      src="assets/img/farm.png"
+      style="width: 20px; height: 20px; margin-right: 5px"
+    />
+    <span *ngIf="!isTransitioned">VehicleType</span>
+  </a>
+  <a
+    routerLink="/willaya"
+    routerLinkActive="active"
+    (click)="selectItem('willaya')"
+  >
+    <img
+      alt=""
+      src="assets/img/farm.png"
+      style="width: 20px; height: 20px; margin-right: 5px"
+    />
+    <span *ngIf="!isTransitioned">Willaya</span>
+  </a>
+  <a
+    routerLink="/animal-product"
+    routerLinkActive="active"
+    (click)="selectItem('animal-product')"
+  >
+    <img
+      alt=""
+      src="assets/img/farm.png"
+      style="width: 20px; height: 20px; margin-right: 5px"
+    />
+    <span *ngIf="!isTransitioned">animal product</span>
+  </a>
+  <a
+    routerLink="/diver"
+    routerLinkActive="active"
+    (click)="selectItem('diver')"
+  >
+    <img
+      alt=""
+      src="assets/img/farm.png"
+      style="width: 20px; height: 20px; margin-right: 5px"
+    />
+    <span *ngIf="!isTransitioned">diver</span>
+  </a>
+
+  <a
+    routerLink="/egg-product"
+    routerLinkActive="active"
+    (click)="selectItem('egg-product')"
+  >
+    <img
+      alt=""
+      src="assets/img/farm.png"
+      style="width: 20px; height: 20px; margin-right: 5px"
+    />
+    <span *ngIf="!isTransitioned">Egg product</span>
+  </a>
+  <a
+    routerLink="/feed-mill"
+    routerLinkActive="active"
+    (click)="selectItem('feed-mill')"
+  >
+    <img
+      alt=""
+      src="assets/img/farm.png"
+      style="width: 20px; height: 20px; margin-right: 5px"
+    />
+    <span *ngIf="!isTransitioned">Feed mill</span>
+  </a>
+  <a
+    routerLink="/hatchery"
+    routerLinkActive="active"
+    (click)="selectItem('hatchery')"
+  >
+    <img
+      alt=""
+      src="assets/img/farm.png"
+      style="width: 20px; height: 20px; margin-right: 5px"
+    />
+    <span *ngIf="!isTransitioned">Hatchery</span>
+  </a>
+  <a
+    routerLink="/plant"
+    routerLinkActive="active"
+    (click)="selectItem('plant')"
+  >
+    <img
+      alt=""
+      src="assets/img/farm.png"
+      style="width: 20px; height: 20px; margin-right: 5px"
+    />
+    <span *ngIf="!isTransitioned">Plant</span>
+  </a>
+  <a
+    routerLink="/sales"
+    routerLinkActive="active"
+    (click)="selectItem('sales')"
+  >
+    <img
+      alt=""
+      src="assets/img/farm.png"
+      style="width: 20px; height: 20px; margin-right: 5px"
+    />
+    <span *ngIf="!isTransitioned">Sales</span>
+  </a>
+
+  <a
+    routerLink="/live-stock-product"
+    routerLinkActive="active"
+    (click)="selectItem('live-stock-product')"
+  >
+    <img
+      alt=""
+      src="assets/img/farm.png"
+      style="width: 20px; height: 20px; margin-right: 5px"
+    />
+    <span *ngIf="!isTransitioned">Live stock product</span>
+  </a>
+  <a
+    routerLink="/animal-product"
+    routerLinkActive="active"
+    (click)="selectItem('animal-product')"
+  >
+    <img
+      alt=""
+      src="assets/img/farm.png"
+      style="width: 20px; height: 20px; margin-right: 5px"
+    />
+    <span *ngIf="!isTransitioned">Animal product</span>
+  </a>
+  <a
+    routerLink="/vendorsku"
+    routerLinkActive="active"
+    (click)="selectItem('vendorsku')"
+  >
+    <img
+      alt=""
+      src="assets/img/farm.png"
+      style="width: 20px; height: 20px; margin-right: 5px"
+    />
+    <span *ngIf="!isTransitioned">Vendor sku</span>
+  </a>
+  <a
+    routerLink="/feed-product"
+    routerLinkActive="active"
+    (click)="selectItem('feed-product')"
+  >
+    <img
+      alt=""
+      src="assets/img/farm.png"
+      style="width: 20px; height: 20px; margin-right: 5px"
+    />
+    <span *ngIf="!isTransitioned">Feed product</span>
+  </a>
+  <a
+    routerLink="/ordermangment"
+    routerLinkActive="active"
+    (click)="selectItem('ordermangment')"
+  >
+    <img
+      alt=""
+      src="assets/img/farm.png"
+      style="width: 20px; height: 20px; margin-right: 5px"
+    />
+    <span *ngIf="!isTransitioned">Order mangment</span>
+  </a>
+
+  <a
+    routerLink="/logistic"
+    routerLinkActive="active"
+    (click)="selectItem('logistic')"
+  >
+    <img
+      alt=""
+      src="assets/img/farm.png"
+      style="width: 20px; height: 20px; margin-right: 5px"
+    />
+    <span *ngIf="!isTransitioned">Logistic</span>
+  </a>
+  <a
+    routerLink="/symtoms"
+    routerLinkActive="active"
+    (click)="selectItem('symtoms')"
+  >
+    <img
+      alt=""
+      src="assets/img/farm.png"
+      style="width: 20px; height: 20px; margin-right: 5px"
+    />
+    <span *ngIf="!isTransitioned">Symtoms</span>
+  </a>
+  <a
+    routerLink="/country"
+    routerLinkActive="active"
+    (click)="selectItem('country')"
+  >
+    <img
+      alt=""
+      src="assets/img/farm.png"
+      style="width: 20px; height: 20px; margin-right: 5px"
+    />
+    <span *ngIf="!isTransitioned">Country</span>
+  </a>
+  <a
+    routerLink="/willaya"
+    routerLinkActive="active"
+    (click)="selectItem('willaya')"
+  >
+    <img
+      alt=""
+      src="assets/img/farm.png"
+      style="width: 20px; height: 20px; margin-right: 5px"
+    />
+    <span *ngIf="!isTransitioned">Willaya</span>
+  </a>
+  <a routerLink="/tax" routerLinkActive="active" (click)="selectItem('tax')">
+    <img
+      alt=""
+      src="assets/img/farm.png"
+      style="width: 20px; height: 20px; margin-right: 5px"
+    />
+    <span *ngIf="!isTransitioned">Tax</span>
+  </a>
+
+  <a
+    routerLink="/vihicule"
+    routerLinkActive="active"
+    (click)="selectItem('vihicule')"
+  >
+    <img
+      alt=""
+      src="assets/img/farm.png"
+      style="width: 20px; height: 20px; margin-right: 5px"
+    />
+    <span *ngIf="!isTransitioned">Vihicule</span>
+  </a>
+  <a
+    routerLink="/diver"
+    routerLinkActive="active"
+    (click)="selectItem('diver')"
+  >
+    <img
+      alt=""
+      src="assets/img/farm.png"
+      style="width: 20px; height: 20px; margin-right: 5px"
+    />
+    <span *ngIf="!isTransitioned">Diver</span>
+  </a>
+  <a
+    routerLink="/vetenarians"
+    routerLinkActive="active"
+    (click)="selectItem('vetenarians')"
+  >
+    <img
+      alt=""
+      src="assets/img/farm.png"
+      style="width: 20px; height: 20px; margin-right: 5px"
+    />
+    <span *ngIf="!isTransitioned">Vetenarians</span>
+  </a>
+  <a
+    routerLink="/field"
+    routerLinkActive="active"
+    (click)="selectItem('field')"
+  >
+    <img
+      alt=""
+      src="assets/img/farm.png"
+      style="width: 20px; height: 20px; margin-right: 5px"
+    />
+    <span *ngIf="!isTransitioned">Field</span>
+  </a>
+  <a
+    routerLink="/treatment"
+    routerLinkActive="active"
+    (click)="selectItem('treatment')"
+  >
+    <img
+      alt=""
+      src="assets/img/farm.png"
+      style="width: 20px; height: 20px; margin-right: 5px"
+    />
+    <span *ngIf="!isTransitioned">Treatment</span>
+  </a>
+
+  <a
+    routerLink="/commandes"
+    routerLinkActive="active"
+    (click)="selectItem('commandes')"
+  >
+    <img
+      alt=""
+      src="assets/img/farm.png"
+      style="width: 20px; height: 20px; margin-right: 5px"
+    />
+    <span *ngIf="!isTransitioned">Commandes</span>
+  </a>
+  <a
+    routerLink="/charges"
+    routerLinkActive="active"
+    (click)="selectItem('charges')"
+  >
+    <img
+      alt=""
+      src="assets/img/farm.png"
+      style="width: 20px; height: 20px; margin-right: 5px"
+    />
+    <span *ngIf="!isTransitioned">Charges</span>
+  </a>
+
+  <a
+    routerLink="/airports"
+    routerLinkActive="active"
+    (click)="selectItem('airports')"
+  >
+    <img
+      alt=""
+      src="assets/img/farm.png"
+      style="width: 20px; height: 20px; margin-right: 5px"
+    />
+    <span *ngIf="!isTransitioned">Airports</span>
+  </a>
+  <a
+    routerLink="/vehicles"
+    routerLinkActive="active"
+    (click)="selectItem('vehicles')"
+  >
+    <img
+      alt=""
+      src="assets/img/farm.png"
+      style="width: 20px; height: 20px; margin-right: 5px"
+    />
+    <span *ngIf="!isTransitioned">Vehicles</span>
+  </a>
+  <a
+    routerLink="/drivers"
+    routerLinkActive="active"
+    (click)="selectItem('drivers')"
+  >
+    <img
+      alt=""
+      src="assets/img/farm.png"
+      style="width: 20px; height: 20px; margin-right: 5px"
+    />
+    <span *ngIf="!isTransitioned">Drivers</span>
+  </a>
+  <a
+    routerLink="/logisticUnit"
+    routerLinkActive="active"
+    (click)="selectItem('logisticUnit')"
+  >
+    <img
+      alt=""
+      src="assets/img/farm.png"
+      style="width: 20px; height: 20px; margin-right: 5px"
+    />
+    <span *ngIf="!isTransitioned">logistic Unit</span>
+  </a>
+  <a
+    routerLink="/seaports"
+    routerLinkActive="active"
+    (click)="selectItem('seaports')"
+  >
+    <img
+      alt=""
+      src="assets/img/farm.png"
+      style="width: 20px; height: 20px; margin-right: 5px"
+    />
+    <span *ngIf="!isTransitioned">Seaports</span>
+  </a>
+
+  <a
+    routerLink="/reasons"
+    routerLinkActive="active"
+    (click)="selectItem('reasons')"
+  >
+    <img
+      alt=""
+      src="assets/img/farm.png"
+      style="width: 20px; height: 20px; margin-right: 5px"
+    />
+    <span *ngIf="!isTransitioned">Reasons</span>
+  </a>
+  <a
+    routerLink="/manufacturers"
+    routerLinkActive="active"
+    (click)="selectItem('manufacturers')"
+  >
+    <img
+      alt=""
+      src="assets/img/farm.png"
+      style="width: 20px; height: 20px; margin-right: 5px"
+    />
+    <span *ngIf="!isTransitioned">Manufacturers</span>
+  </a>
+
+  <a
+    routerLink="/milkProduction"
+    routerLinkActive="active"
+    (click)="selectItem('milkProduction')"
+  >
+    <img
+      alt=""
+      src="assets/img/production.png"
+      style="width: 20px; height: 20px; margin-right: 5px"
+    />
+    <span *ngIf="!isTransitioned">Milk production</span>
+  </a>
+  <a
+    routerLink="/herds"
+    routerLinkActive="active"
+    (click)="selectItem('herds')"
+  >
+    <img
+      alt=""
+      src="assets/img/herds.png"
+      style="width: 20px; height: 20px; margin-right: 5px"
+    />
+    <span *ngIf="!isTransitioned">Herds</span>
+  </a>
+  <a
+    routerLink="/milking"
+    routerLinkActive="active"
+    (click)="selectItem('milking')"
+  >
+    <img
+      alt=""
+      src="assets/img/milking.png"
+      style="width: 20px; height: 20px; margin-right: 5px"
+    />
+    <span *ngIf="!isTransitioned">Milking</span>
+  </a>
+  <a
+    routerLink="/milkQuality"
+    routerLinkActive="active"
+    (click)="selectItem('milkQuality')"
+  >
+    <img
+      alt=""
+      src="assets/img/quality.png"
+      style="width: 20px; height: 20px; margin-right: 5px"
+    />
+    <span *ngIf="!isTransitioned">Milk quality</span>
+  </a>
+  <a
+    routerLink="/storageConditions"
+    routerLinkActive="active"
+    (click)="selectItem('storageConditions')"
+  >
+    <img
+      alt=""
+      src="assets/img/storage.png"
+      style="width: 20px; height: 20px; margin-right: 5px"
+    />
+    <span *ngIf="!isTransitioned">Storage conditions</span>
+  </a>
+  <a
+    routerLink="/coldChain"
+    routerLinkActive="active"
+    (click)="selectItem('coldChain')"
+  >
+    <img
+      alt=""
+      src="assets/img/cold.png"
+      style="width: 20px; height: 20px; margin-right: 5px"
+    />
+    <span *ngIf="!isTransitioned">Cold chain</span>
+  </a>
+  <a
+    routerLink="/dataAnalysis"
+    routerLinkActive="active"
+    (click)="selectItem('dataAnalysis')"
+  >
+    <img
+      alt=""
+      src="assets/img/analysis.png"
+      style="width: 20px; height: 20px; margin-right: 5px"
+    />
+    <span *ngIf="!isTransitioned">Data analysis</span>
+  </a>
+  <a
+    routerLink="/labelingAndTraceability"
+    routerLinkActive="active"
+    (click)="selectItem('labelingAndTraceability')"
+  >
+    <img
+      alt=""
+      src="assets/img/trace.png"
+      style="width: 20px; height: 20px; margin-right: 5px"
+    />
+    <span *ngIf="!isTransitioned">Labeling and traceability</span>
+  </a>
+  <a
+    routerLink="/dataStorage"
+    routerLinkActive="active"
+    (click)="selectItem('dataStorage')"
+  >
+    <img
+      alt=""
+      src="assets/img/data.png"
+      style="width: 20px; height: 20px; margin-right: 5px"
+    />
+    <span *ngIf="!isTransitioned">Data storage</span>
+  </a>
+  <a
+    routerLink="/notificationsAndAlerts"
+    routerLinkActive="active"
+    (click)="selectItem('notificationsAndAlerts')"
+  >
+    <img
+      alt=""
+      src="assets/img/alert.png"
+      style="width: 20px; height: 20px; margin-right: 5px"
+    />
+    <span *ngIf="!isTransitioned">Notifications and alerts</span>
+  </a>
+  <a
+    routerLink="/laboratories"
+    routerLinkActive="active"
+    (click)="selectItem('laboratories')"
+  >
+    <img
+      alt=""
+      src="assets/img/laboratory.png"
+      style="width: 20px; height: 20px; margin-right: 5px"
+    />
+    <span *ngIf="!isTransitioned">Laboratories</span>
+  </a>
+  <a
+    routerLink="/reportsAndDocumentation"
+    routerLinkActive="active"
+    (click)="selectItem('reportsAndDocumentation')"
+  >
+    <img
+      alt=""
+      src="assets/img/report.png"
+      style="width: 20px; height: 20px; margin-right: 5px"
+    />
+    <span *ngIf="!isTransitioned">Reports and documentation</span>
+  </a>
 </div>

@@ -1,32 +1,30 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { SharedService } from 'app/modules/company/services/shared.service';
-import { productCategory } from 'app/modules/product-category/Models/productCategory.model';
+import { Component, Input, OnInit } from "@angular/core";
+import { FormGroup, FormControl, Validators } from "@angular/forms";
+import { SharedService } from "app/modules/company/services/shared.service";
+import { productCategory } from "app/modules/product-category/Models/productCategory.model";
 
 @Component({
-  selector: 'app-product-category-form-general',
-  templateUrl: './product-category-form-general.component.html',
-  styleUrls: ['./product-category-form-general.component.scss']
+  selector: "app-product-category-form-general",
+  templateUrl: "./product-category-form-general.component.html",
+  styleUrls: ["./product-category-form-general.component.scss"],
 })
 export class ProductCategoryFormGeneralComponent implements OnInit {
-
   @Input() productCategory!: productCategory;
 
   addform: FormGroup;
 
-  constructor(private sharedService: SharedService) { }
+  constructor(private sharedService: SharedService) {}
 
   ngOnInit(): void {
     this.initForm();
   }
 
   initForm() {
-
     this.addform = new FormGroup({
       code: new FormControl("", [
         Validators.required,
         Validators.maxLength(50),
-        Validators.pattern(/^[+]?\d+(\.\d+)?$/)
+        Validators.pattern(/^[+]?\d+(\.\d+)?$/),
       ]),
       name: new FormControl("", [
         Validators.required,
@@ -35,12 +33,18 @@ export class ProductCategoryFormGeneralComponent implements OnInit {
       type: new FormControl("", [
         Validators.required,
         Validators.maxLength(50),
-      ])
+      ]),
     });
   }
-  get code() { return this.addform.get('code') }
-  get name() { return this.addform.get('name') }
-  get type() { return this.addform.get('type') }
+  get code() {
+    return this.addform.get("code");
+  }
+  get name() {
+    return this.addform.get("name");
+  }
+  get type() {
+    return this.addform.get("type");
+  }
 
   geValues(event) {
     this.sharedService.setIsActive(false);
@@ -53,5 +57,4 @@ export class ProductCategoryFormGeneralComponent implements OnInit {
   get f() {
     return this.addform.controls;
   }
-
 }

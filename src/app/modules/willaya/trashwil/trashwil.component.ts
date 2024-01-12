@@ -1,21 +1,20 @@
-import { Component, EventEmitter, OnInit, ViewChild } from '@angular/core';
-import { ConfirmDialogComponent } from 'app/shared/components/confirm-dialog/confirm-dialog.component';
-import { StepperComponent } from 'app/shared/components/stepper/stepper.component';
-import { WizardDialogComponent } from 'app/shared/components/wizard-dialog/wizard-dialog.component';
-import { Willaya } from '../models/willaya';
-import { Page, initPage } from 'app/shared/models';
-import { WillayaService } from '../services/willaya.service';
-import { TranslateService } from '@ngx-translate/core';
-import { HotToastService } from '@ngneat/hot-toast';
-import { Router } from '@angular/router';
+import { Component, EventEmitter, OnInit, ViewChild } from "@angular/core";
+import { ConfirmDialogComponent } from "app/shared/components/confirm-dialog/confirm-dialog.component";
+import { StepperComponent } from "app/shared/components/stepper/stepper.component";
+import { WizardDialogComponent } from "app/shared/components/wizard-dialog/wizard-dialog.component";
+import { Willaya } from "../models/willaya";
+import { Page, initPage } from "app/shared/models";
+import { WillayaService } from "../services/willaya.service";
+import { TranslateService } from "@ngx-translate/core";
+import { HotToastService } from "@ngneat/hot-toast";
+import { Router } from "@angular/router";
 
 @Component({
-  selector: 'app-trashwil',
-  templateUrl: './trashwil.component.html',
-  styleUrls: ['./trashwil.component.scss']
+  selector: "app-trashwil",
+  templateUrl: "./trashwil.component.html",
+  styleUrls: ["./trashwil.component.scss"],
 })
 export class TrashwilComponent implements OnInit {
-
   @ViewChild("deleteModal")
   deleteModal!: ConfirmDialogComponent;
 
@@ -39,10 +38,10 @@ export class TrashwilComponent implements OnInit {
   onPaginationChange: EventEmitter<string> = new EventEmitter<string>();
 
   constructor(
-  private willayaservice:WillayaService,
+    private willayaservice: WillayaService,
     private translateService: TranslateService,
     private toastService: HotToastService,
-    private router:Router
+    private router: Router,
   ) {}
   ngOnInit(): void {
     this.findArchivedPage();
@@ -64,8 +63,8 @@ export class TrashwilComponent implements OnInit {
         complete: () => (this.loading = false),
       });
   }
-  goto(){
-    this.router.navigateByUrl("/willaya")
+  goto() {
+    this.router.navigateByUrl("/willaya");
   }
   findById(id: string) {
     this.willayaservice.findById(id).subscribe({
@@ -99,12 +98,11 @@ export class TrashwilComponent implements OnInit {
         this.toastService.success(
           this.translateService.instant("success.restore", {
             elem: this.translateService.instant("willaya"),
-          })
+          }),
         );
       },
     });
   }
-
 
   onClickDelete(id: string) {
     this.willayaservice.delete(id).subscribe({
@@ -113,10 +111,9 @@ export class TrashwilComponent implements OnInit {
         this.toastService.success(
           this.translateService.instant("success.deleted", {
             elem: this.translateService.instant("willaya"),
-          })
+          }),
         );
       },
     });
   }
-
 }
